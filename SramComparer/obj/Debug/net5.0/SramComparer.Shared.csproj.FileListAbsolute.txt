@@ -1,0 +1,15 @@
+E:\VS_Projekte\SNES\SramTools\SramComparer\obj\Debug\net5.0\SramComparer.Shared.csprojAssemblyReference.cache
+E:\VS_Projekte\SNES\SramTools\SramComparer\obj\Debug\net5.0\SramComparer.Shared.Properties.Resources.resources
+E:\VS_Projekte\SNES\SramTools\SramComparer\obj\Debug\net5.0\SramComparer.Shared.csproj.GenerateResource.cache
+E:\VS_Projekte\SNES\SramTools\SramComparer\obj\Debug\net5.0\SramComparer.Shared.GeneratedMSBuildEditorConfig.editorconfig
+E:\VS_Projekte\SNES\SramTools\SramComparer\obj\Debug\net5.0\SramComparer.Shared.AssemblyInfoInputs.cache
+E:\VS_Projekte\SNES\SramTools\SramComparer\obj\Debug\net5.0\SramComparer.Shared.AssemblyInfo.cs
+E:\VS_Projekte\SNES\SramTools\SramComparer\obj\Debug\net5.0\SramComparer.Shared.csproj.CoreCompileInputs.cache
+E:\VS_Projekte\SNES\SramTools\SramComparer\bin\Debug\net5.0\SramComparer.Shared.deps.json
+E:\VS_Projekte\SNES\SramTools\SramComparer\bin\Debug\net5.0\SramComparer.Shared.dll
+E:\VS_Projekte\SNES\SramTools\SramComparer\bin\Debug\net5.0\SramComparer.Shared.pdb
+E:\VS_Projekte\SNES\SramTools\SramComparer\bin\Debug\net5.0\SramCommons.Shared.dll
+E:\VS_Projekte\SNES\SramTools\SramComparer\bin\Debug\net5.0\SramCommons.Shared.pdb
+E:\VS_Projekte\SNES\SramTools\SramComparer\obj\Debug\net5.0\SramComparer.Shared.csproj.CopyComplete
+E:\VS_Projekte\SNES\SramTools\SramComparer\obj\Debug\net5.0\SramComparer.Shared.dll
+E:\VS_Projekte\SNES\SramTools\SramComparer\obj\Debug\net5.0\SramComparer.Shared.pdb

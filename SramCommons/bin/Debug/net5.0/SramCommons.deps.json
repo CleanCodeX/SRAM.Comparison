@@ -1,0 +1,41 @@
+{
+  "runtimeTarget": {
+    "name": "net5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    "net5.0": {
+      "SramCommons/0.1.0": {
+        "dependencies": {
+          "App-Commons": "0.1.0"
+        },
+        "runtime": {
+          "SramCommons.dll": {}
+        }
+      },
+      "App-Commons/0.1.0": {
+        "runtime": {
+          "lib/net5.0/Commons.dll": {
+            "assemblyVersion": "0.1.0.0",
+            "fileVersion": "0.1.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SramCommons/0.1.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "App-Commons/0.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zjZP4GrnbgthJEBlwTKaBmHz6YnukKt7rp0YbMNaJwZKfLS/DJApjLxJK9ndAuPAwlLBWgdQLc7grwdeWqUUMQ==",
+      "path": "app-commons/0.1.0",
+      "hashPath": "app-commons.0.1.0.nupkg.sha512"
+    }
+  }
+}
