@@ -56,6 +56,6 @@ https://dotnet.microsoft.com/
 ***7.***   (optional) Current and comparison srm file can be backed-up press (b|bc) or restored (r|rc) individually.
 
 ## Screenshots
-![Commands](Media/Commands.png "Commands")
-![Comparison_UnknownsOnly](Media/Comparison_UnknownsOnly.png "Comparison (unknowns only)")
-![Comparison_FlagWholeGame](Media/Comparison_FlagWholeGame.png "Comparison (whole game)")
+![Commands](https://ibb.co/Xb52zLh/Commands.png "Commands")
+![Comparison_UnknownsOnly](https://ibb.co/ThbKzH0/Comparison_UnknownsOnly.png "Comparison (unknowns only)")
+![Comparison_FlagWholeGame](https://ibb.co/wC65mfJ/Comparison_FlagWholeGame.png "Comparison (whole game)")
