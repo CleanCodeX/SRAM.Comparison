@@ -1,5 +1,5 @@
 ﻿using System;
-using Commons.Extensions;
+using App.Commons.Extensions;
 using SramCommons.Extensions;
 using Res = SramComparer.Properties.Resources;
 

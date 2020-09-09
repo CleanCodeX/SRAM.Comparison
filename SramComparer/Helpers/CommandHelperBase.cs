@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
-using Commons.Extensions;
-using Commons.Helpers;
+using App.Commons.Extensions;
+using App.Commons.Helpers;
 using SramCommons.Models;
 using SramComparer.Helpers.Enums;
 using SramComparer.Properties;
@@ -106,7 +106,9 @@ namespace SramComparer.Helpers
         {
             WriteNewSectionHeader();
 
+#pragma warning disable 8631
             var maxValue = default(TGameId).GetMaxValue();
+#pragma warning restore 8631
             Console.WriteLine(Resources.SetGameMaxTemplate.InsertArgs(maxValue));
 
             var input = Console.ReadLine()!;

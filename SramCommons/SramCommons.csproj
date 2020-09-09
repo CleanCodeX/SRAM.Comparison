@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="App-Commons" Version="0.1.0" />
+    <PackageReference Include="App-Commons" Version="0.1.2" />
   </ItemGroup>
 
 </Project>

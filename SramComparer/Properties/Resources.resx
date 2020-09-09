@@ -332,4 +332,7 @@
   <data name="ComparisonSramFile" xml:space="preserve">
     <value>Comparison SRAM file</value>
   </data>
+  <data name="ErrorGameFileIsNotSrmTemplate" xml:space="preserve">
+    <value>{0} game file must have .srm as file extension.</value>
+  </data>
 </root>

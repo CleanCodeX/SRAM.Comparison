@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using Commons.Extensions;
+using App.Commons.Extensions;
 using SramComparer.Properties;
 
 namespace SramComparer.Helpers
@@ -16,13 +16,16 @@ namespace SramComparer.Helpers
         {
             if (args.Count == 0) return new TOptions();
 
-            var currentGameFile = args[0];
             int i;
+            var currentGameFile = args[0];
             var argsLength = args.Count;
             var options = new TOptions { CurrentGameFilepath = currentGameFile };
 
             if (options.CurrentGameFilepath is not null)
             {
+                if (Path.GetExtension(currentGameFile).ToLower() != ".srm")
+                    throw new ArgumentException(Resources.ErrorGameFileIsNotSrmTemplate.InsertArgs(Resources.Comparison), nameof(options.CurrentGameFilepath));
+
                 options.ComparisonGameFilepath = Path.Join(Path.GetDirectoryName(currentGameFile),
                     Path.GetFileNameWithoutExtension(currentGameFile) + $" ### {Resources.Comparison}" +
                     Path.GetExtension(currentGameFile));
@@ -39,6 +42,9 @@ namespace SramComparer.Helpers
                     case CmdOptions.ComparisonFile:
                         options.ComparisonGameFilepath = value;
                         break;
+                    case CmdOptions.Exportdir:
+                        options.ExportDirectory = value;
+                        break;
                     case CmdOptions.Game:
                         options.Game = value.ParseEnum<TGameId>();
                         break;
@@ -48,14 +54,14 @@ namespace SramComparer.Helpers
                     case CmdOptions.Region:
                         options.Region = value.ParseEnum<TFileRegion>();
                         break;
-                    case CmdOptions.Exportdir:
-                        options.ExportDirectory = value;
-                        break;
                     case CmdOptions.ComparisonFlags:
                         options.Flags = value.ParseEnum<TComparisonFlags>();
                         break;
                 }
             }
+
+            if (Path.GetExtension(options.ComparisonGameFilepath).ToLower() != ".srm")
+                throw new ArgumentException(Resources.ErrorGameFileIsNotSrmTemplate.InsertArgs(Resources.Comparison), nameof(options.ComparisonGameFilepath));
 
             return options;
         }

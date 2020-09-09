@@ -385,6 +385,15 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die {0} game file must have .srm as file extension. ähnelt.
+        /// </summary>
+        public static string ErrorGameFileIsNotSrmTemplate {
+            get {
+                return ResourceManager.GetString("ErrorGameFileIsNotSrmTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die ERROR: The programm needs to be started with at least one argument: &quot;{CURRENT_SRM_FILEPATH}&quot; ähnelt.
         /// </summary>
         public static string ErrorMissingPathArguments {
