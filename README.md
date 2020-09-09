@@ -20,10 +20,10 @@ https://dotnet.microsoft.com/
 ## How to use
 **Steps**:
 
-***1*** Most emulators have the option to save the game's S-RAM automatically after a change occurs.
+***1.1*** Most emulators have the option to save the game's S-RAM automatically after a change occurs.
      Make sure this is enabled if existing. Otherwise you have manually ensure that the emulator updates
      the srm file.  
-***1.3*** Start the tool by passing the game's srm filepath as first command parameter. The file can also be
+***1.2*** Start the tool by passing the game's srm filepath as first command parameter. The file can also be
      dragged onto the tool.
 
 ***2.***   Switch to this tool and press (ow) to create/overwrite a comparison copy of your current SRAM file allow
