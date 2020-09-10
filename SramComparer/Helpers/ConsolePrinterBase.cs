@@ -111,10 +111,10 @@ namespace SramComparer.Helpers
 
         private static void PrintOffsetValues(string offsetText, string? offsetName)
         {
-            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.Write($@"{Res.Offset} ");
 
-            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.Write(offsetText);
 
             if (offsetName is null) return;
@@ -132,7 +132,7 @@ namespace SramComparer.Helpers
             Console.Write(@" | ");
             Console.ForegroundColor = isNegativeChange ? ConsoleColor.Green : ConsoleColor.Red;
             Console.Write($@"{Res.CompShort} ");
-            Console.ForegroundColor = ConsoleColor.Gray;
+            //Console.ForegroundColor = ConsoleColor.Gray;
             Console.Write(compText);
         }
 
@@ -142,7 +142,7 @@ namespace SramComparer.Helpers
             Console.Write(@" => ");
             Console.ForegroundColor = isNegativeChange ? ConsoleColor.Red : ConsoleColor.Green;
             Console.Write($@"{Res.CurrShort} ");
-            Console.ForegroundColor = ConsoleColor.White;
+            //Console.ForegroundColor = ConsoleColor.White;
             Console.Write(currText);
         }
 
@@ -155,13 +155,17 @@ namespace SramComparer.Helpers
             Console.Write($@"{Res.ChangeShort} ");
             Console.Write(sign);
 
-            Console.ForegroundColor = ConsoleColor.White;
+            //Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(changeText);
         }
 
         private static string GetSign(short value) => Math.Sign(value) < 0 ? "(-)" : "(+)";
 
-        private static void PrintComparisonIdentification(string ident) => Console.Write($@"{ident}=> ");
+        private static void PrintComparisonIdentification(string ident)
+        {
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write($@"{ident}=> ");
+        }
 
         protected static void WriteSettingName(string settingName, string? cmdArg = null)
         {
