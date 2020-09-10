@@ -150,7 +150,7 @@
     <value>Cannot open output file "{0}" for writing</value>
   </data>
   <data name="AppDescription" xml:space="preserve">
-    <value>This tool allows to compare unknown buffers in SRAM file.</value>
+    <value>This tool compares unknown buffers in SRAM file.</value>
   </data>
   <data name="None" xml:space="preserve">
     <value>None</value>

@@ -10,13 +10,12 @@ using static SramComparer.Helpers.ConsolePrinterBase;
 
 namespace SramComparer.Helpers
 {
-    public abstract class CommandHelperBase<TSramFile, TSramGame, TGameId>
-        where TSramFile : SramFileBase, ISramFile<TSramGame, TGameId>
+    public abstract class CommandHelperBase<TSramFile, TSramGame>
+        where TSramFile : SramFileBase, ISramFile<TSramGame>
         where TSramGame : struct
-        where TGameId : struct, Enum
     {
         public static void CompareFiles<TComparer>(IOptions options)
-            where TComparer: ISramComparer<TSramFile, TSramGame, TGameId>, new()
+            where TComparer: ISramComparer<TSramFile, TSramGame>, new()
         {
             if (!File.Exists(options.ComparisonGameFilepath))
             {
@@ -37,7 +36,7 @@ namespace SramComparer.Helpers
         }
 
         public static void ExportCurrentComparison<TComparer>(IOptions options)
-            where TComparer : ISramComparer<TSramFile, TSramGame, TGameId>, new()
+            where TComparer : ISramComparer<TSramFile, TSramGame>, new()
         {
             var normalizedTimestamp = DateTime.Now.ToString("s").Replace(":", "_");
             var srmFilename = Path.GetFileNameWithoutExtension(options.CurrentGameFilepath);
@@ -102,23 +101,21 @@ namespace SramComparer.Helpers
             Console.ResetColor();
         }
 
-        public static TGameId GetGameId()
+        public static int GetGameId(int maxGameId)
         {
             WriteNewSectionHeader();
 
-#pragma warning disable 8631
-            var maxValue = default(TGameId).GetMaxValue();
-#pragma warning restore 8631
-            Console.WriteLine(Resources.SetGameMaxTemplate.InsertArgs(maxValue));
+            Console.WriteLine(Resources.SetGameMaxTemplate.InsertArgs(maxGameId));
 
             var input = Console.ReadLine()!;
-            var gameId = input.ParseEnum<TGameId>();
+
+            int.TryParse(input, out var gameId);
 
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.Yellow;
 
-            Console.WriteLine(!Equals(gameId, default(TGameId))
-                ? string.Format(Resources.StatusGameWillBeComparedTemplate, gameId.ToInt())
+            Console.WriteLine(gameId == 0
+                ? string.Format(Resources.StatusGameWillBeComparedTemplate, gameId)
                 : Resources.StatusAllGamesWillBeCompared);
 
             Console.WriteLine();
@@ -141,8 +138,8 @@ namespace SramComparer.Helpers
 
         public static void BackupSramFile(IOptions options, SramFileKind file, bool restore = false)
         {
-            var filepath = file == SramFileKind.Curr ? options.CurrentGameFilepath : options.ComparisonGameFilepath;
-            var sramName = file == SramFileKind.Curr ? Resources.CurrentSramFile : Resources.ComparisonSramFile;
+            var filepath = file == SramFileKind.Current ? options.CurrentGameFilepath : options.ComparisonGameFilepath;
+            var sramName = file == SramFileKind.Current ? Resources.CurrentSramFile : Resources.ComparisonSramFile;
 
             var directoryPath = Path.GetDirectoryName((string?) filepath);
             var srmFilename = Path.GetFileNameWithoutExtension((string?) filepath);

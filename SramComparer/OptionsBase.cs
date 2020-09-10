@@ -2,20 +2,8 @@
 
 namespace SramComparer
 {
-    public interface IOptions
-    {
-        string CurrentGameFilepath { get; }
-        string ComparisonGameFilepath { get; }
-        string ExportDirectory { get; }
-        Enum Region { get; }
-        Enum Game { get; }
-        Enum ComparisonGame { get; }
-        Enum Flags { get; }
-    }
-
-    public abstract class OptionsBase<TFileRegion, TGameId, TComparisonFlags> : IOptions
+    public abstract class OptionsBase<TFileRegion, TComparisonFlags> : IOptions
         where TFileRegion : struct, Enum
-        where TGameId: struct, Enum
         where TComparisonFlags : struct, Enum
     {
 #nullable disable
@@ -25,13 +13,11 @@ namespace SramComparer
 #nullable restore
 
         public TFileRegion Region { get; set; }
-        public TGameId Game { get; set; }
-        public TGameId ComparisonGame { get; set; }
+        public int Game { get; set; }
+        public int ComparisonGame { get; set; }
         public TComparisonFlags Flags;
 
         Enum IOptions.Region => Region;
-        Enum IOptions.Game => Game;
-        Enum IOptions.ComparisonGame => ComparisonGame;
         Enum IOptions.Flags => Flags;
     }
 }

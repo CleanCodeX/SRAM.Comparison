@@ -2,7 +2,7 @@
 {
     public enum SramFileKind
     {
-        Curr,
-        Comp
+        Current,
+        Comparison
     }
 }

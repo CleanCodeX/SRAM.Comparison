@@ -70,7 +70,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die This tool allows to compare unknown buffers in SRAM file. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die This tool compares unknown buffers in SRAM file. ähnelt.
         /// </summary>
         public static string AppDescription {
             get {

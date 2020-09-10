@@ -2,37 +2,38 @@
 using System.Collections.Generic;
 using System.IO;
 using App.Commons.Extensions;
+using SramComparer.Extensions;
 using SramComparer.Properties;
 
 namespace SramComparer.Helpers
 {
-    public abstract class CmdLineParserBase<TOptions, TFileRegion, TGameId, TComparisonFlags>
-        where TOptions : OptionsBase<TFileRegion, TGameId, TComparisonFlags>, new()
+    public abstract class CmdLineParserBase<TOptions, TFileRegion, TComparisonFlags>
+        where TOptions : OptionsBase<TFileRegion, TComparisonFlags>, new()
         where TFileRegion : struct, Enum
-        where TGameId : struct, Enum
         where TComparisonFlags : struct, Enum
     {
         public static TOptions Parse(IReadOnlyList<string> args)
         {
             if (args.Count == 0) return new TOptions();
 
-            int i;
+            const string fileExtension = ".srm";
             var currentGameFile = args[0];
-            var argsLength = args.Count;
             var options = new TOptions { CurrentGameFilepath = currentGameFile };
-
+            
             if (options.CurrentGameFilepath is not null)
             {
-                if (Path.GetExtension(currentGameFile).ToLower() != ".srm")
+                if (Path.GetExtension(currentGameFile).ToLower() != fileExtension)
                     throw new ArgumentException(Resources.ErrorGameFileIsNotSrmTemplate.InsertArgs(Resources.Comparison), nameof(options.CurrentGameFilepath));
 
+                var compFileNameSuffix = $" ### {Resources.Comparison}";
                 options.ComparisonGameFilepath = Path.Join(Path.GetDirectoryName(currentGameFile),
-                    Path.GetFileNameWithoutExtension(currentGameFile) + $" ### {Resources.Comparison}" +
+                    Path.GetFileNameWithoutExtension(currentGameFile) + compFileNameSuffix +
                     Path.GetExtension(currentGameFile));
                 options.ExportDirectory = Path.GetDirectoryName((string?) options.ComparisonGameFilepath);
             }
 
-            for (i = 1; i < argsLength; i += 2)
+            int i;
+            for (i = 1; i < args.Count; i += 2)
             {
                 var cmdName = args[i].ToLower();
                 var value = args[i + 1];
@@ -46,10 +47,10 @@ namespace SramComparer.Helpers
                         options.ExportDirectory = value;
                         break;
                     case CmdOptions.Game:
-                        options.Game = value.ParseEnum<TGameId>();
+                        options.Game = value.ParseGameId();
                         break;
                     case CmdOptions.ComparisonGame:
-                        options.ComparisonGame = value.ParseEnum<TGameId>();
+                        options.ComparisonGame = value.ParseGameId();
                         break;
                     case CmdOptions.Region:
                         options.Region = value.ParseEnum<TFileRegion>();
@@ -60,7 +61,7 @@ namespace SramComparer.Helpers
                 }
             }
 
-            if (Path.GetExtension(options.ComparisonGameFilepath).ToLower() != ".srm")
+            if (Path.GetExtension(options.ComparisonGameFilepath).ToLower() != fileExtension)
                 throw new ArgumentException(Resources.ErrorGameFileIsNotSrmTemplate.InsertArgs(Resources.Comparison), nameof(options.ComparisonGameFilepath));
 
             return options;

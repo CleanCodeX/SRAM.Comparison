@@ -7,18 +7,9 @@ using SramComparer.Properties;
 
 namespace SramComparer.Helpers
 {
-    public interface ISramComparer<in TSramFile, TSramGame, TGameId>
-        where TSramFile : SramFileBase, ISramFile<TSramGame, TGameId>
+    public abstract class SramComparerBase<TSramFile, TSramGame> : ISramComparer<TSramFile, TSramGame>
+        where TSramFile : SramFileBase, ISramFile<TSramGame>
         where TSramGame : struct
-        where TGameId : struct, Enum
-    {
-        void CompareSram(TSramFile currFile, TSramFile compFile, IOptions options);
-    }
-
-    public abstract class SramComparerBase<TSramFile, TSramGame, TGameId> : ISramComparer<TSramFile, TSramGame, TGameId>
-        where TSramFile : SramFileBase, ISramFile<TSramGame, TGameId>
-        where TSramGame : struct
-        where TGameId: struct, Enum
     {
         public abstract void CompareSram(TSramFile currFile, TSramFile compFile, IOptions options);
         protected abstract int CompareGame(TSramGame currGame, TSramGame compGame, IOptions options);

@@ -4,7 +4,7 @@
     <TargetFramework>net5.0</TargetFramework>
     <Nullable>enable</Nullable>
     <LangVersion>preview</LangVersion>
-    <Version>0.1.4</Version>
+    <Version>0.1.5-beta4</Version>
     <Authors>Sram-Tools</Authors>
     <Company></Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="SramCommons" Version="0.1.1" />
+    <PackageReference Include="SramCommons" Version="0.1.2-beta4" />
   </ItemGroup>
 
   <ItemGroup>
