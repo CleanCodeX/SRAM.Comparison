@@ -385,11 +385,11 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die {0} game file must have .srm as file extension. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die {0} game file must have .srm file extension. Forgot to quote the path? Was {1} ähnelt.
         /// </summary>
-        public static string ErrorGameFileIsNotSrmTemplate {
+        public static string ErrorGameFileIsNotSrmFileTypeFilepathTemplate {
             get {
-                return ResourceManager.GetString("ErrorGameFileIsNotSrmTemplate", resourceCulture);
+                return ResourceManager.GetString("ErrorGameFileIsNotSrmFileTypeFilepathTemplate", resourceCulture);
             }
         }
         

@@ -23,7 +23,7 @@ namespace SramComparer.Helpers
             if (options.CurrentGameFilepath is not null)
             {
                 if (Path.GetExtension(currentGameFile).ToLower() != fileExtension)
-                    throw new ArgumentException(Resources.ErrorGameFileIsNotSrmTemplate.InsertArgs(Resources.Comparison), nameof(options.CurrentGameFilepath));
+                    throw new ArgumentException(Resources.ErrorGameFileIsNotSrmFileTypeFilepathTemplate.InsertArgs(Resources.Comparison, options.CurrentGameFilepath), nameof(options.CurrentGameFilepath));
 
                 var compFileNameSuffix = $" ### {Resources.Comparison}";
                 options.ComparisonGameFilepath = Path.Join(Path.GetDirectoryName(currentGameFile),
@@ -62,7 +62,7 @@ namespace SramComparer.Helpers
             }
 
             if (Path.GetExtension(options.ComparisonGameFilepath).ToLower() != fileExtension)
-                throw new ArgumentException(Resources.ErrorGameFileIsNotSrmTemplate.InsertArgs(Resources.Comparison), nameof(options.ComparisonGameFilepath));
+                throw new ArgumentException(Resources.ErrorGameFileIsNotSrmFileTypeFilepathTemplate.InsertArgs(Resources.Comparison, options.ComparisonGameFilepath), nameof(options.ComparisonGameFilepath));
 
             return options;
         }
