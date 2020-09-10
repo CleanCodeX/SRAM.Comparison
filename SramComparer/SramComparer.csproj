@@ -4,12 +4,14 @@
     <TargetFramework>net5.0</TargetFramework>
     <Nullable>enable</Nullable>
     <LangVersion>preview</LangVersion>
-    <Version>0.1.5-beta4</Version>
-    <Authors>Sram-Tools</Authors>
-    <Company></Company>
+    <Version>0.1.5-beta5</Version>
+    <Authors>XETH</Authors>
+    <Company>XETH</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <RepositoryUrl>https://github.com/CleanCodeX/SramComparer</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/CleanCodeX</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
