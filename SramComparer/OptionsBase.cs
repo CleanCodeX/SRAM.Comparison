@@ -6,7 +6,7 @@ namespace SramComparer
         where TFileRegion : struct, Enum
         where TComparisonFlags : struct, Enum
     {
-        public string? Command { get; set; }
+        public string? Commands { get; set; }
 #nullable disable
         public string CurrentGameFilepath { get; set; }
         public string ComparisonGameFilepath { get; set; }

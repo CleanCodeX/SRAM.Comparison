@@ -29,7 +29,7 @@ namespace SramComparer.Helpers
                 options.ComparisonGameFilepath = Path.Join(Path.GetDirectoryName(currentGameFile),
                     Path.GetFileNameWithoutExtension(currentGameFile) + compFileNameSuffix +
                     Path.GetExtension(currentGameFile));
-                options.ExportDirectory = Path.GetDirectoryName((string?) options.ComparisonGameFilepath);
+                options.ExportDirectory = Path.GetDirectoryName(options.ComparisonGameFilepath);
             }
 
             int i;
@@ -41,7 +41,7 @@ namespace SramComparer.Helpers
                 switch (cmdName)
                 {
                     case CmdOptions.Command:
-                        options.Command = value.IsNullOrEmpty() ? null : value;
+                        options.Commands = value.IsNullOrEmpty() ? null : value;
                         break;
                     case CmdOptions.ComparisonFile:
                         options.ComparisonGameFilepath = value;
