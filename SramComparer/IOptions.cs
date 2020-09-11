@@ -4,6 +4,7 @@ namespace SramComparer
 {
     public interface IOptions
     {
+        string? Command { get; }
         string CurrentGameFilepath { get; }
         string ComparisonGameFilepath { get; }
         string ExportDirectory { get; }
