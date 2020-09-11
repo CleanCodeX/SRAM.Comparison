@@ -41,7 +41,7 @@ namespace SramComparer.Helpers
                 switch (cmdName)
                 {
                     case CmdOptions.Command:
-                        options.Command = value;
+                        options.Command = value.IsNullOrEmpty() ? null : value;
                         break;
                     case CmdOptions.ComparisonFile:
                         options.ComparisonGameFilepath = value;
