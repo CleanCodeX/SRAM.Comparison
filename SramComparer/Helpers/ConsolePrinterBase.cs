@@ -118,6 +118,23 @@ namespace SramComparer.Helpers
             Console.ResetColor();
         }
 
+        protected static void WriteSettingName(string settingName, string? cmdArg = null)
+        {
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write(settingName.PadRight(28) + @":");
+
+            if (cmdArg is null) return;
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write(cmdArg);
+        }
+
+        protected static void WriteValue(object value)
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine(@" " + value);
+        }
+
         private static void PrintOffsetValues(string offsetText, string? offsetName)
         {
             Console.ForegroundColor = ConsoleColor.DarkGray;
@@ -151,7 +168,7 @@ namespace SramComparer.Helpers
             Console.Write(@" => ");
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.Write($@"{Res.CurrShort} ");
-            Console.ForegroundColor = isNegativeChange ? ConsoleColor.Red : ConsoleColor.Green;
+            Console.ForegroundColor = isNegativeChange ? ConsoleColor.Red : ConsoleColor.DarkGreen;
             Console.Write(currText);
         }
 
@@ -163,10 +180,10 @@ namespace SramComparer.Helpers
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.Write($@"{Res.ChangeShort} ");
 
-            Console.ForegroundColor = isNegativeChange ? ConsoleColor.DarkRed : ConsoleColor.DarkGreen;
+            Console.ForegroundColor = isNegativeChange ? ConsoleColor.DarkRed : ConsoleColor.Green;
             Console.Write(sign);
 
-            Console.ForegroundColor = isNegativeChange ? ConsoleColor.Red : ConsoleColor.Green;
+            Console.ForegroundColor = isNegativeChange ? ConsoleColor.Red : ConsoleColor.DarkGreen;
             Console.WriteLine(changeText);
         }
 
@@ -176,23 +193,6 @@ namespace SramComparer.Helpers
         {
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write($@"{ident}=> ");
-        }
-
-        protected static void WriteSettingName(string settingName, string? cmdArg = null)
-        {
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Write(settingName.PadRight(28) + @":");
-
-            if (cmdArg is null) return;
-
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.Write(cmdArg);
-        }
-
-        protected static void WriteValue(object value)
-        {
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine(@" " + value);
         }
     }
 }
