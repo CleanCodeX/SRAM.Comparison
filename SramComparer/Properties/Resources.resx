@@ -207,10 +207,10 @@
     <value>Change</value>
   </data>
   <data name="CompShort" xml:space="preserve">
-    <value>Comp</value>
+    <value>From</value>
   </data>
   <data name="CurrShort" xml:space="preserve">
-    <value>Curr</value>
+    <value>To</value>
   </data>
   <data name="StatusTotalDiffBytesTemplate" xml:space="preserve">
     <value>Total: {0} bytes changed (outside game)</value>

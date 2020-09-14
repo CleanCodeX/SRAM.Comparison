@@ -120,7 +120,7 @@ namespace SramComparer.Helpers
 
         private static void PrintOffsetValues(string offsetText, string? offsetName)
         {
-            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.Write($@"{Res.Offset} ");
 
             Console.ForegroundColor = ConsoleColor.DarkCyan;
@@ -139,9 +139,9 @@ namespace SramComparer.Helpers
         {
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write(@" | ");
-            Console.ForegroundColor = isNegativeChange ? ConsoleColor.Green : ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.Write($@"{Res.CompShort} ");
-            //Console.ForegroundColor = ConsoleColor.Gray;
+            Console.ForegroundColor = isNegativeChange ? ConsoleColor.DarkGreen : ConsoleColor.Red;
             Console.Write(compText);
         }
 
@@ -149,9 +149,9 @@ namespace SramComparer.Helpers
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.Write(@" => ");
-            Console.ForegroundColor = isNegativeChange ? ConsoleColor.Red : ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.Write($@"{Res.CurrShort} ");
-            //Console.ForegroundColor = ConsoleColor.White;
+            Console.ForegroundColor = isNegativeChange ? ConsoleColor.Red : ConsoleColor.Green;
             Console.Write(currText);
         }
 
@@ -160,11 +160,13 @@ namespace SramComparer.Helpers
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.Write(@" = ");
 
-            Console.ForegroundColor = isNegativeChange ? ConsoleColor.Red : ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.Write($@"{Res.ChangeShort} ");
+
+            Console.ForegroundColor = isNegativeChange ? ConsoleColor.DarkRed : ConsoleColor.DarkGreen;
             Console.Write(sign);
 
-            //Console.ForegroundColor = ConsoleColor.White;
+            Console.ForegroundColor = isNegativeChange ? ConsoleColor.Red : ConsoleColor.Green;
             Console.WriteLine(changeText);
         }
 

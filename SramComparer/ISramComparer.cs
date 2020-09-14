@@ -1,6 +1,6 @@
 ﻿using SramCommons.Models;
 
-namespace SramComparer.Helpers
+namespace SramComparer
 {
     public interface ISramComparer<in TSramFile, TSramGame>
         where TSramFile : SramFileBase, ISramFile<TSramGame>

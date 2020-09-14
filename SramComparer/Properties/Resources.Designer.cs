@@ -322,7 +322,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Comp ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die From ähnelt.
         /// </summary>
         public static string CompShort {
             get {
@@ -340,7 +340,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Curr ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die To ähnelt.
         /// </summary>
         public static string CurrShort {
             get {
