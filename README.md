@@ -17,6 +17,9 @@ This library is based on .net 5 runtime.
 Users see "Run apps - Runtime" column, coders see "Build apps - SDK" column at:  
 https://dotnet.microsoft.com/
 
+## Download binaries
+https://xeth.de/releases
+
 ## How to use
 **Steps**:
 
