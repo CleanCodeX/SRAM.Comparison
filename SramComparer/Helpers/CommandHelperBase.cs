@@ -181,8 +181,8 @@ namespace SramComparer.Helpers
                 foreach (var srmFile in srmFiles)
                 {
                     Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine(i++);
-                    Console.ForegroundColor = ConsoleColor.Gray;
+                    Console.Write(i++);
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine($": {Path.GetFileNameWithoutExtension(srmFile)}");
                 }
 
