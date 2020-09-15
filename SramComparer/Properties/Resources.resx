@@ -281,8 +281,8 @@
   <data name="CommandExportComparisonResult" xml:space="preserve">
     <value>Export current comparison result</value>
   </data>
-  <data name="CommandTransferSramToOtherGameFile" xml:space="preserve">
-    <value>Transfer SRAM data to other game file</value>
+  <data name="CommandTransferSramToSimilarGameFile" xml:space="preserve">
+    <value>Transfer SRAM data to similar game file</value>
   </data>
   <data name="CommandQuit" xml:space="preserve">
     <value>Quit</value>

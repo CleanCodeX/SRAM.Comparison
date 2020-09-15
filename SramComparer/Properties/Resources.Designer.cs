@@ -286,11 +286,11 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Transfer SRAM data to other game file ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Transfer SRAM data to similar game file ähnelt.
         /// </summary>
-        public static string CommandTransferSramToOtherGameFile {
+        public static string CommandTransferSramToSimilarGameFile {
             get {
-                return ResourceManager.GetString("CommandTransferSramToOtherGameFile", resourceCulture);
+                return ResourceManager.GetString("CommandTransferSramToSimilarGameFile", resourceCulture);
             }
         }
         
