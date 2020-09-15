@@ -281,8 +281,8 @@
   <data name="CommandExportComparisonResult" xml:space="preserve">
     <value>Export current comparison result</value>
   </data>
-  <data name="CommandSaveSramToOtherGameFile" xml:space="preserve">
-    <value>Save SRAM data to other game file</value>
+  <data name="CommandTransferSramToOtherGameFile" xml:space="preserve">
+    <value>Transfer SRAM data to other game file</value>
   </data>
   <data name="CommandQuit" xml:space="preserve">
     <value>Quit</value>
@@ -306,7 +306,7 @@
     <value>Backup</value>
   </data>
   <data name="ErrorComparisonFileDoesNotExist" xml:space="preserve">
-    <value>The comparison file "{0}" has not been created yet. Consider pressing O to create it.</value>
+    <value>The comparison file "{0}" has not been created yet.</value>
   </data>
   <data name="ErrorNoValidCommand" xml:space="preserve">
     <value>"{0}" is no valid command.</value>
@@ -345,13 +345,16 @@
     <value>{0} comparison file must have .comp file extension. Did you just forget to quote the path? Was: {1}</value>
   </data>
   <data name="StatusCurrentSramHasBeenSavedAsFilepathTemplate" xml:space="preserve">
-    <value>Current SRAM file has been saved as {0}.</value>
+    <value>Current SRAM file has been transferred to {0}.</value>
+  </data>
+  <data name="StatusTargetSramFileHasBeenBackedUpFilepathTemplate" xml:space="preserve">
+    <value>Target SRAM file has been backed up as {0}.</value>
   </data>
   <data name="ErrorInvalidIndex" xml:space="preserve">
     <value>Invalid index. Aborted.</value>
   </data>
   <data name="StatusNoAvailableOtherSramFiles" xml:space="preserve">
-    <value>There are currently no other SRAM files.</value>
+    <value>There are currently no other SRAM files available.</value>
   </data>
   <data name="EnterIndexOfSramFileToBeOverwrittenMaxIndexTemplate" xml:space="preserve">
     <value>Enter index (0 to {0}) of the SRAM file to be overwritten (any other key to cancel):</value>

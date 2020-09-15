@@ -144,7 +144,7 @@ namespace SramComparer.Helpers
             Console.ResetColor();
         }
 
-        public static void SaveSramToOtherGameFile(IOptions options)
+        public static void TransferSramToOtherGameFile(IOptions options)
         {
             WriteNewSectionHeader();
             var directoryPath = Path.GetDirectoryName(options.CurrentGameFilepath)!;
@@ -160,8 +160,11 @@ namespace SramComparer.Helpers
                 return;
 
             var targetBackupFilepath = targetFilepath + ".comp";
-            if(!File.Exists(targetBackupFilepath))
+            if (!File.Exists(targetBackupFilepath))
+            {
                 File.Copy(targetFilepath, targetBackupFilepath);
+                Console.WriteLine(Resources.StatusTargetSramFileHasBeenBackedUpFilepathTemplate, Path.GetFileName(targetBackupFilepath));
+            }
 
             File.Copy(options.CurrentGameFilepath, targetFilepath, true);
             Console.ForegroundColor = ConsoleColor.Yellow;

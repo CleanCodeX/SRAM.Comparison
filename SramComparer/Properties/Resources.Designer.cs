@@ -268,15 +268,6 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Save SRAM data to other game file ähnelt.
-        /// </summary>
-        public static string CommandSaveSramToOtherGameFile {
-            get {
-                return ResourceManager.GetString("CommandSaveSramToOtherGameFile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Set comparison SRAM file&apos;s game (save slot) ähnelt.
         /// </summary>
         public static string CommandSetComparisonGame {
@@ -291,6 +282,15 @@ namespace SramComparer.Properties {
         public static string CommandSetGame {
             get {
                 return ResourceManager.GetString("CommandSetGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Transfer SRAM data to other game file ähnelt.
+        /// </summary>
+        public static string CommandTransferSramToOtherGameFile {
+            get {
+                return ResourceManager.GetString("CommandTransferSramToOtherGameFile", resourceCulture);
             }
         }
         
@@ -403,7 +403,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die The comparison file &quot;{0}&quot; has not been created yet. Consider pressing O to create it. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die The comparison file &quot;{0}&quot; has not been created yet. ähnelt.
         /// </summary>
         public static string ErrorComparisonFileDoesNotExist {
             get {
@@ -745,7 +745,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Current SRAM file has been saved as {0}. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Current SRAM file has been transferred to {0}. ähnelt.
         /// </summary>
         public static string StatusCurrentSramHasBeenSavedAsFilepathTemplate {
             get {
@@ -781,7 +781,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die There are currently no other SRAM files. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die There are currently no other SRAM files available. ähnelt.
         /// </summary>
         public static string StatusNoAvailableOtherSramFiles {
             get {
@@ -822,6 +822,15 @@ namespace SramComparer.Properties {
         public static string StatusSramFileHasBeenRestoredFromBackupTemplate {
             get {
                 return ResourceManager.GetString("StatusSramFileHasBeenRestoredFromBackupTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Target SRAM file has been backed up as {0}. ähnelt.
+        /// </summary>
+        public static string StatusTargetSramFileHasBeenBackedUpFilepathTemplate {
+            get {
+                return ResourceManager.GetString("StatusTargetSramFileHasBeenBackedUpFilepathTemplate", resourceCulture);
             }
         }
         
