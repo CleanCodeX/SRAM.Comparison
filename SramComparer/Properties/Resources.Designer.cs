@@ -322,11 +322,20 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Comp ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Old ähnelt.
         /// </summary>
         public static string CompShort {
             get {
                 return ResourceManager.GetString("CompShort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Current ähnelt.
+        /// </summary>
+        public static string Current {
+            get {
+                return ResourceManager.GetString("Current", resourceCulture);
             }
         }
         
@@ -340,7 +349,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Curr ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die New ähnelt.
         /// </summary>
         public static string CurrShort {
             get {

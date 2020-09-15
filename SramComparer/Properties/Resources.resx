@@ -200,6 +200,9 @@
   <data name="Comparison" xml:space="preserve">
     <value>Comparison</value>
   </data>
+  <data name="Current" xml:space="preserve">
+    <value>Current</value>
+  </data>
   <data name="Offset" xml:space="preserve">
     <value>Offset</value>
   </data>
@@ -207,10 +210,10 @@
     <value>Change</value>
   </data>
   <data name="CompShort" xml:space="preserve">
-    <value>Comp</value>
+    <value>Old</value>
   </data>
   <data name="CurrShort" xml:space="preserve">
-    <value>Curr</value>
+    <value>New</value>
   </data>
   <data name="StatusTotalDiffBytesTemplate" xml:space="preserve">
     <value>Total: {0} bytes changed (outside game)</value>

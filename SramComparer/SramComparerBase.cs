@@ -3,9 +3,10 @@ using System.Diagnostics;
 using App.Commons.Extensions;
 using SramCommons.Extensions;
 using SramCommons.Models;
+using SramComparer.Helpers;
 using SramComparer.Properties;
 
-namespace SramComparer.Helpers
+namespace SramComparer
 {
     public abstract class SramComparerBase<TSramFile, TSramGame> : ISramComparer<TSramFile, TSramGame>
         where TSramFile : SramFileBase, ISramFile<TSramGame>
