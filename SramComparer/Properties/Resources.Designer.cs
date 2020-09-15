@@ -268,6 +268,15 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Save SRAM data to other game file ähnelt.
+        /// </summary>
+        public static string CommandSaveSramToOtherGameFile {
+            get {
+                return ResourceManager.GetString("CommandSaveSramToOtherGameFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Set comparison SRAM file&apos;s game (save slot) ähnelt.
         /// </summary>
         public static string CommandSetComparisonGame {
@@ -367,6 +376,15 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Enter index (0 to {0}) of the SRAM file to be overwritten (any other key to cancel): ähnelt.
+        /// </summary>
+        public static string EnterIndexOfSramFileToBeOverwrittenMaxIndexTemplate {
+            get {
+                return ResourceManager.GetString("EnterIndexOfSramFileToBeOverwrittenMaxIndexTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Cannot open output file &quot;{0}&quot; for writing ähnelt.
         /// </summary>
         public static string ErrorCannotOpenOutputFileTemplate {
@@ -408,6 +426,15 @@ namespace SramComparer.Properties {
         public static string ErrorGameFileIsNotSrmFileTypeFilepathTemplate {
             get {
                 return ResourceManager.GetString("ErrorGameFileIsNotSrmFileTypeFilepathTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Invalid index. Aborted. ähnelt.
+        /// </summary>
+        public static string ErrorInvalidIndex {
+            get {
+                return ResourceManager.GetString("ErrorInvalidIndex", resourceCulture);
             }
         }
         
@@ -718,6 +745,15 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Current SRAM file has been saved as {0}. ähnelt.
+        /// </summary>
+        public static string StatusCurrentSramHasBeenSavedAsFilepathTemplate {
+            get {
+                return ResourceManager.GetString("StatusCurrentSramHasBeenSavedAsFilepathTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Game {0} all (knowns + unknowns):   {1} bytes changed ähnelt.
         /// </summary>
         public static string StatusGameChangedBytesTemplate {
@@ -741,6 +777,15 @@ namespace SramComparer.Properties {
         public static string StatusGameWillBeComparedTemplate {
             get {
                 return ResourceManager.GetString("StatusGameWillBeComparedTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die There are currently no other SRAM files. ähnelt.
+        /// </summary>
+        public static string StatusNoAvailableOtherSramFiles {
+            get {
+                return ResourceManager.GetString("StatusNoAvailableOtherSramFiles", resourceCulture);
             }
         }
         

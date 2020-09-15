@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using App.Commons.Extensions;
 using App.Commons.Helpers;
 using SramCommons.Models;
@@ -81,26 +82,6 @@ namespace SramComparer.Helpers
             }
         }
 
-        protected static void InvertIncludeFlag<TEnum>(ref TEnum flags, TEnum flag)
-            where TEnum: struct, Enum
-        {
-            var intFlag = (int)(object)flag;
-            var intFlags = (int)(object)flags;
-
-            if (flags.HasFlag(flag))
-                intFlags &= ~intFlag;
-            else
-                intFlags |= intFlag;
-
-            flags = (TEnum)(object)intFlags;
-
-            WriteNewSectionHeader();
-            Console.Write(flag + @":");
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine(@" " + flags.HasFlag(flag));
-            Console.ResetColor();
-        }
-
         public static int GetGameId(int maxGameId)
         {
             WriteNewSectionHeader();
@@ -160,6 +141,69 @@ namespace SramComparer.Helpers
                 Console.WriteLine(Resources.StatusCurrentSramFileHasBeenBackedUpTemplate, sramName);
             }
 
+            Console.ResetColor();
+        }
+
+        public static void SaveSramToOtherGameFile(IOptions options)
+        {
+            WriteNewSectionHeader();
+            var directoryPath = Path.GetDirectoryName(options.CurrentGameFilepath)!;
+            var srmFiles = Directory.GetFiles(directoryPath, "*.srm").Where(dp => dp != options.CurrentGameFilepath).ToArray();
+            if (srmFiles.Length == 0)
+            {
+                Console.WriteLine(Resources.StatusNoAvailableOtherSramFiles);
+                return;
+            }
+
+            var targetFilepath = GetTargetFilepath();
+            if (targetFilepath is null)
+                return;
+
+            var targetBackupFilepath = targetFilepath + ".comp";
+            if(!File.Exists(targetBackupFilepath))
+                File.Copy(targetFilepath, targetBackupFilepath);
+
+            File.Copy(options.CurrentGameFilepath, targetFilepath, true);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine(Resources.StatusCurrentSramHasBeenSavedAsFilepathTemplate, Path.GetFileName(targetFilepath));
+
+            string? GetTargetFilepath()
+            {
+                var i = 0;
+                foreach (var srmFile in srmFiles)
+                    Console.WriteLine($"{i++}: {Path.GetFileNameWithoutExtension(srmFile)}");
+
+                Console.WriteLine(Resources.EnterIndexOfSramFileToBeOverwrittenMaxIndexTemplate, srmFiles.Length);
+
+                var input = Console.ReadLine();
+
+                if (!int.TryParse(input, out var index) || index >= srmFiles.Length)
+                {
+                    Console.WriteLine(Resources.ErrorInvalidIndex);
+                    return null;
+                }
+
+                return srmFiles[index];
+            }
+        }
+
+        protected static void InvertIncludeFlag<TEnum>(ref TEnum flags, TEnum flag)
+            where TEnum : struct, Enum
+        {
+            var intFlag = (int)(object)flag;
+            var intFlags = (int)(object)flags;
+
+            if (flags.HasFlag(flag))
+                intFlags &= ~intFlag;
+            else
+                intFlags |= intFlag;
+
+            flags = (TEnum)(object)intFlags;
+
+            WriteNewSectionHeader();
+            Console.Write(flag + @":");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine(@" " + flags.HasFlag(flag));
             Console.ResetColor();
         }
     }
