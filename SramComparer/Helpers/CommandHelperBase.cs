@@ -172,17 +172,25 @@ namespace SramComparer.Helpers
 
             string? GetTargetFilepath()
             {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine(Resources.EnterIndexOfSramFileToBeOverwrittenMaxIndexTemplate, srmFiles.Length);
+                Console.WriteLine();
+                Console.ResetColor();
+
                 var i = 0;
                 foreach (var srmFile in srmFiles)
-                    Console.WriteLine($"{i++}: {Path.GetFileNameWithoutExtension(srmFile)}");
-
-                Console.WriteLine(Resources.EnterIndexOfSramFileToBeOverwrittenMaxIndexTemplate, srmFiles.Length);
+                {
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine(i++);
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    Console.WriteLine($": {Path.GetFileNameWithoutExtension(srmFile)}");
+                }
 
                 var input = Console.ReadLine();
 
                 if (!int.TryParse(input, out var index) || index >= srmFiles.Length)
                 {
-                    Console.WriteLine(Resources.ErrorInvalidIndex);
+                    PrintError(Resources.ErrorInvalidIndex);
                     return null;
                 }
 
