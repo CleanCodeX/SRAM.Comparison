@@ -159,9 +159,10 @@ namespace SramComparer.Helpers
             if (targetFilepath is null)
                 return;
 
-            var targetBackupFilepath = targetFilepath + ".comp";
+            var targetBackupFilepath = targetFilepath + ".backup";
             if (!File.Exists(targetBackupFilepath))
             {
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
                 File.Copy(targetFilepath, targetBackupFilepath);
                 Console.WriteLine(Resources.StatusTargetSramFileHasBeenBackedUpFilepathTemplate, Path.GetFileName(targetBackupFilepath));
             }
