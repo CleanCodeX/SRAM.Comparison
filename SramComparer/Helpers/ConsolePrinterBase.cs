@@ -89,12 +89,10 @@ namespace SramComparer.Helpers
 
         public static void EnsureMinConsoleWidth(int minWidth)
         {
-            if (Console.WindowWidth >= minWidth)
-                return;
-
             try
             {
-                Console.WindowWidth = minWidth;
+                if(Console.WindowWidth < minWidth)
+                    Console.WindowWidth = minWidth;
             }
             catch
             {

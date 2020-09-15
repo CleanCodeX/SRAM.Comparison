@@ -4,7 +4,7 @@
     <TargetFramework>net5.0</TargetFramework>
     <Nullable>enable</Nullable>
     <LangVersion>preview</LangVersion>
-    <Version>0.1.5-beta10</Version>
+    <Version>0.1.6-b1</Version>
     <Authors>XETH</Authors>
     <Company>XETH</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -12,6 +12,8 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <RepositoryUrl>https://github.com/CleanCodeX/SramComparer</RepositoryUrl>
     <PackageProjectUrl>https://github.com/CleanCodeX</PackageProjectUrl>
+    <Description>These libraries provide base functionalities to read and compare changes in srm files with .NET 5. An actual implementation for an individual game is necessary. See other repos.</Description>
+    <PackageReleaseNotes>Breaking Change: comparison files now have comp as file extension. Rename your comparison srm files to comp file extension. Backup files now have backup as file extension. Rename to .backup.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

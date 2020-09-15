@@ -333,6 +333,9 @@
     <value>Comparison SRAM file</value>
   </data>
   <data name="ErrorGameFileIsNotSrmFileTypeFilepathTemplate" xml:space="preserve">
-    <value>{0} game file must have .srm file extension. Did you forget to quote the path? Was: {1}</value>
+    <value>{0} current file must have .srm file extension. Did you just forget to quote the path? Was: {1}</value>
+  </data>
+  <data name="ErrorCompGameFileIsNotCompFileTypeFilepathTemplate" xml:space="preserve">
+    <value>{0} comparison file must have .comp file extension. Did you just forget to quote the path? Was: {1}</value>
   </data>
 </root>

@@ -16,19 +16,18 @@ namespace SramComparer.Helpers
         {
             if (args.Count == 0) return new TOptions();
 
-            const string fileExtension = ".srm";
+            const string srmFileExtension = ".srm";
+            const string compFileExtension = ".comp";
             var currentGameFile = args[0];
             var options = new TOptions { CurrentGameFilepath = currentGameFile };
             
             if (options.CurrentGameFilepath is not null)
             {
-                if (Path.GetExtension(currentGameFile).ToLower() != fileExtension)
+                if (Path.GetExtension(currentGameFile).ToLower() != srmFileExtension)
                     throw new ArgumentException(Resources.ErrorGameFileIsNotSrmFileTypeFilepathTemplate.InsertArgs(Resources.Comparison, options.CurrentGameFilepath), nameof(options.CurrentGameFilepath));
 
-                var compFileNameSuffix = $" ### {Resources.Comparison}";
                 options.ComparisonGameFilepath = Path.Join(Path.GetDirectoryName(currentGameFile),
-                    Path.GetFileNameWithoutExtension(currentGameFile) + compFileNameSuffix +
-                    Path.GetExtension(currentGameFile));
+                    Path.GetFileNameWithoutExtension(currentGameFile) + compFileExtension);
                 options.ExportDirectory = Path.GetDirectoryName(options.ComparisonGameFilepath);
             }
 
@@ -64,8 +63,8 @@ namespace SramComparer.Helpers
                 }
             }
 
-            if (Path.GetExtension(options.ComparisonGameFilepath).ToLower() != fileExtension)
-                throw new ArgumentException(Resources.ErrorGameFileIsNotSrmFileTypeFilepathTemplate.InsertArgs(Resources.Comparison, options.ComparisonGameFilepath), nameof(options.ComparisonGameFilepath));
+            if (Path.GetExtension(options.ComparisonGameFilepath).ToLower() != compFileExtension)
+                throw new ArgumentException(Resources.ErrorCompGameFileIsNotCompFileTypeFilepathTemplate.InsertArgs(Resources.Comparison, options.ComparisonGameFilepath), nameof(options.ComparisonGameFilepath));
 
             return options;
         }

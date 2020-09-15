@@ -141,9 +141,9 @@ namespace SramComparer.Helpers
             var filepath = file == SramFileKind.Current ? options.CurrentGameFilepath : options.ComparisonGameFilepath;
             var sramName = file == SramFileKind.Current ? Resources.CurrentSramFile : Resources.ComparisonSramFile;
 
-            var directoryPath = Path.GetDirectoryName((string?) filepath);
-            var srmFilename = Path.GetFileNameWithoutExtension((string?) filepath);
-            var backupFilepath = Path.Join(directoryPath, $"{srmFilename} ### {Resources.Backup}.srm");
+            var directoryPath = Path.GetDirectoryName(filepath);
+            var srmFilename = Path.GetFileNameWithoutExtension(filepath);
+            var backupFilepath = Path.Join(directoryPath, $"{srmFilename}.backup");
 
             WriteNewSectionHeader();
 
