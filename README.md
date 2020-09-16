@@ -19,7 +19,7 @@ Users see "Run apps - Runtime" column, coders see "Build apps - SDK" column at:
 https://dotnet.microsoft.com/
 
 ## Download binaries
-https://xeth.de/releases
+[Releases](http://xeth.de/Releases/SramComparer)
 
 ## How to use
 **Steps**:
