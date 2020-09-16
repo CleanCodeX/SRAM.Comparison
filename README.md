@@ -8,7 +8,7 @@ allows to compare unknown buffers in a SNES' SRAM file.
 * Comparison of all games (*default*) or one specific current game with same or different comparison game (**optional**)
 * Export comparison result as text file
 * Backup / restore functionality of current and comparison sram file
-* Transfer of SRAM data to other game file (**optional**)
+* Transfer of SRAM data to similar game 
 * Display of changed or all checksums (**optional**)
 * All settings can be set by cmd line arguments
 
