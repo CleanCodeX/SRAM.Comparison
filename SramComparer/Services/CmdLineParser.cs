@@ -19,18 +19,18 @@ namespace SramComparer.Services
             const string fileExtension = ".srm";
             var currentGameFile = args[0];
             var options = new TOptions { CurrentGameFilepath = currentGameFile };
-            
-            if (options.CurrentGameFilepath is not null)
-            {
-                if (Path.GetExtension(currentGameFile).ToLower() != fileExtension)
-                    throw new ArgumentException(Resources.ErrorGameFileIsNotSrmFileTypeFilepathTemplate.InsertArgs(Resources.Comparison, options.CurrentGameFilepath), nameof(options.CurrentGameFilepath));
 
-                var compFileNameSuffix = $" ### {Resources.Comparison}";
-                options.ComparisonGameFilepath = Path.Join(Path.GetDirectoryName(currentGameFile),
-                    Path.GetFileNameWithoutExtension(currentGameFile) + compFileNameSuffix +
-                    Path.GetExtension(currentGameFile));
-                options.ExportDirectory = Path.GetDirectoryName(options.ComparisonGameFilepath);
-            }
+            if (currentGameFile.IsNullOrEmpty())
+                throw new ArgumentException(Resources.ErrorMissingPathArguments, nameof(options.CurrentGameFilepath));
+
+            if (Path.GetExtension(currentGameFile).ToLower() != fileExtension)
+                throw new ArgumentException(Resources.ErrorGameFileIsNotSrmFileTypeFilepathTemplate.InsertArgs(Resources.Comparison, options.CurrentGameFilepath), nameof(options.CurrentGameFilepath));
+
+            var compFileNameSuffix = $" ### {Resources.Comparison}";
+            options.ComparisonGameFilepath = Path.Join(Path.GetDirectoryName(currentGameFile),
+                Path.GetFileNameWithoutExtension(currentGameFile) + compFileNameSuffix +
+                Path.GetExtension(currentGameFile));
+            options.ExportDirectory = Path.GetDirectoryName(options.ComparisonGameFilepath);
 
             int i;
             for (i = 1; i < args.Count; i += 2)
@@ -63,7 +63,7 @@ namespace SramComparer.Services
                         break;
                 }
             }
-
+            
             if (options.ComparisonGameFilepath is null || Path.GetExtension(options.ComparisonGameFilepath).ToLower() != fileExtension)
                 throw new ArgumentException(Resources.ErrorGameFileIsNotSrmFileTypeFilepathTemplate.InsertArgs(Resources.Comparison, options.ComparisonGameFilepath), nameof(options.ComparisonGameFilepath));
 
