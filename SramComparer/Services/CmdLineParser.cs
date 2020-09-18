@@ -64,7 +64,7 @@ namespace SramComparer.Services
                 }
             }
 
-            if (Path.GetExtension(options.ComparisonGameFilepath).ToLower() != fileExtension)
+            if (options.ComparisonGameFilepath is null || Path.GetExtension(options.ComparisonGameFilepath).ToLower() != fileExtension)
                 throw new ArgumentException(Resources.ErrorGameFileIsNotSrmFileTypeFilepathTemplate.InsertArgs(Resources.Comparison, options.ComparisonGameFilepath), nameof(options.ComparisonGameFilepath));
 
             return options;
