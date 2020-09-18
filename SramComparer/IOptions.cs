@@ -8,9 +8,9 @@ namespace SramComparer
         string CurrentGameFilepath { get; }
         string ComparisonGameFilepath { get; }
         string ExportDirectory { get; }
-        int Game { get; }
-        int ComparisonGame { get; }
+        int Game { get; set; }
+        int ComparisonGame { get; set; }
         Enum Region { get; }
-        Enum Flags { get; }
+        Enum Flags { get; set; }
     }
 }

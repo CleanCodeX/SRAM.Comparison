@@ -117,9 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="QueuedCommands" xml:space="preserve">
+    <value>Queued commands</value>
+  </data>
   <data name="AppManualCommandsTemplate" xml:space="preserve">
     <value>Steps: 
-1.1) Have a look into UnknownOffsets.txt to see examples of what parts of SRAM structure are still 
+1.1) Have a look into UnknownOffsets.txt (if existing) to see examples of what parts of SRAM structure are still 
      considered "unknown".
 1.2) Most emulators have the option to save the game's S-RAM automatically after a change occurs. 
      Make sure this is enabled if existing. Otherwise you have manually ensure that the emulator updates 
@@ -385,8 +388,8 @@
   <data name="CmdGroupSetGame" xml:space="preserve">
     <value>Set game (save slot)</value>
   </data>
-  <data name="CmdGroupSetFlags" xml:space="preserve">
-    <value>Set flags</value>
+  <data name="CmdOther" xml:space="preserve">
+    <value>Other</value>
   </data>
   <data name="CmdGroupDisplay" xml:space="preserve">
     <value>Display</value>

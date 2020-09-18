@@ -80,15 +80,13 @@ namespace SramComparer.Properties {
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Steps: 
-        ///1.1) Have a look into UnknownOffsets.txt to see examples of what parts of SRAM structure are still 
+        ///1.1) Have a look into UnknownOffsets.txt (if existing) to see examples of what parts of SRAM structure are still 
         ///     considered &quot;unknown&quot;.
         ///1.2) Most emulators have the option to save the game&apos;s S-RAM automatically after a change occurs. 
         ///     Make sure this is enabled if existing. Otherwise you have manually ensure that the emulator updates 
         ///     the srm file.
         ///1.3) Start the tool by passing the game&apos;s srm filepath as first command parameter. The file can also be 
-        ///     dragged onto the tool.
-        ///
-        ///2)   Switc [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        ///     dragged onto the tool. [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
         /// </summary>
         public static string AppManualCommandsTemplate {
             get {
@@ -151,20 +149,20 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Set flags ähnelt.
-        /// </summary>
-        public static string CmdGroupSetFlags {
-            get {
-                return ResourceManager.GetString("CmdGroupSetFlags", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Set game (save slot) ähnelt.
         /// </summary>
         public static string CmdGroupSetGame {
             get {
                 return ResourceManager.GetString("CmdGroupSetGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Other ähnelt.
+        /// </summary>
+        public static string CmdOther {
+            get {
+                return ResourceManager.GetString("CmdOther", resourceCulture);
             }
         }
         
@@ -516,6 +514,15 @@ namespace SramComparer.Properties {
         public static string Offset {
             get {
                 return ResourceManager.GetString("Offset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Queued commands ähnelt.
+        /// </summary>
+        public static string QueuedCommands {
+            get {
+                return ResourceManager.GetString("QueuedCommands", resourceCulture);
             }
         }
         
