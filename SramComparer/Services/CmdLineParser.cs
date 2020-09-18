@@ -22,7 +22,7 @@ namespace SramComparer.Services
 
             if (currentGameFile.IsNullOrEmpty())
                 throw new ArgumentException(Resources.ErrorMissingPathArguments, nameof(options.CurrentGameFilepath));
-
+            
             if (Path.GetExtension(currentGameFile).ToLower() != fileExtension)
                 throw new ArgumentException(Resources.ErrorGameFileIsNotSrmFileTypeFilepathTemplate.InsertArgs(Resources.Comparison, options.CurrentGameFilepath), nameof(options.CurrentGameFilepath));
 
@@ -63,8 +63,11 @@ namespace SramComparer.Services
                         break;
                 }
             }
-            
-            if (options.ComparisonGameFilepath is null || Path.GetExtension(options.ComparisonGameFilepath).ToLower() != fileExtension)
+
+            if (options.ComparisonGameFilepath.IsNullOrEmpty())
+                throw new ArgumentException(Resources.ErrorMissingPathArguments, nameof(options.ComparisonGameFilepath));
+
+            if (Path.GetExtension(options.ComparisonGameFilepath).ToLower() != fileExtension)
                 throw new ArgumentException(Resources.ErrorGameFileIsNotSrmFileTypeFilepathTemplate.InsertArgs(Resources.Comparison, options.ComparisonGameFilepath), nameof(options.ComparisonGameFilepath));
 
             return options;

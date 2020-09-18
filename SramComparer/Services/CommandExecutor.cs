@@ -18,8 +18,104 @@ namespace SramComparer.Services
     {
         private IConsolePrinter ConsolePrinter { get; }
 
-        public CommandExecutor() :this(ServiceCollection.ConsolePrinter) {}
+        public CommandExecutor() : this(ServiceCollection.ConsolePrinter) {}
         public CommandExecutor(IConsolePrinter consolePrinter) => ConsolePrinter = consolePrinter;
+
+        public virtual bool RunCommand(string command, IOptions options, TextWriter? outStream = null)
+        {
+            ConsoleHelper.SetInitialConsoleSize();
+
+            var defaultStream = Console.Out;
+
+            if (outStream is not null)
+                Console.SetOut(outStream);
+
+            if (options.CurrentGameFilepath.IsNullOrEmpty())
+            {
+                ConsolePrinter.PrintFatalError(Resources.ErrorMissingPathArguments);
+                return false;
+            }
+
+            try
+            {
+                return InternalRunCommand(command, options) is not null;
+            }
+            finally
+            {
+                if (outStream is not null)
+                    Console.SetOut(defaultStream);
+            }
+        }
+
+        internal bool? InternalRunCommand(string command, IOptions options)
+        {
+            switch (command)
+            {
+                case "":
+                    break;
+                case nameof(BaseCommands.cmd):
+                    ConsolePrinter.PrintCommands();
+                    break;
+                case nameof(BaseCommands.s):
+                    ConsolePrinter.PrintSettings(options);
+                    break;
+                case nameof(BaseCommands.m):
+                    ConsolePrinter.PrintManual();
+                    break;
+                case nameof(BaseCommands.fwg):
+                    options.Flags = InvertIncludeFlag(options.Flags, ComparisonFlags.WholeGameBuffer);
+                    break;
+                case nameof(BaseCommands.fng):
+                    options.Flags = InvertIncludeFlag(options.Flags, ComparisonFlags.NonGameBuffer);
+                    break;
+                case nameof(BaseCommands.sg):
+                    options.Game = GetGameId(maxGameId: 4);
+                    if (options.Game == default)
+                        options.ComparisonGame = default;
+
+                    break;
+                case nameof(BaseCommands.sgc):
+                    if (options.Game != default)
+                        options.ComparisonGame = GetGameId(maxGameId: 4);
+                    else
+                        ConsolePrinter.PrintError(Resources.ErrorComparisoGameSetButNotGame);
+
+                    break;
+                case nameof(BaseCommands.ow):
+                    OverwriteComparisonFileWithCurrentFile(options);
+                    break;
+                case nameof(BaseCommands.b):
+                    BackupSramFile(options, SramFileKind.Current, false);
+                    break;
+                case nameof(BaseCommands.r):
+                    BackupSramFile(options, SramFileKind.Current, true);
+                    break;
+                case nameof(BaseCommands.bc):
+                    BackupSramFile(options, SramFileKind.Comparison, false);
+                    break;
+                case nameof(BaseCommands.rc):
+                    BackupSramFile(options, SramFileKind.Comparison, true);
+                    break;
+                case nameof(BaseCommands.ts):
+                    TransferSramToOtherGameFile(options);
+                    break;
+                case nameof(BaseCommands.w):
+                    Console.Clear();
+                    ConsolePrinter.PrintCommands();
+                    break;
+                case nameof(BaseCommands.q):
+                    return false;
+                default:
+                    if(!OnUnHandledCommand(command, options))
+                        ConsolePrinter.PrintError(Resources.ErrorNoValidCommand.InsertArgs(command));
+
+                    break;
+            }
+
+            return true;
+        }
+
+        protected virtual bool OnUnHandledCommand(string command, IOptions options) => false;
 
         public virtual void CompareFiles<TComparer>(IOptions options)
             where TComparer : ISramComparer<TSramFile, TSramGame>, new()
@@ -69,7 +165,7 @@ namespace SramComparer.Services
             }
             catch (Exception ex)
             {
-                ConsolePrinter.PrintError(Resources.ErrorCannotOpenOutputFileTemplate.InsertArgs(filepath) + 
+                ConsolePrinter.PrintError(Resources.ErrorCannotOpenOutputFileTemplate.InsertArgs(filepath) +
                                           Environment.NewLine + ex.Message);
             }
 
@@ -85,106 +181,6 @@ namespace SramComparer.Services
                 Process.Start("explorer.exe", $"/select,\"{filePath}\"");
             }
         }
-
-        public virtual bool RunCommand(string command, IOptions options, TextWriter? outStream = null)
-        {
-            ConsoleHelper.SetInitialConsoleSize();
-
-            var defaultStream = Console.Out;
-
-            if (outStream is not null)
-                Console.SetOut(outStream);
-
-            if (options.CurrentGameFilepath.IsNullOrEmpty())
-            {
-                ConsolePrinter.PrintFatalError(Resources.ErrorMissingPathArguments);
-                return false;
-            }
-
-            try
-            {
-                return InternalRunCommand(command, options) is not null;
-            }
-            finally
-            {
-                if (outStream is not null)
-                    Console.SetOut(defaultStream);
-            }
-        }
-
-        internal bool? InternalRunCommand(string command, IOptions options)
-        {
-            switch (command)
-            {
-                case "":
-                    return true;
-                case nameof(BaseCommands.cmd):
-                    ConsolePrinter.PrintCommands();
-                    return true;
-                case nameof(BaseCommands.s):
-                    ConsolePrinter.PrintSettings(options);
-                    return true;
-                case nameof(BaseCommands.m):
-                    ConsolePrinter.PrintManual();
-                    return true;
-                case nameof(BaseCommands.fwg):
-                    options.Flags = InvertIncludeFlag(options.Flags, ComparisonFlags.WholeGameBuffer);
-                    return true;
-                case nameof(BaseCommands.fng):
-                    options.Flags = InvertIncludeFlag(options.Flags, ComparisonFlags.NonGameBuffer);
-                    return true;
-                case nameof(BaseCommands.sg):
-                    options.Game = GetGameId(maxGameId: 4);
-                    if (options.Game == default)
-                        options.ComparisonGame = default;
-
-                    return true;
-                case nameof(BaseCommands.sgc):
-                    if (options.Game != default)
-                        options.ComparisonGame = GetGameId(maxGameId: 4);
-                    else
-                        ConsolePrinter.PrintError(Resources.ErrorComparisoGameSetButNotGame);
-
-                    return true;
-                case nameof(BaseCommands.c):
-                    OnUnHandledCommand(command, options);
-                    return true;
-                case nameof(BaseCommands.e):
-                    OnUnHandledCommand(command, options);
-                    return true;
-                case nameof(BaseCommands.ow):
-                    OverwriteComparisonFileWithCurrentFile(options);
-                    return true;
-                case nameof(BaseCommands.b):
-                    BackupSramFile(options, SramFileKind.Current, false);
-                    return true;
-                case nameof(BaseCommands.r):
-                    BackupSramFile(options, SramFileKind.Current, true);
-                    return true;
-                case nameof(BaseCommands.bc):
-                    BackupSramFile(options, SramFileKind.Comparison, false);
-                    return true;
-                case nameof(BaseCommands.rc):
-                    BackupSramFile(options, SramFileKind.Comparison, true);
-                    return true;
-                case nameof(BaseCommands.ts):
-                    TransferSramToOtherGameFile(options);
-                    return true;
-                case nameof(BaseCommands.w):
-                    Console.Clear();
-                    ConsolePrinter.PrintCommands();
-                    return true;
-                case nameof(BaseCommands.q):
-                    return false;
-                default:
-                    if(!OnUnHandledCommand(command, options))
-                        ConsolePrinter.PrintError(Resources.ErrorNoValidCommand.InsertArgs(command));
-
-                    return true;
-            }
-        }
-
-        protected virtual bool OnUnHandledCommand(string command, IOptions options) => false;
 
         public virtual void TransferSramToOtherGameFile(IOptions options)
         {
@@ -243,17 +239,20 @@ namespace SramComparer.Services
 
         public Enum InvertIncludeFlag(Enum flags, Enum flag)
         {
-            var intFlag = (int)(object)flag;
-            var intFlags = (int)(object)flags;
+            var intFlag = flag.ToUInt();
+            var intFlags = flags.ToUInt();
 
-            if (flags.HasFlag(flag))
+            var enumType = flags.GetType();
+            var enumFlag = (Enum)Enum.ToObject(enumType, intFlag);
+
+            if (flags.HasFlag(enumFlag))
                 intFlags &= ~intFlag;
             else
                 intFlags |= intFlag;
 
-            flags = (Enum)(object)intFlags;
+            flags = (Enum)Enum.ToObject(enumType, intFlags);
 
-            ConsolePrinter.PrintInvertIncludeFlag(flags, flag);
+            ConsolePrinter.PrintInvertIncludeFlag(flags, enumFlag);
 
             return flags;
         }

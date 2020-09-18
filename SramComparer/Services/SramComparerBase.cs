@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Runtime.CompilerServices;
 using App.Commons.Extensions;
 using SramCommons.Models;
 using SramComparer.Helpers;
@@ -17,9 +16,8 @@ namespace SramComparer.Services
         protected SramComparerBase() : this(ServiceCollection.ConsolePrinter) { }
         protected SramComparerBase(IConsolePrinter consolePrinter) => ConsolePrinter = consolePrinter;
 
-        public abstract void CompareSram(TSramFile currFile, TSramFile compFile, IOptions options);
-        
-        protected abstract int CompareGame(TSramGame currGame, TSramGame compGame, IOptions options);
+        public abstract int CompareSram(TSramFile currFile, TSramFile compFile, IOptions options);
+        public abstract int CompareGame(TSramGame currGame, TSramGame compGame, IOptions options);
 
         protected virtual int CompareByte(string bufferName, int bufferOffset, byte currValue, byte compValue, bool writeToConsole = true)
         {
@@ -91,11 +89,7 @@ namespace SramComparer.Services
 
         protected virtual void OnPrintComparison(int offset, string? offsetName, byte currValue, byte compValue) => ConsolePrinter.PrintComparison(" ".Repeat(6), offset, offsetName, currValue, compValue);
 
-        protected virtual void OnPrintBufferInfo(string bufferName, int bufferOffset, int byteCount)
-        {
-            ConsolePrinter.PrintBufferInfo(bufferName, bufferOffset, byteCount);
-            Console.WriteLine();
-        }
+        protected virtual void OnPrintBufferInfo(string bufferName, int bufferOffset, int byteCount) => ConsolePrinter.PrintBufferInfo(bufferName, bufferOffset, byteCount);
 
         protected virtual void OnStatusBytesChanged(int byteCount)
         {
