@@ -79,6 +79,24 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Steps: 
+        ///1.1) Have a look into UnknownOffsets.txt to see examples of what parts of SRAM structure are still 
+        ///     considered &quot;unknown&quot;.
+        ///1.2) Most emulators have the option to save the game&apos;s S-RAM automatically after a change occurs. 
+        ///     Make sure this is enabled if existing. Otherwise you have manually ensure that the emulator updates 
+        ///     the srm file.
+        ///1.3) Start the tool by passing the game&apos;s srm filepath as first command parameter. The file can also be 
+        ///     dragged onto the tool.
+        ///
+        ///2)   Switc [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        /// </summary>
+        public static string AppManualCommandsTemplate {
+            get {
+                return ResourceManager.GetString("AppManualCommandsTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Backup ähnelt.
         /// </summary>
         public static string Backup {
