@@ -106,7 +106,7 @@ namespace SramComparer.Services
                 case nameof(BaseCommands.q):
                     return false;
                 default:
-                    if(!OnUnHandledCommand(command, options))
+                    if(!OnUnhandledCommand(command, options))
                         ConsolePrinter.PrintError(Resources.ErrorNoValidCommand.InsertArgs(command));
 
                     break;
@@ -115,7 +115,7 @@ namespace SramComparer.Services
             return true;
         }
 
-        protected virtual bool OnUnHandledCommand(string command, IOptions options) => false;
+        protected virtual bool OnUnhandledCommand(string command, IOptions options) => false;
 
         public virtual void CompareFiles<TComparer>(IOptions options)
             where TComparer : ISramComparer<TSramFile, TSramGame>, new()
