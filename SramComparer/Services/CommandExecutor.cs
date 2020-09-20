@@ -38,7 +38,7 @@ namespace SramComparer.Services
 
             try
             {
-                return OnRunCommand(command, options) is not null;
+                return OnRunCommand(command, options);
             }
             finally
             {
@@ -47,7 +47,7 @@ namespace SramComparer.Services
             }
         }
 
-        protected internal bool? OnRunCommand(string command, IOptions options)
+        protected internal bool OnRunCommand(string command, IOptions options)
         {
             switch (command)
             {
