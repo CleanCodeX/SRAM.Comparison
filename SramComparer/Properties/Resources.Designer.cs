@@ -410,6 +410,15 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Command ({0}) needs to be implemented by caller. ähnelt.
+        /// </summary>
+        public static string ErrorCommandNotImplementedTemplate {
+            get {
+                return ResourceManager.GetString("ErrorCommandNotImplementedTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Game (save slot) for comparison srm file can only be set if current srm file&apos;s game is set first. ähnelt.
         /// </summary>
         public static string ErrorComparisoGameSetButNotGame {

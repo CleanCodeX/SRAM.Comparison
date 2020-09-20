@@ -47,12 +47,19 @@ namespace SramComparer.Services
             }
         }
 
+        protected virtual bool OnShouldHandleCommand(string command, IOptions options) => true;
+
         internal bool? InternalRunCommand(string command, IOptions options)
         {
+            if (!OnShouldHandleCommand(command, options)) return true;
+
             switch (command)
             {
                 case "":
                     break;
+                case nameof(BaseCommands.c):
+                case nameof(BaseCommands.e):
+                    throw new NotImplementedException(Resources.ErrorCommandNotImplementedTemplate.InsertArgs(command));
                 case nameof(BaseCommands.cmd):
                     ConsolePrinter.PrintCommands();
                     break;
@@ -106,16 +113,13 @@ namespace SramComparer.Services
                 case nameof(BaseCommands.q):
                     return false;
                 default:
-                    if(!OnUnhandledCommand(command, options))
-                        ConsolePrinter.PrintError(Resources.ErrorNoValidCommand.InsertArgs(command));
+                    ConsolePrinter.PrintError(Resources.ErrorNoValidCommand.InsertArgs(command));
 
                     break;
             }
 
             return true;
         }
-
-        protected virtual bool OnUnhandledCommand(string command, IOptions options) => false;
 
         public virtual void CompareFiles<TComparer>(IOptions options)
             where TComparer : ISramComparer<TSramFile, TSramGame>, new()

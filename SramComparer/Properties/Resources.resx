@@ -214,6 +214,9 @@
   <data name="AppDescription" xml:space="preserve">
     <value>This tool compares unknown buffers in SRAM file.</value>
   </data>
+  <data name="ErrorCommandNotImplementedTemplate" xml:space="preserve">
+    <value>Command ({0}) needs to be implemented by caller.</value>
+  </data>
   <data name="None" xml:space="preserve">
     <value>None</value>
   </data>
