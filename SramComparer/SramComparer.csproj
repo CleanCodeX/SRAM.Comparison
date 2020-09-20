@@ -4,7 +4,7 @@
     <TargetFramework>net5.0</TargetFramework>
     <Nullable>enable</Nullable>
     <LangVersion>preview</LangVersion>
-    <Version>1.0.0-i</Version>
+    <Version>1.0.0-j</Version>
     <Authors>XETH</Authors>
     <Company>XETH</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -13,7 +13,7 @@
     <RepositoryUrl>https://github.com/CleanCodeX/SramComparer</RepositoryUrl>
     <PackageProjectUrl>https://github.com/CleanCodeX</PackageProjectUrl>
     <Description>These libraries provide base functionalities to read and compare changes in srm files with .NET 5. An actual implementation for an individual game is necessary. See other repos.</Description>
-    <PackageReleaseNotes>Added functionality to save SRAM data to other sram game</PackageReleaseNotes>
+    <PackageReleaseNotes></PackageReleaseNotes>
     <PackageId>Snes.SramComparer</PackageId>
     <Product>SramComparer</Product>
   </PropertyGroup>
