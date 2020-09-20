@@ -38,7 +38,7 @@ namespace SramComparer.Services
 
             try
             {
-                return InternalRunCommand(command, options) is not null;
+                return OnRunCommand(command, options) is not null;
             }
             finally
             {
@@ -47,12 +47,8 @@ namespace SramComparer.Services
             }
         }
 
-        protected virtual bool OnShouldHandleCommand(string command, IOptions options) => true;
-
-        internal bool? InternalRunCommand(string command, IOptions options)
+        protected internal bool? OnRunCommand(string command, IOptions options)
         {
-            if (!OnShouldHandleCommand(command, options)) return true;
-
             switch (command)
             {
                 case "":
