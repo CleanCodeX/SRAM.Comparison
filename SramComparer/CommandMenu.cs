@@ -40,7 +40,7 @@ namespace SramComparer
                     consolePrinter.PrintSectionHeader();
                     var command = Console.ReadLine();
 
-                    if (commandHandler.RunCommand(command!, options) == false)
+                    if (!commandHandler.RunCommand(command!, options))
                         break;
                 }
                 catch (IOException ex)
