@@ -47,7 +47,7 @@ namespace SramComparer.Services
             }
         }
 
-        protected internal bool OnRunCommand(string command, IOptions options)
+        protected internal virtual bool OnRunCommand(string command, IOptions options)
         {
             switch (command)
             {

@@ -7,13 +7,6 @@ namespace SramComparer.Services
 {
     public interface ICommandHandler
     {
-        int GetGameId(int maxGameId);
-
-        void OverwriteComparisonFileWithCurrentFile(IOptions options);
-
-        void BackupSramFile(IOptions options, SramFileKind file, bool restore = false);
-
-        Enum InvertIncludeFlag(Enum flags, Enum flag);
         bool RunCommand(string command, IOptions options, TextWriter? outStream = null);
     }
 
@@ -21,6 +14,14 @@ namespace SramComparer.Services
         where TSramFile : SramFileBase, ISramFile<TSramGame>
         where TSramGame : struct
     {
+        int GetGameId(int maxGameId);
+
+        void OverwriteComparisonFileWithCurrentFile(IOptions options);
+
+        void BackupSramFile(IOptions options, SramFileKind file, bool restore = false);
+
+        Enum InvertIncludeFlag(Enum flags, Enum flag);
+
         void CompareFiles<TComparer>(IOptions options)
             where TComparer : ISramComparer<TSramFile, TSramGame>, new();
 

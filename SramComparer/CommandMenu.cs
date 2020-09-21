@@ -16,10 +16,10 @@ namespace SramComparer
 
         public virtual void Run(IOptions options)
         {
-            var commandExecutor = ServiceCollection.CommandHandler;
+            var commandHandler = ServiceCollection.CommandHandler;
             var consolePrinter = ServiceCollection.ConsolePrinter;
 
-            commandExecutor.ThrowIfNull(nameof(commandExecutor));
+            commandHandler.ThrowIfNull(nameof(commandHandler));
             consolePrinter.ThrowIfNull(nameof(consolePrinter));
             options.Commands.ThrowIfNotDefault(nameof(options.Commands));
 
@@ -40,7 +40,7 @@ namespace SramComparer
                     consolePrinter.PrintSectionHeader();
                     var command = Console.ReadLine();
 
-                    if (OnRunCommand(commandExecutor, command!, options) == false)
+                    if (commandHandler.RunCommand(command!, options) == false)
                         break;
                 }
                 catch (IOException ex)
