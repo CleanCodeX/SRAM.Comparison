@@ -12,14 +12,14 @@ using SramComparer.Properties;
 
 namespace SramComparer.Services
 {
-    public class CommandExecutor<TSramFile, TSramGame> : ICommandExecutor<TSramFile, TSramGame>
+    public class CommandHandler<TSramFile, TSramGame> : ICommandHandler<TSramFile, TSramGame>
         where TSramFile : SramFileBase, ISramFile<TSramGame>
         where TSramGame : struct
     {
         private IConsolePrinter ConsolePrinter { get; }
 
-        public CommandExecutor() : this(ServiceCollection.ConsolePrinter) {}
-        public CommandExecutor(IConsolePrinter consolePrinter) => ConsolePrinter = consolePrinter;
+        public CommandHandler() : this(ServiceCollection.ConsolePrinter) {}
+        public CommandHandler(IConsolePrinter consolePrinter) => ConsolePrinter = consolePrinter;
 
         public virtual bool RunCommand(string command, IOptions options, TextWriter? outStream = null)
         {

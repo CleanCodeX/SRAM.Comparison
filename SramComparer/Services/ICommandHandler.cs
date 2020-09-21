@@ -17,7 +17,7 @@ namespace SramComparer.Services
         bool RunCommand(string command, IOptions options, TextWriter? outStream = null);
     }
 
-    public interface ICommandExecutor<out TSramFile, TSramGame> : ICommandExecutor
+    public interface ICommandHandler<out TSramFile, TSramGame> : ICommandExecutor
         where TSramFile : SramFileBase, ISramFile<TSramGame>
         where TSramGame : struct
     {
