@@ -120,11 +120,7 @@ namespace SramComparer.Services
         public virtual void CompareFiles<TComparer>(IOptions options)
             where TComparer : ISramComparer<TSramFile, TSramGame>, new()
         {
-            if (!File.Exists(options.ComparisonGameFilepath))
-            {
-                ConsolePrinter.PrintError(Resources.ErrorComparisonFileDoesNotExist.InsertArgs(options.ComparisonGameFilepath));
-                return;
-            }
+            Requires.FileExists(options.ComparisonGameFilepath, nameof(options.ComparisonGameFilepath), Resources.ErrorComparisonFileDoesNotExist.InsertArgs(options.ComparisonGameFilepath));
 
             var currFile = ClassFactory.Create<TSramFile>(options.CurrentGameFilepath, options.Region);
             var compFile = ClassFactory.Create<TSramFile>(options.ComparisonGameFilepath, options.Region);
