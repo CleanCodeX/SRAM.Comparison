@@ -5,7 +5,7 @@ using SramComparer.Enums;
 
 namespace SramComparer.Services
 {
-    public interface ICommandExecutor
+    public interface ICommandHandler
     {
         int GetGameId(int maxGameId);
 
@@ -17,7 +17,7 @@ namespace SramComparer.Services
         bool RunCommand(string command, IOptions options, TextWriter? outStream = null);
     }
 
-    public interface ICommandHandler<out TSramFile, TSramGame> : ICommandExecutor
+    public interface ICommandHandler<out TSramFile, out TSramGame> : ICommandHandler
         where TSramFile : SramFileBase, ISramFile<TSramGame>
         where TSramGame : struct
     {

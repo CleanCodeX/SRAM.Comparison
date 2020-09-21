@@ -15,11 +15,11 @@ namespace SramComparer
         private static CommandQueue? _instance;
         public static CommandQueue Instance => _instance ??= new CommandQueue();
 
-        protected virtual bool? OnRunCommand(ICommandExecutor commandExecutor, string command, IOptions options) => commandExecutor.RunCommand(command!, options);
+        protected virtual bool? OnRunCommand(ICommandHandler commandHandler, string command, IOptions options) => commandHandler.RunCommand(command!, options);
 
         public void Run(IOptions options)
         {
-            var commandExecutor = ServiceCollection.CommandExecutor;
+            var commandExecutor = ServiceCollection.CommandHandler;
             var consolePrinter = ServiceCollection.ConsolePrinter;
 
             commandExecutor.ThrowIfNull(nameof(commandExecutor));
