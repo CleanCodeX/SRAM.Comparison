@@ -25,7 +25,7 @@ namespace SramComparer.Services
                 throw new ArgumentException(Resources.ErrorMissingPathArguments, nameof(options.CurrentGameFilepath));
             
             if (Path.GetExtension(currentGameFile).ToLower() != srmFileExtension)
-                throw new ArgumentException(Resources.ErrorGameFileIsNotSrmFileTypeFilepathTemplate.InsertArgs(Resources.Comparison, options.CurrentGameFilepath), nameof(options.CurrentGameFilepath));
+                throw new ArgumentException(Resources.ErrorGameFileIsNotSrmFileTypeFilepathTemplate.InsertArgs(Resources.Current, options.CurrentGameFilepath), nameof(options.CurrentGameFilepath));
 
             options.ExportDirectory = Path.GetDirectoryName(options.CurrentGameFilepath);
 
