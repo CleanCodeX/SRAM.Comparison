@@ -49,6 +49,9 @@ namespace SramComparer.Services
 
         protected internal virtual bool OnRunCommand(string command, IOptions options)
         {
+            Requires.NotNull(command, nameof(command));
+            Requires.NotNull(options, nameof(options));
+
             switch (command)
             {
                 case "":
@@ -115,6 +118,18 @@ namespace SramComparer.Services
             }
 
             return true;
+        }
+
+        public virtual void CompareFiles<TComparer>(Stream currStream, Stream compStream, IOptions options)
+            where TComparer : ISramComparer<TSramFile, TSramGame>, new()
+        {
+            var currFile = ClassFactory.Create<TSramFile>(currStream, options.Region);
+            var compFile = ClassFactory.Create<TSramFile>(compStream, options.Region);
+            var comparer = new TComparer();
+
+            comparer.CompareSram(currFile, compFile, options);
+
+            Console.ResetColor();
         }
 
         public virtual void CompareFiles<TComparer>(IOptions options)
@@ -295,7 +310,7 @@ namespace SramComparer.Services
 
             var directoryPath = Path.GetDirectoryName(filepath);
             var srmFilename = Path.GetFileNameWithoutExtension(filepath);
-            var backupFilepath = Path.Join(directoryPath, $"{srmFilename} ### {Resources.Backup}.srm");
+            var backupFilepath = Path.Join(directoryPath, $"{srmFilename}.backup");
 
             ConsolePrinter.PrintSectionHeader();
 
