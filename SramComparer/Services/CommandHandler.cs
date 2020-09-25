@@ -223,7 +223,7 @@ namespace SramComparer.Services
             string? GetTargetFilepath()
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine(Resources.EnterIndexOfSramFileToBeOverwrittenMaxIndexTemplate, srmFiles.Length);
+                Console.WriteLine(Resources.EnterIndexOfSramFileToBeOverwrittenMaxIndexTemplate, srmFiles.Length - 1);
                 Console.WriteLine();
                 Console.ResetColor();
 
