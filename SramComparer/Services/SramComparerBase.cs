@@ -8,7 +8,7 @@ using SramComparer.Properties;
 namespace SramComparer.Services
 {
     public abstract class SramComparerBase<TSramFile, TSramGame> : ISramComparer<TSramFile, TSramGame>
-        where TSramFile : SramFileBase, ISramFile<TSramGame>
+        where TSramFile : SramFile, ISramFile<TSramGame>
         where TSramGame : struct
     {
         protected IConsolePrinter ConsolePrinter { get; }
@@ -50,7 +50,7 @@ namespace SramComparer.Services
             return byteCount;
         }
 
-        protected virtual int CompareByteArray(string bufferName, int bufferOffset, Span<byte> currValues, Span<byte> compValues, bool writeToConsole = true, Func<int, string?>? offsetNameCallback = null)
+        protected virtual int CompareByteArray(string bufferName, int bufferOffset, ReadOnlySpan<byte> currValues, ReadOnlySpan<byte> compValues, bool writeToConsole = true, Func<int, string?>? offsetNameCallback = null)
         {
             var byteCount = 0;
 

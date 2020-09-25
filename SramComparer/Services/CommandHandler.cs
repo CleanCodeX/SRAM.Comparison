@@ -13,7 +13,7 @@ using SramComparer.Properties;
 namespace SramComparer.Services
 {
     public class CommandHandler<TSramFile, TSramGame> : ICommandHandler<TSramFile, TSramGame>
-        where TSramFile : SramFileBase, ISramFile<TSramGame>
+        where TSramFile : SramFile, ISramFile<TSramGame>
         where TSramGame : struct
     {
         private IConsolePrinter ConsolePrinter { get; }

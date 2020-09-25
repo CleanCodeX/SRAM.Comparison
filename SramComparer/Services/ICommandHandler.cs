@@ -11,7 +11,7 @@ namespace SramComparer.Services
     }
 
     public interface ICommandHandler<out TSramFile, out TSramGame> : ICommandHandler
-        where TSramFile : SramFileBase, ISramFile<TSramGame>
+        where TSramFile : SramFile, ISramFile<TSramGame>
         where TSramGame : struct
     {
         int GetGameId(int maxGameId);
