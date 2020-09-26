@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
+using System.Reflection;
 using App.Commons.Extensions;
+using SramCommons.Exceptions;
 using SramComparer.Helpers;
 using SramComparer.Properties;
 using SramComparer.Services;
@@ -43,14 +45,14 @@ namespace SramComparer
                     if (!commandHandler.RunCommand(command!, options))
                         break;
                 }
-                catch (IOException ex)
+                catch (TargetInvocationException ex)
                 {
-                    consolePrinter.PrintError(ex.Message);
+                    consolePrinter.PrintError(ex.InnerException!.Message);
                     consolePrinter.PrintSectionHeader();
                 }
                 catch (Exception ex)
                 {
-                    consolePrinter.PrintError(ex);
+                    consolePrinter.PrintError(ex.Message);
                     consolePrinter.PrintSectionHeader();
                 }
             }
