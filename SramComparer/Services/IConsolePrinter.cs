@@ -5,7 +5,9 @@ namespace SramComparer.Services
     public interface IConsolePrinter
     {
         void PrintSectionHeader();
-        
+
+        void PrintStartMessage();
+
         void PrintBufferInfo(string bufferName, int bufferOffset, int bufferLength);
 
         void PrintComparison(string ident, int offset, string? offsetName, ushort currValue, ushort compValue);

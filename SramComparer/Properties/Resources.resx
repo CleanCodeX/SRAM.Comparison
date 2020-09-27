@@ -355,8 +355,8 @@
   <data name="EnterCommand" xml:space="preserve">
     <value>Enter command and press enter.</value>
   </data>
-  <data name="NewUserAdviceCommandTemplate" xml:space="preserve">
-    <value>New here? Type ({0}) for manual and press enter</value>
+  <data name="StartMessage" xml:space="preserve">
+    <value>New here? Type ({0}|?) for command list or ({1}) for manual and press enter</value>
   </data>
   <data name="Game" xml:space="preserve">
     <value>Game</value>
@@ -423,5 +423,8 @@
   </data>
   <data name="EnterIndexOfSramFileToBeOverwrittenMaxIndexTemplate" xml:space="preserve">
     <value>Enter index (0 to {0}) of the SRAM file to be overwritten (any other key to cancel):</value>
+  </data>
+  <data name="ErrorParamNameValueMissmatchTemplate" xml:space="preserve">
+    <value>Parameter name value missmatch for: {0}</value>
   </data>
 </root>

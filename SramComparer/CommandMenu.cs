@@ -33,13 +33,13 @@ namespace SramComparer
 
             ConsoleHelper.SetInitialConsoleSize();
             consolePrinter.PrintSettings(options);
-            consolePrinter.PrintCommands();
+            consolePrinter.PrintStartMessage();
 
             while (true)
             {
                 try
                 {
-                    consolePrinter.PrintSectionHeader();
+                    //consolePrinter.PrintSectionHeader();
                     var command = Console.ReadLine();
 
                     if (!commandHandler.RunCommand(command!, options))

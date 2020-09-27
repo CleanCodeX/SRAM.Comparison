@@ -28,14 +28,16 @@ namespace SramComparer.Services
                 throw new ArgumentException(Resources.ErrorGameFileIsNotSrmFileTypeFilepathTemplate.InsertArgs(Resources.Current, options.CurrentGameFilepath), nameof(options.CurrentGameFilepath));
 
             options.ExportDirectory = Path.GetDirectoryName(options.CurrentGameFilepath);
-
-            options.ComparisonGameFilepath = Path.Join(Path.GetDirectoryName(currentGameFile),
-                Path.GetFileNameWithoutExtension(currentGameFile) + compFileExtension);
+            options.ComparisonGameFilepath = currentGameFile + compFileExtension;
             
             int i;
             for (i = 1; i < args.Count; i += 2)
             {
                 var cmdName = args[i].ToLower();
+
+                if (i == args.Count - 1)
+                    throw new ArgumentException(Resources.ErrorParamNameValueMissmatchTemplate.InsertArgs(cmdName));
+
                 var value = args[i + 1];
 
                 switch (cmdName)

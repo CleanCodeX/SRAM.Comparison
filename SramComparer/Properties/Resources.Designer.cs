@@ -482,6 +482,15 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Parameter name value missmatch for: {0} ähnelt.
+        /// </summary>
+        public static string ErrorParamNameValueMissmatchTemplate {
+            get {
+                return ResourceManager.GetString("ErrorParamNameValueMissmatchTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Game ähnelt.
         /// </summary>
         public static string Game {
@@ -496,15 +505,6 @@ namespace SramComparer.Properties {
         public static string GameOffset {
             get {
                 return ResourceManager.GetString("GameOffset", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die New here? Type ({0}) for manual and press enter ähnelt.
-        /// </summary>
-        public static string NewUserAdviceCommandTemplate {
-            get {
-                return ResourceManager.GetString("NewUserAdviceCommandTemplate", resourceCulture);
             }
         }
         
@@ -712,6 +712,15 @@ namespace SramComparer.Properties {
         public static string SramOffset {
             get {
                 return ResourceManager.GetString("SramOffset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die New here? Type ({0}|?) for command list or ({1}) for manual and press enter ähnelt.
+        /// </summary>
+        public static string StartMessage {
+            get {
+                return ResourceManager.GetString("StartMessage", resourceCulture);
             }
         }
         

@@ -1,9 +1,9 @@
-﻿using System;
-using System.IO;
-using App.Commons.Extensions;
+﻿using App.Commons.Extensions;
 using SramCommons.Extensions;
 using SramComparer.Enums;
 using SramComparer.Extensions;
+using System;
+using System.IO;
 using Res = SramComparer.Properties.Resources;
 
 namespace SramComparer.Services
@@ -34,26 +34,24 @@ namespace SramComparer.Services
             PrintValue(options.Region.ToString());
 
             PrintSettingName(Res.ComparisonFlags, $"{CmdOptions.ComparisonFlags} [{string.Join(",", Enum.GetNames(options.Flags.GetType()))}]");
-            PrintValue(Environment.NewLine.PadRight(30) + @$": ""{options.Flags.ToFlagsString()}""");
+            PrintValue(Environment.NewLine.PadRight(30) + options.Flags.ToFlagsString());
         }
 
         protected virtual void PrintCustomCommands() {}
 
-        protected virtual void OnPrintNewUserCommand()
+        public virtual void PrintStartMessage()
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine();
             Console.WriteLine("=".Repeat(50));
-            Console.WriteLine(@"== " + Res.NewUserAdviceCommandTemplate.InsertArgs(nameof(BaseCommands.m)));
+            Console.WriteLine(@"== " + Res.StartMessage.InsertArgs(nameof(BaseCommands.cmd), nameof(BaseCommands.m)));
             Console.WriteLine("=".Repeat(50));
-            Console.WriteLine();
         }
 
         public virtual void PrintCommands()
         {
             PrintSectionHeader();
-            OnPrintNewUserCommand();
-            
+
             PrintGroupName(Res.CmdGroupComparison);
 
             PrintCommandKey(BaseCommands.c);
@@ -169,7 +167,7 @@ namespace SramComparer.Services
         {
             Console.WriteLine();
 
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Gray;
             Console.Write(" ".Repeat(4) + @$"[ {Res.Section} ");
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.Write(bufferName);
@@ -203,7 +201,7 @@ namespace SramComparer.Services
         {
             var sign = GetNumberSign((short)(currValue - compValue));
             var change = currValue - compValue;
-            var absChange = Math.Abs(change);
+            var absChange = (uint)Math.Abs(change);
             var changeString = $"{absChange,5:###}";
             var isNegativechange = change < 0;
 
@@ -216,14 +214,14 @@ namespace SramComparer.Services
             PrintOffsetValues(offsetText, offsetName);
             PrintCompValues(isNegativechange, compText);
             PrintCurrValues(isNegativechange, currText);
-            PrintChangeValues(isNegativechange, sign, changeText);
+            PrintChangeValues(isNegativechange, absChange, sign, changeText);
         }
 
         public virtual void PrintComparison(string ident, int offset, string? offsetName, byte currValue, byte compValue)
         {
             var sign = GetNumberSign((short)(currValue - compValue));
             var change = currValue - compValue;
-            var absChange = Math.Abs(change);
+            var absChange = (uint)Math.Abs(change);
             var changeString = $"{absChange,3:###}";
             var isNegativechange = change < 0;
 
@@ -236,7 +234,7 @@ namespace SramComparer.Services
             PrintOffsetValues(offsetText, offsetName);
             PrintCompValues(isNegativechange, compText);
             PrintCurrValues(isNegativechange, currText);
-            PrintChangeValues(isNegativechange, sign, changeText);
+            PrintChangeValues(isNegativechange, absChange, sign, changeText);
         }
 
         public virtual void PrintSectionHeader()
@@ -245,7 +243,7 @@ namespace SramComparer.Services
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine($@"===[ {DateTime.Now.ToLongTimeString()} ]====================================================");
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.ResetColor();
         }
 
         public virtual void PrintError(string message)
@@ -329,7 +327,7 @@ namespace SramComparer.Services
             Console.Write(currText);
         }
 
-        protected virtual void PrintChangeValues(bool isNegativeChange, string sign, string changeText)
+        protected virtual void PrintChangeValues(bool isNegativeChange, uint changeValue, string sign, string changeText)
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.Write(@" = ");
@@ -341,7 +339,22 @@ namespace SramComparer.Services
             Console.Write(sign);
 
             Console.ForegroundColor = isNegativeChange ? ConsoleColor.Red : ConsoleColor.DarkGreen;
-            Console.WriteLine(changeText);
+            Console.Write(changeText);
+
+            var changedBits = changeValue.CountChangedBits();
+
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.Write(":");
+
+            Console.ForegroundColor = changedBits switch
+            {
+                1 => ConsoleColor.Magenta,
+                8 => ConsoleColor.Yellow,
+                _ => ConsoleColor.Gray
+            };
+            Console.WriteLine(changedBits);
+
+            Console.ResetColor();
         }
 
         protected virtual string GetNumberSign(short value) => Math.Sign(value) < 0 ? "(-)" : "(+)";
