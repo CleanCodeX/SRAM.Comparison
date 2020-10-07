@@ -22,17 +22,17 @@ namespace SramComparer.Services
 
         Enum InvertIncludeFlag(Enum flags, Enum flag);
 
-        void CompareFiles<TComparer>(IOptions options)
+        void Compare<TComparer>(IOptions options)
             where TComparer : ISramComparer<TSramFile, TSramGame>, new();
-        void CompareFiles<TComparer>(IOptions options, TextWriter output)
-            where TComparer : ISramComparer<TSramFile, TSramGame>, new();
-
-        void CompareFiles<TComparer>(Stream currStream, Stream compStream, IOptions options, TextWriter output)
+        void Compare<TComparer>(IOptions options, TextWriter output)
             where TComparer : ISramComparer<TSramFile, TSramGame>, new();
 
-        void ExportCurrentComparison<TComparer>(IOptions options)
+        void Compare<TComparer>(Stream currStream, Stream compStream, IOptions options, TextWriter output)
             where TComparer : ISramComparer<TSramFile, TSramGame>, new();
-        void ExportCurrentComparison<TComparer>(IOptions options, TextWriter output)
+
+        void ExportComparison<TComparer>(IOptions options, bool showInExplorer = false)
+            where TComparer : ISramComparer<TSramFile, TSramGame>, new();
+        void ExportComparison<TComparer>(IOptions options, string filepath, bool showInExplorer = false)
             where TComparer : ISramComparer<TSramFile, TSramGame>, new();
     }
 }
