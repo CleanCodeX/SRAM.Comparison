@@ -4,11 +4,11 @@
     <TargetFramework>net5.0</TargetFramework>
     <Nullable>enable</Nullable>
     <LangVersion>preview</LangVersion>
-    <Version>1.0.1-b</Version>
+    <Version>1.0.1-c</Version>
     <Authors>XETH</Authors>
     <Company>XETH</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageLicenseFile></PackageLicenseFile>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <RepositoryUrl>https://github.com/CleanCodeX/SramComparer</RepositoryUrl>
     <PackageProjectUrl>https://github.com/CleanCodeX</PackageProjectUrl>
@@ -16,6 +16,7 @@
     <PackageReleaseNotes></PackageReleaseNotes>
     <PackageId>Snes.SramComparer</PackageId>
     <Product>SramComparer</Product>
+    <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -40,13 +41,6 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="..\LICENSE.txt">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
   </ItemGroup>
 
 </Project>
