@@ -135,6 +135,28 @@ namespace SramComparer.Services
             CompareFiles<TComparer>(currFileStream, compFileStream, options);
         }
 
+        public void CompareFiles<TComparer>(IOptions options, TextWriter output) 
+            where TComparer : ISramComparer<TSramFile, TSramGame>, new()
+        {
+            var oldOut = Console.Out;
+            Console.SetOut(output);
+
+            CompareFiles<TComparer>(options);
+
+            Console.SetOut(oldOut);
+        }
+
+        public virtual void CompareFiles<TComparer>(Stream currStream, Stream compStream, IOptions options, TextWriter output)
+            where TComparer : ISramComparer<TSramFile, TSramGame>, new()
+        {
+            var oldOut = Console.Out;
+            Console.SetOut(output);
+
+            CompareFiles<TComparer>(currStream, compStream, options);
+
+            Console.SetOut(oldOut);
+        }
+
         public virtual void CompareFiles<TComparer>(Stream currStream, Stream compStream, IOptions options)
             where TComparer : ISramComparer<TSramFile, TSramGame>, new()
         {
@@ -147,31 +169,38 @@ namespace SramComparer.Services
             Console.ResetColor();
         }
 
+        public virtual void ExportCurrentComparison<TComparer>(IOptions options, TextWriter output)
+            where TComparer : ISramComparer<TSramFile, TSramGame>, new()
+        {
+            var oldOut = Console.Out;
+            Console.SetOut(output);
+
+            CompareFiles<TComparer>(options);
+
+            Console.SetOut(oldOut);
+            Console.ResetColor();
+        }
+
         public virtual void ExportCurrentComparison<TComparer>(IOptions options)
             where TComparer : ISramComparer<TSramFile, TSramGame>, new()
         {
             var normalizedTimestamp = DateTime.Now.ToString("s").Replace(":", "_");
             var srmFilename = Path.GetFileNameWithoutExtension(options.CurrentGameFilepath);
             var filepath = Path.Join(options.ExportDirectory, $"{srmFilename} # {normalizedTimestamp}.txt");
-            var oldOut = Console.Out;
 
             try
             {
                 using var fileStream = new FileStream(filepath, FileMode.OpenOrCreate, FileAccess.Write);
                 using var writer = new StreamWriter(fileStream);
 
-                Console.SetOut(writer);
+                ExportCurrentComparison<TComparer>(options, new StreamWriter(fileStream));
 
-                CompareFiles<TComparer>(options);
-
-                Console.SetOut(oldOut);
                 writer.Close();
                 fileStream.Close();
 
                 Console.WriteLine();
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine(Resources.StatusCurrentComparisonExportedFilepathTemplate, filepath);
-                Console.ResetColor();
 
                 ExploreFile(filepath);
             }

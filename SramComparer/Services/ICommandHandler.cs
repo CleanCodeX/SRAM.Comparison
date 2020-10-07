@@ -24,8 +24,15 @@ namespace SramComparer.Services
 
         void CompareFiles<TComparer>(IOptions options)
             where TComparer : ISramComparer<TSramFile, TSramGame>, new();
+        void CompareFiles<TComparer>(IOptions options, TextWriter output)
+            where TComparer : ISramComparer<TSramFile, TSramGame>, new();
+
+        void CompareFiles<TComparer>(Stream currStream, Stream compStream, IOptions options, TextWriter output)
+            where TComparer : ISramComparer<TSramFile, TSramGame>, new();
 
         void ExportCurrentComparison<TComparer>(IOptions options)
+            where TComparer : ISramComparer<TSramFile, TSramGame>, new();
+        void ExportCurrentComparison<TComparer>(IOptions options, TextWriter output)
             where TComparer : ISramComparer<TSramFile, TSramGame>, new();
     }
 }
