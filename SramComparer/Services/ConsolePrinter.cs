@@ -33,7 +33,7 @@ namespace SramComparer.Services
             PrintSettingName(Res.SettingRegion, $"{CmdOptions.Region} [{string.Join("|", Enum.GetNames(options.Region.GetType()))}]");
             PrintValue(options.Region.ToString());
 
-            PrintSettingName(Res.ComparisonFlags, $"{CmdOptions.ComparisonFlags} [{string.Join(",", Enum.GetNames(options.Flags.GetType()))}]");
+            PrintSettingName(Res.ComparisonFlags, $@"{CmdOptions.ComparisonFlags} ""[{string.Join(",", Enum.GetNames(options.Flags.GetType()))}]""");
             PrintValue(Environment.NewLine.PadRight(30) + options.Flags.ToFlagsString());
         }
 
