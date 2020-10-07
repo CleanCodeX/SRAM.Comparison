@@ -4,7 +4,7 @@
     <TargetFramework>net5.0</TargetFramework>
     <Nullable>enable</Nullable>
     <LangVersion>preview</LangVersion>
-    <Version>1.0.0-z</Version>
+    <Version>1.0.1-b</Version>
     <Authors>XETH</Authors>
     <Company>XETH</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -24,11 +24,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Snes.SramCommons" Version="1.0.0-l" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\SramCommons\SramCommons.csproj" />
+    <PackageReference Include="Snes.SramCommons" Version="1.0.0-m" />
   </ItemGroup>
 
   <ItemGroup>

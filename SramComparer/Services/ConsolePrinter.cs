@@ -41,11 +41,13 @@ namespace SramComparer.Services
 
         public virtual void PrintStartMessage()
         {
+            var startMessage = @$"== {Res.StartMessage.InsertArgs(nameof(BaseCommands.cmd), nameof(BaseCommands.m))} ==";
+
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine();
-            Console.WriteLine("=".Repeat(50));
-            Console.WriteLine(@"== " + Res.StartMessage.InsertArgs(nameof(BaseCommands.cmd), nameof(BaseCommands.m)));
-            Console.WriteLine("=".Repeat(50));
+            Console.WriteLine("=".Repeat(startMessage.Length));
+            Console.WriteLine(startMessage);
+            Console.WriteLine("=".Repeat(startMessage.Length));
         }
 
         public virtual void PrintCommands()
