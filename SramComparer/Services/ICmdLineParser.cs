@@ -2,8 +2,8 @@
 
 namespace SramComparer.Services
 {
-    public interface ICmdLineParser
-    {
-        IOptions Parse(IReadOnlyList<string> args);
-    }
+	public interface ICmdLineParser
+	{
+		IOptions Parse(IReadOnlyList<string> args);
+	}
 }

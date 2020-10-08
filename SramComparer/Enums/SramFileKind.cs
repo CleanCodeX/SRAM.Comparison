@@ -1,8 +1,8 @@
 ﻿namespace SramComparer.Enums
 {
-    public enum SramFileKind
-    {
-        Current,
-        Comparison
-    }
+	public enum SramFileKind
+	{
+		Current,
+		Comparison
+	}
 }
