@@ -4,9 +4,9 @@
     <TargetFramework>net5.0</TargetFramework>
     <Nullable>enable</Nullable>
     <LangVersion>preview</LangVersion>
-    <Version>1.0.1-g</Version>
-    <Authors>XETH</Authors>
-    <Company>XETH</Company>
+    <Version>1.0.0</Version>
+    <Authors>CleanCodeX</Authors>
+    <Company>CleanCodeX</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseFile></PackageLicenseFile>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
@@ -14,9 +14,9 @@
     <PackageProjectUrl>https://github.com/CleanCodeX</PackageProjectUrl>
     <Description>These libraries provide base functionalities to read and compare changes in srm files with .NET 5. An actual implementation for an individual game is necessary. See other repos.</Description>
     <PackageReleaseNotes></PackageReleaseNotes>
-    <PackageId>Snes.SramComparer</PackageId>
+    <PackageId>CCX.SramComparer</PackageId>
     <Product>SramComparer</Product>
-    <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -25,7 +25,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Snes.SramCommons" Version="1.0.0-n" />
+    <PackageReference Include="CCX.SramCommons" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>

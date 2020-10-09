@@ -1,4 +1,4 @@
-﻿using App.Commons.Extensions;
+﻿using Common.Shared.Min.Extensions;
 using SramCommons.Extensions;
 using SramComparer.Enums;
 using SramComparer.Extensions;
@@ -8,6 +8,7 @@ using Res = SramComparer.Properties.Resources;
 
 namespace SramComparer.Services
 {
+	/// <summary>Standard implementation for common print functionality</summary>
 	public class ConsolePrinter: IConsolePrinter
 	{
 		public virtual void PrintSettings(IOptions options)

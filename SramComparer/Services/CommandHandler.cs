@@ -2,8 +2,8 @@
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using App.Commons.Extensions;
-using App.Commons.Helpers;
+using Common.Shared.Min.Extensions;
+using Common.Shared.Min.Helpers;
 using SramCommons.Models;
 using SramComparer.Enums;
 using SramComparer.Helpers;
@@ -12,6 +12,11 @@ using SramComparer.Properties;
 
 namespace SramComparer.Services
 {
+	/// <summary>
+	/// This class handles all standard commands
+	/// </summary>
+	/// <typeparam name="TSramFile">The SRAM file structure</typeparam>
+	/// <typeparam name="TSramGame">The SRAM game structure</typeparam>
 	public class CommandHandler<TSramFile, TSramGame> : ICommandHandler<TSramFile, TSramGame>
 		where TSramFile : SramFile, ISramFile<TSramGame>
 		where TSramGame : struct
@@ -21,8 +26,14 @@ namespace SramComparer.Services
 		private IConsolePrinter ConsolePrinter { get; }
 
 		public CommandHandler() : this(ServiceCollection.ConsolePrinter) {}
+		/// <param name="consolePrinter">A specific console printer instance</param>
 		public CommandHandler(IConsolePrinter consolePrinter) => ConsolePrinter = consolePrinter;
 
+		/// <summary>Runs a specific command</summary>
+		/// <param name="command">The command to be run</param>
+		/// <param name="options">The options to use for the command</param>
+		/// <param name="outStream">The optionl stream the output should be written to if not to standard console</param>
+		/// <returns>False if the game command loop should exit, otherwise true</returns>
 		public virtual bool RunCommand(string command, IOptions options, TextWriter? outStream = null)
 		{
 			ConsoleHelper.SetInitialConsoleSize();
@@ -35,7 +46,7 @@ namespace SramComparer.Services
 			if (options.CurrentGameFilepath.IsNullOrEmpty())
 			{
 				ConsolePrinter.PrintFatalError(Resources.ErrorMissingPathArguments);
-				return false;
+				return true;
 			}
 
 			try
@@ -49,6 +60,10 @@ namespace SramComparer.Services
 			}
 		}
 
+		/// <summary>Allows to overwrite control default handling for commands</summary>
+		/// <param name="command">The command to be run</param>
+		/// <param name="options">The options to be used for the command</param>
+		/// <returns>False if the game command loop should exit, otherwise true</returns>
 		protected internal virtual bool OnRunCommand(string command, IOptions options)
 		{
 			Requires.NotNull(command, nameof(command));
@@ -124,6 +139,9 @@ namespace SramComparer.Services
 			return true;
 		}
 
+		/// <summary>Compares SRAM based on <para>options</para>.<see cref="IOptions.CurrentGameFilepath"/> and <see cref="IOptions.ComparisonGameFilepath"/> will be used</summary>
+		/// <typeparam name="TComparer">The type of compare which should be used</typeparam>
+		/// <param name="options">The options to be used for comparison</param>
 		public virtual void Compare<TComparer>(IOptions options)
 			where TComparer : ISramComparer<TSramFile, TSramGame>, new()
 		{
@@ -135,6 +153,10 @@ namespace SramComparer.Services
 			Compare<TComparer>(currFileStream, compFileStream, options);
 		}
 
+		/// <summary>Compares SRAM based on <para>options</para>.<see cref="IOptions.CurrentGameFilepath"/> and <see cref="IOptions.ComparisonGameFilepath"/> will be used</summary>
+		/// <typeparam name="TComparer">The type of compare which should be used</typeparam>
+		/// <param name="options">The options to be used for comparison</param>
+		/// <param name="output">The stream the output should be written to</param>
 		public void Compare<TComparer>(IOptions options, TextWriter output) 
 			where TComparer : ISramComparer<TSramFile, TSramGame>, new()
 		{
@@ -147,6 +169,14 @@ namespace SramComparer.Services
 			Console.ResetColor();
 		}
 
+		/// <summary>
+		/// Compares SRAM based on <para>options</para> and <para>currStream</para> and <para>compStream</para> params
+		/// </summary>
+		/// <typeparam name="TComparer">The type of compare which should be used</typeparam>
+		/// <param name="currStream"></param>
+		/// <param name="compStream"></param>
+		/// <param name="options">The options to be used for comparison</param>
+		/// <param name="output">The stream the output should be written to</param>
 		public virtual void Compare<TComparer>(Stream currStream, Stream compStream, IOptions options, TextWriter output)
 			where TComparer : ISramComparer<TSramFile, TSramGame>, new()
 		{
@@ -158,6 +188,13 @@ namespace SramComparer.Services
 			Console.SetOut(oldOut);
 		}
 
+		/// <summary>
+		/// Compares SRAM based on <para>options</para> and <para>currStream</para> and <para>compStream</para> params
+		/// </summary>
+		/// <typeparam name="TComparer">The type of compare which should be used</typeparam>
+		/// <param name="currStream"></param>
+		/// <param name="compStream"></param>
+		/// <param name="options">The options to be used for comparison</param>
 		public virtual void Compare<TComparer>(Stream currStream, Stream compStream, IOptions options)
 			where TComparer : ISramComparer<TSramFile, TSramGame>, new()
 		{
@@ -170,17 +207,57 @@ namespace SramComparer.Services
 			Console.ResetColor();
 		}
 
-		public virtual void ExportComparison<TComparer>(IOptions options, bool showInExplorer = false)
+		/// <summary>Compares SRAM based on <para>options</para>.<see cref="IOptions.ExportDirectory"/> and a generated filename based on current timestamp will be used</summary>
+		/// <typeparam name="TComparer">The type of compare which should be used</typeparam>
+		/// <param name="options">The options to be used for comparison</param>
+		/// <returns>The generated filepath</returns>
+		public virtual string ExportComparison<TComparer>(IOptions options)
 			where TComparer : ISramComparer<TSramFile, TSramGame>, new()
 		{
 			var normalizedTimestamp = DateTime.Now.ToString("s").Replace(":", "_");
 			var srmFilename = Path.GetFileNameWithoutExtension(options.CurrentGameFilepath);
 			var filepath = Path.Join(options.ExportDirectory, $"{srmFilename} # {normalizedTimestamp}.txt");
 
-			ExportComparison<TComparer>(options, filepath, showInExplorer);
+			ExportComparison<TComparer>(options, filepath);
+
+			return filepath;
 		}
 
-		public virtual void ExportComparison<TComparer>(IOptions options, string filepath, bool showInExplorer = false)
+		/// <summary>Compares SRAM based on <para>options</para>.<see cref="IOptions.ExportDirectory"/> and a generated filename based on current timestamp will be used</summary>
+		/// <typeparam name="TComparer">The type of compare which should be used</typeparam>
+		/// <param name="options">The options to be used for comparison</param>
+		/// <param name="showInExplorer">Sets if the file should be selected in windows explorer</param>
+		/// /// <returns>The generated filepath</returns>
+		public virtual string ExportComparison<TComparer>(IOptions options, bool showInExplorer)
+			where TComparer : ISramComparer<TSramFile, TSramGame>, new()
+		{
+			var filepath = ExportComparison<TComparer>(options);
+
+			if (showInExplorer)
+				ExploreFile(filepath);
+
+			return filepath;
+		}
+
+		/// <summary>Compares SRAM based on <para>options</para>.<see cref="IOptions.ExportDirectory"/> and a generated filename based on current timestamp will be used</summary>
+		/// <typeparam name="TComparer">The type of compare which should be used</typeparam>
+		/// <param name="options">The options to be used for comparison</param>
+		/// <param name="filepath"></param>
+		/// <param name="showInExplorer">Sets if the file should be selected in windows explorer</param>
+		public virtual void ExportComparison<TComparer>(IOptions options, string filepath, bool showInExplorer)
+			where TComparer : ISramComparer<TSramFile, TSramGame>, new()
+		{
+			ExportComparison<TComparer>(options, filepath);
+
+			if (showInExplorer)
+				ExploreFile(filepath);
+		}
+
+		/// <summary>Compares SRAM based on <para>options</para>.<see cref="IOptions.ExportDirectory"/> and a generated filename based on current timestamp will be used</summary>
+		/// <typeparam name="TComparer">The type of compare which should be used</typeparam>
+		/// <param name="options">The options to be used for comparison</param>
+		/// <param name="filepath"></param>
+		public virtual void ExportComparison<TComparer>(IOptions options, string filepath)
 			where TComparer : ISramComparer<TSramFile, TSramGame>, new()
 		{
 			try
@@ -196,27 +273,23 @@ namespace SramComparer.Services
 				Console.WriteLine();
 				Console.ForegroundColor = ConsoleColor.Yellow;
 				Console.WriteLine(Resources.StatusCurrentComparisonExportedFilepathTemplate, filepath);
-
-				if(showInExplorer)
-					ExploreFile(filepath);
 			}
 			catch (Exception ex)
 			{
-				ConsolePrinter.PrintError(Resources.ErrorCannotOpenOutputFileTemplate.InsertArgs(filepath) +
+				throw new Exception(Resources.ErrorCannotOpenOutputFileTemplate.InsertArgs(filepath) +
 										  Environment.NewLine + ex.Message);
 			}
 
 			Console.ResetColor();
+		}
 
-			static void ExploreFile(string filePath)
-			{
-				if (!File.Exists(filePath))
-					return;
+		private static void ExploreFile(string filePath)
+		{
+			if (!File.Exists(filePath)) return;
 
-				//Clean up file path so it can be navigated OK
-				filePath = Path.GetFullPath(filePath);
-				Process.Start("explorer.exe", $"/select,\"{filePath}\"");
-			}
+			//Clean up file path so it can be navigated OK
+			filePath = Path.GetFullPath(filePath);
+			Process.Start("explorer.exe", $"/select,\"{filePath}\"");
 		}
 
 		public virtual void TransferSramToOtherGameFile(IOptions options)

@@ -1,14 +1,13 @@
 ﻿using System;
-using System.IO;
 using System.Reflection;
-using App.Commons.Extensions;
-using SramCommons.Exceptions;
+using Common.Shared.Min.Extensions;
 using SramComparer.Helpers;
 using SramComparer.Properties;
 using SramComparer.Services;
 
 namespace SramComparer
 {
+	/// <summary>Starts a cmd menu loop.</summary>
 	public class CommandMenu
 	{
 		private static CommandMenu? _instance;
@@ -16,7 +15,7 @@ namespace SramComparer
 
 		protected virtual bool? OnRunCommand(ICommandHandler commandHandler, string command, IOptions options) => commandHandler.RunCommand(command!, options);
 
-		public virtual void Run(IOptions options)
+		public virtual void Show(IOptions options)
 		{
 			var commandHandler = ServiceCollection.CommandHandler;
 			var consolePrinter = ServiceCollection.ConsolePrinter;
@@ -39,7 +38,6 @@ namespace SramComparer
 			{
 				try
 				{
-					//consolePrinter.PrintSectionHeader();
 					var command = Console.ReadLine();
 
 					if (!commandHandler.RunCommand(command!, options))

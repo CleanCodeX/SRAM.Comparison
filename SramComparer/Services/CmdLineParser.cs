@@ -1,17 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using App.Commons.Extensions;
+using Common.Shared.Min.Extensions;
 using SramComparer.Extensions;
 using SramComparer.Properties;
 
 namespace SramComparer.Services
 {
+	/// <summary>
+	/// Standard implementation of <see cref="ICmdLineParser"/>
+	/// </summary>
+	/// <typeparam name="TOptions">The options's type t be parsed into</typeparam>
+	/// <typeparam name="TFileRegion">The game file's region enum</typeparam>
+	/// <typeparam name="TComparisonFlags">The game's comparison flags enum</typeparam>
 	public class CmdLineParser<TOptions, TFileRegion, TComparisonFlags> : ICmdLineParser
 		where TOptions : Options<TFileRegion, TComparisonFlags>, new()
 		where TFileRegion : struct, Enum
 		where TComparisonFlags : struct, Enum
 	{
+		/// <summary>
+		/// Parses a list of string arguments into an <see cref="IOptions"/> instance
+		/// </summary>
+		/// <param name="args">The string arguments to be parsed</param>
+		/// <returns>Returns an <see cref="IOptions"/> instance</returns>
 		public virtual IOptions Parse(IReadOnlyList<string> args)
 		{
 			if (args.Count == 0) return new TOptions();
