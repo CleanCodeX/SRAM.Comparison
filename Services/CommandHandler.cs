@@ -203,7 +203,7 @@ namespace SramComparer.Services
 		{
 			var currFile = ClassFactory.Create<TSramFile>(currStream, options.Region);
 			var compFile = ClassFactory.Create<TSramFile>(compStream, options.Region);
-			var comparer = new TComparer();
+			var comparer = ClassFactory.Create<TComparer>(ConsolePrinter);
 
 			comparer.CompareSram(currFile, compFile, options);
 
