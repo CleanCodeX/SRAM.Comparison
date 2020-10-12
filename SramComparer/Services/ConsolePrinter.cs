@@ -13,7 +13,7 @@ namespace SramComparer.Services
 		public virtual void PrintSettings(IOptions options)
 		{
 			PrintSectionHeader();
-			Console.WriteLine(Res.Settings + @":");
+			PrintColored(ConsoleColor.Gray, Res.Settings + @":");
 
 			PrintSettingName(Res.SettingCurrentGameFilepath, "{0}");
 			PrintValue(Path.GetFileName(options.CurrentGameFilepath));
@@ -43,11 +43,10 @@ namespace SramComparer.Services
 		{
 			var startMessage = @$"== {Res.StartMessage.InsertArgs(nameof(BaseCommands.cmd), nameof(BaseCommands.m))} ==";
 
-			Console.ForegroundColor = ConsoleColor.DarkYellow;
-			Console.WriteLine();
-			Console.WriteLine("=".Repeat(startMessage.Length));
-			Console.WriteLine(startMessage);
-			Console.WriteLine("=".Repeat(startMessage.Length));
+			PrintColoredLine(ConsoleColor.DarkYellow, "");
+			PrintLine("=".Repeat(startMessage.Length));
+			PrintLine(startMessage);
+			PrintLine("=".Repeat(startMessage.Length));
 		}
 
 		public virtual void PrintCommands()
@@ -57,86 +56,76 @@ namespace SramComparer.Services
 			PrintGroupName(Res.CmdGroupComparison);
 
 			PrintCommandKey(BaseCommands.c);
-			Console.WriteLine(Res.CommandCompareFiles);
+			PrintColoredLine(ConsoleColor.Yellow, Res.CommandCompareFiles);
 
 			PrintCommandKey(BaseCommands.ow);
-			Console.WriteLine(Res.CommandOverwriteComparisonFile);
+			PrintColoredLine(ConsoleColor.Yellow, Res.CommandOverwriteComparisonFile);
 
 			PrintGroupName(Res.CmdGroupSetGame);
 
 			PrintCommandKey(BaseCommands.sg);
-			Console.WriteLine(Res.CommandSetGame);
+			PrintColoredLine(ConsoleColor.Yellow, Res.CommandSetGame);
 
 			PrintCommandKey(BaseCommands.sgc);
-			Console.WriteLine(Res.CommandSetComparisonGame);
+			PrintColoredLine(ConsoleColor.Yellow, Res.CommandSetComparisonGame);
 
 			PrintGroupName(Res.CmdGroupBackup);
 
 			PrintCommandKey(BaseCommands.b);
-			Console.WriteLine(Res.CommandBackupCurrentFile);
+			PrintColoredLine(ConsoleColor.Yellow, Res.CommandBackupCurrentFile);
 
 			PrintCommandKey(BaseCommands.bc);
-			Console.WriteLine(Res.CommandBackupComparisonFile);
+			PrintColoredLine(ConsoleColor.Yellow, Res.CommandBackupComparisonFile);
 
 			PrintCommandKey(BaseCommands.r);
-			Console.WriteLine(Res.CommandRestoreCurrentFile);
+			PrintColoredLine(ConsoleColor.Yellow, Res.CommandRestoreCurrentFile);
 
 			PrintCommandKey(BaseCommands.rc);
-			Console.WriteLine(Res.CommandRestoreComparisonFile);
+			PrintColoredLine(ConsoleColor.Yellow, Res.CommandRestoreComparisonFile);
 
 			PrintCommandKey(BaseCommands.e);
-			Console.WriteLine(Res.CommandExportComparisonResult);
+			PrintColoredLine(ConsoleColor.Yellow, Res.CommandExportComparisonResult);
 
 			PrintCommandKey(BaseCommands.ts);
-			Console.WriteLine(Res.CommandTransferSramToSimilarGameFile);
+			PrintColoredLine(ConsoleColor.Yellow, Res.CommandTransferSramToSimilarGameFile);
 
 			PrintGroupName(Res.CmdGroupDisplay);
 
 			PrintCommandKey(BaseCommands.m);
-			Console.WriteLine(Res.CommandManual);
+			PrintColoredLine(ConsoleColor.Yellow, Res.CommandManual);
 
 			PrintCommandKey(BaseCommands.cmd);
-			Console.WriteLine(Res.CommandDisplayCommands);
+			PrintColoredLine(ConsoleColor.Yellow, Res.CommandDisplayCommands);
 
 			PrintCommandKey(BaseCommands.s);
-			Console.WriteLine(Res.CommandDisplaySettings);
+			PrintColoredLine(ConsoleColor.Yellow, Res.CommandDisplaySettings);
 
 			PrintCommandKey(BaseCommands.w);
-			Console.WriteLine(Res.CommandWipeOutput);
+			PrintColoredLine(ConsoleColor.Yellow, Res.CommandWipeOutput);
 
 			PrintGroupName(Res.CmdOther);
 
 			PrintCommandKey(BaseCommands.fwg);
-			Console.WriteLine(Res.CommandIncludeWholeGameBufferComparison);
+			PrintColoredLine(ConsoleColor.Yellow, Res.CommandIncludeWholeGameBufferComparison);
 
 			PrintCommandKey(BaseCommands.fng);
-			Console.WriteLine(Res.CommandIncludeNonGameBufferComparison);
+			PrintColoredLine(ConsoleColor.Yellow, Res.CommandIncludeNonGameBufferComparison);
 
 			PrintCustomCommands();
 
-			Console.WriteLine();
-			Console.WriteLine();
+			PrintParagraph();
+			PrintParagraph();
 			PrintCommandKey(BaseCommands.q);
-			Console.WriteLine(Res.CommandQuit);
-			Console.WriteLine();
+			PrintColoredLine(ConsoleColor.Yellow, Res.CommandQuit);
+			PrintParagraph();
 
-			Console.ForegroundColor = ConsoleColor.Cyan;
-			Console.WriteLine(Res.EnterCommand);
-			Console.ResetColor();
+			PrintColoredLine(ConsoleColor.Cyan, Res.EnterCommand);
+			ResetColor();
 		}
 
-		protected virtual void PrintGroupName(string groupName)
-		{
-			Console.ForegroundColor = ConsoleColor.DarkGray;
-			Console.WriteLine(Environment.NewLine + groupName);
-		}
+		protected virtual void PrintGroupName(string groupName) => PrintColoredLine(ConsoleColor.DarkGray, Environment.NewLine + groupName);
 
-		protected virtual void PrintCommandKey(Enum key)
-		{
-			Console.ForegroundColor = ConsoleColor.White;
-			Console.Write(@$"{key,12}: ");
-			Console.ForegroundColor = ConsoleColor.Yellow;
-		}
+		protected virtual void PrintCommandKey(Enum key) => PrintColored(ConsoleColor.White, @$"{key,12}: ");
 
 		protected virtual string GetManualText() => Res.AppManualCommandsTemplate.InsertArgs(
 			BaseCommands.ow, BaseCommands.c, BaseCommands.e, BaseCommands.sg, BaseCommands.sgc, BaseCommands.fwg, BaseCommands.fng,
@@ -147,56 +136,43 @@ namespace SramComparer.Services
 		public virtual void PrintManual()
 		{
 			PrintSectionHeader();
-			Console.ForegroundColor = ConsoleColor.Yellow;
-			Console.WriteLine(GetAppDescriptionText());
-			Console.ForegroundColor = ConsoleColor.Cyan;
-			Console.WriteLine();
-			Console.WriteLine(GetManualText());
-			Console.ResetColor();
+			PrintColoredLine(ConsoleColor.Yellow, GetAppDescriptionText());
+			PrintParagraph();
+			PrintColoredLine(ConsoleColor.Cyan, GetManualText());
+			ResetColor();
 		}
 
 		public virtual void PrintInvertIncludeFlag(Enum flags, Enum flag)
 		{
 			PrintSectionHeader();
-			Console.Write(flag + @":");
-			Console.ForegroundColor = ConsoleColor.Yellow;
-			Console.WriteLine(@" " + flags.HasFlag(flag));
-			Console.ResetColor();
+			Print(flag + @":");
+			PrintColoredLine(ConsoleColor.Yellow, @" " + flags.HasFlag(flag));
+			ResetColor();
 		}
 
 		protected virtual void PrintCustomBufferInfo() {}
 		public virtual void PrintBufferInfo(string bufferName, int bufferOffset, int bufferLength)
 		{
-			Console.WriteLine();
+			PrintParagraph();
 
-			Console.ForegroundColor = ConsoleColor.Gray;
-			Console.Write(" ".Repeat(4) + @$"[ {Res.Section} ");
-			Console.ForegroundColor = ConsoleColor.DarkYellow;
-			Console.Write(bufferName);
+			PrintColored(ConsoleColor.Gray, " ".Repeat(4) + @$"[ {Res.Section} ");
 
-			Console.ForegroundColor = ConsoleColor.White;
-			Console.Write(@" | ");
+			PrintColored(ConsoleColor.DarkYellow, bufferName);
+			PrintColored(ConsoleColor.White, @" | ");
+			PrintColored(ConsoleColor.Gray, $@"{Res.Offset} ");
+			PrintColored(ConsoleColor.DarkYellow, bufferOffset + $@" [x{bufferOffset:X}]");
 
-			Console.ForegroundColor = ConsoleColor.Gray;
-			Console.Write($@"{Res.Offset} ");
-			Console.ForegroundColor = ConsoleColor.DarkYellow;
-			Console.Write(bufferOffset + $@" [x{bufferOffset:X}]");
+			PrintColored(ConsoleColor.White, @" | ");
 
-			Console.ForegroundColor = ConsoleColor.White;
-			Console.Write(@" | ");
+			PrintColored(ConsoleColor.Gray, $@"{Res.Size} ");
+			PrintColored(ConsoleColor.DarkYellow, bufferLength);
 
-			Console.ForegroundColor = ConsoleColor.Gray;
-			Console.Write($@"{Res.Size} ");
-			Console.ForegroundColor = ConsoleColor.DarkYellow;
-			Console.Write(bufferLength);
-
-			Console.ForegroundColor = ConsoleColor.White;
-			Console.Write(@" ]");
+			PrintColored(ConsoleColor.White, @" ]");
 
 			PrintCustomBufferInfo();
 
-			Console.WriteLine();
-			Console.ResetColor();
+			PrintParagraph();
+			ResetColor();
 		}
 
 		public virtual void PrintComparison(string ident, int offset, string? offsetName, ushort currValue, ushort compValue)
@@ -241,130 +217,138 @@ namespace SramComparer.Services
 
 		public virtual void PrintSectionHeader()
 		{
-			Console.ResetColor();
-			Console.WriteLine();
-			Console.ForegroundColor = ConsoleColor.Cyan;
-			Console.WriteLine($@"===[ {DateTime.Now.ToLongTimeString()} ]====================================================");
-			Console.ResetColor();
+			ResetColor();
+			PrintParagraph();
+			PrintColored(ConsoleColor.Cyan, $@"===[ {DateTime.Now.ToLongTimeString()} ]====================================================");
+			ResetColor();
 		}
 
 		public virtual void PrintError(string message)
 		{
-			Console.ForegroundColor = ConsoleColor.Red;
-			Console.WriteLine();
-			Console.WriteLine(message);
-			Console.ResetColor();
+			PrintParagraph();
+			PrintColoredLine(ConsoleColor.Red, message);
+			ResetColor();
 		}
 
 		public virtual void PrintError(Exception ex)
 		{
-			Console.ForegroundColor = ConsoleColor.Red;
-			Console.WriteLine();
-			Console.WriteLine(ex);
-			Console.ResetColor();
+			PrintParagraph();
+			PrintColoredLine(ConsoleColor.Red, ex.Message);
+			ResetColor();
 		}
 
 		public virtual void PrintFatalError(string fataError)
 		{
-			Console.WriteLine();
-			Console.BackgroundColor = ConsoleColor.Red;
-			Console.ForegroundColor = ConsoleColor.Yellow;
-			Console.WriteLine(fataError);
-			Console.ResetColor();
-
-			Console.ReadKey();
+			PrintParagraph();
+			
+			PrintColoredLine(ConsoleColor.Yellow, ConsoleColor.Red, fataError);
+			ResetColor();
 		}
 
 		protected virtual void PrintSettingName(string settingName, string? cmdArg = null)
 		{
-			Console.ForegroundColor = ConsoleColor.White;
-			Console.Write(settingName.PadRight(28) + @":");
+			PrintColored(ConsoleColor.White, settingName.PadRight(28) + @":");
 
 			if (cmdArg is null) return;
 
-			Console.ForegroundColor = ConsoleColor.Cyan;
-			Console.Write(cmdArg);
+			PrintColored(ConsoleColor.Cyan, cmdArg);
 		}
 
-		protected virtual void PrintValue(object value)
-		{
-			Console.ForegroundColor = ConsoleColor.Yellow;
-			Console.WriteLine(@" " + value);
-		}
+		protected virtual void PrintValue(object value) => PrintColoredLine(ConsoleColor.Yellow, @" " + value);
 
 		protected virtual void PrintOffsetValues(string offsetText, string? offsetName)
 		{
-			Console.ForegroundColor = ConsoleColor.DarkGray;
-			Console.Write($@"{Res.Offset} ");
-
-			Console.ForegroundColor = ConsoleColor.DarkCyan;
-			Console.Write(offsetText);
+			PrintColored(ConsoleColor.DarkGray, $@"{Res.Offset} ");
+			PrintColored(ConsoleColor.DarkCyan, offsetText);
 
 			if (offsetName is null) return;
 
-			Console.ForegroundColor = ConsoleColor.Cyan;
-			Console.Write(@" => ");
-
-			Console.ForegroundColor = ConsoleColor.DarkYellow;
-			Console.Write(offsetName);
+			PrintColored(ConsoleColor.Cyan, @" => ");
+			PrintColored(ConsoleColor.DarkYellow, offsetName);
 		}
 
 		protected virtual void PrintCompValues(bool isNegativeChange, string compText)
 		{
-			Console.ForegroundColor = ConsoleColor.White;
-			Console.Write(@" | ");
-			Console.ForegroundColor = ConsoleColor.DarkGray;
-			Console.Write($@"{Res.CompShort} ");
-			Console.ForegroundColor = isNegativeChange ? ConsoleColor.DarkGreen : ConsoleColor.Red;
-			Console.Write(compText);
+			PrintColored(ConsoleColor.White, @" | ");
+			PrintColored(ConsoleColor.DarkGray, $@"{Res.CompShort} ");
+			PrintColored(isNegativeChange ? ConsoleColor.DarkGreen : ConsoleColor.Red, compText);
 		}
 
 		protected virtual void PrintCurrValues(bool isNegativeChange, string currText)
 		{
-			Console.ForegroundColor = ConsoleColor.Cyan;
-			Console.Write(@" => ");
-			Console.ForegroundColor = ConsoleColor.DarkGray;
-			Console.Write($@"{Res.CurrShort} ");
-			Console.ForegroundColor = isNegativeChange ? ConsoleColor.Red : ConsoleColor.DarkGreen;
-			Console.Write(currText);
+			PrintColored(ConsoleColor.Cyan, @" => ");
+			PrintColored(ConsoleColor.DarkGray, $@"{Res.CurrShort} ");
+			PrintColored(isNegativeChange ? ConsoleColor.Red : ConsoleColor.DarkGreen, currText);
 		}
 
 		protected virtual void PrintChangeValues(bool isNegativeChange, uint changeValue, string sign, string changeText)
 		{
-			Console.ForegroundColor = ConsoleColor.Cyan;
-			Console.Write(@" = ");
+			PrintColored(ConsoleColor.Cyan, @" = ");
+			PrintColored(ConsoleColor.DarkGray, $@"{Res.ChangeShort} ");
 
-			Console.ForegroundColor = ConsoleColor.DarkGray;
-			Console.Write($@"{Res.ChangeShort} ");
-
-			Console.ForegroundColor = isNegativeChange ? ConsoleColor.DarkRed : ConsoleColor.Green;
-			Console.Write(sign);
-
-			Console.ForegroundColor = isNegativeChange ? ConsoleColor.Red : ConsoleColor.DarkGreen;
-			Console.Write(changeText);
+			PrintColored(isNegativeChange ? ConsoleColor.DarkRed : ConsoleColor.Green, sign);
+			PrintColored(isNegativeChange ? ConsoleColor.Red : ConsoleColor.DarkGreen, changeText);
 
 			var changedBits = changeValue.CountChangedBits();
 
-			Console.ForegroundColor = ConsoleColor.DarkGray;
-			Console.Write(":");
+			PrintColored(ConsoleColor.DarkGray, ":");
 
-			Console.ForegroundColor = changedBits switch
+			PrintColoredLine(changedBits switch
 			{
 				1 => ConsoleColor.Magenta,
 				8 => ConsoleColor.Yellow,
 				_ => ConsoleColor.Gray
-			};
-			Console.WriteLine(changedBits);
+			}, changedBits);
 
-			Console.ResetColor();
+			ResetColor();
 		}
 
 		protected virtual string GetNumberSign(short value) => Math.Sign(value) < 0 ? "(-)" : "(+)";
 
-		protected virtual void PrintComparisonIdentification(string ident)
+		protected virtual void PrintComparisonIdentification(string ident) => PrintColored(ConsoleColor.White, $@"{ident}=> ");
+
+		protected virtual void PrintColored(ConsoleColor foregroundColor, ConsoleColor backgroundColor, object text)
 		{
-			Console.ForegroundColor = ConsoleColor.White;
-			Console.Write($@"{ident}=> ");
+			SetForegroundColor(backgroundColor);
+			PrintColored(foregroundColor, text);
 		}
+
+		public virtual void PrintColored(ConsoleColor color, object text)
+		{
+			SetForegroundColor(color);
+			Print(text.ToString());
+		}
+
+		public virtual void PrintColoredLine(ConsoleColor color, object text)
+		{
+			SetForegroundColor(color);
+			PrintLine(text.ToString());
+		}
+
+		public virtual void ResetColor() => Console.ResetColor();
+		public virtual void PrintParagraph() => Console.WriteLine();
+		public virtual void Print(object? text) => Console.Write(text);
+		public virtual void PrintLine(object? text) => Console.WriteLine(text);
+
+		protected virtual void PrintBackgroundColored(ConsoleColor color, object text)
+		{
+			SetBackgroundColor(color);
+			Print(text.ToString());
+		}
+
+		protected virtual void PrintBackgroundColoredLine(ConsoleColor color, object text)
+		{
+			SetBackgroundColor(color);
+			PrintLine(text.ToString());
+		}
+
+		protected virtual void PrintColoredLine(ConsoleColor foregroundColor, ConsoleColor backgroundColor, object text)
+		{
+			SetBackgroundColor(foregroundColor);
+			PrintColoredLine(foregroundColor, text);
+		}
+		
+		protected virtual void SetForegroundColor(ConsoleColor color) => Console.ForegroundColor = color;
+		protected virtual void SetBackgroundColor(ConsoleColor color) => Console.BackgroundColor = color;
 	}
 }

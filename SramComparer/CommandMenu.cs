@@ -1,8 +1,6 @@
 ﻿using System;
-using System.IO;
 using System.Reflection;
 using App.Commons.Extensions;
-using SramCommons.Exceptions;
 using SramComparer.Helpers;
 using SramComparer.Properties;
 using SramComparer.Services;
@@ -28,6 +26,7 @@ namespace SramComparer
 			if (options.CurrentGameFilepath.IsNullOrEmpty())
 			{
 				consolePrinter.PrintFatalError(Resources.ErrorMissingPathArguments);
+				Console.ReadKey();
 				return;
 			}
 

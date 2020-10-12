@@ -35,6 +35,7 @@ namespace SramComparer.Services
 			if (options.CurrentGameFilepath.IsNullOrEmpty())
 			{
 				ConsolePrinter.PrintFatalError(Resources.ErrorMissingPathArguments);
+				Console.ReadKey();
 				return false;
 			}
 
@@ -144,7 +145,7 @@ namespace SramComparer.Services
 			Compare<TComparer>(options);
 
 			Console.SetOut(oldOut);
-			Console.ResetColor();
+			ConsolePrinter.ResetColor();
 		}
 
 		public virtual void Compare<TComparer>(Stream currStream, Stream compStream, IOptions options, TextWriter output)
@@ -167,7 +168,7 @@ namespace SramComparer.Services
 
 			comparer.CompareSram(currFile, compFile, options);
 
-			Console.ResetColor();
+			ConsolePrinter.ResetColor();
 		}
 
 		public virtual void ExportComparison<TComparer>(IOptions options, bool showInExplorer = false)
@@ -193,9 +194,8 @@ namespace SramComparer.Services
 				writer.Close();
 				fileStream.Close();
 
-				Console.WriteLine();
-				Console.ForegroundColor = ConsoleColor.Yellow;
-				Console.WriteLine(Resources.StatusCurrentComparisonExportedFilepathTemplate, filepath);
+				ConsolePrinter.PrintParagraph();
+				ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusCurrentComparisonExportedFilepathTemplate.InsertArgs(filepath));
 
 				if(showInExplorer)
 					ExploreFile(filepath);
@@ -206,7 +206,7 @@ namespace SramComparer.Services
 										  Environment.NewLine + ex.Message);
 			}
 
-			Console.ResetColor();
+			ConsolePrinter.ResetColor();
 
 			static void ExploreFile(string filePath)
 			{
@@ -226,7 +226,7 @@ namespace SramComparer.Services
 			var srmFiles = Directory.GetFiles(directoryPath, "*.srm").Where(f => f != options.CurrentGameFilepath).ToArray();
 			if (srmFiles.Length == 0)
 			{
-				Console.WriteLine(Resources.StatusNoAvailableOtherSramFiles);
+				ConsolePrinter.PrintLine(Resources.StatusNoAvailableOtherSramFiles);
 				return;
 			}
 
@@ -237,29 +237,24 @@ namespace SramComparer.Services
 			var targetBackupFilepath = targetFilepath + BackupFileExtension;
 			if (!File.Exists(targetBackupFilepath))
 			{
-				Console.ForegroundColor = ConsoleColor.DarkGreen;
 				File.Copy(targetFilepath, targetBackupFilepath);
-				Console.WriteLine(Resources.StatusTargetSramFileHasBeenBackedUpFilepathTemplate, Path.GetFileName(targetBackupFilepath));
+				ConsolePrinter.PrintColored(ConsoleColor.DarkGreen ,Resources.StatusTargetSramFileHasBeenBackedUpFilepathTemplate.InsertArgs(Path.GetFileName(targetBackupFilepath)));
 			}
 
 			File.Copy(options.CurrentGameFilepath, targetFilepath, true);
-			Console.ForegroundColor = ConsoleColor.Yellow;
-			Console.WriteLine(Resources.StatusCurrentSramHasBeenSavedAsFilepathTemplate, Path.GetFileName(targetFilepath));
+			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusCurrentSramHasBeenSavedAsFilepathTemplate.InsertArgs(Path.GetFileName(targetFilepath)));
 
 			string? GetTargetFilepath()
 			{
-				Console.ForegroundColor = ConsoleColor.Yellow;
-				Console.WriteLine(Resources.EnterIndexOfSramFileToBeOverwrittenMaxIndexTemplate, srmFiles.Length - 1);
-				Console.WriteLine();
-				Console.ResetColor();
+				ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.EnterIndexOfSramFileToBeOverwrittenMaxIndexTemplate.InsertArgs(srmFiles.Length - 1));
+				ConsolePrinter.PrintParagraph();
+				ConsolePrinter.ResetColor();
 
 				var i = 0;
 				foreach (var srmFile in srmFiles)
 				{
-					Console.ForegroundColor = ConsoleColor.Cyan;
-					Console.Write(i++);
-					Console.ForegroundColor = ConsoleColor.White;
-					Console.WriteLine($@": {Path.GetFileNameWithoutExtension(srmFile)}");
+					ConsolePrinter.PrintColored(ConsoleColor.Cyan, i++);
+					ConsolePrinter.PrintColored(ConsoleColor.White, $@": {Path.GetFileNameWithoutExtension(srmFile)}");
 				}
 
 				var input = Console.ReadLine();
@@ -276,20 +271,9 @@ namespace SramComparer.Services
 
 		public Enum InvertIncludeFlag(Enum flags, Enum flag)
 		{
-			var intFlag = flag.ToUInt();
-			var intFlags = flags.ToUInt();
+			flags = EnumHelper.InvertUIntFlag(flags, flag);
 
-			var enumType = flags.GetType();
-			var enumFlag = (Enum)Enum.ToObject(enumType, intFlag);
-
-			if (flags.HasFlag(enumFlag))
-				intFlags &= ~intFlag;
-			else
-				intFlags |= intFlag;
-
-			flags = (Enum)Enum.ToObject(enumType, intFlags);
-
-			ConsolePrinter.PrintInvertIncludeFlag(flags, enumFlag);
+			ConsolePrinter.PrintInvertIncludeFlag(flags, flag);
 
 			return flags;
 		}
@@ -297,22 +281,19 @@ namespace SramComparer.Services
 		public virtual int GetGameId(int maxGameId)
 		{
 			ConsolePrinter.PrintSectionHeader();
-
-			Console.WriteLine(Resources.SetGameMaxTemplate.InsertArgs(maxGameId));
+			ConsolePrinter.PrintLine(Resources.SetGameMaxTemplate.InsertArgs(maxGameId));
 
 			var input = Console.ReadLine()!;
 
 			int.TryParse(input, out var gameId);
 
-			Console.WriteLine();
-			Console.ForegroundColor = ConsoleColor.Yellow;
-
-			Console.WriteLine(gameId == 0
+			ConsolePrinter.PrintParagraph();
+			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, gameId == 0
 				? string.Format(Resources.StatusGameWillBeComparedTemplate, gameId)
 				: Resources.StatusAllGamesWillBeCompared);
 
-			Console.WriteLine();
-			Console.ResetColor();
+			ConsolePrinter.PrintParagraph();
+			ConsolePrinter.ResetColor();
 
 			return gameId;
 		}
@@ -323,10 +304,8 @@ namespace SramComparer.Services
 
 			File.Copy(options.CurrentGameFilepath!, options.ComparisonGameFilepath!, true);
 
-			Console.ForegroundColor = ConsoleColor.Yellow;
-			Console.WriteLine(Resources.StatusCurrentSramFileHasBeenSaved);
-
-			Console.ResetColor();
+			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusCurrentSramFileHasBeenSaved);
+			ConsolePrinter.ResetColor();
 		}
 
 		public virtual void BackupSramFile(IOptions options, SramFileKind file, bool restore = false)
@@ -337,20 +316,18 @@ namespace SramComparer.Services
 
 			ConsolePrinter.PrintSectionHeader();
 
-			Console.ForegroundColor = ConsoleColor.Yellow;
-
 			if (restore)
 			{
 				File.Copy(backupFilepath, filepath, true);
-				Console.WriteLine(Resources.StatusSramFileHasBeenRestoredFromBackupTemplate, fileTypeName);
+				ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusSramFileHasBeenRestoredFromBackupTemplate.InsertArgs(fileTypeName));
 			}
 			else
 			{
 				File.Copy(filepath, backupFilepath, true);
-				Console.WriteLine(Resources.StatusCurrentSramFileHasBeenBackedUpTemplate, fileTypeName);
+				ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusCurrentSramFileHasBeenBackedUpTemplate.InsertArgs(fileTypeName));
 			}
 
-			Console.ResetColor();
+			ConsolePrinter.ResetColor();
 		}
 	}
 }

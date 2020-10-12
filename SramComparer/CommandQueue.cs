@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using App.Commons.Extensions;
 using SramComparer.Properties;
-using SramComparer.Services;
 
 // ReSharper disable PossibleMultipleEnumeration
 
@@ -27,13 +26,14 @@ namespace SramComparer
 			if (options.CurrentGameFilepath.IsNullOrEmpty())
 			{
 				consolePrinter.PrintFatalError(Resources.ErrorMissingPathArguments);
+				Console.ReadKey();
 				return;
 			}
 
 			var commands = options.Commands?.Split('-') ?? Enumerable.Empty<string>();
 			var queuedCommands = new Queue<string>(commands);
 
-			Console.WriteLine(@$"{Resources.QueuedCommands}: {queuedCommands.Count} ({string.Join(", ", commands)})");
+			consolePrinter.PrintLine(@$"{Resources.QueuedCommands}: {queuedCommands.Count} ({string.Join(", ", commands)})");
 
 			while (true)
 			{

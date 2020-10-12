@@ -93,9 +93,8 @@ namespace SramComparer.Services
 
 		protected virtual void OnStatusBytesChanged(int byteCount)
 		{
-			Console.ForegroundColor = ConsoleColor.Cyan;
-			Console.WriteLine(" ".Repeat(6) + Resources.StatusBytesChangedTemplate, byteCount);
-			Console.ResetColor();
+			ConsolePrinter.PrintColoredLine(ConsoleColor.Cyan, " ".Repeat(6) + Resources.StatusBytesChangedTemplate.InsertArgs(byteCount));
+			ConsolePrinter.ResetColor();
 		}
 	}
 }
