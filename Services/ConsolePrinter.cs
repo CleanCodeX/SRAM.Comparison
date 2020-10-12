@@ -220,7 +220,7 @@ namespace SramComparer.Services
 		{
 			ResetColor();
 			PrintParagraph();
-			PrintColored(ConsoleColor.Cyan, $@"===[ {DateTime.Now.ToLongTimeString()} ]====================================================");
+			PrintColoredLine(ConsoleColor.Cyan, $@"===[ {DateTime.Now.ToLongTimeString()} ]====================================================");
 			ResetColor();
 		}
 
