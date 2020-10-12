@@ -161,12 +161,9 @@ namespace SramComparer.Services
 		public void Compare<TComparer>(IOptions options, TextWriter output) 
 			where TComparer : ISramComparer<TSramFile, TSramGame>, new()
 		{
-			var oldOut = Console.Out;
-			Console.SetOut(output);
+			using (new TemporaryOutputSetter(output))
+				Compare<TComparer>(options);
 
-			Compare<TComparer>(options);
-
-			Console.SetOut(oldOut);
 			ConsolePrinter.ResetColor();
 		}
 
@@ -181,12 +178,17 @@ namespace SramComparer.Services
 		public virtual void Compare<TComparer>(Stream currStream, Stream compStream, IOptions options, TextWriter output)
 			where TComparer : ISramComparer<TSramFile, TSramGame>, new()
 		{
-			var oldOut = Console.Out;
-			Console.SetOut(output);
+			using (new TemporaryOutputSetter(output))
+				Compare<TComparer>(currStream, compStream, options);
+		}
 
-			Compare<TComparer>(currStream, compStream, options);
+		private class TemporaryOutputSetter : IDisposable
+		{
+			private readonly TextWriter _oldOut = Console.Out;
 
-			Console.SetOut(oldOut);
+			public TemporaryOutputSetter(TextWriter output) => Console.SetOut(output);
+
+			public void Dispose() => Console.SetOut(_oldOut);
 		}
 
 		/// <summary>
