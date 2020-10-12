@@ -1,16 +1,22 @@
 ﻿using System;
+using System.Runtime.Versioning;
 
 namespace SramComparer.Helpers
 {
-	public static class ConsoleHelper
+	[SupportedOSPlatform("windows")]
+	public class ConsoleHelper
 	{
+		private static readonly bool IsWindows = OperatingSystem.IsWindows();
+
 		public static void EnsureMinConsoleWidth(int minWidth)
 		{
-			if (!OperatingSystem.IsWindows() || Console.WindowWidth >= minWidth)
-				return;
+			if (!IsWindows) return;
 
 			try
 			{
+				if (Console.WindowWidth >= minWidth)
+					return;
+
 				Console.WindowWidth = minWidth;
 			}
 			catch
@@ -21,7 +27,7 @@ namespace SramComparer.Helpers
 
 		public static void SetInitialConsoleSize()
 		{
-			if (!OperatingSystem.IsWindows()) return;
+			if (!IsWindows) return;
 
 			try
 			{

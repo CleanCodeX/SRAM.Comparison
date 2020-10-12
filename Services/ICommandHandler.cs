@@ -30,9 +30,9 @@ namespace SramComparer.Services
 		void Compare<TComparer>(Stream currStream, Stream compStream, IOptions options, TextWriter output)
 			where TComparer : ISramComparer<TSramFile, TSramGame>, new();
 
-		void ExportComparison<TComparer>(IOptions options, bool showInExplorer = false)
+		string ExportComparison<TComparer>(IOptions options)
 			where TComparer : ISramComparer<TSramFile, TSramGame>, new();
-		void ExportComparison<TComparer>(IOptions options, string filepath, bool showInExplorer = false)
+		void ExportComparison<TComparer>(IOptions options, string filepath)
 			where TComparer : ISramComparer<TSramFile, TSramGame>, new();
 	}
 }

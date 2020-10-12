@@ -14,7 +14,7 @@ namespace SramComparer
 #nullable restore
 
 		public TFileRegion Region { get; set; }
-		public int Game { get; set; }
+		public int CurrentGame { get; set; }
 		public int ComparisonGame { get; set; }
 		public TComparisonFlags Flags;
 

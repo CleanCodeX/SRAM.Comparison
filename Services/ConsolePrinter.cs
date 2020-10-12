@@ -1,4 +1,4 @@
-﻿using App.Commons.Extensions;
+﻿using Common.Shared.Min.Extensions;
 using SramCommons.Extensions;
 using SramComparer.Enums;
 using SramComparer.Extensions;
@@ -8,6 +8,7 @@ using Res = SramComparer.Properties.Resources;
 
 namespace SramComparer.Services
 {
+	/// <summary>Standard implementation for common print functionality</summary>
 	public class ConsolePrinter: IConsolePrinter
 	{
 		public virtual void PrintSettings(IOptions options)
@@ -24,8 +25,8 @@ namespace SramComparer.Services
 			PrintSettingName(Res.SettingExportDirectory, CmdOptions.Exportdir);
 			PrintValue(options.ExportDirectory);
 
-			PrintSettingName(Res.SettingCurrentGameToCompare, $"{CmdOptions.Game} [1-4|0={Res.All}]");
-			PrintValue(options.Game == 0 ? Res.All : options.Game.ToString());
+			PrintSettingName(Res.SettingCurrentGameToCompare, $"{CmdOptions.CurrentGame} [1-4|0={Res.All}]");
+			PrintValue(options.CurrentGame == 0 ? Res.All : options.CurrentGame.ToString());
 
 			PrintSettingName(Res.SettingComparisonGameToCompare, $"{CmdOptions.ComparisonGame} [1-4|0={Res.All}]");
 			PrintValue(options.ComparisonGame == 0 ? Res.SameAsCurrentGame : options.ComparisonGame.ToString());

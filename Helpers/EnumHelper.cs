@@ -1,5 +1,5 @@
 ﻿using System;
-using App.Commons.Extensions;
+using Common.Shared.Min.Extensions;
 
 namespace SramComparer.Helpers
 {

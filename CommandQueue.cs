@@ -2,19 +2,20 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using App.Commons.Extensions;
+using Common.Shared.Min.Extensions;
 using SramComparer.Properties;
 
 // ReSharper disable PossibleMultipleEnumeration
 
 namespace SramComparer
 {
+	/// <summary>Starts a UI-less cmd queue.</summary>
 	public class CommandQueue
 	{
 		private static CommandQueue? _instance;
 		public static CommandQueue Instance => _instance ??= new CommandQueue();
 
-		public void Run(IOptions options)
+		public void Start(IOptions options)
 		{
 			var commandHandler = ServiceCollection.CommandHandler;
 			var consolePrinter = ServiceCollection.ConsolePrinter;
