@@ -140,24 +140,19 @@ namespace SramComparer.Services
 			return true;
 		}
 
-		/// <summary>Compares SRAM based on <para>options</para>.<see cref="IOptions.CurrentGameFilepath"/> and <see cref="IOptions.ComparisonGameFilepath"/> will be used</summary>
-		/// <typeparam name="TComparer">The type of compare which should be used</typeparam>
-		/// <param name="options">The options to be used for comparison</param>
+		/// <inheritdoc cref="ICommandHandler{TSramFile,TSramGame}.Compare{TComparer}(IOptions)"/>
 		public virtual void Compare<TComparer>(IOptions options)
 			where TComparer : ISramComparer<TSramFile, TSramGame>, new()
 		{
 			Requires.FileExists(options.ComparisonGameFilepath, nameof(options.ComparisonGameFilepath), Resources.ErrorComparisonFileDoesNotExist);
 
-			var currFileStream = new FileStream(options.CurrentGameFilepath, FileMode.Open, FileAccess.Read);
-			var compFileStream = new FileStream(options.ComparisonGameFilepath, FileMode.Open, FileAccess.Read);
+			var currFileStream = new FileStream(options.CurrentGameFilepath!, FileMode.Open, FileAccess.Read);
+			var compFileStream = new FileStream(options.ComparisonGameFilepath!, FileMode.Open, FileAccess.Read);
 
 			Compare<TComparer>(currFileStream, compFileStream, options);
 		}
 
-		/// <summary>Compares SRAM based on <para>options</para>.<see cref="IOptions.CurrentGameFilepath"/> and <see cref="IOptions.ComparisonGameFilepath"/> will be used</summary>
-		/// <typeparam name="TComparer">The type of compare which should be used</typeparam>
-		/// <param name="options">The options to be used for comparison</param>
-		/// <param name="output">The stream the output should be written to</param>
+		/// <inheritdoc cref="ICommandHandler{TSramFile,TSramGame}.Compare{TComparer}(IOptions, TextWriter)"/>
 		public void Compare<TComparer>(IOptions options, TextWriter output) 
 			where TComparer : ISramComparer<TSramFile, TSramGame>, new()
 		{
@@ -167,14 +162,7 @@ namespace SramComparer.Services
 			ConsolePrinter.ResetColor();
 		}
 
-		/// <summary>
-		/// Compares SRAM based on <para>options</para> and <para>currStream</para> and <para>compStream</para> params
-		/// </summary>
-		/// <typeparam name="TComparer">The type of compare which should be used</typeparam>
-		/// <param name="currStream"></param>
-		/// <param name="compStream"></param>
-		/// <param name="options">The options to be used for comparison</param>
-		/// <param name="output">The stream the output should be written to</param>
+		/// <inheritdoc cref="ICommandHandler{TSramFile,TSramGame}.Compare{TComparer}(Stream, Stream, IOptions, TextWriter)"/>
 		public virtual void Compare<TComparer>(Stream currStream, Stream compStream, IOptions options, TextWriter output)
 			where TComparer : ISramComparer<TSramFile, TSramGame>, new()
 		{
@@ -191,13 +179,7 @@ namespace SramComparer.Services
 			public void Dispose() => Console.SetOut(_oldOut);
 		}
 
-		/// <summary>
-		/// Compares SRAM based on <para>options</para> and <para>currStream</para> and <para>compStream</para> params
-		/// </summary>
-		/// <typeparam name="TComparer">The type of compare which should be used</typeparam>
-		/// <param name="currStream"></param>
-		/// <param name="compStream"></param>
-		/// <param name="options">The options to be used for comparison</param>
+		/// <inheritdoc cref="ICommandHandler{TSramFile,TSramGame}.Compare{TComparer}(Stream, Stream, IOptions)"/>
 		public virtual void Compare<TComparer>(Stream currStream, Stream compStream, IOptions options)
 			where TComparer : ISramComparer<TSramFile, TSramGame>, new()
 		{
@@ -210,10 +192,7 @@ namespace SramComparer.Services
 			ConsolePrinter.ResetColor();
 		}
 
-		/// <summary>Compares SRAM based on <para>options</para>.<see cref="IOptions.ExportDirectory"/> and a generated filename based on current timestamp will be used</summary>
-		/// <typeparam name="TComparer">The type of compare which should be used</typeparam>
-		/// <param name="options">The options to be used for comparison</param>
-		/// <returns>The generated filepath</returns>
+		/// <inheritdoc cref="ICommandHandler{TSramFile,TSramGame}.ExportComparison{TComparer}(IOptions)"/>
 		public virtual string ExportComparison<TComparer>(IOptions options)
 			where TComparer : ISramComparer<TSramFile, TSramGame>, new()
 		{
@@ -256,10 +235,7 @@ namespace SramComparer.Services
 				ExploreFile(filepath);
 		}
 
-		/// <summary>Compares SRAM based on <para>options</para>.<see cref="IOptions.ExportDirectory"/> and a generated filename based on current timestamp will be used</summary>
-		/// <typeparam name="TComparer">The type of compare which should be used</typeparam>
-		/// <param name="options">The options to be used for comparison</param>
-		/// <param name="filepath"></param>
+		/// <inheritdoc cref="ICommandHandler{TSramFile,TSramGame}.ExportComparison{TComparer}(IOptions, string)"/>
 		public virtual void ExportComparison<TComparer>(IOptions options, string filepath)
 			where TComparer : ISramComparer<TSramFile, TSramGame>, new()
 		{
@@ -316,7 +292,7 @@ namespace SramComparer.Services
 				ConsolePrinter.PrintColored(ConsoleColor.DarkGreen ,Resources.StatusTargetSramFileHasBeenBackedUpFilepathTemplate.InsertArgs(Path.GetFileName(targetBackupFilepath)));
 			}
 
-			File.Copy(options.CurrentGameFilepath, targetFilepath, true);
+			File.Copy(options.CurrentGameFilepath!, targetFilepath, true);
 			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusCurrentSramHasBeenSavedAsFilepathTemplate.InsertArgs(Path.GetFileName(targetFilepath)));
 
 			string? GetTargetFilepath()
@@ -328,7 +304,7 @@ namespace SramComparer.Services
 				var i = 0;
 				foreach (var srmFile in srmFiles)
 				{
-					ConsolePrinter.PrintColored(ConsoleColor.Cyan, i++);
+					ConsolePrinter.PrintColored(ConsoleColor.Cyan, i++.ToString());
 					ConsolePrinter.PrintColored(ConsoleColor.White, $@": {Path.GetFileNameWithoutExtension(srmFile)}");
 				}
 

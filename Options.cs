@@ -7,11 +7,9 @@ namespace SramComparer
 		where TComparisonFlags : struct, Enum
 	{
 		public string? Commands { get; set; }
-#nullable disable
-		public string CurrentGameFilepath { get; set; }
-		public string ComparisonGameFilepath { get; set; }
-		public string ExportDirectory { get; set; }
-#nullable restore
+		public string? CurrentGameFilepath { get; set; }
+		public string? ComparisonGameFilepath { get; set; }
+		public string? ExportDirectory { get; set; }
 
 		public TFileRegion Region { get; set; }
 		public int CurrentGame { get; set; }

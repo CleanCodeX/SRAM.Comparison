@@ -21,18 +21,10 @@ namespace SramComparer.Services
 		protected SramComparerBase() : this(ServiceCollection.ConsolePrinter) { }
 		protected SramComparerBase(IConsolePrinter consolePrinter) => ConsolePrinter = consolePrinter;
 
-		/// <summary>Compares all games of SRAM structure</summary>
-		/// <param name="currFile">The current SRAM file structure</param>
-		/// <param name="compFile">The comparison SRAM file structure</param>
-		/// <param name="options">The options to be used for all comparisons</param>
-		/// <returns>Number of compared bytes changed</returns>
+		/// <inheritdoc cref="ISramComparer{TSramFile,TSramGame}.CompareSram(TSramFile, TSramFile, IOptions)"/>
 		public abstract int CompareSram(TSramFile currFile, TSramFile compFile, IOptions options);
 
-		/// <summary>Compares all games of SRAM structure</summary>
-		/// <param name="currGame">The current SRAM game structure</param>
-		/// <param name="compGame">The comparison SRAM game structure</param>
-		/// <param name="options">The options to be used for all comparisons</param>
-		/// <returns>Number of compared bytes changed</returns>
+		/// <inheritdoc cref="ISramComparer{TSramFile,TSramGame}.CompareGame(TSramGame, TSramGame, IOptions)"/>
 		public abstract int CompareGame(TSramGame currGame, TSramGame compGame, IOptions options);
 
 		/// <summary>

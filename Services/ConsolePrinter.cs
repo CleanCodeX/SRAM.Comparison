@@ -17,13 +17,13 @@ namespace SramComparer.Services
 			PrintColored(ConsoleColor.Gray, Res.Settings + @":");
 
 			PrintSettingName(Res.SettingCurrentGameFilepath, "{0}");
-			PrintValue(Path.GetFileName(options.CurrentGameFilepath));
+			PrintValue(Path.GetFileName(options.CurrentGameFilepath!));
 
 			PrintSettingName(Res.SettingComparisonGameFilepath, CmdOptions.ComparisonFile);
-			PrintValue(Path.GetFileName(options.ComparisonGameFilepath));
+			PrintValue(Path.GetFileName(options.ComparisonGameFilepath!));
 
 			PrintSettingName(Res.SettingExportDirectory, CmdOptions.Exportdir);
-			PrintValue(options.ExportDirectory);
+			PrintValue(options.ExportDirectory!);
 
 			PrintSettingName(Res.SettingCurrentGameToCompare, $"{CmdOptions.CurrentGame} [1-4|0={Res.All}]");
 			PrintValue(options.CurrentGame == 0 ? Res.All : options.CurrentGame.ToString());
@@ -166,7 +166,7 @@ namespace SramComparer.Services
 			PrintColored(ConsoleColor.White, @" | ");
 
 			PrintColored(ConsoleColor.Gray, $@"{Res.Size} ");
-			PrintColored(ConsoleColor.DarkYellow, bufferLength);
+			PrintColored(ConsoleColor.DarkYellow, bufferLength.ToString());
 
 			PrintColored(ConsoleColor.White, @" ]");
 
@@ -299,7 +299,7 @@ namespace SramComparer.Services
 				1 => ConsoleColor.Magenta,
 				8 => ConsoleColor.Yellow,
 				_ => ConsoleColor.Gray
-			}, changedBits);
+			}, changedBits.ToString());
 
 			ResetColor();
 		}
@@ -308,42 +308,42 @@ namespace SramComparer.Services
 
 		protected virtual void PrintComparisonIdentification(string ident) => PrintColored(ConsoleColor.White, $@"{ident}=> ");
 
-		protected virtual void PrintColored(ConsoleColor foregroundColor, ConsoleColor backgroundColor, object text)
+		protected virtual void PrintColored(ConsoleColor foregroundColor, ConsoleColor backgroundColor, string text)
 		{
 			SetForegroundColor(backgroundColor);
 			PrintColored(foregroundColor, text);
 		}
 
-		public virtual void PrintColored(ConsoleColor color, object text)
+		public virtual void PrintColored(ConsoleColor color, string text)
 		{
 			SetForegroundColor(color);
-			Print(text.ToString());
+			Print(text);
 		}
 
-		public virtual void PrintColoredLine(ConsoleColor color, object text)
+		public virtual void PrintColoredLine(ConsoleColor color, string text)
 		{
 			SetForegroundColor(color);
-			PrintLine(text.ToString());
+			PrintLine(text);
 		}
 
 		public virtual void ResetColor() => Console.ResetColor();
 		public virtual void PrintParagraph() => Console.WriteLine();
-		public virtual void Print(object? text) => Console.Write(text);
-		public virtual void PrintLine(object? text) => Console.WriteLine(text);
+		public virtual void Print(string text) => Console.Write(text);
+		public virtual void PrintLine(string text) => Console.WriteLine(text);
 
-		protected virtual void PrintBackgroundColored(ConsoleColor color, object text)
+		protected virtual void PrintBackgroundColored(ConsoleColor color, string text)
 		{
 			SetBackgroundColor(color);
-			Print(text.ToString());
+			Print(text);
 		}
 
-		protected virtual void PrintBackgroundColoredLine(ConsoleColor color, object text)
+		protected virtual void PrintBackgroundColoredLine(ConsoleColor color, string text)
 		{
 			SetBackgroundColor(color);
-			PrintLine(text.ToString());
+			PrintLine(text);
 		}
 
-		protected virtual void PrintColoredLine(ConsoleColor foregroundColor, ConsoleColor backgroundColor, object text)
+		protected virtual void PrintColoredLine(ConsoleColor foregroundColor, ConsoleColor backgroundColor, string text)
 		{
 			SetBackgroundColor(foregroundColor);
 			PrintColoredLine(foregroundColor, text);
