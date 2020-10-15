@@ -61,5 +61,5 @@ https://dotnet.microsoft.com/
 
 ## Screenshots (from SoE implementation)
 ![Commands](https://i.ibb.co/vHdwJq7/Commands.png "Commands")
-![Comparison_UnknownsOnly](https://i.ibb.co/JFftcdG/Comparison-0-2-1.png "Comparison (unknowns only)")
+![Comparison_UnknownsOnly](https://i.ibb.co/LhF0ZRz/Comparison-0-2-1.png "Comparison (unknowns only)")
 ![Comparison_FlagWholeGame](https://i.ibb.co/ZKTqD0H/Comparison-Flag-Whole-Game.png "Comparison (whole game)")
