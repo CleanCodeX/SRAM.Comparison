@@ -563,7 +563,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Game {0} all (knowns + unknowns) ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die All (knowns + unknowns) ähnelt.
         /// </summary>
         public static string SectionGameChangedTemplate {
             get {
@@ -572,20 +572,11 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Game {0} has changed ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Game {0} ähnelt.
         /// </summary>
         public static string SectionGameHasChangedTemplate {
             get {
                 return ResourceManager.GetString("SectionGameHasChangedTemplate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Game {0} unknowns only ähnelt.
-        /// </summary>
-        public static string SectionGameUnknownsChangedTemplate {
-            get {
-                return ResourceManager.GetString("SectionGameUnknownsChangedTemplate", resourceCulture);
             }
         }
         
@@ -797,7 +788,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Game {0} all (knowns + unknowns):   {1} bytes changed ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die All (knowns + unknowns):   {0} bytes changed ähnelt.
         /// </summary>
         public static string StatusGameChangedBytesTemplate {
             get {
@@ -806,16 +797,16 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Game {0} unknowns only: {1} bytes changed ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Unknowns only: {1} bytes changed ähnelt.
         /// </summary>
-        public static string StatusGameUnknownsChangedGameIdBytesTemplate {
+        public static string StatusGameUnknownsChangedBytesTemplate {
             get {
-                return ResourceManager.GetString("StatusGameUnknownsChangedGameIdBytesTemplate", resourceCulture);
+                return ResourceManager.GetString("StatusGameUnknownsChangedBytesTemplate", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Only game {0} will be compared. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Only current game {0} will be compared. ähnelt.
         /// </summary>
         public static string StatusGameWillBeComparedTemplate {
             get {
@@ -883,6 +874,15 @@ namespace SramComparer.Properties {
         public static string StatusTotalDiffBytesTemplate {
             get {
                 return ResourceManager.GetString("StatusTotalDiffBytesTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Unknowns only ähnelt.
+        /// </summary>
+        public static string UnknownsOnly {
+            get {
+                return ResourceManager.GetString("UnknownsOnly", resourceCulture);
             }
         }
     }

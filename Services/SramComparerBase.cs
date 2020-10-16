@@ -80,7 +80,7 @@ namespace SramComparer.Services
 		/// Compares a single 2-byte value (UShort)
 		/// </summary>
 		/// <param name="bufferName">The name of the compared buffer</param>
-		/// <param name="bufferOffset">The buffer's offset at this ushort is located</param>
+		/// <param name="bufferOffset">The buffer's offset at where this ushort is located</param>
 		/// <param name="currValues">The current buffer's bytes to be compared</param>
 		/// <param name="compValues">The comparison buffer's bytes to be compared</param>
 		/// <param name="writeToConsole">Sets if any output should be written to console. Default is true</param>

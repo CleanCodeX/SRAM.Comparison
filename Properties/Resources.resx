@@ -197,7 +197,7 @@
     <value>Current game filepath</value>
   </data>
   <data name="StatusGameWillBeComparedTemplate" xml:space="preserve">
-    <value>Only game {0} will be compared.</value>
+    <value>Only current game {0} will be compared.</value>
   </data>
   <data name="StatusAllGamesWillBeCompared" xml:space="preserve">
     <value>All games will be compared.</value>
@@ -284,22 +284,22 @@
     <value>Total: {0} bytes changed (outside game)</value>
   </data>
   <data name="SectionGameHasChangedTemplate" xml:space="preserve">
-    <value>Game {0} has changed</value>
+    <value>Game {0}</value>
   </data>
-  <data name="SectionGameUnknownsChangedTemplate" xml:space="preserve">
-    <value>Game {0} unknowns only</value>
+  <data name="UnknownsOnly" xml:space="preserve">
+    <value>Unknowns only</value>
   </data>
-  <data name="StatusGameUnknownsChangedGameIdBytesTemplate" xml:space="preserve">
-    <value>Game {0} unknowns only: {1} bytes changed</value>
+  <data name="StatusGameUnknownsChangedBytesTemplate" xml:space="preserve">
+    <value>Unknowns only: {1} bytes changed</value>
   </data>
   <data name="Section" xml:space="preserve">
     <value>Section</value>
   </data>
   <data name="SectionGameChangedTemplate" xml:space="preserve">
-    <value>Game {0} all (knowns + unknowns)</value>
+    <value>All (knowns + unknowns)</value>
   </data>
   <data name="StatusGameChangedBytesTemplate" xml:space="preserve">
-    <value>Game {0} all (knowns + unknowns):   {1} bytes changed</value>
+    <value>All (knowns + unknowns):   {0} bytes changed</value>
   </data>
   <data name="SectionNonGameUnknowns" xml:space="preserve">
     <value>Non Game unknowns</value>
