@@ -196,9 +196,9 @@ namespace SramComparer.Services
 		public virtual string ExportComparison<TComparer>(IOptions options)
 			where TComparer : ISramComparer<TSramFile, TSramGame>, new()
 		{
-			var normalizedTimestamp = DateTime.Now.ToString("s").Replace(":", "_");
-			var srmFilename = Path.GetFileNameWithoutExtension(options.CurrentGameFilepath);
-			var filepath = Path.Join(options.ExportDirectory, $"{srmFilename} # {normalizedTimestamp}.txt");
+			var srmFilename = Path.GetFileNameWithoutExtension(options.CurrentGameFilepath)!;
+			var filename = FilenameHelper.GenerateExportFilename(srmFilename);
+			var filepath = Path.Join(options.ExportDirectory, filename);
 
 			ExportComparison<TComparer>(options, filepath);
 
