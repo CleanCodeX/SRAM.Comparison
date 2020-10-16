@@ -536,15 +536,6 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die reversed byte order ähnelt.
-        /// </summary>
-        public static string ReversedByteOrder {
-            get {
-                return ResourceManager.GetString("ReversedByteOrder", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Same as current game ähnelt.
         /// </summary>
         public static string SameAsCurrentGame {
@@ -572,15 +563,6 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Game {0} ähnelt.
-        /// </summary>
-        public static string SectionGameHasChangedTemplate {
-            get {
-                return ResourceManager.GetString("SectionGameHasChangedTemplate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Non Game unknowns ähnelt.
         /// </summary>
         public static string SectionNonGameUnknowns {
@@ -595,6 +577,15 @@ namespace SramComparer.Properties {
         public static string SetGameMaxTemplate {
             get {
                 return ResourceManager.GetString("SetGameMaxTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Compare non-game buffer ähnelt.
+        /// </summary>
+        public static string SettinComparegNonGameBuffer {
+            get {
+                return ResourceManager.GetString("SettinComparegNonGameBuffer", resourceCulture);
             }
         }
         
@@ -649,15 +640,6 @@ namespace SramComparer.Properties {
         public static string SettingExportDirectory {
             get {
                 return ResourceManager.GetString("SettingExportDirectory", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Compare non-game buffer ähnelt.
-        /// </summary>
-        public static string SettingNonGameBuffer {
-            get {
-                return ResourceManager.GetString("SettingNonGameBuffer", resourceCulture);
             }
         }
         
@@ -797,7 +779,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Unknowns only: {1} bytes changed ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Unknowns only: {0} bytes changed ähnelt.
         /// </summary>
         public static string StatusGameUnknownsChangedBytesTemplate {
             get {

@@ -160,9 +160,6 @@
 7)   (optional) Current and comparison srm file can be backed-up press ({7}|{8}) or restored ({9}|{10}) individually.
     </value>
   </data>
-  <data name="ReversedByteOrder" xml:space="preserve">
-    <value>reversed byte order</value>
-  </data>
   <data name="ErrorMissingPathArguments" xml:space="preserve">
     <value>ERROR: The programm needs to be started with at least one argument: "{CURRENT_SRM_FILEPATH}"</value>
   </data>
@@ -181,7 +178,7 @@
   <data name="ComparisonFlags" xml:space="preserve">
     <value>Comparison flags</value>
   </data>
-  <data name="SettingNonGameBuffer" xml:space="preserve">
+  <data name="SettinComparegNonGameBuffer" xml:space="preserve">
     <value>Compare non-game buffer</value>
   </data>
   <data name="SettingCompareWholeGameBuffer" xml:space="preserve">
@@ -283,14 +280,11 @@
   <data name="StatusTotalDiffBytesTemplate" xml:space="preserve">
     <value>Total: {0} bytes changed (outside game)</value>
   </data>
-  <data name="SectionGameHasChangedTemplate" xml:space="preserve">
-    <value>Game {0}</value>
-  </data>
   <data name="UnknownsOnly" xml:space="preserve">
     <value>Unknowns only</value>
   </data>
   <data name="StatusGameUnknownsChangedBytesTemplate" xml:space="preserve">
-    <value>Unknowns only: {1} bytes changed</value>
+    <value>Unknowns only: {0} bytes changed</value>
   </data>
   <data name="Section" xml:space="preserve">
     <value>Section</value>
