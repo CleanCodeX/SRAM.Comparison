@@ -13,7 +13,7 @@ allows to compare unknown buffers in a SNES' SRAM file.
 * All settings can be set by cmd line arguments
 
 ## How to run
-This library is based on .net 5 runtime.
+This library is based on .NET 5 runtime.
 
 Users see "Run apps - Runtime" column, coders see "Build apps - SDK" column at:  
 https://dotnet.microsoft.com/
