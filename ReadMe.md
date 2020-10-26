@@ -15,8 +15,9 @@ allows to compare unknown buffers in a SNES' SRAM file.
 ## How to run
 This library is based on .NET 5 runtime.
 
-Users see "Run apps - Runtime" column, coders see "Build apps - SDK" column at:  
-https://dotnet.microsoft.com/
+1) Head to https://dotnet.microsoft.com
+2) Click on Download button.
+3) Users see "Run apps - Runtime" column, coders see "Build apps - SDK" column.
 
 ## Download binaries
 [Releases](http://xeth.de/Releases/SramComparer)
