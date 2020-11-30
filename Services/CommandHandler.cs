@@ -293,7 +293,7 @@ namespace SramComparer.Services
 			var value = GetGameOffsetValue();
 			var bytes = value switch
 			{
-				< 256 => new byte[] { (byte)value },
+				< 256 => new [] { (byte)value },
 				< 256 * 256 => BitConverter.GetBytes((ushort)value),
 				_ => BitConverter.GetBytes(value),
 			};
@@ -313,11 +313,7 @@ namespace SramComparer.Services
 			var currStream = new FileStream(options.CurrentGameFilepath!, FileMode.Open, FileAccess.Read);
 			var currFile = ClassFactory.Create<TSramFile>(currStream, options.Region);
 
-			var byteValue = currFile.SramBuffer[offset];
-
 			Array.Copy(bytes, 0, currFile.SramBuffer, offset, bytes.Length);
-
-			byteValue = currFile.SramBuffer[offset];
 
 			currFile.RawSave(saveFilePath);
 
