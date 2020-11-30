@@ -208,13 +208,12 @@ namespace SramComparer.Services
 			var sign = GetNumberSign((short)(currValue - compValue));
 			var change = currValue - compValue;
 			var absChange = (uint)Math.Abs(change);
-			var changeString = $"{absChange,3:###}";
 			var isNegativechange = change < 0;
 
 			var offsetText = $"{offset,4:D4} [x{offset,3:X3}]";
 			var compText = GetByteValueRepresentations(compValue);
 			var currText = GetByteValueRepresentations(currValue);
-			var changeText = $"{changeString,3} [x{absChange,2:X2}] [{absChange.FormatBinary(8)}]";
+			var changeText = GetByteValueChangeRepresentations(currValue, compValue);
 
 			PrintComparisonIdentification(ident);
 			PrintOffsetValues(offsetText, offsetName);
@@ -223,8 +222,11 @@ namespace SramComparer.Services
 			PrintChangeValues(isNegativechange, absChange, sign, changeText);
 		}
 
-		public virtual string GetByteValueRepresentations(byte value) =>
+		protected virtual string GetByteValueRepresentations(byte value) =>
 			NumberFormatter.GetByteValueRepresentations(value);
+
+		protected virtual string GetByteValueChangeRepresentations(byte currValue, byte compValue) =>
+			NumberFormatter.GetByteValueChangeRepresentations(currValue, compValue);
 
 		public virtual void PrintSectionHeader()
 		{

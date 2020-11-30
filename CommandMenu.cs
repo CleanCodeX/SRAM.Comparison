@@ -11,7 +11,7 @@ namespace SramComparer
 	public class CommandMenu
 	{
 		private static CommandMenu? _instance;
-		public static CommandMenu Instance => _instance ??= new CommandMenu();
+		public static CommandMenu Instance => _instance ??= new();
 
 		protected virtual bool? OnRunCommand(ICommandHandler commandHandler, string command, IOptions options) => commandHandler.RunCommand(command!, options);
 

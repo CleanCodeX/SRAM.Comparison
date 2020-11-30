@@ -13,7 +13,7 @@ namespace SramComparer
 	public class CommandQueue
 	{
 		private static CommandQueue? _instance;
-		public static CommandQueue Instance => _instance ??= new CommandQueue();
+		public static CommandQueue Instance => _instance ??= new();
 
 		public void Start(IOptions options)
 		{
