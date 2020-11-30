@@ -196,6 +196,12 @@
   <data name="StatusGameWillBeComparedTemplate" xml:space="preserve">
     <value>Only current game {0} will be compared.</value>
   </data>
+  <data name="StatusOffsetWillBeUsedTemplate" xml:space="preserve">
+    <value>Offset {0} will be used.</value>
+  </data>
+  <data name="StatusOffsetValueWillBeUsedTemplate" xml:space="preserve">
+    <value>Offset value {0} will be set.</value>
+  </data>
   <data name="StatusAllGamesWillBeCompared" xml:space="preserve">
     <value>All games will be compared.</value>
   </data>
@@ -253,8 +259,26 @@
   <data name="CommandIncludeNonGameBufferComparison" xml:space="preserve">
     <value>Compare also non game buffer while comparison</value>
   </data>
-  <data name="SetGameMaxTemplate" xml:space="preserve">
+  <data name="CommandPrintOffsetValue" xml:space="preserve">
+    <value>Print offset value</value>
+  </data>
+  <data name="CommandSaveOffsetValue" xml:space="preserve">
+    <value>Save changed offset value</value>
+  </data>
+  <data name="SetGameToCompareMaxTemplate" xml:space="preserve">
     <value>Set Game (1-{0} or any other key for all games) to compare:</value>
+  </data>
+  <data name="SetSingleGameMaxTemplate" xml:space="preserve">
+    <value>Set Game (1-{0}):</value>
+  </data>
+  <data name="StatusSetSingleGameMaxTemplate" xml:space="preserve">
+    <value>Game {0} will be used.</value>
+  </data>
+  <data name="SetGameOffsetTemplate" xml:space="preserve">
+    <value>Set Game offset:</value>
+  </data>
+  <data name="SetGameOffsetValue" xml:space="preserve">
+    <value>Set Game offset value:</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>
@@ -346,6 +370,9 @@
   <data name="CommandQuit" xml:space="preserve">
     <value>Quit</value>
   </data>
+  <data name="ErrorOperationAborted" xml:space="preserve">
+    <value>Operation aborted</value>
+  </data>
   <data name="EnterCommand" xml:space="preserve">
     <value>Enter command and press enter.</value>
   </data>
@@ -408,6 +435,18 @@
   </data>
   <data name="StatusTargetSramFileHasBeenBackedUpFilepathTemplate" xml:space="preserve">
     <value>Target SRAM file has been backed up as {0}.</value>
+  </data>
+  <data name="StatusChangedSramFileHasBeenSavedAsFilepathTemplate" xml:space="preserve">
+    <value>Changed current SRAM File has been saved as {0}.</value>
+  </data>
+  <data name="StatusGetOffSetValueTemplate" xml:space="preserve">
+    <value>Value at offset {0} is {1}.</value>
+  </data>
+  <data name="StatusChangedSramFileHasBeenOverwrittenFilepathTemplate" xml:space="preserve">
+    <value>Changed current SRAM File has been overwritten. File: {0}.</value>
+  </data>
+  <data name="PromtCreateNewFileInsteadOfOverwriting" xml:space="preserve">
+    <value>Would you like to create a new SRAM file instead overwriting the current file? Type 1 for creating a new file (recommended) or type 2 to overwrite the existing file. In this case make sure to have a backup created before. 1 = new, 2 = overwrite, 0 = abort</value>
   </data>
   <data name="ErrorInvalidIndex" xml:space="preserve">
     <value>Invalid index. Aborted.</value>

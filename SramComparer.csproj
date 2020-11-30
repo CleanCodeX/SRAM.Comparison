@@ -4,7 +4,7 @@
     <TargetFramework>net5.0</TargetFramework>
     <Nullable>enable</Nullable>
     <LangVersion>preview</LangVersion>
-    <Version>1.0.2-a8</Version>
+    <Version>1.0.2-a9</Version>
     <Authors>CleanCodeX</Authors>
     <Company>CleanCodeX</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -24,7 +24,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CCX.SramCommons" Version="1.0.1-a3" />
+    <PackageReference Include="CCX.SramCommons" Version="1.0.1-a4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SramCommons\SramCommons.csproj" />
   </ItemGroup>
 
   <ItemGroup>

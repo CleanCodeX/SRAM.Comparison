@@ -257,6 +257,15 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Print offset value ähnelt.
+        /// </summary>
+        public static string CommandPrintOffsetValue {
+            get {
+                return ResourceManager.GetString("CommandPrintOffsetValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Quit ähnelt.
         /// </summary>
         public static string CommandQuit {
@@ -280,6 +289,15 @@ namespace SramComparer.Properties {
         public static string CommandRestoreCurrentFile {
             get {
                 return ResourceManager.GetString("CommandRestoreCurrentFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Save changed offset value ähnelt.
+        /// </summary>
+        public static string CommandSaveOffsetValue {
+            get {
+                return ResourceManager.GetString("CommandSaveOffsetValue", resourceCulture);
             }
         }
         
@@ -482,6 +500,15 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Operation aborted ähnelt.
+        /// </summary>
+        public static string ErrorOperationAborted {
+            get {
+                return ResourceManager.GetString("ErrorOperationAborted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Parameter name value missmatch for: {0} ähnelt.
         /// </summary>
         public static string ErrorParamNameValueMissmatchTemplate {
@@ -523,6 +550,15 @@ namespace SramComparer.Properties {
         public static string Offset {
             get {
                 return ResourceManager.GetString("Offset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Would you like to create a new SRAM file instead overwriting the current file? Type 1 for creating a new file (recommended) or type 2 to overwrite the existing file. In this case make sure to have a backup created before. 1 = new, 2 = overwrite, 0 = abort ähnelt.
+        /// </summary>
+        public static string PromtCreateNewFileInsteadOfOverwriting {
+            get {
+                return ResourceManager.GetString("PromtCreateNewFileInsteadOfOverwriting", resourceCulture);
             }
         }
         
@@ -572,11 +608,38 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Set Game offset: ähnelt.
+        /// </summary>
+        public static string SetGameOffsetTemplate {
+            get {
+                return ResourceManager.GetString("SetGameOffsetTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Set Game offset value: ähnelt.
+        /// </summary>
+        public static string SetGameOffsetValue {
+            get {
+                return ResourceManager.GetString("SetGameOffsetValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Set Game (1-{0} or any other key for all games) to compare: ähnelt.
         /// </summary>
-        public static string SetGameMaxTemplate {
+        public static string SetGameToCompareMaxTemplate {
             get {
-                return ResourceManager.GetString("SetGameMaxTemplate", resourceCulture);
+                return ResourceManager.GetString("SetGameToCompareMaxTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Set Game (1-{0}): ähnelt.
+        /// </summary>
+        public static string SetSingleGameMaxTemplate {
+            get {
+                return ResourceManager.GetString("SetSingleGameMaxTemplate", resourceCulture);
             }
         }
         
@@ -716,6 +779,24 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Changed current SRAM File has been overwritten. File: {0}. ähnelt.
+        /// </summary>
+        public static string StatusChangedSramFileHasBeenOverwrittenFilepathTemplate {
+            get {
+                return ResourceManager.GetString("StatusChangedSramFileHasBeenOverwrittenFilepathTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Changed current SRAM File has been saved as {0}. ähnelt.
+        /// </summary>
+        public static string StatusChangedSramFileHasBeenSavedAsFilepathTemplate {
+            get {
+                return ResourceManager.GetString("StatusChangedSramFileHasBeenSavedAsFilepathTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Compare non-game buffer: ähnelt.
         /// </summary>
         public static string StatusCompareNonGameBuffer {
@@ -797,6 +878,15 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Value at offset {0} is {1}. ähnelt.
+        /// </summary>
+        public static string StatusGetOffSetValueTemplate {
+            get {
+                return ResourceManager.GetString("StatusGetOffSetValueTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die There are currently no other SRAM files available. ähnelt.
         /// </summary>
         public static string StatusNoAvailableOtherSramFiles {
@@ -820,6 +910,33 @@ namespace SramComparer.Properties {
         public static string StatusNoSramBytesChanged {
             get {
                 return ResourceManager.GetString("StatusNoSramBytesChanged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Offset value {0} will be set. ähnelt.
+        /// </summary>
+        public static string StatusOffsetValueWillBeUsedTemplate {
+            get {
+                return ResourceManager.GetString("StatusOffsetValueWillBeUsedTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Offset {0} will be used. ähnelt.
+        /// </summary>
+        public static string StatusOffsetWillBeUsedTemplate {
+            get {
+                return ResourceManager.GetString("StatusOffsetWillBeUsedTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Game {0} will be used. ähnelt.
+        /// </summary>
+        public static string StatusSetSingleGameMaxTemplate {
+            get {
+                return ResourceManager.GetString("StatusSetSingleGameMaxTemplate", resourceCulture);
             }
         }
         

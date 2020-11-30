@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using Common.Shared.Min.Extensions;
 using Common.Shared.Min.Helpers;
+using SramCommons.Extensions;
 using SramCommons.Models;
 using SramComparer.Enums;
 using SramComparer.Helpers;
@@ -124,6 +125,14 @@ namespace SramComparer.Services
 					break;
 				case nameof(BaseCommands.ts):
 					TransferSramToOtherGameFile(options);
+					break;
+				case nameof(BaseCommands.pov):
+					PrintOffsetValue(options);
+
+					break;
+				case nameof(BaseCommands.sov):
+					SaveOffsetValue(options);
+
 					break;
 				case nameof(BaseCommands.w):
 					Console.Clear();
@@ -270,6 +279,90 @@ namespace SramComparer.Services
 			Process.Start("explorer.exe", $"/select,\"{filePath}\"");
 		}
 
+		public virtual void SaveOffsetValue(IOptions options)
+		{
+			Requires.FileExists(options.CurrentGameFilepath, nameof(options.CurrentGameFilepath));
+			
+			var offset = GetOffset();
+			if (offset == 0)
+			{
+				ConsolePrinter.PrintError(Resources.ErrorOperationAborted);
+				return;
+			}
+
+			var value = GetGameOffsetValue();
+			var bytes = value switch
+			{
+				< 256 => new byte[] { (byte)value },
+				< 256 * 256 => BitConverter.GetBytes((ushort)value),
+				_ => BitConverter.GetBytes(value),
+			};
+
+			var promptResult = InternalGetStringValue(Resources.PromtCreateNewFileInsteadOfOverwriting);
+			var createNewFile = promptResult switch
+			{
+				"1" => true,
+				"2" => false,
+				_ => throw new OperationCanceledException(),
+			};
+			
+			var saveFilePath = options.CurrentGameFilepath!;
+			if (createNewFile)
+				saveFilePath += ".manipulated";
+
+			var currStream = new FileStream(options.CurrentGameFilepath!, FileMode.Open, FileAccess.Read);
+			var currFile = ClassFactory.Create<TSramFile>(currStream, options.Region);
+
+			var byteValue = currFile.SramBuffer[offset];
+
+			Array.Copy(bytes, 0, currFile.SramBuffer, offset, bytes.Length);
+
+			byteValue = currFile.SramBuffer[offset];
+
+			currFile.RawSave(saveFilePath);
+
+			var fileName = Path.GetFileName(saveFilePath);
+			ConsolePrinter.PrintColoredLine(ConsoleColor.Green, createNewFile 
+				? Resources.StatusChangedSramFileHasBeenSavedAsFilepathTemplate.InsertArgs(fileName)
+				: Resources.StatusChangedSramFileHasBeenOverwrittenFilepathTemplate.InsertArgs(fileName));
+			ConsolePrinter.ResetColor();
+		}
+
+		public virtual void PrintOffsetValue(IOptions options)
+		{
+			Requires.FileExists(options.CurrentGameFilepath, nameof(options.CurrentGameFilepath));
+
+			var currStream = new FileStream(options.CurrentGameFilepath!, FileMode.Open, FileAccess.Read);
+			var currFile = ClassFactory.Create<TSramFile>(currStream, options.Region);
+
+			var offset = GetOffset();
+			if (offset == 0)
+			{
+				ConsolePrinter.PrintError(Resources.ErrorOperationAborted);
+				return;
+			}
+			
+			var byteValue = currFile.SramBuffer[offset];
+
+			var valueDisplayText = NumberFormatter.GetByteValueRepresentations(byteValue);
+
+			ConsolePrinter.PrintColoredLine(ConsoleColor.Green, Resources.StatusGetOffSetValueTemplate.InsertArgs(offset, valueDisplayText));
+			ConsolePrinter.ResetColor();
+		}
+
+		private int GetOffset()
+		{
+			var promptResult = InternalGetStringValue(Resources.SetSingleGameMaxTemplate.InsertArgs(4),
+				Resources.StatusSetSingleGameMaxTemplate);
+			if (!int.TryParse(promptResult, out var gameId) || gameId > 4)
+			{
+				ConsolePrinter.PrintError(Resources.ErrorInvalidIndex);
+				return 0;
+			}
+
+			return GetGameOffset(gameId - 1);
+		}
+
 		public virtual void TransferSramToOtherGameFile(IOptions options)
 		{
 			ConsolePrinter.PrintSectionHeader();
@@ -329,10 +422,49 @@ namespace SramComparer.Services
 			return flags;
 		}
 
+		public virtual int GetGameOffset(int gameIndex) => (int)InternalGetValue(Resources.SetGameOffsetTemplate.InsertArgs(gameIndex + 1), Resources.StatusOffsetWillBeUsedTemplate);
+		public virtual uint GetGameOffsetValue() => InternalGetValue(Resources.SetGameOffsetValue, Resources.StatusOffsetValueWillBeUsedTemplate);
+
+		private string InternalGetStringValue(string prompt, string? promptResultTemplate = null)
+		{
+			ConsolePrinter.PrintSectionHeader();
+			ConsolePrinter.PrintLine(prompt);
+
+			var input = Console.ReadLine()!;
+
+			ConsolePrinter.PrintParagraph();
+			if (promptResultTemplate is not null)
+			{
+				ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, promptResultTemplate.InsertArgs(input));
+
+				ConsolePrinter.PrintParagraph();
+			}
+
+			ConsolePrinter.ResetColor();
+			return input;
+		}
+
+		private uint InternalGetValue(string prompt, string promtResultTemplate)
+		{
+			ConsolePrinter.PrintSectionHeader();
+			ConsolePrinter.PrintLine(prompt);
+
+			var input = Console.ReadLine()!;
+
+			uint.TryParse(input, out var offset);
+
+			ConsolePrinter.PrintParagraph();
+			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, promtResultTemplate.InsertArgs(offset));
+
+			ConsolePrinter.PrintParagraph();
+			ConsolePrinter.ResetColor();
+			return offset;
+		}
+
 		public virtual int GetGameId(int maxGameId)
 		{
 			ConsolePrinter.PrintSectionHeader();
-			ConsolePrinter.PrintLine(Resources.SetGameMaxTemplate.InsertArgs(maxGameId));
+			ConsolePrinter.PrintLine(Resources.SetGameToCompareMaxTemplate.InsertArgs(maxGameId));
 
 			var input = Console.ReadLine()!;
 

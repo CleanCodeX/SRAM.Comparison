@@ -4,6 +4,7 @@ using SramComparer.Enums;
 using SramComparer.Extensions;
 using System;
 using System.IO;
+using SramComparer.Helpers;
 using Res = SramComparer.Properties.Resources;
 
 namespace SramComparer.Services
@@ -112,6 +113,12 @@ namespace SramComparer.Services
 			PrintCommandKey(BaseCommands.fng);
 			PrintColoredLine(ConsoleColor.Yellow, Res.CommandIncludeNonGameBufferComparison);
 
+			PrintCommandKey(BaseCommands.pov);
+			PrintColoredLine(ConsoleColor.Yellow, Res.CommandSaveOffsetValue);
+
+			PrintCommandKey(BaseCommands.sov);
+			PrintColoredLine(ConsoleColor.Yellow, Res.CommandSaveOffsetValue);
+
 			PrintCustomCommands();
 
 			PrintParagraph();
@@ -205,8 +212,8 @@ namespace SramComparer.Services
 			var isNegativechange = change < 0;
 
 			var offsetText = $"{offset,4:D4} [x{offset,3:X3}]";
-			var compText = $"{compValue,3:D3} [x{compValue,2:X2}] [{compValue.FormatBinary(8)}]";
-			var currText = $"{currValue,3:D3} [x{currValue,2:X2}] [{currValue.FormatBinary(8)}]";
+			var compText = GetByteValueRepresentations(compValue);
+			var currText = GetByteValueRepresentations(currValue);
 			var changeText = $"{changeString,3} [x{absChange,2:X2}] [{absChange.FormatBinary(8)}]";
 
 			PrintComparisonIdentification(ident);
@@ -215,6 +222,9 @@ namespace SramComparer.Services
 			PrintCurrValues(isNegativechange, currText);
 			PrintChangeValues(isNegativechange, absChange, sign, changeText);
 		}
+
+		public virtual string GetByteValueRepresentations(byte value) =>
+			NumberFormatter.GetByteValueRepresentations(value);
 
 		public virtual void PrintSectionHeader()
 		{
