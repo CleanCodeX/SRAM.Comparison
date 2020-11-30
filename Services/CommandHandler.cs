@@ -283,7 +283,7 @@ namespace SramComparer.Services
 		{
 			Requires.FileExists(options.CurrentGameFilepath, nameof(options.CurrentGameFilepath));
 			
-			var offset = GetOffset();
+			var offset = GetOffset(out var gameIndex);
 			if (offset == 0)
 			{
 				ConsolePrinter.PrintError(Resources.ErrorOperationAborted);
@@ -313,8 +313,7 @@ namespace SramComparer.Services
 			var currStream = new FileStream(options.CurrentGameFilepath!, FileMode.Open, FileAccess.Read);
 			var currFile = ClassFactory.Create<TSramFile>(currStream, options.Region);
 
-			Array.Copy(bytes, 0, currFile.SramBuffer, offset, bytes.Length);
-
+			currFile.SetOffsetBytes(gameIndex, offset, bytes);
 			currFile.RawSave(saveFilePath);
 
 			var fileName = Path.GetFileName(saveFilePath);
@@ -331,14 +330,14 @@ namespace SramComparer.Services
 			var currStream = new FileStream(options.CurrentGameFilepath!, FileMode.Open, FileAccess.Read);
 			var currFile = ClassFactory.Create<TSramFile>(currStream, options.Region);
 
-			var offset = GetOffset();
+			var offset = GetOffset(out var gameIndex);
 			if (offset == 0)
 			{
 				ConsolePrinter.PrintError(Resources.ErrorOperationAborted);
 				return;
 			}
 			
-			var byteValue = currFile.SramBuffer[offset];
+			var byteValue = currFile.GetOffsetByte(gameIndex, offset);
 
 			var valueDisplayText = NumberFormatter.GetByteValueRepresentations(byteValue);
 
@@ -346,17 +345,20 @@ namespace SramComparer.Services
 			ConsolePrinter.ResetColor();
 		}
 
-		private int GetOffset()
+		private int GetOffset(out int gameIndex)
 		{
 			var promptResult = InternalGetStringValue(Resources.SetSingleGameMaxTemplate.InsertArgs(4),
 				Resources.StatusSetSingleGameMaxTemplate);
 			if (!int.TryParse(promptResult, out var gameId) || gameId > 4)
 			{
 				ConsolePrinter.PrintError(Resources.ErrorInvalidIndex);
+				gameIndex = -1;
 				return 0;
 			}
 
-			return GetGameOffset(gameId - 1);
+			gameIndex = gameId - 1;
+
+			return GetGameOffset(gameIndex);
 		}
 
 		public virtual void TransferSramToOtherGameFile(IOptions options)
@@ -418,8 +420,8 @@ namespace SramComparer.Services
 			return flags;
 		}
 
-		public virtual int GetGameOffset(int gameIndex) => (int)InternalGetValue(Resources.SetGameOffsetTemplate.InsertArgs(gameIndex + 1), Resources.StatusOffsetWillBeUsedTemplate);
-		public virtual uint GetGameOffsetValue() => InternalGetValue(Resources.SetGameOffsetValue, Resources.StatusOffsetValueWillBeUsedTemplate);
+		public int GetGameOffset(int gameIndex) => (int)InternalGetValue(Resources.SetGameOffsetTemplate.InsertArgs(gameIndex + 1), Resources.StatusOffsetWillBeUsedTemplate);
+		public uint GetGameOffsetValue() => InternalGetValue(Resources.SetGameOffsetValue, Resources.StatusOffsetValueWillBeUsedTemplate);
 
 		private string InternalGetStringValue(string prompt, string? promptResultTemplate = null)
 		{
