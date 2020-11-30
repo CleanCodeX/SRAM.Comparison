@@ -439,8 +439,11 @@
   <data name="StatusChangedSramFileHasBeenSavedAsFilepathTemplate" xml:space="preserve">
     <value>Changed current SRAM File has been saved as {0}.</value>
   </data>
-  <data name="StatusGetOffSetValueTemplate" xml:space="preserve">
+  <data name="StatusGetOffsetValueTemplate" xml:space="preserve">
     <value>Value at offset {0} is {1}.</value>
+  </data>
+  <data name="StatusSetOffsetValueTemplate" xml:space="preserve">
+    <value>Value {0} saved to offset {1}.</value>
   </data>
   <data name="StatusChangedSramFileHasBeenOverwrittenFilepathTemplate" xml:space="preserve">
     <value>Changed current SRAM File has been overwritten. File: {0}.</value>

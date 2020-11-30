@@ -880,9 +880,9 @@ namespace SramComparer.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Value at offset {0} is {1}. ähnelt.
         /// </summary>
-        public static string StatusGetOffSetValueTemplate {
+        public static string StatusGetOffsetValueTemplate {
             get {
-                return ResourceManager.GetString("StatusGetOffSetValueTemplate", resourceCulture);
+                return ResourceManager.GetString("StatusGetOffsetValueTemplate", resourceCulture);
             }
         }
         
@@ -928,6 +928,15 @@ namespace SramComparer.Properties {
         public static string StatusOffsetWillBeUsedTemplate {
             get {
                 return ResourceManager.GetString("StatusOffsetWillBeUsedTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Value {0} saved to offset {1}. ähnelt.
+        /// </summary>
+        public static string StatusSetOffsetValueTemplate {
+            get {
+                return ResourceManager.GetString("StatusSetOffsetValueTemplate", resourceCulture);
             }
         }
         

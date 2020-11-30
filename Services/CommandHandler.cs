@@ -316,6 +316,7 @@ namespace SramComparer.Services
 			currFile.SetOffsetBytes(gameIndex, offset, bytes);
 			currFile.RawSave(saveFilePath);
 
+			ConsolePrinter.PrintColoredLine(ConsoleColor.Green, Resources.StatusSetOffsetValueTemplate.InsertArgs(value, offset));
 			var fileName = Path.GetFileName(saveFilePath);
 			ConsolePrinter.PrintColoredLine(ConsoleColor.Green, createNewFile 
 				? Resources.StatusChangedSramFileHasBeenSavedAsFilepathTemplate.InsertArgs(fileName)
@@ -341,7 +342,7 @@ namespace SramComparer.Services
 
 			var valueDisplayText = NumberFormatter.GetByteValueRepresentations(byteValue);
 
-			ConsolePrinter.PrintColoredLine(ConsoleColor.Green, Resources.StatusGetOffSetValueTemplate.InsertArgs(offset, valueDisplayText));
+			ConsolePrinter.PrintColoredLine(ConsoleColor.Green, Resources.StatusGetOffsetValueTemplate.InsertArgs(offset, valueDisplayText));
 			ConsolePrinter.ResetColor();
 		}
 
