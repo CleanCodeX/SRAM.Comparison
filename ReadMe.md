@@ -61,7 +61,7 @@ This application uses the latest .NET 5 runtime.
 
 ***7.***   (optional) Current and comparison srm file can be backed-up press (b|bc) or restored (r|rc) individually.
 
-***8.***   (optional) SRAM offset values for specific game slots can be displayed by pressing (dov) or manipulated (sov). You can decide whether to update your current sram file (backup recommended) or creating a new file.
+***8.***   (optional) SRAM offset values for specific game slots can be displayed by pressing (dov) or manipulated (mov). You can decide whether to update your current sram file (backup recommended) or creating a new file.
 
 ## Screenshots (from SoE implementation)
 ![Commands](https://raw.githubusercontent.com/CleanCodeX/SramComparer.SoE/master/Meta/Cmd.png "Commands")
