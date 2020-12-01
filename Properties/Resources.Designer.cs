@@ -203,6 +203,15 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Display offset value ähnelt.
+        /// </summary>
+        public static string CommandDisplayOffsetValue {
+            get {
+                return ResourceManager.GetString("CommandDisplayOffsetValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Display settings ähnelt.
         /// </summary>
         public static string CommandDisplaySettings {
@@ -257,15 +266,6 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Print offset value ähnelt.
-        /// </summary>
-        public static string CommandPrintOffsetValue {
-            get {
-                return ResourceManager.GetString("CommandPrintOffsetValue", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Quit ähnelt.
         /// </summary>
         public static string CommandQuit {
@@ -293,11 +293,11 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Save changed offset value ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Save manipulated offset value ähnelt.
         /// </summary>
-        public static string CommandSaveOffsetValue {
+        public static string CommandSaveManipulatedOffsetValue {
             get {
-                return ResourceManager.GetString("CommandSaveOffsetValue", resourceCulture);
+                return ResourceManager.GetString("CommandSaveManipulatedOffsetValue", resourceCulture);
             }
         }
         

@@ -113,11 +113,11 @@ namespace SramComparer.Services
 			PrintCommandKey(BaseCommands.fng);
 			PrintColoredLine(ConsoleColor.Yellow, Res.CommandIncludeNonGameBufferComparison);
 
-			PrintCommandKey(BaseCommands.pov);
-			PrintColoredLine(ConsoleColor.Yellow, Res.CommandSaveOffsetValue);
+			PrintCommandKey(BaseCommands.dov);
+			PrintColoredLine(ConsoleColor.Yellow, Res.CommandDisplayOffsetValue);
 
-			PrintCommandKey(BaseCommands.sov);
-			PrintColoredLine(ConsoleColor.Yellow, Res.CommandSaveOffsetValue);
+			PrintCommandKey(BaseCommands.mov);
+			PrintColoredLine(ConsoleColor.Yellow, Res.CommandSaveManipulatedOffsetValue);
 
 			PrintCustomCommands();
 

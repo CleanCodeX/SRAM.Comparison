@@ -126,11 +126,11 @@ namespace SramComparer.Services
 				case nameof(BaseCommands.ts):
 					TransferSramToOtherGameFile(options);
 					break;
-				case nameof(BaseCommands.pov):
+				case nameof(BaseCommands.dov):
 					PrintOffsetValue(options);
 
 					break;
-				case nameof(BaseCommands.sov):
+				case nameof(BaseCommands.mov):
 					SaveOffsetValue(options);
 
 					break;

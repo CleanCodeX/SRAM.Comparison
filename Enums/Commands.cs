@@ -23,7 +23,7 @@ namespace SramComparer.Enums
 		ts,
 		w,
 		q,
-		sov,
-		pov
+		mov,
+		dov
 	}
 }

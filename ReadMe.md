@@ -1,8 +1,8 @@
 # SramComparer
-Allows to compare unknown buffers in a SNES' SRAM file. 
+Allows to compare (unknown) buffers and manipulate offset values in SNES's SRAM file.
 
 ## Features
-* Print (or change and save) offset values
+* Display (or manipulate and save) offset values
 * Comparison of Unknowns only (*default*) or whole game buffer (**optional**)
 * Comparison of whole sram outside games (**optional**)
 * Display of differences in decimal, hex and binary format
@@ -13,15 +13,15 @@ Allows to compare unknown buffers in a SNES' SRAM file.
 * Display of changed or all checksums (**optional**)
 * All settings can be set by cmd line arguments
 
-## How to run
-This library is based on .NET 5 runtime.
+## Prerequisites (Runtime)
+This application uses the latest .NET 5 runtime.
 
 1) Head to https://dotnet.microsoft.com
 2) Click on Download button.
 3) Users see "Run apps - Runtime" column, coders see "Build apps - SDK" column.
 
 ## Download binaries
-[Releases](http://xeth.de/Releases/SramComparer)
+* [Releases](http://xeth.de/Releases/SramComparer)
 
 ## How to use
 **Steps**:
@@ -61,7 +61,19 @@ This library is based on .NET 5 runtime.
 
 ***7.***   (optional) Current and comparison srm file can be backed-up press (b|bc) or restored (r|rc) individually.
 
+***8.***   (optional) SRAM offset values for specific game slots can be displayed by pressing (dov) or manipulated (sov). You can decide whether to update your current sram file (backup recommended) or creating a new file.
+
 ## Screenshots (from SoE implementation)
-![Commands](https://i.ibb.co/vHdwJq7/Commands.png "Commands")
-![Comparison_UnknownsOnly](https://i.ibb.co/LhF0ZRz/Comparison-0-2-1.png "Comparison (unknowns only)")
-![Comparison_FlagWholeGame](https://i.ibb.co/ZKTqD0H/Comparison-Flag-Whole-Game.png "Comparison (whole game)")
+![Commands](https://raw.githubusercontent.com/CleanCodeX/SramComparer.SoE/master/Meta/Cmd.png "Commands")
+
+![Few Flags Change](https://raw.githubusercontent.com/CleanCodeX/SramComparer.SoE/master/Meta/FewFlagsChange.png "Few Flags Change")
+
+![Many Values Change](https://raw.githubusercontent.com/CleanCodeX/SramComparer.SoE/master/Meta/ManyValuesChange.png "Many Values Change")
+
+![No SRAM Change](https://raw.githubusercontent.com/CleanCodeX/SramComparer.SoE/master/Meta/NoChange.png "No SRAM Change")
+
+![Whole Game Comparison](https://raw.githubusercontent.com/CleanCodeX/SramComparer.SoE/master/Meta/WholeGameComparison.png "Whole Game Comparison")
+
+![Whole Game Comparison #2](https://raw.githubusercontent.com/CleanCodeX/SramComparer.SoE/master/Meta/WholeGameComparison2.png "Whole Game Comparison #2")
+
+![Optional Game Info](https://raw.githubusercontent.com/CleanCodeX/SramComparer.SoE/master/Meta/OptionalGameInfo.png "Optional Game Info")

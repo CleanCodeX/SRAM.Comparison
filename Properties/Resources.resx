@@ -259,11 +259,11 @@
   <data name="CommandIncludeNonGameBufferComparison" xml:space="preserve">
     <value>Compare also non game buffer while comparison</value>
   </data>
-  <data name="CommandPrintOffsetValue" xml:space="preserve">
-    <value>Print offset value</value>
+  <data name="CommandDisplayOffsetValue" xml:space="preserve">
+    <value>Display offset value</value>
   </data>
-  <data name="CommandSaveOffsetValue" xml:space="preserve">
-    <value>Save changed offset value</value>
+  <data name="CommandSaveManipulatedOffsetValue" xml:space="preserve">
+    <value>Save manipulated offset value</value>
   </data>
   <data name="SetGameToCompareMaxTemplate" xml:space="preserve">
     <value>Set Game (1-{0} or any other key for all games) to compare:</value>
