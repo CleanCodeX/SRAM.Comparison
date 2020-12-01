@@ -62,6 +62,9 @@ namespace SramComparer.Services
 						options.Commands = value.IsNullOrEmpty() ? null : value;
 						break;
 					case CmdOptions.ComparisonFile:
+						if (Path.GetDirectoryName(value) == string.Empty)
+							value = Path.Join(Path.GetDirectoryName(options.CurrentGameFilepath), value);
+
 						options.ComparisonGameFilepath = value;
 						break;
 					case CmdOptions.Exportdir:

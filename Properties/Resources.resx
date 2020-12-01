@@ -295,11 +295,17 @@
   <data name="ChangeShort" xml:space="preserve">
     <value>Change</value>
   </data>
-  <data name="CompShort" xml:space="preserve">
+  <data name="Old" xml:space="preserve">
     <value>Old</value>
   </data>
-  <data name="CurrShort" xml:space="preserve">
+  <data name="New" xml:space="preserve">
     <value>New</value>
+  </data>
+  <data name="CurrentShort" xml:space="preserve">
+    <value>Curr</value>
+  </data>
+  <data name="ComparisonShort" xml:space="preserve">
+    <value>Comp</value>
   </data>
   <data name="StatusTotalDiffBytesTemplate" xml:space="preserve">
     <value>Total: {0} bytes changed (outside game)</value>
@@ -394,8 +400,8 @@
   <data name="ErrorComparisonFileDoesNotExist" xml:space="preserve">
     <value>The comparison file "{0}" has not been created yet.</value>
   </data>
-  <data name="ErrorNoValidCommand" xml:space="preserve">
-    <value>"{0}" is no valid command.</value>
+  <data name="ErrorNoValidCommandCmdTemplate" xml:space="preserve">
+    <value>"{0}" is no valid command. Type ({1}) to list all available commands.</value>
   </data>
   <data name="ErrorComparisoGameSetButNotGame" xml:space="preserve">
     <value>Game (save slot) for comparison srm file can only be set if current srm file's game is set first.</value>

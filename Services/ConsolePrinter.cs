@@ -283,14 +283,14 @@ namespace SramComparer.Services
 		protected virtual void PrintCompValues(bool isNegativeChange, string compText)
 		{
 			PrintColored(ConsoleColor.White, @" | ");
-			PrintColored(ConsoleColor.DarkGray, $@"{Res.CompShort} ");
+			PrintColored(ConsoleColor.DarkGray, $@"{Res.Old} ");
 			PrintColored(isNegativeChange ? ConsoleColor.DarkGreen : ConsoleColor.Red, compText);
 		}
 
 		protected virtual void PrintCurrValues(bool isNegativeChange, string currText)
 		{
 			PrintColored(ConsoleColor.Cyan, @" => ");
-			PrintColored(ConsoleColor.DarkGray, $@"{Res.CurrShort} ");
+			PrintColored(ConsoleColor.DarkGray, $@"{Res.New} ");
 			PrintColored(isNegativeChange ? ConsoleColor.Red : ConsoleColor.DarkGreen, currText);
 		}
 

@@ -356,20 +356,20 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Comp ähnelt.
+        /// </summary>
+        public static string ComparisonShort {
+            get {
+                return ResourceManager.GetString("ComparisonShort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Comparison SRAM file ähnelt.
         /// </summary>
         public static string ComparisonSramFile {
             get {
                 return ResourceManager.GetString("ComparisonSramFile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Old ähnelt.
-        /// </summary>
-        public static string CompShort {
-            get {
-                return ResourceManager.GetString("CompShort", resourceCulture);
             }
         }
         
@@ -383,20 +383,20 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Curr ähnelt.
+        /// </summary>
+        public static string CurrentShort {
+            get {
+                return ResourceManager.GetString("CurrentShort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Current SRAM file ähnelt.
         /// </summary>
         public static string CurrentSramFile {
             get {
                 return ResourceManager.GetString("CurrentSramFile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die New ähnelt.
-        /// </summary>
-        public static string CurrShort {
-            get {
-                return ResourceManager.GetString("CurrShort", resourceCulture);
             }
         }
         
@@ -491,11 +491,11 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die &quot;{0}&quot; is no valid command. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die &quot;{0}&quot; is no valid command. Type ({1}) to list all available commands. ähnelt.
         /// </summary>
-        public static string ErrorNoValidCommand {
+        public static string ErrorNoValidCommandCmdTemplate {
             get {
-                return ResourceManager.GetString("ErrorNoValidCommand", resourceCulture);
+                return ResourceManager.GetString("ErrorNoValidCommandCmdTemplate", resourceCulture);
             }
         }
         
@@ -536,6 +536,15 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die New ähnelt.
+        /// </summary>
+        public static string New {
+            get {
+                return ResourceManager.GetString("New", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die None ähnelt.
         /// </summary>
         public static string None {
@@ -550,6 +559,15 @@ namespace SramComparer.Properties {
         public static string Offset {
             get {
                 return ResourceManager.GetString("Offset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Old ähnelt.
+        /// </summary>
+        public static string Old {
+            get {
+                return ResourceManager.GetString("Old", resourceCulture);
             }
         }
         

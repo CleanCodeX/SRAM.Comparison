@@ -141,7 +141,7 @@ namespace SramComparer.Services
 					return false;
 				default:
 					ConsolePrinter.PrintCommands();
-					ConsolePrinter.PrintError(Resources.ErrorNoValidCommand.InsertArgs(command));
+					ConsolePrinter.PrintError(Resources.ErrorNoValidCommandCmdTemplate.InsertArgs(command, nameof(BaseCommands.cmd)));
 
 					break;
 			}
@@ -414,9 +414,12 @@ namespace SramComparer.Services
 
 		public Enum InvertIncludeFlag(Enum flags, Enum flag)
 		{
-			flags = EnumHelper.InvertUIntFlag(flags, flag);
+			var enumType = flags.GetType();
+			var enumFlag = (Enum)Enum.ToObject(enumType, flag);
 
-			ConsolePrinter.PrintInvertIncludeFlag(flags, flag);
+			flags = EnumHelper.InvertUIntFlag(flags, enumFlag);
+
+			ConsolePrinter.PrintInvertIncludeFlag(flags, enumFlag);
 
 			return flags;
 		}
