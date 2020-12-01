@@ -357,7 +357,7 @@ namespace SramComparer.Services
 
 		protected virtual void PrintColoredLine(ConsoleColor foregroundColor, ConsoleColor backgroundColor, string text)
 		{
-			SetBackgroundColor(foregroundColor);
+			SetBackgroundColor(backgroundColor);
 			PrintColoredLine(foregroundColor, text);
 		}
 		
