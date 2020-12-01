@@ -1,8 +1,8 @@
 # SramComparer
-allows to compare unknown buffers in a SNES' SRAM file. 
+Allows to compare unknown buffers in a SNES' SRAM file. 
 
 ## Features
-* Print current or change and save offset values
+* Print (or change and save) offset values
 * Comparison of Unknowns only (*default*) or whole game buffer (**optional**)
 * Comparison of whole sram outside games (**optional**)
 * Display of differences in decimal, hex and binary format
