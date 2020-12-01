@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CCX.SramCommons" Version="1.0.1-a8" />
+    <PackageReference Include="CCX.SramCommons" Version="1.0.1-a9" />
   </ItemGroup>
 
   <ItemGroup>

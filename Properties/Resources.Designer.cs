@@ -932,7 +932,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Value {0} saved to offset {1}. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Value at offset {0} is {1}. ähnelt.
         /// </summary>
         public static string StatusSetOffsetValueTemplate {
             get {
