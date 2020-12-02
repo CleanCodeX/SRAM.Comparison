@@ -495,9 +495,9 @@ namespace SramComparer.Services
 
 		public virtual void BackupSramFile(IOptions options, SramFileKind file, bool restore = false)
 		{
-			var filepath = file == SramFileKind.Current ? options.CurrentGameFilepath : options.ComparisonGameFilepath;
+			var filepath = file == SramFileKind.Current ? options.CurrentGameFilepath! : options.ComparisonGameFilepath!;
 			var fileTypeName = file == SramFileKind.Current ? Resources.CurrentSramFile : Resources.ComparisonSramFile;
-			var backupFilepath = filepath += BackupFileExtension;
+			var backupFilepath = filepath + BackupFileExtension;
 
 			ConsolePrinter.PrintSectionHeader();
 
