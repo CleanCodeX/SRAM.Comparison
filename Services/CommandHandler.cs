@@ -155,8 +155,8 @@ namespace SramComparer.Services
 		{
 			Requires.FileExists(options.ComparisonGameFilepath, nameof(options.ComparisonGameFilepath), Resources.ErrorComparisonFileDoesNotExist);
 
-			var currFileStream = new FileStream(options.CurrentGameFilepath!, FileMode.Open, FileAccess.Read);
-			var compFileStream = new FileStream(options.ComparisonGameFilepath!, FileMode.Open, FileAccess.Read);
+			using var currFileStream = new FileStream(options.CurrentGameFilepath!, FileMode.Open, FileAccess.Read);
+			using var compFileStream = new FileStream(options.ComparisonGameFilepath!, FileMode.Open, FileAccess.Read);
 
 			Compare<TComparer>(currFileStream, compFileStream, options);
 		}
@@ -253,7 +253,7 @@ namespace SramComparer.Services
 				using var fileStream = new FileStream(filepath, FileMode.OpenOrCreate, FileAccess.Write);
 				using var writer = new StreamWriter(fileStream);
 
-				Compare<TComparer>(options, new StreamWriter(fileStream));
+				Compare<TComparer>(options, writer);
 
 				writer.Close();
 				fileStream.Close();
@@ -310,7 +310,7 @@ namespace SramComparer.Services
 			if (createNewFile)
 				saveFilePath += ".manipulated";
 
-			var currStream = new FileStream(options.CurrentGameFilepath!, FileMode.Open, FileAccess.Read);
+			using var currStream = new FileStream(options.CurrentGameFilepath!, FileMode.Open, FileAccess.Read);
 			var currFile = ClassFactory.Create<TSramFile>(currStream, options.Region);
 
 			currFile.SetOffsetBytes(gameIndex, offset, bytes);
@@ -328,7 +328,7 @@ namespace SramComparer.Services
 		{
 			Requires.FileExists(options.CurrentGameFilepath, nameof(options.CurrentGameFilepath));
 
-			var currStream = new FileStream(options.CurrentGameFilepath!, FileMode.Open, FileAccess.Read);
+			using var currStream = new FileStream(options.CurrentGameFilepath!, FileMode.Open, FileAccess.Read);
 			var currFile = ClassFactory.Create<TSramFile>(currStream, options.Region);
 
 			var offset = GetOffset(out var gameIndex);
