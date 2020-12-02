@@ -15,7 +15,7 @@ namespace SramComparer.Services
 		public virtual void PrintSettings(IOptions options)
 		{
 			PrintSectionHeader();
-			PrintColored(ConsoleColor.Gray, Res.Settings + @":");
+			PrintColoredLine(ConsoleColor.Gray, Res.Settings + @":");
 
 			PrintSettingName(Res.SettingCurrentGameFilepath, "{0}");
 			PrintValue(Path.GetFileName(options.CurrentGameFilepath!));
