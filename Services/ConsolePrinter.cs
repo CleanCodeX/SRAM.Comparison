@@ -137,7 +137,7 @@ namespace SramComparer.Services
 
 		protected virtual string GetManualText() => Res.AppManualCommandsTemplate.InsertArgs(
 			BaseCommands.ow, BaseCommands.c, BaseCommands.e, BaseCommands.sg, BaseCommands.sgc, BaseCommands.fwg, BaseCommands.fng,
-			BaseCommands.b, BaseCommands.bc, BaseCommands.r, BaseCommands.rc);
+			BaseCommands.b, BaseCommands.bc, BaseCommands.r, BaseCommands.rc, BaseCommands.dov, BaseCommands.mov);
 
 		protected virtual string GetAppDescriptionText() => Res.AppDescription;
 

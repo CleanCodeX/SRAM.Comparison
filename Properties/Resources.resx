@@ -158,6 +158,8 @@
      If you are unsure, leave it as it is to compare as less as possible bytes.
 
 7)   (optional) Current and comparison srm file can be backed-up press ({7}|{8}) or restored ({9}|{10}) individually.
+
+8)   (optional) SRAM offset values for specific game slots can be displayed by pressing ({11}) or manipulated ({12}). You can decide whether to update your current sram file (backup recommended) or creating a new file.
     </value>
   </data>
   <data name="ErrorMissingPathArguments" xml:space="preserve">
