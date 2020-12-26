@@ -346,7 +346,7 @@
     <value>Size</value>
   </data>
   <data name="Bytes" xml:space="preserve">
-    <value>Bytes</value>
+    <value>bytes</value>
   </data>
   <data name="CommandOverwriteComparisonFile" xml:space="preserve">
     <value>Overwrite comparison file with current SRAM file</value>

@@ -104,7 +104,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Bytes ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die bytes ähnelt.
         /// </summary>
         public static string Bytes {
             get {
