@@ -319,8 +319,8 @@ namespace SramComparer.Services
 			ConsolePrinter.PrintColoredLine(ConsoleColor.Green, Resources.StatusSetOffsetValueTemplate.InsertArgs(value, offset));
 			var fileName = Path.GetFileName(saveFilePath);
 			ConsolePrinter.PrintColoredLine(ConsoleColor.Green, createNewFile 
-				? Resources.StatusChangedSramFileHasBeenSavedAsFilepathTemplate.InsertArgs(fileName)
-				: Resources.StatusChangedSramFileHasBeenOverwrittenFilepathTemplate.InsertArgs(fileName));
+				? Resources.StatusModifiedSramFileHasBeenSavedAsFilepathTemplate.InsertArgs(fileName)
+				: Resources.StatusModifiedSramFileHasBeenOverwrittenFilepathTemplate.InsertArgs(fileName));
 			ConsolePrinter.ResetColor();
 		}
 
@@ -424,8 +424,8 @@ namespace SramComparer.Services
 			return flags;
 		}
 
-		public int GetGameOffset(int gameIndex) => (int)InternalGetValue(Resources.SetGameOffsetTemplate.InsertArgs(gameIndex + 1), Resources.StatusOffsetWillBeUsedTemplate);
-		public uint GetGameOffsetValue() => InternalGetValue(Resources.SetGameOffsetValue, Resources.StatusOffsetValueWillBeUsedTemplate);
+		public int GetGameOffset(int gameIndex) => (int)InternalGetValue(Resources.GetGameOffsetTemplate.InsertArgs(gameIndex + 1), Resources.StatusOffsetWillBeUsedTemplate);
+		public uint GetGameOffsetValue() => InternalGetValue(Resources.GetGameOffsetValue, Resources.StatusOffsetValueWillBeUsedTemplate);
 
 		private string InternalGetStringValue(string prompt, string? promptResultTemplate = null)
 		{

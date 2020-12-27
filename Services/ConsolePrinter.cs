@@ -345,7 +345,7 @@ namespace SramComparer.Services
 
 		protected virtual void PrintBackgroundColored(ConsoleColor color, string text)
 		{
-			SetBackgroundColor(color);
+						SetBackgroundColor(color);
 			Print(text);
 		}
 

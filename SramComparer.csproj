@@ -17,6 +17,7 @@
     <PackageId>CCX.SramComparer</PackageId>
     <Product>SramComparer</Product>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Platforms>AnyCPU;x86</Platforms>
   </PropertyGroup>
 
   <ItemGroup>

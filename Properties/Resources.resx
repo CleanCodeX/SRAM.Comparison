@@ -122,81 +122,84 @@
   </data>
   <data name="AppManualCommandsTemplate" xml:space="preserve">
     <value>Steps: 
-1.1) Have a look into UnknownOffsets.txt (if existing) to see examples of what parts of SRAM structure are still 
-     considered "unknown".
+1.1) Have a look at http://unknowns.xeth.de to see examples of what parts of SRAM structure are still 
+     considered as unknown.
 1.2) Most emulators have the option to save the game's S-RAM automatically after a change occurs. 
      Make sure this is enabled if existing. Otherwise you have manually ensure that the emulator updates 
-     the srm file.
-1.3) Start the tool by passing the game's srm filepath as first command parameter. The file can also be 
-     dragged onto the tool.
+     the *.srm file.
+1.3) Start the application by passing the game's srm filepath as first command parameter. The file can also be 
+     dragged onto the application.
 
-2)   Switch to this tool and press ({0}) to create/overwrite a comparison copy of your current SRAM file allow
-     comparison after your next change of the game's srm file.
+2)   Then press ({0}) to create a comparison copy of your current SRAM file. This allows to compare with after the current SRAM file changed.
 
-3.1) Cause in-game a SRAM change by doing a specific action. (e.g. let a game progress event happen or 
-    open a chest) This change needs to be saved in the inn to make the game update the srm file.
+3.1) Cause in-game a SRAM change. (e.g. let a game progress event happen or 
+    open an unopened chest) To force the SRAM file to be updated, save your game in-game at the inn.
 3.2) Press ({1}) to compare the current srm file with comparison file. 
      (If the SRAM file did not change at all, you probably did not save in-game or the emulator didn't
      (yet!) update the SRAM (srm) file automatically. Check the modification date of the game's srm file.
-     For Example: Snes9x's default srm update period is 30 seconds. Decrease it to a lower value, like 1,
-     but not to 0.
+     For Example: Snes9x's default srm update period is 30 seconds. Decrease it to a lower value, like 1 second,
+     but not to 0 (which deactivates the automatism).
 
-4.1) Once you got the offset of the changed value and bit what has changed you've found a meaning for a 
-     specific bit/byte. Then press ({2}) to export the comparison result to a textfile in your export 
-     directory. 
+4.1) Make sure you change as less as possible during two saves to avoid unnecessary noise. As soon as you can clearly assign a change in the game to a change in SRAM, you have found a meaning for this specific offset. Once you're able to  assigning an in-game uniquely a change of SRAM you found a meaning for that offset. Then press ({2}) to export the comparison result to a textfile in your export directory. 
 4.2) Rename the file expressing your current discovery. 
      If it is reproducable, consider to report the exported file to the tool's creator 
      and/or contribute the change to SRAM structure to the tool's github repository.
 
+4.1) Make sure to change as little as possible between two saves to avoid unnecessary noise. Alleged assignments are often just coincidence.
+4.2) As soon as you can clearly assign a change in the game to a change in the SRAM, you have found a meaning for this specific offset. Then press ({2}) to export the comparison result as a text file in your export directory.
+4.3) Rename the file according to your find.
+4.4) Check whether the change found also occurs in other game versions. E.g. unpatched or patched versions.
+4.5) If it is reproducible, report the find via community.xeth.de. If necessary, create a pull request for a change to the documentation and the SRAM structure in the GitHub repository..
+
 5)   To start a "fresh" comparison without previous SRAM changes, press again ({0}) to save your current SRAM file 
-     as comparison file and start again at step 3.1.
+     as comparison file. Then start again at step 3.1.
 
 6.1) (optional, advanced) If you have more than one slot with changes to comparison file, press ({3}) to
-     set the game's save slot (1-4) to avoid comparing other game slots. If twi different games should be 
-     compared with each other, additionally press ({4}) to set the the slot of comparison srm file, too.
+     set the game's save slot (1-4) to avoid comparing other game slots. If two different game slots should be 
+     compared with each other, additionally press ({4}) to set the the slot of comparison file, too.
 6.2) (optional, advanced) Press ({5} | {6}) to set comparison modes. 
-     If you are unsure, leave it as it is to compare as less as possible bytes.
+     If you are unsure, leave at default to compare as less as possible bytes.
 
-7)   (optional) Current and comparison srm file can be backed-up press ({7}|{8}) or restored ({9}|{10}) individually.
+7)   (optional) Current and comparison srm file can be backed-up ({7}|{8}) or restored ({9}|{10}) individually.
 
-8)   (optional) SRAM offset values for specific game slots can be displayed by pressing ({11}) or manipulated ({12}). You can decide whether to update your current sram file (backup recommended) or creating a new file.
+8)   (optional) SRAM offset values for specific game slots can be displayed by pressing ({11}) or manipulated by ({12}). You can decide whether to update your current SRAM file (backup recommended) or creating a new file.
     </value>
   </data>
   <data name="ErrorMissingPathArguments" xml:space="preserve">
-    <value>ERROR: The programm needs to be started with at least one argument: "{CURRENT_SRM_FILEPATH}"</value>
+    <value>ERROR: The programm needs to be started with at least the path to current SRAM file as a parameter. Drag 'n' drop can be used.</value>
   </data>
   <data name="StatusBytesChangedTemplate" xml:space="preserve">
     <value>{0} bytes changed</value>
   </data>
   <data name="SettingCurrentGameToCompare" xml:space="preserve">
-    <value>Current game (to compare)</value>
+    <value>Game slot of current file</value>
   </data>
   <data name="SettingComparisonGameToCompare" xml:space="preserve">
-    <value>Comparison game (to compare)</value>
+    <value>Game slot of Comparison file</value>
   </data>
   <data name="SettingRegion" xml:space="preserve">
-    <value>Game region</value>
+    <value>ROM region</value>
   </data>
   <data name="ComparisonFlags" xml:space="preserve">
     <value>Comparison flags</value>
   </data>
   <data name="SettinComparegNonGameBuffer" xml:space="preserve">
-    <value>Compare non-game buffer</value>
+    <value>Compare non-game slot area</value>
   </data>
   <data name="SettingCompareWholeGameBuffer" xml:space="preserve">
-    <value>Compare whole game buffer</value>
+    <value>Compare whole game slot area</value>
   </data>
   <data name="SettingComparisonGameFilepath" xml:space="preserve">
-    <value>Comparison game filepath</value>
+    <value>Comparison SRAM filepath</value>
   </data>
   <data name="SettingExportDirectory" xml:space="preserve">
     <value>Export directory</value>
   </data>
   <data name="SettingCurrentGameFilepath" xml:space="preserve">
-    <value>Current game filepath</value>
+    <value>Current SRAM filepath</value>
   </data>
   <data name="StatusGameWillBeComparedTemplate" xml:space="preserve">
-    <value>Only current game {0} will be compared.</value>
+    <value>Only current game slot {0} will be compared.</value>
   </data>
   <data name="StatusOffsetWillBeUsedTemplate" xml:space="preserve">
     <value>Offset {0} will be used.</value>
@@ -205,19 +208,19 @@
     <value>Offset value {0} will be set.</value>
   </data>
   <data name="StatusAllGamesWillBeCompared" xml:space="preserve">
-    <value>All games will be compared.</value>
+    <value>All game slots will be compared.</value>
   </data>
   <data name="GameOffset" xml:space="preserve">
-    <value>Game offset</value>
+    <value>Game slot offset</value>
   </data>
   <data name="SramOffset" xml:space="preserve">
-    <value>Sram offset</value>
+    <value>SRAM offset</value>
   </data>
   <data name="ErrorCannotOpenOutputFileTemplate" xml:space="preserve">
     <value>Cannot open output file "{0}" for writing</value>
   </data>
   <data name="AppDescription" xml:space="preserve">
-    <value>This tool compares unknown buffers in SRAM file.</value>
+    <value>This tool compares unknown areas in SRAM.</value>
   </data>
   <data name="ErrorCommandNotImplementedTemplate" xml:space="preserve">
     <value>Command ({0}) needs to be implemented by caller.</value>
@@ -226,16 +229,16 @@
     <value>None</value>
   </data>
   <data name="StatusCompareWholeGameBuffer" xml:space="preserve">
-    <value>Compare whole game buffer:</value>
+    <value>Compare whole game slot area:</value>
   </data>
   <data name="StatusCompareNonGameBuffer" xml:space="preserve">
-    <value>Compare non-game buffer:</value>
+    <value>Compare non-game slot area:</value>
   </data>
   <data name="StatusCurrentSramFileHasBeenSaved" xml:space="preserve">
     <value>Current SRAM file has been saved as comparison SRAM file</value>
   </data>
   <data name="StatusCurrentSramFileHasBeenBackedUpTemplate" xml:space="preserve">
-    <value>{0} has been backed up</value>
+    <value>{0} has been backed-up</value>
   </data>
   <data name="StatusSramFileHasBeenRestoredFromBackupTemplate" xml:space="preserve">
     <value>{0} has been restored from backup</value>
@@ -247,19 +250,19 @@
     <value>Manual</value>
   </data>
   <data name="CommandSetGame" xml:space="preserve">
-    <value>Set current SRAM file's game (save slot)</value>
+    <value>Set current SRAM file's game slot</value>
   </data>
   <data name="CommandSetComparisonGame" xml:space="preserve">
-    <value>Set comparison SRAM file's game (save slot)</value>
+    <value>Set comparison SRAM file's game slot</value>
   </data>
   <data name="CommandDisplaySettings" xml:space="preserve">
     <value>Display settings</value>
   </data>
   <data name="CommandIncludeWholeGameBufferComparison" xml:space="preserve">
-    <value>Compare also whole game buffer while comparison</value>
+    <value>Additionally compare whole game slot area</value>
   </data>
   <data name="CommandIncludeNonGameBufferComparison" xml:space="preserve">
-    <value>Compare also non game buffer while comparison</value>
+    <value>Additionally compare also non-game slot area</value>
   </data>
   <data name="CommandDisplayOffsetValue" xml:space="preserve">
     <value>Display offset value</value>
@@ -268,19 +271,19 @@
     <value>Save manipulated offset value</value>
   </data>
   <data name="SetGameToCompareMaxTemplate" xml:space="preserve">
-    <value>Set Game (1-{0} or any other key for all games) to compare:</value>
+    <value>Set game slot (1-{0} or any other key for all game slots) to compare:</value>
   </data>
   <data name="SetSingleGameMaxTemplate" xml:space="preserve">
-    <value>Set Game (1-{0}):</value>
+    <value>Set game slot (1-{0}):</value>
   </data>
   <data name="StatusSetSingleGameMaxTemplate" xml:space="preserve">
     <value>Game {0} will be used.</value>
   </data>
-  <data name="SetGameOffsetTemplate" xml:space="preserve">
-    <value>Set Game offset:</value>
+  <data name="GetGameOffsetTemplate" xml:space="preserve">
+    <value>Set Game slot offset:</value>
   </data>
-  <data name="SetGameOffsetValue" xml:space="preserve">
-    <value>Set Game offset value:</value>
+  <data name="GetGameOffsetValue" xml:space="preserve">
+    <value>Set Game slot offset value:</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>
@@ -292,7 +295,7 @@
     <value>Current</value>
   </data>
   <data name="Offset" xml:space="preserve">
-    <value>Offset</value>
+    <value>Offset</value><comment>This term should only be translated if not understandable</comment>
   </data>
   <data name="ChangeShort" xml:space="preserve">
     <value>Change</value>
@@ -304,10 +307,10 @@
     <value>New</value>
   </data>
   <data name="CurrentShort" xml:space="preserve">
-    <value>Curr</value>
+    <value>Curr</value><comment>This is an abbreviation and should be kept as short as possible</comment>
   </data>
   <data name="ComparisonShort" xml:space="preserve">
-    <value>Comp</value>
+    <value>Comp</value><comment>This is an abbreviation and should be kept as short as possible</comment>
   </data>
   <data name="StatusTotalDiffBytesTemplate" xml:space="preserve">
     <value>Total: {0} bytes changed (outside game)</value>
@@ -325,13 +328,13 @@
     <value>All (knowns + unknowns)</value>
   </data>
   <data name="StatusGameChangedBytesTemplate" xml:space="preserve">
-    <value>All (knowns + unknowns):   {0} bytes changed</value>
+    <value>All (knowns + unknowns): {0} bytes changed</value>
   </data>
   <data name="SectionNonGameUnknowns" xml:space="preserve">
-    <value>Non Game unknowns</value>
+    <value>Non-game slot unknowns</value>
   </data>
   <data name="StatusNonGameUnknownsBytesTemplate" xml:space="preserve">
-    <value>Non game unknowns: {0} bytes changed</value>
+    <value>Non-game unknowns: {0} bytes changed</value>
   </data>
   <data name="StatusSramChangedBytesTemplate" xml:space="preserve">
     <value>{0} SRAM bytes changed</value>
@@ -364,7 +367,7 @@
     <value>Restore comparison SRAM file from backup</value>
   </data>
   <data name="CommandCompareFiles" xml:space="preserve">
-    <value>Compare current SRAM file and with comparison file</value>
+    <value>Compare current SRAM file with comparison file</value>
   </data>
   <data name="CommandWipeOutput" xml:space="preserve">
     <value>Wipe previous console output</value>
@@ -385,10 +388,10 @@
     <value>Enter command and press enter.</value>
   </data>
   <data name="StartMessage" xml:space="preserve">
-    <value>New here? Type ({0}|?) for command list or ({1}) for manual and press enter</value>
+    <value>New here? For command list use ({0}|?) or ({1}) for manual</value>
   </data>
   <data name="Game" xml:space="preserve">
-    <value>Game</value>
+    <value>Game slot</value>
   </data>
   <data name="All" xml:space="preserve">
     <value>All</value>
@@ -400,16 +403,16 @@
     <value>Backup</value>
   </data>
   <data name="ErrorComparisonFileDoesNotExist" xml:space="preserve">
-    <value>The comparison file "{0}" has not been created yet.</value>
+    <value>The comparison file "{0}" has not been created yet. Please create one first.</value>
   </data>
   <data name="ErrorNoValidCommandCmdTemplate" xml:space="preserve">
-    <value>"{0}" is no valid command. Type ({1}) to list all available commands.</value>
+    <value>"{0}" is an unknown command. To list all available commands enter ({1}).</value>
   </data>
   <data name="ErrorComparisoGameSetButNotGame" xml:space="preserve">
-    <value>Game (save slot) for comparison srm file can only be set if current srm file's game is set first.</value>
+    <value>Game slot for comparison SRAM file can only be set if current SRAM file's game slot is set first.</value>
   </data>
   <data name="SameAsCurrentGame" xml:space="preserve">
-    <value>Same as current game</value>
+    <value>Same as current game slot</value>
   </data>
   <data name="CmdGroupBackup" xml:space="preserve">
     <value>Backup</value>
@@ -418,7 +421,7 @@
     <value>Comparison</value>
   </data>
   <data name="CmdGroupSetGame" xml:space="preserve">
-    <value>Set game (save slot)</value>
+    <value>Set game slot (save slot)</value>
   </data>
   <data name="CmdOther" xml:space="preserve">
     <value>Other</value>
@@ -439,25 +442,25 @@
     <value>{0} comparison file must have .comp file extension. Did you just forget to quote the path? Was: {1}</value>
   </data>
   <data name="StatusCurrentSramHasBeenSavedAsFilepathTemplate" xml:space="preserve">
-    <value>Current SRAM file has been transferred to {0}.</value>
+    <value>Current SRAM file has been copied as {0}.</value>
   </data>
   <data name="StatusTargetSramFileHasBeenBackedUpFilepathTemplate" xml:space="preserve">
     <value>Target SRAM file has been backed up as {0}.</value>
   </data>
-  <data name="StatusChangedSramFileHasBeenSavedAsFilepathTemplate" xml:space="preserve">
+  <data name="StatusModifiedSramFileHasBeenSavedAsFilepathTemplate" xml:space="preserve">
     <value>Changed current SRAM File has been saved as {0}.</value>
   </data>
   <data name="StatusGetOffsetValueTemplate" xml:space="preserve">
     <value>Value at offset {0} is {1}.</value>
   </data>
   <data name="StatusSetOffsetValueTemplate" xml:space="preserve">
-    <value>Value at offset {0} is {1}.</value>
+    <value>Value at offset {0} is now {1}.</value>
   </data>
-  <data name="StatusChangedSramFileHasBeenOverwrittenFilepathTemplate" xml:space="preserve">
+  <data name="StatusModifiedSramFileHasBeenOverwrittenFilepathTemplate" xml:space="preserve">
     <value>Changed current SRAM File has been overwritten. File: {0}.</value>
   </data>
   <data name="PromtCreateNewFileInsteadOfOverwriting" xml:space="preserve">
-    <value>Would you like to create a new SRAM file instead overwriting the current file? Type 1 for creating a new file (recommended) or type 2 to overwrite the existing file. In this case make sure to have a backup created before. 1 = new, 2 = overwrite, 0 = abort</value>
+    <value>Would you like to create a new SRAM file instead overwriting the current file? Type 1 for creating a new file (recommended) or type 2 to overwrite the existing file. In the latter case make sure to have a backup created before. 1 = new, 2 = overwrite, 0 = abort</value>
   </data>
   <data name="ErrorInvalidIndex" xml:space="preserve">
     <value>Invalid index. Aborted.</value>
@@ -469,6 +472,6 @@
     <value>Enter index (0 to {0}) of the SRAM file to be overwritten (any other key to cancel):</value>
   </data>
   <data name="ErrorParamNameValueMissmatchTemplate" xml:space="preserve">
-    <value>Parameter name value missmatch for: {0}</value>
+    <value>Parameter name value mismatch for: {0}</value>
   </data>
 </root>
