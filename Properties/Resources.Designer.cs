@@ -230,7 +230,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Additionally compare also non-game slot area ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Additionally compare non-game slot area ähnelt.
         /// </summary>
         public static string CommandIncludeNonGameBufferComparison {
             get {

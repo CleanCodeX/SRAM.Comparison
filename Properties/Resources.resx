@@ -202,19 +202,19 @@
     <value>Only current game slot {0} will be compared.</value>
   </data>
   <data name="StatusOffsetWillBeUsedTemplate" xml:space="preserve">
-    <value>Offset {0} will be used.</value>
+    <value>Offset {0} will be used.</value><comment>The term Offset should only be translated if not understandable</comment>
   </data>
   <data name="StatusOffsetValueWillBeUsedTemplate" xml:space="preserve">
-    <value>Offset value {0} will be set.</value>
+    <value>Offset value {0} will be set.</value><comment>The term Offset should only be translated if not understandable</comment>
   </data>
   <data name="StatusAllGamesWillBeCompared" xml:space="preserve">
     <value>All game slots will be compared.</value>
   </data>
   <data name="GameOffset" xml:space="preserve">
-    <value>Game slot offset</value>
+    <value>Game slot offset</value><comment>The term Offset should only be translated if not understandable</comment>
   </data>
   <data name="SramOffset" xml:space="preserve">
-    <value>SRAM offset</value>
+    <value>SRAM offset</value><comment>The term Offset should only be translated if not understandable</comment>
   </data>
   <data name="ErrorCannotOpenOutputFileTemplate" xml:space="preserve">
     <value>Cannot open output file "{0}" for writing</value>
@@ -262,13 +262,13 @@
     <value>Additionally compare whole game slot area</value>
   </data>
   <data name="CommandIncludeNonGameBufferComparison" xml:space="preserve">
-    <value>Additionally compare also non-game slot area</value>
+    <value>Additionally compare non-game slot area</value>
   </data>
   <data name="CommandDisplayOffsetValue" xml:space="preserve">
     <value>Display offset value</value>
   </data>
   <data name="CommandSaveManipulatedOffsetValue" xml:space="preserve">
-    <value>Save manipulated offset value</value>
+    <value>Save manipulated offset value</value><comment>The term Offset should only be translated if not understandable</comment>
   </data>
   <data name="SetGameToCompareMaxTemplate" xml:space="preserve">
     <value>Set game slot (1-{0} or any other key for all game slots) to compare:</value>
@@ -280,10 +280,10 @@
     <value>Game {0} will be used.</value>
   </data>
   <data name="GetGameOffsetTemplate" xml:space="preserve">
-    <value>Set Game slot offset:</value>
+    <value>Set Game slot offset:</value><comment>The term Offset should only be translated if not understandable</comment>
   </data>
   <data name="GetGameOffsetValue" xml:space="preserve">
-    <value>Set Game slot offset value:</value>
+    <value>Set Game slot offset value:</value><comment>The term Offset should only be translated if not understandable</comment>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>
@@ -451,10 +451,10 @@
     <value>Changed current SRAM File has been saved as {0}.</value>
   </data>
   <data name="StatusGetOffsetValueTemplate" xml:space="preserve">
-    <value>Value at offset {0} is {1}.</value>
+    <value>Value at offset {0} is {1}.</value><comment>The term Offset should only be translated if not understandable</comment>
   </data>
   <data name="StatusSetOffsetValueTemplate" xml:space="preserve">
-    <value>Value at offset {0} is now {1}.</value>
+    <value>Value at offset {0} is now {1}.</value><comment>The term Offset should only be translated if not understandable</comment>
   </data>
   <data name="StatusModifiedSramFileHasBeenOverwrittenFilepathTemplate" xml:space="preserve">
     <value>Changed current SRAM File has been overwritten. File: {0}.</value>
