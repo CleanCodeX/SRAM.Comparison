@@ -172,10 +172,10 @@
     <value>{0} bytes changed</value>
   </data>
   <data name="CurrentSramFileSaveSlot" xml:space="preserve">
-    <value>Save slot of current file</value>
+    <value>Save slot (current file)</value>
   </data>
   <data name="ComparisonSramFileSaveSlot" xml:space="preserve">
-    <value>Save slot of Comparison file</value>
+    <value>Save slot (Comparison file)</value>
   </data>
   <data name="GameRegion" xml:space="preserve">
     <value>game region</value>
@@ -213,9 +213,6 @@
   <data name="StatusAllSaveSlotsWillBeCompared" xml:space="preserve">
     <value>All save slots will be compared.</value>
   </data>
-  <data name="GameOffset" xml:space="preserve">
-    <value>Save slot offset</value><comment>The term Offset should only be translated if not understandable</comment>
-  </data>
   <data name="SramOffset" xml:space="preserve">
     <value>SRAM offset</value><comment>The term Offset should only be translated if not understandable</comment>
   </data>
@@ -230,12 +227,6 @@
   </data>
   <data name="None" xml:space="preserve">
     <value>None</value>
-  </data>
-  <data name="StatusCompareWholeGameBuffer" xml:space="preserve">
-    <value>Compare whole save slot area:</value>
-  </data>
-  <data name="StatusCompareNonGameBuffer" xml:space="preserve">
-    <value>Compare non-save slot area:</value>
   </data>
   <data name="StatusCurrentSramFileHasBeenSaved" xml:space="preserve">
     <value>Current SRAM file has been saved as comparison SRAM file</value>
@@ -261,11 +252,17 @@
   <data name="CommandSettings" xml:space="preserve">
     <value>Display settings</value>
   </data>
-  <data name="CommandDoSlotAllBytesComparison" xml:space="preserve">
-    <value>Do slot all bytes comparison</value>
+  <data name="SlotByteByByteComparison" xml:space="preserve">
+    <value>Slot byte-by-byte comparison</value>
   </data>
-  <data name="CommandDoNonSlotBytesComparison" xml:space="preserve">
-    <value>Do non-slot bytes comparison</value>
+  <data name="NonSlotByteByByteComparison" xml:space="preserve">
+    <value>Non-slot byte-by-byte comparison</value>
+  </data>
+  <data name="CommandSlotByteByBytesComparison" xml:space="preserve">
+    <value>Add slot byte-by-byte comparison</value>
+  </data>
+  <data name="CommandNonSlotByteByByteComparison" xml:space="preserve">
+    <value>Add non-slot byte-by-byte comparison</value>
   </data>
   <data name="CommandOffsetValue" xml:space="preserve">
     <value>Display offset value</value>
@@ -318,7 +315,7 @@
   <data name="StatusTotalDiffBytesTemplate" xml:space="preserve">
     <value>Total: {0} bytes changed (outside save slot area)</value>
   </data>
-  <data name="UnknownsOnly" xml:space="preserve">
+  <data name="UnknownAreasOnly" xml:space="preserve">
     <value>Unknowns only</value>
   </data>
   <data name="StatusUnknownsChangedBytesTemplate" xml:space="preserve">
@@ -337,7 +334,7 @@
     <value>Non-save slot unknowns</value>
   </data>
   <data name="StatusNonSaveSlotUnknownsBytesTemplate" xml:space="preserve">
-    <value>Non-save slot unknowns: {0} bytes changed</value>
+    <value>Unknown non-save slot area: {0} bytes changed</value>
   </data>
   <data name="StatusSramChangedBytesTemplate" xml:space="preserve">
     <value>{0} SRAM bytes changed</value>
@@ -476,5 +473,8 @@
   </data>
   <data name="ErrorParamNameValueMissmatchTemplate" xml:space="preserve">
     <value>Parameter name value mismatch for: {0}</value>
+  </data>
+  <data name="SaveSlotOffset" xml:space="preserve">
+    <value>Save slot offset</value>
   </data>
 </root>

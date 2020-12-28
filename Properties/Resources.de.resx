@@ -15,19 +15,19 @@
 		<value>Ziel SRAM-Datei wurde gesichert als {0}.</value>
 	</data>
 	<data name="StatusTotalDiffBytesTemplate" xml:space="preserve">
-		<value>Gesamt: {0} Bytes geändert (außerhalb des Speicherplatzs)</value>
+		<value>Gesamt: {0} Bytes geändert (außerhalb des Speicherslots)</value>
 	</data>
-	<data name="UnknownsOnly" xml:space="preserve">
-		<value>Nur Unbekannte</value>
+	<data name="UnknownAreasOnly" xml:space="preserve">
+		<value>Nur unbekannte Bereiche</value>
 	</data>
 	<data name="StatusSramFileHasBeenRestoredFromBackupTemplate" xml:space="preserve">
 		<value>{0} wurde aus Sicherung wiederhergestellt</value>
 	</data>
 	<data name="StatusSramChangedBytesTemplate" xml:space="preserve">
-		<value>{0} SRAM Bytes haben sich geändert</value>
+		<value>{0} SRAM Bytes geändert</value>
 	</data>
 	<data name="StatusSetSingleSaveSlotMaxTemplate" xml:space="preserve">
-		<value>Speicher-Slot {0} wird verwendet.</value>
+		<value>Speicherslot {0} wird verwendet.</value>
 	</data>
 	<data name="StatusSetOffsetValueTemplate" xml:space="preserve">
 		<value>Der Wert von Offset {0} ist jetzt {1}.</value><comment>The term Offset should only be translated if not understandable</comment>
@@ -42,7 +42,7 @@
 		<value>Es haben sich keine SRAM Bytes geändert.</value>
 	</data>
 	<data name="StatusNonSaveSlotUnknownsBytesTemplate" xml:space="preserve">
-		<value>Nicht-Speicherslot Unbekannte: {0} Bytes haben sich geändert.</value>
+		<value>Unbekannter Nicht-Speicherslot Bereich: {0} Bytes haben sich geändert.</value>
 	</data>
 	<data name="StatusNoAvailableOtherSramFiles" xml:space="preserve">
 		<value>Es sind derzeit keine anderen SRAM-Dateien verfügbar.</value>
@@ -60,7 +60,7 @@
 		<value>Steps: 
 1.1) Schau auf Have a look at http://unknowns.xeth.de Beispiele zu sehen, welche Teile der SRAM-Struktur noch als unbekannt gelten.
 1.2) Die meisten Emulatoren haben die Einstellung das SRAM eines Spiels zu speichern sobald eine Änderung eintritt. 
-     Stelel sicher, dass diese Einstellung aktiviert ist. Andernfalls musst du selbst sicherstellen, dass der Emulator die *.srm-Datei aktualisiert.
+     Stelle sicher, dass diese Einstellung aktiviert ist. Andernfalls musst du selbst sicherstellen, dass der Emulator die *.srm-Datei aktualisiert.
 1.3) Starte die Anwendung indem du den Pfad zur Srm Datei des Spiels als ersten Kommandozeilen Parameter übergibst. Die Datei kann auch per Drag 'n' Drop auf die Anwendung gezogen werden.
 
 2)   Anschließend drücke ({0}) um eine Kopie deiner aktuellen SRAM Datei zu erstellen. Diese ermöglicht einen Vergleich nach einer Änderung deiner aktuellen SRAM-Datei.
@@ -80,13 +80,13 @@
 5)   Um einen "frischen" Vergleich ohne vorherige SRAM Änderungen zu ermöglichen, drücke erneut ({0}) um die aktuelle SRAM-Datei als Vergleichs-Datei zu speichern. Anschließend beginne wieder bei Schritt 3.1.
 
 6.1) (optional) Wenn du mehr als einen Speicherslot mit Änderungen zur Vergleichsdatei hast, um 
-       den Vergleich des Spiels auf den jeweiligen Speicherslot (1-4) zu beschränken drücke ({3}). Wenn zwei verschiedene Speicherplatzs verglichen werden sollen, drücken zusätzlich ({4}), um auch den Speicherplatzz der Vergleichs-Datei festzulegen.
+       den Vergleich des Spiels auf den jeweiligen Speicherslot (1-4) zu beschränken drücke ({3}). Wenn zwei verschiedene Speicherslot verglichen werden sollen, drücken zusätzlich ({4}), um auch den Speicherplatzz der Vergleichs-Datei festzulegen.
 6.2) (optional) Um die Vergleichsmodi festzulegen drücke ({5} | {6}).
       Wenn du unsicher bist, lass es bei der Voreinstellung um so wenig wie möglich Bytes zu vergleichen.
 
 7) (optional) Die aktuelle und die Vergleichs-Datei können einzeln gesichert ({7} | {8}) oder wiederhergestellt ({9} | {10}) werden.
 
-8) (optional) SRAM Offset-Werte für bestimmte Speicherplatzs können durch durch Drücken von ({11}) angezeigt oder durch ({12}) manipuliert werden. Du kannst entscheiden, ob du die aktuelle SRAM-Datei aktualisieren (Sicherung empfohlen) oder eine neue Datei erstellen möchtest.
+8) (optional) SRAM Offset-Werte für bestimmte Speicherslot können durch durch Drücken von ({11}) angezeigt oder durch ({12}) manipuliert werden. Du kannst entscheiden, ob du die aktuelle SRAM-Datei aktualisieren (Sicherung empfohlen) oder eine neue Datei erstellen möchtest.
     </value>
 	</data>
 	<data name="Bytes" xml:space="preserve">
@@ -134,11 +134,11 @@
 	<data name="CommandExportComparisonResult" xml:space="preserve">
 		<value>Aktuelles Vergleichsergebnis exportieren</value>
 	</data>
-	<data name="CommandDoNonSlotBytesComparison" xml:space="preserve">
-		<value>Nicht-Speicherslot Byte-Vergleich durchführen</value>
+	<data name="NonSlotByteByByteComparison" xml:space="preserve">
+		<value>Nicht-Speicherslot Byte-Für-Byte-Vergleich</value>
 	</data>
-	<data name="CommandDoSlotAllBytesComparison" xml:space="preserve">
-		<value>Speicherslot Byte-Vergleich durchführen</value>
+	<data name="SlotByteByByteComparison" xml:space="preserve">
+		<value>Speicherslot Byte-Für-Byte-Vergleich</value>
 	</data>
 	<data name="CommandManual" xml:space="preserve">
 		<value>Anleitung</value>
@@ -204,14 +204,8 @@
 	<data name="ErrorCommandNotImplementedTemplate" xml:space="preserve">
 		<value>Der Befehl ({0}) muss vom Aufrufer implementiert werden.</value>
 	</data>
-	<data name="ErrorComparisoGameSetButNotGame" xml:space="preserve">
-		<value>Der Vergleichs-Datei Speicherslot kann erst gesetzt werden, nachdem der Speicherslot der aktuellen SRAM-Datei festgelegt wurde.</value>
-	</data>
 	<data name="ErrorComparisonFileDoesNotExist" xml:space="preserve">
 		<value>Die Vergleichs-Datei "{0}" wurde noch nicht erstellt. Bitte zuerst eine erstellen.</value>
-	</data>
-	<data name="ErrorCompGameFileIsNotCompFileTypeFilepathTemplate" xml:space="preserve">
-		<value>{0} Vergleichs SRAM-Datei muss eine .comp Datei-Endung besitzen. Hast du vielleicht nur vergessen den Pfad in Anführungszeichen zu setzen? War: {1}</value>
 	</data>
 	<data name="ErrorFileIsNotSrmFileTypeFilepathTemplate" xml:space="preserve">
 		<value>{0} aktuelle SRAM-Datei muss eine .srm Datei-Endung besitzen. Hast du vielleicht nur vergessen den Pfad in Anführungszeichen zu setzen? War: {1}</value>
@@ -300,11 +294,8 @@
 	<data name="StartMessage" xml:space="preserve">
 		<value>Neu hier? Für eine Liste aller Befehle gib ({0}|?) oder ({1}) für eine Bedienungsanleitung ein</value>
 	</data>
-	<data name="StatusAllGamesWillBeCompared" xml:space="preserve">
-		<value>Alle Speicherplatzs werden verglichen.</value>
-	</data>
 	<data name="StatusBytesChangedTemplate" xml:space="preserve">
-		<value>{0} Bytes haben sich geändert.</value>
+		<value>{0} Bytes geändert.</value>
 	</data>
 	<data name="StatusModifiedSramFileHasBeenOverwrittenFilepathTemplate" xml:space="preserve">
 		<value>Die geänderte aktuelle SRAM-Datei wurde überschrieben. Datei: {0}.</value>
@@ -315,11 +306,8 @@
 	<data name="PromtCreateNewFileInsteadOfOverwriting" xml:space="preserve">
 		<value>Möchtest du eine neue SRAM-Datei erstellen anstatt die aktuelle Datei zu überschreiben? Gib 1 ein um eine neue Datei zu erstellen (empfohlen) oder gib 2 ein um die existierende Datei zu überschreiben. In letzterem Fall stelle sicher, zuvor eine Sicherung gemacht zu haben. 1 = neu, 2 = überschreiben, 0 = abbrechen</value>
 	</data>
-	<data name="SectionNonGameUnknowns" xml:space="preserve">
-		<value>Nicht-Speicherslot Unbekannte</value>
-	</data>
 	<data name="SetSaveSlotToCompareMaxTemplate" xml:space="preserve">
-		<value>Setze Spieslot (1-{0} oder jede andere Taste um alle Speicherplatzs zu vergleichen:</value>
+		<value>Setze Spieslot (1-{0} oder jede andere Taste um alle Speicherslot zu vergleichen:</value>
 	</data>
 	<data name="SetSingleSaveSlotMaxTemplate" xml:space="preserve">
 		<value>Speicherslot (1-{0}) setzen:</value>
@@ -329,12 +317,6 @@
 	</data>
 	<data name="SettingCompareWholeGameBuffer" xml:space="preserve">
 		<value>Vergleiche den gesamten Speicherslot-Bereich</value>
-	</data>
-	<data name="StatusCompareNonGameBuffer" xml:space="preserve">
-		<value>Vergleiche Nicht-Speicherslot Bereich:</value>
-	</data>
-	<data name="StatusCompareWholeGameBuffer" xml:space="preserve">
-		<value>Vergleiche gesamten Speicherslot Bereich:</value>
 	</data>
 	<data name="StatusCurrentSramFileHasBeenBackedUpTemplate" xml:space="preserve">
 		<value>{0} wurde gesichert</value>
@@ -359,5 +341,23 @@
 	</data>
 	<data name="ColorizeOutput" xml:space="preserve">
 		<value>Ausgabe einfärben</value>
+	</data>
+	<data name="StatusAllSaveSlotsWillBeCompared" xml:space="preserve">
+		<value>Alle Speicherslot werden verglichen.</value>
+	</data>
+	<data name="SectionNonSaveSlotUnknowns" xml:space="preserve">
+		<value>Unbekannter nicht-Speicherslot-Bereich</value>
+	</data>
+	<data name="ErrorComparisonSramSaveSlotSetButNotCurrentSramSaveSlot" xml:space="preserve">
+		<value>Der Vergleichs-Datei Speicherslot kann erst gesetzt werden, nachdem der Speicherslot der aktuellen SRAM-Datei festgelegt wurde.</value>
+	</data>
+	<data name="ErrorCompSaveSlotFileIsNotCompFileTypeFilepathTemplate" xml:space="preserve">
+		<value>{0} Vergleichs SRAM-Datei muss eine .comp Datei-Endung besitzen. Hast du vielleicht nur vergessen den Pfad in Anführungszeichen zu setzen? War: {1}</value>
+	</data>
+	<data name="CommandSlotByteByBytesComparison" xml:space="preserve">
+		<value>Speicherslot Byte-für-Byte vergleichen (inklusive der "bekannten" Bereiche) </value>
+	</data>
+	<data name="CommandNonSlotByteByByteComparison" xml:space="preserve">
+		<value>Nicht-Speicherslot-Bereich Byte-für-Byte vergleichen</value>
 	</data>
 </root>

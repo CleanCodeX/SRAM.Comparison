@@ -94,10 +94,10 @@ namespace SramComparer.Services
 					ConsolePrinter.PrintManual();
 					break;
 				case Commands.asbc:
-					options.ComparisonFlags = InvertIncludeFlag(options.ComparisonFlags, ComparisonFlags.SlotAllBytesComparison);
+					options.ComparisonFlags = InvertIncludeFlag(options.ComparisonFlags, ComparisonFlags.SlotByteByByteComparison);
 					break;
 				case Commands.nsbc:
-					options.ComparisonFlags = InvertIncludeFlag(options.ComparisonFlags, ComparisonFlags.NonSlotBytesComparison);
+					options.ComparisonFlags = InvertIncludeFlag(options.ComparisonFlags, ComparisonFlags.NonSlotByteByByteComparison);
 					break;
 				case Commands.ss:
 					options.CurrentSramFileSaveSlot = GetGameId(maxGameId: 4);

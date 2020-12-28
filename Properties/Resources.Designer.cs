@@ -203,24 +203,6 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Do non-slot bytes comparison ähnelt.
-        /// </summary>
-        public static string CommandDoNonSlotBytesComparison {
-            get {
-                return ResourceManager.GetString("CommandDoNonSlotBytesComparison", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Do slot all bytes comparison ähnelt.
-        /// </summary>
-        public static string CommandDoSlotAllBytesComparison {
-            get {
-                return ResourceManager.GetString("CommandDoSlotAllBytesComparison", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Export current comparison result ähnelt.
         /// </summary>
         public static string CommandExportComparisonResult {
@@ -253,6 +235,15 @@ namespace SramComparer.Properties {
         public static string CommandModifyOffsetValue {
             get {
                 return ResourceManager.GetString("CommandModifyOffsetValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Add non-slot byte-by-byte comparison ähnelt.
+        /// </summary>
+        public static string CommandNonSlotByteByByteComparison {
+            get {
+                return ResourceManager.GetString("CommandNonSlotByteByByteComparison", resourceCulture);
             }
         }
         
@@ -338,6 +329,15 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Add slot byte-by-byte comparison ähnelt.
+        /// </summary>
+        public static string CommandSlotByteByBytesComparison {
+            get {
+                return ResourceManager.GetString("CommandSlotByteByBytesComparison", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Wipe previous console output ähnelt.
         /// </summary>
         public static string CommandWipeOutput {
@@ -392,7 +392,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Save slot of Comparison file ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Save slot (Comparison file) ähnelt.
         /// </summary>
         public static string ComparisonSramFileSaveSlot {
             get {
@@ -437,7 +437,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Save slot of current file ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Save slot (current file) ähnelt.
         /// </summary>
         public static string CurrentSramFileSaveSlot {
             get {
@@ -572,15 +572,6 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Save slot offset ähnelt.
-        /// </summary>
-        public static string GameOffset {
-            get {
-                return ResourceManager.GetString("GameOffset", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die game region ähnelt.
         /// </summary>
         public static string GameRegion {
@@ -622,6 +613,15 @@ namespace SramComparer.Properties {
         public static string None {
             get {
                 return ResourceManager.GetString("None", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Non-slot byte-by-byte comparison ähnelt.
+        /// </summary>
+        public static string NonSlotByteByByteComparison {
+            get {
+                return ResourceManager.GetString("NonSlotByteByByteComparison", resourceCulture);
             }
         }
         
@@ -676,6 +676,15 @@ namespace SramComparer.Properties {
         public static string SaveSlot {
             get {
                 return ResourceManager.GetString("SaveSlot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Save slot offset ähnelt.
+        /// </summary>
+        public static string SaveSlotOffset {
+            get {
+                return ResourceManager.GetString("SaveSlotOffset", resourceCulture);
             }
         }
         
@@ -761,6 +770,15 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Slot byte-by-byte comparison ähnelt.
+        /// </summary>
+        public static string SlotByteByByteComparison {
+            get {
+                return ResourceManager.GetString("SlotByteByByteComparison", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die SRAM ähnelt.
         /// </summary>
         public static string Sram {
@@ -802,24 +820,6 @@ namespace SramComparer.Properties {
         public static string StatusBytesChangedTemplate {
             get {
                 return ResourceManager.GetString("StatusBytesChangedTemplate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Compare non-save slot area: ähnelt.
-        /// </summary>
-        public static string StatusCompareNonGameBuffer {
-            get {
-                return ResourceManager.GetString("StatusCompareNonGameBuffer", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Compare whole save slot area: ähnelt.
-        /// </summary>
-        public static string StatusCompareWholeGameBuffer {
-            get {
-                return ResourceManager.GetString("StatusCompareWholeGameBuffer", resourceCulture);
             }
         }
         
@@ -896,7 +896,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Non-save slot unknowns: {0} bytes changed ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Unknown non-save slot area: {0} bytes changed ähnelt.
         /// </summary>
         public static string StatusNonSaveSlotUnknownsBytesTemplate {
             get {
@@ -1015,9 +1015,9 @@ namespace SramComparer.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Unknowns only ähnelt.
         /// </summary>
-        public static string UnknownsOnly {
+        public static string UnknownAreasOnly {
             get {
-                return ResourceManager.GetString("UnknownsOnly", resourceCulture);
+                return ResourceManager.GetString("UnknownAreasOnly", resourceCulture);
             }
         }
     }

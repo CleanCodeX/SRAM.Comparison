@@ -17,10 +17,10 @@ namespace SramComparer.Enums
 		[DisplayNameLocalized(nameof(Res.CommandManual), typeof(Res))]
 		m, // Manual (how to use)
 
-		[DisplayNameLocalized(nameof(Res.CommandDoSlotAllBytesComparison), typeof(Res))]
+		[DisplayNameLocalized(nameof(Res.SlotByteByByteComparison), typeof(Res))]
 		asbc, // Flag Whole Save Slot => compare additionally the whole save slot area instead of only unknowns
 
-		[DisplayNameLocalized(nameof(Res.CommandDoNonSlotBytesComparison), typeof(Res))]
+		[DisplayNameLocalized(nameof(Res.NonSlotByteByByteComparison), typeof(Res))]
 		nsbc, // Flag Non Save slot => compare additionally the non-save slot area 
 
 		[DisplayNameLocalized(nameof(Res.CommandSetCurrentSrramFileSaveSlot), typeof(Res))]
