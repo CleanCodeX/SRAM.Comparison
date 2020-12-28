@@ -8,9 +8,9 @@ namespace SramComparer.Enums
 	public enum ComparisonFlags: uint
 	{
 		[DisplayNameLocalized(nameof(Resources.CommandDoSlotAllBytesComparison), typeof(Resources))]
-		AddSlotByteComparison = 1 << 0,
+		SlotAllBytesComparison = 1 << 0,
 			
 		[DisplayNameLocalized(nameof(Resources.CommandDoNonSlotBytesComparison), typeof(Resources))]
-		AddNonSlotByteComparison = 1 << 1
+		NonSlotBytesComparison = 1 << 1
 	}
 }
