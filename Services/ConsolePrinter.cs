@@ -139,7 +139,7 @@ namespace SramComparer.Services
 		protected virtual void PrintCommandKey(Enum key) => PrintColored(ConsoleColor.White, @$"{key,12}: ");
 
 		protected virtual string GetManualText() => Res.AppManualCommandsTemplate.InsertArgs(
-			Commands.ow, Commands.c, Commands.e, Commands.ss, Commands.ssc, Commands.fws, Commands.fns,
+			Commands.ow, Commands.c, Commands.e, Commands.ss, Commands.ssc, Commands.asbc, Commands.nsbc,
 			Commands.b, Commands.bc, Commands.r, Commands.rc, Commands.ov, Commands.mov);
 
 		protected virtual string GetAppDescriptionText() => Res.AppDescription;
