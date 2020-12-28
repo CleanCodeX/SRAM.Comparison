@@ -22,16 +22,16 @@ namespace SramComparer
 
 			commandHandler.ThrowIfNull(nameof(commandHandler));
 			consolePrinter.ThrowIfNull(nameof(consolePrinter));
-			options.Commands.ThrowIfNull(nameof(options.Commands));
+			options.BatchCommands.ThrowIfNull(nameof(options.BatchCommands));
 
-			if (options.CurrentGameFilepath.IsNullOrEmpty())
+			if (options.CurrentSramFilepath.IsNullOrEmpty())
 			{
 				consolePrinter.PrintFatalError(Resources.ErrorMissingPathArguments);
 				Console.ReadKey();
 				return;
 			}
 
-			var commands = options.Commands?.Split('-') ?? Enumerable.Empty<string>();
+			var commands = options.BatchCommands?.Split('-') ?? Enumerable.Empty<string>();
 			var queuedCommands = new Queue<string>(commands);
 
 			consolePrinter.PrintLine(@$"{Resources.QueuedCommands}: {queuedCommands.Count} ({string.Join(", ", commands)})");

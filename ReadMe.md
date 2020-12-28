@@ -3,10 +3,10 @@ Allows to compare (unknown) buffers and manipulate offset values in SNES's SRAM 
 
 ## Features
 * Display (or manipulate and save) offset values
-* Comparison of Unknowns only (*default*) or whole game buffer (**optional**)
+* Comparison of Unknowns only (*default*) or whole save slot area (**optional**)
 * Comparison of whole sram outside games (**optional**)
 * Display of differences in decimal, hex and binary format
-* Comparison of all games (*default*) or one specific current game with same or different comparison game (**optional**)
+* Comparison of all games (*default*) or one specific current save slot with same or different comparison save slot (**optional**)
 * Export comparison result as text file
 * Backup / restore functionality of current and comparison sram file
 * Transfer of SRAM data to similar game 
@@ -50,18 +50,18 @@ This application uses the latest .NET 5 runtime.
 ***4.4)*** Check whether the change found also occurs in other game versions. E.g. unpatched or patched versions.
 ***4.5) If it is reproducible, report the find via community.xeth.de. If necessary, create a pull request for a change to the documentation and the SRAM structure in the GitHub repository..
 
-***5)***   To start a "fresh" comparison without previous SRAM changes, press again (ow) to save your current SRAM file 
+***5)***   To start a "fresh" comparison without previous SRAM changes, press again (ow) to save your current SRAM file
      as comparison file. Then start again at step 3.1.
 
-***6.1)*** (optional, advanced) If you have more than one slot with changes to comparison file, press (sg) to
-     set the game's save slot (1-4) to avoid comparing other game slots. If two different game slots should be 
-     compared with each other, additionally press (sgc) to set the the slot of comparison file, too.
-***6.2)*** (optional, advanced) Press (fwg | fng) to set comparison modes. 
+***6.1)*** (optional, advanced) If you have more than one slot with changes to comparison file, press (ss) to
+     set the game's save slot (1-4) to avoid comparing other save slots. If two different save slots should be 
+     compared with each other, additionally press (ssc) to set the the slot of comparison file, too.
+***6.2)*** (optional, advanced) Press (sabc | nsbc) to set comparison modes. 
      If you are unsure, leave at default to compare as less as possible bytes.
 
 ***7)***   (optional) Current and comparison srm file can be backed-up (b|bc) or restored (r|rc) individually.
 
-***8)***   (optional) SRAM offset values for specific game slots can be displayed by pressing (dev) or manipulated by (mov). You can decide whether to update your current SRAM file (backup recommended) or creating a new file.
+***8)***   (optional) SRAM offset values for specific save slots can be displayed by pressing (ow) or manipulated by (mov). You can decide whether to update your current SRAM file (backup recommended) or creating a new file.
 
 ## Screenshots (from SoE implementation)
 ![Commands](https://raw.githubusercontent.com/CleanCodeX/SramComparer.SoE/master/Meta/Cmd.png "Commands")
@@ -72,8 +72,8 @@ This application uses the latest .NET 5 runtime.
 
 ![No SRAM Change](https://raw.githubusercontent.com/CleanCodeX/SramComparer.SoE/master/Meta/NoChange.png "No SRAM Change")
 
-![Whole Game Comparison](https://raw.githubusercontent.com/CleanCodeX/SramComparer.SoE/master/Meta/WholeGameComparison.png "Whole Game Comparison")
+![Whole Save Slot Area Comparison](https://raw.githubusercontent.com/CleanCodeX/SramComparer.SoE/master/Meta/WholeGameComparison.png "Whole Save Slot Area Comparison")
 
-![Whole Game Comparison #2](https://raw.githubusercontent.com/CleanCodeX/SramComparer.SoE/master/Meta/WholeGameComparison2.png "Whole Game Comparison #2")
+![Whole Save Slot Area Comparison #2](https://raw.githubusercontent.com/CleanCodeX/SramComparer.SoE/master/Meta/WholeGameComparison2.png "Whole Save Slot Area Comparison #2")
 
-![Optional Game Info](https://raw.githubusercontent.com/CleanCodeX/SramComparer.SoE/master/Meta/OptionalGameInfo.png "Optional Game Info")
+![Optional Save Slot Information](https://raw.githubusercontent.com/CleanCodeX/SramComparer.SoE/master/Meta/OptionalGameInfo.png "Optional Save Slot Information")

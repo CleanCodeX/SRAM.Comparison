@@ -17,33 +17,36 @@ namespace SramComparer.Services
 			PrintSectionHeader();
 			PrintColoredLine(ConsoleColor.Gray, Res.Settings + @":");
 
-			PrintSettingName(Res.SettingCurrentGameFilepath, "{0}");
-			PrintValue(Path.GetFileName(options.CurrentGameFilepath!));
+			PrintSettingName(Res.CurrentSramFilepath, "{0}");
+			PrintValue(Path.GetFileName(options.CurrentSramFilepath!));
 
-			PrintSettingName(Res.SettingComparisonGameFilepath, CmdOptions.ComparisonFile);
-			PrintValue(Path.GetFileName(options.ComparisonGameFilepath!));
+			PrintSettingName(Res.ComparisonSramFilepath, CmdOptions.ComparisonFile);
+			PrintValue(Path.GetFileName(options.ComparisonSramFilepath!));
 
-			PrintSettingName(Res.SettingExportDirectory, CmdOptions.Exportdir);
+			PrintSettingName(Res.ExportDirectory, CmdOptions.ExportDirectory);
 			PrintValue(options.ExportDirectory!);
 
-			PrintSettingName(Res.SettingCurrentGameToCompare, $"{CmdOptions.CurrentGame} [1-4|0={Res.All}]");
-			PrintValue(options.CurrentGame == 0 ? Res.All : options.CurrentGame.ToString());
+			PrintSettingName(Res.CurrentSramFileSaveSlot, $"{CmdOptions.CurrentSaveSlot} [1-4|0={Res.All}]");
+			PrintValue(options.CurrentSramFileSaveSlot == 0 ? Res.All : options.CurrentSramFileSaveSlot.ToString());
 
-			PrintSettingName(Res.SettingComparisonGameToCompare, $"{CmdOptions.ComparisonGame} [1-4|0={Res.All}]");
-			PrintValue(options.ComparisonGame == 0 ? Res.SameAsCurrentGame : options.ComparisonGame.ToString());
+			PrintSettingName(Res.ComparisonSramFileSaveSlot, $"{CmdOptions.ComparisonSaveSlot} [1-4|0={Res.All}]");
+			PrintValue(options.ComparisonSramFileSaveSlot == 0 ? Res.SameAsCurrentGame : options.ComparisonSramFileSaveSlot.ToString());
 
-			PrintSettingName(Res.SettingRegion, $"{CmdOptions.Region} [{string.Join("|", Enum.GetNames(options.Region.GetType()))}]");
-			PrintValue(options.Region.ToString());
+			PrintSettingName(Res.GameRegion, $"{CmdOptions.GameRegion} [{string.Join("|", Enum.GetNames(options.GameRegion.GetType()))}]");
+			PrintValue(options.GameRegion.ToString());
 
-			PrintSettingName(Res.ComparisonFlags, $@"{CmdOptions.ComparisonFlags} ""[{string.Join(",", Enum.GetNames(options.Flags.GetType()))}]""");
-			PrintValue(Environment.NewLine.PadRight(30) + options.Flags.ToFlagsString());
+			PrintSettingName(Res.ColorizeOutput, CmdOptions.ColorizeOutput.ToString());
+			PrintValue(options.ColorizeOutput.ToString());
+
+			PrintSettingName(Res.ComparisonFlags, $@"{CmdOptions.ComparisonFlags} ""[{string.Join(",", Enum.GetNames(options.ComparisonFlags.GetType()))}]""");
+			PrintValue(Environment.NewLine.PadRight(30) + options.ComparisonFlags.ToFlagsString());
 		}
 
 		protected virtual void PrintCustomCommands() {}
 
 		public virtual void PrintStartMessage()
 		{
-			var startMessage = @$"== {Res.StartMessage.InsertArgs(nameof(BaseCommands.cmd), nameof(BaseCommands.m))} ==";
+			var startMessage = @$"== {Res.StartMessage.InsertArgs(nameof(Commands.cmd), nameof(Commands.m))} ==";
 
 			PrintColoredLine(ConsoleColor.DarkYellow, "");
 			PrintLine("=".Repeat(startMessage.Length));
@@ -57,73 +60,73 @@ namespace SramComparer.Services
 
 			PrintGroupName(Res.CmdGroupComparison);
 
-			PrintCommandKey(BaseCommands.c);
-			PrintColoredLine(ConsoleColor.Yellow, Res.CommandCompareFiles);
+			PrintCommandKey(Commands.c);
+			PrintColoredLine(ConsoleColor.Yellow, Res.CommandCompareFile);
 
-			PrintCommandKey(BaseCommands.ow);
-			PrintColoredLine(ConsoleColor.Yellow, Res.CommandOverwriteComparisonFile);
+			PrintCommandKey(Commands.ow);
+			PrintColoredLine(ConsoleColor.Yellow, Res.CommandOverwriteComparisonSramFile);
 
-			PrintGroupName(Res.CmdGroupSetGame);
+			PrintGroupName(Res.CmdGroupSetsSaveSlotId);
 
-			PrintCommandKey(BaseCommands.sg);
-			PrintColoredLine(ConsoleColor.Yellow, Res.CommandSetGame);
+			PrintCommandKey(Commands.ss);
+			PrintColoredLine(ConsoleColor.Yellow, Res.CommandSetCurrentSrramFileSaveSlot);
 
-			PrintCommandKey(BaseCommands.sgc);
-			PrintColoredLine(ConsoleColor.Yellow, Res.CommandSetComparisonGame);
+			PrintCommandKey(Commands.ssc);
+			PrintColoredLine(ConsoleColor.Yellow, Res.CommandSetComparisonSramFileSaveSlot);
 
 			PrintGroupName(Res.CmdGroupBackup);
 
-			PrintCommandKey(BaseCommands.b);
-			PrintColoredLine(ConsoleColor.Yellow, Res.CommandBackupCurrentFile);
+			PrintCommandKey(Commands.b);
+			PrintColoredLine(ConsoleColor.Yellow, Res.CommandBackupCurrentSramFile);
 
-			PrintCommandKey(BaseCommands.bc);
-			PrintColoredLine(ConsoleColor.Yellow, Res.CommandBackupComparisonFile);
+			PrintCommandKey(Commands.bc);
+			PrintColoredLine(ConsoleColor.Yellow, Res.CommandBackupComparisonSramFile);
 
-			PrintCommandKey(BaseCommands.r);
-			PrintColoredLine(ConsoleColor.Yellow, Res.CommandRestoreCurrentFile);
+			PrintCommandKey(Commands.r);
+			PrintColoredLine(ConsoleColor.Yellow, Res.CommandRestoreCurrentSramFile);
 
-			PrintCommandKey(BaseCommands.rc);
-			PrintColoredLine(ConsoleColor.Yellow, Res.CommandRestoreComparisonFile);
+			PrintCommandKey(Commands.rc);
+			PrintColoredLine(ConsoleColor.Yellow, Res.CommandRestoreComparisonSramFile);
 
-			PrintCommandKey(BaseCommands.e);
+			PrintCommandKey(Commands.e);
 			PrintColoredLine(ConsoleColor.Yellow, Res.CommandExportComparisonResult);
 
-			PrintCommandKey(BaseCommands.ts);
-			PrintColoredLine(ConsoleColor.Yellow, Res.CommandTransferSramToSimilarGameFile);
+			PrintCommandKey(Commands.ts);
+			PrintColoredLine(ConsoleColor.Yellow, Res.CommandSaveCurrentSramFileAsOtherFileName);
 
 			PrintGroupName(Res.CmdGroupDisplay);
 
-			PrintCommandKey(BaseCommands.m);
+			PrintCommandKey(Commands.m);
 			PrintColoredLine(ConsoleColor.Yellow, Res.CommandManual);
 
-			PrintCommandKey(BaseCommands.cmd);
-			PrintColoredLine(ConsoleColor.Yellow, Res.CommandDisplayCommands);
+			PrintCommandKey(Commands.cmd);
+			PrintColoredLine(ConsoleColor.Yellow, Res.CommandListCommands);
 
-			PrintCommandKey(BaseCommands.s);
-			PrintColoredLine(ConsoleColor.Yellow, Res.CommandDisplaySettings);
+			PrintCommandKey(Commands.s);
+			PrintColoredLine(ConsoleColor.Yellow, Res.CommandSettings);
 
-			PrintCommandKey(BaseCommands.w);
+			PrintCommandKey(Commands.w);
 			PrintColoredLine(ConsoleColor.Yellow, Res.CommandWipeOutput);
 
-			PrintGroupName(Res.CmdOther);
+			PrintGroupName(Res.CmdMisc);
 
-			PrintCommandKey(BaseCommands.fwg);
-			PrintColoredLine(ConsoleColor.Yellow, Res.CommandIncludeWholeGameBufferComparison);
+			PrintCommandKey(Commands.asbc);
+			PrintColoredLine(ConsoleColor.Yellow, Res.CommandDoSlotAllBytesComparison);
 
-			PrintCommandKey(BaseCommands.fng);
-			PrintColoredLine(ConsoleColor.Yellow, Res.CommandIncludeNonGameBufferComparison);
+			PrintCommandKey(Commands.nsbc);
+			PrintColoredLine(ConsoleColor.Yellow, Res.CommandDoNonSlotBytesComparison);
 
-			PrintCommandKey(BaseCommands.dov);
-			PrintColoredLine(ConsoleColor.Yellow, Res.CommandDisplayOffsetValue);
+			PrintCommandKey(Commands.ov);
+			PrintColoredLine(ConsoleColor.Yellow, Res.CommandOffsetValue);
 
-			PrintCommandKey(BaseCommands.mov);
-			PrintColoredLine(ConsoleColor.Yellow, Res.CommandSaveManipulatedOffsetValue);
+			PrintCommandKey(Commands.mov);
+			PrintColoredLine(ConsoleColor.Yellow, Res.CommandModifyOffsetValue);
 
 			PrintCustomCommands();
 
 			PrintParagraph();
 			PrintParagraph();
-			PrintCommandKey(BaseCommands.q);
+			PrintCommandKey(Commands.q);
 			PrintColoredLine(ConsoleColor.Yellow, Res.CommandQuit);
 			PrintParagraph();
 
@@ -136,8 +139,8 @@ namespace SramComparer.Services
 		protected virtual void PrintCommandKey(Enum key) => PrintColored(ConsoleColor.White, @$"{key,12}: ");
 
 		protected virtual string GetManualText() => Res.AppManualCommandsTemplate.InsertArgs(
-			BaseCommands.ow, BaseCommands.c, BaseCommands.e, BaseCommands.sg, BaseCommands.sgc, BaseCommands.fwg, BaseCommands.fng,
-			BaseCommands.b, BaseCommands.bc, BaseCommands.r, BaseCommands.rc, BaseCommands.dov, BaseCommands.mov);
+			Commands.ow, Commands.c, Commands.e, Commands.ss, Commands.ssc, Commands.fws, Commands.fns,
+			Commands.b, Commands.bc, Commands.r, Commands.rc, Commands.ov, Commands.mov);
 
 		protected virtual string GetAppDescriptionText() => Res.AppDescription;
 
@@ -338,14 +341,22 @@ namespace SramComparer.Services
 			PrintLine(text);
 		}
 
-		public virtual void ResetColor() => Console.ResetColor();
+		public virtual void ResetColor()
+		{
+			if (!ColorizeOutput) return;
+			
+			Console.ResetColor();
+		}
+
+		public bool ColorizeOutput { get; set; } = true;
+		
 		public virtual void PrintParagraph() => Console.WriteLine();
 		public virtual void Print(string text) => Console.Write(text);
 		public virtual void PrintLine(string text) => Console.WriteLine(text);
 
 		protected virtual void PrintBackgroundColored(ConsoleColor color, string text)
 		{
-						SetBackgroundColor(color);
+			SetBackgroundColor(color);
 			Print(text);
 		}
 
@@ -361,7 +372,18 @@ namespace SramComparer.Services
 			PrintColoredLine(foregroundColor, text);
 		}
 		
-		protected virtual void SetForegroundColor(ConsoleColor color) => Console.ForegroundColor = color;
-		protected virtual void SetBackgroundColor(ConsoleColor color) => Console.BackgroundColor = color;
+		protected virtual void SetForegroundColor(ConsoleColor color)
+		{
+			if (!ColorizeOutput) return;
+			
+			Console.ForegroundColor = color;
+		}
+
+		protected virtual void SetBackgroundColor(ConsoleColor color)
+		{
+			if (!ColorizeOutput) return;
+			
+			Console.BackgroundColor = color;
+		}
 	}
 }

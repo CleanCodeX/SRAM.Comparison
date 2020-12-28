@@ -2,25 +2,27 @@
 
 namespace SramComparer
 {
-	public class Options<TFileRegion, TComparisonFlags> : IOptions
-		where TFileRegion : struct, Enum
+	public class Options<TGameRegion, TComparisonFlags> : IOptions
+		where TGameRegion : struct, Enum
 		where TComparisonFlags : struct, Enum
 	{
-		public string? Commands { get; set; }
-		public string? CurrentGameFilepath { get; set; }
-		public string? ComparisonGameFilepath { get; set; }
+		public string? BatchCommands { get; set; }
+		public string? CurrentSramFilepath { get; set; }
+		public string? ComparisonSramFilepath { get; set; }
 		public string? ExportDirectory { get; set; }
 
-		public TFileRegion Region { get; set; }
-		public int CurrentGame { get; set; }
-		public int ComparisonGame { get; set; }
-		public TComparisonFlags Flags;
+		public TGameRegion GameRegion { get; set; }
+		public int CurrentSramFileSaveSlot { get; set; }
+		public int ComparisonSramFileSaveSlot { get; set; }
+		public TComparisonFlags ComparisonFlags;
 
-		Enum IOptions.Region => Region;
-		Enum IOptions.Flags
+		Enum IOptions.GameRegion => GameRegion;
+		Enum IOptions.ComparisonFlags
 		{
-			get => Flags;
-			set => Flags = (TComparisonFlags)value;
+			get => ComparisonFlags;
+			set => ComparisonFlags = (TComparisonFlags)value;
 		}
+
+		public bool ColorizeOutput { get; set; } = true;
 	}
 }

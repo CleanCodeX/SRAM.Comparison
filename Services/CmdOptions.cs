@@ -5,12 +5,13 @@
 	/// </summary>
 	public static class CmdOptions
 	{
-		public const string Command = "--cmd";
+		public const string BatchCommands = "--cmds";
 		public const string ComparisonFile = "--comp_file";
-		public const string CurrentGame = "--game";
-		public const string ComparisonGame = "--comp_game";
-		public const string Region = "--region";
-		public const string Exportdir = "--exportdir";
+		public const string CurrentSaveSlot = "--gameslot";
+		public const string ComparisonSaveSlot = "--comp_gameslot";
+		public const string GameRegion = "--region";
+		public const string ExportDirectory = "--exportdir";
+		public const string ColorizeOutput = "--colorize";
 
 		/// <summary> Flag for game specific flags</summary>
 		public const string ComparisonFlags = "--flags";

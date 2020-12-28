@@ -44,7 +44,7 @@ namespace SramComparer.Services
 			if (outStream is not null)
 				Console.SetOut(outStream);
 
-			if (options.CurrentGameFilepath.IsNullOrEmpty())
+			if (options.CurrentSramFilepath.IsNullOrEmpty())
 			{
 				ConsolePrinter.PrintFatalError(Resources.ErrorMissingPathArguments);
 				Console.ReadKey();
@@ -71,77 +71,81 @@ namespace SramComparer.Services
 			Requires.NotNull(command, nameof(command));
 			Requires.NotNull(options, nameof(options));
 
-			switch (command)
+			if (command.IsNullOrEmpty()) return true;
+			if (command == "?") command = nameof(Commands.cmd);
+			
+			if (Enum.TryParse<AlternateCommands>(command, true, out var altCommand))
+				command = ((Commands)altCommand).ToString();
+
+			var cmd = command.ParseEnum<Commands>();
+
+			switch (cmd)
 			{
-				case "":
-					break;
-				case nameof(BaseCommands.c):
-				case nameof(BaseCommands.e):
+				case Commands.c:
+				case Commands.e:
 					throw new NotImplementedException(Resources.ErrorCommandNotImplementedTemplate.InsertArgs(command));
-				case "help":
-				case "?":
-				case nameof(BaseCommands.cmd):
+				case Commands.cmd:
 					ConsolePrinter.PrintCommands();
 					break;
-				case nameof(BaseCommands.s):
+				case Commands.s:
 					ConsolePrinter.PrintSettings(options);
 					break;
-				case nameof(BaseCommands.m):
+				case Commands.m:
 					ConsolePrinter.PrintManual();
 					break;
-				case nameof(BaseCommands.fwg):
-					options.Flags = InvertIncludeFlag(options.Flags, ComparisonFlags.WholeGameBuffer);
+				case Commands.asbc:
+					options.ComparisonFlags = InvertIncludeFlag(options.ComparisonFlags, ComparisonFlags.AddSlotByteComparison);
 					break;
-				case nameof(BaseCommands.fng):
-					options.Flags = InvertIncludeFlag(options.Flags, ComparisonFlags.NonGameBuffer);
+				case Commands.nsbc:
+					options.ComparisonFlags = InvertIncludeFlag(options.ComparisonFlags, ComparisonFlags.AddNonSlotByteComparison);
 					break;
-				case nameof(BaseCommands.sg):
-					options.CurrentGame = GetGameId(maxGameId: 4);
-					if (options.CurrentGame == default)
-						options.ComparisonGame = default;
+				case Commands.ss:
+					options.CurrentSramFileSaveSlot = GetGameId(maxGameId: 4);
+					if (options.CurrentSramFileSaveSlot == default)
+						options.ComparisonSramFileSaveSlot = default;
 
 					break;
-				case nameof(BaseCommands.sgc):
-					if (options.CurrentGame != default)
-						options.ComparisonGame = GetGameId(maxGameId: 4);
+				case Commands.ssc:
+					if (options.CurrentSramFileSaveSlot != default)
+						options.ComparisonSramFileSaveSlot = GetGameId(maxGameId: 4);
 					else
 						ConsolePrinter.PrintError(Resources.ErrorComparisoGameSetButNotGame);
 
 					break;
-				case nameof(BaseCommands.ow):
+				case Commands.ow:
 					OverwriteComparisonFileWithCurrentFile(options);
 					break;
-				case nameof(BaseCommands.b):
-					BackupSramFile(options, SramFileKind.Current, false);
+				case Commands.b:
+					BackupSramFile(options, SramFileKind.CurrentFile, false);
 					break;
-				case nameof(BaseCommands.r):
-					BackupSramFile(options, SramFileKind.Current, true);
+				case Commands.r:
+					BackupSramFile(options, SramFileKind.CurrentFile, true);
 					break;
-				case nameof(BaseCommands.bc):
-					BackupSramFile(options, SramFileKind.Comparison, false);
+				case Commands.bc:
+					BackupSramFile(options, SramFileKind.ComparisonFile, false);
 					break;
-				case nameof(BaseCommands.rc):
-					BackupSramFile(options, SramFileKind.Comparison, true);
+				case Commands.rc:
+					BackupSramFile(options, SramFileKind.ComparisonFile, true);
 					break;
-				case nameof(BaseCommands.ts):
+				case Commands.ts:
 					TransferSramToOtherGameFile(options);
 					break;
-				case nameof(BaseCommands.dov):
+				case Commands.ov:
 					PrintOffsetValue(options);
 
 					break;
-				case nameof(BaseCommands.mov):
+				case Commands.mov:
 					SaveOffsetValue(options);
 
 					break;
-				case nameof(BaseCommands.w):
+				case Commands.w:
 					Console.Clear();
 					break;
-				case nameof(BaseCommands.q):
+				case Commands.q:
 					return false;
 				default:
 					ConsolePrinter.PrintCommands();
-					ConsolePrinter.PrintError(Resources.ErrorNoValidCommandCmdTemplate.InsertArgs(command, nameof(BaseCommands.cmd)));
+					ConsolePrinter.PrintError(Resources.ErrorNoValidCommandCmdTemplate.InsertArgs(command, nameof(Commands.cmd)));
 
 					break;
 			}
@@ -153,10 +157,10 @@ namespace SramComparer.Services
 		public virtual void Compare<TComparer>(IOptions options)
 			where TComparer : ISramComparer<TSramFile, TSramGame>, new()
 		{
-			Requires.FileExists(options.ComparisonGameFilepath, nameof(options.ComparisonGameFilepath), Resources.ErrorComparisonFileDoesNotExist);
+			Requires.FileExists(options.ComparisonSramFilepath, nameof(options.ComparisonSramFilepath), Resources.ErrorComparisonFileDoesNotExist);
 
-			using var currFileStream = new FileStream(options.CurrentGameFilepath!, FileMode.Open, FileAccess.Read);
-			using var compFileStream = new FileStream(options.ComparisonGameFilepath!, FileMode.Open, FileAccess.Read);
+			using var currFileStream = new FileStream(options.CurrentSramFilepath!, FileMode.Open, FileAccess.Read);
+			using var compFileStream = new FileStream(options.ComparisonSramFilepath!, FileMode.Open, FileAccess.Read);
 
 			Compare<TComparer>(currFileStream, compFileStream, options);
 		}
@@ -192,8 +196,8 @@ namespace SramComparer.Services
 		public virtual void Compare<TComparer>(Stream currStream, Stream compStream, IOptions options)
 			where TComparer : ISramComparer<TSramFile, TSramGame>, new()
 		{
-			var currFile = ClassFactory.Create<TSramFile>(currStream, options.Region);
-			var compFile = ClassFactory.Create<TSramFile>(compStream, options.Region);
+			var currFile = ClassFactory.Create<TSramFile>(currStream, options.GameRegion);
+			var compFile = ClassFactory.Create<TSramFile>(compStream, options.GameRegion);
 			var comparer = ClassFactory.Create<TComparer>(ConsolePrinter);
 
 			comparer.CompareSram(currFile, compFile, options);
@@ -205,7 +209,7 @@ namespace SramComparer.Services
 		public virtual string ExportComparison<TComparer>(IOptions options)
 			where TComparer : ISramComparer<TSramFile, TSramGame>, new()
 		{
-			var srmFilename = Path.GetFileNameWithoutExtension(options.CurrentGameFilepath)!;
+			var srmFilename = Path.GetFileNameWithoutExtension(options.CurrentSramFilepath)!;
 			var filename = FilenameHelper.GenerateExportFilename(srmFilename);
 			var filepath = Path.Join(options.ExportDirectory, filename);
 
@@ -281,9 +285,9 @@ namespace SramComparer.Services
 
 		public virtual void SaveOffsetValue(IOptions options)
 		{
-			Requires.FileExists(options.CurrentGameFilepath, nameof(options.CurrentGameFilepath));
+			Requires.FileExists(options.CurrentSramFilepath, nameof(options.CurrentSramFilepath));
 			
-			var offset = GetOffset(out var gameIndex);
+			var offset = GetOffset(out var slotIndex);
 			if (offset == 0)
 			{
 				ConsolePrinter.PrintError(Resources.ErrorOperationAborted);
@@ -306,14 +310,14 @@ namespace SramComparer.Services
 				_ => throw new OperationCanceledException(),
 			};
 			
-			var saveFilePath = options.CurrentGameFilepath!;
+			var saveFilePath = options.CurrentSramFilepath!;
 			if (createNewFile)
 				saveFilePath += ".manipulated";
 
-			using var currStream = new FileStream(options.CurrentGameFilepath!, FileMode.Open, FileAccess.Read);
-			var currFile = ClassFactory.Create<TSramFile>(currStream, options.Region);
+			using var currStream = new FileStream(options.CurrentSramFilepath!, FileMode.Open, FileAccess.Read);
+			var currFile = ClassFactory.Create<TSramFile>(currStream, options.GameRegion);
 
-			currFile.SetOffsetBytes(gameIndex, offset, bytes);
+			currFile.SetOffsetBytes(slotIndex, offset, bytes);
 			currFile.RawSave(saveFilePath);
 
 			ConsolePrinter.PrintColoredLine(ConsoleColor.Green, Resources.StatusSetOffsetValueTemplate.InsertArgs(value, offset));
@@ -326,19 +330,19 @@ namespace SramComparer.Services
 
 		public virtual void PrintOffsetValue(IOptions options)
 		{
-			Requires.FileExists(options.CurrentGameFilepath, nameof(options.CurrentGameFilepath));
+			Requires.FileExists(options.CurrentSramFilepath, nameof(options.CurrentSramFilepath));
 
-			using var currStream = new FileStream(options.CurrentGameFilepath!, FileMode.Open, FileAccess.Read);
-			var currFile = ClassFactory.Create<TSramFile>(currStream, options.Region);
+			using var currStream = new FileStream(options.CurrentSramFilepath!, FileMode.Open, FileAccess.Read);
+			var currFile = ClassFactory.Create<TSramFile>(currStream, options.GameRegion);
 
-			var offset = GetOffset(out var gameIndex);
+			var offset = GetOffset(out var slotIndex);
 			if (offset == 0)
 			{
 				ConsolePrinter.PrintError(Resources.ErrorOperationAborted);
 				return;
 			}
 			
-			var byteValue = currFile.GetOffsetByte(gameIndex, offset);
+			var byteValue = currFile.GetOffsetByte(slotIndex, offset);
 
 			var valueDisplayText = NumberFormatter.GetByteValueRepresentations(byteValue);
 
@@ -346,27 +350,27 @@ namespace SramComparer.Services
 			ConsolePrinter.ResetColor();
 		}
 
-		private int GetOffset(out int gameIndex)
+		private int GetOffset(out int slotIndex)
 		{
-			var promptResult = InternalGetStringValue(Resources.SetSingleGameMaxTemplate.InsertArgs(4),
-				Resources.StatusSetSingleGameMaxTemplate);
+			var promptResult = InternalGetStringValue(Resources.SetSingleSaveSlotMaxTemplate.InsertArgs(4),
+				Resources.StatusSetSingleSaveSlotMaxTemplate);
 			if (!int.TryParse(promptResult, out var gameId) || gameId > 4)
 			{
 				ConsolePrinter.PrintError(Resources.ErrorInvalidIndex);
-				gameIndex = -1;
+				slotIndex = -1;
 				return 0;
 			}
 
-			gameIndex = gameId - 1;
+			slotIndex = gameId - 1;
 
-			return GetGameOffset(gameIndex);
+			return GetGameOffset(slotIndex);
 		}
 
 		public virtual void TransferSramToOtherGameFile(IOptions options)
 		{
 			ConsolePrinter.PrintSectionHeader();
-			var directoryPath = Path.GetDirectoryName(options.CurrentGameFilepath)!;
-			var srmFiles = Directory.GetFiles(directoryPath, "*.srm").Where(f => f != options.CurrentGameFilepath).ToArray();
+			var directoryPath = Path.GetDirectoryName(options.CurrentSramFilepath)!;
+			var srmFiles = Directory.GetFiles(directoryPath, "*.srm").Where(f => f != options.CurrentSramFilepath).ToArray();
 			if (srmFiles.Length == 0)
 			{
 				ConsolePrinter.PrintLine(Resources.StatusNoAvailableOtherSramFiles);
@@ -384,7 +388,7 @@ namespace SramComparer.Services
 				ConsolePrinter.PrintColored(ConsoleColor.DarkGreen ,Resources.StatusTargetSramFileHasBeenBackedUpFilepathTemplate.InsertArgs(Path.GetFileName(targetBackupFilepath)));
 			}
 
-			File.Copy(options.CurrentGameFilepath!, targetFilepath, true);
+			File.Copy(options.CurrentSramFilepath!, targetFilepath, true);
 			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusCurrentSramHasBeenSavedAsFilepathTemplate.InsertArgs(Path.GetFileName(targetFilepath)));
 
 			string? GetTargetFilepath()
@@ -424,8 +428,8 @@ namespace SramComparer.Services
 			return flags;
 		}
 
-		public int GetGameOffset(int gameIndex) => (int)InternalGetValue(Resources.GetGameOffsetTemplate.InsertArgs(gameIndex + 1), Resources.StatusOffsetWillBeUsedTemplate);
-		public uint GetGameOffsetValue() => InternalGetValue(Resources.GetGameOffsetValue, Resources.StatusOffsetValueWillBeUsedTemplate);
+		public int GetGameOffset(int slotIndex) => (int)InternalGetValue(Resources.GetSaveSlotOffsetTemplate.InsertArgs(slotIndex + 1), Resources.StatusOffsetWillBeUsedTemplate);
+		public uint GetGameOffsetValue() => InternalGetValue(Resources.GetSaveSlotOffsetValue, Resources.StatusOffsetValueWillBeUsedTemplate);
 
 		private string InternalGetStringValue(string prompt, string? promptResultTemplate = null)
 		{
@@ -466,7 +470,7 @@ namespace SramComparer.Services
 		public virtual int GetGameId(int maxGameId)
 		{
 			ConsolePrinter.PrintSectionHeader();
-			ConsolePrinter.PrintLine(Resources.SetGameToCompareMaxTemplate.InsertArgs(maxGameId));
+			ConsolePrinter.PrintLine(Resources.SetSaveSlotToCompareMaxTemplate.InsertArgs(maxGameId));
 
 			var input = Console.ReadLine()!;
 
@@ -487,7 +491,7 @@ namespace SramComparer.Services
 		{
 			ConsolePrinter.PrintSectionHeader();
 
-			File.Copy(options.CurrentGameFilepath!, options.ComparisonGameFilepath!, true);
+			File.Copy(options.CurrentSramFilepath!, options.ComparisonSramFilepath!, true);
 
 			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusCurrentSramFileHasBeenSaved);
 			ConsolePrinter.ResetColor();
@@ -495,8 +499,8 @@ namespace SramComparer.Services
 
 		public virtual void BackupSramFile(IOptions options, SramFileKind file, bool restore = false)
 		{
-			var filepath = file == SramFileKind.Current ? options.CurrentGameFilepath! : options.ComparisonGameFilepath!;
-			var fileTypeName = file == SramFileKind.Current ? Resources.CurrentSramFile : Resources.ComparisonSramFile;
+			var filepath = file == SramFileKind.CurrentFile ? options.CurrentSramFilepath! : options.ComparisonSramFilepath!;
+			var fileTypeName = file == SramFileKind.CurrentFile ? Resources.CurrentSramFile : Resources.ComparisonSramFile;
 			var backupFilepath = filepath + BackupFileExtension;
 
 			ConsolePrinter.PrintSectionHeader();

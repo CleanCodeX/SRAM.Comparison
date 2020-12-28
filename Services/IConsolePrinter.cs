@@ -5,6 +5,8 @@ namespace SramComparer.Services
 	/// <summary>Interface for <see cref="ConsolePrinter"/> implementations</summary>
 	public interface IConsolePrinter: IConsoleMethods
 	{
+		bool ColorizeOutput { get; set; }
+
 		/// <summary>Prints a section's header</summary>
 		void PrintSectionHeader();
 		

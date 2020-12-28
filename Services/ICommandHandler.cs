@@ -34,13 +34,13 @@ namespace SramComparer.Services
 		/// <returns></returns>
 		Enum InvertIncludeFlag(Enum flags, Enum flag);
 
-		/// <summary>Compares SRAM based on <para>options</para>.<see cref="IOptions.CurrentGameFilepath"/> and <see cref="IOptions.ComparisonGameFilepath"/> will be used</summary>
+		/// <summary>Compares SRAM based on <para>options</para>.<see cref="IOptions.CurrentSramFilepath"/> and <see cref="IOptions.ComparisonSramFilepath"/> will be used</summary>
 		/// <typeparam name="TComparer">The type of compare which should be used</typeparam>
 		/// <param name="options">The options to be used for comparison</param>
 		void Compare<TComparer>(IOptions options)
 			where TComparer : ISramComparer<TSramFile, TSramGame>, new();
 
-		/// <summary>Compares SRAM based on <para>options</para>.<see cref="IOptions.CurrentGameFilepath"/> and <see cref="IOptions.ComparisonGameFilepath"/> will be used</summary>
+		/// <summary>Compares SRAM based on <para>options</para>.<see cref="IOptions.CurrentSramFilepath"/> and <see cref="IOptions.ComparisonSramFilepath"/> will be used</summary>
 		/// <typeparam name="TComparer">The type of compare which should be used</typeparam>
 		/// <param name="options">The options to be used for comparison</param>
 		/// <param name="output">The stream the output should be written to</param>

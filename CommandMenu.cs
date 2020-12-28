@@ -22,9 +22,9 @@ namespace SramComparer
 
 			commandHandler.ThrowIfNull(nameof(commandHandler));
 			consolePrinter.ThrowIfNull(nameof(consolePrinter));
-			options.Commands.ThrowIfNotDefault(nameof(options.Commands));
+			options.BatchCommands.ThrowIfNotDefault(nameof(options.BatchCommands));
 
-			if (options.CurrentGameFilepath.IsNullOrEmpty())
+			if (options.CurrentSramFilepath.IsNullOrEmpty())
 			{
 				consolePrinter.PrintFatalError(Resources.ErrorMissingPathArguments);
 				Console.ReadKey();

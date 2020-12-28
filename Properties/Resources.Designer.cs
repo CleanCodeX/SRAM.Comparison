@@ -149,74 +149,74 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Set game slot (save slot) ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Set save slot ID ähnelt.
         /// </summary>
-        public static string CmdGroupSetGame {
+        public static string CmdGroupSetsSaveSlotId {
             get {
-                return ResourceManager.GetString("CmdGroupSetGame", resourceCulture);
+                return ResourceManager.GetString("CmdGroupSetsSaveSlotId", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Other ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Miscellaneous ähnelt.
         /// </summary>
-        public static string CmdOther {
+        public static string CmdMisc {
             get {
-                return ResourceManager.GetString("CmdOther", resourceCulture);
+                return ResourceManager.GetString("CmdMisc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Colorize output ähnelt.
+        /// </summary>
+        public static string ColorizeOutput {
+            get {
+                return ResourceManager.GetString("ColorizeOutput", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Back-up comparison SRAM file ähnelt.
         /// </summary>
-        public static string CommandBackupComparisonFile {
+        public static string CommandBackupComparisonSramFile {
             get {
-                return ResourceManager.GetString("CommandBackupComparisonFile", resourceCulture);
+                return ResourceManager.GetString("CommandBackupComparisonSramFile", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Back-up current SRAM file ähnelt.
         /// </summary>
-        public static string CommandBackupCurrentFile {
+        public static string CommandBackupCurrentSramFile {
             get {
-                return ResourceManager.GetString("CommandBackupCurrentFile", resourceCulture);
+                return ResourceManager.GetString("CommandBackupCurrentSramFile", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Compare current SRAM file with comparison file ähnelt.
         /// </summary>
-        public static string CommandCompareFiles {
+        public static string CommandCompareFile {
             get {
-                return ResourceManager.GetString("CommandCompareFiles", resourceCulture);
+                return ResourceManager.GetString("CommandCompareFile", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Display commands ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Do non-slot bytes comparison ähnelt.
         /// </summary>
-        public static string CommandDisplayCommands {
+        public static string CommandDoNonSlotBytesComparison {
             get {
-                return ResourceManager.GetString("CommandDisplayCommands", resourceCulture);
+                return ResourceManager.GetString("CommandDoNonSlotBytesComparison", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Display offset value ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Do slot all bytes comparison ähnelt.
         /// </summary>
-        public static string CommandDisplayOffsetValue {
+        public static string CommandDoSlotAllBytesComparison {
             get {
-                return ResourceManager.GetString("CommandDisplayOffsetValue", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Display settings ähnelt.
-        /// </summary>
-        public static string CommandDisplaySettings {
-            get {
-                return ResourceManager.GetString("CommandDisplaySettings", resourceCulture);
+                return ResourceManager.GetString("CommandDoSlotAllBytesComparison", resourceCulture);
             }
         }
         
@@ -230,20 +230,11 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Additionally compare non-game slot area ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die List commands ähnelt.
         /// </summary>
-        public static string CommandIncludeNonGameBufferComparison {
+        public static string CommandListCommands {
             get {
-                return ResourceManager.GetString("CommandIncludeNonGameBufferComparison", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Additionally compare whole game slot area ähnelt.
-        /// </summary>
-        public static string CommandIncludeWholeGameBufferComparison {
-            get {
-                return ResourceManager.GetString("CommandIncludeWholeGameBufferComparison", resourceCulture);
+                return ResourceManager.GetString("CommandListCommands", resourceCulture);
             }
         }
         
@@ -257,11 +248,29 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Overwrite comparison file with current SRAM file ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Modify (and save) offset value ähnelt.
         /// </summary>
-        public static string CommandOverwriteComparisonFile {
+        public static string CommandModifyOffsetValue {
             get {
-                return ResourceManager.GetString("CommandOverwriteComparisonFile", resourceCulture);
+                return ResourceManager.GetString("CommandModifyOffsetValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Display offset value ähnelt.
+        /// </summary>
+        public static string CommandOffsetValue {
+            get {
+                return ResourceManager.GetString("CommandOffsetValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Overwrite (or create) comparison file with current SRAM file ähnelt.
+        /// </summary>
+        public static string CommandOverwriteComparisonSramFile {
+            get {
+                return ResourceManager.GetString("CommandOverwriteComparisonSramFile", resourceCulture);
             }
         }
         
@@ -277,54 +286,54 @@ namespace SramComparer.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Restore comparison SRAM file from backup ähnelt.
         /// </summary>
-        public static string CommandRestoreComparisonFile {
+        public static string CommandRestoreComparisonSramFile {
             get {
-                return ResourceManager.GetString("CommandRestoreComparisonFile", resourceCulture);
+                return ResourceManager.GetString("CommandRestoreComparisonSramFile", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Restore current SRAM file from backup ähnelt.
         /// </summary>
-        public static string CommandRestoreCurrentFile {
+        public static string CommandRestoreCurrentSramFile {
             get {
-                return ResourceManager.GetString("CommandRestoreCurrentFile", resourceCulture);
+                return ResourceManager.GetString("CommandRestoreCurrentSramFile", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Save manipulated offset value ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Save current-SRAM file with other game file&apos;s name ähnelt.
         /// </summary>
-        public static string CommandSaveManipulatedOffsetValue {
+        public static string CommandSaveCurrentSramFileAsOtherFileName {
             get {
-                return ResourceManager.GetString("CommandSaveManipulatedOffsetValue", resourceCulture);
+                return ResourceManager.GetString("CommandSaveCurrentSramFileAsOtherFileName", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Set comparison SRAM file&apos;s game slot ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Set comparison SRAM file&apos;s save slot ähnelt.
         /// </summary>
-        public static string CommandSetComparisonGame {
+        public static string CommandSetComparisonSramFileSaveSlot {
             get {
-                return ResourceManager.GetString("CommandSetComparisonGame", resourceCulture);
+                return ResourceManager.GetString("CommandSetComparisonSramFileSaveSlot", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Set current SRAM file&apos;s game slot ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Set current SRAM file&apos;s save slot ähnelt.
         /// </summary>
-        public static string CommandSetGame {
+        public static string CommandSetCurrentSrramFileSaveSlot {
             get {
-                return ResourceManager.GetString("CommandSetGame", resourceCulture);
+                return ResourceManager.GetString("CommandSetCurrentSrramFileSaveSlot", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Transfer SRAM data to similar game file ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Display settings ähnelt.
         /// </summary>
-        public static string CommandTransferSramToSimilarGameFile {
+        public static string CommandSettings {
             get {
-                return ResourceManager.GetString("CommandTransferSramToSimilarGameFile", resourceCulture);
+                return ResourceManager.GetString("CommandSettings", resourceCulture);
             }
         }
         
@@ -365,11 +374,29 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Comparison SRAM file ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Comparison-SRAM file ähnelt.
         /// </summary>
         public static string ComparisonSramFile {
             get {
                 return ResourceManager.GetString("ComparisonSramFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Comparison SRAM filepath ähnelt.
+        /// </summary>
+        public static string ComparisonSramFilepath {
+            get {
+                return ResourceManager.GetString("ComparisonSramFilepath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Save slot of Comparison file ähnelt.
+        /// </summary>
+        public static string ComparisonSramFileSaveSlot {
+            get {
+                return ResourceManager.GetString("ComparisonSramFileSaveSlot", resourceCulture);
             }
         }
         
@@ -392,11 +419,29 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Current SRAM file ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Current-SRAM file ähnelt.
         /// </summary>
         public static string CurrentSramFile {
             get {
                 return ResourceManager.GetString("CurrentSramFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Current SRAM filepath ähnelt.
+        /// </summary>
+        public static string CurrentSramFilepath {
+            get {
+                return ResourceManager.GetString("CurrentSramFilepath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Save slot of current file ähnelt.
+        /// </summary>
+        public static string CurrentSramFileSaveSlot {
+            get {
+                return ResourceManager.GetString("CurrentSramFileSaveSlot", resourceCulture);
             }
         }
         
@@ -437,7 +482,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Game slot for comparison SRAM file can only be set if current SRAM file&apos;s game slot is set first. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Save slot for comparison SRAM file can only be set if current SRAM file&apos;s save slot is set first. ähnelt.
         /// </summary>
         public static string ErrorComparisoGameSetButNotGame {
             get {
@@ -466,9 +511,9 @@ namespace SramComparer.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die {0} current file must have .srm file extension. Did you just forget to quote the path? Was: {1} ähnelt.
         /// </summary>
-        public static string ErrorGameFileIsNotSrmFileTypeFilepathTemplate {
+        public static string ErrorFileIsNotSrmFileTypeFilepathTemplate {
             get {
-                return ResourceManager.GetString("ErrorGameFileIsNotSrmFileTypeFilepathTemplate", resourceCulture);
+                return ResourceManager.GetString("ErrorFileIsNotSrmFileTypeFilepathTemplate", resourceCulture);
             }
         }
         
@@ -482,7 +527,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die ERROR: The programm needs to be started with at least the path to current SRAM file as a parameter. Drag &apos;n&apos; drop can be used. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die ERROR: The program needs to be started with at least the path to current SRAM file as a parameter. Drag &apos;n&apos; drop can be used. ähnelt.
         /// </summary>
         public static string ErrorMissingPathArguments {
             get {
@@ -518,16 +563,16 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Game slot ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Export directory ähnelt.
         /// </summary>
-        public static string Game {
+        public static string ExportDirectory {
             get {
-                return ResourceManager.GetString("Game", resourceCulture);
+                return ResourceManager.GetString("ExportDirectory", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Game slot offset ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Save slot offset ähnelt.
         /// </summary>
         public static string GameOffset {
             get {
@@ -536,20 +581,29 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Set Game slot offset: ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die game region ähnelt.
         /// </summary>
-        public static string GetGameOffsetTemplate {
+        public static string GameRegion {
             get {
-                return ResourceManager.GetString("GetGameOffsetTemplate", resourceCulture);
+                return ResourceManager.GetString("GameRegion", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Set Game slot offset value: ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Set Save slot {0} offset: ähnelt.
         /// </summary>
-        public static string GetGameOffsetValue {
+        public static string GetSaveSlotOffsetTemplate {
             get {
-                return ResourceManager.GetString("GetGameOffsetValue", resourceCulture);
+                return ResourceManager.GetString("GetSaveSlotOffsetTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Set Save slot offset value: ähnelt.
+        /// </summary>
+        public static string GetSaveSlotOffsetValue {
+            get {
+                return ResourceManager.GetString("GetSaveSlotOffsetValue", resourceCulture);
             }
         }
         
@@ -608,11 +662,20 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Same as current game slot ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Same as current save slot ähnelt.
         /// </summary>
         public static string SameAsCurrentGame {
             get {
                 return ResourceManager.GetString("SameAsCurrentGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Save slot ähnelt.
+        /// </summary>
+        public static string SaveSlot {
+            get {
+                return ResourceManager.GetString("SaveSlot", resourceCulture);
             }
         }
         
@@ -635,7 +698,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Non-game slot unknowns ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Non-save slot unknowns ähnelt.
         /// </summary>
         public static string SectionNonGameUnknowns {
             get {
@@ -644,25 +707,25 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Set game slot (1-{0} or any other key for all game slots) to compare: ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Set save slot (1-{0} or any other key for all save slots) to compare: ähnelt.
         /// </summary>
-        public static string SetGameToCompareMaxTemplate {
+        public static string SetSaveSlotToCompareMaxTemplate {
             get {
-                return ResourceManager.GetString("SetGameToCompareMaxTemplate", resourceCulture);
+                return ResourceManager.GetString("SetSaveSlotToCompareMaxTemplate", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Set game slot (1-{0}): ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Set save slot (1-{0}): ähnelt.
         /// </summary>
-        public static string SetSingleGameMaxTemplate {
+        public static string SetSingleSaveSlotMaxTemplate {
             get {
-                return ResourceManager.GetString("SetSingleGameMaxTemplate", resourceCulture);
+                return ResourceManager.GetString("SetSingleSaveSlotMaxTemplate", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Compare non-game slot area ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Compare non-save slot area ähnelt.
         /// </summary>
         public static string SettinComparegNonGameBuffer {
             get {
@@ -671,65 +734,11 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Compare whole game slot area ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Compare whole save slot area ähnelt.
         /// </summary>
         public static string SettingCompareWholeGameBuffer {
             get {
                 return ResourceManager.GetString("SettingCompareWholeGameBuffer", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Comparison SRAM filepath ähnelt.
-        /// </summary>
-        public static string SettingComparisonGameFilepath {
-            get {
-                return ResourceManager.GetString("SettingComparisonGameFilepath", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Game slot of Comparison file ähnelt.
-        /// </summary>
-        public static string SettingComparisonGameToCompare {
-            get {
-                return ResourceManager.GetString("SettingComparisonGameToCompare", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Current SRAM filepath ähnelt.
-        /// </summary>
-        public static string SettingCurrentGameFilepath {
-            get {
-                return ResourceManager.GetString("SettingCurrentGameFilepath", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Game slot of current file ähnelt.
-        /// </summary>
-        public static string SettingCurrentGameToCompare {
-            get {
-                return ResourceManager.GetString("SettingCurrentGameToCompare", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Export directory ähnelt.
-        /// </summary>
-        public static string SettingExportDirectory {
-            get {
-                return ResourceManager.GetString("SettingExportDirectory", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die ROM region ähnelt.
-        /// </summary>
-        public static string SettingRegion {
-            get {
-                return ResourceManager.GetString("SettingRegion", resourceCulture);
             }
         }
         
@@ -779,7 +788,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die All game slots will be compared. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die All save slots will be compared. ähnelt.
         /// </summary>
         public static string StatusAllGamesWillBeCompared {
             get {
@@ -797,7 +806,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Compare non-game slot area: ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Compare non-save slot area: ähnelt.
         /// </summary>
         public static string StatusCompareNonGameBuffer {
             get {
@@ -806,7 +815,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Compare whole game slot area: ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Compare whole save slot area: ähnelt.
         /// </summary>
         public static string StatusCompareWholeGameBuffer {
             get {
@@ -869,7 +878,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Only current game slot {0} will be compared. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Only current save slot {0} will be compared. ähnelt.
         /// </summary>
         public static string StatusGameWillBeComparedTemplate {
             get {
@@ -914,11 +923,11 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Non-game unknowns: {0} bytes changed ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Non-save slot unknowns: {0} bytes changed ähnelt.
         /// </summary>
-        public static string StatusNonGameUnknownsBytesTemplate {
+        public static string StatusNonSaveSlotUnknownsBytesTemplate {
             get {
-                return ResourceManager.GetString("StatusNonGameUnknownsBytesTemplate", resourceCulture);
+                return ResourceManager.GetString("StatusNonSaveSlotUnknownsBytesTemplate", resourceCulture);
             }
         }
         
@@ -959,11 +968,11 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Game {0} will be used. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Save slot {0} will be used. ähnelt.
         /// </summary>
-        public static string StatusSetSingleGameMaxTemplate {
+        public static string StatusSetSingleSaveSlotMaxTemplate {
             get {
-                return ResourceManager.GetString("StatusSetSingleGameMaxTemplate", resourceCulture);
+                return ResourceManager.GetString("StatusSetSingleSaveSlotMaxTemplate", resourceCulture);
             }
         }
         
@@ -995,7 +1004,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Total: {0} bytes changed (outside game) ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Total: {0} bytes changed (outside save slot area) ähnelt.
         /// </summary>
         public static string StatusTotalDiffBytesTemplate {
             get {

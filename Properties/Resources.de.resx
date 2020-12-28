@@ -15,7 +15,7 @@
 		<value>Ziel SRAM-Datei wurde gesichert als {0}.</value>
 	</data>
 	<data name="StatusTotalDiffBytesTemplate" xml:space="preserve">
-		<value>Gesamt: {0} Bytes geändert (außerhalb Game-Slot)</value>
+		<value>Gesamt: {0} Bytes geändert (außerhalb des Speicherplatzs)</value>
 	</data>
 	<data name="UnknownsOnly" xml:space="preserve">
 		<value>Nur Unbekannte</value>
@@ -26,7 +26,7 @@
 	<data name="StatusSramChangedBytesTemplate" xml:space="preserve">
 		<value>{0} SRAM Bytes haben sich geändert</value>
 	</data>
-	<data name="StatusSetSingleGameMaxTemplate" xml:space="preserve">
+	<data name="StatusSetSingleSaveSlotMaxTemplate" xml:space="preserve">
 		<value>Speicher-Slot {0} wird verwendet.</value>
 	</data>
 	<data name="StatusSetOffsetValueTemplate" xml:space="preserve">
@@ -41,7 +41,7 @@
 	<data name="StatusNoSramBytesChanged" xml:space="preserve">
 		<value>Es haben sich keine SRAM Bytes geändert.</value>
 	</data>
-	<data name="StatusNonGameUnknownsBytesTemplate" xml:space="preserve">
+	<data name="StatusNonSaveSlotUnknownsBytesTemplate" xml:space="preserve">
 		<value>Nicht-Speicherslot Unbekannte: {0} Bytes haben sich geändert.</value>
 	</data>
 	<data name="StatusNoAvailableOtherSramFiles" xml:space="preserve">
@@ -65,7 +65,7 @@
 
 2)   Anschließend drücke ({0}) um eine Kopie deiner aktuellen SRAM Datei zu erstellen. Diese ermöglicht einen Vergleich nach einer Änderung deiner aktuellen SRAM-Datei.
 
-3.1) Verursache im Spiel eine Änderung des SRAMs. (z.B. löse ein Game Ereignis aus oder öffne eine ungeöffnete Truhe) Damit die SRAM-Datei aktualisiert wird speichere deinen Spielstand im Spiel selbst bei einer Speichermöglichkeit.
+3.1) Verursache im Spiel eine Änderung des SRAMs. (z.B. löse ein Spielereignis aus oder öffne eine ungeöffnete Truhe) Damit die SRAM-Datei aktualisiert wird speichere deinen Spielstand im Spiel selbst bei einer Speichermöglichkeit.
 3.2) Drücke ({1}) um die aktuelle SRAM-Datei mit der Vergleichs-Datei zu verlgeichen. 
      (Fass sich die SRAM-Datei überhaupt nicht geändert hat, hast du vermutlich nicht im Spiel gespeichert oder der Emulator hat die Datei (noch!) nicht automatisch aktualisiert. Überprüfe das Änderungsdatum der *.srm-Datei.
      Beispiel: der von Snes9x voreingestellte Aktualisierungszeitraum ist 30 Sekunden. Verringere den Wert auf z. B. 1 Sekunde,
@@ -79,14 +79,14 @@
 
 5)   Um einen "frischen" Vergleich ohne vorherige SRAM Änderungen zu ermöglichen, drücke erneut ({0}) um die aktuelle SRAM-Datei als Vergleichs-Datei zu speichern. Anschließend beginne wieder bei Schritt 3.1.
 
-6.1) (optional, fortgeschritten) Wenn du mehr als einen Spielslot mit Änderungen zur Vergleichsdatei hast, um 
-       den Vergleich des Spiels auf den jeweiligen Spielslot (1-4) zu beschränken drücke ({3}). Wenn zwei verschiedene Spielslots verglichen werden sollen, drücken zusätzlich ({4}), um auch den Spielslotz der Vergleichs-Datei festzulegen.
-6.2) (optional, erweitert) Um die Vergleichsmodi festzulegen drücke ({5} | {6}).
+6.1) (optional) Wenn du mehr als einen Speicherslot mit Änderungen zur Vergleichsdatei hast, um 
+       den Vergleich des Spiels auf den jeweiligen Speicherslot (1-4) zu beschränken drücke ({3}). Wenn zwei verschiedene Speicherplatzs verglichen werden sollen, drücken zusätzlich ({4}), um auch den Speicherplatzz der Vergleichs-Datei festzulegen.
+6.2) (optional) Um die Vergleichsmodi festzulegen drücke ({5} | {6}).
       Wenn du unsicher bist, lass es bei der Voreinstellung um so wenig wie möglich Bytes zu vergleichen.
 
 7) (optional) Die aktuelle und die Vergleichs-Datei können einzeln gesichert ({7} | {8}) oder wiederhergestellt ({9} | {10}) werden.
 
-8) (optional) SRAM Offset-Werte für bestimmte Spielslots können durch durch Drücken von ({11}) angezeigt oder durch ({12}) manipuliert werden. Du kannst entscheiden, ob du die aktuelle SRAM-Datei aktualisieren (Sicherung empfohlen) oder eine neue Datei erstellen möchtest.
+8) (optional) SRAM Offset-Werte für bestimmte Speicherplatzs können durch durch Drücken von ({11}) angezeigt oder durch ({12}) manipuliert werden. Du kannst entscheiden, ob du die aktuelle SRAM-Datei aktualisieren (Sicherung empfohlen) oder eine neue Datei erstellen möchtest.
     </value>
 	</data>
 	<data name="Bytes" xml:space="preserve">
@@ -107,65 +107,65 @@
 	<data name="CmdGroupDisplay" xml:space="preserve">
 		<value>Anzeige</value>
 	</data>
-	<data name="CmdGroupSetGame" xml:space="preserve">
-		<value>Spielslot (Speicherslot) setzen</value>
+	<data name="CmdGroupSetsSaveSlotId" xml:space="preserve">
+		<value>Speicherslot-ID setzen</value>
 	</data>
-	<data name="CmdOther" xml:space="preserve">
-		<value>Übriges</value>
+	<data name="CmdMisc" xml:space="preserve">
+		<value>Verschiedenes</value>
 	</data>
-	<data name="CommandBackupComparisonFile" xml:space="preserve">
+	<data name="CommandBackupComparisonSramFile" xml:space="preserve">
 		<value>Vergleichs SRAM-Datei sichern</value>
 	</data>
-	<data name="CommandBackupCurrentFile" xml:space="preserve">
+	<data name="CommandBackupCurrentSramFile" xml:space="preserve">
 		<value>Aktuelle SRAM-Datei sichern</value>
 	</data>
-	<data name="CommandCompareFiles" xml:space="preserve">
+	<data name="CommandCompareFile" xml:space="preserve">
 		<value>Vergleiche aktuelle SRAM-Datei mit Vergleichs-Datei</value>
 	</data>
-	<data name="CommandDisplayCommands" xml:space="preserve">
-		<value>Befehle anzeigen</value>
+	<data name="CommandListCommands" xml:space="preserve">
+		<value>Befehle auflisten</value>
 	</data>
-	<data name="CommandDisplayOffsetValue" xml:space="preserve">
+	<data name="CommandOffsetValue" xml:space="preserve">
 		<value>Offset-Wert anzeigen</value>
 	</data>
-	<data name="CommandDisplaySettings" xml:space="preserve">
+	<data name="CommandSettings" xml:space="preserve">
 		<value>Einstellungen anzeigen</value>
 	</data>
 	<data name="CommandExportComparisonResult" xml:space="preserve">
 		<value>Aktuelles Vergleichsergebnis exportieren</value>
 	</data>
-	<data name="CommandIncludeNonGameBufferComparison" xml:space="preserve">
-		<value>Zusätzlich den nicht-Spielslot Bereich vergleichen</value>
+	<data name="CommandDoNonSlotBytesComparison" xml:space="preserve">
+		<value>Nicht-Speicherslot Byte-Vergleich durchführen</value>
 	</data>
-	<data name="CommandIncludeWholeGameBufferComparison" xml:space="preserve">
-		<value>Zusätzlich den gesamten Spielslot Bereich vergleichen</value>
+	<data name="CommandDoSlotAllBytesComparison" xml:space="preserve">
+		<value>Speicherslot Byte-Vergleich durchführen</value>
 	</data>
 	<data name="CommandManual" xml:space="preserve">
 		<value>Anleitung</value>
 	</data>
-	<data name="CommandOverwriteComparisonFile" xml:space="preserve">
+	<data name="CommandOverwriteComparisonSramFile" xml:space="preserve">
 		<value>Überschreibe Vergleichs-Datei mt aktueller SRAM-Datei</value>
 	</data>
 	<data name="CommandQuit" xml:space="preserve">
 		<value>Beenden</value>
 	</data>
-	<data name="CommandRestoreComparisonFile" xml:space="preserve">
+	<data name="CommandRestoreComparisonSramFile" xml:space="preserve">
 		<value>Vergleichs-Datei aus Sicherung wiederherstellen</value>
 	</data>
-	<data name="CommandRestoreCurrentFile" xml:space="preserve">
+	<data name="CommandRestoreCurrentSramFile" xml:space="preserve">
 		<value>Aktuelle SRAM-Datei aus Sicherung wiederherstellen</value>
 	</data>
-	<data name="CommandSaveManipulatedOffsetValue" xml:space="preserve">
+	<data name="CommandModifyOffsetValue" xml:space="preserve">
 		<value>Manipulierten Offset-Wert speichern</value><comment>The term Offset should only be translated if not understandable</comment>
 	</data>
-	<data name="CommandSetComparisonGame" xml:space="preserve">
-		<value>Spielslot für Vergleichs-SRAM-Datei festlegen</value>
+	<data name="CommandSetComparisonSramFileSaveSlot" xml:space="preserve">
+		<value>Speicherslot für Vergleichs-SRAM-Datei festlegen</value>
 	</data>
-	<data name="CommandSetGame" xml:space="preserve">
-		<value>Spielslot für aktuele SRAM-Datei festlegen</value>
+	<data name="CommandSetCurrentSrramFileSaveSlot" xml:space="preserve">
+		<value>Speicherslot für aktuele SRAM-Datei festlegen</value>
 	</data>
-	<data name="CommandTransferSramToSimilarGameFile" xml:space="preserve">
-		<value>SRAM-Daten zu ähnlichem Spiel transferieren</value>
+	<data name="CommandSaveCurrentSramFileAsOtherFileName" xml:space="preserve">
+		<value>Aktuelle SRAM-Datei unter anderem Spielnamen speichern</value>
 	</data>
 	<data name="CommandWipeOutput" xml:space="preserve">
 		<value>Bisherige Konsolen-Ausgabe löschen</value>
@@ -184,13 +184,13 @@
 		<comment>This is an abbreviation and should be kept as short as possible</comment>
 	</data>
 	<data name="CurrentSramFile" xml:space="preserve">
-		<value>Aktuelle SRAM-Datei</value>
+		<value>Aktuelle-SRAM-Datei</value>
 	</data>
 	<data name="Current" xml:space="preserve">
 		<value>Aktuell</value>
 	</data>
 	<data name="ComparisonSramFile" xml:space="preserve">
-		<value>Vergleichs SRAM-Datei</value>
+		<value>Vergleichs-SRAM-Datei</value>
 	</data>
 	<data name="EnterCommand" xml:space="preserve">
 		<value>Befehl eingeben und Eingabe drücken</value>
@@ -205,7 +205,7 @@
 		<value>Der Befehl ({0}) muss vom Aufrufer implementiert werden.</value>
 	</data>
 	<data name="ErrorComparisoGameSetButNotGame" xml:space="preserve">
-		<value>Der Vergleichs-Datei Spielslot kann erst gesetzt werden, nachdem der Spielslot der aktuellen SRAM-Datei festgelegt wurde.</value>
+		<value>Der Vergleichs-Datei Speicherslot kann erst gesetzt werden, nachdem der Speicherslot der aktuellen SRAM-Datei festgelegt wurde.</value>
 	</data>
 	<data name="ErrorComparisonFileDoesNotExist" xml:space="preserve">
 		<value>Die Vergleichs-Datei "{0}" wurde noch nicht erstellt. Bitte zuerst eine erstellen.</value>
@@ -213,7 +213,7 @@
 	<data name="ErrorCompGameFileIsNotCompFileTypeFilepathTemplate" xml:space="preserve">
 		<value>{0} Vergleichs SRAM-Datei muss eine .comp Datei-Endung besitzen. Hast du vielleicht nur vergessen den Pfad in Anführungszeichen zu setzen? War: {1}</value>
 	</data>
-	<data name="ErrorGameFileIsNotSrmFileTypeFilepathTemplate" xml:space="preserve">
+	<data name="ErrorFileIsNotSrmFileTypeFilepathTemplate" xml:space="preserve">
 		<value>{0} aktuelle SRAM-Datei muss eine .srm Datei-Endung besitzen. Hast du vielleicht nur vergessen den Pfad in Anführungszeichen zu setzen? War: {1}</value>
 	</data>
 	<data name="ErrorInvalidIndex" xml:space="preserve">
@@ -231,17 +231,17 @@
 	<data name="ErrorParamNameValueMissmatchTemplate" xml:space="preserve">
 		<value>Parameter Name-Wert Nichtübereinstimmung für: {0}</value>
 	</data>
-	<data name="Game" xml:space="preserve">
-		<value>Spielslot</value>
+	<data name="SaveSlot" xml:space="preserve">
+		<value>Speicherslot</value>
 	</data>
 	<data name="GameOffset" xml:space="preserve">
-		<value>Spielslot Offset</value><comment>The term Offset should only be translated if not understandable</comment>
+		<value>Speicherslot-Offset</value><comment>The term Offset should only be translated if not understandable</comment>
 	</data>
-	<data name="GetGameOffsetTemplate" xml:space="preserve">
-		<value>Spielslot-Offset setzen:</value><comment>The term Offset should only be translated if not understandable</comment>
+	<data name="GetSaveSlotOffsetTemplate" xml:space="preserve">
+		<value>Speicherslot-Offset setzen:</value><comment>The term Offset should only be translated if not understandable</comment>
 	</data>
-	<data name="GetGameOffsetValue" xml:space="preserve">
-		<value>Spielslot-Offset-Wert setzen:</value><comment>The term Offset should only be translated if not understandable</comment>
+	<data name="GetSaveSlotOffsetValue" xml:space="preserve">
+		<value>Speicherslot-Offset-Wert setzen:</value><comment>The term Offset should only be translated if not understandable</comment>
 	</data>
 	<data name="New" xml:space="preserve">
 		<value>Neu</value>
@@ -262,28 +262,28 @@
 		<value>Eingereihte Befehle</value>
 	</data>
 	<data name="SameAsCurrentGame" xml:space="preserve">
-		<value>Gleicher wie bei aktueller Spielslot</value>
+		<value>Gleicher wie bei aktueller Speicherslot</value>
 	</data>
 	<data name="SectionGameChangedTemplate" xml:space="preserve">
 		<value>Alles (Bekannte und Unbekannte)</value>
 	</data>
-	<data name="SettingExportDirectory" xml:space="preserve">
+	<data name="ExportDirectory" xml:space="preserve">
 		<value>Export-Verzeichnis</value>
 	</data>
-	<data name="SettingCurrentGameFilepath" xml:space="preserve">
+	<data name="CurrentSramFilepath" xml:space="preserve">
 		<value>Pfad für aktuelle SRAM-Datei</value>
 	</data>
-	<data name="SettingComparisonGameFilepath" xml:space="preserve">
+	<data name="ComparisonSramFilepath" xml:space="preserve">
 		<value>Pfad für Vergleichs SRAM-Datei</value>
 	</data>
-	<data name="SettingCurrentGameToCompare" xml:space="preserve">
-		<value>Spielslot der aktuellen SRAM-Datei</value>
+	<data name="CurrentSramFileSaveSlot" xml:space="preserve">
+		<value>Speicherslot der aktuellen SRAM-Datei</value>
 	</data>
-	<data name="SettingComparisonGameToCompare" xml:space="preserve">
-		<value>Spielslot der Vergleichs SRAM-Datei</value>
+	<data name="ComparisonSramFileSaveSlot" xml:space="preserve">
+		<value>Speicherslot der Vergleichs SRAM-Datei</value>
 	</data>
-	<data name="SettingRegion" xml:space="preserve">
-		<value>ROM Region</value>
+	<data name="GameRegion" xml:space="preserve">
+		<value>Spiel-Region</value>
 	</data>
 	<data name="Settings" xml:space="preserve">
 		<value>Einstellungen</value>
@@ -301,7 +301,7 @@
 		<value>Neu hier? Für eine Liste aller Befehle gib ({0}|?) oder ({1}) für eine Bedienungsanleitung ein</value>
 	</data>
 	<data name="StatusAllGamesWillBeCompared" xml:space="preserve">
-		<value>Alle Spielslots werden verglichen.</value>
+		<value>Alle Speicherplatzs werden verglichen.</value>
 	</data>
 	<data name="StatusBytesChangedTemplate" xml:space="preserve">
 		<value>{0} Bytes haben sich geändert.</value>
@@ -316,25 +316,25 @@
 		<value>Möchtest du eine neue SRAM-Datei erstellen anstatt die aktuelle Datei zu überschreiben? Gib 1 ein um eine neue Datei zu erstellen (empfohlen) oder gib 2 ein um die existierende Datei zu überschreiben. In letzterem Fall stelle sicher, zuvor eine Sicherung gemacht zu haben. 1 = neu, 2 = überschreiben, 0 = abbrechen</value>
 	</data>
 	<data name="SectionNonGameUnknowns" xml:space="preserve">
-		<value>Nicht-Spielslot Unbekannte</value>
+		<value>Nicht-Speicherslot Unbekannte</value>
 	</data>
-	<data name="SetGameToCompareMaxTemplate" xml:space="preserve">
-		<value>Setze Spieslot (1-{0} oder jede andere Taste um alle Spielslots zu vergleichen:</value>
+	<data name="SetSaveSlotToCompareMaxTemplate" xml:space="preserve">
+		<value>Setze Spieslot (1-{0} oder jede andere Taste um alle Speicherplatzs zu vergleichen:</value>
 	</data>
-	<data name="SetSingleGameMaxTemplate" xml:space="preserve">
-		<value>Spielslot (1-{0}) setzen:</value>
+	<data name="SetSingleSaveSlotMaxTemplate" xml:space="preserve">
+		<value>Speicherslot (1-{0}) setzen:</value>
 	</data>
 	<data name="SettinComparegNonGameBuffer" xml:space="preserve">
-		<value>Vergleiche den Nicht-Spielslot-Bereich</value>
+		<value>Vergleiche den Nicht-Speicherslot-Bereich</value>
 	</data>
 	<data name="SettingCompareWholeGameBuffer" xml:space="preserve">
-		<value>Vergleiche den gesamten Spielslot-Bereich</value>
+		<value>Vergleiche den gesamten Speicherslot-Bereich</value>
 	</data>
 	<data name="StatusCompareNonGameBuffer" xml:space="preserve">
-		<value>Vergleiche Nicht-Spielslot Bereich:</value>
+		<value>Vergleiche Nicht-Speicherslot Bereich:</value>
 	</data>
 	<data name="StatusCompareWholeGameBuffer" xml:space="preserve">
-		<value>Vergleiche gesamten Spielslot Bereich:</value>
+		<value>Vergleiche gesamten Speicherslot Bereich:</value>
 	</data>
 	<data name="StatusCurrentSramFileHasBeenBackedUpTemplate" xml:space="preserve">
 		<value>{0} wurde gesichert</value>
@@ -355,6 +355,9 @@
 		<value>Nur Unbekannte: {0} Bytes haben sich geändert</value>
 	</data>
 	<data name="StatusGameWillBeComparedTemplate" xml:space="preserve">
-		<value>Nur der aktuelle Spielslot {0} wird verglichen.</value>
+		<value>Nur der aktuelle Speicherslot {0} wird verglichen.</value>
+	</data>
+	<data name="ColorizeOutput" xml:space="preserve">
+		<value>Ausgabe einfärben</value>
 	</data>
 </root>

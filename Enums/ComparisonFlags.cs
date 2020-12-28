@@ -1,11 +1,16 @@
 ﻿using System;
+using Common.Shared.Min.Attributes;
+using SramComparer.Properties;
 
 namespace SramComparer.Enums
 {
 	[Flags]
 	public enum ComparisonFlags: uint
 	{
-		NonGameBuffer = 1 << 0,
-		WholeGameBuffer = 1 << 1
+		[DisplayNameLocalized(nameof(Resources.CommandDoSlotAllBytesComparison), typeof(Resources))]
+		AddSlotByteComparison = 1 << 0,
+			
+		[DisplayNameLocalized(nameof(Resources.CommandDoNonSlotBytesComparison), typeof(Resources))]
+		AddNonSlotByteComparison = 1 << 1
 	}
 }

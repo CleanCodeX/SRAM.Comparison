@@ -13,11 +13,11 @@ namespace SramComparer.Services
 	/// Standard implementation of <see cref="ICmdLineParser"/>
 	/// </summary>
 	/// <typeparam name="TOptions">The options's type t be parsed into</typeparam>
-	/// <typeparam name="TFileRegion">The game file's region enum</typeparam>
+	/// <typeparam name="TRomRegion">The game file's region enum</typeparam>
 	/// <typeparam name="TComparisonFlags">The game's comparison flags enum</typeparam>
-	public class CmdLineParser<TOptions, TFileRegion, TComparisonFlags> : ICmdLineParser
-		where TOptions : Options<TFileRegion, TComparisonFlags>, new()
-		where TFileRegion : struct, Enum
+	public class CmdLineParser<TOptions, TRomRegion, TComparisonFlags> : ICmdLineParser
+		where TOptions : Options<TRomRegion, TComparisonFlags>, new()
+		where TRomRegion : struct, Enum
 		where TComparisonFlags : struct, Enum
 	{
 		/// <summary>
@@ -30,24 +30,45 @@ namespace SramComparer.Services
 			if (args.Count == 0) return new TOptions();
 
 			const string compFileExtension = ".comp";
-			var currentGameFile = args[0];
-			var options = new TOptions { CurrentGameFilepath = currentGameFile };
+			var currentSramFilepath = args[0];
+			var options = new TOptions { CurrentSramFilepath = currentSramFilepath };
 
-			if (currentGameFile.IsNullOrEmpty())
-				throw new ArgumentException(Resources.ErrorMissingPathArguments, nameof(options.CurrentGameFilepath));
+			if (currentSramFilepath.IsNullOrEmpty())
+				throw new ArgumentException(Resources.ErrorMissingPathArguments, nameof(options.CurrentSramFilepath));
+
+			options.ExportDirectory = Path.GetDirectoryName(options.CurrentSramFilepath);
+
+			var namelessParamCount = 1;
+			// Check nameless params
+			for (var i = 1; i < args.Count; ++i)
+			{
+				var value = args[i];
+				if (value.StartsWith("--")) break;
+
+				if (Enum.TryParse<TRomRegion>(value, true, out var romRegion))
+				{
+					options.GameRegion = romRegion;
+					++namelessParamCount;
+				}
+				else if (File.Exists(value) || File.Exists(Path.Join(options.ExportDirectory, value)))
+				{
+					EnsureFullQualifiedPath(ref value);
+		
+					options.ComparisonSramFilepath = value;
+					++namelessParamCount;
+				}
+			}
 
 #if Check_FileExtensions
 			const string srmFileExtension = ".srm";
 
-			if (Path.GetExtension(currentGameFile).ToLower() != srmFileExtension)
-				throw new ArgumentException(Resources.ErrorGameFileIsNotSrmFileTypeFilepathTemplate.InsertArgs(Resources.Current, options.CurrentGameFilepath), nameof(options.CurrentGameFilepath));
+			if (Path.GetExtension(currentSramFilepath).ToLower() != srmFileExtension)
+				throw new ArgumentException(Resources.ErrorFileIsNotSrmFileTypeFilepathTemplate.InsertArgs(Resources.Current, options.CurrentSramFilepath), nameof(options.CurrentSramFilepath));
 #endif
 
-			options.ExportDirectory = Path.GetDirectoryName(options.CurrentGameFilepath);
-			options.ComparisonGameFilepath = currentGameFile + compFileExtension;
+			options.ComparisonSramFilepath ??= currentSramFilepath + compFileExtension;
 			
-			int i;
-			for (i = 1; i < args.Count; i += 2)
+			for (var i = namelessParamCount; i < args.Count; i += 2)
 			{
 				var cmdName = args[i].ToLower();
 
@@ -58,42 +79,50 @@ namespace SramComparer.Services
 
 				switch (cmdName)
 				{
-					case CmdOptions.Command:
-						options.Commands = value.IsNullOrEmpty() ? null : value;
+					case CmdOptions.BatchCommands:
+						options.BatchCommands = value.IsNullOrEmpty() ? null : value;
 						break;
 					case CmdOptions.ComparisonFile:
-						if (Path.GetDirectoryName(value) == string.Empty)
-							value = Path.Join(Path.GetDirectoryName(options.CurrentGameFilepath), value);
+						EnsureFullQualifiedPath(ref value);
 
-						options.ComparisonGameFilepath = value;
+						options.ComparisonSramFilepath = value;
 						break;
-					case CmdOptions.Exportdir:
+					case CmdOptions.ExportDirectory:
 						options.ExportDirectory = value;
 						break;
-					case CmdOptions.CurrentGame:
-						options.CurrentGame = value.ParseGameId();
+					case CmdOptions.CurrentSaveSlot:
+						options.CurrentSramFileSaveSlot = value.ParseSaveSlotId();
 						break;
-					case CmdOptions.ComparisonGame:
-						options.ComparisonGame = value.ParseGameId();
+					case CmdOptions.ComparisonSaveSlot:
+						options.ComparisonSramFileSaveSlot = value.ParseSaveSlotId();
 						break;
-					case CmdOptions.Region:
-						options.Region = value.ParseEnum<TFileRegion>();
+					case CmdOptions.GameRegion:
+						options.GameRegion = value.ParseEnum<TRomRegion>();
 						break;
 					case CmdOptions.ComparisonFlags:
-						options.Flags = value.ParseEnum<TComparisonFlags>();
+						options.ComparisonFlags = value.ParseEnum<TComparisonFlags>();
+						break;
+					case CmdOptions.ColorizeOutput:
+						options.ColorizeOutput = value.ParseToBool();
 						break;
 				}
 			}
 
-			if (options.ComparisonGameFilepath.IsNullOrEmpty())
-				throw new ArgumentException(Resources.ErrorMissingPathArguments, nameof(options.ComparisonGameFilepath));
+			if (options.ComparisonSramFilepath.IsNullOrEmpty())
+				throw new ArgumentException(Resources.ErrorMissingPathArguments, nameof(options.ComparisonSramFilepath));
 
 #if Check_FileExtensions
-			if (Path.GetExtension(options.ComparisonGameFilepath).ToLower() != compFileExtension)
-				throw new ArgumentException(Resources.ErrorGameFileIsNotSrmFileTypeFilepathTemplate.InsertArgs(Resources.Comparison, options.ComparisonGameFilepath), nameof(options.ComparisonGameFilepath));
+			if (Path.GetExtension(options.ComparisonSramFilepath).ToLower() != compFileExtension)
+				throw new ArgumentException(Resources.ErrorFileIsNotSrmFileTypeFilepathTemplate.InsertArgs(Resources.Comparison, options.ComparisonSramFilepath), nameof(options.ComparisonSramFilepath));
 #endif
 
 			return options;
+
+			void EnsureFullQualifiedPath(ref string value)
+			{
+				if (Path.GetDirectoryName(value) == string.Empty)
+					value = Path.Join(Path.GetDirectoryName(options.CurrentSramFilepath), value);
+			}
 		}
 	}
 }

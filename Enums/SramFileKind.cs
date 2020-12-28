@@ -2,7 +2,7 @@
 {
 	public enum SramFileKind
 	{
-		Current,
-		Comparison
+		CurrentFile,
+		ComparisonFile
 	}
 }
