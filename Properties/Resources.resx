@@ -201,8 +201,8 @@
   <data name="CurrentSramFilepath" xml:space="preserve">
     <value>Current SRAM filepath</value>
   </data>
-  <data name="StatusGameWillBeComparedTemplate" xml:space="preserve">
-    <value>Only current save slot {0} will be compared.</value>
+  <data name="StatusSingleSaveSlotWillBeComparedTemplate" xml:space="preserve">
+    <value>Only save slot {0} will be compared.</value>
   </data>
   <data name="StatusOffsetWillBeUsedTemplate" xml:space="preserve">
     <value>Offset {0} will be used.</value><comment>The term Offset should only be translated if not understandable</comment>
@@ -210,7 +210,7 @@
   <data name="StatusOffsetValueWillBeUsedTemplate" xml:space="preserve">
     <value>Offset value {0} will be set.</value><comment>The term Offset should only be translated if not understandable</comment>
   </data>
-  <data name="StatusAllGamesWillBeCompared" xml:space="preserve">
+  <data name="StatusAllSaveSlotsWillBeCompared" xml:space="preserve">
     <value>All save slots will be compared.</value>
   </data>
   <data name="GameOffset" xml:space="preserve">
@@ -321,19 +321,19 @@
   <data name="UnknownsOnly" xml:space="preserve">
     <value>Unknowns only</value>
   </data>
-  <data name="StatusGameUnknownsChangedBytesTemplate" xml:space="preserve">
+  <data name="StatusUnknownsChangedBytesTemplate" xml:space="preserve">
     <value>Unknowns only: {0} bytes changed</value>
   </data>
   <data name="Section" xml:space="preserve">
     <value>Section</value>
   </data>
-  <data name="SectionGameChangedTemplate" xml:space="preserve">
+  <data name="SectionSaveSlotChangedTemplate" xml:space="preserve">
     <value>All (knowns + unknowns)</value>
   </data>
-  <data name="StatusGameChangedBytesTemplate" xml:space="preserve">
+  <data name="StatusSaveSlotChangedBytesTemplate" xml:space="preserve">
     <value>All (knowns + unknowns): {0} bytes changed</value>
   </data>
-  <data name="SectionNonGameUnknowns" xml:space="preserve">
+  <data name="SectionNonSaveSlotUnknowns" xml:space="preserve">
     <value>Non-save slot unknowns</value>
   </data>
   <data name="StatusNonSaveSlotUnknownsBytesTemplate" xml:space="preserve">
@@ -411,11 +411,11 @@
   <data name="ErrorNoValidCommandCmdTemplate" xml:space="preserve">
     <value>"{0}" is an unknown command. To list all available commands enter ({1}).</value>
   </data>
-  <data name="ErrorComparisoGameSetButNotGame" xml:space="preserve">
+  <data name="ErrorComparisonSramSaveSlotSetButNotCurrentSramSaveSlot" xml:space="preserve">
     <value>Save slot for comparison SRAM file can only be set if current SRAM file's save slot is set first.</value>
   </data>
-  <data name="SameAsCurrentGame" xml:space="preserve">
-    <value>Same as current save slot</value>
+  <data name="SameAsCurrentSramFileSaveSlot" xml:space="preserve">
+    <value>Same as current SRAM file' save slot</value>
   </data>
   <data name="CmdGroupBackup" xml:space="preserve">
     <value>Backup</value>
@@ -424,7 +424,7 @@
     <value>Comparison</value>
   </data>
   <data name="CmdGroupSetsSaveSlotId" xml:space="preserve">
-    <value>Set save slot ID</value>
+    <value>Set save slot-ID</value>
   </data>
   <data name="CmdMisc" xml:space="preserve">
     <value>Miscellaneous</value>
@@ -441,7 +441,7 @@
   <data name="ErrorFileIsNotSrmFileTypeFilepathTemplate" xml:space="preserve">
     <value>{0} current file must have .srm file extension. Did you just forget to quote the path? Was: {1}</value>
   </data>
-  <data name="ErrorCompGameFileIsNotCompFileTypeFilepathTemplate" xml:space="preserve">
+  <data name="ErrorCompSaveSlotFileIsNotCompFileTypeFilepathTemplate" xml:space="preserve">
     <value>{0} comparison file must have .comp file extension. Did you just forget to quote the path? Was: {1}</value>
   </data>
   <data name="StatusCurrentSramHasBeenSavedAsFilepathTemplate" xml:space="preserve">

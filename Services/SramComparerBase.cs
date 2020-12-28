@@ -11,21 +11,21 @@ namespace SramComparer.Services
 	/// Base class for SRAM comparison. Needs an actual implementation for a specific game
 	/// </summary>
 	/// <typeparam name="TSramFile">The SRAM file structure</typeparam>
-	/// <typeparam name="TSramGame">The SRAM game structure</typeparam>
-	public abstract class SramComparerBase<TSramFile, TSramGame> : ISramComparer<TSramFile, TSramGame>
-		where TSramFile : SramFile, ISramFile<TSramGame>
-		where TSramGame : struct
+	/// <typeparam name="TSaveSlot">The SRAM save slot structure</typeparam>
+	public abstract class SramComparerBase<TSramFile, TSaveSlot> : ISramComparer<TSramFile, TSaveSlot>
+		where TSramFile : SramFile, ISramFile<TSaveSlot>
+		where TSaveSlot : struct
 	{
 		protected IConsolePrinter ConsolePrinter { get; }
 
 		protected SramComparerBase() : this(ServiceCollection.ConsolePrinter) { }
 		protected SramComparerBase(IConsolePrinter consolePrinter) => ConsolePrinter = consolePrinter;
 
-		/// <inheritdoc cref="ISramComparer{TSramFile,TSramGame}.CompareSram(TSramFile, TSramFile, IOptions)"/>
+		/// <inheritdoc cref="ISramComparer{TSramFile,TSaveSlot}.CompareSram(TSramFile, TSramFile, IOptions)"/>
 		public abstract int CompareSram(TSramFile currFile, TSramFile compFile, IOptions options);
 
-		/// <inheritdoc cref="ISramComparer{TSramFile,TSramGame}.CompareGame(TSramGame, TSramGame, IOptions)"/>
-		public abstract int CompareGame(TSramGame currGame, TSramGame compGame, IOptions options);
+		/// <inheritdoc cref="ISramComparer{TSramFile,TSaveSlot}.CompareSaveSlot"/>
+		public abstract int CompareSaveSlot(TSaveSlot currSlot, TSaveSlot compSlot, IOptions options);
 
 		/// <summary>
 		/// Compares a single byte

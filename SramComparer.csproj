@@ -4,7 +4,7 @@
     <TargetFramework>net5.0</TargetFramework>
     <Nullable>enable</Nullable>
     <LangVersion>preview</LangVersion>
-    <Version>1.0.3-a2</Version>
+    <Version>1.0.3-b1</Version>
     <Authors>CleanCodeX</Authors>
     <Company>CleanCodeX</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>

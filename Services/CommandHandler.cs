@@ -109,7 +109,7 @@ namespace SramComparer.Services
 					if (options.CurrentSramFileSaveSlot != default)
 						options.ComparisonSramFileSaveSlot = GetGameId(maxGameId: 4);
 					else
-						ConsolePrinter.PrintError(Resources.ErrorComparisoGameSetButNotGame);
+						ConsolePrinter.PrintError(Resources.ErrorComparisonSramSaveSlotSetButNotCurrentSramSaveSlot);
 
 					break;
 				case Commands.ow:
@@ -478,8 +478,8 @@ namespace SramComparer.Services
 
 			ConsolePrinter.PrintParagraph();
 			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, gameId == 0
-				? string.Format(Resources.StatusGameWillBeComparedTemplate, gameId)
-				: Resources.StatusAllGamesWillBeCompared);
+				? string.Format(Resources.StatusSingleSaveSlotWillBeComparedTemplate, gameId)
+				: Resources.StatusAllSaveSlotsWillBeCompared);
 
 			ConsolePrinter.PrintParagraph();
 			ConsolePrinter.ResetColor();

@@ -149,7 +149,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Set save slot ID ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Set save slot-ID ähnelt.
         /// </summary>
         public static string CmdGroupSetsSaveSlotId {
             get {
@@ -482,15 +482,6 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Save slot for comparison SRAM file can only be set if current SRAM file&apos;s save slot is set first. ähnelt.
-        /// </summary>
-        public static string ErrorComparisoGameSetButNotGame {
-            get {
-                return ResourceManager.GetString("ErrorComparisoGameSetButNotGame", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die The comparison file &quot;{0}&quot; has not been created yet. Please create one first. ähnelt.
         /// </summary>
         public static string ErrorComparisonFileDoesNotExist {
@@ -500,11 +491,20 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Save slot for comparison SRAM file can only be set if current SRAM file&apos;s save slot is set first. ähnelt.
+        /// </summary>
+        public static string ErrorComparisonSramSaveSlotSetButNotCurrentSramSaveSlot {
+            get {
+                return ResourceManager.GetString("ErrorComparisonSramSaveSlotSetButNotCurrentSramSaveSlot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die {0} comparison file must have .comp file extension. Did you just forget to quote the path? Was: {1} ähnelt.
         /// </summary>
-        public static string ErrorCompGameFileIsNotCompFileTypeFilepathTemplate {
+        public static string ErrorCompSaveSlotFileIsNotCompFileTypeFilepathTemplate {
             get {
-                return ResourceManager.GetString("ErrorCompGameFileIsNotCompFileTypeFilepathTemplate", resourceCulture);
+                return ResourceManager.GetString("ErrorCompSaveSlotFileIsNotCompFileTypeFilepathTemplate", resourceCulture);
             }
         }
         
@@ -662,11 +662,11 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Same as current save slot ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Same as current SRAM file&apos; save slot ähnelt.
         /// </summary>
-        public static string SameAsCurrentGame {
+        public static string SameAsCurrentSramFileSaveSlot {
             get {
-                return ResourceManager.GetString("SameAsCurrentGame", resourceCulture);
+                return ResourceManager.GetString("SameAsCurrentSramFileSaveSlot", resourceCulture);
             }
         }
         
@@ -689,20 +689,20 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die All (knowns + unknowns) ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Non-save slot unknowns ähnelt.
         /// </summary>
-        public static string SectionGameChangedTemplate {
+        public static string SectionNonSaveSlotUnknowns {
             get {
-                return ResourceManager.GetString("SectionGameChangedTemplate", resourceCulture);
+                return ResourceManager.GetString("SectionNonSaveSlotUnknowns", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Non-save slot unknowns ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die All (knowns + unknowns) ähnelt.
         /// </summary>
-        public static string SectionNonGameUnknowns {
+        public static string SectionSaveSlotChangedTemplate {
             get {
-                return ResourceManager.GetString("SectionNonGameUnknowns", resourceCulture);
+                return ResourceManager.GetString("SectionSaveSlotChangedTemplate", resourceCulture);
             }
         }
         
@@ -790,9 +790,9 @@ namespace SramComparer.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die All save slots will be compared. ähnelt.
         /// </summary>
-        public static string StatusAllGamesWillBeCompared {
+        public static string StatusAllSaveSlotsWillBeCompared {
             get {
-                return ResourceManager.GetString("StatusAllGamesWillBeCompared", resourceCulture);
+                return ResourceManager.GetString("StatusAllSaveSlotsWillBeCompared", resourceCulture);
             }
         }
         
@@ -856,33 +856,6 @@ namespace SramComparer.Properties {
         public static string StatusCurrentSramHasBeenSavedAsFilepathTemplate {
             get {
                 return ResourceManager.GetString("StatusCurrentSramHasBeenSavedAsFilepathTemplate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die All (knowns + unknowns): {0} bytes changed ähnelt.
-        /// </summary>
-        public static string StatusGameChangedBytesTemplate {
-            get {
-                return ResourceManager.GetString("StatusGameChangedBytesTemplate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Unknowns only: {0} bytes changed ähnelt.
-        /// </summary>
-        public static string StatusGameUnknownsChangedBytesTemplate {
-            get {
-                return ResourceManager.GetString("StatusGameUnknownsChangedBytesTemplate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Only current save slot {0} will be compared. ähnelt.
-        /// </summary>
-        public static string StatusGameWillBeComparedTemplate {
-            get {
-                return ResourceManager.GetString("StatusGameWillBeComparedTemplate", resourceCulture);
             }
         }
         
@@ -959,6 +932,15 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die All (knowns + unknowns): {0} bytes changed ähnelt.
+        /// </summary>
+        public static string StatusSaveSlotChangedBytesTemplate {
+            get {
+                return ResourceManager.GetString("StatusSaveSlotChangedBytesTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Value at offset {0} is now {1}. ähnelt.
         /// </summary>
         public static string StatusSetOffsetValueTemplate {
@@ -973,6 +955,15 @@ namespace SramComparer.Properties {
         public static string StatusSetSingleSaveSlotMaxTemplate {
             get {
                 return ResourceManager.GetString("StatusSetSingleSaveSlotMaxTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Only save slot {0} will be compared. ähnelt.
+        /// </summary>
+        public static string StatusSingleSaveSlotWillBeComparedTemplate {
+            get {
+                return ResourceManager.GetString("StatusSingleSaveSlotWillBeComparedTemplate", resourceCulture);
             }
         }
         
@@ -1009,6 +1000,15 @@ namespace SramComparer.Properties {
         public static string StatusTotalDiffBytesTemplate {
             get {
                 return ResourceManager.GetString("StatusTotalDiffBytesTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Unknowns only: {0} bytes changed ähnelt.
+        /// </summary>
+        public static string StatusUnknownsChangedBytesTemplate {
+            get {
+                return ResourceManager.GetString("StatusUnknownsChangedBytesTemplate", resourceCulture);
             }
         }
         

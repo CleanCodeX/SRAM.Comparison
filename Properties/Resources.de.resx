@@ -234,7 +234,7 @@
 	<data name="SaveSlot" xml:space="preserve">
 		<value>Speicherslot</value>
 	</data>
-	<data name="GameOffset" xml:space="preserve">
+	<data name="SaveSlotOffset" xml:space="preserve">
 		<value>Speicherslot-Offset</value><comment>The term Offset should only be translated if not understandable</comment>
 	</data>
 	<data name="GetSaveSlotOffsetTemplate" xml:space="preserve">
@@ -261,10 +261,10 @@
 	<data name="QueuedCommands" xml:space="preserve">
 		<value>Eingereihte Befehle</value>
 	</data>
-	<data name="SameAsCurrentGame" xml:space="preserve">
+	<data name="SameAsCurrentSramFileSaveSlot" xml:space="preserve">
 		<value>Gleicher wie bei aktueller Speicherslot</value>
 	</data>
-	<data name="SectionGameChangedTemplate" xml:space="preserve">
+	<data name="SectionSaveSlotChangedTemplate" xml:space="preserve">
 		<value>Alles (Bekannte und Unbekannte)</value>
 	</data>
 	<data name="ExportDirectory" xml:space="preserve">
@@ -348,14 +348,14 @@
 	<data name="StatusCurrentSramHasBeenSavedAsFilepathTemplate" xml:space="preserve">
 		<value>Die aktuelle SRAM-Datei wurde kopiert als {0}.</value>
 	</data>
-	<data name="StatusGameChangedBytesTemplate" xml:space="preserve">
+	<data name="StatusSaveSlotChangedBytesTemplate" xml:space="preserve">
 		<value>Alles (Bekannte + Unbekannte): {0} Bytes haben sich geändert</value>
 	</data>
-	<data name="StatusGameUnknownsChangedBytesTemplate" xml:space="preserve">
+	<data name="StatusUnknownsChangedBytesTemplate" xml:space="preserve">
 		<value>Nur Unbekannte: {0} Bytes haben sich geändert</value>
 	</data>
-	<data name="StatusGameWillBeComparedTemplate" xml:space="preserve">
-		<value>Nur der aktuelle Speicherslot {0} wird verglichen.</value>
+	<data name="StatusSingleSaveSlotWillBeComparedTemplate" xml:space="preserve">
+		<value>Nur der Speicherslot {0} wird verglichen.</value>
 	</data>
 	<data name="ColorizeOutput" xml:space="preserve">
 		<value>Ausgabe einfärben</value>

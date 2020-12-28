@@ -30,7 +30,7 @@ namespace SramComparer.Services
 			PrintValue(options.CurrentSramFileSaveSlot == 0 ? Res.All : options.CurrentSramFileSaveSlot.ToString());
 
 			PrintSettingName(Res.ComparisonSramFileSaveSlot, $"{CmdOptions.ComparisonSaveSlot} [1-4|0={Res.All}]");
-			PrintValue(options.ComparisonSramFileSaveSlot == 0 ? Res.SameAsCurrentGame : options.ComparisonSramFileSaveSlot.ToString());
+			PrintValue(options.ComparisonSramFileSaveSlot == 0 ? Res.SameAsCurrentSramFileSaveSlot : options.ComparisonSramFileSaveSlot.ToString());
 
 			PrintSettingName(Res.GameRegion, $"{CmdOptions.GameRegion} [{string.Join("|", Enum.GetNames(options.GameRegion.GetType()))}]");
 			PrintValue(options.GameRegion.ToString());
