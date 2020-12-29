@@ -177,10 +177,10 @@
 		<value>Vergleichs-Flags</value>
 	</data>
 	<data name="ComparisonShort" xml:space="preserve">
-		<value>Vergl</value><comment>This is an abbreviation and should be kept as short as possible</comment>
+		<value>Vergl.</value><comment>This is an abbreviation and should be kept as short as possible</comment>
 	</data>
 	<data name="CurrentShort" xml:space="preserve">
-		<value>Akt</value>
+		<value>Akt.</value>
 		<comment>This is an abbreviation and should be kept as short as possible</comment>
 	</data>
 	<data name="CurrentSramFile" xml:space="preserve">

@@ -349,6 +349,7 @@ namespace SramComparer.Services
 		}
 
 		public bool ColorizeOutput { get; set; } = true;
+		public virtual string NewLine => Environment.NewLine;
 		
 		public virtual void PrintParagraph() => Console.WriteLine();
 		public virtual void Print(string text) => Console.Write(text);
