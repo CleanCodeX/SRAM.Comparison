@@ -1,0 +1,376 @@
+﻿<root>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>1.3</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="All" xml:space="preserve">
+		<value>Toutes</value>
+	</data>
+	<data name="AppManualCommandsTemplate" xml:space="preserve">
+		<value>Étapes :
+1.1) Lisez le fichier Unknowns.md s'il existe pour voir les parties de la structure SRAM qui sont encore considérées comme inconnues.
+1.2) La plupart des émulateurs ont la possibilité de sauvegarder automatiquement la SRAM du jeu après tout changement,
+     sinon certains émulateurs peuvent être configurés pour avoir un touche de raccourci pour enregistrer manuellement le fichier * .srm.
+1.3) Lancez l'application avec le chemin du fichier srm en premier argument de ligne de commande ou faites un drag and drop du fichier srm sur le .exe de l'application.
+
+2) Appuyez sur ({0}) pour que le logiciel garde en mémoire votre fichier en cours, cela permettra de le comparer plus tard quand il aura été modifié.
+
+3.1) Provoquez un changement de votre sauvegarde SRAM (laissez un événement de progression du jeu se produire ou ouvrez un coffre non ouvert)
+     Pour forcer la mise à jour du fichier SRAM enregistrez votre partie dans une auberge.
+3.2) Appuyez sur ({1}) pour comparer votre nouveau srm en cours avec la version gardée en mémoire par le logiciel.
+     Si le fichier SRAM n'a pas du tout changé vous n'avez probablement pas sauvegardé dans le jeu, ou l'émulateur n'a pas
+     encore mis à jour le fichier SRAM (srm) automatiquement. Vérifiez la date de modification du fichier srm du jeu.
+     La période de mise à jour srm par défaut de Snes9x est de 30 secondes. Réduisez-la par exemple à 1 seconde
+     mais pas à 0 (ce qui la désactiverait).
+
+4.1) Assurez-vous de faire le moins possible de modifications entre deux sauvegardes. Une fois que vous êtes en mesure d'attribuer un changement de SRAM uniquement dans le jeu vous pouvez appuyer sur ({2}) pour exporter le résultat de la comparaison dans un fichier texte.
+4.2) Renommez le fichier pour qu'il reflète ce que vous venez de découvrir et vérifiez que le changement que vous venez de découvrir est reproductible.
+     Ensuite envoyez le fichier exporté sur community.xeth.de
+     et/ou ajoutez-le sur github via un pull.
+
+5) Pour démarrer une nouvelle comparaison appuyez à nouveau sur ({0}) pour enregistrer votre fichier SRAM en cours
+   en tant que fichier de comparaison puis recommencez à l'étape 3.1.
+
+6.1) (facultatif) Si vous avez des modifications dans plusieurs parties, appuyez sur ({3}) pour définir l'emplacement de sauvegarde du jeu (1-4) à comparer
+     pour éviter de comparer avec les autres emplacements de jeu. Si deux emplacements de jeu différents doivent être comparés entre-eux
+     appuyez sur ({4}) pour définir les emplacements de comparaison.
+6.2) (facultatif) Appuyez sur ({5} | {6}) pour définir les modes de comparaison.
+
+7) (facultatif) Le fichier srm en cours et celui de comparaison peuvent être sauvegardés ({7} | {8}) ou restaurés ({9} | {10}) individuellement.
+
+8) (facultatif) Les décalages SRAM peuvent être affichés en appuyant sur ({11}) ou modifiés avec ({12}). Vous aurez le choix entre mettre à jour votre fichier SRAM en cours (sauvegarde recommandée) ou de créer un nouveau fichier.</value>
+	</data>
+	<data name="Backup" xml:space="preserve">
+		<value>Sauvegarde</value>
+	</data>
+	<data name="Bytes" xml:space="preserve">
+		<value>octets</value>
+	</data>
+	<data name="ChangeShort" xml:space="preserve">
+		<value>Modification</value>
+	</data>
+	<data name="CmdGroupBackup" xml:space="preserve">
+		<value>Sauvegarde</value>
+	</data>
+	<data name="CmdGroupComparison" xml:space="preserve">
+		<value>Comparaison</value>
+	</data>
+	<data name="CmdGroupDisplay" xml:space="preserve">
+		<value>Affichage</value>
+	</data>
+	<data name="CmdGroupSetsSaveSlot" xml:space="preserve">
+		<value>Choisir la partie</value>
+	</data>
+	<data name="CmdMisc" xml:space="preserve">
+		<value>Miscellaneous</value><comment>Possible retranslation neede. was: Autres</comment>
+	</data>
+	<data name="CommandBackupComparisonSramFile" xml:space="preserve">
+		<value>Sauvegarder le fichier SRAM de comparaison</value>
+	</data>
+	<data name="CommandBackupCurrentSramFile" xml:space="preserve">
+		<value>Sauvegarder le fichier SRAM en cours</value>
+	</data>
+	<data name="CommandCompareFile" xml:space="preserve">
+		<value>Comparer le fichier SRAM en cours avec celui de comparaison</value>
+	</data>
+	<data name="AppDescription" xml:space="preserve">
+		<value>Cet outil fait une comparaison de fichiers SRAM.</value>
+	</data>
+	<data name="ColorizeOutput" xml:space="preserve">
+		<value>Colorize output</value>
+	</data>
+	<data name="CommandExportComparisonResult" xml:space="preserve">
+		<value>Exporter le résultat de la comparaison en cours</value>
+	</data>
+	<data name="CommandNonSlotByteByByteComparison" xml:space="preserve">
+		<value>Add non-slot byte-by-byte comparison</value>
+		<comment>Was: Comparer aussi les zones n'appartenant pas à des parties
+		</comment>
+	</data>
+	<data name="CommandSlotByteByBytesComparison" xml:space="preserve">
+		<value>Add slot byte-by-byte comparison</value><comment>Was: Comparer également toute la zone de la partie
+		</comment>
+	</data>
+	<data name="CommandManual" xml:space="preserve">
+		<value>Manuel</value>
+	</data>
+	<data name="CommandOverwriteComparisonSramFile" xml:space="preserve">
+		<value>Écraser le fichier de comparaison avec le fichier SRAM en cours</value>
+	</data>
+	<data name="CommandQuit" xml:space="preserve">
+		<value>Quitter</value>
+	</data>
+	<data name="CommandRestoreComparisonSramFile" xml:space="preserve">
+		<value>Restaurer le fichier SRAM de comparaison à partir de la sauvegarde</value>
+	</data>
+	<data name="CommandRestoreCurrentSramFile" xml:space="preserve">
+		<value>Restaurer le fichier SRAM en cours à partir de la sauvegarde</value>
+	</data>
+	<data name="CommandModifyOffsetValue" xml:space="preserve">
+		<value>Enregistrer la valeur du décalage</value>
+	</data>
+	<data name="CommandSetComparisonSramFileSaveSlot" xml:space="preserve">
+		<value>Définir l'emplacement de jeu du fichier SRAM de comparaison</value>
+	</data>
+	<data name="CommandSetCurrentSrramFileSaveSlot" xml:space="preserve">
+		<value>Définir l'emplacement de jeu du fichier SRAM en cours</value>
+	</data>
+	<data name="CommandSettings" xml:space="preserve">
+		<value>Paramètres d'affichage</value>
+	</data>
+	<data name="CommandOffsetValue" xml:space="preserve">
+		<value>Afficher le décalage en cours</value>
+	</data>
+	<data name="CommandListCommands" xml:space="preserve">
+		<value>List commands</value><comment>was: Afficher les commandes</comment>
+	</data>
+	<data name="CommandSaveCurrentSramFileAsOtherFileName" xml:space="preserve">
+		<value>Save current-SRAM file with other game file's name</value>
+		<comment>was: Transférer les données SRAM vers un fichier de jeu similaire
+		</comment>
+	</data>
+	<data name="CommandWipeOutput" xml:space="preserve">
+		<value>Effacer la sortie de la console précédente</value>
+	</data>
+	<data name="Comparison" xml:space="preserve">
+		<value>Comparaison</value>
+	</data>
+	<data name="ComparisonFlags" xml:space="preserve">
+		<value>Options de comparaison</value>
+	</data>
+	<data name="ComparisonShort" xml:space="preserve">
+		<value>Comp</value>
+	</data>
+	<data name="ComparisonSramFile" xml:space="preserve">
+		<value>Fichier SRAM de comparaison</value>
+	</data>
+	<data name="Current" xml:space="preserve">
+		<value>En cours</value>
+	</data>
+	<data name="CurrentShort" xml:space="preserve">
+		<value>En cours</value><comment>Is nothing shorter possible? 4-5 characters would be optimal</comment>
+	</data>
+	<data name="CurrentSramFile" xml:space="preserve">
+		<value>Fichier SRAM en cours</value>
+	</data>
+	<data name="EnterCommand" xml:space="preserve">
+		<value>Entrez une commande et appuyez sur Entrée.</value>
+	</data>
+	<data name="EnterIndexOfSramFileToBeOverwrittenMaxIndexTemplate" xml:space="preserve">
+		<value>Entrez le numéro (0 à {0}) du fichier SRAM à écraser ou appuyez sur n'importe quelle autre touche pour annuler :</value>
+	</data>
+	<data name="ErrorCannotOpenOutputFileTemplate" xml:space="preserve">
+		<value>Impossible d'enregistrer le fichier de sortie "{0}"</value>
+	</data>
+	<data name="ErrorCommandNotImplementedTemplate" xml:space="preserve">
+		<value>La commande ({0}) n'est pas implémentée.</value>
+	</data>
+	<data name="ErrorComparisonSramSaveSlotSetButNotCurrentSramSaveSlot" xml:space="preserve">
+		<value>Save slot for comparison SRAM file can only be set if current SRAM file's save slot is set first.</value>
+		<comment>Was: L'emplacement de la partie pour la comparaison ne peut être défini que si l'emplacement de jeu du fichier SRAM en cours est défini en premier.</comment>
+	</data>
+	<data name="ErrorComparisonFileDoesNotExist" xml:space="preserve">
+		<value>Le fichier de comparaison "{0}" n'a pas encore été créé. Veuillez d'abord en créer un.</value>
+	</data>
+	<data name="ErrorCompSaveSlotFileIsNotCompFileTypeFilepathTemplate" xml:space="preserve">
+		<value>Le fichier de comparaison {0} doit avoir l'extension de fichier .comp. Avez-vous oublié d'utiliser des guillemets? {1}</value>
+	</data>
+	<data name="ErrorFileIsNotSrmFileTypeFilepathTemplate" xml:space="preserve">
+		<value>Le fichier en cours {0} doit avoir l'extension de fichier .srm. Avez-vous oublié d'utiliser des guillemets? {1}</value>
+	</data>
+	<data name="ErrorInvalidIndex" xml:space="preserve">
+		<value>Numéro de partie invalide.</value>
+	</data>
+	<data name="ErrorMissingPathArguments" xml:space="preserve">
+		<value>ERREUR : le programme doit être démarré en indiquant au moins un fichier .srm en tant que paramètre. Vous pouvez aussi faire un drag and drop d'un fichier .srm sur ce .exe.</value>
+	</data>
+	<data name="ErrorNoValidCommandCmdTemplate" xml:space="preserve">
+		<value>{0}" est une commande inconnue. Pour afficher la liste de toutes les commandes disponibles écrivez ({1}).
+</value>
+	</data>
+	<data name="ErrorOperationAborted" xml:space="preserve">
+		<value>Opération annulée</value>
+	</data>
+	<data name="ErrorParamNameValueMissmatchTemplate" xml:space="preserve">
+		<value>Incompatibilité de nom de paramètre pour {0}</value>
+	</data>
+	<data name="SaveSlotOffset" xml:space="preserve">
+		<value>Décalage dans la partie</value>
+	</data>
+	<data name="New" xml:space="preserve">
+		<value>Nouveau</value>
+	</data>
+	<data name="None" xml:space="preserve">
+		<value>Aucun</value>
+	</data>
+	<data name="Old" xml:space="preserve">
+		<value>Ancien</value>
+	</data>
+	<data name="Offset" xml:space="preserve">
+		<value>Décalage</value>
+	</data>
+	<data name="PromtCreateNewFileInsteadOfOverwriting" xml:space="preserve">
+		<value>Would you like to create a new SRAM file instead overwriting the current file? Type 1 for creating a new file (recommended) or type 2 to overwrite the existing file. In the latter case make sure to have a backup created before. 1 = new, 2 = overwrite, 0 = abort</value>
+	</data>
+	<data name="QueuedCommands" xml:space="preserve">
+		<value>Commandes en file d'attente</value>
+	</data>
+	<data name="CurrentSramFileSaveSlot" xml:space="preserve">
+		<value>Save slot (current file)</value>
+		<comment>Partie du fichier en cours
+		</comment>
+	</data>
+	<data name="Section" xml:space="preserve">
+		<value>Section</value>
+	</data>
+	<data name="SectionSaveSlotChangedTemplate" xml:space="preserve">
+		<value>Tout (valeurs connues et inconnues)</value>
+	</data>
+	<data name="SectionNonSaveSlotUnknowns" xml:space="preserve">
+		<value>Valeurs inconnues des autres parties</value>
+	</data>
+	<data name="SetSaveSlotToCompareMaxTemplate" xml:space="preserve">
+		<value>Définir la partie à comparer (1- {0} ou appuyez sur n'importe quelle autre touche pour sélectionner toutes les parties) :</value>
+	</data>
+	<data name="SetSingleSaveSlotMaxTemplate" xml:space="preserve">
+		<value>Définir la partie (1- {0}) :</value>
+	</data>
+	<data name="SettinComparegNonGameBuffer" xml:space="preserve">
+		<value>Comparer les zones en dehors de la partie en cours</value>
+	</data>
+	<data name="SettingCompareWholeGameBuffer" xml:space="preserve">
+		<value>Comparer la partie en cours en entier</value>
+	</data>
+	<data name="ComparisonSramFilepath" xml:space="preserve">
+		<value>Comparaison du chemin du fichier SRAM</value>
+	</data>
+	<data name="ComparisonSramFileSaveSlot" xml:space="preserve">
+		<value>Partie du fichier de comparaison</value>
+	</data>
+	<data name="CurrentSramFilepath" xml:space="preserve">
+		<value>Chemin du fichier SRAM en cours</value>
+	</data>
+	<data name="ExportDirectory" xml:space="preserve">
+		<value>Exporter le répertoire</value>
+	</data>
+	<data name="GameRegion" xml:space="preserve">
+		<value>game region</value>
+		<comment>Région du jeu</comment>
+	</data>
+	<data name="Settings" xml:space="preserve">
+		<value>Réglages</value>
+	</data>
+	<data name="Size" xml:space="preserve">
+		<value>Taille</value>
+	</data>
+	<data name="Sram" xml:space="preserve">
+		<value>SRAM</value>
+	</data>
+	<data name="SramOffset" xml:space="preserve">
+		<value>Décalage SRAM</value>
+	</data>
+	<data name="StartMessage" xml:space="preserve">
+		<value>Pour afficher la liste des commandes écrivez ({0} |?) ou ({1})</value>
+	</data>
+	<data name="StatusAllSaveSlotsWillBeCompared" xml:space="preserve">
+		<value>Toutes les parties seront comparées.</value>
+	</data>
+	<data name="StatusBytesChangedTemplate" xml:space="preserve">
+		<value>{0} octets modifiés</value>
+	</data>
+	<data name="StatusCurrentSramFileHasBeenBackedUpTemplate" xml:space="preserve">
+		<value>{0} a été sauvegardé</value>
+	</data>
+	<data name="StatusCurrentSramFileHasBeenSaved" xml:space="preserve">
+		<value>Le fichier SRAM en cours a été enregistré en tant que fichier SRAM de comparaison</value>
+	</data>
+	<data name="StatusModifiedSramFileHasBeenSavedAsFilepathTemplate" xml:space="preserve">
+		<value>Le fichier SRAM en cours qui a été modifié a été enregistré (fichier {0}).</value>
+	</data>
+	<data name="StatusCurrentSramHasBeenSavedAsFilepathTemplate" xml:space="preserve">
+		<value>Le fichier SRAM en cours a été copié (fichier {0}).</value>
+	</data>
+	<data name="StatusSaveSlotChangedBytesTemplate" xml:space="preserve">
+		<value>Tout (valeurs connues et inconnues) : {0} octets modifiés</value>
+	</data>
+	<data name="StatusUnknownsChangedBytesTemplate" xml:space="preserve">
+		<value>Valeurs inconnues uniquement : {0} octets modifiés</value>
+	</data>
+	<data name="StatusSingleSaveSlotWillBeComparedTemplate" xml:space="preserve">
+		<value>Seule la partie en cours {0} sera comparée.</value>
+	</data>
+	<data name="StatusSetOffsetValueTemplate" xml:space="preserve">
+		<value>La valeur à la position {0} est de {1}.</value>
+	</data>
+	<data name="StatusModifiedSramFileHasBeenOverwrittenFilepathTemplate" xml:space="preserve">
+		<value>Le fichier SRAM en cours qui a été modifié a été écrasé (fichier {0}).</value>
+	</data>
+	<data name="StatusNoAvailableOtherSramFiles" xml:space="preserve">
+		<value>Il n'y a aucun autre fichier SRAM disponible.</value>
+	</data>
+	<data name="StatusNonSaveSlotUnknownsBytesTemplate" xml:space="preserve">
+		<value>Valeurs inconnues des autres parties : {0} octets modifiés</value>
+	</data>
+	<data name="StatusNoSramBytesChanged" xml:space="preserve">
+		<value>Aucun octet modifié dans le fichier SRAM</value>
+	</data>
+	<data name="StatusOffsetValueWillBeUsedTemplate" xml:space="preserve">
+		<value>La valeur à la position du décalage {0} sera modifiée.</value>
+	</data>
+	<data name="StatusOffsetWillBeUsedTemplate" xml:space="preserve">
+		<value>Le décalage {0} sera utilisé.</value>
+	</data>
+	<data name="StatusGetOffsetValueTemplate" xml:space="preserve">
+		<value>Value at offset {0} is now {1}.</value><comment>"Now" was added
+			Was: La valeur à la position du décalage {0} est désormais {1}.
+		</comment>
+	</data>
+	<data name="StatusSetSingleSaveSlotMaxTemplate" xml:space="preserve">
+		<value>Le partie {0} sera utilisée.</value>
+	</data>
+	<data name="StatusSramChangedBytesTemplate" xml:space="preserve">
+		<value>{0} SRAM octets modifiés</value><comment>{0} octets modifiés</comment>
+	</data>
+	<data name="StatusSramFileHasBeenRestoredFromBackupTemplate" xml:space="preserve">
+		<value>{0} a été restauré à partir de la sauvegarde</value>
+	</data>
+	<data name="StatusTargetSramFileHasBeenBackedUpFilepathTemplate" xml:space="preserve">
+		<value>Le fichier SRAM a été sauvegardé en tant que {0}.</value>
+	</data>
+	<data name="StatusTotalDiffBytesTemplate" xml:space="preserve">
+		<value>Total : {0} octets modifiés (en dehors de la partie en cours)</value>
+	</data>
+	<data name="UnknownAreasOnly" xml:space="preserve">
+		<value>Seulement les valeurs inconnues</value>
+	</data>
+	<data name="StatusCurrentComparisonExportedFilepathTemplate" xml:space="preserve">
+		<value>Comparaison en cours enregistrée dans le fichier "{0}"</value>
+	</data>
+	<data name="SlotByteByByteComparison" xml:space="preserve">
+		<value>Slot byte-by-byte comparison</value><comment>Comparer toute les données de la partie en cours</comment>
+	</data>
+	<data name="SaveSlot" xml:space="preserve">
+		<value>Partie</value>
+	</data>
+	<data name="SameAsCurrentSramFileSaveSlot" xml:space="preserve">
+		<value>Identique à l'emplacement de la partie en cours</value>
+	</data>
+	<data name="GetSaveSlotOffsetTemplate" xml:space="preserve">
+		<value>Set Save slot {0} offset:</value><comment>Modifier le décalage dans cette partie {0}:</comment>
+	</data>
+	<data name="GetSaveSlotOffsetValue" xml:space="preserve">
+		<value>Set Save slot offset value:</value><comment>Modifier le décalage dans cette partie:</comment>
+	</data>
+	<data name="NonSlotByteByByteComparison" xml:space="preserve">
+		<value>Non-slot byte-by-byte comparison</value>
+		<comment>Comparer les zones en dehors de la partie en cours :</comment>
+	</data>
+</root>

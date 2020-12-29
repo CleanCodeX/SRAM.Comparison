@@ -149,11 +149,11 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Set save slot-ID ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Set save slot ähnelt.
         /// </summary>
-        public static string CmdGroupSetsSaveSlotId {
+        public static string CmdGroupSetsSaveSlot {
             get {
-                return ResourceManager.GetString("CmdGroupSetsSaveSlotId", resourceCulture);
+                return ResourceManager.GetString("CmdGroupSetsSaveSlot", resourceCulture);
             }
         }
         
@@ -860,7 +860,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Value at offset {0} is {1}. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Value at offset {0} is now {1}. ähnelt.
         /// </summary>
         public static string StatusGetOffsetValueTemplate {
             get {

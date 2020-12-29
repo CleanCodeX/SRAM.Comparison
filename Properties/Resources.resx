@@ -420,8 +420,8 @@
   <data name="CmdGroupComparison" xml:space="preserve">
     <value>Comparison</value>
   </data>
-  <data name="CmdGroupSetsSaveSlotId" xml:space="preserve">
-    <value>Set save slot-ID</value>
+  <data name="CmdGroupSetsSaveSlot" xml:space="preserve">
+    <value>Set save slot</value>
   </data>
   <data name="CmdMisc" xml:space="preserve">
     <value>Miscellaneous</value>
@@ -451,7 +451,7 @@
     <value>Changed current SRAM File has been saved as {0}.</value>
   </data>
   <data name="StatusGetOffsetValueTemplate" xml:space="preserve">
-    <value>Value at offset {0} is {1}.</value><comment>The term Offset should only be translated if not understandable</comment>
+    <value>Value at offset {0} is now {1}.</value><comment>The term Offset should only be translated if not understandable</comment>
   </data>
   <data name="StatusSetOffsetValueTemplate" xml:space="preserve">
     <value>Value at offset {0} is now {1}.</value><comment>The term Offset should only be translated if not understandable</comment>

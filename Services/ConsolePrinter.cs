@@ -66,7 +66,7 @@ namespace SramComparer.Services
 			PrintCommandKey(Commands.ow);
 			PrintColoredLine(ConsoleColor.Yellow, Commands.ow.GetDisplayName()!);
 
-			PrintGroupName(Res.CmdGroupSetsSaveSlotId);
+			PrintGroupName(Res.CmdGroupSetsSaveSlot);
 
 			PrintCommandKey(Commands.ss);
 			PrintColoredLine(ConsoleColor.Yellow, Commands.ss.GetDisplayName()!);

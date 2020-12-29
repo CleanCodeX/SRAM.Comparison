@@ -107,8 +107,8 @@
 	<data name="CmdGroupDisplay" xml:space="preserve">
 		<value>Anzeige</value>
 	</data>
-	<data name="CmdGroupSetsSaveSlotId" xml:space="preserve">
-		<value>Speicherslot-ID setzen</value>
+	<data name="CmdGroupSetsSaveSlot" xml:space="preserve">
+		<value>Speicherslot setzen</value>
 	</data>
 	<data name="CmdMisc" xml:space="preserve">
 		<value>Verschiedenes</value>
@@ -232,7 +232,7 @@
 		<value>Speicherslot-Offset</value><comment>The term Offset should only be translated if not understandable</comment>
 	</data>
 	<data name="GetSaveSlotOffsetTemplate" xml:space="preserve">
-		<value>Speicherslot-Offset setzen:</value><comment>The term Offset should only be translated if not understandable</comment>
+		<value>Speicherslot {0}-Offset setzen:</value><comment>The term Offset should only be translated if not understandable</comment>
 	</data>
 	<data name="GetSaveSlotOffsetValue" xml:space="preserve">
 		<value>Speicherslot-Offset-Wert setzen:</value><comment>The term Offset should only be translated if not understandable</comment>
@@ -331,7 +331,7 @@
 		<value>Die aktuelle SRAM-Datei wurde kopiert als {0}.</value>
 	</data>
 	<data name="StatusSaveSlotChangedBytesTemplate" xml:space="preserve">
-		<value>Alles (Bekannte + Unbekannte): {0} Bytes haben sich geändert</value>
+		<value>Alles (Bekannte + Unbekannte): {0} Bytes geändert</value>
 	</data>
 	<data name="StatusUnknownsChangedBytesTemplate" xml:space="preserve">
 		<value>Nur Unbekannte: {0} Bytes haben sich geändert</value>
