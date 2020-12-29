@@ -7,7 +7,7 @@
 	{
 		public const string ComparisonFile = "--comp-file";
 		public const string GameRegion = "--region";
-		public const string BatchCommands = "--cmds";
+		public const string BatchCommands = "--batch-cmds";
 		public const string CurrentSaveSlot = "--slot";
 		public const string ComparisonSaveSlot = "--comp-slot";
 		public const string ExportDirectory = "--export-dir";
