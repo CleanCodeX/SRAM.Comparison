@@ -10,7 +10,7 @@
 		public const string BatchCommands = "--cmds";
 		public const string CurrentSaveSlot = "--slot";
 		public const string ComparisonSaveSlot = "--comp-slot";
-		public const string ExportDirectory = "--exportdir";
+		public const string ExportDirectory = "--export-dir";
 		public const string ColorizeOutput = "--colorize";
 
 		/// <summary> Flag for game specific flags</summary>
