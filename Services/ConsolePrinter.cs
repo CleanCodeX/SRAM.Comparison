@@ -35,11 +35,11 @@ namespace SramComparer.Services
 			PrintSettingName(Res.ComparisonSramFileSaveSlot, $"{CmdOptions.ComparisonSaveSlot} [1-4|0={Res.All}]");
 			PrintValue(options.ComparisonSramFileSaveSlot == 0 ? Res.SameAsCurrentSramFileSaveSlot : options.ComparisonSramFileSaveSlot.ToString());
 
-			PrintSettingName(Res.ColorizeOutput, CmdOptions.ColorizeOutput.ToString());
+			PrintSettingName(Res.ColorizeOutput, CmdOptions.ColorizeOutput.ToString() + " [true|1|false|0]");
 			PrintValue(options.ColorizeOutput.ToString());
 			
 			PrintSettingName(Res.ComparisonFlags, $@"{CmdOptions.ComparisonFlags} [{string.Join(",", Enum.GetNames(options.ComparisonFlags.GetType()))}]");
-			PrintValue(Environment.NewLine.PadRight(30) + options.ComparisonFlags.ToFlagsString());
+			PrintValue(Environment.NewLine.PadRight(35) + options.ComparisonFlags.ToFlagsString());
 		}
 
 		protected virtual void PrintCustomCommands() {}
