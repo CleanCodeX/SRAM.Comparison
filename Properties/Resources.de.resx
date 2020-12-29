@@ -42,7 +42,7 @@
 		<value>Es haben sich keine SRAM Bytes geändert.</value>
 	</data>
 	<data name="StatusNonSaveSlotUnknownsBytesTemplate" xml:space="preserve">
-		<value>Unbekannter Nicht-Speicherslot Bereich: {0} Bytes haben sich geändert.</value>
+		<value>Unbekannter Nicht-Speicherslot Bereich: {0} Bytes  geändert.</value>
 	</data>
 	<data name="StatusNoAvailableOtherSramFiles" xml:space="preserve">
 		<value>Es sind derzeit keine anderen SRAM-Dateien verfügbar.</value>
@@ -114,7 +114,7 @@
 		<value>Verschiedenes</value>
 	</data>
 	<data name="CommandBackupComparisonSramFile" xml:space="preserve">
-		<value>Vergleichs SRAM-Datei sichern</value>
+		<value>Vergleichs-SRAM-Datei sichern</value>
 	</data>
 	<data name="CommandBackupCurrentSramFile" xml:space="preserve">
 		<value>Aktuelle SRAM-Datei sichern</value>
@@ -162,7 +162,7 @@
 		<value>Speicherslot für Vergleichs-SRAM-Datei festlegen</value>
 	</data>
 	<data name="CommandSetCurrentSrramFileSaveSlot" xml:space="preserve">
-		<value>Speicherslot für aktuele SRAM-Datei festlegen</value>
+		<value>Speicherslot für aktuelle SRAM-Datei festlegen</value>
 	</data>
 	<data name="CommandSaveCurrentSramFileAsOtherFileName" xml:space="preserve">
 		<value>Aktuelle SRAM-Datei unter anderem Spielnamen speichern</value>
@@ -334,7 +334,7 @@
 		<value>Alles (Bekannte + Unbekannte): {0} Bytes geändert</value>
 	</data>
 	<data name="StatusUnknownsChangedBytesTemplate" xml:space="preserve">
-		<value>Nur Unbekannte: {0} Bytes haben sich geändert</value>
+		<value>Nur Unbekannte: {0} Bytes geändert</value>
 	</data>
 	<data name="StatusSingleSaveSlotWillBeComparedTemplate" xml:space="preserve">
 		<value>Nur der Speicherslot {0} wird verglichen.</value>
@@ -355,7 +355,7 @@
 		<value>{0} Vergleichs SRAM-Datei muss eine .comp Datei-Endung besitzen. Hast du vielleicht nur vergessen den Pfad in Anführungszeichen zu setzen? War: {1}</value>
 	</data>
 	<data name="CommandSlotByteByBytesComparison" xml:space="preserve">
-		<value>Speicherslot Byte-für-Byte vergleichen (inklusive der "bekannten" Bereiche) </value>
+		<value>Speicherslot Byte-für-Byte vergleichen</value>
 	</data>
 	<data name="CommandNonSlotByteByByteComparison" xml:space="preserve">
 		<value>Nicht-Speicherslot-Bereich Byte-für-Byte vergleichen</value>
