@@ -58,7 +58,7 @@
 	</data>
 	<data name="AppManualCommandsTemplate" xml:space="preserve">
 		<value>Steps: 
-1.1) Schau auf Have a look at http://unknowns.xeth.de Beispiele zu sehen, welche Teile der SRAM-Struktur noch als unbekannt gelten.
+1.1) Schau in die Datei Unknowns.md um Beispiele zu sehen, welche Teile der SRAM-Struktur noch als unbekannt gelten.
 1.2) Die meisten Emulatoren haben die Einstellung das SRAM eines Spiels zu speichern sobald eine Änderung eintritt. 
      Stelle sicher, dass diese Einstellung aktiviert ist. Andernfalls musst du selbst sicherstellen, dass der Emulator die *.srm-Datei aktualisiert.
 1.3) Starte die Anwendung indem du den Pfad zur Srm Datei des Spiels als ersten Kommandozeilen Parameter übergibst. Die Datei kann auch per Drag 'n' Drop auf die Anwendung gezogen werden.

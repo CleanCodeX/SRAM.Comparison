@@ -122,8 +122,7 @@
   </data>
   <data name="AppManualCommandsTemplate" xml:space="preserve">
     <value>Steps: 
-1.1) Have a look at http://unknowns.xeth.de to see examples of what parts of SRAM structure are still 
-     considered as unknown.
+1.1) Have a look into Unknowns.md to see examples of what parts of SRAM structure are still considered as unknown.
 1.2) Most emulators have the option to save the game's S-RAM automatically after a change occurs. 
      Make sure this is enabled if existing. Otherwise you have manually ensure that the emulator updates 
      the *.srm file.

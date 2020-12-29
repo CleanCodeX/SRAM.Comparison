@@ -80,13 +80,14 @@ namespace SramComparer.Properties {
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Steps: 
-        ///1.1) Have a look at http://unknowns.xeth.de to see examples of what parts of SRAM structure are still 
-        ///     considered as unknown.
+        ///1.1) Have a look into Unknowns.md to see examples of what parts of SRAM structure are still considered as unknown.
         ///1.2) Most emulators have the option to save the game&apos;s S-RAM automatically after a change occurs. 
         ///     Make sure this is enabled if existing. Otherwise you have manually ensure that the emulator updates 
         ///     the *.srm file.
         ///1.3) Start the application by passing the game&apos;s srm filepath as first command parameter. The file can also be 
-        ///     dragged onto the applic [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        ///     dragged onto the application.
+        ///
+        ///2)   Th [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
         /// </summary>
         public static string AppManualCommandsTemplate {
             get {
