@@ -184,7 +184,7 @@
 		<comment>This is an abbreviation and should be kept as short as possible</comment>
 	</data>
 	<data name="CurrentSramFile" xml:space="preserve">
-		<value>Aktuelle-SRAM-Datei</value>
+		<value>Aktuelle SRAM-Datei</value>
 	</data>
 	<data name="Current" xml:space="preserve">
 		<value>Aktuell</value>
@@ -343,7 +343,7 @@
 		<value>Ausgabe einfärben</value>
 	</data>
 	<data name="StatusAllSaveSlotsWillBeCompared" xml:space="preserve">
-		<value>Alle Speicherslot werden verglichen.</value>
+		<value>Alle Speicherslots werden verglichen.</value>
 	</data>
 	<data name="SectionNonSaveSlotUnknowns" xml:space="preserve">
 		<value>Unbekannter nicht-Speicherslot-Bereich</value>
