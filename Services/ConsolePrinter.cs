@@ -38,7 +38,7 @@ namespace SramComparer.Services
 			PrintSettingName(Res.ColorizeOutput, CmdOptions.ColorizeOutput.ToString());
 			PrintValue(options.ColorizeOutput.ToString());
 			
-			PrintSettingName(Res.ComparisonFlags, $@"{CmdOptions.ComparisonFlags} {string.Join(",", Enum.GetNames(options.ComparisonFlags.GetType()))}");
+			PrintSettingName(Res.ComparisonFlags, $@"{CmdOptions.ComparisonFlags} [{string.Join(",", Enum.GetNames(options.ComparisonFlags.GetType()))}]");
 			PrintValue(Environment.NewLine.PadRight(30) + options.ComparisonFlags.ToFlagsString());
 		}
 
