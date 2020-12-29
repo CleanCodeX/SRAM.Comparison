@@ -20,8 +20,11 @@ namespace SramComparer.Services
 			PrintSettingName(Res.CurrentSramFilepath, "{0}");
 			PrintValue(Path.GetFileName(options.CurrentSramFilepath!));
 
-			PrintSettingName(Res.ComparisonSramFilepath, CmdOptions.ComparisonFile);
+			PrintSettingName(Res.ComparisonSramFilepath, "{1-2}|" + CmdOptions.ComparisonFile);
 			PrintValue(Path.GetFileName(options.ComparisonSramFilepath!));
+
+			PrintSettingName(Res.GameRegion, $"{"{1-2}|" + CmdOptions.GameRegion} [{string.Join("|", Enum.GetNames(options.GameRegion.GetType()))}]");
+			PrintValue(options.GameRegion.ToString());
 
 			PrintSettingName(Res.ExportDirectory, CmdOptions.ExportDirectory);
 			PrintValue(options.ExportDirectory!);
@@ -31,9 +34,6 @@ namespace SramComparer.Services
 
 			PrintSettingName(Res.ComparisonSramFileSaveSlot, $"{CmdOptions.ComparisonSaveSlot} [1-4|0={Res.All}]");
 			PrintValue(options.ComparisonSramFileSaveSlot == 0 ? Res.SameAsCurrentSramFileSaveSlot : options.ComparisonSramFileSaveSlot.ToString());
-
-			PrintSettingName(Res.GameRegion, $"{CmdOptions.GameRegion} [{string.Join("|", Enum.GetNames(options.GameRegion.GetType()))}]");
-			PrintValue(options.GameRegion.ToString());
 
 			PrintSettingName(Res.ColorizeOutput, CmdOptions.ColorizeOutput.ToString());
 			PrintValue(options.ColorizeOutput.ToString());

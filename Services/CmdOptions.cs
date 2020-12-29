@@ -5,11 +5,11 @@
 	/// </summary>
 	public static class CmdOptions
 	{
-		public const string BatchCommands = "--cmds";
-		public const string ComparisonFile = "--comp_file";
-		public const string CurrentSaveSlot = "--slot";
-		public const string ComparisonSaveSlot = "--comp_slot";
+		public const string ComparisonFile = "--comp-file";
 		public const string GameRegion = "--region";
+		public const string BatchCommands = "--cmds";
+		public const string CurrentSaveSlot = "--slot";
+		public const string ComparisonSaveSlot = "--comp-slot";
 		public const string ExportDirectory = "--exportdir";
 		public const string ColorizeOutput = "--colorize";
 
