@@ -360,4 +360,7 @@
 	<data name="CommandNonSlotByteByByteComparison" xml:space="preserve">
 		<value>Nicht-Speicherslot-Bereich Byte-für-Byte vergleichen</value>
 	</data>
+	<data name="Same" xml:space="preserve">
+		<value>Gleich</value>
+	</data>
 </root>

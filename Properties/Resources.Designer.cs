@@ -663,6 +663,15 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Same ähnelt.
+        /// </summary>
+        public static string Same {
+            get {
+                return ResourceManager.GetString("Same", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Same as current SRAM file&apos; save slot ähnelt.
         /// </summary>
         public static string SameAsCurrentSramFileSaveSlot {

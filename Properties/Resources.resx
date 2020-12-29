@@ -227,6 +227,9 @@
   <data name="None" xml:space="preserve">
     <value>None</value>
   </data>
+  <data name="Same" xml:space="preserve">
+    <value>Same</value>
+  </data>
   <data name="StatusCurrentSramFileHasBeenSaved" xml:space="preserve">
     <value>Current SRAM file has been saved as comparison SRAM file</value>
   </data>

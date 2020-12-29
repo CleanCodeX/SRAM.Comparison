@@ -373,4 +373,7 @@
 		<value>Non-slot byte-by-byte comparison</value>
 		<comment>Comparer les zones en dehors de la partie en cours :</comment>
 	</data>
+	<data name="Same" xml:space="preserve">
+		<value>Same</value>
+	</data>
 </root>
