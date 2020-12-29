@@ -168,7 +168,7 @@
     <value>ERROR: The program needs to be started with at least the path to current SRAM file as a parameter. Drag 'n' drop can be used.</value>
   </data>
   <data name="StatusBytesChangedTemplate" xml:space="preserve">
-    <value>{0} bytes changed</value>
+    <value>{0} bytes changed.</value>
   </data>
   <data name="CurrentSramFileSaveSlot" xml:space="preserve">
     <value>Save slot (current file)</value>
@@ -234,13 +234,13 @@
     <value>Same</value>
   </data>
   <data name="StatusCurrentSramFileHasBeenSaved" xml:space="preserve">
-    <value>Current SRAM file has been saved as comparison SRAM file</value>
+    <value>Current SRAM file has been saved as comparison SRAM file.</value>
   </data>
   <data name="StatusCurrentSramFileHasBeenBackedUpTemplate" xml:space="preserve">
-    <value>{0} has been backed-up</value>
+    <value>{0} has been backed-up.</value>
   </data>
   <data name="StatusSramFileHasBeenRestoredFromBackupTemplate" xml:space="preserve">
-    <value>{0} has been restored from backup</value>
+    <value>{0} has been restored from backup.</value>
   </data>
   <data name="CommandListCommands" xml:space="preserve">
     <value>List commands</value>
@@ -318,13 +318,13 @@
     <value>Comp</value><comment>This is an abbreviation and should be kept as short as possible</comment>
   </data>
   <data name="StatusTotalDiffBytesTemplate" xml:space="preserve">
-    <value>Total: {0} bytes changed (outside save slot area)</value>
+    <value>Total: {0} bytes changed (outside save slot area).</value>
   </data>
   <data name="UnknownAreasOnly" xml:space="preserve">
     <value>Unknowns only</value>
   </data>
   <data name="StatusUnknownsChangedBytesTemplate" xml:space="preserve">
-    <value>Unknowns only: {0} bytes changed</value>
+    <value>Unknowns only: {0} bytes changed.</value>
   </data>
   <data name="Section" xml:space="preserve">
     <value>Section</value>
@@ -333,19 +333,19 @@
     <value>All (knowns + unknowns)</value>
   </data>
   <data name="StatusSaveSlotChangedBytesTemplate" xml:space="preserve">
-    <value>All (knowns + unknowns): {0} bytes changed</value>
+    <value>All (knowns + unknowns): {0} bytes changed.</value>
   </data>
   <data name="SectionNonSaveSlotUnknowns" xml:space="preserve">
     <value>Non-save slot unknowns</value>
   </data>
   <data name="StatusNonSaveSlotUnknownsBytesTemplate" xml:space="preserve">
-    <value>Unknown non-save slot area: {0} bytes changed</value>
+    <value>Unknown non-save slot area: {0} bytes changed.</value>
   </data>
   <data name="StatusSramChangedBytesTemplate" xml:space="preserve">
-    <value>{0} bytes changed (SRAM)</value>
+    <value>{0} bytes changed (SRAM).</value>
   </data>
   <data name="StatusCurrentComparisonExportedFilepathTemplate" xml:space="preserve">
-    <value>Current comparison exported to "{0}"</value>
+    <value>Current comparison exported to "{0}".</value>
   </data>
   <data name="StatusNoSramBytesChanged" xml:space="preserve">
     <value>No SRAM bytes changed</value>
@@ -393,7 +393,7 @@
     <value>Enter command and press enter.</value>
   </data>
   <data name="StartMessage" xml:space="preserve">
-    <value>New here? For command list use ({0}|?) or ({1}) for manual</value>
+    <value>New here? For command list use ({0}|?) or ({1}) for manual.</value>
   </data>
   <data name="SaveSlot" xml:space="preserve">
     <value>Save slot</value>
@@ -456,7 +456,7 @@
     <value>Changed current SRAM File has been saved as {0}.</value>
   </data>
   <data name="StatusGetOffsetValueTemplate" xml:space="preserve">
-    <value>Value at offset {0} is now {1}.</value><comment>The term Offset should only be translated if not understandable</comment>
+    <value>Value at offset {0} is currently {1}.</value><comment>The term Offset should only be translated if not understandable</comment>
   </data>
   <data name="StatusSetOffsetValueTemplate" xml:space="preserve">
     <value>Value at offset {0} is now {1}.</value><comment>The term Offset should only be translated if not understandable</comment>

@@ -15,16 +15,16 @@
 		<value>Ziel SRAM-Datei wurde gesichert als {0}.</value>
 	</data>
 	<data name="StatusTotalDiffBytesTemplate" xml:space="preserve">
-		<value>Gesamt: {0} Bytes geändert (außerhalb des Speicherslots)</value>
+		<value>Gesamt: {0} Bytes geändert (außerhalb des Speicherslots-Bereichs).</value>
 	</data>
 	<data name="UnknownAreasOnly" xml:space="preserve">
 		<value>Nur unbekannte Bereiche</value>
 	</data>
 	<data name="StatusSramFileHasBeenRestoredFromBackupTemplate" xml:space="preserve">
-		<value>{0} wurde aus Sicherung wiederhergestellt</value>
+		<value>{0} wurde aus Sicherung wiederhergestellt.</value>
 	</data>
 	<data name="StatusSramChangedBytesTemplate" xml:space="preserve">
-		<value>{0} Bytes geändert (SRAM)</value>
+		<value>{0} Bytes geändert (SRAM).</value>
 	</data>
 	<data name="StatusSetSingleSaveSlotMaxTemplate" xml:space="preserve">
 		<value>Speicherslot {0} wird verwendet.</value>
@@ -39,7 +39,7 @@
 		<value>Offset-Wert {0} wird gesetzt.</value><comment>The term Offset should only be translated if not understandable</comment>
 	</data>
 	<data name="StatusNoSramBytesChanged" xml:space="preserve">
-		<value>Es haben sich keine SRAM Bytes geändert.</value>
+		<value>Keine SRAM Bytes geändert.</value>
 	</data>
 	<data name="StatusNonSaveSlotUnknownsBytesTemplate" xml:space="preserve">
 		<value>Unbekannter Nicht-Speicherslot Bereich: {0} Bytes  geändert.</value>
@@ -48,7 +48,7 @@
 		<value>Es sind derzeit keine anderen SRAM-Dateien verfügbar.</value>
 	</data>
 	<data name="StatusGetOffsetValueTemplate" xml:space="preserve">
-		<value>Der Wert bei Offset {0} ist {1}.</value><comment>The term Offset should only be translated if not understandable</comment>
+		<value>Der Wert bei Offset {0} ist aktuell {1}.</value><comment>The term Offset should only be translated if not understandable</comment>
 	</data>
 	<data name="All" xml:space="preserve">
 		<value>Alle</value>
@@ -156,7 +156,7 @@
 		<value>Aktuelle SRAM-Datei aus Sicherung wiederherstellen</value>
 	</data>
 	<data name="CommandModifyOffsetValue" xml:space="preserve">
-		<value>Manipulierten Offset-Wert speichern</value><comment>The term Offset should only be translated if not understandable</comment>
+		<value>Offset-Wert ändern und speichern</value><comment>The term Offset should only be translated if not understandable</comment>
 	</data>
 	<data name="CommandSetComparisonSramFileSaveSlot" xml:space="preserve">
 		<value>Speicherslot für Vergleichs-SRAM-Datei festlegen</value>
@@ -256,7 +256,7 @@
 		<value>Eingereihte Befehle</value>
 	</data>
 	<data name="SameAsCurrentSramFileSaveSlot" xml:space="preserve">
-		<value>Gleicher wie aktuelle SRAM-Datei</value>
+		<value>Gleicher Slot wie aktuelle SRAM-Datei</value>
 	</data>
 	<data name="SectionSaveSlotChangedTemplate" xml:space="preserve">
 		<value>Alles (Bekannte und Unbekannte)</value>
@@ -292,7 +292,7 @@
 		<value>SRAM-Offset</value><comment>The term Offset should only be translated if not understandable</comment>
 	</data>
 	<data name="StartMessage" xml:space="preserve">
-		<value>Neu hier? Für eine Liste aller Befehle gib ({0}|?) oder ({1}) für eine Bedienungsanleitung ein</value>
+		<value>Neu hier? Für eine Liste aller Befehle gib ({0}|?) oder ({1}) für eine Bedienungsanleitung ein.</value>
 	</data>
 	<data name="StatusBytesChangedTemplate" xml:space="preserve">
 		<value>{0} Bytes geändert.</value>
@@ -307,7 +307,7 @@
 		<value>Möchtest du eine neue SRAM-Datei erstellen anstatt die aktuelle Datei zu überschreiben? Gib 1 ein um eine neue Datei zu erstellen (empfohlen) oder gib 2 ein um die existierende Datei zu überschreiben. In letzterem Fall stelle sicher, zuvor eine Sicherung gemacht zu haben. 1 = neu, 2 = überschreiben, 0 = abbrechen</value>
 	</data>
 	<data name="SetSaveSlotToCompareMaxTemplate" xml:space="preserve">
-		<value>Setze Spieslot (1-{0} oder jede andere Taste um alle Speicherslot zu vergleichen:</value>
+		<value>Setze Spielslot (1-{0} oder jede andere Taste für alle Speicherslots) zum vergleichen:</value>
 	</data>
 	<data name="SetSingleSaveSlotMaxTemplate" xml:space="preserve">
 		<value>Speicherslot (1-{0}) setzen:</value>
@@ -319,10 +319,10 @@
 		<value>Vergleiche den gesamten Speicherslot-Bereich</value>
 	</data>
 	<data name="StatusCurrentSramFileHasBeenBackedUpTemplate" xml:space="preserve">
-		<value>{0} wurde gesichert</value>
+		<value>{0} wurde gesichert.</value>
 	</data>
 	<data name="StatusCurrentComparisonExportedFilepathTemplate" xml:space="preserve">
-		<value>Aktueller Vergleich exportiert nach "{0}"</value>
+		<value>Aktueller Vergleich exportiert nach "{0}".</value>
 	</data>
 	<data name="StatusCurrentSramFileHasBeenSaved" xml:space="preserve">
 		<value>Die aktuelle SRAM-Datei wurde als Vergleichs SRAM-Datei gespeichert.</value>
@@ -331,10 +331,10 @@
 		<value>Die aktuelle SRAM-Datei wurde kopiert als {0}.</value>
 	</data>
 	<data name="StatusSaveSlotChangedBytesTemplate" xml:space="preserve">
-		<value>Alles (Bekannte + Unbekannte): {0} Bytes geändert</value>
+		<value>Alles (Bekannte + Unbekannte): {0} Bytes geändert.</value>
 	</data>
 	<data name="StatusUnknownsChangedBytesTemplate" xml:space="preserve">
-		<value>Nur Unbekannte: {0} Bytes geändert</value>
+		<value>Nur Unbekannte: {0} Bytes geändert.</value>
 	</data>
 	<data name="StatusSingleSaveSlotWillBeComparedTemplate" xml:space="preserve">
 		<value>Nur der Speicherslot {0} wird verglichen.</value>

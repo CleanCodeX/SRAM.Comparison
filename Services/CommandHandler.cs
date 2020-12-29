@@ -100,14 +100,14 @@ namespace SramComparer.Services
 					options.ComparisonFlags = InvertIncludeFlag(options.ComparisonFlags, ComparisonFlags.NonSlotByteByByteComparison);
 					break;
 				case Commands.ss:
-					options.CurrentSramFileSaveSlot = GetGameId(maxGameId: 4);
+					options.CurrentSramFileSaveSlot = GetSaveSlotId(maxSaveSlotId: 4);
 					if (options.CurrentSramFileSaveSlot == default)
 						options.ComparisonSramFileSaveSlot = default;
 
 					break;
 				case Commands.ssc:
 					if (options.CurrentSramFileSaveSlot != default)
-						options.ComparisonSramFileSaveSlot = GetGameId(maxGameId: 4);
+						options.ComparisonSramFileSaveSlot = GetSaveSlotId(maxSaveSlotId: 4);
 					else
 						ConsolePrinter.PrintError(Resources.ErrorComparisonSramSaveSlotSetButNotCurrentSramSaveSlot);
 
@@ -354,14 +354,14 @@ namespace SramComparer.Services
 		{
 			var promptResult = InternalGetStringValue(Resources.SetSingleSaveSlotMaxTemplate.InsertArgs(4),
 				Resources.StatusSetSingleSaveSlotMaxTemplate);
-			if (!int.TryParse(promptResult, out var gameId) || gameId > 4)
+			if (!int.TryParse(promptResult, out var saveSlotId) || saveSlotId > 4)
 			{
 				ConsolePrinter.PrintError(Resources.ErrorInvalidIndex);
 				slotIndex = -1;
 				return 0;
 			}
 
-			slotIndex = gameId - 1;
+			slotIndex = saveSlotId - 1;
 
 			return GetGameOffset(slotIndex);
 		}
@@ -467,24 +467,24 @@ namespace SramComparer.Services
 			return offset;
 		}
 
-		public virtual int GetGameId(int maxGameId)
+		public virtual int GetSaveSlotId(int maxSaveSlotId)
 		{
 			ConsolePrinter.PrintSectionHeader();
-			ConsolePrinter.PrintLine(Resources.SetSaveSlotToCompareMaxTemplate.InsertArgs(maxGameId));
+			ConsolePrinter.PrintLine(Resources.SetSaveSlotToCompareMaxTemplate.InsertArgs(maxSaveSlotId));
 
 			var input = Console.ReadLine()!;
 
-			int.TryParse(input, out var gameId);
+			int.TryParse(input, out var saveSlotId);
 
 			ConsolePrinter.PrintParagraph();
-			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, gameId == 0
-				? string.Format(Resources.StatusSingleSaveSlotWillBeComparedTemplate, gameId)
+			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, saveSlotId > 0
+				? string.Format(Resources.StatusSingleSaveSlotWillBeComparedTemplate, saveSlotId)
 				: Resources.StatusAllSaveSlotsWillBeCompared);
 
 			ConsolePrinter.PrintParagraph();
 			ConsolePrinter.ResetColor();
 
-			return gameId;
+			return saveSlotId;
 		}
 
 		public virtual void OverwriteComparisonFileWithCurrentFile(IOptions options)

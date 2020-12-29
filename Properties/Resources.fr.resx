@@ -278,19 +278,19 @@
 		<value>Décalage SRAM</value>
 	</data>
 	<data name="StartMessage" xml:space="preserve">
-		<value>Pour afficher la liste des commandes écrivez ({0} |?) ou ({1})</value>
+		<value>Pour afficher la liste des commandes écrivez ({0} |?) ou ({1}).</value>
 	</data>
 	<data name="StatusAllSaveSlotsWillBeCompared" xml:space="preserve">
 		<value>Toutes les parties seront comparées.</value>
 	</data>
 	<data name="StatusBytesChangedTemplate" xml:space="preserve">
-		<value>{0} octets modifiés</value>
+		<value>{0} octets modifiés.</value>
 	</data>
 	<data name="StatusCurrentSramFileHasBeenBackedUpTemplate" xml:space="preserve">
-		<value>{0} a été sauvegardé</value>
+		<value>{0} a été sauvegardé.</value>
 	</data>
 	<data name="StatusCurrentSramFileHasBeenSaved" xml:space="preserve">
-		<value>Le fichier SRAM en cours a été enregistré en tant que fichier SRAM de comparaison</value>
+		<value>Le fichier SRAM en cours a été enregistré en tant que fichier SRAM de comparaison.</value>
 	</data>
 	<data name="StatusModifiedSramFileHasBeenSavedAsFilepathTemplate" xml:space="preserve">
 		<value>Le fichier SRAM en cours qui a été modifié a été enregistré (fichier {0}).</value>
@@ -299,10 +299,10 @@
 		<value>Le fichier SRAM en cours a été copié (fichier {0}).</value>
 	</data>
 	<data name="StatusSaveSlotChangedBytesTemplate" xml:space="preserve">
-		<value>Tout (valeurs connues et inconnues) : {0} octets modifiés</value>
+		<value>Tout (valeurs connues et inconnues) : {0} octets modifiés.</value>
 	</data>
 	<data name="StatusUnknownsChangedBytesTemplate" xml:space="preserve">
-		<value>Valeurs inconnues uniquement : {0} octets modifiés</value>
+		<value>Valeurs inconnues uniquement : {0} octets modifiés.</value>
 	</data>
 	<data name="StatusSingleSaveSlotWillBeComparedTemplate" xml:space="preserve">
 		<value>Seule la partie en cours {0} sera comparée.</value>
@@ -317,10 +317,10 @@
 		<value>Il n'y a aucun autre fichier SRAM disponible.</value>
 	</data>
 	<data name="StatusNonSaveSlotUnknownsBytesTemplate" xml:space="preserve">
-		<value>Valeurs inconnues des autres parties : {0} octets modifiés</value>
+		<value>Valeurs inconnues des autres parties : {0} octets modifiés.</value>
 	</data>
 	<data name="StatusNoSramBytesChanged" xml:space="preserve">
-		<value>Aucun octet modifié dans le fichier SRAM</value>
+		<value>Aucun octet modifié dans le fichier SRAM.</value>
 	</data>
 	<data name="StatusOffsetValueWillBeUsedTemplate" xml:space="preserve">
 		<value>La valeur à la position du décalage {0} sera modifiée.</value>
@@ -337,22 +337,22 @@
 		<value>Le partie {0} sera utilisée.</value>
 	</data>
 	<data name="StatusSramChangedBytesTemplate" xml:space="preserve">
-		<value>{0} octets modifiés (SRAM)</value><comment>{0} octets modifiés</comment>
+		<value>{0} octets modifiés (SRAM).</value><comment>{0} octets modifiés</comment>
 	</data>
 	<data name="StatusSramFileHasBeenRestoredFromBackupTemplate" xml:space="preserve">
-		<value>{0} a été restauré à partir de la sauvegarde</value>
+		<value>{0} a été restauré à partir de la sauvegarde.</value>
 	</data>
 	<data name="StatusTargetSramFileHasBeenBackedUpFilepathTemplate" xml:space="preserve">
 		<value>Le fichier SRAM a été sauvegardé en tant que {0}.</value>
 	</data>
 	<data name="StatusTotalDiffBytesTemplate" xml:space="preserve">
-		<value>Total : {0} octets modifiés (en dehors de la partie en cours)</value>
+		<value>Total : {0} octets modifiés (en dehors de la partie en cours).</value>
 	</data>
 	<data name="UnknownAreasOnly" xml:space="preserve">
 		<value>Seulement les valeurs inconnues</value>
 	</data>
 	<data name="StatusCurrentComparisonExportedFilepathTemplate" xml:space="preserve">
-		<value>Comparaison en cours enregistrée dans le fichier "{0}"</value>
+		<value>Comparaison en cours enregistrée dans le fichier "{0}".</value>
 	</data>
 	<data name="SlotByteByByteComparison" xml:space="preserve">
 		<value>Comparer les données de la partie en cours octet par octet</value><comment>Comparer toute les données de la partie en cours</comment>

@@ -18,7 +18,7 @@ namespace SramComparer.Services
 		where TSramFile : SramFile, ISramFile<TSramGame>
 		where TSramGame : struct
 	{
-		int GetGameId(int maxGameId);
+		int GetSaveSlotId(int maxGameId);
 
 		void OverwriteComparisonFileWithCurrentFile(IOptions options);
 

@@ -39,7 +39,8 @@ namespace SramComparer.Services
 			PrintValue(options.ColorizeOutput.ToString());
 			
 			PrintSettingName(Res.ComparisonFlags, $@"{CmdOptions.ComparisonFlags} [{string.Join(",", Enum.GetNames(options.ComparisonFlags.GetType()))}]");
-			PrintValue(Environment.NewLine.PadRight(37) + ": " + options.ComparisonFlags.ToFlagsString());
+			PrintSettingName(Environment.NewLine, padRightDistance: 37);
+			PrintValue(options.ComparisonFlags.ToFlagsString());
 		}
 
 		protected virtual void PrintCustomCommands() {}
@@ -261,9 +262,9 @@ namespace SramComparer.Services
 			ResetColor();
 		}
 
-		protected virtual void PrintSettingName(string settingName, string? cmdArg = null)
+		protected virtual void PrintSettingName(string settingName, string? cmdArg = null, int padRightDistance = 35)
 		{
-			PrintColored(ConsoleColor.White, settingName.PadRight(35) + @":");
+			PrintColored(ConsoleColor.White, settingName.PadRight(padRightDistance) + @":");
 
 			if (cmdArg is null) return;
 
