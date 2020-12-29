@@ -6,7 +6,7 @@ namespace SramComparer.Services
 	public interface IConsolePrinter: IConsoleMethods
 	{
 		bool ColorizeOutput { get; set; }
-		string NewLine { get; }
+		string NewLine => Environment.NewLine;
 
 		/// <summary>Prints a section's header</summary>
 		void PrintSectionHeader();

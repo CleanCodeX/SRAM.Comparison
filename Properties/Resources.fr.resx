@@ -70,7 +70,7 @@
 		<value>Choisir la partie</value>
 	</data>
 	<data name="CmdMisc" xml:space="preserve">
-		<value>Miscellaneous</value><comment>Possible retranslation neede. was: Autres</comment>
+		<value>Autres</value><comment>Possible retranslation neede. was: Autres</comment>
 	</data>
 	<data name="CommandBackupComparisonSramFile" xml:space="preserve">
 		<value>Sauvegarder le fichier SRAM de comparaison</value>
@@ -85,18 +85,18 @@
 		<value>Cet outil fait une comparaison de fichiers SRAM.</value>
 	</data>
 	<data name="ColorizeOutput" xml:space="preserve">
-		<value>Colorize output</value>
+		<value>Résultat avec couleurs</value>
 	</data>
 	<data name="CommandExportComparisonResult" xml:space="preserve">
 		<value>Exporter le résultat de la comparaison en cours</value>
 	</data>
 	<data name="CommandNonSlotByteByByteComparison" xml:space="preserve">
-		<value>Add non-slot byte-by-byte comparison</value>
+		<value>Comparer les autres parties octet par octet</value>
 		<comment>Was: Comparer aussi les zones n'appartenant pas à des parties
 		</comment>
 	</data>
 	<data name="CommandSlotByteByBytesComparison" xml:space="preserve">
-		<value>Add slot byte-by-byte comparison</value><comment>Was: Comparer également toute la zone de la partie
+		<value>Comparer toutes les parties octet par octet</value><comment>Was: Comparer également toute la zone de la partie
 		</comment>
 	</data>
 	<data name="CommandManual" xml:space="preserve">
@@ -130,10 +130,10 @@
 		<value>Afficher le décalage en cours</value>
 	</data>
 	<data name="CommandListCommands" xml:space="preserve">
-		<value>List commands</value><comment>was: Afficher les commandes</comment>
+		<value>Liste des commandes</value><comment>was: Afficher les commandes</comment>
 	</data>
 	<data name="CommandSaveCurrentSramFileAsOtherFileName" xml:space="preserve">
-		<value>Save current-SRAM file with other game file's name</value>
+		<value>Enregistrer le fichier SRAM en cours avec le nom d'un autre fichier SRAM</value>
 		<comment>was: Transférer les données SRAM vers un fichier de jeu similaire
 		</comment>
 	</data>
@@ -156,7 +156,7 @@
 		<value>En cours</value>
 	</data>
 	<data name="CurrentShort" xml:space="preserve">
-		<value>En cours</value><comment>Is nothing shorter possible? 4-5 characters would be optimal</comment>
+		<value>Courant</value><comment>Is nothing shorter possible? 4-5 characters would be optimal</comment>
 	</data>
 	<data name="CurrentSramFile" xml:space="preserve">
 		<value>Fichier SRAM en cours</value>
@@ -174,7 +174,7 @@
 		<value>La commande ({0}) n'est pas implémentée.</value>
 	</data>
 	<data name="ErrorComparisonSramSaveSlotSetButNotCurrentSramSaveSlot" xml:space="preserve">
-		<value>Save slot for comparison SRAM file can only be set if current SRAM file's save slot is set first.</value>
+		<value>L'emplacement de comparaison dans le fichier SRAM ne peut être défini que si l'emplacement d'enregistrement en cours dans le fichier SRAM a été défini en premier.</value>
 		<comment>Was: L'emplacement de la partie pour la comparaison ne peut être défini que si l'emplacement de jeu du fichier SRAM en cours est défini en premier.</comment>
 	</data>
 	<data name="ErrorComparisonFileDoesNotExist" xml:space="preserve">
@@ -209,7 +209,7 @@
 		<value>Nouveau</value>
 	</data>
 	<data name="None" xml:space="preserve">
-		<value>Aucun</value>
+		<value>Aucune</value>
 	</data>
 	<data name="Old" xml:space="preserve">
 		<value>Ancien</value>
@@ -218,13 +218,13 @@
 		<value>Décalage</value>
 	</data>
 	<data name="PromtCreateNewFileInsteadOfOverwriting" xml:space="preserve">
-		<value>Would you like to create a new SRAM file instead overwriting the current file? Type 1 for creating a new file (recommended) or type 2 to overwrite the existing file. In the latter case make sure to have a backup created before. 1 = new, 2 = overwrite, 0 = abort</value>
+		<value>Souhaitez-vous créer un nouveau fichier SRAM au lieu d'écraser le fichier en cours? Tapez 1 pour créer un nouveau fichier (recommandé) ou tapez 2 pour écraser le fichier existant. Dans ce dernier cas assurez-vous d'avoir créé une sauvegarde. 1=nouveau, 2=écraser, 0=abandonner</value>
 	</data>
 	<data name="QueuedCommands" xml:space="preserve">
 		<value>Commandes en file d'attente</value>
 	</data>
 	<data name="CurrentSramFileSaveSlot" xml:space="preserve">
-		<value>Save slot (current file)</value>
+		<value>Enregistrer la partie en cours</value>
 		<comment>Partie du fichier en cours
 		</comment>
 	</data>
@@ -262,7 +262,7 @@
 		<value>Exporter le répertoire</value>
 	</data>
 	<data name="GameRegion" xml:space="preserve">
-		<value>game region</value>
+		<value>Région du jeu</value>
 		<comment>Région du jeu</comment>
 	</data>
 	<data name="Settings" xml:space="preserve">
@@ -329,7 +329,7 @@
 		<value>Le décalage {0} sera utilisé.</value>
 	</data>
 	<data name="StatusGetOffsetValueTemplate" xml:space="preserve">
-		<value>Value at offset {0} is now {1}.</value><comment>"Now" was added
+		<value>La valeur au décalage {0} est désormais {1}.</value><comment>"Now" was added
 			Was: La valeur à la position du décalage {0} est désormais {1}.
 		</comment>
 	</data>
@@ -355,7 +355,7 @@
 		<value>Comparaison en cours enregistrée dans le fichier "{0}"</value>
 	</data>
 	<data name="SlotByteByByteComparison" xml:space="preserve">
-		<value>Slot byte-by-byte comparison</value><comment>Comparer toute les données de la partie en cours</comment>
+		<value>Comparer les données de la partie en cours octet par octet</value><comment>Comparer toute les données de la partie en cours</comment>
 	</data>
 	<data name="SaveSlot" xml:space="preserve">
 		<value>Partie</value>
@@ -364,16 +364,19 @@
 		<value>Identique à l'emplacement de la partie en cours</value>
 	</data>
 	<data name="GetSaveSlotOffsetTemplate" xml:space="preserve">
-		<value>Set Save slot {0} offset:</value><comment>Modifier le décalage dans cette partie {0}:</comment>
+		<value>Modifier le décalage dans cette partie {0} :</value><comment>Modifier le décalage dans cette partie {0}:</comment>
 	</data>
 	<data name="GetSaveSlotOffsetValue" xml:space="preserve">
-		<value>Set Save slot offset value:</value><comment>Modifier le décalage dans cette partie:</comment>
+		<value>Modifier la valeur du décalage dans cette partie :</value><comment>Modifier le décalage dans cette partie:</comment>
 	</data>
 	<data name="NonSlotByteByByteComparison" xml:space="preserve">
-		<value>Non-slot byte-by-byte comparison</value>
+		<value>Comparer les zones en dehors de la partie en cours octet par octet :</value>
 		<comment>Comparer les zones en dehors de la partie en cours :</comment>
 	</data>
 	<data name="Same" xml:space="preserve">
-		<value>Same</value>
+		<value>Identique</value>
+	</data>
+	<data name="StatusTwoDifferentSaveSlotsWillBeComparedTemplate" xml:space="preserve">
+		<value>L'emplacement de sauvegarde en cours {0} sera comparé à l'emplacement de sauvegarde de comparaison {1}.</value>
 	</data>
 </root>

@@ -177,7 +177,7 @@
     <value>Save slot (Comparison file)</value>
   </data>
   <data name="GameRegion" xml:space="preserve">
-    <value>game region</value>
+    <value>Game region</value>
   </data>
   <data name="ColorizeOutput" xml:space="preserve">
     <value>Colorize output</value>
@@ -199,6 +199,9 @@
   </data>
   <data name="CurrentSramFilepath" xml:space="preserve">
     <value>Current SRAM filepath</value>
+  </data>
+  <data name="StatusTwoDifferentSaveSlotsWillBeComparedTemplate" xml:space="preserve">
+    <value>Current save slot {0} will be compared with comparison save slot {1}.</value>
   </data>
   <data name="StatusSingleSaveSlotWillBeComparedTemplate" xml:space="preserve">
     <value>Only save slot {0} will be compared.</value>
@@ -462,7 +465,7 @@
     <value>Changed current SRAM File has been overwritten. File: {0}.</value>
   </data>
   <data name="PromtCreateNewFileInsteadOfOverwriting" xml:space="preserve">
-    <value>Would you like to create a new SRAM file instead overwriting the current file? Type 1 for creating a new file (recommended) or type 2 to overwrite the existing file. In the latter case make sure to have a backup created before. 1 = new, 2 = overwrite, 0 = abort</value>
+    <value>Would you like to create a new SRAM file instead of overwriting the current file? Type 1 for creating a new file (recommended) or type 2 to overwrite the existing file. In the latter case make sure to have a backup created before. 1 = new, 2 = overwrite, 0 = abort</value>
   </data>
   <data name="ErrorInvalidIndex" xml:space="preserve">
     <value>Invalid index. Aborted.</value>

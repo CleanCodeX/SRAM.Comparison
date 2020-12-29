@@ -1014,6 +1014,15 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Current save slot {0} will be compared with comparison save slot {1}. ähnelt.
+        /// </summary>
+        public static string StatusTwoDifferentSaveSlotsWillBeComparedTemplate {
+            get {
+                return ResourceManager.GetString("StatusTwoDifferentSaveSlotsWillBeComparedTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Unknowns only: {0} bytes changed ähnelt.
         /// </summary>
         public static string StatusUnknownsChangedBytesTemplate {

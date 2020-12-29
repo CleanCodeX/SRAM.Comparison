@@ -363,4 +363,7 @@
 	<data name="Same" xml:space="preserve">
 		<value>Gleich</value>
 	</data>
+	<data name="StatusTwoDifferentSaveSlotsWillBeComparedTemplate" xml:space="preserve">
+		<value>Der aktuelle Speicherslot {0} wird mit dem Vergleichs-Speicherslot {1} verglichen.</value>
+	</data>
 </root>
