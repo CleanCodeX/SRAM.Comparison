@@ -256,7 +256,7 @@
 		<value>Eingereihte Befehle</value>
 	</data>
 	<data name="SameAsCurrentSramFileSaveSlot" xml:space="preserve">
-		<value>Gleicher wie bei aktuele SRAM-Datei</value>
+		<value>Gleicher wie aktuelle SRAM-Datei</value>
 	</data>
 	<data name="SectionSaveSlotChangedTemplate" xml:space="preserve">
 		<value>Alles (Bekannte und Unbekannte)</value>
