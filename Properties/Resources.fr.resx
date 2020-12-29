@@ -337,7 +337,7 @@
 		<value>Le partie {0} sera utilisée.</value>
 	</data>
 	<data name="StatusSramChangedBytesTemplate" xml:space="preserve">
-		<value>{0} SRAM octets modifiés</value><comment>{0} octets modifiés</comment>
+		<value>{0} octets modifiés (SRAM)</value><comment>{0} octets modifiés</comment>
 	</data>
 	<data name="StatusSramFileHasBeenRestoredFromBackupTemplate" xml:space="preserve">
 		<value>{0} a été restauré à partir de la sauvegarde</value>

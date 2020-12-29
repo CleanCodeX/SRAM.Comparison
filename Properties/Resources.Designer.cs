@@ -573,7 +573,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die game region ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Game region ähnelt.
         /// </summary>
         public static string GameRegion {
             get {
@@ -645,7 +645,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Would you like to create a new SRAM file instead overwriting the current file? Type 1 for creating a new file (recommended) or type 2 to overwrite the existing file. In the latter case make sure to have a backup created before. 1 = new, 2 = overwrite, 0 = abort ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Would you like to create a new SRAM file instead of overwriting the current file? Type 1 for creating a new file (recommended) or type 2 to overwrite the existing file. In the latter case make sure to have a backup created before. 1 = new, 2 = overwrite, 0 = abort ähnelt.
         /// </summary>
         public static string PromtCreateNewFileInsteadOfOverwriting {
             get {
@@ -672,7 +672,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Same as current SRAM file&apos; save slot ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Same as current SRAM file&apos;s save slot ähnelt.
         /// </summary>
         public static string SameAsCurrentSramFileSaveSlot {
             get {
@@ -978,7 +978,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die {0} SRAM bytes changed ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die {0} bytes changed (SRAM) ähnelt.
         /// </summary>
         public static string StatusSramChangedBytesTemplate {
             get {

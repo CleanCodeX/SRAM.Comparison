@@ -342,7 +342,7 @@
     <value>Unknown non-save slot area: {0} bytes changed</value>
   </data>
   <data name="StatusSramChangedBytesTemplate" xml:space="preserve">
-    <value>{0} SRAM bytes changed</value>
+    <value>{0} bytes changed (SRAM)</value>
   </data>
   <data name="StatusCurrentComparisonExportedFilepathTemplate" xml:space="preserve">
     <value>Current comparison exported to "{0}"</value>
@@ -417,7 +417,7 @@
     <value>Save slot for comparison SRAM file can only be set if current SRAM file's save slot is set first.</value>
   </data>
   <data name="SameAsCurrentSramFileSaveSlot" xml:space="preserve">
-    <value>Same as current SRAM file' save slot</value>
+    <value>Same as current SRAM file's save slot</value>
   </data>
   <data name="CmdGroupBackup" xml:space="preserve">
     <value>Backup</value>

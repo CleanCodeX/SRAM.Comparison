@@ -24,7 +24,7 @@
 		<value>{0} wurde aus Sicherung wiederhergestellt</value>
 	</data>
 	<data name="StatusSramChangedBytesTemplate" xml:space="preserve">
-		<value>{0} SRAM Bytes geändert</value>
+		<value>{0} Bytes geändert (SRAM)</value>
 	</data>
 	<data name="StatusSetSingleSaveSlotMaxTemplate" xml:space="preserve">
 		<value>Speicherslot {0} wird verwendet.</value>
@@ -223,7 +223,7 @@
 		<value>Vorgang abgebrochen</value>
 	</data>
 	<data name="ErrorParamNameValueMissmatchTemplate" xml:space="preserve">
-		<value>Parameter Name-Wert Nichtübereinstimmung für: {0}</value>
+		<value>Parameter Name-Wert Nicht-Übereinstimmung für: {0}</value>
 	</data>
 	<data name="SaveSlot" xml:space="preserve">
 		<value>Speicherslot</value>
@@ -256,7 +256,7 @@
 		<value>Eingereihte Befehle</value>
 	</data>
 	<data name="SameAsCurrentSramFileSaveSlot" xml:space="preserve">
-		<value>Gleicher wie bei aktueller Speicherslot</value>
+		<value>Gleicher wie bei aktuele SRAM-Datei</value>
 	</data>
 	<data name="SectionSaveSlotChangedTemplate" xml:space="preserve">
 		<value>Alles (Bekannte und Unbekannte)</value>
@@ -265,16 +265,16 @@
 		<value>Export-Verzeichnis</value>
 	</data>
 	<data name="CurrentSramFilepath" xml:space="preserve">
-		<value>Pfad für aktuelle SRAM-Datei</value>
+		<value>Pfad für aktuelle Datei</value>
 	</data>
 	<data name="ComparisonSramFilepath" xml:space="preserve">
-		<value>Pfad für Vergleichs SRAM-Datei</value>
+		<value>Pfad für Vergleichsdatei</value>
 	</data>
 	<data name="CurrentSramFileSaveSlot" xml:space="preserve">
-		<value>Speicherslot der aktuellen SRAM-Datei</value>
+		<value>Speicherslot (aktuelle Datei)</value>
 	</data>
 	<data name="ComparisonSramFileSaveSlot" xml:space="preserve">
-		<value>Speicherslot der Vergleichs SRAM-Datei</value>
+		<value>Speicherslot (Vergleichsdatei)</value>
 	</data>
 	<data name="GameRegion" xml:space="preserve">
 		<value>Spiel-Region</value>

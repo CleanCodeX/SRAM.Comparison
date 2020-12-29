@@ -38,7 +38,7 @@ namespace SramComparer.Services
 			PrintSettingName(Res.ColorizeOutput, CmdOptions.ColorizeOutput.ToString());
 			PrintValue(options.ColorizeOutput.ToString());
 			
-			PrintSettingName(Res.ComparisonFlags, $@"{CmdOptions.ComparisonFlags} ""[{string.Join(",", Enum.GetNames(options.ComparisonFlags.GetType()))}]""");
+			PrintSettingName(Res.ComparisonFlags, $@"{CmdOptions.ComparisonFlags} {string.Join(",", Enum.GetNames(options.ComparisonFlags.GetType()))}");
 			PrintValue(Environment.NewLine.PadRight(30) + options.ComparisonFlags.ToFlagsString());
 		}
 
@@ -263,7 +263,7 @@ namespace SramComparer.Services
 
 		protected virtual void PrintSettingName(string settingName, string? cmdArg = null)
 		{
-			PrintColored(ConsoleColor.White, settingName.PadRight(28) + @":");
+			PrintColored(ConsoleColor.White, settingName.PadRight(35) + @":");
 
 			if (cmdArg is null) return;
 
