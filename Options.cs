@@ -14,7 +14,7 @@ namespace SramComparer
 		public TGameRegion GameRegion { get; set; }
 		public int CurrentSramFileSaveSlot { get; set; }
 		public int ComparisonSramFileSaveSlot { get; set; }
-		public TComparisonFlags ComparisonFlags;
+		public TComparisonFlags ComparisonFlags { get; set; }
 
 		Enum IOptions.GameRegion => GameRegion;
 		Enum IOptions.ComparisonFlags
