@@ -39,7 +39,7 @@ namespace SramComparer.Services
 			PrintValue(options.ColorizeOutput.ToString());
 			
 			PrintSettingName(Res.ComparisonFlags, $@"{CmdOptions.ComparisonFlags} [{string.Join(",", Enum.GetNames(options.ComparisonFlags.GetType()))}]");
-			PrintValue(Environment.NewLine.PadRight(35) + options.ComparisonFlags.ToFlagsString());
+			PrintValue(Environment.NewLine.PadRight(37) + ": " + options.ComparisonFlags.ToFlagsString());
 		}
 
 		protected virtual void PrintCustomCommands() {}
