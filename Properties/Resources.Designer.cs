@@ -80,18 +80,15 @@ namespace SramComparer.Properties {
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Steps: 
-        ///1.1) Have a look into Unknowns.md to see examples of what parts of SRAM structure are still considered as unknown.
+        ///1.1) Before you start, have a look into unknowns.xeth.de to see examples of which parts of SRAM structure are still considered to be unknown. See some imagery.xeth.de of how to interpret comparison results.
         ///1.2) Most emulators have the option to save the game&apos;s S-RAM automatically after a change occurs. 
         ///     Make sure this is enabled if existing. Otherwise you have manually ensure that the emulator updates 
         ///     the *.srm file.
-        ///1.3) Start the application by passing the game&apos;s srm filepath as first command parameter. The file can also be 
-        ///     dragged onto the application.
-        ///
-        ///2)   Th [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        ///1.3) Start the application by passing the game&apos;s srm filepath as f [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
         /// </summary>
-        public static string AppManualCommandsTemplate {
+        public static string AppManual {
             get {
-                return ResourceManager.GetString("AppManualCommandsTemplate", resourceCulture);
+                return ResourceManager.GetString("AppManual", resourceCulture);
             }
         }
         
@@ -474,7 +471,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Command ({0}) needs to be implemented by caller. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Command (ow) needs to be implemented by caller. ähnelt.
         /// </summary>
         public static string ErrorCommandNotImplementedTemplate {
             get {
@@ -807,7 +804,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die New here? For command list use ({0}|?) or ({1}) for manual ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die New here? For command list use ({0}|?) or ({1}) for manual. ähnelt.
         /// </summary>
         public static string StartMessage {
             get {
@@ -825,7 +822,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die {0} bytes changed ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die {0} bytes changed. ähnelt.
         /// </summary>
         public static string StatusBytesChangedTemplate {
             get {
@@ -834,7 +831,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Current comparison exported to &quot;{0}&quot; ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Current comparison exported to &quot;{0}&quot;. ähnelt.
         /// </summary>
         public static string StatusCurrentComparisonExportedFilepathTemplate {
             get {
@@ -843,7 +840,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die {0} has been backed-up ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die {0} has been backed-up. ähnelt.
         /// </summary>
         public static string StatusCurrentSramFileHasBeenBackedUpTemplate {
             get {
@@ -852,7 +849,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Current SRAM file has been saved as comparison SRAM file ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Current SRAM file has been saved as comparison SRAM file. ähnelt.
         /// </summary>
         public static string StatusCurrentSramFileHasBeenSaved {
             get {
@@ -870,7 +867,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Value at offset {0} is now {1}. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Value at offset {0} is currently {1}. ähnelt.
         /// </summary>
         public static string StatusGetOffsetValueTemplate {
             get {
@@ -906,7 +903,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Unknown non-save slot area: {0} bytes changed ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Unknown non-save slot area: {0} bytes changed. ähnelt.
         /// </summary>
         public static string StatusNonSaveSlotUnknownsBytesTemplate {
             get {
@@ -942,7 +939,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die All (knowns + unknowns): {0} bytes changed ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die All (knowns + unknowns): {0} bytes changed. ähnelt.
         /// </summary>
         public static string StatusSaveSlotChangedBytesTemplate {
             get {
@@ -978,7 +975,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die {0} bytes changed (SRAM) ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die {0} bytes changed (SRAM). ähnelt.
         /// </summary>
         public static string StatusSramChangedBytesTemplate {
             get {
@@ -987,7 +984,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die {0} has been restored from backup ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die {0} has been restored from backup. ähnelt.
         /// </summary>
         public static string StatusSramFileHasBeenRestoredFromBackupTemplate {
             get {
@@ -1005,7 +1002,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Total: {0} bytes changed (outside save slot area) ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Total: {0} bytes changed (outside save slot area). ähnelt.
         /// </summary>
         public static string StatusTotalDiffBytesTemplate {
             get {
@@ -1023,7 +1020,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Unknowns only: {0} bytes changed ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Unknowns only: {0} bytes changed. ähnelt.
         /// </summary>
         public static string StatusUnknownsChangedBytesTemplate {
             get {

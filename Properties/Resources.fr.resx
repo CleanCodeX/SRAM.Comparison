@@ -14,39 +14,38 @@
 	<data name="All" xml:space="preserve">
 		<value>Toutes</value>
 	</data>
-	<data name="AppManualCommandsTemplate" xml:space="preserve">
+	<data name="AppManual" xml:space="preserve">
 		<value>Étapes :
-1.1) Lisez le fichier Unknowns.md s'il existe pour voir les parties de la structure SRAM qui sont encore considérées comme inconnues.
+1.1) Avant de commencer, jetez un œil à unknowns.xeth.de pour voir des exemples de parties de la structure SRAM encore considérées comme inconnues. Voir quelques images.xeth.de pour savoir comment interpréter les résultats de comparaison.
 1.2) La plupart des émulateurs ont la possibilité de sauvegarder automatiquement la SRAM du jeu après tout changement,
      sinon certains émulateurs peuvent être configurés pour avoir un touche de raccourci pour enregistrer manuellement le fichier * .srm.
 1.3) Lancez l'application avec le chemin du fichier srm en premier argument de ligne de commande ou faites un drag and drop du fichier srm sur le .exe de l'application.
 
-2) Appuyez sur ({0}) pour que le logiciel garde en mémoire votre fichier en cours, cela permettra de le comparer plus tard quand il aura été modifié.
+2) Appuyez sur (ow) pour que le logiciel garde en mémoire votre fichier en cours, cela permettra de le comparer plus tard quand il aura été modifié.
 
 3.1) Provoquez un changement de votre sauvegarde SRAM (laissez un événement de progression du jeu se produire ou ouvrez un coffre non ouvert)
      Pour forcer la mise à jour du fichier SRAM enregistrez votre partie dans une auberge.
-3.2) Appuyez sur ({1}) pour comparer votre nouveau srm en cours avec la version gardée en mémoire par le logiciel.
+3.2) Appuyez sur (c) pour comparer votre nouveau srm en cours avec la version gardée en mémoire par le logiciel.
      Si le fichier SRAM n'a pas du tout changé vous n'avez probablement pas sauvegardé dans le jeu, ou l'émulateur n'a pas
      encore mis à jour le fichier SRAM (srm) automatiquement. Vérifiez la date de modification du fichier srm du jeu.
      La période de mise à jour srm par défaut de Snes9x est de 30 secondes. Réduisez-la par exemple à 1 seconde
      mais pas à 0 (ce qui la désactiverait).
 
-4.1) Assurez-vous de faire le moins possible de modifications entre deux sauvegardes. Une fois que vous êtes en mesure d'attribuer un changement de SRAM uniquement dans le jeu vous pouvez appuyer sur ({2}) pour exporter le résultat de la comparaison dans un fichier texte.
+4.1) Assurez-vous de faire le moins possible de modifications entre deux sauvegardes. Une fois que vous êtes en mesure d'attribuer un changement de SRAM uniquement dans le jeu vous pouvez appuyer sur (e) pour exporter le résultat de la comparaison dans un fichier texte.
 4.2) Renommez le fichier pour qu'il reflète ce que vous venez de découvrir et vérifiez que le changement que vous venez de découvrir est reproductible.
      Ensuite envoyez le fichier exporté sur community.xeth.de
      et/ou ajoutez-le sur github via un pull.
 
-5) Pour démarrer une nouvelle comparaison appuyez à nouveau sur ({0}) pour enregistrer votre fichier SRAM en cours
-   en tant que fichier de comparaison puis recommencez à l'étape 3.1.
+5) Pour démarrer une comparaison sans modifications précédentes de la SRAM, appuyez à nouveau sur (ow) pour enregistrer votre fichier SRAM actuel en tant que fichier de comparaison. Puis recommencez à l'étape 3.1.
 
-6.1) (facultatif) Si vous avez des modifications dans plusieurs parties, appuyez sur ({3}) pour définir l'emplacement de sauvegarde du jeu (1-4) à comparer
+6.1) (facultatif) Si vous avez des modifications dans plusieurs parties, appuyez sur (ss) pour définir l'emplacement de sauvegarde du jeu (1-4) à comparer
      pour éviter de comparer avec les autres emplacements de jeu. Si deux emplacements de jeu différents doivent être comparés entre-eux
-     appuyez sur ({4}) pour définir les emplacements de comparaison.
-6.2) (facultatif) Appuyez sur ({5} | {6}) pour définir les modes de comparaison.
+     appuyez sur (ssc) pour définir les emplacements de comparaison.
+6.2) (facultatif) Appuyez sur (asbc) or (nsbc) pour définir les modes de comparaison.
 
-7) (facultatif) Le fichier srm en cours et celui de comparaison peuvent être sauvegardés ({7} | {8}) ou restaurés ({9} | {10}) individuellement.
+7) (facultatif) Le fichier srm en cours et celui de comparaison peuvent être sauvegardés (b) ou (bc) ou restaurés (r) ou (rc) individuellement.
 
-8) (facultatif) Les décalages SRAM peuvent être affichés en appuyant sur ({11}) ou modifiés avec ({12}). Vous aurez le choix entre mettre à jour votre fichier SRAM en cours (sauvegarde recommandée) ou de créer un nouveau fichier.</value>
+8) (facultatif) Les décalages SRAM peuvent être affichés en appuyant sur (ov) ou modifiés avec (mov). Vous aurez le choix entre mettre à jour votre fichier SRAM en cours (sauvegarde recommandée) ou de créer un nouveau fichier.</value>
 	</data>
 	<data name="Backup" xml:space="preserve">
 		<value>Sauvegarde</value>
@@ -171,7 +170,7 @@
 		<value>Impossible d'enregistrer le fichier de sortie "{0}"</value>
 	</data>
 	<data name="ErrorCommandNotImplementedTemplate" xml:space="preserve">
-		<value>La commande ({0}) n'est pas implémentée.</value>
+		<value>La commande (ow) n'est pas implémentée.</value>
 	</data>
 	<data name="ErrorComparisonSramSaveSlotSetButNotCurrentSramSaveSlot" xml:space="preserve">
 		<value>L'emplacement de comparaison dans le fichier SRAM ne peut être défini que si l'emplacement d'enregistrement en cours dans le fichier SRAM a été défini en premier.</value>
