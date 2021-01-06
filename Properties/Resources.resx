@@ -157,7 +157,7 @@
 7)   (optional) Current and comparison srm file can be backed-up (b) or (bc) or restored (r) or (rc) individually.
 
 8)   (optional) SRAM offset values for specific save slots can be displayed by pressing (ov) or manipulated by (mov). You can decide whether to update your current SRAM file (backup recommended) or creating a new file.
-    </value>
+</value>
   </data>
   <data name="ErrorMissingPathArguments" xml:space="preserve">
     <value>ERROR: The program needs to be started with at least the path to current SRAM file as a parameter. Drag 'n' drop can be used.</value>
