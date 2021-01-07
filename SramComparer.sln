@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SramComparer", "SramCompare
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SramCommons", "..\SramCommons\SramCommons.csproj", "{68BBC5F7-8EB7-41EC-98AF-5F560ECED0D1}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SavestateFormat.Snes9x", "..\SavestateFormat.Snes9x\SavestateFormat.Snes9x.csproj", "{D0955A48-DE3D-4D8B-B088-D0D86256CF91}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{68BBC5F7-8EB7-41EC-98AF-5F560ECED0D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68BBC5F7-8EB7-41EC-98AF-5F560ECED0D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68BBC5F7-8EB7-41EC-98AF-5F560ECED0D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0955A48-DE3D-4D8B-B088-D0D86256CF91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0955A48-DE3D-4D8B-B088-D0D86256CF91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0955A48-DE3D-4D8B-B088-D0D86256CF91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0955A48-DE3D-4D8B-B088-D0D86256CF91}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

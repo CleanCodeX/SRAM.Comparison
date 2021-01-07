@@ -24,5 +24,6 @@ namespace SramComparer
 		}
 
 		public bool ColorizeOutput { get; set; } = true;
+		public string? SaveStateType { get; set; }
 	}
 }

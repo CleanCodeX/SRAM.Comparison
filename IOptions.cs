@@ -31,5 +31,8 @@ namespace SramComparer
 
 		/// <summary>Optional flag whether to colorize the output or not</summary>
 		bool ColorizeOutput { get; set; }
+
+		/// <summary>Optional string which emulator savestate type is used</summary>
+		string? SaveStateType { get; set; }
 	}
 }
