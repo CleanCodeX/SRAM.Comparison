@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Runtime.Versioning;
 
 namespace SramComparer.Helpers
@@ -33,6 +34,27 @@ namespace SramComparer.Helpers
 			{
 				Console.SetWindowSize(130, 50);
 				Console.BufferHeight = 1000;
+			}
+			catch
+			{
+				// Ignore
+			}
+		}
+
+		public static void RedefineConsoleColors(Color color = default, Color bgColor = default)
+		{
+			if (!IsWindows) return;
+
+			try
+			{
+				if (color == default && bgColor == default) return;
+
+				if (color == default) color = Color.FromName(nameof(ConsoleColor.Gray));
+				if (bgColor == default) bgColor = Color.FromName(nameof(ConsoleColor.Black));
+
+				PaletteHelper.SetScreenColors(color, bgColor);
+
+				Console.Clear();
 			}
 			catch
 			{
