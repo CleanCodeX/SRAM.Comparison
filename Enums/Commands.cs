@@ -21,7 +21,7 @@ namespace SramComparer.Enums
 		g_savestate, // Manual (savestate) 
 
 		[DisplayNameLocalized(nameof(Res.SlotByteByByteComparison), typeof(Res))]
-		asbc, // Flag Whole Save Slot => compare additionally the whole save slot area instead of only unknowns
+		sbc, // Flag Whole Save Slot => compare additionally the whole save slot area instead of only unknowns
 
 		[DisplayNameLocalized(nameof(Res.NonSlotByteByByteComparison), typeof(Res))]
 		nsbc, // Flag Non Save slot => compare additionally the non-save slot area 

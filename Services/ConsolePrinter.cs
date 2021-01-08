@@ -124,8 +124,8 @@ namespace SramComparer.Services
 
 			PrintGroupName(Res.CmdMisc);
 
-			PrintCommandKey(Commands.asbc);
-			PrintColoredLine(ConsoleColor.Yellow, Commands.asbc.GetDisplayName()!);
+			PrintCommandKey(Commands.sbc);
+			PrintColoredLine(ConsoleColor.Yellow, Commands.sbc.GetDisplayName()!);
 
 			PrintCommandKey(Commands.nsbc);
 			PrintColoredLine(ConsoleColor.Yellow, Commands.nsbc.GetDisplayName()!);

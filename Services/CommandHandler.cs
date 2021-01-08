@@ -98,7 +98,7 @@ namespace SramComparer.Services
 				case Commands.g_savestate:
 					ConsolePrinter.PrintGuide("guide-savestate");
 					break;
-				case Commands.asbc:
+				case Commands.sbc:
 					options.ComparisonFlags = InvertIncludeFlag(options.ComparisonFlags, ComparisonFlags.SlotByteByByteComparison);
 					break;
 				case Commands.nsbc:
