@@ -435,11 +435,11 @@
   <data name="ComparisonSramFile" xml:space="preserve">
     <value>Comparison file</value>
   </data>
-  <data name="ErrorFileIsNotSrmFileTypeFilepathTemplate" xml:space="preserve">
-    <value>{0} current file must have .srm file extension. Did you just forget to quote the path? Was: {1}</value>
+  <data name="ErrorInvalidFileExtensionTemplate" xml:space="preserve">
+    <value>The current file has an unsupported file extension. Did you just forget to quote the path? Was: {0} Valid extensions are: {1}</value>
   </data>
-  <data name="ErrorCompSaveSlotFileIsNotCompFileTypeFilepathTemplate" xml:space="preserve">
-    <value>{0} comparison file must have .comp file extension. Did you just forget to quote the path? Was: {1}</value>
+  <data name="ErrorInvalidCompFileExtensionTemplate" xml:space="preserve">
+    <value>The comparison file has an unsupported file extension. Did you just forget to quote the path? Was: {0} Valid extensions are: {1}</value>
   </data>
   <data name="StatusCurrentSramHasBeenSavedAsFilepathTemplate" xml:space="preserve">
     <value>Current file has been copied as {0}.</value>

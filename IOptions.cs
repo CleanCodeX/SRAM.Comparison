@@ -12,12 +12,12 @@ namespace SramComparer
 		Enum GameRegion { get; }
 
 		/// <summary>The filepath to load the current SRAM file from</summary>
-		string? CurrentSramFilepath { get; }
+		string? CurrentSramFilePath { get; }
 
-		/// <summary>The filepath to load the comparison SRAM file from. if <see cref="CurrentSramFilepath"/> is set, it will be automatically filled from that</summary>
-		string? ComparisonSramFilepath { get; }
+		/// <summary>The filepath to load the comparison SRAM file from. if <see cref="CurrentSramFilePath"/> is set, it will be automatically filled from that</summary>
+		string? ComparisonSramFilePath { get; }
 
-		/// <summary>If set, this directory will be used for exporting comparisons, otherwise the directory of <see cref="CurrentSramFilepath" /></summary>
+		/// <summary>If set, this directory will be used for exporting comparisons, otherwise the directory of <see cref="CurrentSramFilePath" /></summary>
 		string? ExportDirectory { get; }
 
 		/// <summary>Gets or sets if only a specific save slot of current-SRAM file should be compared. If zero (default), all save slots will be compared.</summary>
@@ -40,5 +40,8 @@ namespace SramComparer
 
 		/// <summary>The language in which the comparison result should be displayed</summary>
 		string? ComparisonResultLanguage { get; set; }
+
+		/// <summary>If set, this config file will be used, otherwise the default file in the directory of <see cref="CurrentSramFilePath" /></summary>
+		string? ConfigFilePath { get; set; }
 	}
 }

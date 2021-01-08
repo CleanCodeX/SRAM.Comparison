@@ -534,20 +534,20 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die {0} comparison file must have .comp file extension. Did you just forget to quote the path? Was: {1} ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die The comparison file has an unsupported file extension. Did you just forget to quote the path? Was: {0} Valid extensions are: {1} ähnelt.
         /// </summary>
-        public static string ErrorCompSaveSlotFileIsNotCompFileTypeFilepathTemplate {
+        public static string ErrorInvalidCompFileExtensionTemplate {
             get {
-                return ResourceManager.GetString("ErrorCompSaveSlotFileIsNotCompFileTypeFilepathTemplate", resourceCulture);
+                return ResourceManager.GetString("ErrorInvalidCompFileExtensionTemplate", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die {0} current file must have .srm file extension. Did you just forget to quote the path? Was: {1} ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die The current file has an unsupported file extension. Did you just forget to quote the path? Was: {0} Valid extensions are: {1} ähnelt.
         /// </summary>
-        public static string ErrorFileIsNotSrmFileTypeFilepathTemplate {
+        public static string ErrorInvalidFileExtensionTemplate {
             get {
-                return ResourceManager.GetString("ErrorFileIsNotSrmFileTypeFilepathTemplate", resourceCulture);
+                return ResourceManager.GetString("ErrorInvalidFileExtensionTemplate", resourceCulture);
             }
         }
         

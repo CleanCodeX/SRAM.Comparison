@@ -18,5 +18,7 @@
 
 		public const string UILanguage = "--lang";
 		public const string ComparisonResultLanguage = "--comp-lang";
+
+		public const string ConfigFilePath = "--config-file";
 	}
 }

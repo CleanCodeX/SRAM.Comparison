@@ -9,8 +9,8 @@ namespace SramComparer
 		where TComparisonFlags : struct, Enum
 	{
 		public string? BatchCommands { get; set; }
-		public string? CurrentSramFilepath { get; set; }
-		public string? ComparisonSramFilepath { get; set; }
+		public string? CurrentSramFilePath { get; set; }
+		public string? ComparisonSramFilePath { get; set; }
 		public string? ExportDirectory { get; set; }
 		
 		public TGameRegion GameRegion { get; set; }
@@ -29,5 +29,6 @@ namespace SramComparer
 		public string? SaveStateType { get; set; }
 		public string? UILanguage { get; set; }
 		public string? ComparisonResultLanguage { get; set; }
+		public string? ConfigFilePath { get; set; }
 	}
 }

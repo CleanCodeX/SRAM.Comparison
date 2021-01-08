@@ -207,8 +207,8 @@
 	<data name="ErrorComparisonFileDoesNotExist" xml:space="preserve">
 		<value>Die Vergleichs-Datei "{0}" wurde noch nicht erstellt. Bitte zuerst eine erstellen.</value>
 	</data>
-	<data name="ErrorFileIsNotSrmFileTypeFilepathTemplate" xml:space="preserve">
-		<value>{0} aktuelle SRAM-Datei muss eine .srm Datei-Endung besitzen. Hast du vielleicht nur vergessen den Pfad in Anführungszeichen zu setzen? War: {1}</value>
+	<data name="ErrorInvalidFileExtensionTemplate" xml:space="preserve">
+		<value>Die aktuelle Datei hat eine nicht unterstützte Dateiendung. Hast du vielleicht nur vergessen den Pfad in Anführungszeichen zu setzen? War: {0} Unterstützte Dateiendungen sind: {1}</value>
 	</data>
 	<data name="ErrorInvalidIndex" xml:space="preserve">
 		<value>Invalider Index. Abgebrochen.</value>
@@ -351,8 +351,8 @@
 	<data name="ErrorComparisonSramSaveSlotSetButNotCurrentSramSaveSlot" xml:space="preserve">
 		<value>Der Vergleichs-Datei Speicherslot kann erst gesetzt werden, nachdem der Speicherslot der aktuellen Datei festgelegt wurde.</value>
 	</data>
-	<data name="ErrorCompSaveSlotFileIsNotCompFileTypeFilepathTemplate" xml:space="preserve">
-		<value>{0} Vergleichs SRAM-Datei muss eine .comp Datei-Endung besitzen. Hast du vielleicht nur vergessen den Pfad in Anführungszeichen zu setzen? War: {1}</value>
+	<data name="ErrorInvalidCompFileExtensionTemplate" xml:space="preserve">
+		<value>Die Vergleichs-Datei hat eine nicht unterstützte Dateiendung. Hast du vielleicht nur vergessen den Pfad in Anführungszeichen zu setzen? War: {0} Unterstützte Dateiendungen sind: {1}</value>
 	</data>
 	<data name="CommandSlotByteByBytesComparison" xml:space="preserve">
 		<value>Speicherslot Byte-für-Byte vergleichen</value>

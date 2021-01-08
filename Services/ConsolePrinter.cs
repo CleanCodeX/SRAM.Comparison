@@ -18,10 +18,10 @@ namespace SramComparer.Services
 			PrintColoredLine(ConsoleColor.Gray, Res.Settings + @":");
 
 			PrintSettingName(Res.CurrentSramFilepath, "{0}");
-			PrintValue(Path.GetFileName(options.CurrentSramFilepath!));
+			PrintValue(Path.GetFileName(options.CurrentSramFilePath!));
 
 			PrintSettingName(Res.ComparisonSramFilepath, "{1-2}|" + CmdOptions.ComparisonFile);
-			PrintValue(Path.GetFileName(options.ComparisonSramFilepath!));
+			PrintValue(Path.GetFileName(options.ComparisonSramFilePath!));
 
 			PrintSettingName(Res.GameRegion, $"{"{1-2}|" + CmdOptions.GameRegion} [{string.Join("|", Enum.GetNames(options.GameRegion.GetType()))}]");
 			PrintValue(options.GameRegion.ToString());

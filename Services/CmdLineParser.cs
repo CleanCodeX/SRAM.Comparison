@@ -1,8 +1,9 @@
-﻿//#define Check_FileExtensions
+﻿#define Check_FileExtensions
 
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Common.Shared.Min.Extensions;
 using SramComparer.Extensions;
 using SramComparer.Properties;
@@ -20,6 +21,8 @@ namespace SramComparer.Services
 		where TRomRegion : struct, Enum
 		where TComparisonFlags : struct, Enum
 	{
+		private static readonly string[] AllowedFileExtensions = new[] { ".srm", ".comp", ".state", ".000", ".001", ".002", ".003", ".004", ".005", ".006", ".007", ".008", ".009" };
+
 		/// <summary>
 		/// Parses a list of string arguments into an <see cref="IOptions"/> instance
 		/// </summary>
@@ -31,12 +34,12 @@ namespace SramComparer.Services
 
 			const string compFileExtension = ".comp";
 			var currentSramFilepath = args[0];
-			var options = new TOptions { CurrentSramFilepath = currentSramFilepath };
+			var options = new TOptions { CurrentSramFilePath = currentSramFilepath };
 
 			if (currentSramFilepath.IsNullOrEmpty())
-				throw new ArgumentException(Resources.ErrorMissingPathArguments, nameof(options.CurrentSramFilepath));
+				throw new ArgumentException(Resources.ErrorMissingPathArguments, nameof(options.CurrentSramFilePath));
 
-			options.ExportDirectory = Path.GetDirectoryName(options.CurrentSramFilepath);
+			options.ExportDirectory = Path.GetDirectoryName(options.CurrentSramFilePath);
 
 			var namelessParamCount = 1;
 			// Check nameless params
@@ -54,19 +57,17 @@ namespace SramComparer.Services
 				{
 					EnsureFullQualifiedPath(ref value);
 		
-					options.ComparisonSramFilepath = value;
+					options.ComparisonSramFilePath = value;
 					++namelessParamCount;
 				}
 			}
 
 #if Check_FileExtensions
-			const string srmFileExtension = ".srm";
-
-			if (Path.GetExtension(currentSramFilepath).ToLower() != srmFileExtension)
-				throw new ArgumentException(Resources.ErrorFileIsNotSrmFileTypeFilepathTemplate.InsertArgs(Resources.Current, options.CurrentSramFilepath), nameof(options.CurrentSramFilepath));
+			if (!AllowedFileExtensions.Contains(Path.GetExtension(currentSramFilepath).ToLower()))
+				throw new ArgumentException(Resources.ErrorInvalidFileExtensionTemplate.InsertArgs(options.CurrentSramFilePath, AllowedFileExtensions), nameof(options.CurrentSramFilePath));
 #endif
 
-			options.ComparisonSramFilepath ??= currentSramFilepath + compFileExtension;
+			options.ComparisonSramFilePath ??= currentSramFilepath + compFileExtension;
 			
 			for (var i = namelessParamCount; i < args.Count; i += 2)
 			{
@@ -85,7 +86,7 @@ namespace SramComparer.Services
 					case CmdOptions.ComparisonFile:
 						EnsureFullQualifiedPath(ref value);
 
-						options.ComparisonSramFilepath = value;
+						options.ComparisonSramFilePath = value;
 						break;
 					case CmdOptions.ExportDirectory:
 						options.ExportDirectory = value;
@@ -111,15 +112,18 @@ namespace SramComparer.Services
 					case CmdOptions.ComparisonResultLanguage:
 						options.ComparisonResultLanguage = value;
 						break;
+					case CmdOptions.ConfigFilePath:
+						options.ConfigFilePath = value;
+						break;
 				}
 			}
 
-			if (options.ComparisonSramFilepath.IsNullOrEmpty())
-				throw new ArgumentException(Resources.ErrorMissingPathArguments, nameof(options.ComparisonSramFilepath));
+			if (options.ComparisonSramFilePath.IsNullOrEmpty())
+				throw new ArgumentException(Resources.ErrorMissingPathArguments, nameof(options.ComparisonSramFilePath));
 
 #if Check_FileExtensions
-			if (Path.GetExtension(options.ComparisonSramFilepath).ToLower() != compFileExtension)
-				throw new ArgumentException(Resources.ErrorFileIsNotSrmFileTypeFilepathTemplate.InsertArgs(Resources.Comparison, options.ComparisonSramFilepath), nameof(options.ComparisonSramFilepath));
+			if (!AllowedFileExtensions.Contains(Path.GetExtension(options.ComparisonSramFilePath).ToLower()))
+				throw new ArgumentException(Resources.ErrorInvalidFileExtensionTemplate.InsertArgs(options.ComparisonSramFilePath, AllowedFileExtensions), nameof(options.ComparisonSramFilePath));
 #endif
 
 			return options;
@@ -127,7 +131,7 @@ namespace SramComparer.Services
 			void EnsureFullQualifiedPath(ref string value)
 			{
 				if (Path.GetDirectoryName(value) == string.Empty)
-					value = Path.Join(Path.GetDirectoryName(options.CurrentSramFilepath), value);
+					value = Path.Join(Path.GetDirectoryName(options.CurrentSramFilePath), value);
 			}
 		}
 	}
