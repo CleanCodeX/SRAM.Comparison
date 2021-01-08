@@ -160,11 +160,11 @@ namespace SramComparer.Services
 
 					break;
 				case Commands.LoadConfig:
-					LoadConfig(options);
+					LoadConfig(options, GetConfigName());
 
 					break;
 				case Commands.SaveConfig:
-					SaveConfig(options);
+					SaveConfig(options, GetConfigName());
 
 					break;
 				case Commands.Clear:
@@ -470,7 +470,7 @@ namespace SramComparer.Services
 				_ => BitConverter.GetBytes(value),
 			};
 
-			var promptResult = InternalGetStringValue(Resources.PromtCreateNewFileInsteadOfOverwriting);
+			var promptResult = InternalGetStringValue(Resources.PromptCreateNewFileInsteadOfOverwriting);
 			var createNewFile = promptResult switch
 			{
 				"1" => true,
@@ -496,8 +496,8 @@ namespace SramComparer.Services
 			ConsolePrinter.ResetColor();
 		}
 
-		private int GetGameOffset(int slotIndex) => (int)InternalGetValue(Resources.GetSaveSlotOffsetTemplate.InsertArgs(slotIndex + 1), Resources.StatusOffsetWillBeUsedTemplate);
-		private uint GetGameOffsetValue() => InternalGetValue(Resources.GetSaveSlotOffsetValue, Resources.StatusOffsetValueWillBeUsedTemplate);
+		private int GetGameOffset(int slotIndex) => (int)InternalGetValue(Resources.PromptGetSaveSlotOffsetTemplate.InsertArgs(slotIndex + 1), Resources.StatusOffsetWillBeUsedTemplate);
+		private uint GetGameOffsetValue() => InternalGetValue(Resources.PromptGetSaveSlotOffsetValue, Resources.StatusOffsetValueWillBeUsedTemplate);
 
 		private string InternalGetStringValue(string prompt, string? promptResultTemplate = null)
 		{
@@ -536,7 +536,7 @@ namespace SramComparer.Services
 
 		private int GetOffset(out int slotIndex)
 		{
-			var promptResult = InternalGetStringValue(Resources.SetSingleSaveSlotMaxTemplate.InsertArgs(4),
+			var promptResult = InternalGetStringValue(Resources.PromptSetSingleSaveSlotTemplate.InsertArgs(4),
 				Resources.StatusSetSingleSaveSlotMaxTemplate);
 			if (!int.TryParse(promptResult, out var saveSlotId) || saveSlotId > 4)
 			{
@@ -557,7 +557,7 @@ namespace SramComparer.Services
 		public virtual int GetSaveSlotId(int maxSaveSlotId)
 		{
 			ConsolePrinter.PrintSectionHeader();
-			ConsolePrinter.PrintLine(Resources.SetSaveSlotToCompareMaxTemplate.InsertArgs(maxSaveSlotId));
+			ConsolePrinter.PrintLine(Resources.PromptSetSaveSlotTemplate.InsertArgs(maxSaveSlotId));
 
 			var input = Console.ReadLine()!;
 
@@ -595,7 +595,7 @@ namespace SramComparer.Services
 		public virtual void BackupSaveFile(IOptions options, SaveFileKind fileKind, bool restore = false)
 		{
 			var filePath = fileKind == SaveFileKind.CurrentFile ? options.CurrenFilePath! : options.ComparisonFilePath!;
-			var fileTypeName = fileKind == SaveFileKind.CurrentFile ? Resources.CurrentFile : Resources.ComparisonFile;
+			var fileTypeName = fileKind.GetDisplayName();
 			var backupFilepath = filePath + BackupFileExtension;
 
 			ConsolePrinter.PrintSectionHeader();
@@ -621,7 +621,7 @@ namespace SramComparer.Services
 		private void SetUILanguage(IOptions options)
 		{
 			ConsolePrinter.PrintSectionHeader();
-			ConsolePrinter.PrintLine(Resources.SetUILanguage);
+			ConsolePrinter.PrintLine(Resources.PromptSetUILanguage);
 
 			var cultureId = Console.ReadLine()!;
 			if (cultureId == string.Empty)
@@ -653,7 +653,7 @@ namespace SramComparer.Services
 		private void SetComparionResultLanguage(IOptions options)
 		{
 			ConsolePrinter.PrintSectionHeader();
-			ConsolePrinter.PrintLine(Resources.SetComparionResultLanguage);
+			ConsolePrinter.PrintLine(Resources.PromptSetComparionResultLanguage);
 
 			var cultureId = Console.ReadLine()!;
 			if (cultureId == string.Empty)
@@ -710,26 +710,40 @@ namespace SramComparer.Services
 
 		#region Config
 
-		protected virtual void SaveConfig(IOptions options)
+		protected virtual void SaveConfig(IOptions options, string? configName = null)
 		{
 			var jsonOptions = new JsonSerializerOptions { Converters = { new JsonStringEnumConverter() }, WriteIndented = true };
 
 			var json = JsonSerializer.Serialize(options, jsonOptions);
-			var filePath = GetConfigFilePath(options.ConfigFilePath);
+			var filePath = GetConfigFilePath(options.ConfigFilePath, configName);
 			File.WriteAllText(filePath, json);
 
 			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusConfigFileHasBeenSavedTemplate.InsertArgs(filePath));
 		}
 
-		protected virtual void LoadConfig(IOptions options) => throw new NotImplementedException();
+		protected virtual void LoadConfig(IOptions options, string? configName = null) => throw new NotImplementedException();
 
-		protected virtual string GetConfigFilePath(string? configFilePath)
+		protected virtual string GetConfigFilePath(string? configFilePath, string? configName = null)
 		{
 			var configDirectory = Path.GetDirectoryName(configFilePath);
-			var fileName = Path.GetFileName(configFilePath) ?? "Config.json";
+			var fileName = Path.GetFileName(configFilePath) ?? $"{configName ?? "Config"}.json";
 			configDirectory ??= Path.GetDirectoryName(Environment.CurrentDirectory);
 
 			return Path.Join(configDirectory, fileName);
+		}
+
+		private string? GetConfigName()
+		{
+			ConsolePrinter.PrintSectionHeader();
+			ConsolePrinter.PrintLine(Resources.PromptEnterConfigName);
+
+			var configName = Console.ReadLine();
+			if (configName == string.Empty) return null;
+
+			ConsolePrinter.PrintParagraph();
+			ConsolePrinter.ResetColor();
+
+			return configName;
 		}
 
 		#endregion Config

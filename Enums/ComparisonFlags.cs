@@ -7,10 +7,10 @@ namespace SramComparer.Enums
 	[Flags]
 	public enum ComparisonFlags: uint
 	{
-		[DisplayNameLocalized(nameof(Res.SlotByteByByteComparison), typeof(Res))]
+		[DisplayNameLocalized(nameof(Res.EnumSlotByteByByteComparison), typeof(Res))]
 		SlotByteByByteComparison = 1 << 0,
 			
-		[DisplayNameLocalized(nameof(Res.NonSlotByteByByteComparison), typeof(Res))]
+		[DisplayNameLocalized(nameof(Res.EnumNonSlotByteByByteComparison), typeof(Res))]
 		NonSlotByteByByteComparison = 1 << 1
 	}
 }

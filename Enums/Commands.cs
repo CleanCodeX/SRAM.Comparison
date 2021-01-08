@@ -20,10 +20,10 @@ namespace SramComparer.Enums
 		[DisplayNameLocalized(nameof(Res.CommandGuideSavestate), typeof(Res))]
 		Guide_Savestate, // Manual (savestate) 
 
-		[DisplayNameLocalized(nameof(Res.SlotByteByByteComparison), typeof(Res))]
+		[DisplayNameLocalized(nameof(Res.EnumSlotByteByByteComparison), typeof(Res))]
 		Sbc, // Enables or disables slot byte by byte comparison => compares the save slot area by by byte
 
-		[DisplayNameLocalized(nameof(Res.NonSlotByteByByteComparison), typeof(Res))]
+		[DisplayNameLocalized(nameof(Res.EnumNonSlotByteByByteComparison), typeof(Res))]
 		Nsbc, // Enables or disables non-slot byte by byte comparison => compares the non-save slot area byte by byte
 
 		[DisplayNameLocalized(nameof(Res.CommandSetCurrentSrramFileSaveSlot), typeof(Res))]

@@ -14,14 +14,14 @@ namespace SramComparer
 		public string? ComparisonFilePath { get; set; }
 		public string? ExportDirectory { get; set; }
 		
+		[JsonConverter(typeof(JsonStringEnumConverter))]
 		public TGameRegion GameRegion { get; set; }
 		public int CurrentFileSaveSlot { get; set; }
 		public int ComparisonFileSaveSlot { get; set; }
+		[JsonConverter(typeof(JsonStringEnumConverter))]
 		public TComparisonFlags ComparisonFlags { get; set; }
 
-		[JsonIgnore]
 		Enum IOptions.GameRegion => GameRegion;
-		[JsonIgnore]
 		Enum IOptions.ComparisonFlags
 		{
 			get => ComparisonFlags;

@@ -169,15 +169,6 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Colorize output ähnelt.
-        /// </summary>
-        public static string ColorizeOutput {
-            get {
-                return ResourceManager.GetString("ColorizeOutput", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Back-up comparison-file ähnelt.
         /// </summary>
         public static string CommandBackupComparisonFile {
@@ -223,7 +214,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Display settings ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Display config ähnelt.
         /// </summary>
         public static string CommandConfig {
             get {
@@ -403,56 +394,92 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Comparison file ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Comp ähnelt.
         /// </summary>
-        public static string ComparisonFile {
+        public static string ComparisonShort {
             get {
-                return ResourceManager.GetString("ComparisonFile", resourceCulture);
+                return ResourceManager.GetString("ComparisonShort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Config ähnelt.
+        /// </summary>
+        public static string Config {
+            get {
+                return ResourceManager.GetString("Config", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Colorize output ähnelt.
+        /// </summary>
+        public static string ConfigColorizeOutput {
+            get {
+                return ResourceManager.GetString("ConfigColorizeOutput", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Comparison filepath ähnelt.
         /// </summary>
-        public static string ComparisonFilePath {
+        public static string ConfigComparisonFilePath {
             get {
-                return ResourceManager.GetString("ComparisonFilePath", resourceCulture);
+                return ResourceManager.GetString("ConfigComparisonFilePath", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Save slot (Comparison file) ähnelt.
         /// </summary>
-        public static string ComparisonFileSaveSlot {
+        public static string ConfigComparisonFileSaveSlot {
             get {
-                return ResourceManager.GetString("ComparisonFileSaveSlot", resourceCulture);
+                return ResourceManager.GetString("ConfigComparisonFileSaveSlot", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Comparison flags ähnelt.
         /// </summary>
-        public static string ComparisonFlags {
+        public static string ConfigComparisonFlags {
             get {
-                return ResourceManager.GetString("ComparisonFlags", resourceCulture);
+                return ResourceManager.GetString("ConfigComparisonFlags", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Comparison result language ähnelt.
         /// </summary>
-        public static string ComparisonResultLanguage {
+        public static string ConfigComparisonResultLanguage {
             get {
-                return ResourceManager.GetString("ComparisonResultLanguage", resourceCulture);
+                return ResourceManager.GetString("ConfigComparisonResultLanguage", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Comp ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Current filepath ähnelt.
         /// </summary>
-        public static string ComparisonShort {
+        public static string ConfigCurrentFilePath {
             get {
-                return ResourceManager.GetString("ComparisonShort", resourceCulture);
+                return ResourceManager.GetString("ConfigCurrentFilePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Save slot (current file) ähnelt.
+        /// </summary>
+        public static string ConfigCurrentFileSaveSlot {
+            get {
+                return ResourceManager.GetString("ConfigCurrentFileSaveSlot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Export directory ähnelt.
+        /// </summary>
+        public static string ConfigExportDirectory {
+            get {
+                return ResourceManager.GetString("ConfigExportDirectory", resourceCulture);
             }
         }
         
@@ -466,38 +493,20 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Game region ähnelt.
+        /// </summary>
+        public static string ConfigGameRegion {
+            get {
+                return ResourceManager.GetString("ConfigGameRegion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Current ähnelt.
         /// </summary>
         public static string Current {
             get {
                 return ResourceManager.GetString("Current", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Current file ähnelt.
-        /// </summary>
-        public static string CurrentFile {
-            get {
-                return ResourceManager.GetString("CurrentFile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Current filepath ähnelt.
-        /// </summary>
-        public static string CurrentFilePath {
-            get {
-                return ResourceManager.GetString("CurrentFilePath", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Save slot (current file) ähnelt.
-        /// </summary>
-        public static string CurrentFileSaveSlot {
-            get {
-                return ResourceManager.GetString("CurrentFileSaveSlot", resourceCulture);
             }
         }
         
@@ -525,6 +534,42 @@ namespace SramComparer.Properties {
         public static string EnterIndexOfFileToBeOverwrittenMaxIndexTemplate {
             get {
                 return ResourceManager.GetString("EnterIndexOfFileToBeOverwrittenMaxIndexTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Comparison file ähnelt.
+        /// </summary>
+        public static string EnumComparisonFile {
+            get {
+                return ResourceManager.GetString("EnumComparisonFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Current file ähnelt.
+        /// </summary>
+        public static string EnumCurrentFile {
+            get {
+                return ResourceManager.GetString("EnumCurrentFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Non-slot byte-by-byte comparison ähnelt.
+        /// </summary>
+        public static string EnumNonSlotByteByByteComparison {
+            get {
+                return ResourceManager.GetString("EnumNonSlotByteByByteComparison", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Slot byte-by-byte comparison ähnelt.
+        /// </summary>
+        public static string EnumSlotByteByByteComparison {
+            get {
+                return ResourceManager.GetString("EnumSlotByteByByteComparison", resourceCulture);
             }
         }
         
@@ -619,42 +664,6 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Export directory ähnelt.
-        /// </summary>
-        public static string ExportDirectory {
-            get {
-                return ResourceManager.GetString("ExportDirectory", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Game region ähnelt.
-        /// </summary>
-        public static string GameRegion {
-            get {
-                return ResourceManager.GetString("GameRegion", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Set Save slot {0} offset: ähnelt.
-        /// </summary>
-        public static string GetSaveSlotOffsetTemplate {
-            get {
-                return ResourceManager.GetString("GetSaveSlotOffsetTemplate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Set Save slot offset value: ähnelt.
-        /// </summary>
-        public static string GetSaveSlotOffsetValue {
-            get {
-                return ResourceManager.GetString("GetSaveSlotOffsetValue", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die New ähnelt.
         /// </summary>
         public static string New {
@@ -682,15 +691,6 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Non-slot byte-by-byte comparison ähnelt.
-        /// </summary>
-        public static string NonSlotByteByByteComparison {
-            get {
-                return ResourceManager.GetString("NonSlotByteByByteComparison", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Offset ähnelt.
         /// </summary>
         public static string Offset {
@@ -709,11 +709,83 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Compare non-save slot area ähnelt.
+        /// </summary>
+        public static string PromptCompareNonSaveSlotArea {
+            get {
+                return ResourceManager.GetString("PromptCompareNonSaveSlotArea", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Would you like to create a new file instead of overwriting the current file? Type 1 for creating a new file (recommended) or type 2 to overwrite the existing file. In the latter case make sure to have a backup created before. 1 = new, 2 = overwrite, 0 = abort ähnelt.
         /// </summary>
-        public static string PromtCreateNewFileInsteadOfOverwriting {
+        public static string PromptCreateNewFileInsteadOfOverwriting {
             get {
-                return ResourceManager.GetString("PromtCreateNewFileInsteadOfOverwriting", resourceCulture);
+                return ResourceManager.GetString("PromptCreateNewFileInsteadOfOverwriting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Enter specific config name or empty for default config. ähnelt.
+        /// </summary>
+        public static string PromptEnterConfigName {
+            get {
+                return ResourceManager.GetString("PromptEnterConfigName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Set Save slot {0} offset: ähnelt.
+        /// </summary>
+        public static string PromptGetSaveSlotOffsetTemplate {
+            get {
+                return ResourceManager.GetString("PromptGetSaveSlotOffsetTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Set Save slot offset value: ähnelt.
+        /// </summary>
+        public static string PromptGetSaveSlotOffsetValue {
+            get {
+                return ResourceManager.GetString("PromptGetSaveSlotOffsetValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Set the comparison result language (e.g. &apos;en&apos; for English - without quotes). An empty input resets the setting. ähnelt.
+        /// </summary>
+        public static string PromptSetComparionResultLanguage {
+            get {
+                return ResourceManager.GetString("PromptSetComparionResultLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Set save slot (1-{0} or any other key for all save slots) to compare: ähnelt.
+        /// </summary>
+        public static string PromptSetSaveSlotTemplate {
+            get {
+                return ResourceManager.GetString("PromptSetSaveSlotTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Set save slot (1-{0}): ähnelt.
+        /// </summary>
+        public static string PromptSetSingleSaveSlotTemplate {
+            get {
+                return ResourceManager.GetString("PromptSetSingleSaveSlotTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Set the UI language (e.g. &apos;en&apos; for English - without quotes). An empty input resets the setting. ähnelt.
+        /// </summary>
+        public static string PromptSetUILanguage {
+            get {
+                return ResourceManager.GetString("PromptSetUILanguage", resourceCulture);
             }
         }
         
@@ -790,83 +862,11 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Set the comparison result language (e.g. &apos;en&apos; for English - without quotes). An empty input resets the setting. ähnelt.
-        /// </summary>
-        public static string SetComparionResultLanguage {
-            get {
-                return ResourceManager.GetString("SetComparionResultLanguage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Set save slot (1-{0} or any other key for all save slots) to compare: ähnelt.
-        /// </summary>
-        public static string SetSaveSlotToCompareMaxTemplate {
-            get {
-                return ResourceManager.GetString("SetSaveSlotToCompareMaxTemplate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Set save slot (1-{0}): ähnelt.
-        /// </summary>
-        public static string SetSingleSaveSlotMaxTemplate {
-            get {
-                return ResourceManager.GetString("SetSingleSaveSlotMaxTemplate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Compare non-save slot area ähnelt.
-        /// </summary>
-        public static string SettinComparegNonGameBuffer {
-            get {
-                return ResourceManager.GetString("SettinComparegNonGameBuffer", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Compare whole save slot area ähnelt.
-        /// </summary>
-        public static string SettingCompareWholeGameBuffer {
-            get {
-                return ResourceManager.GetString("SettingCompareWholeGameBuffer", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Settings ähnelt.
-        /// </summary>
-        public static string Settings {
-            get {
-                return ResourceManager.GetString("Settings", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Set the UI language (e.g. &apos;en&apos; for English - without quotes). An empty input resets the setting. ähnelt.
-        /// </summary>
-        public static string SetUILanguage {
-            get {
-                return ResourceManager.GetString("SetUILanguage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Size ähnelt.
         /// </summary>
         public static string Size {
             get {
                 return ResourceManager.GetString("Size", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Slot byte-by-byte comparison ähnelt.
-        /// </summary>
-        public static string SlotByteByByteComparison {
-            get {
-                return ResourceManager.GetString("SlotByteByByteComparison", resourceCulture);
             }
         }
         

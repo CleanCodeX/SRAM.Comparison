@@ -50,7 +50,7 @@
 	<data name="AppDescription" xml:space="preserve">
 		<value>Cet outil fait une comparaison de fichiers SRAM.</value>
 	</data>
-	<data name="ColorizeOutput" xml:space="preserve">
+	<data name="ConfigColorizeOutput" xml:space="preserve">
 		<value>Résultat avec couleurs</value>
 	</data>
 	<data name="CommandExportComparisonResult" xml:space="preserve">
@@ -90,7 +90,7 @@
 		<value>Définir l'emplacement de jeu du fichier en cours</value>
 	</data>
 	<data name="CommandConfig" xml:space="preserve">
-		<value>Paramètres d'affichage</value>
+		<value>Afficher la configuration</value>
 	</data>
 	<data name="CommandOffset" xml:space="preserve">
 		<value>Afficher le décalage en cours</value>
@@ -109,13 +109,13 @@
 	<data name="Comparison" xml:space="preserve">
 		<value>Comparaison</value>
 	</data>
-	<data name="ComparisonFlags" xml:space="preserve">
+	<data name="ConfigComparisonFlags" xml:space="preserve">
 		<value>Options de comparaison</value>
 	</data>
 	<data name="ComparisonShort" xml:space="preserve">
 		<value>Comp</value>
 	</data>
-	<data name="ComparisonFile" xml:space="preserve">
+	<data name="EnumComparisonFile" xml:space="preserve">
 		<value>Fichier de comparaison</value>
 	</data>
 	<data name="Current" xml:space="preserve">
@@ -124,7 +124,7 @@
 	<data name="CurrentShort" xml:space="preserve">
 		<value>Courant</value><comment>Is nothing shorter possible? 4-5 characters would be optimal</comment>
 	</data>
-	<data name="CurrentFile" xml:space="preserve">
+	<data name="EnumCurrentFile" xml:space="preserve">
 		<value>Fichier en cours</value>
 	</data>
 	<data name="EnterCommand" xml:space="preserve">
@@ -180,13 +180,13 @@
 	<data name="Offset" xml:space="preserve">
 		<value>Décalage</value>
 	</data>
-	<data name="PromtCreateNewFileInsteadOfOverwriting" xml:space="preserve">
+	<data name="PromptCreateNewFileInsteadOfOverwriting" xml:space="preserve">
 		<value>Souhaitez-vous créer un nouveau fichier au lieu d'écraser le fichier en cours? Tapez 1 pour créer un nouveau fichier (recommandé) ou tapez 2 pour écraser le fichier existant. Dans ce dernier cas assurez-vous d'avoir créé une sauvegarde. 1=nouveau, 2=écraser, 0=abandonner</value>
 	</data>
 	<data name="QueuedCommands" xml:space="preserve">
 		<value>Commandes en file d'attente</value>
 	</data>
-	<data name="CurrentFileSaveSlot" xml:space="preserve">
+	<data name="ConfigCurrentFileSaveSlot" xml:space="preserve">
 		<value>Enregistrer la partie en cours</value>
 		<comment>Partie du fichier en cours
 		</comment>
@@ -200,36 +200,33 @@
 	<data name="SectionNonSaveSlotUnknowns" xml:space="preserve">
 		<value>Valeurs inconnues des autres parties</value>
 	</data>
-	<data name="SetSaveSlotToCompareMaxTemplate" xml:space="preserve">
+	<data name="PromptSetSaveSlotTemplate" xml:space="preserve">
 		<value>Définir la partie à comparer (1- {0} ou appuyez sur n'importe quelle autre touche pour sélectionner toutes les parties) :</value>
 	</data>
-	<data name="SetSingleSaveSlotMaxTemplate" xml:space="preserve">
+	<data name="PromptSetSingleSaveSlotTemplate" xml:space="preserve">
 		<value>Définir la partie (1- {0}) :</value>
 	</data>
-	<data name="SettinComparegNonGameBuffer" xml:space="preserve">
+	<data name="PromptCompareNonSaveSlotArea" xml:space="preserve">
 		<value>Comparer les zones en dehors de la partie en cours</value>
 	</data>
-	<data name="SettingCompareWholeGameBuffer" xml:space="preserve">
-		<value>Comparer la partie en cours en entier</value>
-	</data>
-	<data name="ComparisonFilePath" xml:space="preserve">
+	<data name="ConfigComparisonFilePath" xml:space="preserve">
 		<value>Comparaison du chemin du fichier</value>
 	</data>
-	<data name="ComparisonFileSaveSlot" xml:space="preserve">
+	<data name="ConfigComparisonFileSaveSlot" xml:space="preserve">
 		<value>Partie du fichier de comparaison</value>
 	</data>
-	<data name="CurrentFilePath" xml:space="preserve">
+	<data name="ConfigCurrentFilePath" xml:space="preserve">
 		<value>Chemin du fichier en cours</value>
 	</data>
-	<data name="ExportDirectory" xml:space="preserve">
+	<data name="ConfigExportDirectory" xml:space="preserve">
 		<value>Exporter le répertoire</value>
 	</data>
-	<data name="GameRegion" xml:space="preserve">
+	<data name="ConfigGameRegion" xml:space="preserve">
 		<value>Région du jeu</value>
 		<comment>Région du jeu</comment>
 	</data>
-	<data name="Settings" xml:space="preserve">
-		<value>Réglages</value>
+	<data name="Config" xml:space="preserve">
+		<value>Config</value>
 	</data>
 	<data name="Size" xml:space="preserve">
 		<value>Taille</value>
@@ -317,7 +314,7 @@
 	<data name="StatusCurrentComparisonExportedFilePathTemplate" xml:space="preserve">
 		<value>Comparaison en cours enregistrée dans le fichier "{0}".</value>
 	</data>
-	<data name="SlotByteByByteComparison" xml:space="preserve">
+	<data name="EnumSlotByteByByteComparison" xml:space="preserve">
 		<value>Comparer les données de la partie en cours octet par octet</value><comment>Comparer toute les données de la partie en cours</comment>
 	</data>
 	<data name="SaveSlot" xml:space="preserve">
@@ -326,13 +323,13 @@
 	<data name="SameAsCurrentFileSaveSlot" xml:space="preserve">
 		<value>Identique à l'emplacement de la partie en cours</value>
 	</data>
-	<data name="GetSaveSlotOffsetTemplate" xml:space="preserve">
+	<data name="PromptGetSaveSlotOffsetTemplate" xml:space="preserve">
 		<value>Modifier le décalage dans cette partie {0} :</value><comment>Modifier le décalage dans cette partie {0}:</comment>
 	</data>
-	<data name="GetSaveSlotOffsetValue" xml:space="preserve">
+	<data name="PromptGetSaveSlotOffsetValue" xml:space="preserve">
 		<value>Modifier la valeur du décalage dans cette partie :</value><comment>Modifier le décalage dans cette partie:</comment>
 	</data>
-	<data name="NonSlotByteByByteComparison" xml:space="preserve">
+	<data name="EnumNonSlotByteByByteComparison" xml:space="preserve">
 		<value>Comparer les zones en dehors de la partie en cours octet par octet :</value>
 		<comment>Comparer les zones en dehors de la partie en cours :</comment>
 	</data>
@@ -342,7 +339,7 @@
 	<data name="StatusTwoDifferentSaveSlotsWillBeComparedTemplate" xml:space="preserve">
 		<value>L'emplacement de sauvegarde en cours {0} sera comparé à l'emplacement de sauvegarde de comparaison {1}.</value>
 	</data>
-	<data name="ComparisonResultLanguage" xml:space="preserve">
+	<data name="ConfigComparisonResultLanguage" xml:space="preserve">
 		<value>Langue des résultats de comparaison</value>
 	</data>
 	<data name="UILanguage" xml:space="preserve">
@@ -357,10 +354,10 @@
 	<data name="CmdGroupLanguage" xml:space="preserve">
 		<value>Langue</value>
 	</data>
-	<data name="SetUILanguage" xml:space="preserve">
+	<data name="PromptSetUILanguage" xml:space="preserve">
 		<value>Définissez la langue de l'interface utilisateur (par exemple 'en' pour l'anglais - sans guillemets). Une entrée vide réinitialise le paramètre.</value>
 	</data>
-	<data name="SetComparionResultLanguage" xml:space="preserve">
+	<data name="PromptSetComparionResultLanguage" xml:space="preserve">
 		<value>Définissez la langue du résultat de la comparaison (par exemple 'en' pour l'anglais - sans guillemets). Une entrée vide réinitialise le paramètre.</value>
 	</data>
 	<data name="NoGuideAvailable" xml:space="preserve">
@@ -383,5 +380,8 @@
 	</data>
 	<data name="StatusConfigFileHasBeenSavedTemplate" xml:space="preserve">
 		<value>Le fichier de configuration [{0}] a été enregistré.</value>
+	</data>
+	<data name="PromptEnterConfigName" xml:space="preserve">
+		<value>Entrez un nom de configuration spécifique ou vide pour la configuration par défaut.</value>
 	</data>
 </root>

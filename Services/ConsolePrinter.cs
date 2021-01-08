@@ -16,39 +16,39 @@ namespace SramComparer.Services
 		public virtual void PrintConfig(IOptions options)
 		{
 			PrintSectionHeader();
-			PrintColoredLine(ConsoleColor.Gray, Res.Settings + @":");
+			PrintColoredLine(ConsoleColor.Gray, Res.Config + @":");
 
-			PrintConfigName(Res.CurrentFilePath, "{0}");
+			PrintConfigName(Res.ConfigCurrentFilePath, "{0}");
 			PrintValue(Path.GetFileName(options.CurrenFilePath!));
 
-			PrintConfigName(Res.ComparisonFilePath, "{1-2}|" + CmdOptions.ComparisonFile);
+			PrintConfigName(Res.ConfigComparisonFilePath, "{1-2}|" + CmdOptions.ComparisonFile);
 			PrintValue(Path.GetFileName(options.ComparisonFilePath!));
 
-			PrintConfigName(Res.GameRegion, $"{"{1-2}|" + CmdOptions.GameRegion} [{string.Join("|", Enum.GetNames(options.GameRegion.GetType()))}]");
+			PrintConfigName(Res.ConfigGameRegion, $"{"{1-2}|" + CmdOptions.GameRegion} [{string.Join("|", Enum.GetNames(options.GameRegion.GetType()))}]");
 			PrintValue(options.GameRegion.ToString());
 
-			PrintConfigName(Res.ExportDirectory, CmdOptions.ExportDirectory);
+			PrintConfigName(Res.ConfigExportDirectory, CmdOptions.ExportDirectory);
 			PrintValue(options.ExportDirectory!);
 
-			PrintConfigName(Res.CurrentFileSaveSlot, $"{CmdOptions.CurrentSaveSlot} [1-4|0={Res.All}]");
+			PrintConfigName(Res.ConfigCurrentFileSaveSlot, $"{CmdOptions.CurrentSaveSlot} [1-4|0={Res.All}]");
 			PrintValue(options.CurrentFileSaveSlot == 0 ? Res.All : options.CurrentFileSaveSlot.ToString());
 
-			PrintConfigName(Res.ComparisonFileSaveSlot, $"{CmdOptions.ComparisonSaveSlot} [1-4|0={Res.All}]");
+			PrintConfigName(Res.ConfigComparisonFileSaveSlot, $"{CmdOptions.ComparisonSaveSlot} [1-4|0={Res.All}]");
 			PrintValue(options.ComparisonFileSaveSlot == 0 ? Res.SameAsCurrentFileSaveSlot : options.ComparisonFileSaveSlot.ToString());
 
-			PrintConfigName(Res.ColorizeOutput, $"{CmdOptions.ColorizeOutput} [true|1|false|0]");
+			PrintConfigName(Res.ConfigColorizeOutput, $"{CmdOptions.ColorizeOutput} [true|1|false|0]");
 			PrintValue(options.ColorizeOutput.ToString());
 
 			PrintConfigName(Res.UILanguage, CmdOptions.UILanguage);
 			PrintValue(options.UILanguage!);
 
-			PrintConfigName(Res.ComparisonResultLanguage, CmdOptions.ComparisonResultLanguage);
+			PrintConfigName(Res.ConfigComparisonResultLanguage, CmdOptions.ComparisonResultLanguage);
 			PrintValue(options.ComparisonResultLanguage!);
 
 			PrintConfigName(Res.ConfigFilePath, CmdOptions.ConfigFilePath);
 			PrintValue(options.ConfigFilePath!);
 
-			PrintConfigName(Res.ComparisonFlags, $@"{CmdOptions.ComparisonFlags} [{string.Join(",", Enum.GetNames(options.ComparisonFlags.GetType()))}]");
+			PrintConfigName(Res.ConfigComparisonFlags, $@"{CmdOptions.ComparisonFlags} [{string.Join(",", Enum.GetNames(options.ComparisonFlags.GetType()))}]");
 			PrintConfigName(Environment.NewLine, padRightDistance: 37);
 			PrintValue(options.ComparisonFlags.ToFlagsString());
 		}

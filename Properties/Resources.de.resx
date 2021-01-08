@@ -96,15 +96,15 @@
 		<value>Offset-Wert anzeigen</value>
 	</data>
 	<data name="CommandConfig" xml:space="preserve">
-		<value>Einstellungen anzeigen</value>
+		<value>Konfig anzeigen</value>
 	</data>
 	<data name="CommandExportComparisonResult" xml:space="preserve">
 		<value>Aktuelles Vergleichsergebnis exportieren</value>
 	</data>
-	<data name="NonSlotByteByByteComparison" xml:space="preserve">
+	<data name="EnumNonSlotByteByByteComparison" xml:space="preserve">
 		<value>Nicht-Speicherslot Byte-Für-Byte-Vergleich</value>
 	</data>
-	<data name="SlotByteByByteComparison" xml:space="preserve">
+	<data name="EnumSlotByteByByteComparison" xml:space="preserve">
 		<value>Speicherslot Byte-Für-Byte-Vergleich</value>
 	</data>
 	<data name="CommandGuideSrm" xml:space="preserve">
@@ -140,7 +140,7 @@
 	<data name="Comparison" xml:space="preserve">
 		<value>Vergleich</value>
 	</data>
-	<data name="ComparisonFlags" xml:space="preserve">
+	<data name="ConfigComparisonFlags" xml:space="preserve">
 		<value>Vergleichs-Flags</value>
 	</data>
 	<data name="ComparisonShort" xml:space="preserve">
@@ -150,13 +150,13 @@
 		<value>Akt.</value>
 		<comment>This is an abbreviation and should be kept as short as possible</comment>
 	</data>
-	<data name="CurrentFile" xml:space="preserve">
+	<data name="EnumCurrentFile" xml:space="preserve">
 		<value>Aktuelle Datei</value>
 	</data>
 	<data name="Current" xml:space="preserve">
 		<value>Aktuell</value>
 	</data>
-	<data name="ComparisonFile" xml:space="preserve">
+	<data name="EnumComparisonFile" xml:space="preserve">
 		<value>Vergleichs-Datei</value>
 	</data>
 	<data name="EnterCommand" xml:space="preserve">
@@ -198,10 +198,10 @@
 	<data name="SaveSlotOffset" xml:space="preserve">
 		<value>Speicherslot-Offset</value><comment>The term Offset should only be translated if not understandable</comment>
 	</data>
-	<data name="GetSaveSlotOffsetTemplate" xml:space="preserve">
+	<data name="PromptGetSaveSlotOffsetTemplate" xml:space="preserve">
 		<value>Speicherslot {0}-Offset setzen:</value><comment>The term Offset should only be translated if not understandable</comment>
 	</data>
-	<data name="GetSaveSlotOffsetValue" xml:space="preserve">
+	<data name="PromptGetSaveSlotOffsetValue" xml:space="preserve">
 		<value>Speicherslot-Offset-Wert setzen:</value><comment>The term Offset should only be translated if not understandable</comment>
 	</data>
 	<data name="New" xml:space="preserve">
@@ -228,26 +228,26 @@
 	<data name="SectionSaveSlotChangedTemplate" xml:space="preserve">
 		<value>Alles (Bekannte und Unbekannte)</value>
 	</data>
-	<data name="ExportDirectory" xml:space="preserve">
+	<data name="ConfigExportDirectory" xml:space="preserve">
 		<value>Export-Verzeichnis</value>
 	</data>
-	<data name="CurrentFilePath" xml:space="preserve">
+	<data name="ConfigCurrentFilePath" xml:space="preserve">
 		<value>Pfad für aktuelle Datei</value>
 	</data>
-	<data name="ComparisonFilePath" xml:space="preserve">
+	<data name="ConfigComparisonFilePath" xml:space="preserve">
 		<value>Pfad für Vergleichsdatei</value>
 	</data>
-	<data name="CurrentFileSaveSlot" xml:space="preserve">
+	<data name="ConfigCurrentFileSaveSlot" xml:space="preserve">
 		<value>Speicherslot (aktuelle Datei)</value>
 	</data>
-	<data name="ComparisonFileSaveSlot" xml:space="preserve">
+	<data name="ConfigComparisonFileSaveSlot" xml:space="preserve">
 		<value>Speicherslot (Vergleichsdatei)</value>
 	</data>
-	<data name="GameRegion" xml:space="preserve">
+	<data name="ConfigGameRegion" xml:space="preserve">
 		<value>Spiel-Region</value>
 	</data>
-	<data name="Settings" xml:space="preserve">
-		<value>Einstellungen</value>
+	<data name="Config" xml:space="preserve">
+		<value>Konfig</value>
 	</data>
 	<data name="Size" xml:space="preserve">
 		<value>Größe</value>
@@ -270,20 +270,17 @@
 	<data name="StatusModifiedFileHasBeenSavedAsTemplate" xml:space="preserve">
 		<value>Die geänderte Datei wurde gespeichert als: {0}.</value>
 	</data>
-	<data name="PromtCreateNewFileInsteadOfOverwriting" xml:space="preserve">
+	<data name="PromptCreateNewFileInsteadOfOverwriting" xml:space="preserve">
 		<value>Möchtest du eine neue Datei erstellen anstatt die aktuelle Datei zu überschreiben? Gib 1 ein um eine neue Datei zu erstellen (empfohlen) oder gib 2 ein um die existierende Datei zu überschreiben. In letzterem Fall stelle sicher, zuvor eine Sicherung gemacht zu haben. 1 = neu, 2 = überschreiben, 0 = abbrechen</value>
 	</data>
-	<data name="SetSaveSlotToCompareMaxTemplate" xml:space="preserve">
+	<data name="PromptSetSaveSlotTemplate" xml:space="preserve">
 		<value>Setze Spielslot (1-{0} oder jede andere Taste für alle Speicherslots) zum vergleichen:</value>
 	</data>
-	<data name="SetSingleSaveSlotMaxTemplate" xml:space="preserve">
+	<data name="PromptSetSingleSaveSlotTemplate" xml:space="preserve">
 		<value>Speicherslot (1-{0}) setzen:</value>
 	</data>
-	<data name="SettinComparegNonGameBuffer" xml:space="preserve">
+	<data name="PromptCompareNonSaveSlotArea" xml:space="preserve">
 		<value>Vergleiche den Nicht-Speicherslot-Bereich</value>
-	</data>
-	<data name="SettingCompareWholeGameBuffer" xml:space="preserve">
-		<value>Vergleiche den gesamten Speicherslot-Bereich</value>
 	</data>
 	<data name="StatusCurrentFileHasBeenBackedUpTemplate" xml:space="preserve">
 		<value>{0} wurde gesichert.</value>
@@ -306,7 +303,7 @@
 	<data name="StatusSingleSaveSlotWillBeComparedTemplate" xml:space="preserve">
 		<value>Nur der Speicherslot {0} wird verglichen.</value>
 	</data>
-	<data name="ColorizeOutput" xml:space="preserve">
+	<data name="ConfigColorizeOutput" xml:space="preserve">
 		<value>Ausgabe einfärben</value>
 	</data>
 	<data name="StatusAllSaveSlotsWillBeCompared" xml:space="preserve">
@@ -330,7 +327,7 @@
 	<data name="StatusTwoDifferentSaveSlotsWillBeComparedTemplate" xml:space="preserve">
 		<value>Der aktuelle Speicherslot {0} wird mit dem Vergleichs-Speicherslot {1} verglichen.</value>
 	</data>
-	<data name="ComparisonResultLanguage" xml:space="preserve">
+	<data name="ConfigComparisonResultLanguage" xml:space="preserve">
 		<value>Vergleichsergebnis-Sprache</value>
 	</data>
 	<data name="UILanguage" xml:space="preserve">
@@ -345,10 +342,10 @@
 	<data name="CmdGroupLanguage" xml:space="preserve">
 		<value>Sprache</value>
 	</data>
-	<data name="SetUILanguage" xml:space="preserve">
+	<data name="PromptSetUILanguage" xml:space="preserve">
 		<value>Setze die UI-Sprache (z.B. 'de' für deutsch - ohne Anführungszeichen). Eine leere Eingabe setzt die Einstellung zurück.</value>
 	</data>
-	<data name="SetComparionResultLanguage" xml:space="preserve">
+	<data name="PromptSetComparionResultLanguage" xml:space="preserve">
 		<value>Setze die Vergleichsergebnis-Sprache (z.B. 'de' für deutsch - ohne Anführungszeichen). Eine leere Eingabe setzt die Einstellung zurück.</value>
 	</data>
 	<data name="NoGuideAvailable" xml:space="preserve">
@@ -371,5 +368,8 @@
 	</data>
 	<data name="StatusConfigFileHasBeenSavedTemplate" xml:space="preserve">
 		<value>Konfig-Datei [{0}] wurde gespeichert.</value>
+	</data>
+	<data name="PromptEnterConfigName" xml:space="preserve">
+		<value>Gib einen spezifischen Konfig-Namen ein oder leer für Standard-Config.</value>
 	</data>
 </root>

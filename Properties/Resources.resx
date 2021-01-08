@@ -126,34 +126,31 @@
   <data name="StatusBytesChangedTemplate" xml:space="preserve">
     <value>{0} bytes changed.</value>
   </data>
-  <data name="CurrentFileSaveSlot" xml:space="preserve">
+  <data name="ConfigCurrentFileSaveSlot" xml:space="preserve">
     <value>Save slot (current file)</value>
   </data>
-  <data name="ComparisonFileSaveSlot" xml:space="preserve">
+  <data name="ConfigComparisonFileSaveSlot" xml:space="preserve">
     <value>Save slot (Comparison file)</value>
   </data>
-  <data name="GameRegion" xml:space="preserve">
+  <data name="ConfigGameRegion" xml:space="preserve">
     <value>Game region</value>
   </data>
-  <data name="ColorizeOutput" xml:space="preserve">
+  <data name="ConfigColorizeOutput" xml:space="preserve">
     <value>Colorize output</value>
   </data>
-  <data name="ComparisonFlags" xml:space="preserve">
+  <data name="ConfigComparisonFlags" xml:space="preserve">
     <value>Comparison flags</value>
   </data>
-  <data name="SettinComparegNonGameBuffer" xml:space="preserve">
+  <data name="PromptCompareNonSaveSlotArea" xml:space="preserve">
     <value>Compare non-save slot area</value>
   </data>
-  <data name="SettingCompareWholeGameBuffer" xml:space="preserve">
-    <value>Compare whole save slot area</value>
-  </data>
-  <data name="ComparisonFilePath" xml:space="preserve">
+  <data name="ConfigComparisonFilePath" xml:space="preserve">
     <value>Comparison filepath</value>
   </data>
-  <data name="ExportDirectory" xml:space="preserve">
+  <data name="ConfigExportDirectory" xml:space="preserve">
     <value>Export directory</value>
   </data>
-  <data name="CurrentFilePath" xml:space="preserve">
+  <data name="ConfigCurrentFilePath" xml:space="preserve">
     <value>Current filepath</value>
   </data>
   <data name="StatusTwoDifferentSaveSlotsWillBeComparedTemplate" xml:space="preserve">
@@ -208,12 +205,12 @@
     <value>Set comparison file's save slot</value>
   </data>
   <data name="CommandConfig" xml:space="preserve">
-    <value>Display settings</value>
+    <value>Display config</value>
   </data>
-  <data name="SlotByteByByteComparison" xml:space="preserve">
+  <data name="EnumSlotByteByByteComparison" xml:space="preserve">
     <value>Slot byte-by-byte comparison</value>
   </data>
-  <data name="NonSlotByteByByteComparison" xml:space="preserve">
+  <data name="EnumNonSlotByteByByteComparison" xml:space="preserve">
     <value>Non-slot byte-by-byte comparison</value>
   </data>
   <data name="CommandSlotByteByBytesComparison" xml:space="preserve">
@@ -228,23 +225,23 @@
   <data name="CommandEditOffset" xml:space="preserve">
     <value>Modify (and save) offset value</value><comment>The term Offset should only be translated if not understandable</comment>
   </data>
-  <data name="SetSaveSlotToCompareMaxTemplate" xml:space="preserve">
+  <data name="PromptSetSaveSlotTemplate" xml:space="preserve">
     <value>Set save slot (1-{0} or any other key for all save slots) to compare:</value>
   </data>
-  <data name="SetSingleSaveSlotMaxTemplate" xml:space="preserve">
+  <data name="PromptSetSingleSaveSlotTemplate" xml:space="preserve">
     <value>Set save slot (1-{0}):</value>
   </data>
   <data name="StatusSetSingleSaveSlotMaxTemplate" xml:space="preserve">
     <value>Save slot {0} will be used.</value>
   </data>
-  <data name="GetSaveSlotOffsetTemplate" xml:space="preserve">
+  <data name="PromptGetSaveSlotOffsetTemplate" xml:space="preserve">
     <value>Set Save slot {0} offset:</value><comment>The term Offset should only be translated if not understandable</comment>
   </data>
-  <data name="GetSaveSlotOffsetValue" xml:space="preserve">
+  <data name="PromptGetSaveSlotOffsetValue" xml:space="preserve">
     <value>Set Save slot offset value:</value><comment>The term Offset should only be translated if not understandable</comment>
   </data>
-  <data name="Settings" xml:space="preserve">
-    <value>Settings</value>
+  <data name="Config" xml:space="preserve">
+    <value>Config</value>
   </data>
   <data name="Comparison" xml:space="preserve">
     <value>Comparison</value>
@@ -387,10 +384,10 @@
   <data name="CmdGroupDisplay" xml:space="preserve">
     <value>Display</value>
   </data>
-  <data name="CurrentFile" xml:space="preserve">
+  <data name="EnumCurrentFile" xml:space="preserve">
     <value>Current file</value>
   </data>
-  <data name="ComparisonFile" xml:space="preserve">
+  <data name="EnumComparisonFile" xml:space="preserve">
     <value>Comparison file</value>
   </data>
   <data name="ErrorInvalidFileExtensionTemplate" xml:space="preserve">
@@ -414,7 +411,7 @@
   <data name="StatusModifiedFileHasBeenOverwrittenTemplate" xml:space="preserve">
     <value>Edited current file has been overwritten. File: {0}.</value>
   </data>
-  <data name="PromtCreateNewFileInsteadOfOverwriting" xml:space="preserve">
+  <data name="PromptCreateNewFileInsteadOfOverwriting" xml:space="preserve">
     <value>Would you like to create a new file instead of overwriting the current file? Type 1 for creating a new file (recommended) or type 2 to overwrite the existing file. In the latter case make sure to have a backup created before. 1 = new, 2 = overwrite, 0 = abort</value>
   </data>
   <data name="ErrorInvalidIndex" xml:space="preserve">
@@ -432,7 +429,7 @@
   <data name="SaveSlotOffset" xml:space="preserve">
     <value>Save slot offset</value>
   </data>
-  <data name="ComparisonResultLanguage" xml:space="preserve">
+  <data name="ConfigComparisonResultLanguage" xml:space="preserve">
     <value>Comparison result language</value>
   </data>
   <data name="UILanguage" xml:space="preserve">
@@ -447,10 +444,10 @@
   <data name="CmdGroupLanguage" xml:space="preserve">
     <value>Language</value>
   </data>
-  <data name="SetUILanguage" xml:space="preserve">
+  <data name="PromptSetUILanguage" xml:space="preserve">
     <value>Set the UI language (e.g. 'en' for English - without quotes). An empty input resets the setting.</value>
   </data>
-  <data name="SetComparionResultLanguage" xml:space="preserve">
+  <data name="PromptSetComparionResultLanguage" xml:space="preserve">
     <value>Set the comparison result language (e.g. 'en' for English - without quotes). An empty input resets the setting.</value>
   </data>
   <data name="NoGuideAvailable" xml:space="preserve">
@@ -476,5 +473,8 @@
   </data>
   <data name="StatusConfigFileHasBeenSavedTemplate" xml:space="preserve">
     <value>Config file [{0}] has been saved.</value>
+  </data>
+  <data name="PromptEnterConfigName" xml:space="preserve">
+    <value>Enter specific config name or empty for default config.</value>
   </data>
 </root>
