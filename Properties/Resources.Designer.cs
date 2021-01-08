@@ -174,7 +174,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Back-up comparison SRAM file ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Back-up comparison-file ähnelt.
         /// </summary>
         public static string CommandBackupComparisonSramFile {
             get {
@@ -183,7 +183,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Back-up current SRAM file ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Back-up current-file ähnelt.
         /// </summary>
         public static string CommandBackupCurrentSramFile {
             get {
@@ -192,7 +192,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Compare current SRAM file with comparison file ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Compare current-file with comparison file ähnelt.
         /// </summary>
         public static string CommandCompareFile {
             get {
@@ -255,7 +255,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Overwrite (or create) comparison file with current SRAM file ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Overwrite (or create) comparison file with current-file ähnelt.
         /// </summary>
         public static string CommandOverwriteComparisonSramFile {
             get {
@@ -273,7 +273,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Restore comparison SRAM file from backup ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Restore comparison-file from backup ähnelt.
         /// </summary>
         public static string CommandRestoreComparisonSramFile {
             get {
@@ -282,7 +282,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Restore current SRAM file from backup ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Restore current-file from backup ähnelt.
         /// </summary>
         public static string CommandRestoreCurrentSramFile {
             get {
@@ -291,7 +291,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Save current-SRAM file with other game file&apos;s name ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Save current-file with other game file&apos;s name ähnelt.
         /// </summary>
         public static string CommandSaveCurrentSramFileAsOtherFileName {
             get {
@@ -300,7 +300,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Set comparison SRAM file&apos;s save slot ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Set comparison file&apos;s save slot ähnelt.
         /// </summary>
         public static string CommandSetComparisonSramFileSaveSlot {
             get {
@@ -309,7 +309,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Set current SRAM file&apos;s save slot ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Set current file&apos;s save slot ähnelt.
         /// </summary>
         public static string CommandSetCurrentSrramFileSaveSlot {
             get {
@@ -372,7 +372,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Comparison-SRAM file ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Comparison file ähnelt.
         /// </summary>
         public static string ComparisonSramFile {
             get {
@@ -381,7 +381,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Comparison SRAM filepath ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Comparison filepath ähnelt.
         /// </summary>
         public static string ComparisonSramFilepath {
             get {
@@ -417,7 +417,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Current-SRAM file ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Current file ähnelt.
         /// </summary>
         public static string CurrentSramFile {
             get {
@@ -426,7 +426,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Current SRAM filepath ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Current filepath ähnelt.
         /// </summary>
         public static string CurrentSramFilepath {
             get {
@@ -453,7 +453,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Enter index (0 to {0}) of the SRAM file to be overwritten (any other key to cancel): ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Enter index (0 to {0}) of the file to be overwritten (any other key to cancel): ähnelt.
         /// </summary>
         public static string EnterIndexOfSramFileToBeOverwrittenMaxIndexTemplate {
             get {
@@ -489,7 +489,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Save slot for comparison SRAM file can only be set if current SRAM file&apos;s save slot is set first. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Save slot for comparison-file can only be set if current file&apos;s save slot is set first. ähnelt.
         /// </summary>
         public static string ErrorComparisonSramSaveSlotSetButNotCurrentSramSaveSlot {
             get {
@@ -525,7 +525,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die ERROR: The program needs to be started with at least the path to current SRAM file as a parameter. Drag &apos;n&apos; drop can be used. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die ERROR: The program needs to be started with at least the path to current save file as a parameter. Drag &apos;n&apos; drop can be used. ähnelt.
         /// </summary>
         public static string ErrorMissingPathArguments {
             get {
@@ -642,7 +642,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Would you like to create a new SRAM file instead of overwriting the current file? Type 1 for creating a new file (recommended) or type 2 to overwrite the existing file. In the latter case make sure to have a backup created before. 1 = new, 2 = overwrite, 0 = abort ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Would you like to create a new file instead of overwriting the current file? Type 1 for creating a new file (recommended) or type 2 to overwrite the existing file. In the latter case make sure to have a backup created before. 1 = new, 2 = overwrite, 0 = abort ähnelt.
         /// </summary>
         public static string PromtCreateNewFileInsteadOfOverwriting {
             get {
@@ -669,7 +669,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Same as current SRAM file&apos;s save slot ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Same as current file&apos;s save slot ähnelt.
         /// </summary>
         public static string SameAsCurrentSramFileSaveSlot {
             get {
@@ -849,7 +849,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Current SRAM file has been saved as comparison SRAM file. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Current file has been saved as comparison file. ähnelt.
         /// </summary>
         public static string StatusCurrentSramFileHasBeenSaved {
             get {
@@ -858,7 +858,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Current SRAM file has been copied as {0}. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Current file has been copied as {0}. ähnelt.
         /// </summary>
         public static string StatusCurrentSramHasBeenSavedAsFilepathTemplate {
             get {
@@ -876,7 +876,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Changed current SRAM File has been overwritten. File: {0}. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Edited current file has been overwritten. File: {0}. ähnelt.
         /// </summary>
         public static string StatusModifiedSramFileHasBeenOverwrittenFilepathTemplate {
             get {
@@ -885,7 +885,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Changed current SRAM File has been saved as {0}. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Edited current file has been saved as {0}. ähnelt.
         /// </summary>
         public static string StatusModifiedSramFileHasBeenSavedAsFilepathTemplate {
             get {
@@ -912,7 +912,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die No SRAM bytes changed ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die No bytes changed ähnelt.
         /// </summary>
         public static string StatusNoSramBytesChanged {
             get {
@@ -975,7 +975,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die {0} bytes changed (SRAM). ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die {0} bytes changed. ähnelt.
         /// </summary>
         public static string StatusSramChangedBytesTemplate {
             get {
@@ -993,7 +993,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Target SRAM file has been backed up as {0}. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Target file has been backed up as {0}. ähnelt.
         /// </summary>
         public static string StatusTargetSramFileHasBeenBackedUpFilepathTemplate {
             get {

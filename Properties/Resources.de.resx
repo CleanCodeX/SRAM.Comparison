@@ -12,7 +12,7 @@
 		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
 	</resheader>
 	<data name="StatusTargetSramFileHasBeenBackedUpFilepathTemplate" xml:space="preserve">
-		<value>Ziel SRAM-Datei wurde gesichert als {0}.</value>
+		<value>Ziel-Datei wurde gesichert als {0}.</value>
 	</data>
 	<data name="StatusTotalDiffBytesTemplate" xml:space="preserve">
 		<value>Gesamt: {0} Bytes geändert (außerhalb des Speicherslots-Bereichs).</value>
@@ -24,7 +24,7 @@
 		<value>{0} wurde aus Sicherung wiederhergestellt.</value>
 	</data>
 	<data name="StatusSramChangedBytesTemplate" xml:space="preserve">
-		<value>{0} Bytes geändert (SRAM).</value>
+		<value>{0} Bytes geändert.</value>
 	</data>
 	<data name="StatusSetSingleSaveSlotMaxTemplate" xml:space="preserve">
 		<value>Speicherslot {0} wird verwendet.</value>
@@ -39,7 +39,7 @@
 		<value>Offset-Wert {0} wird gesetzt.</value><comment>The term Offset should only be translated if not understandable</comment>
 	</data>
 	<data name="StatusNoSramBytesChanged" xml:space="preserve">
-		<value>Keine SRAM Bytes geändert.</value>
+		<value>Keine Bytes geändert.</value>
 	</data>
 	<data name="StatusNonSaveSlotUnknownsBytesTemplate" xml:space="preserve">
 		<value>Unbekannter Nicht-Speicherslot Bereich: {0} Bytes  geändert.</value>
@@ -114,13 +114,13 @@
 		<value>Verschiedenes</value>
 	</data>
 	<data name="CommandBackupComparisonSramFile" xml:space="preserve">
-		<value>Vergleichs-SRAM-Datei sichern</value>
+		<value>Vergleichs-Datei sichern</value>
 	</data>
 	<data name="CommandBackupCurrentSramFile" xml:space="preserve">
-		<value>Aktuelle SRAM-Datei sichern</value>
+		<value>Aktuelle Datei sichern</value>
 	</data>
 	<data name="CommandCompareFile" xml:space="preserve">
-		<value>Vergleiche aktuelle SRAM-Datei mit Vergleichs-Datei</value>
+		<value>Vergleiche aktuelle Datei mit Vergleichs-Datei</value>
 	</data>
 	<data name="CommandListCommands" xml:space="preserve">
 		<value>Befehle auflisten</value>
@@ -144,7 +144,7 @@
 		<value>Anleitung</value>
 	</data>
 	<data name="CommandOverwriteComparisonSramFile" xml:space="preserve">
-		<value>Überschreibe Vergleichs-Datei mt aktueller SRAM-Datei</value>
+		<value>Überschreibe Vergleichs-Datei mt aktueller Datei</value>
 	</data>
 	<data name="CommandQuit" xml:space="preserve">
 		<value>Beenden</value>
@@ -153,19 +153,19 @@
 		<value>Vergleichs-Datei aus Sicherung wiederherstellen</value>
 	</data>
 	<data name="CommandRestoreCurrentSramFile" xml:space="preserve">
-		<value>Aktuelle SRAM-Datei aus Sicherung wiederherstellen</value>
+		<value>Aktuelle Datei aus Sicherung wiederherstellen</value>
 	</data>
 	<data name="CommandModifyOffsetValue" xml:space="preserve">
 		<value>Offset-Wert ändern und speichern</value><comment>The term Offset should only be translated if not understandable</comment>
 	</data>
 	<data name="CommandSetComparisonSramFileSaveSlot" xml:space="preserve">
-		<value>Speicherslot für Vergleichs-SRAM-Datei festlegen</value>
+		<value>Speicherslot für Vergleichs-Datei festlegen</value>
 	</data>
 	<data name="CommandSetCurrentSrramFileSaveSlot" xml:space="preserve">
-		<value>Speicherslot für aktuelle SRAM-Datei festlegen</value>
+		<value>Speicherslot für aktuelle Datei festlegen</value>
 	</data>
 	<data name="CommandSaveCurrentSramFileAsOtherFileName" xml:space="preserve">
-		<value>Aktuelle SRAM-Datei unter anderem Spielnamen speichern</value>
+		<value>Aktuelle Datei unter anderem Spielnamen speichern</value>
 	</data>
 	<data name="CommandWipeOutput" xml:space="preserve">
 		<value>Bisherige Konsolen-Ausgabe löschen</value>
@@ -184,19 +184,19 @@
 		<comment>This is an abbreviation and should be kept as short as possible</comment>
 	</data>
 	<data name="CurrentSramFile" xml:space="preserve">
-		<value>Aktuelle SRAM-Datei</value>
+		<value>Aktuelle Datei</value>
 	</data>
 	<data name="Current" xml:space="preserve">
 		<value>Aktuell</value>
 	</data>
 	<data name="ComparisonSramFile" xml:space="preserve">
-		<value>Vergleichs-SRAM-Datei</value>
+		<value>Vergleichs-Datei</value>
 	</data>
 	<data name="EnterCommand" xml:space="preserve">
 		<value>Befehl eingeben und Eingabe drücken</value>
 	</data>
 	<data name="EnterIndexOfSramFileToBeOverwrittenMaxIndexTemplate" xml:space="preserve">
-		<value>Index (0 bis {0}) der zu überschreibenden SRAM-Datei eingeben (jede andere Taste um abzubrechen):</value>
+		<value>Index (0 bis {0}) der zu überschreibenden Datei eingeben (jede andere Taste um abzubrechen):</value>
 	</data>
 	<data name="ErrorCannotOpenOutputFileTemplate" xml:space="preserve">
 		<value>Kann die Datei "{0}" nicht zum Schreiben öffnen</value>
@@ -214,7 +214,7 @@
 		<value>Invalider Index. Abgebrochen.</value>
 	</data>
 	<data name="ErrorMissingPathArguments" xml:space="preserve">
-		<value>FEHLER: Die Anwendung muss mit mindestens dem Pfad zur aktuellen SRAM-Datei als Partameter gestartet werden. Drag 'n' Drop kann verwendet werden.</value>
+		<value>FEHLER: Die Anwendung muss mit mindestens dem Pfad zur aktuellen Speicher-Datei als Partameter gestartet werden. Drag 'n' Drop kann verwendet werden.</value>
 	</data>
 	<data name="ErrorNoValidCommandCmdTemplate" xml:space="preserve">
 		<value>"{0}" ist ein unbekannter Befehl. Um alle verfügbaren Befehle anzuzeigen gib ({1}) ein.</value>
@@ -256,7 +256,7 @@
 		<value>Eingereihte Befehle</value>
 	</data>
 	<data name="SameAsCurrentSramFileSaveSlot" xml:space="preserve">
-		<value>Gleicher Slot wie aktuelle SRAM-Datei</value>
+		<value>Gleicher Slot wie aktuelle Datei</value>
 	</data>
 	<data name="SectionSaveSlotChangedTemplate" xml:space="preserve">
 		<value>Alles (Bekannte und Unbekannte)</value>
@@ -298,13 +298,13 @@
 		<value>{0} Bytes geändert.</value>
 	</data>
 	<data name="StatusModifiedSramFileHasBeenOverwrittenFilepathTemplate" xml:space="preserve">
-		<value>Die geänderte aktuelle SRAM-Datei wurde überschrieben. Datei: {0}.</value>
+		<value>Die geänderte aktuelle Datei wurde überschrieben. Datei: {0}.</value>
 	</data>
 	<data name="StatusModifiedSramFileHasBeenSavedAsFilepathTemplate" xml:space="preserve">
-		<value>Die geänderte SRAM-Datei wurde gespeichert als: {0}.</value>
+		<value>Die geänderte Datei wurde gespeichert als: {0}.</value>
 	</data>
 	<data name="PromtCreateNewFileInsteadOfOverwriting" xml:space="preserve">
-		<value>Möchtest du eine neue SRAM-Datei erstellen anstatt die aktuelle Datei zu überschreiben? Gib 1 ein um eine neue Datei zu erstellen (empfohlen) oder gib 2 ein um die existierende Datei zu überschreiben. In letzterem Fall stelle sicher, zuvor eine Sicherung gemacht zu haben. 1 = neu, 2 = überschreiben, 0 = abbrechen</value>
+		<value>Möchtest du eine neue Datei erstellen anstatt die aktuelle Datei zu überschreiben? Gib 1 ein um eine neue Datei zu erstellen (empfohlen) oder gib 2 ein um die existierende Datei zu überschreiben. In letzterem Fall stelle sicher, zuvor eine Sicherung gemacht zu haben. 1 = neu, 2 = überschreiben, 0 = abbrechen</value>
 	</data>
 	<data name="SetSaveSlotToCompareMaxTemplate" xml:space="preserve">
 		<value>Setze Spielslot (1-{0} oder jede andere Taste für alle Speicherslots) zum vergleichen:</value>
@@ -325,10 +325,10 @@
 		<value>Aktueller Vergleich exportiert nach "{0}".</value>
 	</data>
 	<data name="StatusCurrentSramFileHasBeenSaved" xml:space="preserve">
-		<value>Die aktuelle SRAM-Datei wurde als Vergleichs SRAM-Datei gespeichert.</value>
+		<value>Die aktuelle Datei wurde als Vergleichs-Datei gespeichert.</value>
 	</data>
 	<data name="StatusCurrentSramHasBeenSavedAsFilepathTemplate" xml:space="preserve">
-		<value>Die aktuelle SRAM-Datei wurde kopiert als {0}.</value>
+		<value>Die aktuelle Datei wurde kopiert als {0}.</value>
 	</data>
 	<data name="StatusSaveSlotChangedBytesTemplate" xml:space="preserve">
 		<value>Alles (Bekannte + Unbekannte): {0} Bytes geändert.</value>
@@ -349,7 +349,7 @@
 		<value>Unbekannter nicht-Speicherslot-Bereich</value>
 	</data>
 	<data name="ErrorComparisonSramSaveSlotSetButNotCurrentSramSaveSlot" xml:space="preserve">
-		<value>Der Vergleichs-Datei Speicherslot kann erst gesetzt werden, nachdem der Speicherslot der aktuellen SRAM-Datei festgelegt wurde.</value>
+		<value>Der Vergleichs-Datei Speicherslot kann erst gesetzt werden, nachdem der Speicherslot der aktuellen Datei festgelegt wurde.</value>
 	</data>
 	<data name="ErrorCompSaveSlotFileIsNotCompFileTypeFilepathTemplate" xml:space="preserve">
 		<value>{0} Vergleichs SRAM-Datei muss eine .comp Datei-Endung besitzen. Hast du vielleicht nur vergessen den Pfad in Anführungszeichen zu setzen? War: {1}</value>

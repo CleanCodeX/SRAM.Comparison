@@ -160,7 +160,7 @@
 </value>
   </data>
   <data name="ErrorMissingPathArguments" xml:space="preserve">
-    <value>ERROR: The program needs to be started with at least the path to current SRAM file as a parameter. Drag 'n' drop can be used.</value>
+    <value>ERROR: The program needs to be started with at least the path to current save file as a parameter. Drag 'n' drop can be used.</value>
   </data>
   <data name="StatusBytesChangedTemplate" xml:space="preserve">
     <value>{0} bytes changed.</value>
@@ -187,13 +187,13 @@
     <value>Compare whole save slot area</value>
   </data>
   <data name="ComparisonSramFilepath" xml:space="preserve">
-    <value>Comparison SRAM filepath</value>
+    <value>Comparison filepath</value>
   </data>
   <data name="ExportDirectory" xml:space="preserve">
     <value>Export directory</value>
   </data>
   <data name="CurrentSramFilepath" xml:space="preserve">
-    <value>Current SRAM filepath</value>
+    <value>Current filepath</value>
   </data>
   <data name="StatusTwoDifferentSaveSlotsWillBeComparedTemplate" xml:space="preserve">
     <value>Current save slot {0} will be compared with comparison save slot {1}.</value>
@@ -229,7 +229,7 @@
     <value>Same</value>
   </data>
   <data name="StatusCurrentSramFileHasBeenSaved" xml:space="preserve">
-    <value>Current SRAM file has been saved as comparison SRAM file.</value>
+    <value>Current file has been saved as comparison file.</value>
   </data>
   <data name="StatusCurrentSramFileHasBeenBackedUpTemplate" xml:space="preserve">
     <value>{0} has been backed-up.</value>
@@ -244,10 +244,10 @@
     <value>Manual</value>
   </data>
   <data name="CommandSetCurrentSrramFileSaveSlot" xml:space="preserve">
-    <value>Set current SRAM file's save slot</value>
+    <value>Set current file's save slot</value>
   </data>
   <data name="CommandSetComparisonSramFileSaveSlot" xml:space="preserve">
-    <value>Set comparison SRAM file's save slot</value>
+    <value>Set comparison file's save slot</value>
   </data>
   <data name="CommandSettings" xml:space="preserve">
     <value>Display settings</value>
@@ -337,13 +337,13 @@
     <value>Unknown non-save slot area: {0} bytes changed.</value>
   </data>
   <data name="StatusSramChangedBytesTemplate" xml:space="preserve">
-    <value>{0} bytes changed (SRAM).</value>
+    <value>{0} bytes changed.</value>
   </data>
   <data name="StatusCurrentComparisonExportedFilepathTemplate" xml:space="preserve">
     <value>Current comparison exported to "{0}".</value>
   </data>
   <data name="StatusNoSramBytesChanged" xml:space="preserve">
-    <value>No SRAM bytes changed</value>
+    <value>No bytes changed</value>
   </data>
   <data name="Size" xml:space="preserve">
     <value>Size</value>
@@ -352,22 +352,22 @@
     <value>bytes</value>
   </data>
   <data name="CommandOverwriteComparisonSramFile" xml:space="preserve">
-    <value>Overwrite (or create) comparison file with current SRAM file</value>
+    <value>Overwrite (or create) comparison file with current-file</value>
   </data>
   <data name="CommandBackupCurrentSramFile" xml:space="preserve">
-    <value>Back-up current SRAM file</value>
+    <value>Back-up current-file</value>
   </data>
   <data name="CommandRestoreCurrentSramFile" xml:space="preserve">
-    <value>Restore current SRAM file from backup</value>
+    <value>Restore current-file from backup</value>
   </data>
   <data name="CommandBackupComparisonSramFile" xml:space="preserve">
-    <value>Back-up comparison SRAM file</value>
+    <value>Back-up comparison-file</value>
   </data>
   <data name="CommandRestoreComparisonSramFile" xml:space="preserve">
-    <value>Restore comparison SRAM file from backup</value>
+    <value>Restore comparison-file from backup</value>
   </data>
   <data name="CommandCompareFile" xml:space="preserve">
-    <value>Compare current SRAM file with comparison file</value>
+    <value>Compare current-file with comparison file</value>
   </data>
   <data name="CommandWipeOutput" xml:space="preserve">
     <value>Wipe previous console output</value>
@@ -376,7 +376,7 @@
     <value>Export current comparison result</value>
   </data>
   <data name="CommandSaveCurrentSramFileAsOtherFileName" xml:space="preserve">
-    <value>Save current-SRAM file with other game file's name</value>
+    <value>Save current-file with other game file's name</value>
   </data>
   <data name="CommandQuit" xml:space="preserve">
     <value>Quit</value>
@@ -409,10 +409,10 @@
     <value>"{0}" is an unknown command. To list all available commands enter ({1}).</value>
   </data>
   <data name="ErrorComparisonSramSaveSlotSetButNotCurrentSramSaveSlot" xml:space="preserve">
-    <value>Save slot for comparison SRAM file can only be set if current SRAM file's save slot is set first.</value>
+    <value>Save slot for comparison-file can only be set if current file's save slot is set first.</value>
   </data>
   <data name="SameAsCurrentSramFileSaveSlot" xml:space="preserve">
-    <value>Same as current SRAM file's save slot</value>
+    <value>Same as current file's save slot</value>
   </data>
   <data name="CmdGroupBackup" xml:space="preserve">
     <value>Backup</value>
@@ -430,10 +430,10 @@
     <value>Display</value>
   </data>
   <data name="CurrentSramFile" xml:space="preserve">
-    <value>Current-SRAM file</value>
+    <value>Current file</value>
   </data>
   <data name="ComparisonSramFile" xml:space="preserve">
-    <value>Comparison-SRAM file</value>
+    <value>Comparison file</value>
   </data>
   <data name="ErrorFileIsNotSrmFileTypeFilepathTemplate" xml:space="preserve">
     <value>{0} current file must have .srm file extension. Did you just forget to quote the path? Was: {1}</value>
@@ -442,13 +442,13 @@
     <value>{0} comparison file must have .comp file extension. Did you just forget to quote the path? Was: {1}</value>
   </data>
   <data name="StatusCurrentSramHasBeenSavedAsFilepathTemplate" xml:space="preserve">
-    <value>Current SRAM file has been copied as {0}.</value>
+    <value>Current file has been copied as {0}.</value>
   </data>
   <data name="StatusTargetSramFileHasBeenBackedUpFilepathTemplate" xml:space="preserve">
-    <value>Target SRAM file has been backed up as {0}.</value>
+    <value>Target file has been backed up as {0}.</value>
   </data>
   <data name="StatusModifiedSramFileHasBeenSavedAsFilepathTemplate" xml:space="preserve">
-    <value>Changed current SRAM File has been saved as {0}.</value>
+    <value>Edited current file has been saved as {0}.</value>
   </data>
   <data name="StatusGetOffsetValueTemplate" xml:space="preserve">
     <value>Value at offset {0} is currently {1}.</value><comment>The term Offset should only be translated if not understandable</comment>
@@ -457,10 +457,10 @@
     <value>Value at offset {0} is now {1}.</value><comment>The term Offset should only be translated if not understandable</comment>
   </data>
   <data name="StatusModifiedSramFileHasBeenOverwrittenFilepathTemplate" xml:space="preserve">
-    <value>Changed current SRAM File has been overwritten. File: {0}.</value>
+    <value>Edited current file has been overwritten. File: {0}.</value>
   </data>
   <data name="PromtCreateNewFileInsteadOfOverwriting" xml:space="preserve">
-    <value>Would you like to create a new SRAM file instead of overwriting the current file? Type 1 for creating a new file (recommended) or type 2 to overwrite the existing file. In the latter case make sure to have a backup created before. 1 = new, 2 = overwrite, 0 = abort</value>
+    <value>Would you like to create a new file instead of overwriting the current file? Type 1 for creating a new file (recommended) or type 2 to overwrite the existing file. In the latter case make sure to have a backup created before. 1 = new, 2 = overwrite, 0 = abort</value>
   </data>
   <data name="ErrorInvalidIndex" xml:space="preserve">
     <value>Invalid index. Aborted.</value>
@@ -469,7 +469,7 @@
     <value>There are currently no other SRAM files available.</value>
   </data>
   <data name="EnterIndexOfSramFileToBeOverwrittenMaxIndexTemplate" xml:space="preserve">
-    <value>Enter index (0 to {0}) of the SRAM file to be overwritten (any other key to cancel):</value>
+    <value>Enter index (0 to {0}) of the file to be overwritten (any other key to cancel):</value>
   </data>
   <data name="ErrorParamNameValueMissmatchTemplate" xml:space="preserve">
     <value>Parameter name value mismatch for: {0}</value>

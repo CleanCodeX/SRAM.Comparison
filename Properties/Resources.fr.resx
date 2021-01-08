@@ -72,13 +72,13 @@
 		<value>Autres</value><comment>Possible retranslation neede. was: Autres</comment>
 	</data>
 	<data name="CommandBackupComparisonSramFile" xml:space="preserve">
-		<value>Sauvegarder le fichier SRAM de comparaison</value>
+		<value>Sauvegarder le fichier de comparaison</value>
 	</data>
 	<data name="CommandBackupCurrentSramFile" xml:space="preserve">
-		<value>Sauvegarder le fichier SRAM en cours</value>
+		<value>Sauvegarder le fichier en cours</value>
 	</data>
 	<data name="CommandCompareFile" xml:space="preserve">
-		<value>Comparer le fichier SRAM en cours avec celui de comparaison</value>
+		<value>Comparer le fichier en cours avec celui de comparaison</value>
 	</data>
 	<data name="AppDescription" xml:space="preserve">
 		<value>Cet outil fait une comparaison de fichiers SRAM.</value>
@@ -102,25 +102,25 @@
 		<value>Manuel</value>
 	</data>
 	<data name="CommandOverwriteComparisonSramFile" xml:space="preserve">
-		<value>Écraser le fichier de comparaison avec le fichier SRAM en cours</value>
+		<value>Écraser le fichier de comparaison avec le fichier en cours</value>
 	</data>
 	<data name="CommandQuit" xml:space="preserve">
 		<value>Quitter</value>
 	</data>
 	<data name="CommandRestoreComparisonSramFile" xml:space="preserve">
-		<value>Restaurer le fichier SRAM de comparaison à partir de la sauvegarde</value>
+		<value>Restaurer le fichier de comparaison à partir de la sauvegarde</value>
 	</data>
 	<data name="CommandRestoreCurrentSramFile" xml:space="preserve">
-		<value>Restaurer le fichier SRAM en cours à partir de la sauvegarde</value>
+		<value>Restaurer le fichier en cours à partir de la sauvegarde</value>
 	</data>
 	<data name="CommandModifyOffsetValue" xml:space="preserve">
 		<value>Enregistrer la valeur du décalage</value>
 	</data>
 	<data name="CommandSetComparisonSramFileSaveSlot" xml:space="preserve">
-		<value>Définir l'emplacement de jeu du fichier SRAM de comparaison</value>
+		<value>Définir l'emplacement de jeu du fichier de comparaison</value>
 	</data>
 	<data name="CommandSetCurrentSrramFileSaveSlot" xml:space="preserve">
-		<value>Définir l'emplacement de jeu du fichier SRAM en cours</value>
+		<value>Définir l'emplacement de jeu du fichier en cours</value>
 	</data>
 	<data name="CommandSettings" xml:space="preserve">
 		<value>Paramètres d'affichage</value>
@@ -132,7 +132,7 @@
 		<value>Liste des commandes</value><comment>was: Afficher les commandes</comment>
 	</data>
 	<data name="CommandSaveCurrentSramFileAsOtherFileName" xml:space="preserve">
-		<value>Enregistrer le fichier SRAM en cours avec le nom d'un autre fichier SRAM</value>
+		<value>Enregistrer le fichier en cours avec le nom d'un autre fichier </value>
 		<comment>was: Transférer les données SRAM vers un fichier de jeu similaire
 		</comment>
 	</data>
@@ -149,7 +149,7 @@
 		<value>Comp</value>
 	</data>
 	<data name="ComparisonSramFile" xml:space="preserve">
-		<value>Fichier SRAM de comparaison</value>
+		<value>Fichier de comparaison</value>
 	</data>
 	<data name="Current" xml:space="preserve">
 		<value>En cours</value>
@@ -158,13 +158,13 @@
 		<value>Courant</value><comment>Is nothing shorter possible? 4-5 characters would be optimal</comment>
 	</data>
 	<data name="CurrentSramFile" xml:space="preserve">
-		<value>Fichier SRAM en cours</value>
+		<value>Fichier en cours</value>
 	</data>
 	<data name="EnterCommand" xml:space="preserve">
 		<value>Entrez une commande et appuyez sur Entrée.</value>
 	</data>
 	<data name="EnterIndexOfSramFileToBeOverwrittenMaxIndexTemplate" xml:space="preserve">
-		<value>Entrez le numéro (0 à {0}) du fichier SRAM à écraser ou appuyez sur n'importe quelle autre touche pour annuler :</value>
+		<value>Entrez le numéro (0 à {0}) du fichier à écraser ou appuyez sur n'importe quelle autre touche pour annuler :</value>
 	</data>
 	<data name="ErrorCannotOpenOutputFileTemplate" xml:space="preserve">
 		<value>Impossible d'enregistrer le fichier de sortie "{0}"</value>
@@ -173,7 +173,7 @@
 		<value>La commande (ow) n'est pas implémentée.</value>
 	</data>
 	<data name="ErrorComparisonSramSaveSlotSetButNotCurrentSramSaveSlot" xml:space="preserve">
-		<value>L'emplacement de comparaison dans le fichier SRAM ne peut être défini que si l'emplacement d'enregistrement en cours dans le fichier SRAM a été défini en premier.</value>
+		<value>L'emplacement de comparaison dans le fichier ne peut être défini que si l'emplacement d'enregistrement en cours dans le fichier a été défini en premier.</value>
 		<comment>Was: L'emplacement de la partie pour la comparaison ne peut être défini que si l'emplacement de jeu du fichier SRAM en cours est défini en premier.</comment>
 	</data>
 	<data name="ErrorComparisonFileDoesNotExist" xml:space="preserve">
@@ -217,7 +217,7 @@
 		<value>Décalage</value>
 	</data>
 	<data name="PromtCreateNewFileInsteadOfOverwriting" xml:space="preserve">
-		<value>Souhaitez-vous créer un nouveau fichier SRAM au lieu d'écraser le fichier en cours? Tapez 1 pour créer un nouveau fichier (recommandé) ou tapez 2 pour écraser le fichier existant. Dans ce dernier cas assurez-vous d'avoir créé une sauvegarde. 1=nouveau, 2=écraser, 0=abandonner</value>
+		<value>Souhaitez-vous créer un nouveau fichier au lieu d'écraser le fichier en cours? Tapez 1 pour créer un nouveau fichier (recommandé) ou tapez 2 pour écraser le fichier existant. Dans ce dernier cas assurez-vous d'avoir créé une sauvegarde. 1=nouveau, 2=écraser, 0=abandonner</value>
 	</data>
 	<data name="QueuedCommands" xml:space="preserve">
 		<value>Commandes en file d'attente</value>
@@ -249,13 +249,13 @@
 		<value>Comparer la partie en cours en entier</value>
 	</data>
 	<data name="ComparisonSramFilepath" xml:space="preserve">
-		<value>Comparaison du chemin du fichier SRAM</value>
+		<value>Comparaison du chemin du fichier</value>
 	</data>
 	<data name="ComparisonSramFileSaveSlot" xml:space="preserve">
 		<value>Partie du fichier de comparaison</value>
 	</data>
 	<data name="CurrentSramFilepath" xml:space="preserve">
-		<value>Chemin du fichier SRAM en cours</value>
+		<value>Chemin du fichier en cours</value>
 	</data>
 	<data name="ExportDirectory" xml:space="preserve">
 		<value>Exporter le répertoire</value>
@@ -289,13 +289,13 @@
 		<value>{0} a été sauvegardé.</value>
 	</data>
 	<data name="StatusCurrentSramFileHasBeenSaved" xml:space="preserve">
-		<value>Le fichier SRAM en cours a été enregistré en tant que fichier SRAM de comparaison.</value>
+		<value>Le fichier en cours a été enregistré en tant que fichier de comparaison.</value>
 	</data>
 	<data name="StatusModifiedSramFileHasBeenSavedAsFilepathTemplate" xml:space="preserve">
-		<value>Le fichier SRAM en cours qui a été modifié a été enregistré (fichier {0}).</value>
+		<value>Le fichier en cours qui a été modifié a été enregistré (fichier {0}).</value>
 	</data>
 	<data name="StatusCurrentSramHasBeenSavedAsFilepathTemplate" xml:space="preserve">
-		<value>Le fichier SRAM en cours a été copié (fichier {0}).</value>
+		<value>Le fichier en cours a été copié (fichier {0}).</value>
 	</data>
 	<data name="StatusSaveSlotChangedBytesTemplate" xml:space="preserve">
 		<value>Tout (valeurs connues et inconnues) : {0} octets modifiés.</value>
@@ -310,7 +310,7 @@
 		<value>La valeur à la position {0} est de {1}.</value>
 	</data>
 	<data name="StatusModifiedSramFileHasBeenOverwrittenFilepathTemplate" xml:space="preserve">
-		<value>Le fichier SRAM en cours qui a été modifié a été écrasé (fichier {0}).</value>
+		<value>Le fichier en cours qui a été modifié a été écrasé (fichier {0}).</value>
 	</data>
 	<data name="StatusNoAvailableOtherSramFiles" xml:space="preserve">
 		<value>Il n'y a aucun autre fichier SRAM disponible.</value>
@@ -319,7 +319,7 @@
 		<value>Valeurs inconnues des autres parties : {0} octets modifiés.</value>
 	</data>
 	<data name="StatusNoSramBytesChanged" xml:space="preserve">
-		<value>Aucun octet modifié dans le fichier SRAM.</value>
+		<value>Aucun octet modifié dans le fichier.</value>
 	</data>
 	<data name="StatusOffsetValueWillBeUsedTemplate" xml:space="preserve">
 		<value>La valeur à la position du décalage {0} sera modifiée.</value>
@@ -336,13 +336,13 @@
 		<value>Le partie {0} sera utilisée.</value>
 	</data>
 	<data name="StatusSramChangedBytesTemplate" xml:space="preserve">
-		<value>{0} octets modifiés (SRAM).</value><comment>{0} octets modifiés</comment>
+		<value>{0} octets modifiés.</value><comment>{0} octets modifiés</comment>
 	</data>
 	<data name="StatusSramFileHasBeenRestoredFromBackupTemplate" xml:space="preserve">
 		<value>{0} a été restauré à partir de la sauvegarde.</value>
 	</data>
 	<data name="StatusTargetSramFileHasBeenBackedUpFilepathTemplate" xml:space="preserve">
-		<value>Le fichier SRAM a été sauvegardé en tant que {0}.</value>
+		<value>Le fichier a été sauvegardé en tant que {0}.</value>
 	</data>
 	<data name="StatusTotalDiffBytesTemplate" xml:space="preserve">
 		<value>Total : {0} octets modifiés (en dehors de la partie en cours).</value>
