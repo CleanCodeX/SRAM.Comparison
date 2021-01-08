@@ -181,7 +181,7 @@
     <value>This tool compares unknown areas in SRAM.</value>
   </data>
   <data name="ErrorCommandNotImplementedTemplate" xml:space="preserve">
-    <value>Command (ow) needs to be implemented by caller.</value>
+    <value>Command (overwrite) needs to be implemented by caller.</value>
   </data>
   <data name="None" xml:space="preserve">
     <value>None</value>
@@ -207,7 +207,7 @@
   <data name="CommandSetComparisonFileSaveSlot" xml:space="preserve">
     <value>Set comparison file's save slot</value>
   </data>
-  <data name="CommandSettings" xml:space="preserve">
+  <data name="CommandConfig" xml:space="preserve">
     <value>Display settings</value>
   </data>
   <data name="SlotByteByByteComparison" xml:space="preserve">
@@ -222,10 +222,10 @@
   <data name="CommandNonSlotByteByByteComparison" xml:space="preserve">
     <value>Add non-slot byte-by-byte comparison</value>
   </data>
-  <data name="CommandOffsetValue" xml:space="preserve">
+  <data name="CommandOffset" xml:space="preserve">
     <value>Display offset value</value>
   </data>
-  <data name="CommandModifyOffsetValue" xml:space="preserve">
+  <data name="CommandEditOffset" xml:space="preserve">
     <value>Modify (and save) offset value</value><comment>The term Offset should only be translated if not understandable</comment>
   </data>
   <data name="SetSaveSlotToCompareMaxTemplate" xml:space="preserve">
@@ -324,16 +324,16 @@
   <data name="CommandRestoreComparisonFile" xml:space="preserve">
     <value>Restore comparison-file from backup</value>
   </data>
-  <data name="CommandCompareFile" xml:space="preserve">
+  <data name="CommandCompareFiles" xml:space="preserve">
     <value>Compare current-file with comparison file</value>
   </data>
-  <data name="CommandWipeOutput" xml:space="preserve">
+  <data name="CommandClearOutput" xml:space="preserve">
     <value>Wipe previous console output</value>
   </data>
   <data name="CommandExportComparisonResult" xml:space="preserve">
     <value>Export current comparison result</value>
   </data>
-  <data name="CommandSaveCurrentFileAsOtherFileName" xml:space="preserve">
+  <data name="CommandSaveCurrentFileWithOtherFileName" xml:space="preserve">
     <value>Save current-file with other game file's name</value>
   </data>
   <data name="CommandQuit" xml:space="preserve">

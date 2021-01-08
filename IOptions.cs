@@ -23,7 +23,7 @@ namespace SramComparer
 		/// <summary>Gets or sets if only a specific save slot of current-SRAM file should be compared. If zero (default), all save slots will be compared.</summary>
 		int CurrentFileSaveSlot { get; set; }
 
-		/// <summary>Gets or sets if only a specific save slot of comparison-SRAM file should be compared. If zero (default), same save slot(s) as current-SRAM file will be compared.</summary>
+		/// <summary>Gets or sets if only a specific save slot of comparison-SRAM file should be compared. If zero (default), same save slot(config) as current-SRAM file will be compared.</summary>
 		int ComparisonFileSaveSlot { get; set; }
 
 		/// <summary>Optional save slot specific flags for comparisons</summary>

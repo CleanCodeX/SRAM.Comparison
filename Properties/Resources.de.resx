@@ -86,16 +86,16 @@
 	<data name="CommandBackupCurrentFile" xml:space="preserve">
 		<value>Aktuelle Datei sichern</value>
 	</data>
-	<data name="CommandCompareFile" xml:space="preserve">
+	<data name="CommandCompareFiles" xml:space="preserve">
 		<value>Vergleiche aktuelle Datei mit Vergleichs-Datei</value>
 	</data>
 	<data name="CommandListCommands" xml:space="preserve">
 		<value>Befehle auflisten</value>
 	</data>
-	<data name="CommandOffsetValue" xml:space="preserve">
+	<data name="CommandOffset" xml:space="preserve">
 		<value>Offset-Wert anzeigen</value>
 	</data>
-	<data name="CommandSettings" xml:space="preserve">
+	<data name="CommandConfig" xml:space="preserve">
 		<value>Einstellungen anzeigen</value>
 	</data>
 	<data name="CommandExportComparisonResult" xml:space="preserve">
@@ -122,7 +122,7 @@
 	<data name="CommandRestoreCurrentFile" xml:space="preserve">
 		<value>Aktuelle Datei aus Sicherung wiederherstellen</value>
 	</data>
-	<data name="CommandModifyOffsetValue" xml:space="preserve">
+	<data name="CommandEditOffset" xml:space="preserve">
 		<value>Offset-Wert ändern und speichern</value><comment>The term Offset should only be translated if not understandable</comment>
 	</data>
 	<data name="CommandSetComparisonFileSaveSlot" xml:space="preserve">
@@ -131,10 +131,10 @@
 	<data name="CommandSetCurrentSrramFileSaveSlot" xml:space="preserve">
 		<value>Speicherslot für aktuelle Datei festlegen</value>
 	</data>
-	<data name="CommandSaveCurrentFileAsOtherFileName" xml:space="preserve">
+	<data name="CommandSaveCurrentFileWithOtherFileName" xml:space="preserve">
 		<value>Aktuelle Datei unter anderem Spielnamen speichern</value>
 	</data>
-	<data name="CommandWipeOutput" xml:space="preserve">
+	<data name="CommandClearOutput" xml:space="preserve">
 		<value>Bisherige Konsolen-Ausgabe löschen</value>
 	</data>
 	<data name="Comparison" xml:space="preserve">
@@ -169,7 +169,7 @@
 		<value>Kann die Datei "{0}" nicht zum Schreiben öffnen</value>
 	</data>
 	<data name="ErrorCommandNotImplementedTemplate" xml:space="preserve">
-		<value>Der Befehl (ow) muss vom Aufrufer implementiert werden.</value>
+		<value>Der Befehl (overwrite) muss vom Aufrufer implementiert werden.</value>
 	</data>
 	<data name="ErrorComparisonFileDoesNotExist" xml:space="preserve">
 		<value>Die Vergleichs-Datei "{0}" wurde noch nicht erstellt. Bitte zuerst eine erstellen.</value>

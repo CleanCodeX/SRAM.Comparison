@@ -45,6 +45,6 @@ namespace SramComparer.Services
 		void PrintCommands();
 
 		/// <summary>Prints the current settings</summary>
-		void PrintSettings(IOptions options);
+		void PrintConfig(IOptions options);
 	}
 }

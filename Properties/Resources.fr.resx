@@ -44,7 +44,7 @@
 	<data name="CommandBackupCurrentFile" xml:space="preserve">
 		<value>Sauvegarder le fichier en cours</value>
 	</data>
-	<data name="CommandCompareFile" xml:space="preserve">
+	<data name="CommandCompareFiles" xml:space="preserve">
 		<value>Comparer le fichier en cours avec celui de comparaison</value>
 	</data>
 	<data name="AppDescription" xml:space="preserve">
@@ -80,7 +80,7 @@
 	<data name="CommandRestoreCurrentFile" xml:space="preserve">
 		<value>Restaurer le fichier en cours à partir de la sauvegarde</value>
 	</data>
-	<data name="CommandModifyOffsetValue" xml:space="preserve">
+	<data name="CommandEditOffset" xml:space="preserve">
 		<value>Enregistrer la valeur du décalage</value>
 	</data>
 	<data name="CommandSetComparisonFileSaveSlot" xml:space="preserve">
@@ -89,21 +89,21 @@
 	<data name="CommandSetCurrentSrramFileSaveSlot" xml:space="preserve">
 		<value>Définir l'emplacement de jeu du fichier en cours</value>
 	</data>
-	<data name="CommandSettings" xml:space="preserve">
+	<data name="CommandConfig" xml:space="preserve">
 		<value>Paramètres d'affichage</value>
 	</data>
-	<data name="CommandOffsetValue" xml:space="preserve">
+	<data name="CommandOffset" xml:space="preserve">
 		<value>Afficher le décalage en cours</value>
 	</data>
 	<data name="CommandListCommands" xml:space="preserve">
 		<value>Liste des commandes</value><comment>was: Afficher les commandes</comment>
 	</data>
-	<data name="CommandSaveCurrentFileAsOtherFileName" xml:space="preserve">
+	<data name="CommandSaveCurrentFileWithOtherFileName" xml:space="preserve">
 		<value>Enregistrer le fichier en cours avec le nom d'un autre fichier </value>
 		<comment>was: Transférer les données SRAM vers un fichier de jeu similaire
 		</comment>
 	</data>
-	<data name="CommandWipeOutput" xml:space="preserve">
+	<data name="CommandClearOutput" xml:space="preserve">
 		<value>Effacer la sortie de la console précédente</value>
 	</data>
 	<data name="Comparison" xml:space="preserve">
@@ -137,7 +137,7 @@
 		<value>Impossible d'enregistrer le fichier de sortie "{0}"</value>
 	</data>
 	<data name="ErrorCommandNotImplementedTemplate" xml:space="preserve">
-		<value>La commande (ow) n'est pas implémentée.</value>
+		<value>La commande (overwrite) n'est pas implémentée.</value>
 	</data>
 	<data name="ErrorComparisonFileSaveSlotSetButNotCurrentFileSaveSlot" xml:space="preserve">
 		<value>L'emplacement de comparaison dans le fichier ne peut être défini que si l'emplacement d'enregistrement en cours dans le fichier a été défini en premier.</value>

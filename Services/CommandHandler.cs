@@ -74,7 +74,7 @@ namespace SramComparer.Services
 			Requires.NotNull(options, nameof(options));
 
 			if (command.IsNullOrEmpty()) return true;
-			if (command == "?") command = nameof(Commands.cmd);
+			if (command == "?") command = nameof(Commands.Help);
 			
 			if (Enum.TryParse<AlternateCommands>(command, true, out var altCommand))
 				command = ((Commands)altCommand).ToString();
@@ -83,82 +83,82 @@ namespace SramComparer.Services
 
 			switch (cmd)
 			{
-				case Commands.c:
-				case Commands.e:
+				case Commands.Compare:
+				case Commands.Export:
 					throw new NotImplementedException(Resources.ErrorCommandNotImplementedTemplate.InsertArgs(command));
-				case Commands.cmd:
+				case Commands.Help:
 					ConsolePrinter.PrintCommands();
 					break;
-				case Commands.s:
-					ConsolePrinter.PrintSettings(options);
+				case Commands.Config:
+					ConsolePrinter.PrintConfig(options);
 					break;
-				case Commands.g_srm:
+				case Commands.Guide_Srm:
 					ConsolePrinter.PrintGuide("guide-srm");
 					break;
-				case Commands.g_savestate:
+				case Commands.Guide_Savestate:
 					ConsolePrinter.PrintGuide("guide-savestate");
 					break;
-				case Commands.sbc:
+				case Commands.Sbc:
 					options.ComparisonFlags = InvertIncludeFlag(options.ComparisonFlags, ComparisonFlags.SlotByteByByteComparison);
 					break;
-				case Commands.nsbc:
+				case Commands.Nsbc:
 					options.ComparisonFlags = InvertIncludeFlag(options.ComparisonFlags, ComparisonFlags.NonSlotByteByByteComparison);
 					break;
-				case Commands.ss:
+				case Commands.SetSlot:
 					options.CurrentFileSaveSlot = GetSaveSlotId(maxSaveSlotId: 4);
 					if (options.CurrentFileSaveSlot == default)
 						options.ComparisonFileSaveSlot = default;
 
 					break;
-				case Commands.ssc:
+				case Commands.SetSlot_Comp:
 					if (options.CurrentFileSaveSlot != default)
 						options.ComparisonFileSaveSlot = GetSaveSlotId(maxSaveSlotId: 4);
 					else
 						ConsolePrinter.PrintError(Resources.ErrorComparisonFileSaveSlotSetButNotCurrentFileSaveSlot);
 
 					break;
-				case Commands.ow:
+				case Commands.OverwriteComp:
 					OverwriteComparisonFileWithCurrentFile(options);
 					break;
-				case Commands.b:
+				case Commands.Backup:
 					BackupSaveFile(options, SaveFileKind.CurrentFile, false);
 					break;
-				case Commands.r:
+				case Commands.Restore:
 					BackupSaveFile(options, SaveFileKind.CurrentFile, true);
 					break;
-				case Commands.bc:
+				case Commands.Backup_Comp:
 					BackupSaveFile(options, SaveFileKind.ComparisonFile, false);
 					break;
-				case Commands.rc:
+				case Commands.Restore_Comp:
 					BackupSaveFile(options, SaveFileKind.ComparisonFile, true);
 					break;
-				case Commands.ts:
+				case Commands.Transfer:
 					TransferSramToOtherGameFile(options);
 					break;
-				case Commands.ov:
+				case Commands.Offset:
 					PrintOffsetValue(options);
 
 					break;
-				case Commands.mov:
+				case Commands.EditOffset:
 					SaveOffsetValue(options);
 
 					break;
-				case Commands.l:
+				case Commands.Lang:
 					SetUILanguage(options);
 
 					break;
-				case Commands.lc:
+				case Commands.Lang_Comp:
 					SetComparionResultLanguage(options);
 
 					break;
-				case Commands.w:
+				case Commands.Clear:
 					Console.Clear();
 					break;
-				case Commands.q:
+				case Commands.Quit:
 					return false;
 				default:
 					ConsolePrinter.PrintCommands();
-					ConsolePrinter.PrintError(Resources.ErrorNoValidCommandCmdTemplate.InsertArgs(command, nameof(Commands.cmd)));
+					ConsolePrinter.PrintError(Resources.ErrorNoValidCommandCmdTemplate.InsertArgs(command, nameof(Commands.Help)));
 
 					break;
 			}
@@ -176,7 +176,7 @@ namespace SramComparer.Services
 			{
 				options.UILanguage = null;
 				RestoreCulture(null);
-				ConsolePrinter.PrintSettings(options);
+				ConsolePrinter.PrintConfig(options);
 				return;
 			}
 
@@ -195,7 +195,7 @@ namespace SramComparer.Services
 			options.UILanguage = culture.Name;
 			CultureInfo.CurrentUICulture = culture;
 
-			ConsolePrinter.PrintSettings(options);
+			ConsolePrinter.PrintConfig(options);
 		}
 
 		private void SetComparionResultLanguage(IOptions options)
@@ -207,7 +207,7 @@ namespace SramComparer.Services
 			if (cultureId == string.Empty)
 			{
 				options.ComparisonResultLanguage = null;
-				ConsolePrinter.PrintSettings(options);
+				ConsolePrinter.PrintConfig(options);
 				return;
 			}
 
@@ -225,7 +225,7 @@ namespace SramComparer.Services
 
 			options.ComparisonResultLanguage = culture.Name;
 
-			ConsolePrinter.PrintSettings(options);
+			ConsolePrinter.PrintConfig(options);
 		}
 
 		/// <inheritdoc cref="ICommandHandler{TSramFile,TSaveSlot}.Compare{TComparer}(IOptions)"/>

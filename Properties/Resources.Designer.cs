@@ -187,11 +187,20 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Wipe previous console output ähnelt.
+        /// </summary>
+        public static string CommandClearOutput {
+            get {
+                return ResourceManager.GetString("CommandClearOutput", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Compare current-file with comparison file ähnelt.
         /// </summary>
-        public static string CommandCompareFile {
+        public static string CommandCompareFiles {
             get {
-                return ResourceManager.GetString("CommandCompareFile", resourceCulture);
+                return ResourceManager.GetString("CommandCompareFiles", resourceCulture);
             }
         }
         
@@ -201,6 +210,24 @@ namespace SramComparer.Properties {
         public static string CommandComparisonResultLanguage {
             get {
                 return ResourceManager.GetString("CommandComparisonResultLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Display settings ähnelt.
+        /// </summary>
+        public static string CommandConfig {
+            get {
+                return ResourceManager.GetString("CommandConfig", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Modify (and save) offset value ähnelt.
+        /// </summary>
+        public static string CommandEditOffset {
+            get {
+                return ResourceManager.GetString("CommandEditOffset", resourceCulture);
             }
         }
         
@@ -250,15 +277,6 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Modify (and save) offset value ähnelt.
-        /// </summary>
-        public static string CommandModifyOffsetValue {
-            get {
-                return ResourceManager.GetString("CommandModifyOffsetValue", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Add non-slot byte-by-byte comparison ähnelt.
         /// </summary>
         public static string CommandNonSlotByteByByteComparison {
@@ -270,9 +288,9 @@ namespace SramComparer.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Display offset value ähnelt.
         /// </summary>
-        public static string CommandOffsetValue {
+        public static string CommandOffset {
             get {
-                return ResourceManager.GetString("CommandOffsetValue", resourceCulture);
+                return ResourceManager.GetString("CommandOffset", resourceCulture);
             }
         }
         
@@ -315,9 +333,9 @@ namespace SramComparer.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Save current-file with other game file&apos;s name ähnelt.
         /// </summary>
-        public static string CommandSaveCurrentFileAsOtherFileName {
+        public static string CommandSaveCurrentFileWithOtherFileName {
             get {
-                return ResourceManager.GetString("CommandSaveCurrentFileAsOtherFileName", resourceCulture);
+                return ResourceManager.GetString("CommandSaveCurrentFileWithOtherFileName", resourceCulture);
             }
         }
         
@@ -340,29 +358,11 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Display settings ähnelt.
-        /// </summary>
-        public static string CommandSettings {
-            get {
-                return ResourceManager.GetString("CommandSettings", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Add slot byte-by-byte comparison ähnelt.
         /// </summary>
         public static string CommandSlotByteByBytesComparison {
             get {
                 return ResourceManager.GetString("CommandSlotByteByBytesComparison", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Wipe previous console output ähnelt.
-        /// </summary>
-        public static string CommandWipeOutput {
-            get {
-                return ResourceManager.GetString("CommandWipeOutput", resourceCulture);
             }
         }
         
@@ -502,7 +502,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Command (ow) needs to be implemented by caller. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Command (overwrite) needs to be implemented by caller. ähnelt.
         /// </summary>
         public static string ErrorCommandNotImplementedTemplate {
             get {

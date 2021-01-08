@@ -9,80 +9,91 @@ namespace SramComparer.Enums
 	public enum Commands
 	{
 		[DisplayNameLocalized(nameof(Res.CommandListCommands), typeof(Res))]
-		cmd = 1, // Lists all in-app commands (alternatives: help, ?)
+		Help = 1, // Lists all in-app commands (alternatives: help, ?)
 
-		[DisplayNameLocalized(nameof(Res.CommandSettings), typeof(Res))]
-		s, // shows current (command line) Settings
+		[DisplayNameLocalized(nameof(Res.CommandConfig), typeof(Res))]
+		Config, // shows current config and command line parameters
 
 		[DisplayNameLocalized(nameof(Res.CommandGuideSrm), typeof(Res))]
-		g_srm, // Guide (srm) 
+		Guide_Srm, // Guide (srm) 
 
 		[DisplayNameLocalized(nameof(Res.CommandGuideSavestate), typeof(Res))]
-		g_savestate, // Manual (savestate) 
+		Guide_Savestate, // Manual (savestate) 
 
 		[DisplayNameLocalized(nameof(Res.SlotByteByByteComparison), typeof(Res))]
-		sbc, // Flag Whole Save Slot => compare additionally the whole save slot area instead of only unknowns
+		Sbc, // Enables or disables slot byte by byte comparison => compares the save slot area by by byte
 
 		[DisplayNameLocalized(nameof(Res.NonSlotByteByByteComparison), typeof(Res))]
-		nsbc, // Flag Non Save slot => compare additionally the non-save slot area 
+		Nsbc, // Enables or disables non-slot byte by byte comparison => compares the non-save slot area byte by byte
 
 		[DisplayNameLocalized(nameof(Res.CommandSetCurrentSrramFileSaveSlot), typeof(Res))]
-		ss, // Set save slot for current-SRAM file
+		SetSlot, // Sets the save slot for the current file
 
 		[DisplayNameLocalized(nameof(Res.CommandSetComparisonFileSaveSlot), typeof(Res))]
-		ssc, // Set Comparison save slot for comparison-SRAM file
+		SetSlot_Comp, // Sets the save slot for the comparison file
 
-		[DisplayNameLocalized(nameof(Res.CommandCompareFile), typeof(Res))]
-		c, // Compare
+		[DisplayNameLocalized(nameof(Res.CommandCompareFiles), typeof(Res))]
+		Compare, // Starts the comparison
 
 		[DisplayNameLocalized(nameof(Res.CommandOverwriteComparisonFile), typeof(Res))]
-		ow, // OverWrite the comparison-SRAM file with current-SRAM file
+		OverwriteComp, // Overwrite the comparison file with current file
 
 		[DisplayNameLocalized(nameof(Res.CommandBackupCurrentFile), typeof(Res))]
-		b, // Backup the current-SRAM file
+		Backup, // Backups the current file
 
 		[DisplayNameLocalized(nameof(Res.CommandBackupComparisonFile), typeof(Res))]
-		bc, // backup the Comparison-SRAM file
+		Backup_Comp, // Backups the comparison file
 
 		[DisplayNameLocalized(nameof(Res.CommandRestoreCurrentFile), typeof(Res))]
-		r, // Restore the current-SRAM file from previously created backup
+		Restore, // Restores the current file from previously created backup
 
 		[DisplayNameLocalized(nameof(Res.CommandRestoreComparisonFile), typeof(Res))]
-		rc, // Restore the Comparison-SRAM file from previously created backup
+		Restore_Comp, // Restores the comparison file from previously created backup
 
 		[DisplayNameLocalized(nameof(Res.CommandExportComparisonResult), typeof(Res))]
-		e, // Export the current comparison result as text file to export directory
+		Export, // Export the current comparison result as text file to export directory
 
-		[DisplayNameLocalized(nameof(Res.CommandSaveCurrentFileAsOtherFileName), typeof(Res))]
-		ts, // Transfer SRAM => Copies the current-SRAM file to a different game name of a similar ROM type. Eg copying between patched and unpatched ROM versions.
+		[DisplayNameLocalized(nameof(Res.CommandSaveCurrentFileWithOtherFileName), typeof(Res))]
+		Transfer, // Transfer save file => Copies the current file to a different game name of a similar ROM type. E.g. copying between patched and unpatched ROM versions.
 
-		[DisplayNameLocalized(nameof(Res.CommandWipeOutput), typeof(Res))]
-		w, // Wipe (clears) the output in command window
+		[DisplayNameLocalized(nameof(Res.CommandClearOutput), typeof(Res))]
+		Clear, // Clear the output window
 
 		[DisplayNameLocalized(nameof(Res.CommandQuit), typeof(Res))]
-		q, // Quit
+		Quit, // Quit the app
 
-		[DisplayNameLocalized(nameof(Res.CommandOffsetValue), typeof(Res))]
-		ov, // Display Offset Value => displays a value at entered offset address
+		[DisplayNameLocalized(nameof(Res.CommandOffset), typeof(Res))]
+		Offset, // Display a value at offset address
 
-		[DisplayNameLocalized(nameof(Res.CommandModifyOffsetValue), typeof(Res))]
-		mov, // Manipulate Offset Value => sets a value to entered offset addres
+		[DisplayNameLocalized(nameof(Res.CommandEditOffset), typeof(Res))]
+		EditOffset, // Saves a value to entered offset address
 
 		[DisplayNameLocalized(nameof(Res.CommandLanguage), typeof(Res))]
-		l, // sets the UI language
+		Lang, // Sets the UI language
 
 		[DisplayNameLocalized(nameof(Res.CommandComparisonResultLanguage), typeof(Res))]
-		lc, // sets the language for comparison results
+		Lang_Comp, // Sets the language for comparison results
 	}
 	
 	public enum AlternateCommands
 	{
-		guide = Commands.g_srm,
-		manual = guide,
-		cmds = Commands.cmd,
-		help = cmds,
-		cmdline = Commands.s,
-		config = cmdline,
-		clear = Commands.w,
+		Guide = Commands.Guide_Srm,
+		Manual = Commands.Guide_Srm,
+		Oc = Commands.OverwriteComp,
+		Cmds = Commands.Help,
+		CmdLine = Commands.Config,
+		Q = Commands.Quit,
+		B = Commands.Backup,
+		BC = Commands.Backup_Comp,
+		R = Commands.Restore,
+		RC = Commands.Restore_Comp,
+		T = Commands.Transfer,
+		Cls = Commands.Clear,
+		W = Commands.Clear,
+		L = Commands.Lang,
+		LC = Commands.Lang_Comp,
+		C = Commands.Compare,
+		Ov = Commands.Offset,
+		Eov = Commands.EditOffset,
 	}
 }

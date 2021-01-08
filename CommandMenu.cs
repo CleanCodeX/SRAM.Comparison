@@ -39,7 +39,7 @@ namespace SramComparer
 			ConsoleHelper.SetInitialConsoleSize();
 			ConsoleHelper.RedefineConsoleColors(bgColor: Color.FromArgb(17, 17, 17));
 
-			consolePrinter.PrintSettings(options);
+			consolePrinter.PrintConfig(options);
 			consolePrinter.PrintStartMessage();
 
 			while (true)
