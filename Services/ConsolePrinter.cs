@@ -35,9 +35,15 @@ namespace SramComparer.Services
 			PrintSettingName(Res.ComparisonSramFileSaveSlot, $"{CmdOptions.ComparisonSaveSlot} [1-4|0={Res.All}]");
 			PrintValue(options.ComparisonSramFileSaveSlot == 0 ? Res.SameAsCurrentSramFileSaveSlot : options.ComparisonSramFileSaveSlot.ToString());
 
-			PrintSettingName(Res.ColorizeOutput, CmdOptions.ColorizeOutput.ToString() + " [true|1|false|0]");
+			PrintSettingName(Res.ColorizeOutput, $"{CmdOptions.ColorizeOutput} [true|1|false|0]");
 			PrintValue(options.ColorizeOutput.ToString());
-			
+
+			PrintSettingName(Res.UILanguage, CmdOptions.UILanguage);
+			PrintValue(options.UILanguage!);
+
+			PrintSettingName(Res.ComparisonResultLanguage, CmdOptions.ComparisonResultLanguage);
+			PrintValue(options.ComparisonResultLanguage!);
+
 			PrintSettingName(Res.ComparisonFlags, $@"{CmdOptions.ComparisonFlags} [{string.Join(",", Enum.GetNames(options.ComparisonFlags.GetType()))}]");
 			PrintSettingName(Environment.NewLine, padRightDistance: 37);
 			PrintValue(options.ComparisonFlags.ToFlagsString());
@@ -122,6 +128,14 @@ namespace SramComparer.Services
 
 			PrintCommandKey(Commands.mov);
 			PrintColoredLine(ConsoleColor.Yellow, Commands.mov.GetDisplayName()!);
+
+			PrintGroupName(Res.CmdLanguage);
+
+			PrintCommandKey(Commands.lang);
+			PrintColoredLine(ConsoleColor.Yellow, Commands.lang.GetDisplayName()!);
+
+			PrintCommandKey(Commands.complang);
+			PrintColoredLine(ConsoleColor.Yellow, Commands.complang.GetDisplayName()!);
 
 			PrintCustomCommands();
 

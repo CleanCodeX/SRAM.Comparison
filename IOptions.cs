@@ -34,5 +34,11 @@ namespace SramComparer
 
 		/// <summary>Optional string which emulator savestate type is used</summary>
 		string? SaveStateType { get; set; }
+
+		/// <summary>The language in which the app should be displayed</summary>
+		string? UILanguage { get; set; }
+
+		/// <summary>The language in which the comparison result should be displayed</summary>
+		string? ComparisonResultLanguage { get; set; }
 	}
 }

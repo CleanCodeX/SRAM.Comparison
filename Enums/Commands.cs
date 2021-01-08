@@ -63,7 +63,13 @@ namespace SramComparer.Enums
 		ov, // Display Offset Value => displays a value at entered offset address
 
 		[DisplayNameLocalized(nameof(Res.CommandModifyOffsetValue), typeof(Res))]
-		mov // Manipulate Offset Value => sets a value to entered offset addres
+		mov, // Manipulate Offset Value => sets a value to entered offset addres
+
+		[DisplayNameLocalized(nameof(Res.CommandLanguage), typeof(Res))]
+		lang, // sets the UI language
+
+		[DisplayNameLocalized(nameof(Res.CommandComparisonResultLanguage), typeof(Res))]
+		complang, // sets the language for comparison results
 	}
 	
 	public enum AlternateCommands

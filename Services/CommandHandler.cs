@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using Common.Shared.Min.Extensions;
@@ -139,6 +140,14 @@ namespace SramComparer.Services
 					SaveOffsetValue(options);
 
 					break;
+				case Commands.lang:
+					SetUILanguage(options);
+
+					break;
+				case Commands.complang:
+					SetComparionResultLanguage(options);
+
+					break;
 				case Commands.w:
 					Console.Clear();
 					break;
@@ -152,6 +161,68 @@ namespace SramComparer.Services
 			}
 
 			return true;
+		}
+
+		private void SetUILanguage(IOptions options)
+		{
+			ConsolePrinter.PrintSectionHeader();
+			ConsolePrinter.PrintLine(Resources.SetUILanguage);
+
+			var cultureId = Console.ReadLine()!;
+			if (cultureId == string.Empty)
+			{
+				options.UILanguage = null;
+				RestoreCulture(null);
+				ConsolePrinter.PrintSettings(options);
+				return;
+			}
+
+			CultureInfo culture;
+
+			try
+			{
+				culture = CultureInfo.GetCultureInfo(cultureId);
+			}
+			catch (Exception ex)
+			{
+				ConsolePrinter.PrintError(ex);
+				return;
+			}
+
+			options.UILanguage = culture.Name;
+			CultureInfo.CurrentUICulture = culture;
+
+			ConsolePrinter.PrintSettings(options);
+		}
+
+		private void SetComparionResultLanguage(IOptions options)
+		{
+			ConsolePrinter.PrintSectionHeader();
+			ConsolePrinter.PrintLine(Resources.SetComparionResultLanguage);
+
+			var cultureId = Console.ReadLine()!;
+			if (cultureId == string.Empty)
+			{
+				options.ComparisonResultLanguage = null;
+				ConsolePrinter.PrintSettings(options);
+				return;
+			}
+
+			CultureInfo culture;
+
+			try
+			{
+				culture = CultureInfo.GetCultureInfo(cultureId);
+			}
+			catch (Exception ex)
+			{
+				ConsolePrinter.PrintError(ex);
+				return;
+			}
+
+			options.ComparisonResultLanguage = culture.Name;
+
+			ConsolePrinter.PrintSettings(options);
 		}
 
 		/// <inheritdoc cref="ICommandHandler{TSramFile,TSramGame}.Compare{TComparer}(IOptions)"/>
@@ -204,9 +275,46 @@ namespace SramComparer.Services
 			var compFile = ClassFactory.Create<TSramFile>(compStream, options.GameRegion);
 			var comparer = ClassFactory.Create<TComparer>(ConsolePrinter);
 
-			comparer.CompareSram(currFile, compFile, options);
+			if (options.ComparisonResultLanguage is not null)
+				TrySetCulture(options.ComparisonResultLanguage);
 
-			ConsolePrinter.ResetColor();
+			try
+			{
+				comparer.CompareSram(currFile, compFile, options);
+			}
+			finally
+			{
+				if (options.ComparisonResultLanguage is not null)
+					RestoreCulture(options.UILanguage);
+
+				ConsolePrinter.ResetColor();
+			}
+		}
+
+		private void TrySetCulture(string culture)
+		{
+			try
+			{
+				CultureInfo.CurrentUICulture = CultureInfo.GetCultureInfo(culture);
+			}
+			catch (Exception ex)
+			{
+				ConsolePrinter.PrintError(ex.Message);
+				ConsolePrinter.PrintSectionHeader();
+			}
+		}
+
+		private void RestoreCulture(string? culture)
+		{
+			try
+			{
+				CultureInfo.CurrentUICulture = culture is null ? CultureInfo.InstalledUICulture : CultureInfo.GetCultureInfo(culture);
+			}
+			catch (Exception ex)
+			{
+				ConsolePrinter.PrintError(ex.Message);
+				ConsolePrinter.PrintSectionHeader();
+			}
 		}
 
 		protected virtual bool ConvertStreamIfSaveState(ref Stream stream, string? filePath, string? saveStateType)

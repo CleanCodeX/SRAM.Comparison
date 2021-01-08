@@ -15,5 +15,8 @@
 
 		/// <summary> Flag for game specific flags</summary>
 		public const string ComparisonFlags = "--flags";
+
+		public const string UILanguage = "--lang";
+		public const string ComparisonResultLanguage = "--comp-lang";
 	}
 }

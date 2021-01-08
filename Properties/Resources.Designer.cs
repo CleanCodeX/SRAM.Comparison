@@ -156,6 +156,15 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Language ähnelt.
+        /// </summary>
+        public static string CmdLanguage {
+            get {
+                return ResourceManager.GetString("CmdLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Miscellaneous ähnelt.
         /// </summary>
         public static string CmdMisc {
@@ -201,11 +210,29 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Set comparison result language ähnelt.
+        /// </summary>
+        public static string CommandComparisonResultLanguage {
+            get {
+                return ResourceManager.GetString("CommandComparisonResultLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Export current comparison result ähnelt.
         /// </summary>
         public static string CommandExportComparisonResult {
             get {
                 return ResourceManager.GetString("CommandExportComparisonResult", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Set UI-language ähnelt.
+        /// </summary>
+        public static string CommandLanguage {
+            get {
+                return ResourceManager.GetString("CommandLanguage", resourceCulture);
             }
         }
         
@@ -359,6 +386,15 @@ namespace SramComparer.Properties {
         public static string ComparisonFlags {
             get {
                 return ResourceManager.GetString("ComparisonFlags", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Comparison result language ähnelt.
+        /// </summary>
+        public static string ComparisonResultLanguage {
+            get {
+                return ResourceManager.GetString("ComparisonResultLanguage", resourceCulture);
             }
         }
         
@@ -723,6 +759,15 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Set the comparison result language (e.g. &apos;en&apos; for English - without quotes). An empty input resets the setting. ähnelt.
+        /// </summary>
+        public static string SetComparionResultLanguage {
+            get {
+                return ResourceManager.GetString("SetComparionResultLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Set save slot (1-{0} or any other key for all save slots) to compare: ähnelt.
         /// </summary>
         public static string SetSaveSlotToCompareMaxTemplate {
@@ -764,6 +809,15 @@ namespace SramComparer.Properties {
         public static string Settings {
             get {
                 return ResourceManager.GetString("Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Set the UI language (e.g. &apos;en&apos; for English - without quotes). An empty input resets the setting. ähnelt.
+        /// </summary>
+        public static string SetUILanguage {
+            get {
+                return ResourceManager.GetString("SetUILanguage", resourceCulture);
             }
         }
         
@@ -1025,6 +1079,15 @@ namespace SramComparer.Properties {
         public static string StatusUnknownsChangedBytesTemplate {
             get {
                 return ResourceManager.GetString("StatusUnknownsChangedBytesTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die UI language ähnelt.
+        /// </summary>
+        public static string UILanguage {
+            get {
+                return ResourceManager.GetString("UILanguage", resourceCulture);
             }
         }
         

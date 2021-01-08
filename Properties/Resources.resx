@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, UILanguage=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, UILanguage=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="QueuedCommands" xml:space="preserve">
     <value>Queued commands</value>
@@ -476,5 +476,26 @@
   </data>
   <data name="SaveSlotOffset" xml:space="preserve">
     <value>Save slot offset</value>
+  </data>
+  <data name="ComparisonResultLanguage" xml:space="preserve">
+    <value>Comparison result language</value>
+  </data>
+  <data name="UILanguage" xml:space="preserve">
+    <value>UI language</value>
+  </data>
+  <data name="CommandLanguage" xml:space="preserve">
+    <value>Set UI-language</value>
+  </data>
+  <data name="CommandComparisonResultLanguage" xml:space="preserve">
+    <value>Set comparison result language</value>
+  </data>
+  <data name="CmdLanguage" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="SetUILanguage" xml:space="preserve">
+    <value>Set the UI language (e.g. 'en' for English - without quotes). An empty input resets the setting.</value>
+  </data>
+  <data name="SetComparionResultLanguage" xml:space="preserve">
+    <value>Set the comparison result language (e.g. 'en' for English - without quotes). An empty input resets the setting.</value>
   </data>
 </root>

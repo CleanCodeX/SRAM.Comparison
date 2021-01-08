@@ -105,6 +105,12 @@ namespace SramComparer.Services
 					case CmdOptions.ColorizeOutput:
 						options.ColorizeOutput = value.ParseToBool();
 						break;
+					case CmdOptions.UILanguage:
+						options.UILanguage = value;
+						break;
+					case CmdOptions.ComparisonResultLanguage:
+						options.ComparisonResultLanguage = value;
+						break;
 				}
 			}
 
