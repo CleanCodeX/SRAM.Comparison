@@ -160,33 +160,10 @@ namespace SramComparer.Services
 		{
 			Requires.FileExists(options.ComparisonSramFilepath, nameof(options.ComparisonSramFilepath), Resources.ErrorComparisonFileDoesNotExist);
 			
-			var currFileStream = (Stream)new FileStream(options.CurrentSramFilepath!, FileMode.Open, FileAccess.Read);
-			var compFileStream = (Stream)new FileStream(options.ComparisonSramFilepath!, FileMode.Open, FileAccess.Read);
+			using var currFileStream = (Stream)new FileStream(options.CurrentSramFilepath!, FileMode.Open, FileAccess.Read);
+			using var compFileStream = (Stream)new FileStream(options.ComparisonSramFilepath!, FileMode.Open, FileAccess.Read);
 
-			ConvertStreamIfSaveState(ref currFileStream, options.CurrentSramFilepath!, options.SaveStateType);
-			ConvertStreamIfSaveState(ref compFileStream, options.ComparisonSramFilepath!, options.SaveStateType);
-
-			using (currFileStream)
-			using (compFileStream)
-				Compare<TComparer>(currFileStream, compFileStream, options);
-		}
-
-		protected virtual bool ConvertStreamIfSaveState(ref Stream stream, string filePath, string? saveStateType)
-		{
-			saveStateType ??= "snes9x";
-
-			var fileExtension = Path.GetExtension(filePath).ToLower();
-			if (fileExtension == ".srm") return false;
-
-			var convertedStream = saveStateType switch
-			{
-				"snes9x" => stream.ConvertSnes9xSavestateToSram(),
-				_ => throw new NotSupportedException($"SaveStateType {saveStateType} is not supported.")
-			};
-
-			stream = convertedStream;
-
-			return true;
+			Compare<TComparer>(currFileStream, compFileStream, options);
 		}
 
 		/// <inheritdoc cref="ICommandHandler{TSramFile,TSramGame}.Compare{TComparer}(IOptions, TextWriter)"/>
@@ -220,6 +197,9 @@ namespace SramComparer.Services
 		public virtual void Compare<TComparer>(Stream currStream, Stream compStream, IOptions options)
 			where TComparer : ISramComparer<TSramFile, TSramGame>, new()
 		{
+			ConvertStreamIfSaveState(ref currStream, options.CurrentSramFilepath!, options.SaveStateType);
+			ConvertStreamIfSaveState(ref compStream, options.ComparisonSramFilepath!, options.SaveStateType);
+
 			var currFile = ClassFactory.Create<TSramFile>(currStream, options.GameRegion);
 			var compFile = ClassFactory.Create<TSramFile>(compStream, options.GameRegion);
 			var comparer = ClassFactory.Create<TComparer>(ConsolePrinter);
@@ -227,6 +207,26 @@ namespace SramComparer.Services
 			comparer.CompareSram(currFile, compFile, options);
 
 			ConsolePrinter.ResetColor();
+		}
+
+		protected virtual bool ConvertStreamIfSaveState(ref Stream stream, string? filePath, string? saveStateType)
+		{
+			if (filePath is null) return false;
+
+			saveStateType ??= "snes9x";
+
+			var fileExtension = Path.GetExtension(filePath).ToLower();
+			if (fileExtension == ".srm") return false;
+
+			var convertedStream = saveStateType switch
+			{
+				"snes9x" => stream.ConvertSnes9xSavestateToSram(),
+				_ => throw new NotSupportedException($"SaveStateType {saveStateType} is not supported.")
+			};
+
+			stream = convertedStream;
+
+			return true;
 		}
 
 		/// <inheritdoc cref="ICommandHandler{TSramFile,TSramGame}.ExportComparison{TComparer}(IOptions)"/>
@@ -440,16 +440,16 @@ namespace SramComparer.Services
 			}
 		}
 
-		public Enum InvertIncludeFlag(Enum flags, Enum flag)
+		public Enum InvertIncludeFlag(in Enum flags, in Enum flag)
 		{
 			var enumType = flags.GetType();
 			var enumFlag = (Enum)Enum.ToObject(enumType, flag);
 
-			flags = EnumHelper.InvertUIntFlag(flags, enumFlag);
+			var flagsCopy = EnumHelper.InvertUIntFlag(flags, enumFlag);
 
-			ConsolePrinter.PrintInvertIncludeFlag(flags, enumFlag);
+			ConsolePrinter.PrintInvertIncludeFlag(flagsCopy, enumFlag);
 
-			return flags;
+			return flagsCopy;
 		}
 
 		public int GetGameOffset(int slotIndex) => (int)InternalGetValue(Resources.GetSaveSlotOffsetTemplate.InsertArgs(slotIndex + 1), Resources.StatusOffsetWillBeUsedTemplate);

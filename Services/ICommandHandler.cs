@@ -32,7 +32,7 @@ namespace SramComparer.Services
 		/// <param name="flags">The flags value which flag value will be added to or removed from</param>
 		/// <param name="flag">The flag to set or remove</param>
 		/// <returns></returns>
-		Enum InvertIncludeFlag(Enum flags, Enum flag);
+		Enum InvertIncludeFlag(in Enum flags, in Enum flag);
 
 		/// <summary>Compares SRAM based on <para>options</para>.<see cref="IOptions.CurrentSramFilepath"/> and <see cref="IOptions.ComparisonSramFilepath"/> will be used</summary>
 		/// <typeparam name="TComparer">The type of compare which should be used</typeparam>
