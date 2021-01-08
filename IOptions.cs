@@ -7,7 +7,6 @@ namespace SramComparer
 	public interface IOptions
 	{
 		/// <summary>Optional list of commands which should be performed in a row</summary>
-		[JsonIgnore]
 		string? BatchCommands { get; }
 
 		/// <summary>Optional region of SRAM file. If Empty, EnglishNtsc is used.</summary>

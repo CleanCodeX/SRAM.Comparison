@@ -9,7 +9,6 @@ namespace SramComparer
 		where TGameRegion : struct, Enum
 		where TComparisonFlags : struct, Enum
 	{
-		[JsonIgnore]
 		public string? BatchCommands { get; set; }
 		public string? CurrenFilePath { get; set; }
 		public string? ComparisonFilePath { get; set; }
