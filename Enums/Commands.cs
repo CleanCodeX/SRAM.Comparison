@@ -73,6 +73,12 @@ namespace SramComparer.Enums
 
 		[DisplayNameLocalized(nameof(Res.CommandComparisonResultLanguage), typeof(Res))]
 		Lang_Comp, // Sets the language for comparison results
+
+		[DisplayNameLocalized(nameof(Res.CommandLoadConfig), typeof(Res))]
+		LoadConfig, // Loads the current config from file
+
+		[DisplayNameLocalized(nameof(Res.CommandSaveConfig), typeof(Res))]
+		SaveConfig, // Saves current the config to file
 	}
 	
 	public enum AlternateCommands
@@ -95,5 +101,7 @@ namespace SramComparer.Enums
 		C = Commands.Compare,
 		Ov = Commands.Offset,
 		Eov = Commands.EditOffset,
+		Load = Commands.LoadConfig,
+		Save = Commands.SaveConfig,
 	}
 }

@@ -124,6 +124,15 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Config ähnelt.
+        /// </summary>
+        public static string CmdGroupConfig {
+            get {
+                return ResourceManager.GetString("CmdGroupConfig", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Display ähnelt.
         /// </summary>
         public static string CmdGroupDisplay {
@@ -133,29 +142,29 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Set save slot ähnelt.
-        /// </summary>
-        public static string CmdGroupSetsSaveSlot {
-            get {
-                return ResourceManager.GetString("CmdGroupSetsSaveSlot", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Language ähnelt.
         /// </summary>
-        public static string CmdLanguage {
+        public static string CmdGroupLanguage {
             get {
-                return ResourceManager.GetString("CmdLanguage", resourceCulture);
+                return ResourceManager.GetString("CmdGroupLanguage", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Miscellaneous ähnelt.
         /// </summary>
-        public static string CmdMisc {
+        public static string CmdGroupMisc {
             get {
-                return ResourceManager.GetString("CmdMisc", resourceCulture);
+                return ResourceManager.GetString("CmdGroupMisc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Set save slot ähnelt.
+        /// </summary>
+        public static string CmdGroupSetsSaveSlot {
+            get {
+                return ResourceManager.GetString("CmdGroupSetsSaveSlot", resourceCulture);
             }
         }
         
@@ -277,6 +286,15 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Load config ähnelt.
+        /// </summary>
+        public static string CommandLoadConfig {
+            get {
+                return ResourceManager.GetString("CommandLoadConfig", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Add non-slot byte-by-byte comparison ähnelt.
         /// </summary>
         public static string CommandNonSlotByteByByteComparison {
@@ -327,6 +345,15 @@ namespace SramComparer.Properties {
         public static string CommandRestoreCurrentFile {
             get {
                 return ResourceManager.GetString("CommandRestoreCurrentFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Save config ähnelt.
+        /// </summary>
+        public static string CommandSaveConfig {
+            get {
+                return ResourceManager.GetString("CommandSaveConfig", resourceCulture);
             }
         }
         
@@ -426,6 +453,15 @@ namespace SramComparer.Properties {
         public static string ComparisonShort {
             get {
                 return ResourceManager.GetString("ComparisonShort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Config file path ähnelt.
+        /// </summary>
+        public static string ConfigFilePath {
+            get {
+                return ResourceManager.GetString("ConfigFilePath", resourceCulture);
             }
         }
         
@@ -876,6 +912,15 @@ namespace SramComparer.Properties {
         public static string StatusBytesChangedTemplate {
             get {
                 return ResourceManager.GetString("StatusBytesChangedTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Config file [{0}] has been saved. ähnelt.
+        /// </summary>
+        public static string StatusConfigFileHasBeenSavedTemplate {
+            get {
+                return ResourceManager.GetString("StatusConfigFileHasBeenSavedTemplate", resourceCulture);
             }
         }
         

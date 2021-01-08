@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.Json.Serialization;
 
 namespace SramComparer
 {
@@ -6,9 +7,11 @@ namespace SramComparer
 	public interface IOptions
 	{
 		/// <summary>Optional list of commands which should be performed in a row</summary>
+		[JsonIgnore]
 		string? BatchCommands { get; }
 
 		/// <summary>Optional region of SRAM file. If Empty, EnglishNtsc is used.</summary>
+		[JsonIgnore]
 		Enum GameRegion { get; }
 
 		/// <summary>The filepath to load the current SRAM file from</summary>
@@ -27,6 +30,7 @@ namespace SramComparer
 		int ComparisonFileSaveSlot { get; set; }
 
 		/// <summary>Optional save slot specific flags for comparisons</summary>
+		[JsonIgnore]
 		Enum ComparisonFlags { get; set; }
 
 		/// <summary>Optional flag whether to colorize the output or not</summary>
@@ -42,6 +46,7 @@ namespace SramComparer
 		string? ComparisonResultLanguage { get; set; }
 
 		/// <summary>If set, this config file will be used, otherwise the default file in the directory of <see cref="CurrenFilePath" /></summary>
+		[JsonIgnore]
 		string? ConfigFilePath { get; set; }
 	}
 }

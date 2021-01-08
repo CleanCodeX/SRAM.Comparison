@@ -45,6 +45,9 @@ namespace SramComparer.Services
 			PrintConfigName(Res.ComparisonResultLanguage, CmdOptions.ComparisonResultLanguage);
 			PrintValue(options.ComparisonResultLanguage!);
 
+			PrintConfigName(Res.ConfigFilePath, CmdOptions.ConfigFilePath);
+			PrintValue(options.ConfigFilePath!);
+
 			PrintConfigName(Res.ComparisonFlags, $@"{CmdOptions.ComparisonFlags} [{string.Join(",", Enum.GetNames(options.ComparisonFlags.GetType()))}]");
 			PrintConfigName(Environment.NewLine, padRightDistance: 37);
 			PrintValue(options.ComparisonFlags.ToFlagsString());
@@ -123,7 +126,7 @@ namespace SramComparer.Services
 			PrintCommandKey(Commands.Clear);
 			PrintColoredLine(ConsoleColor.Yellow, Commands.Clear.GetDisplayName()!);
 
-			PrintGroupName(Res.CmdMisc);
+			PrintGroupName(Res.CmdGroupMisc);
 
 			PrintCommandKey(Commands.Sbc);
 			PrintColoredLine(ConsoleColor.Yellow, Commands.Sbc.GetDisplayName()!);
@@ -137,13 +140,21 @@ namespace SramComparer.Services
 			PrintCommandKey(Commands.EditOffset);
 			PrintColoredLine(ConsoleColor.Yellow, Commands.EditOffset.GetDisplayName()!);
 
-			PrintGroupName(Res.CmdLanguage);
+			PrintGroupName(Res.CmdGroupLanguage);
 
 			PrintCommandKey(Commands.Lang);
 			PrintColoredLine(ConsoleColor.Yellow, Commands.Lang.GetDisplayName()!);
 
 			PrintCommandKey(Commands.Lang_Comp);
 			PrintColoredLine(ConsoleColor.Yellow, Commands.Lang_Comp.GetDisplayName()!);
+
+			PrintGroupName(Res.CmdGroupConfig);
+
+			PrintCommandKey(Commands.LoadConfig);
+			PrintColoredLine(ConsoleColor.Yellow, Commands.LoadConfig.GetDisplayName()!);
+
+			PrintCommandKey(Commands.SaveConfig);
+			PrintColoredLine(ConsoleColor.Yellow, Commands.SaveConfig.GetDisplayName()!);
 
 			PrintCustomCommands();
 

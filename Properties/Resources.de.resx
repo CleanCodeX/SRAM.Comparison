@@ -77,7 +77,7 @@
 	<data name="CmdGroupSetsSaveSlot" xml:space="preserve">
 		<value>Speicherslot setzen</value>
 	</data>
-	<data name="CmdMisc" xml:space="preserve">
+	<data name="CmdGroupMisc" xml:space="preserve">
 		<value>Verschiedenes</value>
 	</data>
 	<data name="CommandBackupComparisonFile" xml:space="preserve">
@@ -342,7 +342,7 @@
 	<data name="CommandComparisonResultLanguage" xml:space="preserve">
 		<value>Sprache für Vergleichsergebnis festlegen</value>
 	</data>
-	<data name="CmdLanguage" xml:space="preserve">
+	<data name="CmdGroupLanguage" xml:space="preserve">
 		<value>Sprache</value>
 	</data>
 	<data name="SetUILanguage" xml:space="preserve">
@@ -356,5 +356,20 @@
 	</data>
 	<data name="CommandGuideSavestate" xml:space="preserve">
 		<value>Anleitung (savestate)</value>
+	</data>
+	<data name="CommandLoadConfig" xml:space="preserve">
+		<value>Konfig laden</value>
+	</data>
+	<data name="CommandSaveConfig" xml:space="preserve">
+		<value>Konfig speichern</value>
+	</data>
+	<data name="ConfigFilePath" xml:space="preserve">
+		<value>Konfig-Dateipfad</value>
+	</data>
+	<data name="CmdGroupConfig" xml:space="preserve">
+		<value>Konfig</value>
+	</data>
+	<data name="StatusConfigFileHasBeenSavedTemplate" xml:space="preserve">
+		<value>Konfig-Datei [{0}] wurde gespeichert.</value>
 	</data>
 </root>

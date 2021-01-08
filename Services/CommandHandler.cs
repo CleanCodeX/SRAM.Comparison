@@ -3,6 +3,8 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using Common.Shared.Min.Extensions;
 using Common.Shared.Min.Helpers;
 using SavestateFormat.Snes9x.Extensions;
@@ -26,11 +28,17 @@ namespace SramComparer.Services
 	{
 		private const string BackupFileExtension = ".backup";
 
-		private IConsolePrinter ConsolePrinter { get; }
+		protected IConsolePrinter ConsolePrinter { get; }
+
+		#region Ctors
 
 		public CommandHandler() : this(ServiceCollection.ConsolePrinter) {}
 		/// <param name="consolePrinter">A specific console printer instance</param>
 		public CommandHandler(IConsolePrinter consolePrinter) => ConsolePrinter = consolePrinter;
+
+		#endregion Ctors
+
+		#region Command Handling
 
 		/// <summary>Runs a specific command</summary>
 		/// <param name="command">The command to be run</param>
@@ -151,6 +159,14 @@ namespace SramComparer.Services
 					SetComparionResultLanguage(options);
 
 					break;
+				case Commands.LoadConfig:
+					LoadConfig(options);
+
+					break;
+				case Commands.SaveConfig:
+					SaveConfig(options);
+
+					break;
 				case Commands.Clear:
 					Console.Clear();
 					break;
@@ -166,67 +182,9 @@ namespace SramComparer.Services
 			return true;
 		}
 
-		private void SetUILanguage(IOptions options)
-		{
-			ConsolePrinter.PrintSectionHeader();
-			ConsolePrinter.PrintLine(Resources.SetUILanguage);
+		#endregion Command Handling
 
-			var cultureId = Console.ReadLine()!;
-			if (cultureId == string.Empty)
-			{
-				options.UILanguage = null;
-				RestoreCulture(null);
-				ConsolePrinter.PrintConfig(options);
-				return;
-			}
-
-			CultureInfo culture;
-
-			try
-			{
-				culture = CultureInfo.GetCultureInfo(cultureId);
-			}
-			catch (Exception ex)
-			{
-				ConsolePrinter.PrintError(ex);
-				return;
-			}
-
-			options.UILanguage = culture.Name;
-			CultureInfo.CurrentUICulture = culture;
-
-			ConsolePrinter.PrintConfig(options);
-		}
-
-		private void SetComparionResultLanguage(IOptions options)
-		{
-			ConsolePrinter.PrintSectionHeader();
-			ConsolePrinter.PrintLine(Resources.SetComparionResultLanguage);
-
-			var cultureId = Console.ReadLine()!;
-			if (cultureId == string.Empty)
-			{
-				options.ComparisonResultLanguage = null;
-				ConsolePrinter.PrintConfig(options);
-				return;
-			}
-
-			CultureInfo culture;
-
-			try
-			{
-				culture = CultureInfo.GetCultureInfo(cultureId);
-			}
-			catch (Exception ex)
-			{
-				ConsolePrinter.PrintError(ex);
-				return;
-			}
-
-			options.ComparisonResultLanguage = culture.Name;
-
-			ConsolePrinter.PrintConfig(options);
-		}
+		#region Compare SRAM
 
 		/// <inheritdoc cref="ICommandHandler{TSramFile,TSaveSlot}.Compare{TComparer}(IOptions)"/>
 		public virtual void Compare<TComparer>(IOptions options)
@@ -294,32 +252,6 @@ namespace SramComparer.Services
 			}
 		}
 
-		private void TrySetCulture(string culture)
-		{
-			try
-			{
-				CultureInfo.CurrentUICulture = CultureInfo.GetCultureInfo(culture);
-			}
-			catch (Exception ex)
-			{
-				ConsolePrinter.PrintError(ex.Message);
-				ConsolePrinter.PrintSectionHeader();
-			}
-		}
-
-		private void RestoreCulture(string? culture)
-		{
-			try
-			{
-				CultureInfo.CurrentUICulture = culture is null ? CultureInfo.InstalledUICulture : CultureInfo.GetCultureInfo(culture);
-			}
-			catch (Exception ex)
-			{
-				ConsolePrinter.PrintError(ex.Message);
-				ConsolePrinter.PrintSectionHeader();
-			}
-		}
-
 		protected virtual bool ConvertStreamIfSaveState(ref Stream stream, string? filePath, string? saveStateType)
 		{
 			if (filePath is null) return false;
@@ -340,7 +272,11 @@ namespace SramComparer.Services
 			return true;
 		}
 
-		/// <inheritdoc cref="ICommandHandler{TSramFile,TSaveSlot}.ExportComparisonResult{TComparer}"/>
+		#endregion Compare SRAM
+
+		#region Export comparison Result
+
+		/// <inheritdoc cref="ICommandHandler{TSramFile,TSaveSlot}.ExportComparisonResult{TComparer}(IOptions)"/>
 		public virtual string ExportComparisonResult<TComparer>(IOptions options)
 			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new()
 		{
@@ -383,7 +319,7 @@ namespace SramComparer.Services
 				ExploreFile(filePath);
 		}
 
-		/// <inheritdoc cref="ICommandHandler{TSramFile,TSaveSlot}.ExportComparisonResult{TComparer}(SramComparer.IOptions,string)"/>
+		/// <inheritdoc cref="ICommandHandler{TSramFile,TSaveSlot}.ExportComparisonResult{TComparer}(IOptions,string)"/>
 		public virtual void ExportComparisonResult<TComparer>(IOptions options, string filePath)
 			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new()
 		{
@@ -418,88 +354,9 @@ namespace SramComparer.Services
 			Process.Start("explorer.exe", $"/select,\"{filePath}\"");
 		}
 
-		public virtual void SaveOffsetValue(IOptions options)
-		{
-			Requires.FileExists(options.CurrenFilePath, nameof(options.CurrenFilePath));
-			
-			var offset = GetOffset(out var slotIndex);
-			if (offset == 0)
-			{
-				ConsolePrinter.PrintError(Resources.ErrorOperationAborted);
-				return;
-			}
+		#endregion Export comparison Result
 
-			var value = GetGameOffsetValue();
-			var bytes = value switch
-			{
-				< 256 => new [] { (byte)value },
-				< 256 * 256 => BitConverter.GetBytes((ushort)value),
-				_ => BitConverter.GetBytes(value),
-			};
-
-			var promptResult = InternalGetStringValue(Resources.PromtCreateNewFileInsteadOfOverwriting);
-			var createNewFile = promptResult switch
-			{
-				"1" => true,
-				"2" => false,
-				_ => throw new OperationCanceledException(),
-			};
-			
-			var saveFilePath = options.CurrenFilePath!;
-			if (createNewFile)
-				saveFilePath += ".manipulated";
-
-			using var currStream = new FileStream(options.CurrenFilePath!, FileMode.Open, FileAccess.Read);
-			var currFile = ClassFactory.Create<TSramFile>(currStream, options.GameRegion);
-
-			currFile.SetOffsetBytes(slotIndex, offset, bytes);
-			currFile.RawSave(saveFilePath);
-
-			ConsolePrinter.PrintColoredLine(ConsoleColor.Green, Resources.StatusSetOffsetValueTemplate.InsertArgs(value, offset));
-			var fileName = Path.GetFileName(saveFilePath);
-			ConsolePrinter.PrintColoredLine(ConsoleColor.Green, createNewFile 
-				? Resources.StatusModifiedFileHasBeenSavedAsTemplate.InsertArgs(fileName)
-				: Resources.StatusModifiedFileHasBeenOverwrittenTemplate.InsertArgs(fileName));
-			ConsolePrinter.ResetColor();
-		}
-
-		public virtual void PrintOffsetValue(IOptions options)
-		{
-			Requires.FileExists(options.CurrenFilePath, nameof(options.CurrenFilePath));
-
-			using var currStream = new FileStream(options.CurrenFilePath!, FileMode.Open, FileAccess.Read);
-			var currFile = ClassFactory.Create<TSramFile>(currStream, options.GameRegion);
-
-			var offset = GetOffset(out var slotIndex);
-			if (offset == 0)
-			{
-				ConsolePrinter.PrintError(Resources.ErrorOperationAborted);
-				return;
-			}
-			
-			var byteValue = currFile.GetOffsetByte(slotIndex, offset);
-
-			var valueDisplayText = NumberFormatter.GetByteValueRepresentations(byteValue);
-
-			ConsolePrinter.PrintColoredLine(ConsoleColor.Green, Resources.StatusGetOffsetValueTemplate.InsertArgs(offset, valueDisplayText));
-			ConsolePrinter.ResetColor();
-		}
-
-		private int GetOffset(out int slotIndex)
-		{
-			var promptResult = InternalGetStringValue(Resources.SetSingleSaveSlotMaxTemplate.InsertArgs(4),
-				Resources.StatusSetSingleSaveSlotMaxTemplate);
-			if (!int.TryParse(promptResult, out var saveSlotId) || saveSlotId > 4)
-			{
-				ConsolePrinter.PrintError(Resources.ErrorInvalidIndex);
-				slotIndex = -1;
-				return 0;
-			}
-
-			slotIndex = saveSlotId - 1;
-
-			return GetGameOffset(slotIndex);
-		}
+		#region Transfer Save File
 
 		public virtual void TransferSramToOtherGameFile(IOptions options)
 		{
@@ -552,6 +409,10 @@ namespace SramComparer.Services
 			}
 		}
 
+		#endregion Transfer Save File
+
+		#region InvertIncludeFlag
+
 		public Enum InvertIncludeFlag(in Enum flags, in Enum flag)
 		{
 			var enumType = flags.GetType();
@@ -564,8 +425,79 @@ namespace SramComparer.Services
 			return flagsCopy;
 		}
 
-		public int GetGameOffset(int slotIndex) => (int)InternalGetValue(Resources.GetSaveSlotOffsetTemplate.InsertArgs(slotIndex + 1), Resources.StatusOffsetWillBeUsedTemplate);
-		public uint GetGameOffsetValue() => InternalGetValue(Resources.GetSaveSlotOffsetValue, Resources.StatusOffsetValueWillBeUsedTemplate);
+		#endregion InvertIncludeFlag
+
+		#region Get / Set Offset Value
+
+		public virtual void PrintOffsetValue(IOptions options)
+		{
+			Requires.FileExists(options.CurrenFilePath, nameof(options.CurrenFilePath));
+
+			using var currStream = new FileStream(options.CurrenFilePath!, FileMode.Open, FileAccess.Read);
+			var currFile = ClassFactory.Create<TSramFile>(currStream, options.GameRegion);
+
+			var offset = GetOffset(out var slotIndex);
+			if (offset == 0)
+			{
+				ConsolePrinter.PrintError(Resources.ErrorOperationAborted);
+				return;
+			}
+
+			var byteValue = currFile.GetOffsetByte(slotIndex, offset);
+
+			var valueDisplayText = NumberFormatter.GetByteValueRepresentations(byteValue);
+
+			ConsolePrinter.PrintColoredLine(ConsoleColor.Green, Resources.StatusGetOffsetValueTemplate.InsertArgs(offset, valueDisplayText));
+			ConsolePrinter.ResetColor();
+		}
+
+		public virtual void SaveOffsetValue(IOptions options)
+		{
+			Requires.FileExists(options.CurrenFilePath, nameof(options.CurrenFilePath));
+
+			var offset = GetOffset(out var slotIndex);
+			if (offset == 0)
+			{
+				ConsolePrinter.PrintError(Resources.ErrorOperationAborted);
+				return;
+			}
+
+			var value = GetGameOffsetValue();
+			var bytes = value switch
+			{
+				< 256 => new[] { (byte)value },
+				< 256 * 256 => BitConverter.GetBytes((ushort)value),
+				_ => BitConverter.GetBytes(value),
+			};
+
+			var promptResult = InternalGetStringValue(Resources.PromtCreateNewFileInsteadOfOverwriting);
+			var createNewFile = promptResult switch
+			{
+				"1" => true,
+				"2" => false,
+				_ => throw new OperationCanceledException(),
+			};
+
+			var saveFilePath = options.CurrenFilePath!;
+			if (createNewFile)
+				saveFilePath += ".manipulated";
+
+			using var currStream = new FileStream(options.CurrenFilePath!, FileMode.Open, FileAccess.Read);
+			var currFile = ClassFactory.Create<TSramFile>(currStream, options.GameRegion);
+
+			currFile.SetOffsetBytes(slotIndex, offset, bytes);
+			currFile.RawSave(saveFilePath);
+
+			ConsolePrinter.PrintColoredLine(ConsoleColor.Green, Resources.StatusSetOffsetValueTemplate.InsertArgs(value, offset));
+			var fileName = Path.GetFileName(saveFilePath);
+			ConsolePrinter.PrintColoredLine(ConsoleColor.Green, createNewFile
+				? Resources.StatusModifiedFileHasBeenSavedAsTemplate.InsertArgs(fileName)
+				: Resources.StatusModifiedFileHasBeenOverwrittenTemplate.InsertArgs(fileName));
+			ConsolePrinter.ResetColor();
+		}
+
+		private int GetGameOffset(int slotIndex) => (int)InternalGetValue(Resources.GetSaveSlotOffsetTemplate.InsertArgs(slotIndex + 1), Resources.StatusOffsetWillBeUsedTemplate);
+		private uint GetGameOffsetValue() => InternalGetValue(Resources.GetSaveSlotOffsetValue, Resources.StatusOffsetValueWillBeUsedTemplate);
 
 		private string InternalGetStringValue(string prompt, string? promptResultTemplate = null)
 		{
@@ -578,7 +510,6 @@ namespace SramComparer.Services
 			if (promptResultTemplate is not null)
 			{
 				ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, promptResultTemplate.InsertArgs(input));
-
 				ConsolePrinter.PrintParagraph();
 			}
 
@@ -603,6 +534,26 @@ namespace SramComparer.Services
 			return offset;
 		}
 
+		private int GetOffset(out int slotIndex)
+		{
+			var promptResult = InternalGetStringValue(Resources.SetSingleSaveSlotMaxTemplate.InsertArgs(4),
+				Resources.StatusSetSingleSaveSlotMaxTemplate);
+			if (!int.TryParse(promptResult, out var saveSlotId) || saveSlotId > 4)
+			{
+				ConsolePrinter.PrintError(Resources.ErrorInvalidIndex);
+				slotIndex = -1;
+				return 0;
+			}
+
+			slotIndex = saveSlotId - 1;
+
+			return GetGameOffset(slotIndex);
+		}
+
+		#endregion Get / Set Offset Value
+
+		#region GetSaveSlotId
+
 		public virtual int GetSaveSlotId(int maxSaveSlotId)
 		{
 			ConsolePrinter.PrintSectionHeader();
@@ -623,6 +574,10 @@ namespace SramComparer.Services
 			return saveSlotId;
 		}
 
+		#endregion GetSaveSlotId
+
+		#region Overwrite Comparison file
+
 		public virtual void OverwriteComparisonFileWithCurrentFile(IOptions options)
 		{
 			ConsolePrinter.PrintSectionHeader();
@@ -632,6 +587,10 @@ namespace SramComparer.Services
 			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusCurrentFileHasBeenSaved);
 			ConsolePrinter.ResetColor();
 		}
+
+		#endregion Overwrite Comparison file
+
+		#region Backup / Restore
 
 		public virtual void BackupSaveFile(IOptions options, SaveFileKind fileKind, bool restore = false)
 		{
@@ -654,5 +613,125 @@ namespace SramComparer.Services
 
 			ConsolePrinter.ResetColor();
 		}
+
+		#endregion Backup / Restore
+
+		#region Language
+
+		private void SetUILanguage(IOptions options)
+		{
+			ConsolePrinter.PrintSectionHeader();
+			ConsolePrinter.PrintLine(Resources.SetUILanguage);
+
+			var cultureId = Console.ReadLine()!;
+			if (cultureId == string.Empty)
+			{
+				options.UILanguage = null;
+				RestoreCulture(null);
+				ConsolePrinter.PrintConfig(options);
+				return;
+			}
+
+			CultureInfo culture;
+
+			try
+			{
+				culture = CultureInfo.GetCultureInfo(cultureId);
+			}
+			catch (Exception ex)
+			{
+				ConsolePrinter.PrintError(ex);
+				return;
+			}
+
+			options.UILanguage = culture.Name;
+			CultureInfo.CurrentUICulture = culture;
+
+			ConsolePrinter.PrintConfig(options);
+		}
+
+		private void SetComparionResultLanguage(IOptions options)
+		{
+			ConsolePrinter.PrintSectionHeader();
+			ConsolePrinter.PrintLine(Resources.SetComparionResultLanguage);
+
+			var cultureId = Console.ReadLine()!;
+			if (cultureId == string.Empty)
+			{
+				options.ComparisonResultLanguage = null;
+				ConsolePrinter.PrintConfig(options);
+				return;
+			}
+
+			CultureInfo culture;
+
+			try
+			{
+				culture = CultureInfo.GetCultureInfo(cultureId);
+			}
+			catch (Exception ex)
+			{
+				ConsolePrinter.PrintError(ex);
+				return;
+			}
+
+			options.ComparisonResultLanguage = culture.Name;
+
+			ConsolePrinter.PrintConfig(options);
+		}
+
+		private void TrySetCulture(string culture)
+		{
+			try
+			{
+				CultureInfo.CurrentUICulture = CultureInfo.GetCultureInfo(culture);
+			}
+			catch (Exception ex)
+			{
+				ConsolePrinter.PrintError(ex.Message);
+				ConsolePrinter.PrintSectionHeader();
+			}
+		}
+
+		private void RestoreCulture(string? culture)
+		{
+			try
+			{
+				CultureInfo.CurrentUICulture = culture is null ? CultureInfo.InstalledUICulture : CultureInfo.GetCultureInfo(culture);
+			}
+			catch (Exception ex)
+			{
+				ConsolePrinter.PrintError(ex.Message);
+				ConsolePrinter.PrintSectionHeader();
+			}
+		}
+
+		#endregion Language
+
+		#region Config
+
+		protected virtual void SaveConfig(IOptions options)
+		{
+			var jsonOptions = new JsonSerializerOptions { Converters = { new JsonStringEnumConverter() }, WriteIndented = true };
+
+			var json = JsonSerializer.Serialize(options, jsonOptions);
+			var filePath = GetConfigFilePath(options.ConfigFilePath);
+			File.WriteAllText(filePath, json);
+
+			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusConfigFileHasBeenSavedTemplate.InsertArgs(filePath));
+		}
+
+		protected virtual void LoadConfig(IOptions options) => throw new NotImplementedException();
+
+		protected virtual string GetConfigFilePath(string? configFilePath)
+		{
+			var configDirectory = Path.GetDirectoryName(configFilePath);
+			var fileName = Path.GetFileName(configFilePath) ?? "Config.json";
+			configDirectory ??= Path.GetDirectoryName(Environment.CurrentDirectory);
+
+			return Path.Join(configDirectory, fileName);
+		}
+
+		#endregion Config
 	}
 }

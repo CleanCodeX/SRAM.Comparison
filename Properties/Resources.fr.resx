@@ -35,7 +35,7 @@
 	<data name="CmdGroupSetsSaveSlot" xml:space="preserve">
 		<value>Choisir la partie</value>
 	</data>
-	<data name="CmdMisc" xml:space="preserve">
+	<data name="CmdGroupMisc" xml:space="preserve">
 		<value>Autres</value><comment>Possible retranslation neede. was: Autres</comment>
 	</data>
 	<data name="CommandBackupComparisonFile" xml:space="preserve">
@@ -354,7 +354,7 @@
 	<data name="CommandComparisonResultLanguage" xml:space="preserve">
 		<value>Définir la langue des résultats de comparaison</value>
 	</data>
-	<data name="CmdLanguage" xml:space="preserve">
+	<data name="CmdGroupLanguage" xml:space="preserve">
 		<value>Langue</value>
 	</data>
 	<data name="SetUILanguage" xml:space="preserve">
@@ -368,5 +368,20 @@
 	</data>
 	<data name="CommandGuideSavestate" xml:space="preserve">
 		<value>Manuel (srm)</value>
+	</data>
+	<data name="CommandLoadConfig" xml:space="preserve">
+		<value>Charger la configuration</value>
+	</data>
+	<data name="CommandSaveConfig" xml:space="preserve">
+		<value>Enregistrer la configuration</value>
+	</data>
+	<data name="ConfigFilePath" xml:space="preserve">
+		<value>Chemin du fichier de configuration</value>
+	</data>
+	<data name="CmdGroupConfig" xml:space="preserve">
+		<value>Config</value>
+	</data>
+	<data name="StatusConfigFileHasBeenSavedTemplate" xml:space="preserve">
+		<value>Le fichier de configuration [{0}] a été enregistré.</value>
 	</data>
 </root>

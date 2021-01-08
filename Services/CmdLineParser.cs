@@ -7,6 +7,7 @@ using System.Linq;
 using Common.Shared.Min.Extensions;
 using SramComparer.Extensions;
 using SramComparer.Properties;
+// ReSharper disable StaticMemberInGenericType
 
 namespace SramComparer.Services
 {
@@ -21,7 +22,7 @@ namespace SramComparer.Services
 		where TRomRegion : struct, Enum
 		where TComparisonFlags : struct, Enum
 	{
-		private static readonly string[] AllowedFileExtensions = new[] { ".srm", ".comp", ".state", ".000", ".001", ".002", ".003", ".004", ".005", ".006", ".007", ".008", ".009" };
+		private static readonly string[] AllowedFileExtensions = { ".srm", ".comp", ".state", ".000", ".001", ".002", ".003", ".004", ".005", ".006", ".007", ".008", ".009" };
 
 		/// <summary>
 		/// Parses a list of string arguments into an <see cref="IOptions"/> instance

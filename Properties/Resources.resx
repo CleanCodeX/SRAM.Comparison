@@ -381,7 +381,7 @@
   <data name="CmdGroupSetsSaveSlot" xml:space="preserve">
     <value>Set save slot</value>
   </data>
-  <data name="CmdMisc" xml:space="preserve">
+  <data name="CmdGroupMisc" xml:space="preserve">
     <value>Miscellaneous</value>
   </data>
   <data name="CmdGroupDisplay" xml:space="preserve">
@@ -444,7 +444,7 @@
   <data name="CommandComparisonResultLanguage" xml:space="preserve">
     <value>Set comparison result language</value>
   </data>
-  <data name="CmdLanguage" xml:space="preserve">
+  <data name="CmdGroupLanguage" xml:space="preserve">
     <value>Language</value>
   </data>
   <data name="SetUILanguage" xml:space="preserve">
@@ -461,5 +461,20 @@
   </data>
   <data name="CommandGuideSavestate" xml:space="preserve">
     <value>Guide (savestate)</value>
+  </data>
+  <data name="CommandLoadConfig" xml:space="preserve">
+    <value>Load config</value>
+  </data>
+  <data name="CommandSaveConfig" xml:space="preserve">
+    <value>Save config</value>
+  </data>
+  <data name="ConfigFilePath" xml:space="preserve">
+    <value>Config file path</value>
+  </data>
+  <data name="CmdGroupConfig" xml:space="preserve">
+    <value>Config</value>
+  </data>
+  <data name="StatusConfigFileHasBeenSavedTemplate" xml:space="preserve">
+    <value>Config file [{0}] has been saved.</value>
   </data>
 </root>
