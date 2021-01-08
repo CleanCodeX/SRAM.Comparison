@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Text.Json.Serialization;
+using Common.Shared.Min.Attributes;
 using SramComparer.Helpers;
+using SramComparer.Properties;
 
 namespace SramComparer
 {
@@ -12,6 +14,7 @@ namespace SramComparer
 
 		/// <summary>Optional region of SRAM file. If Empty, EnglishNtsc is used.</summary>
 		[JsonConverter(typeof(EnumTextConverter))]
+		[DisplayNameLocalized(nameof(Resources.EnumGameRegion), typeof(Resources))]
 		Enum GameRegion { get; }
 
 		/// <summary>The filepath to load the current SRAM file from</summary>

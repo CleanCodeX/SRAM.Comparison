@@ -502,15 +502,6 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Game region ähnelt.
-        /// </summary>
-        public static string ConfigGameRegion {
-            get {
-                return ResourceManager.GetString("ConfigGameRegion", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Current ähnelt.
         /// </summary>
         public static string Current {
@@ -561,6 +552,15 @@ namespace SramComparer.Properties {
         public static string EnumCurrentFile {
             get {
                 return ResourceManager.GetString("EnumCurrentFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Game region ähnelt.
+        /// </summary>
+        public static string EnumGameRegion {
+            get {
+                return ResourceManager.GetString("EnumGameRegion", resourceCulture);
             }
         }
         

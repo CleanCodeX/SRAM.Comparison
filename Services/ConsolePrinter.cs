@@ -24,7 +24,7 @@ namespace SramComparer.Services
 			PrintConfigName(Res.ConfigComparisonFilePath, "{1-2}|" + CmdOptions.ComparisonFile);
 			PrintValue(Path.GetFileName(FileNameHelper.GetComparisonFilePath(options)));
 
-			PrintConfigName(Res.ConfigGameRegion, $"{"{1-2}|" + CmdOptions.GameRegion} [{string.Join("|", Enum.GetNames(options.GameRegion.GetType()))}]");
+			PrintConfigName(Res.EnumGameRegion, $"{"{1-2}|" + CmdOptions.GameRegion} [{string.Join("|", Enum.GetNames(options.GameRegion.GetType()))}]");
 			PrintValue(options.GameRegion.ToString());
 
 			PrintConfigName(Res.ConfigExportDirectory, CmdOptions.ExportDirectory);

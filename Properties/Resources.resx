@@ -132,7 +132,7 @@
   <data name="ConfigComparisonFileSaveSlot" xml:space="preserve">
     <value>Save slot (Comparison file)</value>
   </data>
-  <data name="ConfigGameRegion" xml:space="preserve">
+  <data name="EnumGameRegion" xml:space="preserve">
     <value>Game region</value>
   </data>
   <data name="ConfigColorizeOutput" xml:space="preserve">

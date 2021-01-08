@@ -221,7 +221,7 @@
 	<data name="ConfigExportDirectory" xml:space="preserve">
 		<value>Exporter le répertoire</value>
 	</data>
-	<data name="ConfigGameRegion" xml:space="preserve">
+	<data name="EnumGameRegion" xml:space="preserve">
 		<value>Région du jeu</value>
 		<comment>Région du jeu</comment>
 	</data>

@@ -243,7 +243,7 @@
 	<data name="ConfigComparisonFileSaveSlot" xml:space="preserve">
 		<value>Speicherslot (Vergleichsdatei)</value>
 	</data>
-	<data name="ConfigGameRegion" xml:space="preserve">
+	<data name="EnumGameRegion" xml:space="preserve">
 		<value>Spiel-Region</value>
 	</data>
 	<data name="Config" xml:space="preserve">

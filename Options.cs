@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Text.Json.Serialization;
+using Common.Shared.Min.Attributes;
+using SramComparer.Properties;
 
 namespace SramComparer
 {
@@ -14,6 +16,7 @@ namespace SramComparer
 		public string? ComparisonFilePath { get; set; }
 		public string? ExportDirectory { get; set; }
 
+		[DisplayNameLocalized(nameof(Resources.EnumGameRegion), typeof(Resources))]
 		[JsonConverter(typeof(JsonStringEnumConverter))]
 		public TGameRegion GameRegion { get; set; }
 		public int CurrentFileSaveSlot { get; set; }
