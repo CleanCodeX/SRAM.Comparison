@@ -33,13 +33,13 @@ namespace SramComparer.Services
 			if (args.Count == 0) return new TOptions();
 
 			const string compFileExtension = ".comp";
-			var currentSramFilepath = args[0];
-			var options = new TOptions { CurrentSramFilePath = currentSramFilepath };
+			var currentFilePath = args[0];
+			var options = new TOptions { CurrenFilePath = currentFilePath };
 
-			if (currentSramFilepath.IsNullOrEmpty())
-				throw new ArgumentException(Resources.ErrorMissingPathArguments, nameof(options.CurrentSramFilePath));
+			if (currentFilePath.IsNullOrEmpty())
+				throw new ArgumentException(Resources.ErrorMissingPathArguments, nameof(options.CurrenFilePath));
 
-			options.ExportDirectory = Path.GetDirectoryName(options.CurrentSramFilePath);
+			options.ExportDirectory = Path.GetDirectoryName(options.CurrenFilePath);
 
 			var namelessParamCount = 1;
 			// Check nameless params
@@ -57,17 +57,17 @@ namespace SramComparer.Services
 				{
 					EnsureFullQualifiedPath(ref value);
 		
-					options.ComparisonSramFilePath = value;
+					options.ComparisonFilePath = value;
 					++namelessParamCount;
 				}
 			}
 
 #if Check_FileExtensions
-			if (!AllowedFileExtensions.Contains(Path.GetExtension(currentSramFilepath).ToLower()))
-				throw new ArgumentException(Resources.ErrorInvalidFileExtensionTemplate.InsertArgs(Resources.Current, options.CurrentSramFilePath, AllowedFileExtensions.Join()));
+			if (!AllowedFileExtensions.Contains(Path.GetExtension(currentFilePath).ToLower()))
+				throw new ArgumentException(Resources.ErrorInvalidFileExtensionTemplate.InsertArgs(Resources.Current, options.CurrenFilePath, AllowedFileExtensions.Join()));
 #endif
 
-			options.ComparisonSramFilePath ??= currentSramFilepath + compFileExtension;
+			options.ComparisonFilePath ??= currentFilePath + compFileExtension;
 			
 			for (var i = namelessParamCount; i < args.Count; i += 2)
 			{
@@ -86,16 +86,16 @@ namespace SramComparer.Services
 					case CmdOptions.ComparisonFile:
 						EnsureFullQualifiedPath(ref value);
 
-						options.ComparisonSramFilePath = value;
+						options.ComparisonFilePath = value;
 						break;
 					case CmdOptions.ExportDirectory:
 						options.ExportDirectory = value;
 						break;
 					case CmdOptions.CurrentSaveSlot:
-						options.CurrentSramFileSaveSlot = value.ParseSaveSlotId();
+						options.CurrentFileSaveSlot = value.ParseSaveSlotId();
 						break;
 					case CmdOptions.ComparisonSaveSlot:
-						options.ComparisonSramFileSaveSlot = value.ParseSaveSlotId();
+						options.ComparisonFileSaveSlot = value.ParseSaveSlotId();
 						break;
 					case CmdOptions.GameRegion:
 						options.GameRegion = value.ParseEnum<TRomRegion>();
@@ -118,12 +118,12 @@ namespace SramComparer.Services
 				}
 			}
 
-			if (options.ComparisonSramFilePath.IsNullOrEmpty())
-				throw new ArgumentException(Resources.ErrorMissingPathArguments, nameof(options.ComparisonSramFilePath));
+			if (options.ComparisonFilePath.IsNullOrEmpty())
+				throw new ArgumentException(Resources.ErrorMissingPathArguments, nameof(options.ComparisonFilePath));
 
 #if Check_FileExtensions
-			if (!AllowedFileExtensions.Contains(Path.GetExtension(options.ComparisonSramFilePath).ToLower()))
-				throw new ArgumentException(Resources.ErrorInvalidFileExtensionTemplate.InsertArgs(Resources.Comparison,  options.ComparisonSramFilePath, AllowedFileExtensions.Join()));
+			if (!AllowedFileExtensions.Contains(Path.GetExtension(options.ComparisonFilePath).ToLower()))
+				throw new ArgumentException(Resources.ErrorInvalidFileExtensionTemplate.InsertArgs(Resources.Comparison,  options.ComparisonFilePath, AllowedFileExtensions.Join()));
 #endif
 
 			return options;
@@ -131,7 +131,7 @@ namespace SramComparer.Services
 			void EnsureFullQualifiedPath(ref string value)
 			{
 				if (Path.GetDirectoryName(value) == string.Empty)
-					value = Path.Join(Path.GetDirectoryName(options.CurrentSramFilePath), value);
+					value = Path.Join(Path.GetDirectoryName(options.CurrenFilePath), value);
 			}
 		}
 	}

@@ -2,12 +2,12 @@
 
 namespace SramComparer.Helpers
 {
-	public static class FilenameHelper
+	public static class FileNameHelper
 	{
-		public static string GenerateExportFilename(string srmFilename)
+		public static string GenerateExportSaveFileName(string fileName)
 		{
 			var normalizedTimestamp = DateTime.Now.ToString("s").Replace(":", "_");
-			return $"{srmFilename} # {normalizedTimestamp}.txt";
+			return $"{fileName} # {normalizedTimestamp}.txt";
 		}
 	}
 }

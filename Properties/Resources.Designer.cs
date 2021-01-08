@@ -171,18 +171,18 @@ namespace SramComparer.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Back-up comparison-file ähnelt.
         /// </summary>
-        public static string CommandBackupComparisonSramFile {
+        public static string CommandBackupComparisonFile {
             get {
-                return ResourceManager.GetString("CommandBackupComparisonSramFile", resourceCulture);
+                return ResourceManager.GetString("CommandBackupComparisonFile", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Back-up current-file ähnelt.
         /// </summary>
-        public static string CommandBackupCurrentSramFile {
+        public static string CommandBackupCurrentFile {
             get {
-                return ResourceManager.GetString("CommandBackupCurrentSramFile", resourceCulture);
+                return ResourceManager.GetString("CommandBackupCurrentFile", resourceCulture);
             }
         }
         
@@ -279,9 +279,9 @@ namespace SramComparer.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Overwrite (or create) comparison file with current-file ähnelt.
         /// </summary>
-        public static string CommandOverwriteComparisonSramFile {
+        public static string CommandOverwriteComparisonFile {
             get {
-                return ResourceManager.GetString("CommandOverwriteComparisonSramFile", resourceCulture);
+                return ResourceManager.GetString("CommandOverwriteComparisonFile", resourceCulture);
             }
         }
         
@@ -297,36 +297,36 @@ namespace SramComparer.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Restore comparison-file from backup ähnelt.
         /// </summary>
-        public static string CommandRestoreComparisonSramFile {
+        public static string CommandRestoreComparisonFile {
             get {
-                return ResourceManager.GetString("CommandRestoreComparisonSramFile", resourceCulture);
+                return ResourceManager.GetString("CommandRestoreComparisonFile", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Restore current-file from backup ähnelt.
         /// </summary>
-        public static string CommandRestoreCurrentSramFile {
+        public static string CommandRestoreCurrentFile {
             get {
-                return ResourceManager.GetString("CommandRestoreCurrentSramFile", resourceCulture);
+                return ResourceManager.GetString("CommandRestoreCurrentFile", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Save current-file with other game file&apos;s name ähnelt.
         /// </summary>
-        public static string CommandSaveCurrentSramFileAsOtherFileName {
+        public static string CommandSaveCurrentFileAsOtherFileName {
             get {
-                return ResourceManager.GetString("CommandSaveCurrentSramFileAsOtherFileName", resourceCulture);
+                return ResourceManager.GetString("CommandSaveCurrentFileAsOtherFileName", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Set comparison file&apos;s save slot ähnelt.
         /// </summary>
-        public static string CommandSetComparisonSramFileSaveSlot {
+        public static string CommandSetComparisonFileSaveSlot {
             get {
-                return ResourceManager.GetString("CommandSetComparisonSramFileSaveSlot", resourceCulture);
+                return ResourceManager.GetString("CommandSetComparisonFileSaveSlot", resourceCulture);
             }
         }
         
@@ -376,6 +376,33 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Comparison file ähnelt.
+        /// </summary>
+        public static string ComparisonFile {
+            get {
+                return ResourceManager.GetString("ComparisonFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Comparison filepath ähnelt.
+        /// </summary>
+        public static string ComparisonFilepath {
+            get {
+                return ResourceManager.GetString("ComparisonFilepath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Save slot (Comparison file) ähnelt.
+        /// </summary>
+        public static string ComparisonFileSaveSlot {
+            get {
+                return ResourceManager.GetString("ComparisonFileSaveSlot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Comparison flags ähnelt.
         /// </summary>
         public static string ComparisonFlags {
@@ -403,33 +430,6 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Comparison file ähnelt.
-        /// </summary>
-        public static string ComparisonSramFile {
-            get {
-                return ResourceManager.GetString("ComparisonSramFile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Comparison filepath ähnelt.
-        /// </summary>
-        public static string ComparisonSramFilepath {
-            get {
-                return ResourceManager.GetString("ComparisonSramFilepath", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Save slot (Comparison file) ähnelt.
-        /// </summary>
-        public static string ComparisonSramFileSaveSlot {
-            get {
-                return ResourceManager.GetString("ComparisonSramFileSaveSlot", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Current ähnelt.
         /// </summary>
         public static string Current {
@@ -439,38 +439,38 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Curr ähnelt.
-        /// </summary>
-        public static string CurrentShort {
-            get {
-                return ResourceManager.GetString("CurrentShort", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Current file ähnelt.
         /// </summary>
-        public static string CurrentSramFile {
+        public static string CurrentFile {
             get {
-                return ResourceManager.GetString("CurrentSramFile", resourceCulture);
+                return ResourceManager.GetString("CurrentFile", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Current filepath ähnelt.
         /// </summary>
-        public static string CurrentSramFilepath {
+        public static string CurrentFilepath {
             get {
-                return ResourceManager.GetString("CurrentSramFilepath", resourceCulture);
+                return ResourceManager.GetString("CurrentFilepath", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Save slot (current file) ähnelt.
         /// </summary>
-        public static string CurrentSramFileSaveSlot {
+        public static string CurrentFileSaveSlot {
             get {
-                return ResourceManager.GetString("CurrentSramFileSaveSlot", resourceCulture);
+                return ResourceManager.GetString("CurrentFileSaveSlot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Curr ähnelt.
+        /// </summary>
+        public static string CurrentShort {
+            get {
+                return ResourceManager.GetString("CurrentShort", resourceCulture);
             }
         }
         
@@ -486,9 +486,9 @@ namespace SramComparer.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Enter index (0 to {0}) of the file to be overwritten (any other key to cancel): ähnelt.
         /// </summary>
-        public static string EnterIndexOfSramFileToBeOverwrittenMaxIndexTemplate {
+        public static string EnterIndexOfFileToBeOverwrittenMaxIndexTemplate {
             get {
-                return ResourceManager.GetString("EnterIndexOfSramFileToBeOverwrittenMaxIndexTemplate", resourceCulture);
+                return ResourceManager.GetString("EnterIndexOfFileToBeOverwrittenMaxIndexTemplate", resourceCulture);
             }
         }
         
@@ -522,9 +522,9 @@ namespace SramComparer.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Save slot for comparison-file can only be set if current file&apos;s save slot is set first. ähnelt.
         /// </summary>
-        public static string ErrorComparisonSramSaveSlotSetButNotCurrentSramSaveSlot {
+        public static string ErrorComparisonFileSaveSlotSetButNotCurrentFileSaveSlot {
             get {
-                return ResourceManager.GetString("ErrorComparisonSramSaveSlotSetButNotCurrentSramSaveSlot", resourceCulture);
+                return ResourceManager.GetString("ErrorComparisonFileSaveSlotSetButNotCurrentFileSaveSlot", resourceCulture);
             }
         }
         
@@ -702,9 +702,9 @@ namespace SramComparer.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Same as current file&apos;s save slot ähnelt.
         /// </summary>
-        public static string SameAsCurrentSramFileSaveSlot {
+        public static string SameAsCurrentFileSaveSlot {
             get {
-                return ResourceManager.GetString("SameAsCurrentSramFileSaveSlot", resourceCulture);
+                return ResourceManager.GetString("SameAsCurrentFileSaveSlot", resourceCulture);
             }
         }
         
@@ -891,27 +891,36 @@ namespace SramComparer.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die {0} has been backed-up. ähnelt.
         /// </summary>
-        public static string StatusCurrentSramFileHasBeenBackedUpTemplate {
+        public static string StatusCurrentFileHasBeenBackedUpTemplate {
             get {
-                return ResourceManager.GetString("StatusCurrentSramFileHasBeenBackedUpTemplate", resourceCulture);
+                return ResourceManager.GetString("StatusCurrentFileHasBeenBackedUpTemplate", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Current file has been saved as comparison file. ähnelt.
         /// </summary>
-        public static string StatusCurrentSramFileHasBeenSaved {
+        public static string StatusCurrentFileHasBeenSaved {
             get {
-                return ResourceManager.GetString("StatusCurrentSramFileHasBeenSaved", resourceCulture);
+                return ResourceManager.GetString("StatusCurrentFileHasBeenSaved", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Current file has been copied as {0}. ähnelt.
         /// </summary>
-        public static string StatusCurrentSramHasBeenSavedAsFilepathTemplate {
+        public static string StatusCurrentHasBeenSavedAsFilePathTemplate {
             get {
-                return ResourceManager.GetString("StatusCurrentSramHasBeenSavedAsFilepathTemplate", resourceCulture);
+                return ResourceManager.GetString("StatusCurrentHasBeenSavedAsFilePathTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die {0} has been restored from backup. ähnelt.
+        /// </summary>
+        public static string StatusFileHasBeenRestoredFromBackupTemplate {
+            get {
+                return ResourceManager.GetString("StatusFileHasBeenRestoredFromBackupTemplate", resourceCulture);
             }
         }
         
@@ -927,27 +936,27 @@ namespace SramComparer.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Edited current file has been overwritten. File: {0}. ähnelt.
         /// </summary>
-        public static string StatusModifiedSramFileHasBeenOverwrittenFilepathTemplate {
+        public static string StatusModifiedFileHasBeenOverwrittenTemplate {
             get {
-                return ResourceManager.GetString("StatusModifiedSramFileHasBeenOverwrittenFilepathTemplate", resourceCulture);
+                return ResourceManager.GetString("StatusModifiedFileHasBeenOverwrittenTemplate", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Edited current file has been saved as {0}. ähnelt.
         /// </summary>
-        public static string StatusModifiedSramFileHasBeenSavedAsFilepathTemplate {
+        public static string StatusModifiedFileHasBeenSavedAsTemplate {
             get {
-                return ResourceManager.GetString("StatusModifiedSramFileHasBeenSavedAsFilepathTemplate", resourceCulture);
+                return ResourceManager.GetString("StatusModifiedFileHasBeenSavedAsTemplate", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die There are currently no other SRAM files available. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die There are currently no other files with same file extension available. ähnelt.
         /// </summary>
-        public static string StatusNoAvailableOtherSramFiles {
+        public static string StatusNoAvailableOtherFiles {
             get {
-                return ResourceManager.GetString("StatusNoAvailableOtherSramFiles", resourceCulture);
+                return ResourceManager.GetString("StatusNoAvailableOtherFiles", resourceCulture);
             }
         }
         
@@ -1033,20 +1042,11 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die {0} has been restored from backup. ähnelt.
-        /// </summary>
-        public static string StatusSramFileHasBeenRestoredFromBackupTemplate {
-            get {
-                return ResourceManager.GetString("StatusSramFileHasBeenRestoredFromBackupTemplate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Target file has been backed up as {0}. ähnelt.
         /// </summary>
-        public static string StatusTargetSramFileHasBeenBackedUpFilepathTemplate {
+        public static string StatusTargetFileHasBeenBackedUpTemplate {
             get {
-                return ResourceManager.GetString("StatusTargetSramFileHasBeenBackedUpFilepathTemplate", resourceCulture);
+                return ResourceManager.GetString("StatusTargetFileHasBeenBackedUpTemplate", resourceCulture);
             }
         }
         

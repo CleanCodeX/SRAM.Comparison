@@ -12,7 +12,7 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <RepositoryUrl>https://github.com/CleanCodeX/SramComparer</RepositoryUrl>
     <PackageProjectUrl></PackageProjectUrl>
-    <Description>These library provides base functionalities to read and compare changes in srm files with .NET 5. An actual implementation for an individual game is necessary. See other repos.</Description>
+    <Description>These library provides base functionalities to read and compare changes in srm files as well as snes9x savestates  with .NET 5. An actual implementation for an individual game is necessary. See other repos.</Description>
     <PackageReleaseNotes></PackageReleaseNotes>
     <PackageId>CCX.SramComparer</PackageId>
     <Product>SramComparer</Product>

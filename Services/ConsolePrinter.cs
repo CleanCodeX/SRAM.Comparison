@@ -17,11 +17,11 @@ namespace SramComparer.Services
 			PrintSectionHeader();
 			PrintColoredLine(ConsoleColor.Gray, Res.Settings + @":");
 
-			PrintSettingName(Res.CurrentSramFilepath, "{0}");
-			PrintValue(Path.GetFileName(options.CurrentSramFilePath!));
+			PrintSettingName(Res.CurrentFilepath, "{0}");
+			PrintValue(Path.GetFileName(options.CurrenFilePath!));
 
-			PrintSettingName(Res.ComparisonSramFilepath, "{1-2}|" + CmdOptions.ComparisonFile);
-			PrintValue(Path.GetFileName(options.ComparisonSramFilePath!));
+			PrintSettingName(Res.ComparisonFilepath, "{1-2}|" + CmdOptions.ComparisonFile);
+			PrintValue(Path.GetFileName(options.ComparisonFilePath!));
 
 			PrintSettingName(Res.GameRegion, $"{"{1-2}|" + CmdOptions.GameRegion} [{string.Join("|", Enum.GetNames(options.GameRegion.GetType()))}]");
 			PrintValue(options.GameRegion.ToString());
@@ -29,11 +29,11 @@ namespace SramComparer.Services
 			PrintSettingName(Res.ExportDirectory, CmdOptions.ExportDirectory);
 			PrintValue(options.ExportDirectory!);
 
-			PrintSettingName(Res.CurrentSramFileSaveSlot, $"{CmdOptions.CurrentSaveSlot} [1-4|0={Res.All}]");
-			PrintValue(options.CurrentSramFileSaveSlot == 0 ? Res.All : options.CurrentSramFileSaveSlot.ToString());
+			PrintSettingName(Res.CurrentFileSaveSlot, $"{CmdOptions.CurrentSaveSlot} [1-4|0={Res.All}]");
+			PrintValue(options.CurrentFileSaveSlot == 0 ? Res.All : options.CurrentFileSaveSlot.ToString());
 
-			PrintSettingName(Res.ComparisonSramFileSaveSlot, $"{CmdOptions.ComparisonSaveSlot} [1-4|0={Res.All}]");
-			PrintValue(options.ComparisonSramFileSaveSlot == 0 ? Res.SameAsCurrentSramFileSaveSlot : options.ComparisonSramFileSaveSlot.ToString());
+			PrintSettingName(Res.ComparisonFileSaveSlot, $"{CmdOptions.ComparisonSaveSlot} [1-4|0={Res.All}]");
+			PrintValue(options.ComparisonFileSaveSlot == 0 ? Res.SameAsCurrentFileSaveSlot : options.ComparisonFileSaveSlot.ToString());
 
 			PrintSettingName(Res.ColorizeOutput, $"{CmdOptions.ColorizeOutput} [true|1|false|0]");
 			PrintValue(options.ColorizeOutput.ToString());

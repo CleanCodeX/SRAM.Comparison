@@ -1,6 +1,6 @@
 ﻿namespace SramComparer.Enums
 {
-	public enum SramFileKind
+	public enum SaveFileKind
 	{
 		CurrentFile,
 		ComparisonFile

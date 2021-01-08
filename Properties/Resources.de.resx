@@ -11,7 +11,7 @@
 	<resheader name="writer">
 		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, UILanguage=neutral, PublicKeyToken=b77a5c561934e089</value>
 	</resheader>
-	<data name="StatusTargetSramFileHasBeenBackedUpFilepathTemplate" xml:space="preserve">
+	<data name="StatusTargetFileHasBeenBackedUpTemplate" xml:space="preserve">
 		<value>Ziel-Datei wurde gesichert als {0}.</value>
 	</data>
 	<data name="StatusTotalDiffBytesTemplate" xml:space="preserve">
@@ -20,7 +20,7 @@
 	<data name="UnknownAreasOnly" xml:space="preserve">
 		<value>Nur unbekannte Bereiche</value>
 	</data>
-	<data name="StatusSramFileHasBeenRestoredFromBackupTemplate" xml:space="preserve">
+	<data name="StatusFileHasBeenRestoredFromBackupTemplate" xml:space="preserve">
 		<value>{0} wurde aus Sicherung wiederhergestellt.</value>
 	</data>
 	<data name="StatusSramChangedBytesTemplate" xml:space="preserve">
@@ -44,8 +44,8 @@
 	<data name="StatusNonSaveSlotUnknownsBytesTemplate" xml:space="preserve">
 		<value>Unbekannter Nicht-Speicherslot Bereich: {0} Bytes  geändert.</value>
 	</data>
-	<data name="StatusNoAvailableOtherSramFiles" xml:space="preserve">
-		<value>Es sind derzeit keine anderen SRAM-Dateien verfügbar.</value>
+	<data name="StatusNoAvailableOtherFiles" xml:space="preserve">
+		<value>Es sind derzeit keine anderen Dateien mit der selben Dateiendung verfügbar.</value>
 	</data>
 	<data name="StatusGetOffsetValueTemplate" xml:space="preserve">
 		<value>Der Wert bei Offset {0} ist aktuell {1}.</value><comment>The term Offset should only be translated if not understandable</comment>
@@ -80,10 +80,10 @@
 	<data name="CmdMisc" xml:space="preserve">
 		<value>Verschiedenes</value>
 	</data>
-	<data name="CommandBackupComparisonSramFile" xml:space="preserve">
+	<data name="CommandBackupComparisonFile" xml:space="preserve">
 		<value>Vergleichs-Datei sichern</value>
 	</data>
-	<data name="CommandBackupCurrentSramFile" xml:space="preserve">
+	<data name="CommandBackupCurrentFile" xml:space="preserve">
 		<value>Aktuelle Datei sichern</value>
 	</data>
 	<data name="CommandCompareFile" xml:space="preserve">
@@ -110,28 +110,28 @@
 	<data name="CommandGuideSrm" xml:space="preserve">
 		<value>Anleitung (srm)</value>
 	</data>
-	<data name="CommandOverwriteComparisonSramFile" xml:space="preserve">
+	<data name="CommandOverwriteComparisonFile" xml:space="preserve">
 		<value>Überschreibe Vergleichs-Datei mt aktueller Datei</value>
 	</data>
 	<data name="CommandQuit" xml:space="preserve">
 		<value>Beenden</value>
 	</data>
-	<data name="CommandRestoreComparisonSramFile" xml:space="preserve">
+	<data name="CommandRestoreComparisonFile" xml:space="preserve">
 		<value>Vergleichs-Datei aus Sicherung wiederherstellen</value>
 	</data>
-	<data name="CommandRestoreCurrentSramFile" xml:space="preserve">
+	<data name="CommandRestoreCurrentFile" xml:space="preserve">
 		<value>Aktuelle Datei aus Sicherung wiederherstellen</value>
 	</data>
 	<data name="CommandModifyOffsetValue" xml:space="preserve">
 		<value>Offset-Wert ändern und speichern</value><comment>The term Offset should only be translated if not understandable</comment>
 	</data>
-	<data name="CommandSetComparisonSramFileSaveSlot" xml:space="preserve">
+	<data name="CommandSetComparisonFileSaveSlot" xml:space="preserve">
 		<value>Speicherslot für Vergleichs-Datei festlegen</value>
 	</data>
 	<data name="CommandSetCurrentSrramFileSaveSlot" xml:space="preserve">
 		<value>Speicherslot für aktuelle Datei festlegen</value>
 	</data>
-	<data name="CommandSaveCurrentSramFileAsOtherFileName" xml:space="preserve">
+	<data name="CommandSaveCurrentFileAsOtherFileName" xml:space="preserve">
 		<value>Aktuelle Datei unter anderem Spielnamen speichern</value>
 	</data>
 	<data name="CommandWipeOutput" xml:space="preserve">
@@ -150,19 +150,19 @@
 		<value>Akt.</value>
 		<comment>This is an abbreviation and should be kept as short as possible</comment>
 	</data>
-	<data name="CurrentSramFile" xml:space="preserve">
+	<data name="CurrentFile" xml:space="preserve">
 		<value>Aktuelle Datei</value>
 	</data>
 	<data name="Current" xml:space="preserve">
 		<value>Aktuell</value>
 	</data>
-	<data name="ComparisonSramFile" xml:space="preserve">
+	<data name="ComparisonFile" xml:space="preserve">
 		<value>Vergleichs-Datei</value>
 	</data>
 	<data name="EnterCommand" xml:space="preserve">
 		<value>Befehl eingeben und Eingabe drücken</value>
 	</data>
-	<data name="EnterIndexOfSramFileToBeOverwrittenMaxIndexTemplate" xml:space="preserve">
+	<data name="EnterIndexOfFileToBeOverwrittenMaxIndexTemplate" xml:space="preserve">
 		<value>Index (0 bis {0}) der zu überschreibenden Datei eingeben (jede andere Taste um abzubrechen):</value>
 	</data>
 	<data name="ErrorCannotOpenOutputFileTemplate" xml:space="preserve">
@@ -222,7 +222,7 @@
 	<data name="QueuedCommands" xml:space="preserve">
 		<value>Eingereihte Befehle</value>
 	</data>
-	<data name="SameAsCurrentSramFileSaveSlot" xml:space="preserve">
+	<data name="SameAsCurrentFileSaveSlot" xml:space="preserve">
 		<value>Gleicher Slot wie aktuelle Datei</value>
 	</data>
 	<data name="SectionSaveSlotChangedTemplate" xml:space="preserve">
@@ -231,16 +231,16 @@
 	<data name="ExportDirectory" xml:space="preserve">
 		<value>Export-Verzeichnis</value>
 	</data>
-	<data name="CurrentSramFilepath" xml:space="preserve">
+	<data name="CurrentFilepath" xml:space="preserve">
 		<value>Pfad für aktuelle Datei</value>
 	</data>
-	<data name="ComparisonSramFilepath" xml:space="preserve">
+	<data name="ComparisonFilepath" xml:space="preserve">
 		<value>Pfad für Vergleichsdatei</value>
 	</data>
-	<data name="CurrentSramFileSaveSlot" xml:space="preserve">
+	<data name="CurrentFileSaveSlot" xml:space="preserve">
 		<value>Speicherslot (aktuelle Datei)</value>
 	</data>
-	<data name="ComparisonSramFileSaveSlot" xml:space="preserve">
+	<data name="ComparisonFileSaveSlot" xml:space="preserve">
 		<value>Speicherslot (Vergleichsdatei)</value>
 	</data>
 	<data name="GameRegion" xml:space="preserve">
@@ -264,10 +264,10 @@
 	<data name="StatusBytesChangedTemplate" xml:space="preserve">
 		<value>{0} Bytes geändert.</value>
 	</data>
-	<data name="StatusModifiedSramFileHasBeenOverwrittenFilepathTemplate" xml:space="preserve">
+	<data name="StatusModifiedFileHasBeenOverwrittenTemplate" xml:space="preserve">
 		<value>Die geänderte aktuelle Datei wurde überschrieben. Datei: {0}.</value>
 	</data>
-	<data name="StatusModifiedSramFileHasBeenSavedAsFilepathTemplate" xml:space="preserve">
+	<data name="StatusModifiedFileHasBeenSavedAsTemplate" xml:space="preserve">
 		<value>Die geänderte Datei wurde gespeichert als: {0}.</value>
 	</data>
 	<data name="PromtCreateNewFileInsteadOfOverwriting" xml:space="preserve">
@@ -285,16 +285,16 @@
 	<data name="SettingCompareWholeGameBuffer" xml:space="preserve">
 		<value>Vergleiche den gesamten Speicherslot-Bereich</value>
 	</data>
-	<data name="StatusCurrentSramFileHasBeenBackedUpTemplate" xml:space="preserve">
+	<data name="StatusCurrentFileHasBeenBackedUpTemplate" xml:space="preserve">
 		<value>{0} wurde gesichert.</value>
 	</data>
 	<data name="StatusCurrentComparisonExportedFilepathTemplate" xml:space="preserve">
 		<value>Aktueller Vergleich exportiert nach "{0}".</value>
 	</data>
-	<data name="StatusCurrentSramFileHasBeenSaved" xml:space="preserve">
+	<data name="StatusCurrentFileHasBeenSaved" xml:space="preserve">
 		<value>Die aktuelle Datei wurde als Vergleichs-Datei gespeichert.</value>
 	</data>
-	<data name="StatusCurrentSramHasBeenSavedAsFilepathTemplate" xml:space="preserve">
+	<data name="StatusCurrentHasBeenSavedAsFilePathTemplate" xml:space="preserve">
 		<value>Die aktuelle Datei wurde kopiert als {0}.</value>
 	</data>
 	<data name="StatusSaveSlotChangedBytesTemplate" xml:space="preserve">
@@ -315,7 +315,7 @@
 	<data name="SectionNonSaveSlotUnknowns" xml:space="preserve">
 		<value>Unbekannter nicht-Speicherslot-Bereich</value>
 	</data>
-	<data name="ErrorComparisonSramSaveSlotSetButNotCurrentSramSaveSlot" xml:space="preserve">
+	<data name="ErrorComparisonFileSaveSlotSetButNotCurrentFileSaveSlot" xml:space="preserve">
 		<value>Der Vergleichs-Datei Speicherslot kann erst gesetzt werden, nachdem der Speicherslot der aktuellen Datei festgelegt wurde.</value>
 	</data>
 	<data name="CommandSlotByteByBytesComparison" xml:space="preserve">

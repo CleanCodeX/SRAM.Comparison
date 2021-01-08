@@ -29,31 +29,31 @@ namespace SramComparer.Enums
 		[DisplayNameLocalized(nameof(Res.CommandSetCurrentSrramFileSaveSlot), typeof(Res))]
 		ss, // Set save slot for current-SRAM file
 
-		[DisplayNameLocalized(nameof(Res.CommandSetComparisonSramFileSaveSlot), typeof(Res))]
+		[DisplayNameLocalized(nameof(Res.CommandSetComparisonFileSaveSlot), typeof(Res))]
 		ssc, // Set Comparison save slot for comparison-SRAM file
 
 		[DisplayNameLocalized(nameof(Res.CommandCompareFile), typeof(Res))]
 		c, // Compare
 
-		[DisplayNameLocalized(nameof(Res.CommandOverwriteComparisonSramFile), typeof(Res))]
+		[DisplayNameLocalized(nameof(Res.CommandOverwriteComparisonFile), typeof(Res))]
 		ow, // OverWrite the comparison-SRAM file with current-SRAM file
 
-		[DisplayNameLocalized(nameof(Res.CommandBackupCurrentSramFile), typeof(Res))]
+		[DisplayNameLocalized(nameof(Res.CommandBackupCurrentFile), typeof(Res))]
 		b, // Backup the current-SRAM file
 
-		[DisplayNameLocalized(nameof(Res.CommandBackupComparisonSramFile), typeof(Res))]
+		[DisplayNameLocalized(nameof(Res.CommandBackupComparisonFile), typeof(Res))]
 		bc, // backup the Comparison-SRAM file
 
-		[DisplayNameLocalized(nameof(Res.CommandRestoreCurrentSramFile), typeof(Res))]
+		[DisplayNameLocalized(nameof(Res.CommandRestoreCurrentFile), typeof(Res))]
 		r, // Restore the current-SRAM file from previously created backup
 
-		[DisplayNameLocalized(nameof(Res.CommandRestoreComparisonSramFile), typeof(Res))]
+		[DisplayNameLocalized(nameof(Res.CommandRestoreComparisonFile), typeof(Res))]
 		rc, // Restore the Comparison-SRAM file from previously created backup
 
 		[DisplayNameLocalized(nameof(Res.CommandExportComparisonResult), typeof(Res))]
 		e, // Export the current comparison result as text file to export directory
 
-		[DisplayNameLocalized(nameof(Res.CommandSaveCurrentSramFileAsOtherFileName), typeof(Res))]
+		[DisplayNameLocalized(nameof(Res.CommandSaveCurrentFileAsOtherFileName), typeof(Res))]
 		ts, // Transfer SRAM => Copies the current-SRAM file to a different game name of a similar ROM type. Eg copying between patched and unpatched ROM versions.
 
 		[DisplayNameLocalized(nameof(Res.CommandWipeOutput), typeof(Res))]

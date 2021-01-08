@@ -24,7 +24,7 @@ namespace SramComparer
 			consolePrinter.ThrowIfNull(nameof(consolePrinter));
 			options.BatchCommands.ThrowIfNull(nameof(options.BatchCommands));
 
-			if (options.CurrentSramFilePath.IsNullOrEmpty())
+			if (options.CurrenFilePath.IsNullOrEmpty())
 			{
 				consolePrinter.PrintFatalError(Resources.ErrorMissingPathArguments);
 				Console.ReadKey();

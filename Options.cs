@@ -9,13 +9,13 @@ namespace SramComparer
 		where TComparisonFlags : struct, Enum
 	{
 		public string? BatchCommands { get; set; }
-		public string? CurrentSramFilePath { get; set; }
-		public string? ComparisonSramFilePath { get; set; }
+		public string? CurrenFilePath { get; set; }
+		public string? ComparisonFilePath { get; set; }
 		public string? ExportDirectory { get; set; }
 		
 		public TGameRegion GameRegion { get; set; }
-		public int CurrentSramFileSaveSlot { get; set; }
-		public int ComparisonSramFileSaveSlot { get; set; }
+		public int CurrentFileSaveSlot { get; set; }
+		public int ComparisonFileSaveSlot { get; set; }
 		public TComparisonFlags ComparisonFlags { get; set; }
 
 		Enum IOptions.GameRegion => GameRegion;
@@ -26,7 +26,7 @@ namespace SramComparer
 		}
 
 		public bool ColorizeOutput { get; set; } = true;
-		public string? SaveStateType { get; set; }
+		public string? SavestateType { get; set; }
 		public string? UILanguage { get; set; }
 		public string? ComparisonResultLanguage { get; set; }
 		public string? ConfigFilePath { get; set; }

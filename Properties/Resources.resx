@@ -126,10 +126,10 @@
   <data name="StatusBytesChangedTemplate" xml:space="preserve">
     <value>{0} bytes changed.</value>
   </data>
-  <data name="CurrentSramFileSaveSlot" xml:space="preserve">
+  <data name="CurrentFileSaveSlot" xml:space="preserve">
     <value>Save slot (current file)</value>
   </data>
-  <data name="ComparisonSramFileSaveSlot" xml:space="preserve">
+  <data name="ComparisonFileSaveSlot" xml:space="preserve">
     <value>Save slot (Comparison file)</value>
   </data>
   <data name="GameRegion" xml:space="preserve">
@@ -147,13 +147,13 @@
   <data name="SettingCompareWholeGameBuffer" xml:space="preserve">
     <value>Compare whole save slot area</value>
   </data>
-  <data name="ComparisonSramFilepath" xml:space="preserve">
+  <data name="ComparisonFilepath" xml:space="preserve">
     <value>Comparison filepath</value>
   </data>
   <data name="ExportDirectory" xml:space="preserve">
     <value>Export directory</value>
   </data>
-  <data name="CurrentSramFilepath" xml:space="preserve">
+  <data name="CurrentFilepath" xml:space="preserve">
     <value>Current filepath</value>
   </data>
   <data name="StatusTwoDifferentSaveSlotsWillBeComparedTemplate" xml:space="preserve">
@@ -189,13 +189,13 @@
   <data name="Same" xml:space="preserve">
     <value>Same</value>
   </data>
-  <data name="StatusCurrentSramFileHasBeenSaved" xml:space="preserve">
+  <data name="StatusCurrentFileHasBeenSaved" xml:space="preserve">
     <value>Current file has been saved as comparison file.</value>
   </data>
-  <data name="StatusCurrentSramFileHasBeenBackedUpTemplate" xml:space="preserve">
+  <data name="StatusCurrentFileHasBeenBackedUpTemplate" xml:space="preserve">
     <value>{0} has been backed-up.</value>
   </data>
-  <data name="StatusSramFileHasBeenRestoredFromBackupTemplate" xml:space="preserve">
+  <data name="StatusFileHasBeenRestoredFromBackupTemplate" xml:space="preserve">
     <value>{0} has been restored from backup.</value>
   </data>
   <data name="CommandListCommands" xml:space="preserve">
@@ -204,7 +204,7 @@
   <data name="CommandSetCurrentSrramFileSaveSlot" xml:space="preserve">
     <value>Set current file's save slot</value>
   </data>
-  <data name="CommandSetComparisonSramFileSaveSlot" xml:space="preserve">
+  <data name="CommandSetComparisonFileSaveSlot" xml:space="preserve">
     <value>Set comparison file's save slot</value>
   </data>
   <data name="CommandSettings" xml:space="preserve">
@@ -309,19 +309,19 @@
   <data name="Bytes" xml:space="preserve">
     <value>bytes</value>
   </data>
-  <data name="CommandOverwriteComparisonSramFile" xml:space="preserve">
+  <data name="CommandOverwriteComparisonFile" xml:space="preserve">
     <value>Overwrite (or create) comparison file with current-file</value>
   </data>
-  <data name="CommandBackupCurrentSramFile" xml:space="preserve">
+  <data name="CommandBackupCurrentFile" xml:space="preserve">
     <value>Back-up current-file</value>
   </data>
-  <data name="CommandRestoreCurrentSramFile" xml:space="preserve">
+  <data name="CommandRestoreCurrentFile" xml:space="preserve">
     <value>Restore current-file from backup</value>
   </data>
-  <data name="CommandBackupComparisonSramFile" xml:space="preserve">
+  <data name="CommandBackupComparisonFile" xml:space="preserve">
     <value>Back-up comparison-file</value>
   </data>
-  <data name="CommandRestoreComparisonSramFile" xml:space="preserve">
+  <data name="CommandRestoreComparisonFile" xml:space="preserve">
     <value>Restore comparison-file from backup</value>
   </data>
   <data name="CommandCompareFile" xml:space="preserve">
@@ -333,7 +333,7 @@
   <data name="CommandExportComparisonResult" xml:space="preserve">
     <value>Export current comparison result</value>
   </data>
-  <data name="CommandSaveCurrentSramFileAsOtherFileName" xml:space="preserve">
+  <data name="CommandSaveCurrentFileAsOtherFileName" xml:space="preserve">
     <value>Save current-file with other game file's name</value>
   </data>
   <data name="CommandQuit" xml:space="preserve">
@@ -366,10 +366,10 @@
   <data name="ErrorNoValidCommandCmdTemplate" xml:space="preserve">
     <value>"{0}" is an unknown command. To list all available commands enter ({1}).</value>
   </data>
-  <data name="ErrorComparisonSramSaveSlotSetButNotCurrentSramSaveSlot" xml:space="preserve">
+  <data name="ErrorComparisonFileSaveSlotSetButNotCurrentFileSaveSlot" xml:space="preserve">
     <value>Save slot for comparison-file can only be set if current file's save slot is set first.</value>
   </data>
-  <data name="SameAsCurrentSramFileSaveSlot" xml:space="preserve">
+  <data name="SameAsCurrentFileSaveSlot" xml:space="preserve">
     <value>Same as current file's save slot</value>
   </data>
   <data name="CmdGroupBackup" xml:space="preserve">
@@ -387,22 +387,22 @@
   <data name="CmdGroupDisplay" xml:space="preserve">
     <value>Display</value>
   </data>
-  <data name="CurrentSramFile" xml:space="preserve">
+  <data name="CurrentFile" xml:space="preserve">
     <value>Current file</value>
   </data>
-  <data name="ComparisonSramFile" xml:space="preserve">
+  <data name="ComparisonFile" xml:space="preserve">
     <value>Comparison file</value>
   </data>
   <data name="ErrorInvalidFileExtensionTemplate" xml:space="preserve">
     <value>The ({0}) file: [{1}] has an unsupported file extension. Did you just forget to quote the path? Supported file extensions are: {2}</value>
   </data>
-  <data name="StatusCurrentSramHasBeenSavedAsFilepathTemplate" xml:space="preserve">
+  <data name="StatusCurrentHasBeenSavedAsFilePathTemplate" xml:space="preserve">
     <value>Current file has been copied as {0}.</value>
   </data>
-  <data name="StatusTargetSramFileHasBeenBackedUpFilepathTemplate" xml:space="preserve">
+  <data name="StatusTargetFileHasBeenBackedUpTemplate" xml:space="preserve">
     <value>Target file has been backed up as {0}.</value>
   </data>
-  <data name="StatusModifiedSramFileHasBeenSavedAsFilepathTemplate" xml:space="preserve">
+  <data name="StatusModifiedFileHasBeenSavedAsTemplate" xml:space="preserve">
     <value>Edited current file has been saved as {0}.</value>
   </data>
   <data name="StatusGetOffsetValueTemplate" xml:space="preserve">
@@ -411,7 +411,7 @@
   <data name="StatusSetOffsetValueTemplate" xml:space="preserve">
     <value>Value at offset {0} is now {1}.</value><comment>The term Offset should only be translated if not understandable</comment>
   </data>
-  <data name="StatusModifiedSramFileHasBeenOverwrittenFilepathTemplate" xml:space="preserve">
+  <data name="StatusModifiedFileHasBeenOverwrittenTemplate" xml:space="preserve">
     <value>Edited current file has been overwritten. File: {0}.</value>
   </data>
   <data name="PromtCreateNewFileInsteadOfOverwriting" xml:space="preserve">
@@ -420,10 +420,10 @@
   <data name="ErrorInvalidIndex" xml:space="preserve">
     <value>Invalid index. Aborted.</value>
   </data>
-  <data name="StatusNoAvailableOtherSramFiles" xml:space="preserve">
-    <value>There are currently no other SRAM files available.</value>
+  <data name="StatusNoAvailableOtherFiles" xml:space="preserve">
+    <value>There are currently no other files with same file extension available.</value>
   </data>
-  <data name="EnterIndexOfSramFileToBeOverwrittenMaxIndexTemplate" xml:space="preserve">
+  <data name="EnterIndexOfFileToBeOverwrittenMaxIndexTemplate" xml:space="preserve">
     <value>Enter index (0 to {0}) of the file to be overwritten (any other key to cancel):</value>
   </data>
   <data name="ErrorParamNameValueMissmatchTemplate" xml:space="preserve">
