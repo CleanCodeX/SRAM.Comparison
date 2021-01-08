@@ -54,7 +54,7 @@ namespace SramComparer.Services
 			if (outStream is not null)
 				Console.SetOut(outStream);
 
-			if (options.CurrenFilePath.IsNullOrEmpty())
+			if (options.CurrentFilePath.IsNullOrEmpty())
 			{
 				ConsolePrinter.PrintFatalError(Resources.ErrorMissingPathArguments);
 				Console.ReadKey();
@@ -193,11 +193,12 @@ namespace SramComparer.Services
 		public virtual void Compare<TComparer>(IOptions options)
 			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new()
 		{
-			Requires.FileExists(options.ComparisonFilePath, nameof(options.ComparisonFilePath), Resources.ErrorComparisonFileDoesNotExist);
+			var comparisonFilePath = FileNameHelper.GetComparisonFilePath(options);
+			Requires.FileExists(comparisonFilePath, nameof(options.ComparisonFilePath), Resources.ErrorComparisonFileDoesNotExist);
 			
-			using var currFileStream = (Stream)new FileStream(options.CurrenFilePath!, FileMode.Open, FileAccess.Read);
-			using var compFileStream = (Stream)new FileStream(options.ComparisonFilePath!, FileMode.Open, FileAccess.Read);
-
+			using var currFileStream = (Stream)new FileStream(options.CurrentFilePath!, FileMode.Open, FileAccess.Read);
+			using var compFileStream = (Stream)new FileStream(comparisonFilePath, FileMode.Open, FileAccess.Read);
+			
 			Compare<TComparer>(currFileStream, compFileStream, options);
 		}
 
@@ -232,8 +233,8 @@ namespace SramComparer.Services
 		public virtual void Compare<TComparer>(Stream currStream, Stream compStream, IOptions options)
 			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new()
 		{
-			ConvertStreamIfSaveState(ref currStream, options.CurrenFilePath!, options.SavestateType);
-			ConvertStreamIfSaveState(ref compStream, options.ComparisonFilePath!, options.SavestateType);
+			ConvertStreamIfSaveState(ref currStream, options.CurrentFilePath!, options.SavestateType);
+			ConvertStreamIfSaveState(ref compStream, FileNameHelper.GetComparisonFilePath(options), options.SavestateType);
 
 			var currFile = ClassFactory.Create<TSramFile>(currStream, options.GameRegion);
 			var compFile = ClassFactory.Create<TSramFile>(compStream, options.GameRegion);
@@ -283,9 +284,9 @@ namespace SramComparer.Services
 		public virtual string ExportComparisonResult<TComparer>(IOptions options)
 			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new()
 		{
-			var fileName = Path.GetFileNameWithoutExtension(options.CurrenFilePath)!;
+			var fileName = Path.GetFileNameWithoutExtension(options.CurrentFilePath)!;
 			var exportFileName = FileNameHelper.GenerateExportSaveFileName(fileName);
-			var filePath = Path.Join(options.ExportDirectory, exportFileName);
+			var filePath = Path.Join(options.ExportDirectory ?? Path.GetDirectoryName(options.CurrentFilePath), exportFileName);
 
 			ExportComparisonResult<TComparer>(options, filePath);
 
@@ -373,9 +374,9 @@ namespace SramComparer.Services
 		public virtual void TransferSramToOtherGameFile(IOptions options)
 		{
 			ConsolePrinter.PrintSectionHeader();
-			var directoryPath = Path.GetDirectoryName(options.CurrenFilePath)!;
-			var extension = Path.GetExtension(options.CurrenFilePath);
-			var files = Directory.GetFiles(directoryPath, $"*{extension}").Where(f => f != options.CurrenFilePath).ToArray();
+			var directoryPath = Path.GetDirectoryName(options.CurrentFilePath)!;
+			var extension = Path.GetExtension(options.CurrentFilePath);
+			var files = Directory.GetFiles(directoryPath, $"*{extension}").Where(f => f != options.CurrentFilePath).ToArray();
 			if (files.Length == 0)
 			{
 				ConsolePrinter.PrintLine(Resources.StatusNoAvailableOtherFiles);
@@ -393,7 +394,7 @@ namespace SramComparer.Services
 				ConsolePrinter.PrintColored(ConsoleColor.DarkGreen ,Resources.StatusTargetFileHasBeenBackedUpTemplate.InsertArgs(Path.GetFileName(targetBackupFilepath)));
 			}
 
-			File.Copy(options.CurrenFilePath!, targeFilepath, true);
+			File.Copy(options.CurrentFilePath!, targeFilepath, true);
 			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusCurrentHasBeenSavedAsFilePathTemplate.InsertArgs(Path.GetFileName(targeFilepath)));
 
 			string? GetTargetFilePath()
@@ -443,9 +444,9 @@ namespace SramComparer.Services
 
 		public virtual void PrintOffsetValue(IOptions options)
 		{
-			Requires.FileExists(options.CurrenFilePath, nameof(options.CurrenFilePath));
+			Requires.FileExists(options.CurrentFilePath, nameof(options.CurrentFilePath));
 
-			using var currStream = new FileStream(options.CurrenFilePath!, FileMode.Open, FileAccess.Read);
+			using var currStream = new FileStream(options.CurrentFilePath!, FileMode.Open, FileAccess.Read);
 			var currFile = ClassFactory.Create<TSramFile>(currStream, options.GameRegion);
 
 			var offset = GetOffset(out var slotIndex);
@@ -465,7 +466,7 @@ namespace SramComparer.Services
 
 		public virtual void SaveOffsetValue(IOptions options)
 		{
-			Requires.FileExists(options.CurrenFilePath, nameof(options.CurrenFilePath));
+			Requires.FileExists(options.CurrentFilePath, nameof(options.CurrentFilePath));
 
 			var offset = GetOffset(out var slotIndex);
 			if (offset == 0)
@@ -490,11 +491,11 @@ namespace SramComparer.Services
 				_ => throw new OperationCanceledException(),
 			};
 
-			var saveFilePath = options.CurrenFilePath!;
+			var saveFilePath = options.CurrentFilePath!;
 			if (createNewFile)
 				saveFilePath += ".manipulated";
 
-			using var currStream = new FileStream(options.CurrenFilePath!, FileMode.Open, FileAccess.Read);
+			using var currStream = new FileStream(options.CurrentFilePath!, FileMode.Open, FileAccess.Read);
 			var currFile = ClassFactory.Create<TSramFile>(currStream, options.GameRegion);
 
 			currFile.SetOffsetBytes(slotIndex, offset, bytes);
@@ -594,7 +595,7 @@ namespace SramComparer.Services
 		{
 			ConsolePrinter.PrintSectionHeader();
 
-			File.Copy(options.CurrenFilePath!, options.ComparisonFilePath!, true);
+			File.Copy(options.CurrentFilePath!, FileNameHelper.GetComparisonFilePath(options), true);
 
 			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusCurrentFileHasBeenSaved);
 			ConsolePrinter.ResetColor();
@@ -606,7 +607,7 @@ namespace SramComparer.Services
 
 		public virtual void BackupSaveFile(IOptions options, SaveFileKind fileKind, bool restore = false)
 		{
-			var filePath = fileKind == SaveFileKind.CurrentFile ? options.CurrenFilePath! : options.ComparisonFilePath!;
+			var filePath = fileKind == SaveFileKind.CurrentFile ? options.CurrentFilePath! : FileNameHelper.GetComparisonFilePath(options);
 			var fileTypeName = fileKind.GetDisplayName();
 			var backupFilepath = filePath + BackupFileExtension;
 

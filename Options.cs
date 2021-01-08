@@ -10,7 +10,7 @@ namespace SramComparer
 		where TComparisonFlags : struct, Enum
 	{
 		public string? BatchCommands { get; set; }
-		public string? CurrenFilePath { get; set; }
+		public string? CurrentFilePath { get; set; }
 		public string? ComparisonFilePath { get; set; }
 		public string? ExportDirectory { get; set; }
 

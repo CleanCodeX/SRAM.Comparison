@@ -19,16 +19,16 @@ namespace SramComparer.Services
 			PrintColoredLine(ConsoleColor.Gray, Res.Config + @":");
 
 			PrintConfigName(Res.ConfigCurrentFilePath, "{0}");
-			PrintValue(Path.GetFileName(options.CurrenFilePath!));
+			PrintValue(Path.GetFileName(options.CurrentFilePath!));
 
 			PrintConfigName(Res.ConfigComparisonFilePath, "{1-2}|" + CmdOptions.ComparisonFile);
-			PrintValue(Path.GetFileName(options.ComparisonFilePath!));
+			PrintValue(Path.GetFileName(FileNameHelper.GetComparisonFilePath(options)));
 
 			PrintConfigName(Res.ConfigGameRegion, $"{"{1-2}|" + CmdOptions.GameRegion} [{string.Join("|", Enum.GetNames(options.GameRegion.GetType()))}]");
 			PrintValue(options.GameRegion.ToString());
 
 			PrintConfigName(Res.ConfigExportDirectory, CmdOptions.ExportDirectory);
-			PrintValue(options.ExportDirectory!);
+			PrintValue(options.ExportDirectory ?? Path.GetDirectoryName(options.CurrentFilePath)!);
 
 			PrintConfigName(Res.ConfigCurrentFileSaveSlot, $"{CmdOptions.CurrentSaveSlot} [1-4|0={Res.All}]");
 			PrintValue(options.CurrentFileSaveSlot == 0 ? Res.All : options.CurrentFileSaveSlot.ToString());

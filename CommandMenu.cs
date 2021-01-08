@@ -29,7 +29,7 @@ namespace SramComparer
 			if(options.UILanguage is not null)
 				TrySetCulture(consolePrinter, options.UILanguage);
 
-			if (options.CurrenFilePath.IsNullOrEmpty())
+			if (options.CurrentFilePath.IsNullOrEmpty())
 			{
 				consolePrinter.PrintFatalError(Resources.ErrorMissingPathArguments);
 				Console.ReadKey();
