@@ -384,4 +384,10 @@
 	<data name="PromptEnterConfigName" xml:space="preserve">
 		<value>Entrez un nom de configuration spécifique ou vide pour la configuration par défaut.</value>
 	</data>
+	<data name="CommandOpenConfig" xml:space="preserve">
+		<value>Ouvrir le fichier de configuration</value>
+	</data>
+	<data name="ErrorConfigFileDoesNotExist" xml:space="preserve">
+		<value>Le fichier de configuration [{0}] n'existe pas (encore).</value>
+	</data>
 </root>

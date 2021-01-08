@@ -26,6 +26,7 @@
 
   <ItemGroup>
     <PackageReference Include="CCX.SramCommons" Version="1.0.3-a2" />
+    <PackageReference Include="System.ComponentModel.TypeConverter" Version="4.3.0" />
   </ItemGroup>
 
   <ItemGroup>

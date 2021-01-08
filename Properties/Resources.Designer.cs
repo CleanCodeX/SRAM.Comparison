@@ -304,6 +304,15 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Open config file ähnelt.
+        /// </summary>
+        public static string CommandOpenConfig {
+            get {
+                return ResourceManager.GetString("CommandOpenConfig", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Overwrite (or create) comparison file with current-file ähnelt.
         /// </summary>
         public static string CommandOverwriteComparisonFile {
@@ -606,6 +615,15 @@ namespace SramComparer.Properties {
         public static string ErrorComparisonFileSaveSlotSetButNotCurrentFileSaveSlot {
             get {
                 return ResourceManager.GetString("ErrorComparisonFileSaveSlotSetButNotCurrentFileSaveSlot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die The config file [{0}] does not exist (yet). ähnelt.
+        /// </summary>
+        public static string ErrorConfigFileDoesNotExist {
+            get {
+                return ResourceManager.GetString("ErrorConfigFileDoesNotExist", resourceCulture);
             }
         }
         

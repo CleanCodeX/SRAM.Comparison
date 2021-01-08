@@ -88,7 +88,6 @@ namespace SramComparer.Services
 				command = ((Commands)altCommand).ToString();
 
 			var cmd = command.ParseEnum<Commands>();
-
 			switch (cmd)
 			{
 				case Commands.Compare:
@@ -165,6 +164,10 @@ namespace SramComparer.Services
 					break;
 				case Commands.SaveConfig:
 					SaveConfig(options, GetConfigName());
+
+					break;
+				case Commands.OpenConfig:
+					OpenConfig(options, GetConfigName());
 
 					break;
 				case Commands.Clear:
@@ -300,7 +303,7 @@ namespace SramComparer.Services
 			var filePath = ExportComparisonResult<TComparer>(options);
 
 			if (showInExplorer)
-				ExploreFile(filePath);
+				SelectFile(filePath);
 
 			return filePath;
 		}
@@ -316,7 +319,7 @@ namespace SramComparer.Services
 			ExportComparisonResult<TComparer>(options, filePath);
 
 			if (showInExplorer)
-				ExploreFile(filePath);
+				SelectFile(filePath);
 		}
 
 		/// <inheritdoc cref="ICommandHandler{TSramFile,TSaveSlot}.ExportComparisonResult{TComparer}(IOptions,string)"/>
@@ -345,13 +348,22 @@ namespace SramComparer.Services
 			ConsolePrinter.ResetColor();
 		}
 
-		private static void ExploreFile(string filePath)
+		private static void SelectFile(string filePath)
 		{
 			if (!File.Exists(filePath)) return;
 
 			//Clean up file path so it can be navigated OK
 			filePath = Path.GetFullPath(filePath);
 			Process.Start("explorer.exe", $"/select,\"{filePath}\"");
+		}
+
+		private static void OpenFile(string filePath)
+		{
+			if (!File.Exists(filePath)) return;
+
+			//Clean up file path so it can be navigated OK
+			filePath = Path.GetFullPath(filePath);
+			Process.Start("explorer.exe", $"\"{filePath}\"");
 		}
 
 		#endregion Export comparison Result
@@ -722,6 +734,14 @@ namespace SramComparer.Services
 		}
 
 		protected virtual void LoadConfig(IOptions options, string? configName = null) => throw new NotImplementedException();
+
+		protected virtual void OpenConfig(IOptions options, string? configName = null)
+		{
+			var filePath = GetConfigFilePath(options.ConfigFilePath, configName);
+			Requires.FileExists(filePath, string.Empty, Resources.ErrorConfigFileDoesNotExist.InsertArgs(filePath));
+
+			OpenFile(filePath);
+		}
 
 		protected virtual string GetConfigFilePath(string? configFilePath, string? configName = null)
 		{

@@ -477,4 +477,10 @@
   <data name="PromptEnterConfigName" xml:space="preserve">
     <value>Enter specific config name or empty for default config.</value>
   </data>
+  <data name="CommandOpenConfig" xml:space="preserve">
+    <value>Open config file</value>
+  </data>
+  <data name="ErrorConfigFileDoesNotExist" xml:space="preserve">
+    <value>The config file [{0}] does not exist (yet).</value>
+  </data>
 </root>

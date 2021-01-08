@@ -79,15 +79,19 @@ namespace SramComparer.Enums
 
 		[DisplayNameLocalized(nameof(Res.CommandSaveConfig), typeof(Res))]
 		SaveConfig, // Saves current the config to file
+
+		[DisplayNameLocalized(nameof(Res.CommandOpenConfig), typeof(Res))]
+		OpenConfig, // opens the config file
 	}
 	
-	public enum AlternateCommands
+	internal enum AlternateCommands
 	{
 		Guide = Commands.Guide_Srm,
 		Manual = Commands.Guide_Srm,
 		Oc = Commands.OverwriteComp,
 		Cmds = Commands.Help,
 		CmdLine = Commands.Config,
+		Cfg = Commands.Config,
 		Q = Commands.Quit,
 		B = Commands.Backup,
 		BC = Commands.Backup_Comp,
@@ -99,9 +103,10 @@ namespace SramComparer.Enums
 		L = Commands.Lang,
 		LC = Commands.Lang_Comp,
 		C = Commands.Compare,
-		Ov = Commands.Offset,
-		Eov = Commands.EditOffset,
+		O = Commands.Offset,
+		EO = Commands.EditOffset,
 		Load = Commands.LoadConfig,
 		Save = Commands.SaveConfig,
+		Open = Commands.OpenConfig,
 	}
 }

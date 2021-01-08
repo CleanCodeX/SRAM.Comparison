@@ -13,7 +13,7 @@ namespace SramComparer
 		public string? CurrenFilePath { get; set; }
 		public string? ComparisonFilePath { get; set; }
 		public string? ExportDirectory { get; set; }
-		
+
 		[JsonConverter(typeof(JsonStringEnumConverter))]
 		public TGameRegion GameRegion { get; set; }
 		public int CurrentFileSaveSlot { get; set; }
