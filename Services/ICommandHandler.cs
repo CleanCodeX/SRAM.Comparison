@@ -78,8 +78,8 @@ namespace SramComparer.Services
 		/// <summary>Compares SRAM based on <para>options</para>.<see cref="IOptions.ExportDirectory"/> and a generated filename based on current timestamp will be used</summary>
 		/// <typeparam name="TComparer">The type of compare which should be used</typeparam>
 		/// <param name="options">The options to be used for comparison</param>
-		/// <param name="filepath"></param>
-		void ExportComparisonResult<TComparer>(IOptions options, string filepath)
+		/// <param name="filePath"></param>
+		void ExportComparisonResult<TComparer>(IOptions options, string filePath)
 			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new();
 	}
 }

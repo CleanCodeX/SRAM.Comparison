@@ -346,11 +346,11 @@ namespace SramComparer.Services
 		{
 			var fileName = Path.GetFileNameWithoutExtension(options.CurrenFilePath)!;
 			var exportFileName = FileNameHelper.GenerateExportSaveFileName(fileName);
-			var filepath = Path.Join(options.ExportDirectory, exportFileName);
+			var filePath = Path.Join(options.ExportDirectory, exportFileName);
 
-			ExportComparisonResult<TComparer>(options, filepath);
+			ExportComparisonResult<TComparer>(options, filePath);
 
-			return filepath;
+			return filePath;
 		}
 
 		/// <summary>Compares SRAM based on <para>options</para>.<see cref="IOptions.ExportDirectory"/> and a generated filename based on current timestamp will be used</summary>
@@ -358,38 +358,38 @@ namespace SramComparer.Services
 		/// <param name="options">The options to be used for comparison</param>
 		/// <param name="showInExplorer">Sets if the file should be selected in windows explorer</param>
 		/// /// <returns>The generated filepath</returns>
-		public virtual string ExportComparison<TComparer>(IOptions options, bool showInExplorer)
+		public virtual string ExportComparisonResult<TComparer>(IOptions options, bool showInExplorer)
 			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new()
 		{
-			var filepath = ExportComparisonResult<TComparer>(options);
+			var filePath = ExportComparisonResult<TComparer>(options);
 
 			if (showInExplorer)
-				ExploreFile(filepath);
+				ExploreFile(filePath);
 
-			return filepath;
+			return filePath;
 		}
 
 		/// <summary>Compares SRAM based on <para>options</para>.<see cref="IOptions.ExportDirectory"/> and a generated filename based on current timestamp will be used</summary>
 		/// <typeparam name="TComparer">The type of compare which should be used</typeparam>
 		/// <param name="options">The options to be used for comparison</param>
-		/// <param name="filepath"></param>
+		/// <param name="filePath"></param>
 		/// <param name="showInExplorer">Sets if the file should be selected in windows explorer</param>
-		public virtual void ExportComparison<TComparer>(IOptions options, string filepath, bool showInExplorer)
+		public virtual void ExportComparisonResult<TComparer>(IOptions options, string filePath, bool showInExplorer)
 			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new()
 		{
-			ExportComparisonResult<TComparer>(options, filepath);
+			ExportComparisonResult<TComparer>(options, filePath);
 
 			if (showInExplorer)
-				ExploreFile(filepath);
+				ExploreFile(filePath);
 		}
 
 		/// <inheritdoc cref="ICommandHandler{TSramFile,TSaveSlot}.ExportComparisonResult{TComparer}(SramComparer.IOptions,string)"/>
-		public virtual void ExportComparisonResult<TComparer>(IOptions options, string filepath)
+		public virtual void ExportComparisonResult<TComparer>(IOptions options, string filePath)
 			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new()
 		{
 			try
 			{
-				using var fileStream = new FileStream(filepath, FileMode.OpenOrCreate, FileAccess.Write);
+				using var fileStream = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write);
 				using var writer = new StreamWriter(fileStream);
 
 				Compare<TComparer>(options, writer);
@@ -398,11 +398,11 @@ namespace SramComparer.Services
 				fileStream.Close();
 				ConsolePrinter.PrintParagraph();
 				ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow,
-					Resources.StatusCurrentComparisonExportedFilepathTemplate.InsertArgs(filepath));
+					Resources.StatusCurrentComparisonExportedFilePathTemplate.InsertArgs(filePath));
 			}
 			catch (Exception ex)
 			{
-				throw new Exception(Resources.ErrorCannotOpenOutputFileTemplate.InsertArgs(filepath) +
+				throw new Exception(Resources.ErrorCannotOpenOutputFileTemplate.InsertArgs(filePath) +
 				                    Environment.NewLine + ex.Message);
 			}
 
@@ -635,20 +635,20 @@ namespace SramComparer.Services
 
 		public virtual void BackupSaveFile(IOptions options, SaveFileKind fileKind, bool restore = false)
 		{
-			var filepath = fileKind == SaveFileKind.CurrentFile ? options.CurrenFilePath! : options.ComparisonFilePath!;
+			var filePath = fileKind == SaveFileKind.CurrentFile ? options.CurrenFilePath! : options.ComparisonFilePath!;
 			var fileTypeName = fileKind == SaveFileKind.CurrentFile ? Resources.CurrentFile : Resources.ComparisonFile;
-			var backupFilepath = filepath + BackupFileExtension;
+			var backupFilepath = filePath + BackupFileExtension;
 
 			ConsolePrinter.PrintSectionHeader();
 
 			if (restore)
 			{
-				File.Copy(backupFilepath, filepath, true);
+				File.Copy(backupFilepath, filePath, true);
 				ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusFileHasBeenRestoredFromBackupTemplate.InsertArgs(fileTypeName));
 			}
 			else
 			{
-				File.Copy(filepath, backupFilepath, true);
+				File.Copy(filePath, backupFilepath, true);
 				ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusCurrentFileHasBeenBackedUpTemplate.InsertArgs(fileTypeName));
 			}
 

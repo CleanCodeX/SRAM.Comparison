@@ -387,9 +387,9 @@ namespace SramComparer.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Comparison filepath ähnelt.
         /// </summary>
-        public static string ComparisonFilepath {
+        public static string ComparisonFilePath {
             get {
-                return ResourceManager.GetString("ComparisonFilepath", resourceCulture);
+                return ResourceManager.GetString("ComparisonFilePath", resourceCulture);
             }
         }
         
@@ -450,9 +450,9 @@ namespace SramComparer.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Current filepath ähnelt.
         /// </summary>
-        public static string CurrentFilepath {
+        public static string CurrentFilePath {
             get {
-                return ResourceManager.GetString("CurrentFilepath", resourceCulture);
+                return ResourceManager.GetString("CurrentFilePath", resourceCulture);
             }
         }
         
@@ -882,9 +882,9 @@ namespace SramComparer.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Current comparison exported to &quot;{0}&quot;. ähnelt.
         /// </summary>
-        public static string StatusCurrentComparisonExportedFilepathTemplate {
+        public static string StatusCurrentComparisonExportedFilePathTemplate {
             get {
-                return ResourceManager.GetString("StatusCurrentComparisonExportedFilepathTemplate", resourceCulture);
+                return ResourceManager.GetString("StatusCurrentComparisonExportedFilePathTemplate", resourceCulture);
             }
         }
         
@@ -979,7 +979,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Offset value {0} will be set. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Offset value {0} will bFe set. ähnelt.
         /// </summary>
         public static string StatusOffsetValueWillBeUsedTemplate {
             get {

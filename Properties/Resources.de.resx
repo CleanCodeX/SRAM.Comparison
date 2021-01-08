@@ -231,10 +231,10 @@
 	<data name="ExportDirectory" xml:space="preserve">
 		<value>Export-Verzeichnis</value>
 	</data>
-	<data name="CurrentFilepath" xml:space="preserve">
+	<data name="CurrentFilePath" xml:space="preserve">
 		<value>Pfad für aktuelle Datei</value>
 	</data>
-	<data name="ComparisonFilepath" xml:space="preserve">
+	<data name="ComparisonFilePath" xml:space="preserve">
 		<value>Pfad für Vergleichsdatei</value>
 	</data>
 	<data name="CurrentFileSaveSlot" xml:space="preserve">
@@ -288,7 +288,7 @@
 	<data name="StatusCurrentFileHasBeenBackedUpTemplate" xml:space="preserve">
 		<value>{0} wurde gesichert.</value>
 	</data>
-	<data name="StatusCurrentComparisonExportedFilepathTemplate" xml:space="preserve">
+	<data name="StatusCurrentComparisonExportedFilePathTemplate" xml:space="preserve">
 		<value>Aktueller Vergleich exportiert nach "{0}".</value>
 	</data>
 	<data name="StatusCurrentFileHasBeenSaved" xml:space="preserve">

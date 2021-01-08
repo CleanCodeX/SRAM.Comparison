@@ -17,10 +17,10 @@ namespace SramComparer.Services
 			PrintSectionHeader();
 			PrintColoredLine(ConsoleColor.Gray, Res.Settings + @":");
 
-			PrintSettingName(Res.CurrentFilepath, "{0}");
+			PrintSettingName(Res.CurrentFilePath, "{0}");
 			PrintValue(Path.GetFileName(options.CurrenFilePath!));
 
-			PrintSettingName(Res.ComparisonFilepath, "{1-2}|" + CmdOptions.ComparisonFile);
+			PrintSettingName(Res.ComparisonFilePath, "{1-2}|" + CmdOptions.ComparisonFile);
 			PrintValue(Path.GetFileName(options.ComparisonFilePath!));
 
 			PrintSettingName(Res.GameRegion, $"{"{1-2}|" + CmdOptions.GameRegion} [{string.Join("|", Enum.GetNames(options.GameRegion.GetType()))}]");

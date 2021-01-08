@@ -212,13 +212,13 @@
 	<data name="SettingCompareWholeGameBuffer" xml:space="preserve">
 		<value>Comparer la partie en cours en entier</value>
 	</data>
-	<data name="ComparisonFilepath" xml:space="preserve">
+	<data name="ComparisonFilePath" xml:space="preserve">
 		<value>Comparaison du chemin du fichier</value>
 	</data>
 	<data name="ComparisonFileSaveSlot" xml:space="preserve">
 		<value>Partie du fichier de comparaison</value>
 	</data>
-	<data name="CurrentFilepath" xml:space="preserve">
+	<data name="CurrentFilePath" xml:space="preserve">
 		<value>Chemin du fichier en cours</value>
 	</data>
 	<data name="ExportDirectory" xml:space="preserve">
@@ -314,7 +314,7 @@
 	<data name="UnknownAreasOnly" xml:space="preserve">
 		<value>Seulement les valeurs inconnues</value>
 	</data>
-	<data name="StatusCurrentComparisonExportedFilepathTemplate" xml:space="preserve">
+	<data name="StatusCurrentComparisonExportedFilePathTemplate" xml:space="preserve">
 		<value>Comparaison en cours enregistrée dans le fichier "{0}".</value>
 	</data>
 	<data name="SlotByteByByteComparison" xml:space="preserve">

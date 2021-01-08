@@ -147,13 +147,13 @@
   <data name="SettingCompareWholeGameBuffer" xml:space="preserve">
     <value>Compare whole save slot area</value>
   </data>
-  <data name="ComparisonFilepath" xml:space="preserve">
+  <data name="ComparisonFilePath" xml:space="preserve">
     <value>Comparison filepath</value>
   </data>
   <data name="ExportDirectory" xml:space="preserve">
     <value>Export directory</value>
   </data>
-  <data name="CurrentFilepath" xml:space="preserve">
+  <data name="CurrentFilePath" xml:space="preserve">
     <value>Current filepath</value>
   </data>
   <data name="StatusTwoDifferentSaveSlotsWillBeComparedTemplate" xml:space="preserve">
@@ -166,7 +166,7 @@
     <value>Offset {0} will be used.</value><comment>The term Offset should only be translated if not understandable</comment>
   </data>
   <data name="StatusOffsetValueWillBeUsedTemplate" xml:space="preserve">
-    <value>Offset value {0} will be set.</value><comment>The term Offset should only be translated if not understandable</comment>
+    <value>Offset value {0} will bFe set.</value><comment>The term Offset should only be translated if not understandable</comment>
   </data>
   <data name="StatusAllSaveSlotsWillBeCompared" xml:space="preserve">
     <value>All save slots will be compared.</value>
@@ -297,7 +297,7 @@
   <data name="StatusSramChangedBytesTemplate" xml:space="preserve">
     <value>{0} bytes changed.</value>
   </data>
-  <data name="StatusCurrentComparisonExportedFilepathTemplate" xml:space="preserve">
+  <data name="StatusCurrentComparisonExportedFilePathTemplate" xml:space="preserve">
     <value>Current comparison exported to "{0}".</value>
   </data>
   <data name="StatusNoSramBytesChanged" xml:space="preserve">
