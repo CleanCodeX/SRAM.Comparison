@@ -179,11 +179,8 @@
 	<data name="ErrorComparisonFileDoesNotExist" xml:space="preserve">
 		<value>Le fichier de comparaison "{0}" n'a pas encore été créé. Veuillez d'abord en créer un.</value>
 	</data>
-	<data name="ErrorInvalidCompFileExtensionTemplate" xml:space="preserve">
-		<value>Le fichier de comparaison a une extension de fichier non prise en charge. Avez-vous juste oublié de citer le chemin? Était: {0} Les extensions valides sont: {1}</value>
-	</data>
 	<data name="ErrorInvalidFileExtensionTemplate" xml:space="preserve">
-		<value>Le fichier actuel a une extension de fichier non prise en charge. Avez-vous juste oublié de citer le chemin? Était: {0} Les extensions valides sont: {1}</value>
+		<value>Le fichier ({0}): [{1}] a une extension de fichier non prise en charge. Avez-vous juste oublié de citer le chemin? Les extensions de fichier prises en charge sont: {2}</value>
 	</data>
 	<data name="ErrorInvalidIndex" xml:space="preserve">
 		<value>Numéro de partie invalide.</value>

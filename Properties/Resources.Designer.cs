@@ -534,16 +534,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die The comparison file has an unsupported file extension. Did you just forget to quote the path? Was: {0} Valid extensions are: {1} ähnelt.
-        /// </summary>
-        public static string ErrorInvalidCompFileExtensionTemplate {
-            get {
-                return ResourceManager.GetString("ErrorInvalidCompFileExtensionTemplate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die The current file has an unsupported file extension. Did you just forget to quote the path? Was: {0} Valid extensions are: {1} ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die The ({0}) file: [{1}] has an unsupported file extension. Did you just forget to quote the path? Supported file extensions are: {2} ähnelt.
         /// </summary>
         public static string ErrorInvalidFileExtensionTemplate {
             get {
