@@ -53,6 +53,8 @@ namespace SramComparer.Services
 			PrintValue(options.ComparisonFlags.ToFlagsString());
 		}
 
+		public void Clear() => Console.Clear();
+
 		protected virtual void PrintCustomCommands() {}
 
 		public virtual void PrintStartMessage()

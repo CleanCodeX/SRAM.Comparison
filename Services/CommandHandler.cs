@@ -171,7 +171,7 @@ namespace SramComparer.Services
 
 					break;
 				case Commands.Clear:
-					Console.Clear();
+					ConsolePrinter.Clear();
 					break;
 				case Commands.Quit:
 					return false;
