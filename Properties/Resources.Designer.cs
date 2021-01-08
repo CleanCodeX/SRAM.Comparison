@@ -79,20 +79,6 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Steps: 
-        ///1.1) Before you start, have a look into unknowns.xeth.de to see examples of which parts of SRAM structure are still considered to be unknown. See some imagery.xeth.de of how to interpret comparison results.
-        ///1.2) Most emulators have the option to save the game&apos;s S-RAM automatically after a change occurs. 
-        ///     Make sure this is enabled if existing. Otherwise you have manually ensure that the emulator updates 
-        ///     the *.srm file.
-        ///1.3) Start the application by passing the game&apos;s srm filepath as f [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
-        /// </summary>
-        public static string AppManual {
-            get {
-                return ResourceManager.GetString("AppManual", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Backup ähnelt.
         /// </summary>
         public static string Backup {
@@ -228,6 +214,24 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Guide (savestate) ähnelt.
+        /// </summary>
+        public static string CommandGuideSavestate {
+            get {
+                return ResourceManager.GetString("CommandGuideSavestate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Guide (srm) ähnelt.
+        /// </summary>
+        public static string CommandGuideSrm {
+            get {
+                return ResourceManager.GetString("CommandGuideSrm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Set UI-language ähnelt.
         /// </summary>
         public static string CommandLanguage {
@@ -242,15 +246,6 @@ namespace SramComparer.Properties {
         public static string CommandListCommands {
             get {
                 return ResourceManager.GetString("CommandListCommands", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Manual ähnelt.
-        /// </summary>
-        public static string CommandManual {
-            get {
-                return ResourceManager.GetString("CommandManual", resourceCulture);
             }
         }
         
@@ -629,6 +624,15 @@ namespace SramComparer.Properties {
         public static string New {
             get {
                 return ResourceManager.GetString("New", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die There is no guide available ähnelt.
+        /// </summary>
+        public static string NoGuideAvailable {
+            get {
+                return ResourceManager.GetString("NoGuideAvailable", resourceCulture);
             }
         }
         

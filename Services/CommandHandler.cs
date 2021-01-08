@@ -92,8 +92,11 @@ namespace SramComparer.Services
 				case Commands.s:
 					ConsolePrinter.PrintSettings(options);
 					break;
-				case Commands.m:
-					ConsolePrinter.PrintManual();
+				case Commands.g_srm:
+					ConsolePrinter.PrintGuide("guide-srm");
+					break;
+				case Commands.g_savestate:
+					ConsolePrinter.PrintGuide("guide-savestate");
 					break;
 				case Commands.asbc:
 					options.ComparisonFlags = InvertIncludeFlag(options.ComparisonFlags, ComparisonFlags.SlotByteByByteComparison);
@@ -140,11 +143,11 @@ namespace SramComparer.Services
 					SaveOffsetValue(options);
 
 					break;
-				case Commands.lang:
+				case Commands.l:
 					SetUILanguage(options);
 
 					break;
-				case Commands.complang:
+				case Commands.lc:
 					SetComparionResultLanguage(options);
 
 					break;

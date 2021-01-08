@@ -14,8 +14,11 @@ namespace SramComparer.Enums
 		[DisplayNameLocalized(nameof(Res.CommandSettings), typeof(Res))]
 		s, // shows current (command line) Settings
 
-		[DisplayNameLocalized(nameof(Res.CommandManual), typeof(Res))]
-		m, // Manual (how to use)
+		[DisplayNameLocalized(nameof(Res.CommandGuideSrm), typeof(Res))]
+		g_srm, // Guide (srm) 
+
+		[DisplayNameLocalized(nameof(Res.CommandGuideSavestate), typeof(Res))]
+		g_savestate, // Manual (savestate) 
 
 		[DisplayNameLocalized(nameof(Res.SlotByteByByteComparison), typeof(Res))]
 		asbc, // Flag Whole Save Slot => compare additionally the whole save slot area instead of only unknowns
@@ -66,18 +69,20 @@ namespace SramComparer.Enums
 		mov, // Manipulate Offset Value => sets a value to entered offset addres
 
 		[DisplayNameLocalized(nameof(Res.CommandLanguage), typeof(Res))]
-		lang, // sets the UI language
+		l, // sets the UI language
 
 		[DisplayNameLocalized(nameof(Res.CommandComparisonResultLanguage), typeof(Res))]
-		complang, // sets the language for comparison results
+		lc, // sets the language for comparison results
 	}
 	
 	public enum AlternateCommands
 	{
+		guide = Commands.g_srm,
+		manual = guide,
 		cmds = Commands.cmd,
-		help = Commands.m,
+		help = cmds,
 		cmdline = Commands.s,
-		settings = cmdline,
+		config = cmdline,
 		clear = Commands.w,
 	}
 }

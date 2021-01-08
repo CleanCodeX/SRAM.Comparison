@@ -53,7 +53,11 @@ namespace SramComparer.Services
 
 		public virtual void PrintStartMessage()
 		{
-			var startMessage = @$"== {Res.StartMessage.InsertArgs(nameof(Commands.cmd), nameof(Commands.m))} ==";
+			PrintSectionHeader();
+			PrintLine("");
+			PrintColoredLine(ConsoleColor.Yellow, GetAppDescriptionText());
+
+			var startMessage = @$"== {Res.StartMessage.InsertArgs(nameof(Commands.cmd), nameof(Commands.g_srm))} ==";
 
 			PrintColoredLine(ConsoleColor.DarkYellow, "");
 			PrintLine("=".Repeat(startMessage.Length));
@@ -103,8 +107,11 @@ namespace SramComparer.Services
 
 			PrintGroupName(Res.CmdGroupDisplay);
 
-			PrintCommandKey(Commands.m);
-			PrintColoredLine(ConsoleColor.Yellow, Commands.m.GetDisplayName()!);
+			PrintCommandKey(Commands.g_srm);
+			PrintColoredLine(ConsoleColor.Yellow, Commands.g_srm.GetDisplayName()!);
+
+			PrintCommandKey(Commands.g_savestate);
+			PrintColoredLine(ConsoleColor.Yellow, Commands.g_savestate.GetDisplayName()!);
 
 			PrintCommandKey(Commands.cmd);
 			PrintColoredLine(ConsoleColor.Yellow, Commands.cmd.GetDisplayName()!);
@@ -131,11 +138,11 @@ namespace SramComparer.Services
 
 			PrintGroupName(Res.CmdLanguage);
 
-			PrintCommandKey(Commands.lang);
-			PrintColoredLine(ConsoleColor.Yellow, Commands.lang.GetDisplayName()!);
+			PrintCommandKey(Commands.l);
+			PrintColoredLine(ConsoleColor.Yellow, Commands.l.GetDisplayName()!);
 
-			PrintCommandKey(Commands.complang);
-			PrintColoredLine(ConsoleColor.Yellow, Commands.complang.GetDisplayName()!);
+			PrintCommandKey(Commands.lc);
+			PrintColoredLine(ConsoleColor.Yellow, Commands.lc.GetDisplayName()!);
 
 			PrintCustomCommands();
 
@@ -153,16 +160,14 @@ namespace SramComparer.Services
 
 		protected virtual void PrintCommandKey(Enum key) => PrintColored(ConsoleColor.White, @$"{key,12}: ");
 
-		protected virtual string GetManualText() => Res.AppManual;
+		protected virtual string GetGuideText(string? guideName) => Res.NoGuideAvailable;
 
 		protected virtual string GetAppDescriptionText() => Res.AppDescription;
 
-		public virtual void PrintManual()
+		public virtual void PrintGuide(string? guideName)
 		{
-			PrintSectionHeader();
-			PrintColoredLine(ConsoleColor.Yellow, GetAppDescriptionText());
 			PrintParagraph();
-			PrintColoredLine(ConsoleColor.Cyan, GetManualText());
+			PrintColoredLine(ConsoleColor.Cyan, GetGuideText(guideName));
 			ResetColor();
 		}
 

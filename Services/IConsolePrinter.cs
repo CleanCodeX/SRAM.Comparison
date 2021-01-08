@@ -39,7 +39,7 @@ namespace SramComparer.Services
 		void PrintInvertIncludeFlag(Enum flags, Enum flag);
 
 		/// <summary>Prints a manual for how to use the program</summary>
-		void PrintManual();
+		void PrintGuide(string guideName);
 
 		/// <summary>Prints a list of available commands</summary>
 		void PrintCommands();
