@@ -402,4 +402,7 @@
 	<data name="CmdConfigAutoLoadOff" xml:space="preserve">
 		<value>Désactiver le chargement automatique de la configuration</value>
 	</data>
+	<data name="StatusConfigFileWillBeOpenedTemplate" xml:space="preserve">
+		<value>Le fichier de configuration [{0}] sera ouvert…</value>
+	</data>
 </root>

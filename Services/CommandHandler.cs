@@ -179,6 +179,14 @@ namespace SramComparer.Services
 					LoadConfig(options, GetConfigName());
 
 					break;
+				case Commands.SaveConfig:
+					SaveConfig(options, GetConfigName());
+
+					break;
+				case Commands.OpenConfig:
+					OpenConfig(options, GetConfigName());
+
+					break;
 				case Commands.AutoLoadOn:
 					options.ConfigFilePath = $"{GetConfigName() ?? DefaultConfigName}.json";
 					SaveConfig(options, DefaultConfigFileName);
@@ -187,14 +195,6 @@ namespace SramComparer.Services
 				case Commands.AutoLoadOff:
 					options.ConfigFilePath = null;
 					SaveConfig(options, DefaultConfigFileName);
-
-					break;
-				case Commands.SaveConfig:
-					SaveConfig(options, GetConfigName());
-
-					break;
-				case Commands.OpenConfig:
-					OpenConfig(options, GetConfigName());
 
 					break;
 				case Commands.CreateBindings:
@@ -773,6 +773,7 @@ namespace SramComparer.Services
 
 		protected virtual void SaveConfig(IOptions options, string? configName = null)
 		{
+			ConsolePrinter.PrintSectionHeader();
 			var jsonOptions = new JsonSerializerOptions { Converters = { new JsonStringEnumConverter() }, WriteIndented = true };
 
 			var filePath = GetConfigFilePath(options.ConfigFilePath, configName);
@@ -790,6 +791,8 @@ namespace SramComparer.Services
 			Requires.FileExists(filePath, string.Empty, Resources.ErrorConfigFileDoesNotExist.InsertArgs(filePath));
 
 			OpenFile(filePath);
+			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusConfigFileWillBeOpenedTemplate.InsertArgs(filePath));
+			ConsolePrinter.ResetColor();
 		}
 
 		protected virtual string GetConfigFilePath(string? configFilePath, string? configName = null)

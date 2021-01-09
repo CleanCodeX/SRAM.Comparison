@@ -36,7 +36,7 @@ namespace SramComparer.Services
 		/// </summary>
 		/// <param name="flags">The flags which the flag will be added to or removd from</param>
 		/// <param name="flag">The flag to be inverted</param>
-		void PrintInvertIncludeFlag(Enum flags, Enum flag);
+		void PrintInvertIncludeFlag(in Enum flags, in Enum flag);
 
 		/// <summary>Prints a manual for how to use the program</summary>
 		void PrintGuide(string guideName);
@@ -47,7 +47,7 @@ namespace SramComparer.Services
 		/// <summary>Prints the current settings</summary>
 		void PrintConfig(IOptions options);
 
-		/// <summary>Clears the output window/summary>
+		/// <summary>Clears the output window</summary>
 		void Clear();
 	}
 }

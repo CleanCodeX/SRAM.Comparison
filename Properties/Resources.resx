@@ -495,4 +495,7 @@
   <data name="CmdConfigAutoLoadOff" xml:space="preserve">
     <value>Disable config auto-loading</value>
   </data>
+  <data name="StatusConfigFileWillBeOpenedTemplate" xml:space="preserve">
+    <value>Config file [{0}] will be opened…</value>
+  </data>
 </root>

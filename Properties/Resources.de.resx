@@ -390,4 +390,7 @@
 	<data name="CmdConfigAutoLoadOn" xml:space="preserve">
 		<value>Auto-Laden für Konfig deaktivieren</value>
 	</data>
+	<data name="StatusConfigFileWillBeOpenedTemplate" xml:space="preserve">
+		<value>Konfig-Datei [{0}] wird geöffnet…</value>
+	</data>
 </root>

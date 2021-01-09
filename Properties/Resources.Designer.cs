@@ -979,6 +979,15 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Config file [{0}] will be opened… ähnelt.
+        /// </summary>
+        public static string StatusConfigFileWillBeOpenedTemplate {
+            get {
+                return ResourceManager.GetString("StatusConfigFileWillBeOpenedTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Current comparison exported to &quot;{0}&quot;. ähnelt.
         /// </summary>
         public static string StatusCurrentComparisonExportedFilePathTemplate {

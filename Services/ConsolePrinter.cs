@@ -213,7 +213,7 @@ namespace SramComparer.Services
 			ResetColor();
 		}
 
-		public virtual void PrintInvertIncludeFlag(Enum flags, Enum flag)
+		public virtual void PrintInvertIncludeFlag(in Enum flags, in Enum flag)
 		{
 			PrintSectionHeader();
 			Print(flag + @":");
