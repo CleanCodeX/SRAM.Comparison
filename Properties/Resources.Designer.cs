@@ -142,6 +142,24 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Disable config auto-loading ähnelt.
+        /// </summary>
+        public static string CmdConfigAutoLoadOff {
+            get {
+                return ResourceManager.GetString("CmdConfigAutoLoadOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Enable config auto-loading ähnelt.
+        /// </summary>
+        public static string CmdConfigAutoLoadOn {
+            get {
+                return ResourceManager.GetString("CmdConfigAutoLoadOn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Create key binding file ähnelt.
         /// </summary>
         public static string CmdCreateKeyBindingFile {

@@ -396,4 +396,10 @@
 	<data name="ErrorSavestateOffsetEditNotSupported" xml:space="preserve">
 		<value>La modification de décalage de sauvegarde n'est actuellement pas prise en charge.</value>
 	</data>
+	<data name="CmdConfigAutoLoadOn" xml:space="preserve">
+		<value>Activer le chargement automatique de la configuration</value>
+	</data>
+	<data name="CmdConfigAutoLoadOff" xml:space="preserve">
+		<value>Désactiver le chargement automatique de la configuration</value>
+	</data>
 </root>

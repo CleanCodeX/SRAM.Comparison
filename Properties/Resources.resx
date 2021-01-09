@@ -489,4 +489,10 @@
   <data name="ErrorSavestateOffsetEditNotSupported" xml:space="preserve">
     <value>Savestate offset edit is currently not supported.</value>
   </data>
+  <data name="CmdConfigAutoLoadOn" xml:space="preserve">
+    <value>Enable config auto-loading</value>
+  </data>
+  <data name="CmdConfigAutoLoadOff" xml:space="preserve">
+    <value>Disable config auto-loading</value>
+  </data>
 </root>

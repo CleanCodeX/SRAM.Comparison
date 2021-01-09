@@ -162,6 +162,12 @@ namespace SramComparer.Services
 			PrintCommandKey(Commands.OpenConfig);
 			PrintColoredLine(ConsoleColor.Yellow, Commands.OpenConfig.GetDisplayName()!);
 
+			PrintCommandKey(Commands.AutoLoadOn);
+			PrintColoredLine(ConsoleColor.Yellow, Commands.AutoLoadOn.GetDisplayName()!);
+
+			PrintCommandKey(Commands.AutoLoadOff);
+			PrintColoredLine(ConsoleColor.Yellow, Commands.AutoLoadOff.GetDisplayName()!);
+
 			PrintCommandKey(Commands.CreateBindings);
 			PrintColoredLine(ConsoleColor.Yellow, Commands.CreateBindings.GetDisplayName()!);
 

@@ -24,7 +24,11 @@ namespace SramComparer
 		[JsonConverter(typeof(JsonStringEnumConverter))]
 		public TComparisonFlags ComparisonFlags { get; set; }
 
-		Enum IOptions.GameRegion => GameRegion;
+		Enum IOptions.GameRegion
+		{
+			get => GameRegion;
+			set => GameRegion = (TGameRegion)value;
+		}
 		Enum IOptions.ComparisonFlags
 		{
 			get => ComparisonFlags;
@@ -36,7 +40,6 @@ namespace SramComparer
 		public string? UILanguage { get; set; }
 		public string? ComparisonResultLanguage { get; set; }
 
-		[JsonIgnore]
 		public string? ConfigFilePath { get; set; }
 	}
 }

@@ -83,6 +83,12 @@ namespace SramComparer.Enums
 		[DisplayNameLocalized(nameof(Res.CmdSaveConfig), typeof(Res))]
 		SaveConfig, // Saves current the config to file
 
+		[DisplayNameLocalized(nameof(Res.CmdConfigAutoLoadOn), typeof(Res))]
+		AutoLoadOn, // Enables config auto loading
+
+		[DisplayNameLocalized(nameof(Res.CmdConfigAutoLoadOff), typeof(Res))]
+		AutoLoadOff, // Disables config auto loading
+
 		[DisplayNameLocalized(nameof(Res.CmdOpenConfig), typeof(Res))]
 		OpenConfig, // opens the config file
 
@@ -117,5 +123,7 @@ namespace SramComparer.Enums
 		Load = Commands.LoadConfig,
 		Save = Commands.SaveConfig,
 		Open = Commands.OpenConfig,
+		LoadOn = Commands.AutoLoadOn,
+		LoadOff = Commands.AutoLoadOff,
 	}
 }

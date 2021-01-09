@@ -17,6 +17,7 @@ using SramComparer.Extensions;
 using SramComparer.Helpers;
 using SramComparer.Properties;
 // ReSharper disable RedundantArgumentDefaultValue
+// ReSharper disable StaticMemberInGenericType
 
 namespace SramComparer.Services
 {
@@ -30,9 +31,12 @@ namespace SramComparer.Services
 		where TSaveSlot : struct
 	{
 		private const string BackupFileExtension = ".backup";
-		private const string KeyBindingsFileName = "KeyBindings.json";
 		private const string Snes9x = "snes9x";
 		private const string SrmFileExtension = ".srm";
+		private const string DefaultConfigName = "Config";
+
+		public static readonly string KeyBindingsFileName = "KeyBindings.json";
+		public static readonly string DefaultConfigFileName = $"{DefaultConfigName}.json";
 
 		protected IConsolePrinter ConsolePrinter { get; }
 
@@ -90,13 +94,17 @@ namespace SramComparer.Services
 			if (command.IsNullOrEmpty()) return true;
 			if (command == "?") command = nameof(Commands.Help);
 
-			if (Enum.TryParse<AlternateCommands>(command, true, out var altCommand))
-				command = ((Commands)altCommand).ToString();
-
-			if (CheckCustomKeyBinding(command, out var boundCommand))
-				command = boundCommand;
-			
 			var cmd = command.ParseEnum<Commands>();
+			if (cmd == default)
+			{
+				if (Enum.TryParse<AlternateCommands>(command, true, out var altCommand))
+					command = ((Commands)altCommand).ToString();
+				else if (CheckCustomKeyBinding(command, out var boundCommand))
+					command = boundCommand;
+
+				cmd = command.ParseEnum<Commands>();
+			}
+
 			switch (cmd)
 			{
 				case Commands.Compare:
@@ -169,6 +177,16 @@ namespace SramComparer.Services
 					break;
 				case Commands.LoadConfig:
 					LoadConfig(options, GetConfigName());
+
+					break;
+				case Commands.AutoLoadOn:
+					options.ConfigFilePath = $"{GetConfigName() ?? DefaultConfigName}.json";
+					SaveConfig(options, DefaultConfigFileName);
+
+					break;
+				case Commands.AutoLoadOff:
+					options.ConfigFilePath = null;
+					SaveConfig(options, DefaultConfigFileName);
 
 					break;
 				case Commands.SaveConfig:
@@ -776,11 +794,14 @@ namespace SramComparer.Services
 
 		protected virtual string GetConfigFilePath(string? configFilePath, string? configName = null)
 		{
-			var configDirectory = Path.GetDirectoryName(configFilePath);
-			var fileName = Path.GetFileName(configFilePath) ?? $"{configName ?? "Config"}.json";
-			configDirectory ??= Path.GetDirectoryName(Environment.CurrentDirectory);
+			if (configName is null) return configFilePath ?? DefaultConfigFileName;
 
-			return Path.Join(configDirectory, fileName);
+			var extension = Path.GetExtension(configName);
+			return extension switch
+			{
+				"" => $"{configName}.json",
+				_ => configName
+			};
 		}
 
 		private string? GetConfigName()
@@ -830,15 +851,16 @@ namespace SramComparer.Services
 		protected virtual void CreateKeyBindingsFile<TEnum>() where TEnum: struct, Enum
 		{
 			var bindings = default(TEnum).ToDictionary();
-
 			var options = new JsonSerializerOptions
 				{
 					Converters = { new JsonStringEnumObjectConverter() }, 
 					WriteIndented = true
 				};
-			JsonFileSerializer.Serialize(KeyBindingsFileName, bindings, options);
 
-			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusKeyBindingsFileHasBeenSavedTemplate.InsertArgs(Path.Join(Environment.CurrentDirectory, KeyBindingsFileName)));
+			var keyBindingsPath = Path.Join(Environment.CurrentDirectory, KeyBindingsFileName);
+			JsonFileSerializer.Serialize(keyBindingsPath, bindings, options);
+
+			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusKeyBindingsFileHasBeenSavedTemplate.InsertArgs(keyBindingsPath));
 			ConsolePrinter.ResetColor();
 		}
 

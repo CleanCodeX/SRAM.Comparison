@@ -24,17 +24,16 @@ namespace SramComparer.Services
 	{
 		private static readonly string[] AllowedFileExtensions = { ".srm", ".comp", ".state", ".000", ".001", ".002", ".003", ".004", ".005", ".006", ".007", ".008", ".009" };
 
-		/// <summary>
-		/// Parses a list of string arguments into an <see cref="IOptions"/> instance
-		/// </summary>
-		/// <param name="args">The string arguments to be parsed</param>
-		/// <returns>Returns an <see cref="IOptions"/> instance</returns>
-		public virtual IOptions Parse(IReadOnlyList<string> args)
+		/// <inheritdoc cref="ICmdLineParser.Parse(IReadOnlyList{string})"/>
+		public virtual IOptions Parse(IReadOnlyList<string> args) => Parse(args, new TOptions());
+
+		/// <inheritdoc cref="ICmdLineParser.Parse(IReadOnlyList{string}, IOptions)"/>
+		public virtual IOptions Parse(IReadOnlyList<string> args, IOptions options)
 		{
-			if (args.Count == 0) return new TOptions();
+			if (args.Count == 0) return options;
 
 			var currentFilePath = args[0];
-			var options = new TOptions { CurrentFilePath = currentFilePath };
+			options.CurrentFilePath = currentFilePath;
 
 			if (currentFilePath.IsNullOrEmpty())
 				throw new ArgumentException(Resources.ErrorMissingPathArguments, nameof(options.CurrentFilePath));
@@ -111,6 +110,11 @@ namespace SramComparer.Services
 						options.ComparisonResultLanguage = value;
 						break;
 					case CmdOptions.ConfigFilePath:
+						var configExtension = ".json";
+						var extension = Path.GetExtension(value);
+						if (extension.IsNotNullOrEmpty() && extension != configExtension)
+							throw new ArgumentException(Resources.ErrorInvalidFileExtensionTemplate.InsertArgs(Resources.Config, value, configExtension));
+
 						options.ConfigFilePath = value;
 						break;
 				}

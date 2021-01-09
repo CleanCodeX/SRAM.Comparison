@@ -384,4 +384,10 @@
 	<data name="ErrorSavestateOffsetEditNotSupported" xml:space="preserve">
 		<value>Die Savestate Offset-Änderung wird momentan nicht unterstützt.</value>
 	</data>
+	<data name="CmdConfigAutoLoadOff" xml:space="preserve">
+		<value>Auto-Laden für Konfig aktivieren</value>
+	</data>
+	<data name="CmdConfigAutoLoadOn" xml:space="preserve">
+		<value>Auto-Laden für Konfig deaktivieren</value>
+	</data>
 </root>

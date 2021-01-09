@@ -10,21 +10,21 @@ namespace SramComparer
 	public interface IOptions
 	{
 		/// <summary>Optional list of commands which should be performed in a row</summary>
-		string? BatchCommands { get; }
+		string? BatchCommands { get; set; }
 
 		/// <summary>Optional region of SRAM file. If Empty, EnglishNtsc is used.</summary>
 		[JsonConverter(typeof(JsonStringEnumObjectConverter))]
 		[DisplayNameLocalized(nameof(Resources.EnumGameRegion), typeof(Resources))]
-		Enum GameRegion { get; }
+		Enum GameRegion { get; set; }
 
 		/// <summary>The filepath to load the current SRAM file from</summary>
-		string? CurrentFilePath { get; }
+		string? CurrentFilePath { get; set; }
 
 		/// <summary>The filepath to load the comparison SRAM file from. if <see cref="CurrentFilePath"/> is set, it will be automatically filled from that</summary>
-		string? ComparisonFilePath { get; }
+		string? ComparisonFilePath { get; set; }
 
 		/// <summary>If set, this directory will be used for exporting comparisons, otherwise the directory of <see cref="CurrentFilePath" /></summary>
-		string? ExportDirectory { get; }
+		string? ExportDirectory { get; set; }
 
 		/// <summary>Gets or sets if only a specific save slot of current-SRAM file should be compared. If zero (default), all save slots will be compared.</summary>
 		int CurrentFileSaveSlot { get; set; }
@@ -49,7 +49,6 @@ namespace SramComparer
 		string? ComparisonResultLanguage { get; set; }
 
 		/// <summary>If set, this config file will be used, otherwise the default file in the directory of <see cref="CurrentFilePath" /></summary>
-		[JsonIgnore]
 		string? ConfigFilePath { get; set; }
 	}
 }
