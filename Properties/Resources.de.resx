@@ -17,7 +17,7 @@
 	<data name="StatusTotalDiffBytesTemplate" xml:space="preserve">
 		<value>Gesamt: {0} Bytes geändert (außerhalb des Speicherslots-Bereichs).</value>
 	</data>
-	<data name="UnknownAreasOnly" xml:space="preserve">
+	<data name="CompUnknownAreasOnly" xml:space="preserve">
 		<value>Nur unbekannte Bereiche</value>
 	</data>
 	<data name="StatusFileHasBeenRestoredFromBackupTemplate" xml:space="preserve">
@@ -59,10 +59,7 @@
 	<data name="Bytes" xml:space="preserve">
 		<value>Bytes</value>
 	</data>
-	<data name="Backup" xml:space="preserve">
-		<value>Sicherung</value>
-	</data>
-	<data name="ChangeShort" xml:space="preserve">
+	<data name="CompChangeShort" xml:space="preserve">
 		<value>Änderung</value>
 	</data>
 	<data name="CmdGroupBackup" xml:space="preserve">
@@ -80,25 +77,25 @@
 	<data name="CmdGroupMisc" xml:space="preserve">
 		<value>Verschiedenes</value>
 	</data>
-	<data name="CommandBackupComparisonFile" xml:space="preserve">
+	<data name="CmdBackupComparisonFile" xml:space="preserve">
 		<value>Vergleichs-Datei sichern</value>
 	</data>
-	<data name="CommandBackupCurrentFile" xml:space="preserve">
+	<data name="CmdBackupCurrentFile" xml:space="preserve">
 		<value>Aktuelle Datei sichern</value>
 	</data>
-	<data name="CommandCompareFiles" xml:space="preserve">
+	<data name="CmdCompareFiles" xml:space="preserve">
 		<value>Vergleiche aktuelle Datei mit Vergleichs-Datei</value>
 	</data>
-	<data name="CommandListCommands" xml:space="preserve">
+	<data name="CmdListCommands" xml:space="preserve">
 		<value>Befehle auflisten</value>
 	</data>
-	<data name="CommandOffset" xml:space="preserve">
+	<data name="CmdOffset" xml:space="preserve">
 		<value>Offset-Wert anzeigen</value>
 	</data>
-	<data name="CommandConfig" xml:space="preserve">
+	<data name="CmdConfig" xml:space="preserve">
 		<value>Konfig anzeigen</value>
 	</data>
-	<data name="CommandExportComparisonResult" xml:space="preserve">
+	<data name="CmdExportComparisonResult" xml:space="preserve">
 		<value>Aktuelles Vergleichsergebnis exportieren</value>
 	</data>
 	<data name="EnumNonSlotByteByByteComparison" xml:space="preserve">
@@ -107,53 +104,53 @@
 	<data name="EnumSlotByteByByteComparison" xml:space="preserve">
 		<value>Speicherslot Byte-Für-Byte-Vergleich</value>
 	</data>
-	<data name="CommandGuideSrm" xml:space="preserve">
+	<data name="CmdGuideSrm" xml:space="preserve">
 		<value>Anleitung (srm)</value>
 	</data>
-	<data name="CommandOverwriteComparisonFile" xml:space="preserve">
+	<data name="CmdOverwriteComparisonFile" xml:space="preserve">
 		<value>Überschreibe Vergleichs-Datei mt aktueller Datei</value>
 	</data>
-	<data name="CommandQuit" xml:space="preserve">
+	<data name="CmdQuit" xml:space="preserve">
 		<value>Beenden</value>
 	</data>
-	<data name="CommandRestoreComparisonFile" xml:space="preserve">
+	<data name="CmdRestoreComparisonFile" xml:space="preserve">
 		<value>Vergleichs-Datei aus Sicherung wiederherstellen</value>
 	</data>
-	<data name="CommandRestoreCurrentFile" xml:space="preserve">
+	<data name="CmdRestoreCurrentFile" xml:space="preserve">
 		<value>Aktuelle Datei aus Sicherung wiederherstellen</value>
 	</data>
-	<data name="CommandEditOffset" xml:space="preserve">
+	<data name="CmdEditOffset" xml:space="preserve">
 		<value>Offset-Wert ändern und speichern</value><comment>The term Offset should only be translated if not understandable</comment>
 	</data>
-	<data name="CommandSetComparisonFileSaveSlot" xml:space="preserve">
+	<data name="CmdSetComparisonFileSaveSlot" xml:space="preserve">
 		<value>Speicherslot für Vergleichs-Datei festlegen</value>
 	</data>
-	<data name="CommandSetCurrentSrramFileSaveSlot" xml:space="preserve">
+	<data name="CmdSetCurrentSrramFileSaveSlot" xml:space="preserve">
 		<value>Speicherslot für aktuelle Datei festlegen</value>
 	</data>
-	<data name="CommandSaveCurrentFileWithOtherFileName" xml:space="preserve">
+	<data name="CmdSaveCurrentFileWithOtherFileName" xml:space="preserve">
 		<value>Aktuelle Datei unter anderem Spielnamen speichern</value>
 	</data>
-	<data name="CommandClearOutput" xml:space="preserve">
+	<data name="CmdClearOutput" xml:space="preserve">
 		<value>Bisherige Konsolen-Ausgabe löschen</value>
 	</data>
-	<data name="Comparison" xml:space="preserve">
+	<data name="CompComparison" xml:space="preserve">
 		<value>Vergleich</value>
 	</data>
 	<data name="ConfigComparisonFlags" xml:space="preserve">
 		<value>Vergleichs-Flags</value>
 	</data>
-	<data name="ComparisonShort" xml:space="preserve">
+	<data name="CompComparisonShort" xml:space="preserve">
 		<value>Vergl.</value><comment>This is an abbreviation and should be kept as short as possible</comment>
 	</data>
-	<data name="CurrentShort" xml:space="preserve">
+	<data name="CompCurrentShort" xml:space="preserve">
 		<value>Akt.</value>
 		<comment>This is an abbreviation and should be kept as short as possible</comment>
 	</data>
 	<data name="EnumCurrentFile" xml:space="preserve">
 		<value>Aktuelle Datei</value>
 	</data>
-	<data name="Current" xml:space="preserve">
+	<data name="CompCurrent" xml:space="preserve">
 		<value>Aktuell</value>
 	</data>
 	<data name="EnumComparisonFile" xml:space="preserve">
@@ -192,11 +189,8 @@
 	<data name="ErrorParamNameValueMissmatchTemplate" xml:space="preserve">
 		<value>Parameter Name-Wert Nicht-Übereinstimmung für: {0}</value>
 	</data>
-	<data name="SaveSlot" xml:space="preserve">
+	<data name="CompSlot" xml:space="preserve">
 		<value>Speicherslot</value>
-	</data>
-	<data name="SaveSlotOffset" xml:space="preserve">
-		<value>Speicherslot-Offset</value><comment>The term Offset should only be translated if not understandable</comment>
 	</data>
 	<data name="PromptGetSaveSlotOffsetTemplate" xml:space="preserve">
 		<value>Speicherslot {0}-Offset setzen:</value><comment>The term Offset should only be translated if not understandable</comment>
@@ -204,28 +198,28 @@
 	<data name="PromptGetSaveSlotOffsetValue" xml:space="preserve">
 		<value>Speicherslot-Offset-Wert setzen:</value><comment>The term Offset should only be translated if not understandable</comment>
 	</data>
-	<data name="New" xml:space="preserve">
+	<data name="CompNew" xml:space="preserve">
 		<value>Neu</value>
 	</data>
-	<data name="None" xml:space="preserve">
+	<data name="EnumNone" xml:space="preserve">
 		<value>Keine</value>
 	</data>
-	<data name="Offset" xml:space="preserve">
+	<data name="CompOffset" xml:space="preserve">
 		<value>Offset</value><comment>This term should only be translated if not understandable</comment>
 	</data>
-	<data name="Old" xml:space="preserve">
+	<data name="CompOld" xml:space="preserve">
 		<value>Alt</value>
 	</data>
-	<data name="Section" xml:space="preserve">
+	<data name="CompSection" xml:space="preserve">
 		<value>Bereich</value>
 	</data>
 	<data name="QueuedCommands" xml:space="preserve">
 		<value>Eingereihte Befehle</value>
 	</data>
-	<data name="SameAsCurrentFileSaveSlot" xml:space="preserve">
+	<data name="CompSameAsCurrentFileSaveSlot" xml:space="preserve">
 		<value>Gleicher Slot wie aktuelle Datei</value>
 	</data>
-	<data name="SectionSaveSlotChangedTemplate" xml:space="preserve">
+	<data name="CompSectionSaveSlotChangedTemplate" xml:space="preserve">
 		<value>Alles (Bekannte und Unbekannte)</value>
 	</data>
 	<data name="ConfigExportDirectory" xml:space="preserve">
@@ -249,17 +243,17 @@
 	<data name="Config" xml:space="preserve">
 		<value>Konfig</value>
 	</data>
-	<data name="Size" xml:space="preserve">
+	<data name="CompSize" xml:space="preserve">
 		<value>Größe</value>
 	</data>
-	<data name="Sram" xml:space="preserve">
+	<data name="CompSram" xml:space="preserve">
 		<value>SRAM</value>
-	</data>
-	<data name="SramOffset" xml:space="preserve">
-		<value>SRAM-Offset</value><comment>The term Offset should only be translated if not understandable</comment>
 	</data>
 	<data name="StartMessage" xml:space="preserve">
 		<value>Neu hier? Für eine Liste aller Befehle gib ({0}|?) oder ({1}) für eine Bedienungsanleitung ein.</value>
+	</data>
+	<data name="SramOffset" xml:space="preserve">
+		<value>SRAM-Offset</value><comment>The term Offset should only be translated if not understandable</comment>
 	</data>
 	<data name="StatusBytesChangedTemplate" xml:space="preserve">
 		<value>{0} Bytes geändert.</value>
@@ -309,20 +303,17 @@
 	<data name="StatusAllSaveSlotsWillBeCompared" xml:space="preserve">
 		<value>Alle Speicherslots werden verglichen.</value>
 	</data>
-	<data name="SectionNonSaveSlotUnknowns" xml:space="preserve">
+	<data name="CompSectionNonSaveSlotUnknowns" xml:space="preserve">
 		<value>Unbekannter nicht-Speicherslot-Bereich</value>
 	</data>
 	<data name="ErrorComparisonFileSaveSlotSetButNotCurrentFileSaveSlot" xml:space="preserve">
 		<value>Der Vergleichs-Datei Speicherslot kann erst gesetzt werden, nachdem der Speicherslot der aktuellen Datei festgelegt wurde.</value>
 	</data>
-	<data name="CommandSlotByteByBytesComparison" xml:space="preserve">
+	<data name="CmdSlotByteByBytesComparison" xml:space="preserve">
 		<value>Speicherslot Byte-für-Byte vergleichen</value>
 	</data>
-	<data name="CommandNonSlotByteByByteComparison" xml:space="preserve">
+	<data name="CmdNonSlotByteByByteComparison" xml:space="preserve">
 		<value>Nicht-Speicherslot-Bereich Byte-für-Byte vergleichen</value>
-	</data>
-	<data name="Same" xml:space="preserve">
-		<value>Gleich</value>
 	</data>
 	<data name="StatusTwoDifferentSaveSlotsWillBeComparedTemplate" xml:space="preserve">
 		<value>Der aktuelle Speicherslot {0} wird mit dem Vergleichs-Speicherslot {1} verglichen.</value>
@@ -330,13 +321,13 @@
 	<data name="ConfigComparisonResultLanguage" xml:space="preserve">
 		<value>Vergleichsergebnis-Sprache</value>
 	</data>
-	<data name="UILanguage" xml:space="preserve">
+	<data name="ConfigUILanguage" xml:space="preserve">
 		<value>UI-Sprache</value>
 	</data>
-	<data name="CommandLanguage" xml:space="preserve">
+	<data name="CmdLanguage" xml:space="preserve">
 		<value>UI-Sprache setzen</value>
 	</data>
-	<data name="CommandComparisonResultLanguage" xml:space="preserve">
+	<data name="CmdComparisonResultLanguage" xml:space="preserve">
 		<value>Sprache für Vergleichsergebnis festlegen</value>
 	</data>
 	<data name="CmdGroupLanguage" xml:space="preserve">
@@ -348,16 +339,16 @@
 	<data name="PromptSetComparionResultLanguage" xml:space="preserve">
 		<value>Setze die Vergleichsergebnis-Sprache (z.B. 'de' für deutsch - ohne Anführungszeichen). Eine leere Eingabe setzt die Einstellung zurück.</value>
 	</data>
-	<data name="NoGuideAvailable" xml:space="preserve">
+	<data name="StatusNoGuideAvailable" xml:space="preserve">
 		<value>Es ist keine Anleitung vorhanden</value>
 	</data>
-	<data name="CommandGuideSavestate" xml:space="preserve">
+	<data name="CmdGuideSavestate" xml:space="preserve">
 		<value>Anleitung (savestate)</value>
 	</data>
-	<data name="CommandLoadConfig" xml:space="preserve">
+	<data name="CmdLoadConfig" xml:space="preserve">
 		<value>Konfig laden</value>
 	</data>
-	<data name="CommandSaveConfig" xml:space="preserve">
+	<data name="CmdSaveConfig" xml:space="preserve">
 		<value>Konfig speichern</value>
 	</data>
 	<data name="ConfigFilePath" xml:space="preserve">
@@ -372,10 +363,22 @@
 	<data name="PromptEnterConfigName" xml:space="preserve">
 		<value>Gib einen spezifischen Konfig-Namen ein oder leer für Standard-Config.</value>
 	</data>
-	<data name="CommandOpenConfig" xml:space="preserve">
+	<data name="CmdOpenConfig" xml:space="preserve">
 		<value>Konfig-Datei öffnen</value>
 	</data>
 	<data name="ErrorConfigFileDoesNotExist" xml:space="preserve">
 		<value>Die Konfig-Datei [{0}] existiert (noch) nicht.</value>
+	</data>
+	<data name="CmdCreateKeyBindingFile" xml:space="preserve">
+		<value>Tastenzuweisungs-Datei erstellen</value>
+	</data>
+	<data name="CmdOpenKeyBindingFile" xml:space="preserve">
+		<value>Tastenzuweisungs-Datei öffnen</value>
+	</data>
+	<data name="StatusKeyBindingsFileHasBeenSavedTemplate" xml:space="preserve">
+		<value>Tastenzuordnungs-Datei [{0}] wurde gespeichert.</value>
+	</data>
+	<data name="ErrorKeyBindingsFileDoesNotExist" xml:space="preserve">
+		<value>Die Tastenzuordnungs-Datei [{0}] existiert (noch) nicht.</value>
 	</data>
 </root>

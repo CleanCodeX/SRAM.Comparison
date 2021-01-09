@@ -13,7 +13,7 @@ namespace SramComparer
 		string? BatchCommands { get; }
 
 		/// <summary>Optional region of SRAM file. If Empty, EnglishNtsc is used.</summary>
-		[JsonConverter(typeof(EnumTextConverter))]
+		[JsonConverter(typeof(JsonStringEnumObjectConverter))]
 		[DisplayNameLocalized(nameof(Resources.EnumGameRegion), typeof(Resources))]
 		Enum GameRegion { get; }
 
@@ -33,7 +33,7 @@ namespace SramComparer
 		int ComparisonFileSaveSlot { get; set; }
 
 		/// <summary>Optional save slot specific flags for comparisons</summary>
-		[JsonConverter(typeof(EnumTextConverter))]
+		[JsonConverter(typeof(JsonStringEnumObjectConverter))]
 		Enum ComparisonFlags { get; set; }
 
 		/// <summary>Optional flag whether to colorize the output or not</summary>

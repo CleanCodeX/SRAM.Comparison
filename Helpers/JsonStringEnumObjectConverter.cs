@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace SramComparer.Helpers
 {
-	public class EnumTextConverter : JsonConverter<Enum>
+	public class JsonStringEnumObjectConverter : JsonConverter<Enum>
 	{
 		public override bool CanConvert(Type typeToConvert) => typeToConvert == typeof(Enum);
 

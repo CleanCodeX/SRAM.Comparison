@@ -64,7 +64,7 @@ namespace SramComparer.Services
 
 #if Check_FileExtensions
 			if (!AllowedFileExtensions.Contains(Path.GetExtension(currentFilePath).ToLower()))
-				throw new ArgumentException(Resources.ErrorInvalidFileExtensionTemplate.InsertArgs(Resources.Current, options.CurrentFilePath, AllowedFileExtensions.Join()));
+				throw new ArgumentException(Resources.ErrorInvalidFileExtensionTemplate.InsertArgs(Resources.CompCurrent, options.CurrentFilePath, AllowedFileExtensions.Join()));
 #endif
 
 			for (var i = namelessParamCount; i < args.Count; i += 2)
@@ -118,7 +118,7 @@ namespace SramComparer.Services
 
 #if Check_FileExtensions
 			if (options.ComparisonFilePath.IsNotNullOrEmpty() && !AllowedFileExtensions.Contains(Path.GetExtension(options.ComparisonFilePath!).ToLower()))
-				throw new ArgumentException(Resources.ErrorInvalidFileExtensionTemplate.InsertArgs(Resources.Comparison,  options.ComparisonFilePath, AllowedFileExtensions.Join()));
+				throw new ArgumentException(Resources.ErrorInvalidFileExtensionTemplate.InsertArgs(Resources.CompComparison,  options.ComparisonFilePath, AllowedFileExtensions.Join()));
 #endif
 
 			return options;

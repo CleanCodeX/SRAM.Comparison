@@ -79,15 +79,6 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Backup ähnelt.
-        /// </summary>
-        public static string Backup {
-            get {
-                return ResourceManager.GetString("Backup", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die bytes ähnelt.
         /// </summary>
         public static string Bytes {
@@ -97,11 +88,83 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Change ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Back-up comparison-file ähnelt.
         /// </summary>
-        public static string ChangeShort {
+        public static string CmdBackupComparisonFile {
             get {
-                return ResourceManager.GetString("ChangeShort", resourceCulture);
+                return ResourceManager.GetString("CmdBackupComparisonFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Back-up current-file ähnelt.
+        /// </summary>
+        public static string CmdBackupCurrentFile {
+            get {
+                return ResourceManager.GetString("CmdBackupCurrentFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Wipe previous console output ähnelt.
+        /// </summary>
+        public static string CmdClearOutput {
+            get {
+                return ResourceManager.GetString("CmdClearOutput", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Compare current-file with comparison file ähnelt.
+        /// </summary>
+        public static string CmdCompareFiles {
+            get {
+                return ResourceManager.GetString("CmdCompareFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Set comparison result language ähnelt.
+        /// </summary>
+        public static string CmdComparisonResultLanguage {
+            get {
+                return ResourceManager.GetString("CmdComparisonResultLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Display config ähnelt.
+        /// </summary>
+        public static string CmdConfig {
+            get {
+                return ResourceManager.GetString("CmdConfig", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Create key binding file ähnelt.
+        /// </summary>
+        public static string CmdCreateKeyBindingFile {
+            get {
+                return ResourceManager.GetString("CmdCreateKeyBindingFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Modify (and save) offset value ähnelt.
+        /// </summary>
+        public static string CmdEditOffset {
+            get {
+                return ResourceManager.GetString("CmdEditOffset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Export current comparison result ähnelt.
+        /// </summary>
+        public static string CmdExportComparisonResult {
+            get {
+                return ResourceManager.GetString("CmdExportComparisonResult", resourceCulture);
             }
         }
         
@@ -169,245 +232,308 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Back-up comparison-file ähnelt.
-        /// </summary>
-        public static string CommandBackupComparisonFile {
-            get {
-                return ResourceManager.GetString("CommandBackupComparisonFile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Back-up current-file ähnelt.
-        /// </summary>
-        public static string CommandBackupCurrentFile {
-            get {
-                return ResourceManager.GetString("CommandBackupCurrentFile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Wipe previous console output ähnelt.
-        /// </summary>
-        public static string CommandClearOutput {
-            get {
-                return ResourceManager.GetString("CommandClearOutput", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Compare current-file with comparison file ähnelt.
-        /// </summary>
-        public static string CommandCompareFiles {
-            get {
-                return ResourceManager.GetString("CommandCompareFiles", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Set comparison result language ähnelt.
-        /// </summary>
-        public static string CommandComparisonResultLanguage {
-            get {
-                return ResourceManager.GetString("CommandComparisonResultLanguage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Display config ähnelt.
-        /// </summary>
-        public static string CommandConfig {
-            get {
-                return ResourceManager.GetString("CommandConfig", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Modify (and save) offset value ähnelt.
-        /// </summary>
-        public static string CommandEditOffset {
-            get {
-                return ResourceManager.GetString("CommandEditOffset", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Export current comparison result ähnelt.
-        /// </summary>
-        public static string CommandExportComparisonResult {
-            get {
-                return ResourceManager.GetString("CommandExportComparisonResult", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Guide (savestate) ähnelt.
         /// </summary>
-        public static string CommandGuideSavestate {
+        public static string CmdGuideSavestate {
             get {
-                return ResourceManager.GetString("CommandGuideSavestate", resourceCulture);
+                return ResourceManager.GetString("CmdGuideSavestate", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Guide (srm) ähnelt.
         /// </summary>
-        public static string CommandGuideSrm {
+        public static string CmdGuideSrm {
             get {
-                return ResourceManager.GetString("CommandGuideSrm", resourceCulture);
+                return ResourceManager.GetString("CmdGuideSrm", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Set UI-language ähnelt.
         /// </summary>
-        public static string CommandLanguage {
+        public static string CmdLanguage {
             get {
-                return ResourceManager.GetString("CommandLanguage", resourceCulture);
+                return ResourceManager.GetString("CmdLanguage", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die List commands ähnelt.
         /// </summary>
-        public static string CommandListCommands {
+        public static string CmdListCommands {
             get {
-                return ResourceManager.GetString("CommandListCommands", resourceCulture);
+                return ResourceManager.GetString("CmdListCommands", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Load config ähnelt.
         /// </summary>
-        public static string CommandLoadConfig {
+        public static string CmdLoadConfig {
             get {
-                return ResourceManager.GetString("CommandLoadConfig", resourceCulture);
+                return ResourceManager.GetString("CmdLoadConfig", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Add non-slot byte-by-byte comparison ähnelt.
         /// </summary>
-        public static string CommandNonSlotByteByByteComparison {
+        public static string CmdNonSlotByteByByteComparison {
             get {
-                return ResourceManager.GetString("CommandNonSlotByteByByteComparison", resourceCulture);
+                return ResourceManager.GetString("CmdNonSlotByteByByteComparison", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Display offset value ähnelt.
         /// </summary>
-        public static string CommandOffset {
+        public static string CmdOffset {
             get {
-                return ResourceManager.GetString("CommandOffset", resourceCulture);
+                return ResourceManager.GetString("CmdOffset", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Open config file ähnelt.
         /// </summary>
-        public static string CommandOpenConfig {
+        public static string CmdOpenConfig {
             get {
-                return ResourceManager.GetString("CommandOpenConfig", resourceCulture);
+                return ResourceManager.GetString("CmdOpenConfig", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Open key binding file ähnelt.
+        /// </summary>
+        public static string CmdOpenKeyBindingFile {
+            get {
+                return ResourceManager.GetString("CmdOpenKeyBindingFile", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Overwrite (or create) comparison file with current-file ähnelt.
         /// </summary>
-        public static string CommandOverwriteComparisonFile {
+        public static string CmdOverwriteComparisonFile {
             get {
-                return ResourceManager.GetString("CommandOverwriteComparisonFile", resourceCulture);
+                return ResourceManager.GetString("CmdOverwriteComparisonFile", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Quit ähnelt.
         /// </summary>
-        public static string CommandQuit {
+        public static string CmdQuit {
             get {
-                return ResourceManager.GetString("CommandQuit", resourceCulture);
+                return ResourceManager.GetString("CmdQuit", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Restore comparison-file from backup ähnelt.
         /// </summary>
-        public static string CommandRestoreComparisonFile {
+        public static string CmdRestoreComparisonFile {
             get {
-                return ResourceManager.GetString("CommandRestoreComparisonFile", resourceCulture);
+                return ResourceManager.GetString("CmdRestoreComparisonFile", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Restore current-file from backup ähnelt.
         /// </summary>
-        public static string CommandRestoreCurrentFile {
+        public static string CmdRestoreCurrentFile {
             get {
-                return ResourceManager.GetString("CommandRestoreCurrentFile", resourceCulture);
+                return ResourceManager.GetString("CmdRestoreCurrentFile", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Save config ähnelt.
         /// </summary>
-        public static string CommandSaveConfig {
+        public static string CmdSaveConfig {
             get {
-                return ResourceManager.GetString("CommandSaveConfig", resourceCulture);
+                return ResourceManager.GetString("CmdSaveConfig", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Save current-file with other game file&apos;s name ähnelt.
         /// </summary>
-        public static string CommandSaveCurrentFileWithOtherFileName {
+        public static string CmdSaveCurrentFileWithOtherFileName {
             get {
-                return ResourceManager.GetString("CommandSaveCurrentFileWithOtherFileName", resourceCulture);
+                return ResourceManager.GetString("CmdSaveCurrentFileWithOtherFileName", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Set comparison file&apos;s save slot ähnelt.
         /// </summary>
-        public static string CommandSetComparisonFileSaveSlot {
+        public static string CmdSetComparisonFileSaveSlot {
             get {
-                return ResourceManager.GetString("CommandSetComparisonFileSaveSlot", resourceCulture);
+                return ResourceManager.GetString("CmdSetComparisonFileSaveSlot", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Set current file&apos;s save slot ähnelt.
         /// </summary>
-        public static string CommandSetCurrentSrramFileSaveSlot {
+        public static string CmdSetCurrentSrramFileSaveSlot {
             get {
-                return ResourceManager.GetString("CommandSetCurrentSrramFileSaveSlot", resourceCulture);
+                return ResourceManager.GetString("CmdSetCurrentSrramFileSaveSlot", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Add slot byte-by-byte comparison ähnelt.
         /// </summary>
-        public static string CommandSlotByteByBytesComparison {
+        public static string CmdSlotByteByBytesComparison {
             get {
-                return ResourceManager.GetString("CommandSlotByteByBytesComparison", resourceCulture);
+                return ResourceManager.GetString("CmdSlotByteByBytesComparison", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Change ähnelt.
+        /// </summary>
+        public static string CompChangeShort {
+            get {
+                return ResourceManager.GetString("CompChangeShort", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Comparison ähnelt.
         /// </summary>
-        public static string Comparison {
+        public static string CompComparison {
             get {
-                return ResourceManager.GetString("Comparison", resourceCulture);
+                return ResourceManager.GetString("CompComparison", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Comp ähnelt.
         /// </summary>
-        public static string ComparisonShort {
+        public static string CompComparisonShort {
             get {
-                return ResourceManager.GetString("ComparisonShort", resourceCulture);
+                return ResourceManager.GetString("CompComparisonShort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Current ähnelt.
+        /// </summary>
+        public static string CompCurrent {
+            get {
+                return ResourceManager.GetString("CompCurrent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Curr ähnelt.
+        /// </summary>
+        public static string CompCurrentShort {
+            get {
+                return ResourceManager.GetString("CompCurrentShort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die New ähnelt.
+        /// </summary>
+        public static string CompNew {
+            get {
+                return ResourceManager.GetString("CompNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Offset ähnelt.
+        /// </summary>
+        public static string CompOffset {
+            get {
+                return ResourceManager.GetString("CompOffset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Old ähnelt.
+        /// </summary>
+        public static string CompOld {
+            get {
+                return ResourceManager.GetString("CompOld", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Same as current file&apos;s save slot ähnelt.
+        /// </summary>
+        public static string CompSameAsCurrentFileSaveSlot {
+            get {
+                return ResourceManager.GetString("CompSameAsCurrentFileSaveSlot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Section ähnelt.
+        /// </summary>
+        public static string CompSection {
+            get {
+                return ResourceManager.GetString("CompSection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Non-save slot unknowns ähnelt.
+        /// </summary>
+        public static string CompSectionNonSaveSlotUnknowns {
+            get {
+                return ResourceManager.GetString("CompSectionNonSaveSlotUnknowns", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die All (knowns + unknowns) ähnelt.
+        /// </summary>
+        public static string CompSectionSaveSlotChangedTemplate {
+            get {
+                return ResourceManager.GetString("CompSectionSaveSlotChangedTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Size ähnelt.
+        /// </summary>
+        public static string CompSize {
+            get {
+                return ResourceManager.GetString("CompSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Save slot ähnelt.
+        /// </summary>
+        public static string CompSlot {
+            get {
+                return ResourceManager.GetString("CompSlot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die SRAM ähnelt.
+        /// </summary>
+        public static string CompSram {
+            get {
+                return ResourceManager.GetString("CompSram", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Unknowns only ähnelt.
+        /// </summary>
+        public static string CompUnknownAreasOnly {
+            get {
+                return ResourceManager.GetString("CompUnknownAreasOnly", resourceCulture);
             }
         }
         
@@ -502,20 +628,11 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Current ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die UI language ähnelt.
         /// </summary>
-        public static string Current {
+        public static string ConfigUILanguage {
             get {
-                return ResourceManager.GetString("Current", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Curr ähnelt.
-        /// </summary>
-        public static string CurrentShort {
-            get {
-                return ResourceManager.GetString("CurrentShort", resourceCulture);
+                return ResourceManager.GetString("ConfigUILanguage", resourceCulture);
             }
         }
         
@@ -561,6 +678,15 @@ namespace SramComparer.Properties {
         public static string EnumGameRegion {
             get {
                 return ResourceManager.GetString("EnumGameRegion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die None ähnelt.
+        /// </summary>
+        public static string EnumNone {
+            get {
+                return ResourceManager.GetString("EnumNone", resourceCulture);
             }
         }
         
@@ -646,6 +772,15 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die The key bindings file [{0}] does not exist (yet). ähnelt.
+        /// </summary>
+        public static string ErrorKeyBindingsFileDoesNotExist {
+            get {
+                return ResourceManager.GetString("ErrorKeyBindingsFileDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die ERROR: The program needs to be started with at least the path to current save file as a parameter. Drag &apos;n&apos; drop can be used. ähnelt.
         /// </summary>
         public static string ErrorMissingPathArguments {
@@ -678,51 +813,6 @@ namespace SramComparer.Properties {
         public static string ErrorParamNameValueMissmatchTemplate {
             get {
                 return ResourceManager.GetString("ErrorParamNameValueMissmatchTemplate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die New ähnelt.
-        /// </summary>
-        public static string New {
-            get {
-                return ResourceManager.GetString("New", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die There is no guide available ähnelt.
-        /// </summary>
-        public static string NoGuideAvailable {
-            get {
-                return ResourceManager.GetString("NoGuideAvailable", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die None ähnelt.
-        /// </summary>
-        public static string None {
-            get {
-                return ResourceManager.GetString("None", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Offset ähnelt.
-        /// </summary>
-        public static string Offset {
-            get {
-                return ResourceManager.GetString("Offset", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Old ähnelt.
-        /// </summary>
-        public static string Old {
-            get {
-                return ResourceManager.GetString("Old", resourceCulture);
             }
         }
         
@@ -813,87 +903,6 @@ namespace SramComparer.Properties {
         public static string QueuedCommands {
             get {
                 return ResourceManager.GetString("QueuedCommands", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Same ähnelt.
-        /// </summary>
-        public static string Same {
-            get {
-                return ResourceManager.GetString("Same", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Same as current file&apos;s save slot ähnelt.
-        /// </summary>
-        public static string SameAsCurrentFileSaveSlot {
-            get {
-                return ResourceManager.GetString("SameAsCurrentFileSaveSlot", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Save slot ähnelt.
-        /// </summary>
-        public static string SaveSlot {
-            get {
-                return ResourceManager.GetString("SaveSlot", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Save slot offset ähnelt.
-        /// </summary>
-        public static string SaveSlotOffset {
-            get {
-                return ResourceManager.GetString("SaveSlotOffset", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Section ähnelt.
-        /// </summary>
-        public static string Section {
-            get {
-                return ResourceManager.GetString("Section", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Non-save slot unknowns ähnelt.
-        /// </summary>
-        public static string SectionNonSaveSlotUnknowns {
-            get {
-                return ResourceManager.GetString("SectionNonSaveSlotUnknowns", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die All (knowns + unknowns) ähnelt.
-        /// </summary>
-        public static string SectionSaveSlotChangedTemplate {
-            get {
-                return ResourceManager.GetString("SectionSaveSlotChangedTemplate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Size ähnelt.
-        /// </summary>
-        public static string Size {
-            get {
-                return ResourceManager.GetString("Size", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die SRAM ähnelt.
-        /// </summary>
-        public static string Sram {
-            get {
-                return ResourceManager.GetString("Sram", resourceCulture);
             }
         }
         
@@ -997,6 +1006,15 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Key bindings file [{0}] has been saved. ähnelt.
+        /// </summary>
+        public static string StatusKeyBindingsFileHasBeenSavedTemplate {
+            get {
+                return ResourceManager.GetString("StatusKeyBindingsFileHasBeenSavedTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Edited current file has been overwritten. File: {0}. ähnelt.
         /// </summary>
         public static string StatusModifiedFileHasBeenOverwrittenTemplate {
@@ -1020,6 +1038,15 @@ namespace SramComparer.Properties {
         public static string StatusNoAvailableOtherFiles {
             get {
                 return ResourceManager.GetString("StatusNoAvailableOtherFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die There is no guide available ähnelt.
+        /// </summary>
+        public static string StatusNoGuideAvailable {
+            get {
+                return ResourceManager.GetString("StatusNoGuideAvailable", resourceCulture);
             }
         }
         
@@ -1137,24 +1164,6 @@ namespace SramComparer.Properties {
         public static string StatusUnknownsChangedBytesTemplate {
             get {
                 return ResourceManager.GetString("StatusUnknownsChangedBytesTemplate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die UI language ähnelt.
-        /// </summary>
-        public static string UILanguage {
-            get {
-                return ResourceManager.GetString("UILanguage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Unknowns only ähnelt.
-        /// </summary>
-        public static string UnknownAreasOnly {
-            get {
-                return ResourceManager.GetString("UnknownAreasOnly", resourceCulture);
             }
         }
     }

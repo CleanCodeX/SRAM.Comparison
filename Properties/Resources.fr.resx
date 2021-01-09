@@ -14,13 +14,10 @@
 	<data name="All" xml:space="preserve">
 		<value>Toutes</value>
 	</data>
-	<data name="Backup" xml:space="preserve">
-		<value>Sauvegarde</value>
-	</data>
 	<data name="Bytes" xml:space="preserve">
 		<value>octets</value>
 	</data>
-	<data name="ChangeShort" xml:space="preserve">
+	<data name="CompChangeShort" xml:space="preserve">
 		<value>Modification</value>
 	</data>
 	<data name="CmdGroupBackup" xml:space="preserve">
@@ -38,13 +35,13 @@
 	<data name="CmdGroupMisc" xml:space="preserve">
 		<value>Autres</value><comment>Possible retranslation neede. was: Autres</comment>
 	</data>
-	<data name="CommandBackupComparisonFile" xml:space="preserve">
+	<data name="CmdBackupComparisonFile" xml:space="preserve">
 		<value>Sauvegarder le fichier de comparaison</value>
 	</data>
-	<data name="CommandBackupCurrentFile" xml:space="preserve">
+	<data name="CmdBackupCurrentFile" xml:space="preserve">
 		<value>Sauvegarder le fichier en cours</value>
 	</data>
-	<data name="CommandCompareFiles" xml:space="preserve">
+	<data name="CmdCompareFiles" xml:space="preserve">
 		<value>Comparer le fichier en cours avec celui de comparaison</value>
 	</data>
 	<data name="AppDescription" xml:space="preserve">
@@ -53,75 +50,75 @@
 	<data name="ConfigColorizeOutput" xml:space="preserve">
 		<value>Résultat avec couleurs</value>
 	</data>
-	<data name="CommandExportComparisonResult" xml:space="preserve">
+	<data name="CmdExportComparisonResult" xml:space="preserve">
 		<value>Exporter le résultat de la comparaison en cours</value>
 	</data>
-	<data name="CommandNonSlotByteByByteComparison" xml:space="preserve">
+	<data name="CmdNonSlotByteByByteComparison" xml:space="preserve">
 		<value>Comparer les autres parties octet par octet</value>
 		<comment>Was: Comparer aussi les zones n'appartenant pas à des parties
 		</comment>
 	</data>
-	<data name="CommandSlotByteByBytesComparison" xml:space="preserve">
+	<data name="CmdSlotByteByBytesComparison" xml:space="preserve">
 		<value>Comparer toutes les parties octet par octet</value><comment>Was: Comparer également toute la zone de la partie
 		</comment>
 	</data>
-	<data name="CommandGuideSrm" xml:space="preserve">
+	<data name="CmdGuideSrm" xml:space="preserve">
 		<value>Manuel (savestate)</value>
 	</data>
-	<data name="CommandOverwriteComparisonFile" xml:space="preserve">
+	<data name="CmdOverwriteComparisonFile" xml:space="preserve">
 		<value>Écraser le fichier de comparaison avec le fichier en cours</value>
 	</data>
-	<data name="CommandQuit" xml:space="preserve">
+	<data name="CmdQuit" xml:space="preserve">
 		<value>Quitter</value>
 	</data>
-	<data name="CommandRestoreComparisonFile" xml:space="preserve">
+	<data name="CmdRestoreComparisonFile" xml:space="preserve">
 		<value>Restaurer le fichier de comparaison à partir de la sauvegarde</value>
 	</data>
-	<data name="CommandRestoreCurrentFile" xml:space="preserve">
+	<data name="CmdRestoreCurrentFile" xml:space="preserve">
 		<value>Restaurer le fichier en cours à partir de la sauvegarde</value>
 	</data>
-	<data name="CommandEditOffset" xml:space="preserve">
+	<data name="CmdEditOffset" xml:space="preserve">
 		<value>Enregistrer la valeur du décalage</value>
 	</data>
-	<data name="CommandSetComparisonFileSaveSlot" xml:space="preserve">
+	<data name="CmdSetComparisonFileSaveSlot" xml:space="preserve">
 		<value>Définir l'emplacement de jeu du fichier de comparaison</value>
 	</data>
-	<data name="CommandSetCurrentSrramFileSaveSlot" xml:space="preserve">
+	<data name="CmdSetCurrentSrramFileSaveSlot" xml:space="preserve">
 		<value>Définir l'emplacement de jeu du fichier en cours</value>
 	</data>
-	<data name="CommandConfig" xml:space="preserve">
+	<data name="CmdConfig" xml:space="preserve">
 		<value>Afficher la configuration</value>
 	</data>
-	<data name="CommandOffset" xml:space="preserve">
+	<data name="CmdOffset" xml:space="preserve">
 		<value>Afficher le décalage en cours</value>
 	</data>
-	<data name="CommandListCommands" xml:space="preserve">
+	<data name="CmdListCommands" xml:space="preserve">
 		<value>Liste des commandes</value><comment>was: Afficher les commandes</comment>
 	</data>
-	<data name="CommandSaveCurrentFileWithOtherFileName" xml:space="preserve">
+	<data name="CmdSaveCurrentFileWithOtherFileName" xml:space="preserve">
 		<value>Enregistrer le fichier en cours avec le nom d'un autre fichier </value>
 		<comment>was: Transférer les données SRAM vers un fichier de jeu similaire
 		</comment>
 	</data>
-	<data name="CommandClearOutput" xml:space="preserve">
+	<data name="CmdClearOutput" xml:space="preserve">
 		<value>Effacer la sortie de la console précédente</value>
 	</data>
-	<data name="Comparison" xml:space="preserve">
+	<data name="CompComparison" xml:space="preserve">
 		<value>Comparaison</value>
 	</data>
 	<data name="ConfigComparisonFlags" xml:space="preserve">
 		<value>Options de comparaison</value>
 	</data>
-	<data name="ComparisonShort" xml:space="preserve">
+	<data name="CompComparisonShort" xml:space="preserve">
 		<value>Comp</value>
 	</data>
 	<data name="EnumComparisonFile" xml:space="preserve">
 		<value>Fichier de comparaison</value>
 	</data>
-	<data name="Current" xml:space="preserve">
+	<data name="CompCurrent" xml:space="preserve">
 		<value>En cours</value>
 	</data>
-	<data name="CurrentShort" xml:space="preserve">
+	<data name="CompCurrentShort" xml:space="preserve">
 		<value>Courant</value><comment>Is nothing shorter possible? 4-5 characters would be optimal</comment>
 	</data>
 	<data name="EnumCurrentFile" xml:space="preserve">
@@ -165,19 +162,16 @@
 	<data name="ErrorParamNameValueMissmatchTemplate" xml:space="preserve">
 		<value>Incompatibilité de nom de paramètre pour {0}</value>
 	</data>
-	<data name="SaveSlotOffset" xml:space="preserve">
-		<value>Décalage dans la partie</value>
-	</data>
-	<data name="New" xml:space="preserve">
+	<data name="CompNew" xml:space="preserve">
 		<value>Nouveau</value>
 	</data>
-	<data name="None" xml:space="preserve">
+	<data name="EnumNone" xml:space="preserve">
 		<value>Aucune</value>
 	</data>
-	<data name="Old" xml:space="preserve">
+	<data name="CompOld" xml:space="preserve">
 		<value>Ancien</value>
 	</data>
-	<data name="Offset" xml:space="preserve">
+	<data name="CompOffset" xml:space="preserve">
 		<value>Décalage</value>
 	</data>
 	<data name="PromptCreateNewFileInsteadOfOverwriting" xml:space="preserve">
@@ -191,13 +185,13 @@
 		<comment>Partie du fichier en cours
 		</comment>
 	</data>
-	<data name="Section" xml:space="preserve">
+	<data name="CompSection" xml:space="preserve">
 		<value>Section</value>
 	</data>
-	<data name="SectionSaveSlotChangedTemplate" xml:space="preserve">
+	<data name="CompSectionSaveSlotChangedTemplate" xml:space="preserve">
 		<value>Tout (valeurs connues et inconnues)</value>
 	</data>
-	<data name="SectionNonSaveSlotUnknowns" xml:space="preserve">
+	<data name="CompSectionNonSaveSlotUnknowns" xml:space="preserve">
 		<value>Valeurs inconnues des autres parties</value>
 	</data>
 	<data name="PromptSetSaveSlotTemplate" xml:space="preserve">
@@ -228,17 +222,17 @@
 	<data name="Config" xml:space="preserve">
 		<value>Config</value>
 	</data>
-	<data name="Size" xml:space="preserve">
+	<data name="CompSize" xml:space="preserve">
 		<value>Taille</value>
 	</data>
-	<data name="Sram" xml:space="preserve">
+	<data name="CompSram" xml:space="preserve">
 		<value>SRAM</value>
-	</data>
-	<data name="SramOffset" xml:space="preserve">
-		<value>Décalage SRAM</value>
 	</data>
 	<data name="StartMessage" xml:space="preserve">
 		<value>Pour afficher la liste des commandes écrivez ({0} |?) ou ({1}).</value>
+	</data>
+	<data name="SramOffset" xml:space="preserve">
+		<value>Décalage SRAM</value>
 	</data>
 	<data name="StatusAllSaveSlotsWillBeCompared" xml:space="preserve">
 		<value>Toutes les parties seront comparées.</value>
@@ -308,7 +302,7 @@
 	<data name="StatusTotalDiffBytesTemplate" xml:space="preserve">
 		<value>Total : {0} octets modifiés (en dehors de la partie en cours).</value>
 	</data>
-	<data name="UnknownAreasOnly" xml:space="preserve">
+	<data name="CompUnknownAreasOnly" xml:space="preserve">
 		<value>Seulement les valeurs inconnues</value>
 	</data>
 	<data name="StatusCurrentComparisonExportedFilePathTemplate" xml:space="preserve">
@@ -317,10 +311,10 @@
 	<data name="EnumSlotByteByByteComparison" xml:space="preserve">
 		<value>Comparer les données de la partie en cours octet par octet</value><comment>Comparer toute les données de la partie en cours</comment>
 	</data>
-	<data name="SaveSlot" xml:space="preserve">
+	<data name="CompSlot" xml:space="preserve">
 		<value>Partie</value>
 	</data>
-	<data name="SameAsCurrentFileSaveSlot" xml:space="preserve">
+	<data name="CompSameAsCurrentFileSaveSlot" xml:space="preserve">
 		<value>Identique à l'emplacement de la partie en cours</value>
 	</data>
 	<data name="PromptGetSaveSlotOffsetTemplate" xml:space="preserve">
@@ -333,22 +327,19 @@
 		<value>Comparer les zones en dehors de la partie en cours octet par octet :</value>
 		<comment>Comparer les zones en dehors de la partie en cours :</comment>
 	</data>
-	<data name="Same" xml:space="preserve">
-		<value>Identique</value>
-	</data>
 	<data name="StatusTwoDifferentSaveSlotsWillBeComparedTemplate" xml:space="preserve">
 		<value>L'emplacement de sauvegarde en cours {0} sera comparé à l'emplacement de sauvegarde de comparaison {1}.</value>
 	</data>
 	<data name="ConfigComparisonResultLanguage" xml:space="preserve">
 		<value>Langue des résultats de comparaison</value>
 	</data>
-	<data name="UILanguage" xml:space="preserve">
+	<data name="ConfigUILanguage" xml:space="preserve">
 		<value>Langue de l'interface utilisateur</value>
 	</data>
-	<data name="CommandLanguage" xml:space="preserve">
+	<data name="CmdLanguage" xml:space="preserve">
 		<value>Définir la langue de l'interface utilisateur</value>
 	</data>
-	<data name="CommandComparisonResultLanguage" xml:space="preserve">
+	<data name="CmdComparisonResultLanguage" xml:space="preserve">
 		<value>Définir la langue des résultats de comparaison</value>
 	</data>
 	<data name="CmdGroupLanguage" xml:space="preserve">
@@ -360,16 +351,16 @@
 	<data name="PromptSetComparionResultLanguage" xml:space="preserve">
 		<value>Définissez la langue du résultat de la comparaison (par exemple 'en' pour l'anglais - sans guillemets). Une entrée vide réinitialise le paramètre.</value>
 	</data>
-	<data name="NoGuideAvailable" xml:space="preserve">
+	<data name="StatusNoGuideAvailable" xml:space="preserve">
 		<value>Il n'y a pas de guide disponible</value>
 	</data>
-	<data name="CommandGuideSavestate" xml:space="preserve">
+	<data name="CmdGuideSavestate" xml:space="preserve">
 		<value>Manuel (srm)</value>
 	</data>
-	<data name="CommandLoadConfig" xml:space="preserve">
+	<data name="CmdLoadConfig" xml:space="preserve">
 		<value>Charger la configuration</value>
 	</data>
-	<data name="CommandSaveConfig" xml:space="preserve">
+	<data name="CmdSaveConfig" xml:space="preserve">
 		<value>Enregistrer la configuration</value>
 	</data>
 	<data name="ConfigFilePath" xml:space="preserve">
@@ -384,10 +375,22 @@
 	<data name="PromptEnterConfigName" xml:space="preserve">
 		<value>Entrez un nom de configuration spécifique ou vide pour la configuration par défaut.</value>
 	</data>
-	<data name="CommandOpenConfig" xml:space="preserve">
+	<data name="CmdOpenConfig" xml:space="preserve">
 		<value>Ouvrir le fichier de configuration</value>
 	</data>
 	<data name="ErrorConfigFileDoesNotExist" xml:space="preserve">
 		<value>Le fichier de configuration [{0}] n'existe pas (encore).</value>
+	</data>
+	<data name="CmdCreateKeyBindingFile" xml:space="preserve">
+		<value>Créer un fichier de liaison de clé</value>
+	</data>
+	<data name="CmdOpenKeyBindingFile" xml:space="preserve">
+		<value>Ouvrir le fichier de liaison de clé</value>
+	</data>
+	<data name="StatusKeyBindingsFileHasBeenSavedTemplate" xml:space="preserve">
+		<value>Le fichier de raccourcis clavier [{0}] a été enregistré.</value>
+	</data>
+	<data name="ErrorKeyBindingsFileDoesNotExist" xml:space="preserve">
+		<value>Le fichier de raccourcis clavier [{0}] n'existe pas (encore).</value>
 	</data>
 </root>

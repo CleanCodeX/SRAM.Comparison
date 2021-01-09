@@ -168,11 +168,11 @@
   <data name="StatusAllSaveSlotsWillBeCompared" xml:space="preserve">
     <value>All save slots will be compared.</value>
   </data>
-  <data name="SramOffset" xml:space="preserve">
-    <value>SRAM offset</value><comment>The term Offset should only be translated if not understandable</comment>
-  </data>
   <data name="ErrorCannotOpenOutputFileTemplate" xml:space="preserve">
     <value>Cannot open output file "{0}" for writing</value>
+  </data>
+	<data name="SramOffset" xml:space="preserve">
+    <value>SRAM offset</value><comment>The term Offset should only be translated if not understandable</comment>
   </data>
   <data name="AppDescription" xml:space="preserve">
     <value>This tool compares unknown areas in SRAM.</value>
@@ -180,11 +180,8 @@
   <data name="ErrorCommandNotImplementedTemplate" xml:space="preserve">
     <value>Command (overwrite) needs to be implemented by caller.</value>
   </data>
-  <data name="None" xml:space="preserve">
+  <data name="EnumNone" xml:space="preserve">
     <value>None</value>
-  </data>
-  <data name="Same" xml:space="preserve">
-    <value>Same</value>
   </data>
   <data name="StatusCurrentFileHasBeenSaved" xml:space="preserve">
     <value>Current file has been saved as comparison file.</value>
@@ -195,16 +192,16 @@
   <data name="StatusFileHasBeenRestoredFromBackupTemplate" xml:space="preserve">
     <value>{0} has been restored from backup.</value>
   </data>
-  <data name="CommandListCommands" xml:space="preserve">
+  <data name="CmdListCommands" xml:space="preserve">
     <value>List commands</value>
   </data>
-  <data name="CommandSetCurrentSrramFileSaveSlot" xml:space="preserve">
+  <data name="CmdSetCurrentSrramFileSaveSlot" xml:space="preserve">
     <value>Set current file's save slot</value>
   </data>
-  <data name="CommandSetComparisonFileSaveSlot" xml:space="preserve">
+  <data name="CmdSetComparisonFileSaveSlot" xml:space="preserve">
     <value>Set comparison file's save slot</value>
   </data>
-  <data name="CommandConfig" xml:space="preserve">
+  <data name="CmdConfig" xml:space="preserve">
     <value>Display config</value>
   </data>
   <data name="EnumSlotByteByByteComparison" xml:space="preserve">
@@ -213,16 +210,16 @@
   <data name="EnumNonSlotByteByByteComparison" xml:space="preserve">
     <value>Non-slot byte-by-byte comparison</value>
   </data>
-  <data name="CommandSlotByteByBytesComparison" xml:space="preserve">
+  <data name="CmdSlotByteByBytesComparison" xml:space="preserve">
     <value>Add slot byte-by-byte comparison</value>
   </data>
-  <data name="CommandNonSlotByteByByteComparison" xml:space="preserve">
+  <data name="CmdNonSlotByteByByteComparison" xml:space="preserve">
     <value>Add non-slot byte-by-byte comparison</value>
   </data>
-  <data name="CommandOffset" xml:space="preserve">
+  <data name="CmdOffset" xml:space="preserve">
     <value>Display offset value</value>
   </data>
-  <data name="CommandEditOffset" xml:space="preserve">
+  <data name="CmdEditOffset" xml:space="preserve">
     <value>Modify (and save) offset value</value><comment>The term Offset should only be translated if not understandable</comment>
   </data>
   <data name="PromptSetSaveSlotTemplate" xml:space="preserve">
@@ -243,49 +240,49 @@
   <data name="Config" xml:space="preserve">
     <value>Config</value>
   </data>
-  <data name="Comparison" xml:space="preserve">
+  <data name="CompComparison" xml:space="preserve">
     <value>Comparison</value>
   </data>
-  <data name="Current" xml:space="preserve">
+  <data name="CompCurrent" xml:space="preserve">
     <value>Current</value>
   </data>
-  <data name="Offset" xml:space="preserve">
+  <data name="CompOffset" xml:space="preserve">
     <value>Offset</value><comment>This term should only be translated if not understandable</comment>
   </data>
-  <data name="ChangeShort" xml:space="preserve">
+  <data name="CompChangeShort" xml:space="preserve">
     <value>Change</value>
   </data>
-  <data name="Old" xml:space="preserve">
+  <data name="CompOld" xml:space="preserve">
     <value>Old</value>
   </data>
-  <data name="New" xml:space="preserve">
+  <data name="CompNew" xml:space="preserve">
     <value>New</value>
   </data>
-  <data name="CurrentShort" xml:space="preserve">
+  <data name="CompCurrentShort" xml:space="preserve">
     <value>Curr</value><comment>This is an abbreviation and should be kept as short as possible</comment>
   </data>
-  <data name="ComparisonShort" xml:space="preserve">
+  <data name="CompComparisonShort" xml:space="preserve">
     <value>Comp</value><comment>This is an abbreviation and should be kept as short as possible</comment>
   </data>
   <data name="StatusTotalDiffBytesTemplate" xml:space="preserve">
     <value>Total: {0} bytes changed (outside save slot area).</value>
   </data>
-  <data name="UnknownAreasOnly" xml:space="preserve">
+  <data name="CompUnknownAreasOnly" xml:space="preserve">
     <value>Unknowns only</value>
   </data>
   <data name="StatusUnknownsChangedBytesTemplate" xml:space="preserve">
     <value>Unknowns only: {0} bytes changed.</value>
   </data>
-  <data name="Section" xml:space="preserve">
+  <data name="CompSection" xml:space="preserve">
     <value>Section</value>
   </data>
-  <data name="SectionSaveSlotChangedTemplate" xml:space="preserve">
+  <data name="CompSectionSaveSlotChangedTemplate" xml:space="preserve">
     <value>All (knowns + unknowns)</value>
   </data>
   <data name="StatusSaveSlotChangedBytesTemplate" xml:space="preserve">
     <value>All (knowns + unknowns): {0} bytes changed.</value>
   </data>
-  <data name="SectionNonSaveSlotUnknowns" xml:space="preserve">
+  <data name="CompSectionNonSaveSlotUnknowns" xml:space="preserve">
     <value>Non-save slot unknowns</value>
   </data>
   <data name="StatusNonSaveSlotUnknownsBytesTemplate" xml:space="preserve">
@@ -300,40 +297,40 @@
   <data name="StatusNoSramBytesChanged" xml:space="preserve">
     <value>No bytes changed</value>
   </data>
-  <data name="Size" xml:space="preserve">
+  <data name="CompSize" xml:space="preserve">
     <value>Size</value>
   </data>
   <data name="Bytes" xml:space="preserve">
     <value>bytes</value>
   </data>
-  <data name="CommandOverwriteComparisonFile" xml:space="preserve">
+  <data name="CmdOverwriteComparisonFile" xml:space="preserve">
     <value>Overwrite (or create) comparison file with current-file</value>
   </data>
-  <data name="CommandBackupCurrentFile" xml:space="preserve">
+  <data name="CmdBackupCurrentFile" xml:space="preserve">
     <value>Back-up current-file</value>
   </data>
-  <data name="CommandRestoreCurrentFile" xml:space="preserve">
+  <data name="CmdRestoreCurrentFile" xml:space="preserve">
     <value>Restore current-file from backup</value>
   </data>
-  <data name="CommandBackupComparisonFile" xml:space="preserve">
+  <data name="CmdBackupComparisonFile" xml:space="preserve">
     <value>Back-up comparison-file</value>
   </data>
-  <data name="CommandRestoreComparisonFile" xml:space="preserve">
+  <data name="CmdRestoreComparisonFile" xml:space="preserve">
     <value>Restore comparison-file from backup</value>
   </data>
-  <data name="CommandCompareFiles" xml:space="preserve">
+  <data name="CmdCompareFiles" xml:space="preserve">
     <value>Compare current-file with comparison file</value>
   </data>
-  <data name="CommandClearOutput" xml:space="preserve">
+  <data name="CmdClearOutput" xml:space="preserve">
     <value>Wipe previous console output</value>
   </data>
-  <data name="CommandExportComparisonResult" xml:space="preserve">
+  <data name="CmdExportComparisonResult" xml:space="preserve">
     <value>Export current comparison result</value>
   </data>
-  <data name="CommandSaveCurrentFileWithOtherFileName" xml:space="preserve">
+  <data name="CmdSaveCurrentFileWithOtherFileName" xml:space="preserve">
     <value>Save current-file with other game file's name</value>
   </data>
-  <data name="CommandQuit" xml:space="preserve">
+  <data name="CmdQuit" xml:space="preserve">
     <value>Quit</value>
   </data>
   <data name="ErrorOperationAborted" xml:space="preserve">
@@ -345,17 +342,14 @@
   <data name="StartMessage" xml:space="preserve">
     <value>New here? For command list use ({0}|?) or ({1}) for manual.</value>
   </data>
-  <data name="SaveSlot" xml:space="preserve">
+  <data name="CompSlot" xml:space="preserve">
     <value>Save slot</value>
   </data>
   <data name="All" xml:space="preserve">
     <value>All</value>
   </data>
-  <data name="Sram" xml:space="preserve">
+  <data name="CompSram" xml:space="preserve">
     <value>SRAM</value>
-  </data>
-  <data name="Backup" xml:space="preserve">
-    <value>Backup</value>
   </data>
   <data name="ErrorComparisonFileDoesNotExist" xml:space="preserve">
     <value>The comparison file "{0}" has not been created yet. Please create one first.</value>
@@ -366,7 +360,7 @@
   <data name="ErrorComparisonFileSaveSlotSetButNotCurrentFileSaveSlot" xml:space="preserve">
     <value>Save slot for comparison-file can only be set if current file's save slot is set first.</value>
   </data>
-  <data name="SameAsCurrentFileSaveSlot" xml:space="preserve">
+  <data name="CompSameAsCurrentFileSaveSlot" xml:space="preserve">
     <value>Same as current file's save slot</value>
   </data>
   <data name="CmdGroupBackup" xml:space="preserve">
@@ -426,19 +420,16 @@
   <data name="ErrorParamNameValueMissmatchTemplate" xml:space="preserve">
     <value>Parameter name value mismatch for: {0}</value>
   </data>
-  <data name="SaveSlotOffset" xml:space="preserve">
-    <value>Save slot offset</value>
-  </data>
   <data name="ConfigComparisonResultLanguage" xml:space="preserve">
     <value>Comparison result language</value>
   </data>
-  <data name="UILanguage" xml:space="preserve">
+  <data name="ConfigUILanguage" xml:space="preserve">
     <value>UI language</value>
   </data>
-  <data name="CommandLanguage" xml:space="preserve">
+  <data name="CmdLanguage" xml:space="preserve">
     <value>Set UI-language</value>
   </data>
-  <data name="CommandComparisonResultLanguage" xml:space="preserve">
+  <data name="CmdComparisonResultLanguage" xml:space="preserve">
     <value>Set comparison result language</value>
   </data>
   <data name="CmdGroupLanguage" xml:space="preserve">
@@ -450,19 +441,19 @@
   <data name="PromptSetComparionResultLanguage" xml:space="preserve">
     <value>Set the comparison result language (e.g. 'en' for English - without quotes). An empty input resets the setting.</value>
   </data>
-  <data name="NoGuideAvailable" xml:space="preserve">
+  <data name="StatusNoGuideAvailable" xml:space="preserve">
     <value>There is no guide available</value>
   </data>
-  <data name="CommandGuideSrm" xml:space="preserve">
+  <data name="CmdGuideSrm" xml:space="preserve">
     <value>Guide (srm)</value>
   </data>
-  <data name="CommandGuideSavestate" xml:space="preserve">
+  <data name="CmdGuideSavestate" xml:space="preserve">
     <value>Guide (savestate)</value>
   </data>
-  <data name="CommandLoadConfig" xml:space="preserve">
+  <data name="CmdLoadConfig" xml:space="preserve">
     <value>Load config</value>
   </data>
-  <data name="CommandSaveConfig" xml:space="preserve">
+  <data name="CmdSaveConfig" xml:space="preserve">
     <value>Save config</value>
   </data>
   <data name="ConfigFilePath" xml:space="preserve">
@@ -477,10 +468,22 @@
   <data name="PromptEnterConfigName" xml:space="preserve">
     <value>Enter specific config name or empty for default config.</value>
   </data>
-  <data name="CommandOpenConfig" xml:space="preserve">
+  <data name="CmdOpenConfig" xml:space="preserve">
     <value>Open config file</value>
   </data>
   <data name="ErrorConfigFileDoesNotExist" xml:space="preserve">
     <value>The config file [{0}] does not exist (yet).</value>
+  </data>
+  <data name="CmdCreateKeyBindingFile" xml:space="preserve">
+    <value>Create key binding file</value>
+  </data>
+  <data name="CmdOpenKeyBindingFile" xml:space="preserve">
+    <value>Open key binding file</value>
+  </data>
+  <data name="StatusKeyBindingsFileHasBeenSavedTemplate" xml:space="preserve">
+    <value>Key bindings file [{0}] has been saved.</value>
+  </data>
+  <data name="ErrorKeyBindingsFileDoesNotExist" xml:space="preserve">
+    <value>The key bindings file [{0}] does not exist (yet).</value>
   </data>
 </root>

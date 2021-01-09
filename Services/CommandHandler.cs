@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -11,6 +13,7 @@ using SavestateFormat.Snes9x.Extensions;
 using SramCommons.Extensions;
 using SramCommons.Models;
 using SramComparer.Enums;
+using SramComparer.Extensions;
 using SramComparer.Helpers;
 using SramComparer.Properties;
 // ReSharper disable RedundantArgumentDefaultValue
@@ -27,6 +30,7 @@ namespace SramComparer.Services
 		where TSaveSlot : struct
 	{
 		private const string BackupFileExtension = ".backup";
+		private const string KeyBindingsFileName = "KeyBindings.json";
 
 		protected IConsolePrinter ConsolePrinter { get; }
 
@@ -83,10 +87,13 @@ namespace SramComparer.Services
 
 			if (command.IsNullOrEmpty()) return true;
 			if (command == "?") command = nameof(Commands.Help);
-			
+
 			if (Enum.TryParse<AlternateCommands>(command, true, out var altCommand))
 				command = ((Commands)altCommand).ToString();
 
+			if (CheckCustomKeyBinding(command, out var boundCommand))
+				command = boundCommand;
+			
 			var cmd = command.ParseEnum<Commands>();
 			switch (cmd)
 			{
@@ -168,6 +175,14 @@ namespace SramComparer.Services
 					break;
 				case Commands.OpenConfig:
 					OpenConfig(options, GetConfigName());
+
+					break;
+				case Commands.CreateBindings:
+					CreateKeyBindingsFile<Commands>();
+
+					break;
+				case Commands.OpenBindings:
+					OpenKeyBindingsFile();
 
 					break;
 				case Commands.Clear:
@@ -727,11 +742,11 @@ namespace SramComparer.Services
 		{
 			var jsonOptions = new JsonSerializerOptions { Converters = { new JsonStringEnumConverter() }, WriteIndented = true };
 
-			var json = JsonSerializer.Serialize(options, jsonOptions);
 			var filePath = GetConfigFilePath(options.ConfigFilePath, configName);
-			File.WriteAllText(filePath, json);
+			JsonFileSerializer.Serialize(filePath, options, jsonOptions);
 
 			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusConfigFileHasBeenSavedTemplate.InsertArgs(filePath));
+			ConsolePrinter.ResetColor();
 		}
 
 		protected virtual void LoadConfig(IOptions options, string? configName = null) => throw new NotImplementedException();
@@ -768,5 +783,49 @@ namespace SramComparer.Services
 		}
 
 		#endregion Config
+
+		#region Key Bindings
+
+		protected virtual bool CheckCustomKeyBinding(string command, [NotNullWhen(true)] out string? boundCommand)
+		{
+			boundCommand = null;
+
+			if (File.Exists(KeyBindingsFileName))
+			{
+				var keyBindings = JsonFileSerializer.Deserialize<Dictionary<string, string>>(KeyBindingsFileName)!;
+				if (keyBindings.SingleOrDefault(e => e.Key.EqualsInsensitive(command)).Value is { } newKey)
+				{
+					boundCommand = newKey;
+					return true;
+				}
+			}
+
+			return false;
+		}
+
+		protected virtual void OpenKeyBindingsFile()
+		{
+			var keyBindingsPath = Path.Join(Environment.CurrentDirectory, KeyBindingsFileName);
+			Requires.FileExists(keyBindingsPath, string.Empty, Resources.ErrorKeyBindingsFileDoesNotExist.InsertArgs(keyBindingsPath));
+
+			OpenFile(KeyBindingsFileName);
+		}
+
+		protected virtual void CreateKeyBindingsFile<TEnum>() where TEnum: struct, Enum
+		{
+			var bindings = default(TEnum).ToDictionary();
+
+			var options = new JsonSerializerOptions
+				{
+					Converters = { new JsonStringEnumObjectConverter() }, 
+					WriteIndented = true
+				};
+			JsonFileSerializer.Serialize(KeyBindingsFileName, bindings, options);
+
+			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusKeyBindingsFileHasBeenSavedTemplate.InsertArgs(Path.Join(Environment.CurrentDirectory, KeyBindingsFileName)));
+			ConsolePrinter.ResetColor();
+		}
+
+		#endregion Key Bindings
 	}
 }

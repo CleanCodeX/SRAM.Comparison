@@ -34,12 +34,12 @@ namespace SramComparer.Services
 			PrintValue(options.CurrentFileSaveSlot == 0 ? Res.All : options.CurrentFileSaveSlot.ToString());
 
 			PrintConfigName(Res.ConfigComparisonFileSaveSlot, $"{CmdOptions.ComparisonSaveSlot} [1-4|0={Res.All}]");
-			PrintValue(options.ComparisonFileSaveSlot == 0 ? Res.SameAsCurrentFileSaveSlot : options.ComparisonFileSaveSlot.ToString());
+			PrintValue(options.ComparisonFileSaveSlot == 0 ? Res.CompSameAsCurrentFileSaveSlot : options.ComparisonFileSaveSlot.ToString());
 
 			PrintConfigName(Res.ConfigColorizeOutput, $"{CmdOptions.ColorizeOutput} [true|1|false|0]");
 			PrintValue(options.ColorizeOutput.ToString());
 
-			PrintConfigName(Res.UILanguage, CmdOptions.UILanguage);
+			PrintConfigName(Res.ConfigUILanguage, CmdOptions.UILanguage);
 			PrintValue(options.UILanguage!);
 
 			PrintConfigName(Res.ConfigComparisonResultLanguage, CmdOptions.ComparisonResultLanguage);
@@ -158,6 +158,15 @@ namespace SramComparer.Services
 			PrintCommandKey(Commands.SaveConfig);
 			PrintColoredLine(ConsoleColor.Yellow, Commands.SaveConfig.GetDisplayName()!);
 
+			PrintCommandKey(Commands.OpenConfig);
+			PrintColoredLine(ConsoleColor.Yellow, Commands.OpenConfig.GetDisplayName()!);
+
+			PrintCommandKey(Commands.CreateBindings);
+			PrintColoredLine(ConsoleColor.Yellow, Commands.CreateBindings.GetDisplayName()!);
+
+			PrintCommandKey(Commands.OpenBindings);
+			PrintColoredLine(ConsoleColor.Yellow, Commands.OpenBindings.GetDisplayName()!);
+
 			PrintCustomCommands();
 
 			PrintParagraph();
@@ -186,7 +195,7 @@ namespace SramComparer.Services
 		}
 
 
-		protected virtual string GetGuideText(string? guideName) => Res.NoGuideAvailable;
+		protected virtual string GetGuideText(string? guideName) => Res.StatusNoGuideAvailable;
 
 		protected virtual string GetAppDescriptionText() => Res.AppDescription;
 
@@ -210,16 +219,16 @@ namespace SramComparer.Services
 		{
 			PrintParagraph();
 
-			PrintColored(ConsoleColor.Gray, " ".Repeat(4) + @$"[ {Res.Section} ");
+			PrintColored(ConsoleColor.Gray, " ".Repeat(4) + @$"[ {Res.CompSection} ");
 
 			PrintColored(ConsoleColor.DarkYellow, bufferName);
 			PrintColored(ConsoleColor.White, @" | ");
-			PrintColored(ConsoleColor.Gray, $@"{Res.Offset} ");
+			PrintColored(ConsoleColor.Gray, $@"{Res.CompOffset} ");
 			PrintColored(ConsoleColor.DarkYellow, bufferOffset + $@" [x{bufferOffset:X}]");
 
 			PrintColored(ConsoleColor.White, @" | ");
 
-			PrintColored(ConsoleColor.Gray, $@"{Res.Size} ");
+			PrintColored(ConsoleColor.Gray, $@"{Res.CompSize} ");
 			PrintColored(ConsoleColor.DarkYellow, bufferLength.ToString());
 
 			PrintColored(ConsoleColor.White, @" ]");
@@ -318,7 +327,7 @@ namespace SramComparer.Services
 
 		protected virtual void PrintOffsetValues(string offsetText, string? offsetName)
 		{
-			PrintColored(ConsoleColor.DarkGray, $@"{Res.Offset} ");
+			PrintColored(ConsoleColor.DarkGray, $@"{Res.CompOffset} ");
 			PrintColored(ConsoleColor.DarkCyan, offsetText);
 
 			if (offsetName is null) return;
@@ -330,21 +339,21 @@ namespace SramComparer.Services
 		protected virtual void PrintCompValues(bool isNegativeChange, string compText)
 		{
 			PrintColored(ConsoleColor.White, @" | ");
-			PrintColored(ConsoleColor.DarkGray, $@"{Res.Old} ");
+			PrintColored(ConsoleColor.DarkGray, $@"{Res.CompOld} ");
 			PrintColored(isNegativeChange ? ConsoleColor.DarkGreen : ConsoleColor.Red, compText);
 		}
 
 		protected virtual void PrintCurrValues(bool isNegativeChange, string currText)
 		{
 			PrintColored(ConsoleColor.Cyan, @" => ");
-			PrintColored(ConsoleColor.DarkGray, $@"{Res.New} ");
+			PrintColored(ConsoleColor.DarkGray, $@"{Res.CompNew} ");
 			PrintColored(isNegativeChange ? ConsoleColor.Red : ConsoleColor.DarkGreen, currText);
 		}
 
 		protected virtual void PrintChangeValues(bool isNegativeChange, uint changeValue, string sign, string changeText)
 		{
 			PrintColored(ConsoleColor.Cyan, @" = ");
-			PrintColored(ConsoleColor.DarkGray, $@"{Res.ChangeShort} ");
+			PrintColored(ConsoleColor.DarkGray, $@"{Res.CompChangeShort} ");
 
 			PrintColored(isNegativeChange ? ConsoleColor.DarkRed : ConsoleColor.Green, sign);
 			PrintColored(isNegativeChange ? ConsoleColor.Red : ConsoleColor.DarkGreen, changeText);
