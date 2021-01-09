@@ -248,8 +248,8 @@ namespace SramComparer.Services
 		public virtual void Compare<TComparer>(Stream currStream, Stream compStream, IOptions options)
 			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new()
 		{
-			ConvertStreamIfSaveState(ref currStream, options.CurrentFilePath!, options.SavestateType);
-			ConvertStreamIfSaveState(ref compStream, FileNameHelper.GetComparisonFilePath(options), options.SavestateType);
+			ConvertStreamIfSavestate(ref currStream, options.CurrentFilePath!, options.SavestateType);
+			ConvertStreamIfSavestate(ref compStream, FileNameHelper.GetComparisonFilePath(options), options.SavestateType);
 
 			var currFile = ClassFactory.Create<TSramFile>(currStream, options.GameRegion);
 			var compFile = ClassFactory.Create<TSramFile>(compStream, options.GameRegion);
@@ -271,19 +271,19 @@ namespace SramComparer.Services
 			}
 		}
 
-		protected virtual bool ConvertStreamIfSaveState(ref Stream stream, string? filePath, string? saveStateType)
+		protected virtual bool ConvertStreamIfSavestate(ref Stream stream, string? filePath, string? savestateType)
 		{
 			if (filePath is null) return false;
 
-			saveStateType ??= "snes9x";
+			savestateType ??= "snes9x";
 
 			var fileExtension = Path.GetExtension(filePath).ToLower();
 			if (fileExtension == ".srm") return false;
 
-			var convertedStream = saveStateType switch
+			var convertedStream = savestateType switch
 			{
 				"snes9x" => stream.ConvertSnes9xSavestateToSram(),
-				_ => throw new NotSupportedException($"SaveStateType {saveStateType} is not supported.")
+				_ => throw new NotSupportedException($"Savestate type {savestateType} is not supported.")
 			};
 
 			stream = convertedStream;
@@ -466,7 +466,7 @@ namespace SramComparer.Services
 
 			Stream currStream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
 
-			ConvertStreamIfSaveState(ref currStream, filePath, options.SavestateType);
+			ConvertStreamIfSavestate(ref currStream, filePath, options.SavestateType);
 
 			var currFile = ClassFactory.Create<TSramFile>(currStream, options.GameRegion);
 
