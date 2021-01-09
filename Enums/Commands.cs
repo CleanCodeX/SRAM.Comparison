@@ -93,7 +93,7 @@ namespace SramComparer.Enums
 		OpenBindings, // opens the custom key binding file
 	}
 	
-	internal enum AlternateCommands
+	public enum AlternateCommands
 	{
 		Guide = Commands.Guide_Srm,
 		Manual = Commands.Guide_Srm,
