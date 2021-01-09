@@ -54,7 +54,7 @@
 		<value>Alle</value>
 	</data>
 	<data name="AppDescription" xml:space="preserve">
-		<value>Diese Anwendung vergleicht unbekannte Bereiche im SRAM.</value>
+		<value>Diese Anwendung vergleicht Bereiche des SRAMs.</value>
 	</data>
 	<data name="Bytes" xml:space="preserve">
 		<value>Bytes</value>

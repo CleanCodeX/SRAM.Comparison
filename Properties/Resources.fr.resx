@@ -45,7 +45,7 @@
 		<value>Comparer le fichier en cours avec celui de comparaison</value>
 	</data>
 	<data name="AppDescription" xml:space="preserve">
-		<value>Cet outil fait une comparaison de fichiers SRAM.</value>
+		<value>Cet outil compare les zones de SRAM.</value>
 	</data>
 	<data name="ConfigColorizeOutput" xml:space="preserve">
 		<value>Résultat avec couleurs</value>

@@ -175,7 +175,7 @@
     <value>SRAM offset</value><comment>The term Offset should only be translated if not understandable</comment>
   </data>
   <data name="AppDescription" xml:space="preserve">
-    <value>This tool compares unknown areas in SRAM.</value>
+    <value>This tool compares areas of SRAM.</value>
   </data>
   <data name="ErrorCommandNotImplementedTemplate" xml:space="preserve">
     <value>Command (overwrite) needs to be implemented by caller.</value>
