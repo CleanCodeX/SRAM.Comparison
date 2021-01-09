@@ -31,6 +31,8 @@ namespace SramComparer.Services
 	{
 		private const string BackupFileExtension = ".backup";
 		private const string KeyBindingsFileName = "KeyBindings.json";
+		private const string Snes9x = "snes9x";
+		private const string SrmFileExtension = ".srm";
 
 		protected IConsolePrinter ConsolePrinter { get; }
 
@@ -275,14 +277,14 @@ namespace SramComparer.Services
 		{
 			if (filePath is null) return false;
 
-			savestateType ??= "snes9x";
+			savestateType ??= Snes9x;
 
 			var fileExtension = Path.GetExtension(filePath).ToLower();
-			if (fileExtension == ".srm") return false;
+			if (fileExtension == SrmFileExtension) return false;
 
 			var convertedStream = savestateType switch
 			{
-				"snes9x" => stream.ConvertSnes9xSavestateToSram(),
+				Snes9x => stream.ConvertSnes9xSavestateToSram(),
 				_ => throw new NotSupportedException($"Savestate type {savestateType} is not supported.")
 			};
 
