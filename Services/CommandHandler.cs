@@ -425,6 +425,8 @@ namespace SramComparer.Services
 					ConsolePrinter.PrintColored(ConsoleColor.White, $@": {Path.GetFileNameWithoutExtension(fileName)}");
 				}
 
+				ConsolePrinter.ResetColor();
+
 				var input = Console.ReadLine();
 
 				if (!int.TryParse(input, out var index) || index >= files.Length)
@@ -459,9 +461,13 @@ namespace SramComparer.Services
 
 		public virtual void PrintOffsetValue(IOptions options)
 		{
-			Requires.FileExists(options.CurrentFilePath, nameof(options.CurrentFilePath));
+			var filePath = options.CurrentFilePath!;
+			Requires.FileExists(filePath, nameof(options.CurrentFilePath));
 
-			using var currStream = new FileStream(options.CurrentFilePath!, FileMode.Open, FileAccess.Read);
+			Stream currStream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+
+			ConvertStreamIfSaveState(ref currStream, filePath, options.SavestateType);
+
 			var currFile = ClassFactory.Create<TSramFile>(currStream, options.GameRegion);
 
 			var offset = GetOffset(out var slotIndex);
@@ -483,6 +489,10 @@ namespace SramComparer.Services
 		{
 			Requires.FileExists(options.CurrentFilePath, nameof(options.CurrentFilePath));
 
+			var extension = Path.GetExtension(options.CurrentFilePath);
+			if (extension != ".srm" && extension != ".comp")
+				throw new NotSupportedException(Resources.ErrorSavestateOffsetEditNotSupported);
+
 			var offset = GetOffset(out var slotIndex);
 			if (offset == 0)
 			{
@@ -490,7 +500,7 @@ namespace SramComparer.Services
 				return;
 			}
 
-			var value = GetGameOffsetValue();
+			var value = GetSaveSlotOffsetValue();
 			var bytes = value switch
 			{
 				< 256 => new[] { (byte)value },
@@ -524,20 +534,20 @@ namespace SramComparer.Services
 			ConsolePrinter.ResetColor();
 		}
 
-		private int GetGameOffset(int slotIndex) => (int)InternalGetValue(Resources.PromptGetSaveSlotOffsetTemplate.InsertArgs(slotIndex + 1), Resources.StatusOffsetWillBeUsedTemplate);
-		private uint GetGameOffsetValue() => InternalGetValue(Resources.PromptGetSaveSlotOffsetValue, Resources.StatusOffsetValueWillBeUsedTemplate);
+		private int GetSaveSlotOffset(int slotIndex) => (int)InternalGetValue(Resources.PromptGetSaveSlotOffsetTemplate.InsertArgs(slotIndex + 1), Resources.StatusOffsetWillBeUsedTemplate);
+		private uint GetSaveSlotOffsetValue() => InternalGetValue(Resources.PromptGetSaveSlotOffsetValue, Resources.StatusOffsetValueWillBeUsedTemplate);
 
 		private string InternalGetStringValue(string prompt, string? promptResultTemplate = null)
 		{
-			ConsolePrinter.PrintSectionHeader();
-			ConsolePrinter.PrintLine(prompt);
+			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, prompt);
+			ConsolePrinter.ResetColor();
 
 			var input = Console.ReadLine()!;
 
 			ConsolePrinter.PrintParagraph();
 			if (promptResultTemplate is not null)
 			{
-				ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, promptResultTemplate.InsertArgs(input));
+				ConsolePrinter.PrintColoredLine(ConsoleColor.DarkYellow, promptResultTemplate.InsertArgs(input));
 				ConsolePrinter.PrintParagraph();
 			}
 
@@ -547,15 +557,15 @@ namespace SramComparer.Services
 
 		private uint InternalGetValue(string prompt, string promtResultTemplate)
 		{
-			ConsolePrinter.PrintSectionHeader();
-			ConsolePrinter.PrintLine(prompt);
+			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, prompt);
+			ConsolePrinter.ResetColor();
 
 			var input = Console.ReadLine()!;
 
 			uint.TryParse(input, out var offset);
 
 			ConsolePrinter.PrintParagraph();
-			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, promtResultTemplate.InsertArgs(offset));
+			ConsolePrinter.PrintColoredLine(ConsoleColor.DarkYellow, promtResultTemplate.InsertArgs(offset));
 
 			ConsolePrinter.PrintParagraph();
 			ConsolePrinter.ResetColor();
@@ -575,7 +585,7 @@ namespace SramComparer.Services
 
 			slotIndex = saveSlotId - 1;
 
-			return GetGameOffset(slotIndex);
+			return GetSaveSlotOffset(slotIndex);
 		}
 
 		#endregion Get / Set Offset Value
@@ -586,6 +596,7 @@ namespace SramComparer.Services
 		{
 			ConsolePrinter.PrintSectionHeader();
 			ConsolePrinter.PrintLine(Resources.PromptSetSaveSlotTemplate.InsertArgs(maxSaveSlotId));
+			ConsolePrinter.ResetColor();
 
 			var input = Console.ReadLine()!;
 
@@ -650,6 +661,7 @@ namespace SramComparer.Services
 		{
 			ConsolePrinter.PrintSectionHeader();
 			ConsolePrinter.PrintLine(Resources.PromptSetUILanguage);
+			ConsolePrinter.ResetColor();
 
 			var cultureId = Console.ReadLine()!;
 			if (cultureId == string.Empty)
@@ -682,6 +694,7 @@ namespace SramComparer.Services
 		{
 			ConsolePrinter.PrintSectionHeader();
 			ConsolePrinter.PrintLine(Resources.PromptSetComparionResultLanguage);
+			ConsolePrinter.ResetColor();
 
 			var cultureId = Console.ReadLine()!;
 			if (cultureId == string.Empty)
@@ -772,6 +785,7 @@ namespace SramComparer.Services
 		{
 			ConsolePrinter.PrintSectionHeader();
 			ConsolePrinter.PrintLine(Resources.PromptEnterConfigName);
+			ConsolePrinter.ResetColor();
 
 			var configName = Console.ReadLine();
 			if (configName == string.Empty) return null;

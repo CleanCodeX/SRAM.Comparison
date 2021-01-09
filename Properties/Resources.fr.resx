@@ -198,7 +198,7 @@
 		<value>Définir la partie à comparer (1- {0} ou appuyez sur n'importe quelle autre touche pour sélectionner toutes les parties) :</value>
 	</data>
 	<data name="PromptSetSingleSaveSlotTemplate" xml:space="preserve">
-		<value>Définir la partie (1- {0}) :</value>
+		<value>Entrez l'espace de sauvegarde (1- {0}):</value>
 	</data>
 	<data name="PromptCompareNonSaveSlotArea" xml:space="preserve">
 		<value>Comparer les zones en dehors de la partie en cours</value>
@@ -318,7 +318,7 @@
 		<value>Identique à l'emplacement de la partie en cours</value>
 	</data>
 	<data name="PromptGetSaveSlotOffsetTemplate" xml:space="preserve">
-		<value>Modifier le décalage dans cette partie {0} :</value><comment>Modifier le décalage dans cette partie {0}:</comment>
+		<value>Saisissez l'adresse de décalage de l'emplacement d'enregistrement {0}:</value><comment>Modifier le décalage dans cette partie {0}:</comment>
 	</data>
 	<data name="PromptGetSaveSlotOffsetValue" xml:space="preserve">
 		<value>Modifier la valeur du décalage dans cette partie :</value><comment>Modifier le décalage dans cette partie:</comment>
@@ -392,5 +392,8 @@
 	</data>
 	<data name="ErrorKeyBindingsFileDoesNotExist" xml:space="preserve">
 		<value>Le fichier de raccourcis clavier [{0}] n'existe pas (encore).</value>
+	</data>
+	<data name="ErrorSavestateOffsetEditNotSupported" xml:space="preserve">
+		<value>La modification de décalage de sauvegarde n'est actuellement pas prise en charge.</value>
 	</data>
 </root>

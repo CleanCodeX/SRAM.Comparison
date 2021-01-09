@@ -817,6 +817,15 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Savestate offset edit is currently not supported. ähnelt.
+        /// </summary>
+        public static string ErrorSavestateOffsetEditNotSupported {
+            get {
+                return ResourceManager.GetString("ErrorSavestateOffsetEditNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Compare non-save slot area ähnelt.
         /// </summary>
         public static string PromptCompareNonSaveSlotArea {
@@ -844,7 +853,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Set Save slot {0} offset: ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Enter save slot {0} offset address: ähnelt.
         /// </summary>
         public static string PromptGetSaveSlotOffsetTemplate {
             get {
@@ -853,7 +862,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Set Save slot offset value: ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Set save slot offset value: ähnelt.
         /// </summary>
         public static string PromptGetSaveSlotOffsetValue {
             get {
@@ -880,7 +889,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Set save slot (1-{0}): ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Enter save slot (1-{0}): ähnelt.
         /// </summary>
         public static string PromptSetSingleSaveSlotTemplate {
             get {

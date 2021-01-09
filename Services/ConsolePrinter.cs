@@ -69,6 +69,7 @@ namespace SramComparer.Services
 			PrintLine("=".Repeat(startMessage.Length));
 			PrintLine(startMessage);
 			PrintLine("=".Repeat(startMessage.Length));
+			ResetColor();
 		}
 
 		public virtual void PrintCommands()

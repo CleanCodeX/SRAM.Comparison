@@ -193,7 +193,7 @@
 		<value>Speicherslot</value>
 	</data>
 	<data name="PromptGetSaveSlotOffsetTemplate" xml:space="preserve">
-		<value>Speicherslot {0}-Offset setzen:</value><comment>The term Offset should only be translated if not understandable</comment>
+		<value>Speicherslot {0}-Offset-Adresse angeben:</value><comment>The term Offset should only be translated if not understandable</comment>
 	</data>
 	<data name="PromptGetSaveSlotOffsetValue" xml:space="preserve">
 		<value>Speicherslot-Offset-Wert setzen:</value><comment>The term Offset should only be translated if not understandable</comment>
@@ -271,7 +271,7 @@
 		<value>Setze Spielslot (1-{0} oder jede andere Taste für alle Speicherslots) zum vergleichen:</value>
 	</data>
 	<data name="PromptSetSingleSaveSlotTemplate" xml:space="preserve">
-		<value>Speicherslot (1-{0}) setzen:</value>
+		<value>Speicherslot (1-{0}) angeben:</value>
 	</data>
 	<data name="PromptCompareNonSaveSlotArea" xml:space="preserve">
 		<value>Vergleiche den Nicht-Speicherslot-Bereich</value>
@@ -380,5 +380,8 @@
 	</data>
 	<data name="ErrorKeyBindingsFileDoesNotExist" xml:space="preserve">
 		<value>Die Tastenzuordnungs-Datei [{0}] existiert (noch) nicht.</value>
+	</data>
+	<data name="ErrorSavestateOffsetEditNotSupported" xml:space="preserve">
+		<value>Die Savestate Offset-Änderung wird momentan nicht unterstützt.</value>
 	</data>
 </root>

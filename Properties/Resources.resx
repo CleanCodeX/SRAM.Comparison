@@ -226,16 +226,16 @@
     <value>Set save slot (1-{0} or any other key for all save slots) to compare:</value>
   </data>
   <data name="PromptSetSingleSaveSlotTemplate" xml:space="preserve">
-    <value>Set save slot (1-{0}):</value>
+    <value>Enter save slot (1-{0}):</value>
   </data>
   <data name="StatusSetSingleSaveSlotMaxTemplate" xml:space="preserve">
     <value>Save slot {0} will be used.</value>
   </data>
   <data name="PromptGetSaveSlotOffsetTemplate" xml:space="preserve">
-    <value>Set Save slot {0} offset:</value><comment>The term Offset should only be translated if not understandable</comment>
+    <value>Enter save slot {0} offset address:</value><comment>The term Offset should only be translated if not understandable</comment>
   </data>
   <data name="PromptGetSaveSlotOffsetValue" xml:space="preserve">
-    <value>Set Save slot offset value:</value><comment>The term Offset should only be translated if not understandable</comment>
+    <value>Set save slot offset value:</value><comment>The term Offset should only be translated if not understandable</comment>
   </data>
   <data name="Config" xml:space="preserve">
     <value>Config</value>
@@ -485,5 +485,8 @@
   </data>
   <data name="ErrorKeyBindingsFileDoesNotExist" xml:space="preserve">
     <value>The key bindings file [{0}] does not exist (yet).</value>
+  </data>
+  <data name="ErrorSavestateOffsetEditNotSupported" xml:space="preserve">
+    <value>Savestate offset edit is currently not supported.</value>
   </data>
 </root>
