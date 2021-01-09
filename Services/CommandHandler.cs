@@ -549,8 +549,8 @@ namespace SramComparer.Services
 			ConsolePrinter.PrintColoredLine(ConsoleColor.Green, Resources.StatusSetOffsetValueTemplate.InsertArgs(value, offset));
 			var fileName = Path.GetFileName(saveFilePath);
 			ConsolePrinter.PrintColoredLine(ConsoleColor.Green, createNewFile
-				? Resources.StatusModifiedFileHasBeenSavedAsTemplate.InsertArgs(fileName)
-				: Resources.StatusModifiedFileHasBeenOverwrittenTemplate.InsertArgs(fileName));
+				? Resources.StatusModifiedFileSavedAsTemplate.InsertArgs(fileName)
+				: Resources.StatusModifiedFileOverwrittenTemplate.InsertArgs(fileName));
 			ConsolePrinter.ResetColor();
 		}
 
@@ -625,7 +625,7 @@ namespace SramComparer.Services
 			ConsolePrinter.PrintParagraph();
 			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, saveSlotId > 0
 				? string.Format(Resources.StatusSingleSaveSlotComparisonTemplate, saveSlotId)
-				: Resources.StatusAllSaveSlotsWillBeCompared);
+				: Resources.StatusAllSaveSlotsComparison);
 
 			ConsolePrinter.PrintParagraph();
 			ConsolePrinter.ResetColor();
@@ -643,7 +643,7 @@ namespace SramComparer.Services
 
 			File.Copy(options.CurrentFilePath!, FileNameHelper.GetComparisonFilePath(options), true);
 
-			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusCurrentFileHasBeenSaved);
+			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusCurrentFileSaved);
 			ConsolePrinter.ResetColor();
 		}
 
@@ -779,7 +779,7 @@ namespace SramComparer.Services
 			var filePath = GetConfigFilePath(options.ConfigFilePath, configName);
 			JsonFileSerializer.Serialize(filePath, options, jsonOptions);
 
-			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusConfigFileHasBeenSavedTemplate.InsertArgs(filePath));
+			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusConfigFileSavedTemplate.InsertArgs(filePath));
 			ConsolePrinter.ResetColor();
 		}
 

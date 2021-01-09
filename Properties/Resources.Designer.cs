@@ -954,9 +954,9 @@ namespace SramComparer.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die All save slots will be compared. ähnelt.
         /// </summary>
-        public static string StatusAllSaveSlotsWillBeCompared {
+        public static string StatusAllSaveSlotsComparison {
             get {
-                return ResourceManager.GetString("StatusAllSaveSlotsWillBeCompared", resourceCulture);
+                return ResourceManager.GetString("StatusAllSaveSlotsComparison", resourceCulture);
             }
         }
         
@@ -972,9 +972,9 @@ namespace SramComparer.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Config file [{0}] has been saved. ähnelt.
         /// </summary>
-        public static string StatusConfigFileHasBeenSavedTemplate {
+        public static string StatusConfigFileSavedTemplate {
             get {
-                return ResourceManager.GetString("StatusConfigFileHasBeenSavedTemplate", resourceCulture);
+                return ResourceManager.GetString("StatusConfigFileSavedTemplate", resourceCulture);
             }
         }
         
@@ -999,9 +999,9 @@ namespace SramComparer.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Current file has been saved as comparison file. ähnelt.
         /// </summary>
-        public static string StatusCurrentFileHasBeenSaved {
+        public static string StatusCurrentFileSaved {
             get {
-                return ResourceManager.GetString("StatusCurrentFileHasBeenSaved", resourceCulture);
+                return ResourceManager.GetString("StatusCurrentFileSaved", resourceCulture);
             }
         }
         
@@ -1071,18 +1071,18 @@ namespace SramComparer.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Edited current file has been overwritten. File: {0}. ähnelt.
         /// </summary>
-        public static string StatusModifiedFileHasBeenOverwrittenTemplate {
+        public static string StatusModifiedFileOverwrittenTemplate {
             get {
-                return ResourceManager.GetString("StatusModifiedFileHasBeenOverwrittenTemplate", resourceCulture);
+                return ResourceManager.GetString("StatusModifiedFileOverwrittenTemplate", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Edited current file has been saved as {0}. ähnelt.
         /// </summary>
-        public static string StatusModifiedFileHasBeenSavedAsTemplate {
+        public static string StatusModifiedFileSavedAsTemplate {
             get {
-                return ResourceManager.GetString("StatusModifiedFileHasBeenSavedAsTemplate", resourceCulture);
+                return ResourceManager.GetString("StatusModifiedFileSavedAsTemplate", resourceCulture);
             }
         }
         

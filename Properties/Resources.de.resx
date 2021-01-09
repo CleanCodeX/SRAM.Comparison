@@ -258,10 +258,10 @@
 	<data name="StatusBytesChangedTemplate" xml:space="preserve">
 		<value>{0} Bytes geändert.</value>
 	</data>
-	<data name="StatusModifiedFileHasBeenOverwrittenTemplate" xml:space="preserve">
+	<data name="StatusModifiedFileOverwrittenTemplate" xml:space="preserve">
 		<value>Die geänderte aktuelle Datei wurde überschrieben. Datei: {0}.</value>
 	</data>
-	<data name="StatusModifiedFileHasBeenSavedAsTemplate" xml:space="preserve">
+	<data name="StatusModifiedFileSavedAsTemplate" xml:space="preserve">
 		<value>Die geänderte Datei wurde gespeichert als: {0}.</value>
 	</data>
 	<data name="PromptCreateNewFileInsteadOfOverwriting" xml:space="preserve">
@@ -282,7 +282,7 @@
 	<data name="StatusCurrentComparisonExportedTemplate" xml:space="preserve">
 		<value>Aktueller Vergleich exportiert nach "{0}".</value>
 	</data>
-	<data name="StatusCurrentFileHasBeenSaved" xml:space="preserve">
+	<data name="StatusCurrentFileSaved" xml:space="preserve">
 		<value>Die aktuelle Datei wurde als Vergleichs-Datei gespeichert.</value>
 	</data>
 	<data name="StatusCurrFileSavedAsTemplate" xml:space="preserve">
@@ -300,7 +300,7 @@
 	<data name="ConfigColorizeOutput" xml:space="preserve">
 		<value>Ausgabe einfärben</value>
 	</data>
-	<data name="StatusAllSaveSlotsWillBeCompared" xml:space="preserve">
+	<data name="StatusAllSaveSlotsComparison" xml:space="preserve">
 		<value>Alle Speicherslots werden verglichen.</value>
 	</data>
 	<data name="CompSectionNonSaveSlotUnknowns" xml:space="preserve">
@@ -357,7 +357,7 @@
 	<data name="CmdGroupConfig" xml:space="preserve">
 		<value>Konfig</value>
 	</data>
-	<data name="StatusConfigFileHasBeenSavedTemplate" xml:space="preserve">
+	<data name="StatusConfigFileSavedTemplate" xml:space="preserve">
 		<value>Konfig-Datei [{0}] wurde gespeichert.</value>
 	</data>
 	<data name="PromptEnterConfigName" xml:space="preserve">

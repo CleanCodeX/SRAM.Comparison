@@ -234,7 +234,7 @@
 	<data name="SramOffset" xml:space="preserve">
 		<value>Décalage SRAM</value>
 	</data>
-	<data name="StatusAllSaveSlotsWillBeCompared" xml:space="preserve">
+	<data name="StatusAllSaveSlotsComparison" xml:space="preserve">
 		<value>Toutes les parties seront comparées.</value>
 	</data>
 	<data name="StatusBytesChangedTemplate" xml:space="preserve">
@@ -243,10 +243,10 @@
 	<data name="StatusCurrFileBackedUpTemplate" xml:space="preserve">
 		<value>{0} a été sauvegardé.</value>
 	</data>
-	<data name="StatusCurrentFileHasBeenSaved" xml:space="preserve">
+	<data name="StatusCurrentFileSaved" xml:space="preserve">
 		<value>Le fichier en cours a été enregistré en tant que fichier de comparaison.</value>
 	</data>
-	<data name="StatusModifiedFileHasBeenSavedAsTemplate" xml:space="preserve">
+	<data name="StatusModifiedFileSavedAsTemplate" xml:space="preserve">
 		<value>Le fichier en cours qui a été modifié a été enregistré (fichier {0}).</value>
 	</data>
 	<data name="StatusCurrFileSavedAsTemplate" xml:space="preserve">
@@ -264,7 +264,7 @@
 	<data name="StatusSetOffsetValueTemplate" xml:space="preserve">
 		<value>La valeur à la position {0} est de {1}.</value>
 	</data>
-	<data name="StatusModifiedFileHasBeenOverwrittenTemplate" xml:space="preserve">
+	<data name="StatusModifiedFileOverwrittenTemplate" xml:space="preserve">
 		<value>Le fichier en cours qui a été modifié a été écrasé (fichier {0}).</value>
 	</data>
 	<data name="StatusNoAvailableOtherFiles" xml:space="preserve">
@@ -369,7 +369,7 @@
 	<data name="CmdGroupConfig" xml:space="preserve">
 		<value>Config</value>
 	</data>
-	<data name="StatusConfigFileHasBeenSavedTemplate" xml:space="preserve">
+	<data name="StatusConfigFileSavedTemplate" xml:space="preserve">
 		<value>Le fichier de configuration [{0}] a été enregistré.</value>
 	</data>
 	<data name="PromptEnterConfigName" xml:space="preserve">

@@ -165,7 +165,7 @@
   <data name="StatusOffsetValueWillBeUsedTemplate" xml:space="preserve">
     <value>Offset value {0} will bFe set.</value><comment>The term Offset should only be translated if not understandable</comment>
   </data>
-  <data name="StatusAllSaveSlotsWillBeCompared" xml:space="preserve">
+  <data name="StatusAllSaveSlotsComparison" xml:space="preserve">
     <value>All save slots will be compared.</value>
   </data>
   <data name="ErrorCannotOpenOutputFileTemplate" xml:space="preserve">
@@ -183,7 +183,7 @@
   <data name="EnumNone" xml:space="preserve">
     <value>None</value>
   </data>
-  <data name="StatusCurrentFileHasBeenSaved" xml:space="preserve">
+  <data name="StatusCurrentFileSaved" xml:space="preserve">
     <value>Current file has been saved as comparison file.</value>
   </data>
   <data name="StatusCurrFileBackedUpTemplate" xml:space="preserve">
@@ -393,7 +393,7 @@
   <data name="StatusFileBackedUpTemplate" xml:space="preserve">
     <value>Target file has been backed up as {0}.</value>
   </data>
-  <data name="StatusModifiedFileHasBeenSavedAsTemplate" xml:space="preserve">
+  <data name="StatusModifiedFileSavedAsTemplate" xml:space="preserve">
     <value>Edited current file has been saved as {0}.</value>
   </data>
   <data name="StatusGetOffsetValueTemplate" xml:space="preserve">
@@ -402,7 +402,7 @@
   <data name="StatusSetOffsetValueTemplate" xml:space="preserve">
     <value>Value at offset {0} is now {1}.</value><comment>The term Offset should only be translated if not understandable</comment>
   </data>
-  <data name="StatusModifiedFileHasBeenOverwrittenTemplate" xml:space="preserve">
+  <data name="StatusModifiedFileOverwrittenTemplate" xml:space="preserve">
     <value>Edited current file has been overwritten. File: {0}.</value>
   </data>
   <data name="PromptCreateNewFileInsteadOfOverwriting" xml:space="preserve">
@@ -462,7 +462,7 @@
   <data name="CmdGroupConfig" xml:space="preserve">
     <value>Config</value>
   </data>
-  <data name="StatusConfigFileHasBeenSavedTemplate" xml:space="preserve">
+  <data name="StatusConfigFileSavedTemplate" xml:space="preserve">
     <value>Config file [{0}] has been saved.</value>
   </data>
   <data name="PromptEnterConfigName" xml:space="preserve">
