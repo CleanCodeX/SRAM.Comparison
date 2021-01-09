@@ -127,7 +127,7 @@
 	<data name="EnterCommand" xml:space="preserve">
 		<value>Entrez une commande et appuyez sur Entrée.</value>
 	</data>
-	<data name="EnterIndexOfFileToBeOverwrittenMaxIndexTemplate" xml:space="preserve">
+	<data name="EnterIndexOfFileToOverwriteTemplate" xml:space="preserve">
 		<value>Entrez le numéro (0 à {0}) du fichier à écraser ou appuyez sur n'importe quelle autre touche pour annuler :</value>
 	</data>
 	<data name="ErrorCannotOpenOutputFileTemplate" xml:space="preserve">
@@ -136,7 +136,7 @@
 	<data name="ErrorCommandNotImplementedTemplate" xml:space="preserve">
 		<value>La commande (overwrite) n'est pas implémentée.</value>
 	</data>
-	<data name="ErrorComparisonFileSaveSlotSetButNotCurrentFileSaveSlot" xml:space="preserve">
+	<data name="ErrorCompSaveSlotSetButNotForCurrFile" xml:space="preserve">
 		<value>L'emplacement de comparaison dans le fichier ne peut être défini que si l'emplacement d'enregistrement en cours dans le fichier a été défini en premier.</value>
 		<comment>Was: L'emplacement de la partie pour la comparaison ne peut être défini que si l'emplacement de jeu du fichier SRAM en cours est défini en premier.</comment>
 	</data>
@@ -240,7 +240,7 @@
 	<data name="StatusBytesChangedTemplate" xml:space="preserve">
 		<value>{0} octets modifiés.</value>
 	</data>
-	<data name="StatusCurrentFileHasBeenBackedUpTemplate" xml:space="preserve">
+	<data name="StatusCurrFileBackedUpTemplate" xml:space="preserve">
 		<value>{0} a été sauvegardé.</value>
 	</data>
 	<data name="StatusCurrentFileHasBeenSaved" xml:space="preserve">
@@ -249,7 +249,7 @@
 	<data name="StatusModifiedFileHasBeenSavedAsTemplate" xml:space="preserve">
 		<value>Le fichier en cours qui a été modifié a été enregistré (fichier {0}).</value>
 	</data>
-	<data name="StatusCurrentHasBeenSavedAsFilePathTemplate" xml:space="preserve">
+	<data name="StatusCurrFileSavedAsTemplate" xml:space="preserve">
 		<value>Le fichier en cours a été copié (fichier {0}).</value>
 	</data>
 	<data name="StatusSaveSlotChangedBytesTemplate" xml:space="preserve">
@@ -258,7 +258,7 @@
 	<data name="StatusUnknownsChangedBytesTemplate" xml:space="preserve">
 		<value>Valeurs inconnues uniquement : {0} octets modifiés.</value>
 	</data>
-	<data name="StatusSingleSaveSlotWillBeComparedTemplate" xml:space="preserve">
+	<data name="StatusSingleSaveSlotComparisonTemplate" xml:space="preserve">
 		<value>Seule la partie en cours {0} sera comparée.</value>
 	</data>
 	<data name="StatusSetOffsetValueTemplate" xml:space="preserve">
@@ -293,10 +293,10 @@
 	<data name="StatusSramChangedBytesTemplate" xml:space="preserve">
 		<value>{0} octets modifiés.</value><comment>{0} octets modifiés</comment>
 	</data>
-	<data name="StatusFileHasBeenRestoredFromBackupTemplate" xml:space="preserve">
+	<data name="StatusFileRestoredFromBackupTemplate" xml:space="preserve">
 		<value>{0} a été restauré à partir de la sauvegarde.</value>
 	</data>
-	<data name="StatusTargetFileHasBeenBackedUpTemplate" xml:space="preserve">
+	<data name="StatusFileBackedUpTemplate" xml:space="preserve">
 		<value>Le fichier a été sauvegardé en tant que {0}.</value>
 	</data>
 	<data name="StatusTotalDiffBytesTemplate" xml:space="preserve">
@@ -305,7 +305,7 @@
 	<data name="CompUnknownAreasOnly" xml:space="preserve">
 		<value>Seulement les valeurs inconnues</value>
 	</data>
-	<data name="StatusCurrentComparisonExportedFilePathTemplate" xml:space="preserve">
+	<data name="StatusCurrentComparisonExportedTemplate" xml:space="preserve">
 		<value>Comparaison en cours enregistrée dans le fichier "{0}".</value>
 	</data>
 	<data name="EnumSlotByteByByteComparison" xml:space="preserve">
@@ -327,7 +327,7 @@
 		<value>Comparer les zones en dehors de la partie en cours octet par octet :</value>
 		<comment>Comparer les zones en dehors de la partie en cours :</comment>
 	</data>
-	<data name="StatusTwoDifferentSaveSlotsWillBeComparedTemplate" xml:space="preserve">
+	<data name="StatusDifferentSaveSlotComparisonTemplate" xml:space="preserve">
 		<value>L'emplacement de sauvegarde en cours {0} sera comparé à l'emplacement de sauvegarde de comparaison {1}.</value>
 	</data>
 	<data name="ConfigComparisonResultLanguage" xml:space="preserve">
@@ -387,7 +387,7 @@
 	<data name="CmdOpenKeyBindingFile" xml:space="preserve">
 		<value>Ouvrir le fichier de liaison de clé</value>
 	</data>
-	<data name="StatusKeyBindingsFileHasBeenSavedTemplate" xml:space="preserve">
+	<data name="StatusKeyBindingsFileSavedTemplate" xml:space="preserve">
 		<value>Le fichier de raccourcis clavier [{0}] a été enregistré.</value>
 	</data>
 	<data name="ErrorKeyBindingsFileDoesNotExist" xml:space="preserve">

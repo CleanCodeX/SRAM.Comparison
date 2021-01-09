@@ -11,7 +11,7 @@
 	<resheader name="writer">
 		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, UILanguage=neutral, PublicKeyToken=b77a5c561934e089</value>
 	</resheader>
-	<data name="StatusTargetFileHasBeenBackedUpTemplate" xml:space="preserve">
+	<data name="StatusFileBackedUpTemplate" xml:space="preserve">
 		<value>Ziel-Datei wurde gesichert als {0}.</value>
 	</data>
 	<data name="StatusTotalDiffBytesTemplate" xml:space="preserve">
@@ -20,7 +20,7 @@
 	<data name="CompUnknownAreasOnly" xml:space="preserve">
 		<value>Nur unbekannte Bereiche</value>
 	</data>
-	<data name="StatusFileHasBeenRestoredFromBackupTemplate" xml:space="preserve">
+	<data name="StatusFileRestoredFromBackupTemplate" xml:space="preserve">
 		<value>{0} wurde aus Sicherung wiederhergestellt.</value>
 	</data>
 	<data name="StatusSramChangedBytesTemplate" xml:space="preserve">
@@ -159,7 +159,7 @@
 	<data name="EnterCommand" xml:space="preserve">
 		<value>Befehl eingeben und Eingabe drücken</value>
 	</data>
-	<data name="EnterIndexOfFileToBeOverwrittenMaxIndexTemplate" xml:space="preserve">
+	<data name="EnterIndexOfFileToOverwriteTemplate" xml:space="preserve">
 		<value>Index (0 bis {0}) der zu überschreibenden Datei eingeben (jede andere Taste um abzubrechen):</value>
 	</data>
 	<data name="ErrorCannotOpenOutputFileTemplate" xml:space="preserve">
@@ -276,16 +276,16 @@
 	<data name="PromptCompareNonSaveSlotArea" xml:space="preserve">
 		<value>Vergleiche den Nicht-Speicherslot-Bereich</value>
 	</data>
-	<data name="StatusCurrentFileHasBeenBackedUpTemplate" xml:space="preserve">
+	<data name="StatusCurrFileBackedUpTemplate" xml:space="preserve">
 		<value>{0} wurde gesichert.</value>
 	</data>
-	<data name="StatusCurrentComparisonExportedFilePathTemplate" xml:space="preserve">
+	<data name="StatusCurrentComparisonExportedTemplate" xml:space="preserve">
 		<value>Aktueller Vergleich exportiert nach "{0}".</value>
 	</data>
 	<data name="StatusCurrentFileHasBeenSaved" xml:space="preserve">
 		<value>Die aktuelle Datei wurde als Vergleichs-Datei gespeichert.</value>
 	</data>
-	<data name="StatusCurrentHasBeenSavedAsFilePathTemplate" xml:space="preserve">
+	<data name="StatusCurrFileSavedAsTemplate" xml:space="preserve">
 		<value>Die aktuelle Datei wurde kopiert als {0}.</value>
 	</data>
 	<data name="StatusSaveSlotChangedBytesTemplate" xml:space="preserve">
@@ -294,7 +294,7 @@
 	<data name="StatusUnknownsChangedBytesTemplate" xml:space="preserve">
 		<value>Nur Unbekannte: {0} Bytes geändert.</value>
 	</data>
-	<data name="StatusSingleSaveSlotWillBeComparedTemplate" xml:space="preserve">
+	<data name="StatusSingleSaveSlotComparisonTemplate" xml:space="preserve">
 		<value>Nur der Speicherslot {0} wird verglichen.</value>
 	</data>
 	<data name="ConfigColorizeOutput" xml:space="preserve">
@@ -306,7 +306,7 @@
 	<data name="CompSectionNonSaveSlotUnknowns" xml:space="preserve">
 		<value>Unbekannter nicht-Speicherslot-Bereich</value>
 	</data>
-	<data name="ErrorComparisonFileSaveSlotSetButNotCurrentFileSaveSlot" xml:space="preserve">
+	<data name="ErrorCompSaveSlotSetButNotForCurrFile" xml:space="preserve">
 		<value>Der Vergleichs-Datei Speicherslot kann erst gesetzt werden, nachdem der Speicherslot der aktuellen Datei festgelegt wurde.</value>
 	</data>
 	<data name="CmdSlotByteByBytesComparison" xml:space="preserve">
@@ -315,7 +315,7 @@
 	<data name="CmdNonSlotByteByByteComparison" xml:space="preserve">
 		<value>Nicht-Speicherslot-Bereich Byte-für-Byte vergleichen</value>
 	</data>
-	<data name="StatusTwoDifferentSaveSlotsWillBeComparedTemplate" xml:space="preserve">
+	<data name="StatusDifferentSaveSlotComparisonTemplate" xml:space="preserve">
 		<value>Der aktuelle Speicherslot {0} wird mit dem Vergleichs-Speicherslot {1} verglichen.</value>
 	</data>
 	<data name="ConfigComparisonResultLanguage" xml:space="preserve">
@@ -375,7 +375,7 @@
 	<data name="CmdOpenKeyBindingFile" xml:space="preserve">
 		<value>Tastenzuweisungs-Datei öffnen</value>
 	</data>
-	<data name="StatusKeyBindingsFileHasBeenSavedTemplate" xml:space="preserve">
+	<data name="StatusKeyBindingsFileSavedTemplate" xml:space="preserve">
 		<value>Tastenzuordnungs-Datei [{0}] wurde gespeichert.</value>
 	</data>
 	<data name="ErrorKeyBindingsFileDoesNotExist" xml:space="preserve">

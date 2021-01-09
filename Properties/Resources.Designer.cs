@@ -666,9 +666,9 @@ namespace SramComparer.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Enter index (0 to {0}) of the file to be overwritten (any other key to cancel): ähnelt.
         /// </summary>
-        public static string EnterIndexOfFileToBeOverwrittenMaxIndexTemplate {
+        public static string EnterIndexOfFileToOverwriteTemplate {
             get {
-                return ResourceManager.GetString("EnterIndexOfFileToBeOverwrittenMaxIndexTemplate", resourceCulture);
+                return ResourceManager.GetString("EnterIndexOfFileToOverwriteTemplate", resourceCulture);
             }
         }
         
@@ -756,9 +756,9 @@ namespace SramComparer.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Save slot for comparison-file can only be set if current file&apos;s save slot is set first. ähnelt.
         /// </summary>
-        public static string ErrorComparisonFileSaveSlotSetButNotCurrentFileSaveSlot {
+        public static string ErrorCompSaveSlotSetButNotForCurrFile {
             get {
-                return ResourceManager.GetString("ErrorComparisonFileSaveSlotSetButNotCurrentFileSaveSlot", resourceCulture);
+                return ResourceManager.GetString("ErrorCompSaveSlotSetButNotForCurrFile", resourceCulture);
             }
         }
         
@@ -990,18 +990,9 @@ namespace SramComparer.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Current comparison exported to &quot;{0}&quot;. ähnelt.
         /// </summary>
-        public static string StatusCurrentComparisonExportedFilePathTemplate {
+        public static string StatusCurrentComparisonExportedTemplate {
             get {
-                return ResourceManager.GetString("StatusCurrentComparisonExportedFilePathTemplate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die {0} has been backed-up. ähnelt.
-        /// </summary>
-        public static string StatusCurrentFileHasBeenBackedUpTemplate {
-            get {
-                return ResourceManager.GetString("StatusCurrentFileHasBeenBackedUpTemplate", resourceCulture);
+                return ResourceManager.GetString("StatusCurrentComparisonExportedTemplate", resourceCulture);
             }
         }
         
@@ -1015,20 +1006,47 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die {0} has been backed-up. ähnelt.
+        /// </summary>
+        public static string StatusCurrFileBackedUpTemplate {
+            get {
+                return ResourceManager.GetString("StatusCurrFileBackedUpTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Current file has been copied as {0}. ähnelt.
         /// </summary>
-        public static string StatusCurrentHasBeenSavedAsFilePathTemplate {
+        public static string StatusCurrFileSavedAsTemplate {
             get {
-                return ResourceManager.GetString("StatusCurrentHasBeenSavedAsFilePathTemplate", resourceCulture);
+                return ResourceManager.GetString("StatusCurrFileSavedAsTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Current save slot {0} will be compared with comparison save slot {1}. ähnelt.
+        /// </summary>
+        public static string StatusDifferentSaveSlotComparisonTemplate {
+            get {
+                return ResourceManager.GetString("StatusDifferentSaveSlotComparisonTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Target file has been backed up as {0}. ähnelt.
+        /// </summary>
+        public static string StatusFileBackedUpTemplate {
+            get {
+                return ResourceManager.GetString("StatusFileBackedUpTemplate", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die {0} has been restored from backup. ähnelt.
         /// </summary>
-        public static string StatusFileHasBeenRestoredFromBackupTemplate {
+        public static string StatusFileRestoredFromBackupTemplate {
             get {
-                return ResourceManager.GetString("StatusFileHasBeenRestoredFromBackupTemplate", resourceCulture);
+                return ResourceManager.GetString("StatusFileRestoredFromBackupTemplate", resourceCulture);
             }
         }
         
@@ -1044,9 +1062,9 @@ namespace SramComparer.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Key bindings file [{0}] has been saved. ähnelt.
         /// </summary>
-        public static string StatusKeyBindingsFileHasBeenSavedTemplate {
+        public static string StatusKeyBindingsFileSavedTemplate {
             get {
-                return ResourceManager.GetString("StatusKeyBindingsFileHasBeenSavedTemplate", resourceCulture);
+                return ResourceManager.GetString("StatusKeyBindingsFileSavedTemplate", resourceCulture);
             }
         }
         
@@ -1152,9 +1170,9 @@ namespace SramComparer.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Only save slot {0} will be compared. ähnelt.
         /// </summary>
-        public static string StatusSingleSaveSlotWillBeComparedTemplate {
+        public static string StatusSingleSaveSlotComparisonTemplate {
             get {
-                return ResourceManager.GetString("StatusSingleSaveSlotWillBeComparedTemplate", resourceCulture);
+                return ResourceManager.GetString("StatusSingleSaveSlotComparisonTemplate", resourceCulture);
             }
         }
         
@@ -1168,29 +1186,11 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Target file has been backed up as {0}. ähnelt.
-        /// </summary>
-        public static string StatusTargetFileHasBeenBackedUpTemplate {
-            get {
-                return ResourceManager.GetString("StatusTargetFileHasBeenBackedUpTemplate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Total: {0} bytes changed (outside save slot area). ähnelt.
         /// </summary>
         public static string StatusTotalDiffBytesTemplate {
             get {
                 return ResourceManager.GetString("StatusTotalDiffBytesTemplate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Current save slot {0} will be compared with comparison save slot {1}. ähnelt.
-        /// </summary>
-        public static string StatusTwoDifferentSaveSlotsWillBeComparedTemplate {
-            get {
-                return ResourceManager.GetString("StatusTwoDifferentSaveSlotsWillBeComparedTemplate", resourceCulture);
             }
         }
         

@@ -138,7 +138,7 @@ namespace SramComparer.Services
 					if (options.CurrentFileSaveSlot != default)
 						options.ComparisonFileSaveSlot = GetSaveSlotId(maxSaveSlotId: 4);
 					else
-						ConsolePrinter.PrintError(Resources.ErrorComparisonFileSaveSlotSetButNotCurrentFileSaveSlot);
+						ConsolePrinter.PrintError(Resources.ErrorCompSaveSlotSetButNotForCurrFile);
 
 					break;
 				case Commands.OverwriteComp:
@@ -373,7 +373,7 @@ namespace SramComparer.Services
 				fileStream.Close();
 				ConsolePrinter.PrintParagraph();
 				ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow,
-					Resources.StatusCurrentComparisonExportedFilePathTemplate.InsertArgs(filePath));
+					Resources.StatusCurrentComparisonExportedTemplate.InsertArgs(filePath));
 			}
 			catch (Exception ex)
 			{
@@ -426,15 +426,15 @@ namespace SramComparer.Services
 			if (!File.Exists(targetBackupFilepath))
 			{
 				File.Copy(targeFilepath, targetBackupFilepath);
-				ConsolePrinter.PrintColored(ConsoleColor.DarkGreen ,Resources.StatusTargetFileHasBeenBackedUpTemplate.InsertArgs(Path.GetFileName(targetBackupFilepath)));
+				ConsolePrinter.PrintColored(ConsoleColor.DarkGreen ,Resources.StatusFileBackedUpTemplate.InsertArgs(Path.GetFileName(targetBackupFilepath)));
 			}
 
 			File.Copy(options.CurrentFilePath!, targeFilepath, true);
-			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusCurrentHasBeenSavedAsFilePathTemplate.InsertArgs(Path.GetFileName(targeFilepath)));
+			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusCurrFileSavedAsTemplate.InsertArgs(Path.GetFileName(targeFilepath)));
 
 			string? GetTargetFilePath()
 			{
-				ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.EnterIndexOfFileToBeOverwrittenMaxIndexTemplate.InsertArgs(files.Length - 1));
+				ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.EnterIndexOfFileToOverwriteTemplate.InsertArgs(files.Length - 1));
 				ConsolePrinter.PrintParagraph();
 				ConsolePrinter.ResetColor();
 
@@ -624,7 +624,7 @@ namespace SramComparer.Services
 
 			ConsolePrinter.PrintParagraph();
 			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, saveSlotId > 0
-				? string.Format(Resources.StatusSingleSaveSlotWillBeComparedTemplate, saveSlotId)
+				? string.Format(Resources.StatusSingleSaveSlotComparisonTemplate, saveSlotId)
 				: Resources.StatusAllSaveSlotsWillBeCompared);
 
 			ConsolePrinter.PrintParagraph();
@@ -662,12 +662,12 @@ namespace SramComparer.Services
 			if (restore)
 			{
 				File.Copy(backupFilepath, filePath, true);
-				ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusFileHasBeenRestoredFromBackupTemplate.InsertArgs(fileTypeName));
+				ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusFileRestoredFromBackupTemplate.InsertArgs(fileTypeName));
 			}
 			else
 			{
 				File.Copy(filePath, backupFilepath, true);
-				ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusCurrentFileHasBeenBackedUpTemplate.InsertArgs(fileTypeName));
+				ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusCurrFileBackedUpTemplate.InsertArgs(fileTypeName));
 			}
 
 			ConsolePrinter.ResetColor();
@@ -863,7 +863,7 @@ namespace SramComparer.Services
 			var keyBindingsPath = Path.Join(Environment.CurrentDirectory, KeyBindingsFileName);
 			JsonFileSerializer.Serialize(keyBindingsPath, bindings, options);
 
-			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusKeyBindingsFileHasBeenSavedTemplate.InsertArgs(keyBindingsPath));
+			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusKeyBindingsFileSavedTemplate.InsertArgs(keyBindingsPath));
 			ConsolePrinter.ResetColor();
 		}
 

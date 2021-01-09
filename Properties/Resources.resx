@@ -153,10 +153,10 @@
   <data name="ConfigCurrentFilePath" xml:space="preserve">
     <value>Current filepath</value>
   </data>
-  <data name="StatusTwoDifferentSaveSlotsWillBeComparedTemplate" xml:space="preserve">
+  <data name="StatusDifferentSaveSlotComparisonTemplate" xml:space="preserve">
     <value>Current save slot {0} will be compared with comparison save slot {1}.</value>
   </data>
-  <data name="StatusSingleSaveSlotWillBeComparedTemplate" xml:space="preserve">
+  <data name="StatusSingleSaveSlotComparisonTemplate" xml:space="preserve">
     <value>Only save slot {0} will be compared.</value>
   </data>
   <data name="StatusOffsetWillBeUsedTemplate" xml:space="preserve">
@@ -186,10 +186,10 @@
   <data name="StatusCurrentFileHasBeenSaved" xml:space="preserve">
     <value>Current file has been saved as comparison file.</value>
   </data>
-  <data name="StatusCurrentFileHasBeenBackedUpTemplate" xml:space="preserve">
+  <data name="StatusCurrFileBackedUpTemplate" xml:space="preserve">
     <value>{0} has been backed-up.</value>
   </data>
-  <data name="StatusFileHasBeenRestoredFromBackupTemplate" xml:space="preserve">
+  <data name="StatusFileRestoredFromBackupTemplate" xml:space="preserve">
     <value>{0} has been restored from backup.</value>
   </data>
   <data name="CmdListCommands" xml:space="preserve">
@@ -291,7 +291,7 @@
   <data name="StatusSramChangedBytesTemplate" xml:space="preserve">
     <value>{0} bytes changed.</value>
   </data>
-  <data name="StatusCurrentComparisonExportedFilePathTemplate" xml:space="preserve">
+  <data name="StatusCurrentComparisonExportedTemplate" xml:space="preserve">
     <value>Current comparison exported to "{0}".</value>
   </data>
   <data name="StatusNoSramBytesChanged" xml:space="preserve">
@@ -357,7 +357,7 @@
   <data name="ErrorNoValidCommandCmdTemplate" xml:space="preserve">
     <value>"{0}" is an unknown command. To list all available commands enter ({1}).</value>
   </data>
-  <data name="ErrorComparisonFileSaveSlotSetButNotCurrentFileSaveSlot" xml:space="preserve">
+  <data name="ErrorCompSaveSlotSetButNotForCurrFile" xml:space="preserve">
     <value>Save slot for comparison-file can only be set if current file's save slot is set first.</value>
   </data>
   <data name="CompSameAsCurrentFileSaveSlot" xml:space="preserve">
@@ -387,10 +387,10 @@
   <data name="ErrorInvalidFileExtensionTemplate" xml:space="preserve">
     <value>The ({0}) file: [{1}] has an unsupported file extension. Did you just forget to quote the path? Supported file extensions are: {2}</value>
   </data>
-  <data name="StatusCurrentHasBeenSavedAsFilePathTemplate" xml:space="preserve">
+  <data name="StatusCurrFileSavedAsTemplate" xml:space="preserve">
     <value>Current file has been copied as {0}.</value>
   </data>
-  <data name="StatusTargetFileHasBeenBackedUpTemplate" xml:space="preserve">
+  <data name="StatusFileBackedUpTemplate" xml:space="preserve">
     <value>Target file has been backed up as {0}.</value>
   </data>
   <data name="StatusModifiedFileHasBeenSavedAsTemplate" xml:space="preserve">
@@ -414,7 +414,7 @@
   <data name="StatusNoAvailableOtherFiles" xml:space="preserve">
     <value>There are currently no other files with same file extension available.</value>
   </data>
-  <data name="EnterIndexOfFileToBeOverwrittenMaxIndexTemplate" xml:space="preserve">
+  <data name="EnterIndexOfFileToOverwriteTemplate" xml:space="preserve">
     <value>Enter index (0 to {0}) of the file to be overwritten (any other key to cancel):</value>
   </data>
   <data name="ErrorParamNameValueMissmatchTemplate" xml:space="preserve">
@@ -480,7 +480,7 @@
   <data name="CmdOpenKeyBindingFile" xml:space="preserve">
     <value>Open key binding file</value>
   </data>
-  <data name="StatusKeyBindingsFileHasBeenSavedTemplate" xml:space="preserve">
+  <data name="StatusKeyBindingsFileSavedTemplate" xml:space="preserve">
     <value>Key bindings file [{0}] has been saved.</value>
   </data>
   <data name="ErrorKeyBindingsFileDoesNotExist" xml:space="preserve">
