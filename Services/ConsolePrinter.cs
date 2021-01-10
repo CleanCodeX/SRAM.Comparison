@@ -18,39 +18,32 @@ namespace SramComparer.Services
 			PrintSectionHeader();
 			PrintColoredLine(ConsoleColor.Gray, Res.Config + @":");
 
-			PrintConfigName(Res.ConfigCurrentFilePath, "{0}");
-			PrintValue(Path.GetFileName(options.CurrentFilePath!));
+			PrintConfigLine(Res.ConfigCurrentFilePath, "{0}", Path.GetFileName(options.CurrentFilePath!));
+			PrintConfigLine(Res.ConfigComparisonFilePath, "{1-2}|" + CmdOptions.ComparisonFile, Path.GetFileName(FileNameHelper.GetComparisonFilePath(options)));
 
-			PrintConfigName(Res.ConfigComparisonFilePath, "{1-2}|" + CmdOptions.ComparisonFile);
-			PrintValue(Path.GetFileName(FileNameHelper.GetComparisonFilePath(options)));
+			PrintConfigLine(Res.EnumGameRegion, $"{"{1-2}|" + CmdOptions.GameRegion} [{string.Join("|", Enum.GetNames(options.GameRegion.GetType()))}]", options.GameRegion.ToString());
 
-			PrintConfigName(Res.EnumGameRegion, $"{"{1-2}|" + CmdOptions.GameRegion} [{string.Join("|", Enum.GetNames(options.GameRegion.GetType()))}]");
-			PrintValue(options.GameRegion.ToString());
+			PrintConfigLine(Res.ConfigExportDirectory, CmdOptions.ExportDirectory, options.ExportDirectory ?? Path.GetDirectoryName(options.CurrentFilePath)!);
 
-			PrintConfigName(Res.ConfigExportDirectory, CmdOptions.ExportDirectory);
-			PrintValue(options.ExportDirectory ?? Path.GetDirectoryName(options.CurrentFilePath)!);
+			PrintConfigLine(Res.ConfigCurrentFileSaveSlot, $"{CmdOptions.CurrentSaveSlot} [1-4|0={Res.All}]", options.CurrentFileSaveSlot == 0 ? Res.All : options.CurrentFileSaveSlot.ToString());
 
-			PrintConfigName(Res.ConfigCurrentFileSaveSlot, $"{CmdOptions.CurrentSaveSlot} [1-4|0={Res.All}]");
-			PrintValue(options.CurrentFileSaveSlot == 0 ? Res.All : options.CurrentFileSaveSlot.ToString());
+			PrintConfigLine(Res.ConfigComparisonFileSaveSlot, $"{CmdOptions.ComparisonSaveSlot} [1-4|0={Res.All}]", options.ComparisonFileSaveSlot == 0 ? Res.CompSameAsCurrentFileSaveSlot : options.ComparisonFileSaveSlot.ToString());
 
-			PrintConfigName(Res.ConfigComparisonFileSaveSlot, $"{CmdOptions.ComparisonSaveSlot} [1-4|0={Res.All}]");
-			PrintValue(options.ComparisonFileSaveSlot == 0 ? Res.CompSameAsCurrentFileSaveSlot : options.ComparisonFileSaveSlot.ToString());
-
-			PrintConfigName(Res.ConfigColorizeOutput, $"{CmdOptions.ColorizeOutput} [true|1|false|0]");
-			PrintValue(options.ColorizeOutput.ToString());
-
-			PrintConfigName(Res.ConfigUILanguage, CmdOptions.UILanguage);
-			PrintValue(options.UILanguage!);
-
-			PrintConfigName(Res.ConfigComparisonResultLanguage, CmdOptions.ComparisonResultLanguage);
-			PrintValue(options.ComparisonResultLanguage!);
-
-			PrintConfigName(Res.ConfigFilePath, CmdOptions.ConfigFilePath);
-			PrintValue(options.ConfigFilePath!);
+			PrintConfigLine(Res.ConfigColorizeOutput, $"{CmdOptions.ColorizeOutput} [true|1|false|0]", options.ColorizeOutput.ToString());
+			PrintConfigLine(Res.ConfigUILanguage, CmdOptions.UILanguage, options.UILanguage!);
+			PrintConfigLine(Res.ConfigComparisonResultLanguage, CmdOptions.ComparisonResultLanguage, options.ComparisonResultLanguage!);
+			PrintConfigLine(Res.ConfigFilePath, CmdOptions.ConfigFilePath, options.ConfigFilePath!);
 
 			PrintConfigName(Res.ConfigComparisonFlags, $@"{CmdOptions.ComparisonFlags} [{string.Join(",", Enum.GetNames(options.ComparisonFlags.GetType()))}]");
 			PrintConfigName(Environment.NewLine, padRightDistance: 37);
 			PrintValue(options.ComparisonFlags.ToFlagsString());
+		}
+
+		public void PrintConfigLine(string name, string value) => PrintConfigLine(name, null!, value);
+		public void PrintConfigLine(string name, string args, string value)
+		{
+			PrintConfigName(name, args);
+			PrintValue(value);
 		}
 
 		public void Clear() => Console.Clear();
@@ -176,11 +169,11 @@ namespace SramComparer.Services
 
 			PrintCustomCommands();
 
-			PrintParagraph();
-			PrintParagraph();
+			PrintLine();
+			PrintLine();
 			PrintCommandKey(Commands.Quit);
 			PrintColoredLine(ConsoleColor.Yellow, Commands.Quit.GetDisplayName()!);
-			PrintParagraph();
+			PrintLine();
 
 			PrintColoredLine(ConsoleColor.Cyan, Res.EnterCommand);
 			ResetColor();
@@ -201,14 +194,13 @@ namespace SramComparer.Services
 			return altKeys.Length > 0 ? $" [{altKeys.Join()}]" : string.Empty;
 		}
 
-
 		protected virtual string GetGuideText(string? guideName) => Res.StatusNoGuideAvailable;
 
 		protected virtual string GetAppDescriptionText() => Res.AppDescription;
 
 		public virtual void PrintGuide(string? guideName)
 		{
-			PrintParagraph();
+			PrintLine();
 			PrintColoredLine(ConsoleColor.Cyan, GetGuideText(guideName));
 			ResetColor();
 		}
@@ -224,7 +216,7 @@ namespace SramComparer.Services
 		protected virtual void PrintCustomBufferInfo() {}
 		public virtual void PrintBufferInfo(string bufferName, int bufferOffset, int bufferLength)
 		{
-			PrintParagraph();
+			PrintLine();
 
 			PrintColored(ConsoleColor.Gray, " ".Repeat(4) + @$"[ {Res.CompSection} ");
 
@@ -242,7 +234,7 @@ namespace SramComparer.Services
 
 			PrintCustomBufferInfo();
 
-			PrintParagraph();
+			PrintLine();
 			ResetColor();
 		}
 
@@ -297,30 +289,30 @@ namespace SramComparer.Services
 		public virtual void PrintSectionHeader()
 		{
 			ResetColor();
-			PrintParagraph();
+			PrintLine();
 			PrintColoredLine(ConsoleColor.Cyan, $@"===[ {DateTime.Now.ToLongTimeString()} ]====================================================");
 			ResetColor();
 		}
 
 		public virtual void PrintError(string message)
 		{
-			PrintParagraph();
+			PrintLine();
 			PrintColoredLine(ConsoleColor.Red, message);
 			ResetColor();
 		}
 
 		public virtual void PrintError(Exception ex)
 		{
-			PrintParagraph();
+			PrintLine();
 			PrintColoredLine(ConsoleColor.Red, ex.Message);
 			ResetColor();
 		}
 
 		public virtual void PrintFatalError(string fataError)
 		{
-			PrintParagraph();
+			PrintLine();
 			
-			PrintColoredLine(ConsoleColor.Yellow, ConsoleColor.Red, fataError);
+			PrintColoredLine(ConsoleColor.Yellow, ConsoleColor.DarkRed, fataError);
 			ResetColor();
 		}
 
@@ -414,7 +406,7 @@ namespace SramComparer.Services
 		public bool ColorizeOutput { get; set; } = true;
 		public virtual string NewLine => Environment.NewLine;
 		
-		public virtual void PrintParagraph() => Console.WriteLine();
+		public virtual void PrintLine() => Console.WriteLine();
 		public virtual void Print(string text) => Console.Write(text);
 		public virtual void PrintLine(string text) => Console.WriteLine(text);
 

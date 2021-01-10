@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Globalization;
 using System.Reflection;
 using Common.Shared.Min.Extensions;
 using SramComparer.Helpers;
@@ -26,7 +25,7 @@ namespace SramComparer
 			options.BatchCommands.ThrowIfNotDefault(nameof(options.BatchCommands));
 
 			if(options.UILanguage is not null)
-				TrySetCulture(consolePrinter, options.UILanguage);
+				CultureHelper.TrySetCulture(options.UILanguage, consolePrinter);
 
 			if (options.CurrentFilePath.IsNullOrEmpty())
 			{
@@ -59,19 +58,6 @@ namespace SramComparer
 					consolePrinter.PrintError(ex.Message);
 					consolePrinter.PrintSectionHeader();
 				}
-			}
-		}
-
-		private static void TrySetCulture(IConsolePrinter consolePrinter, string culture)
-		{
-			try
-			{
-				CultureInfo.CurrentUICulture = CultureInfo.GetCultureInfo(culture);
-			}
-			catch (Exception ex)
-			{
-				consolePrinter.PrintError(ex.Message);
-				consolePrinter.PrintSectionHeader();
 			}
 		}
 	}

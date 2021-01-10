@@ -125,5 +125,6 @@ namespace SramComparer.Enums
 		Open = Commands.OpenConfig,
 		LoadOn = Commands.AutoLoadOn,
 		LoadOff = Commands.AutoLoadOff,
+		E = Commands.Export,
 	}
 }

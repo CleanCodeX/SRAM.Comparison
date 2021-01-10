@@ -35,6 +35,9 @@ namespace SramComparer.Services
 		private const string SrmFileExtension = ".srm";
 		private const string DefaultConfigName = "Config";
 
+		private const string GuideSrmFileName = "guide-srm";
+		private const string GuideSavestateFileName = "guide-savestate";
+
 		public static readonly string KeyBindingsFileName = "KeyBindings.json";
 		public static readonly string DefaultConfigFileName = $"{DefaultConfigName}.json";
 
@@ -107,10 +110,10 @@ namespace SramComparer.Services
 					ConsolePrinter.PrintConfig(options);
 					break;
 				case Commands.Guide_Srm:
-					ConsolePrinter.PrintGuide("guide-srm");
+					ConsolePrinter.PrintGuide(GuideSrmFileName);
 					break;
 				case Commands.Guide_Savestate:
-					ConsolePrinter.PrintGuide("guide-savestate");
+					ConsolePrinter.PrintGuide(GuideSavestateFileName);
 					break;
 				case Commands.Sbc:
 					options.ComparisonFlags = InvertIncludeFlag(options.ComparisonFlags, ComparisonFlags.SlotByteByByteComparison);
@@ -220,10 +223,10 @@ namespace SramComparer.Services
 		{
 			var comparisonFilePath = FileNameHelper.GetComparisonFilePath(options);
 			Requires.FileExists(comparisonFilePath, nameof(options.ComparisonFilePath), Resources.ErrorComparisonFileDoesNotExist);
-			
-			using var currFileStream = (Stream)new FileStream(options.CurrentFilePath!, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-			using var compFileStream = (Stream)new FileStream(comparisonFilePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-			
+
+			using var currFileStream = (Stream)new FileStream(options.CurrentFilePath!, FileMode.Open, FileAccess.Read, FileShare.Read);
+			using var compFileStream = (Stream)new FileStream(comparisonFilePath, FileMode.Open, FileAccess.Read, FileShare.Read);
+
 			Compare<TComparer>(currFileStream, compFileStream, options);
 		}
 
@@ -301,7 +304,7 @@ namespace SramComparer.Services
 				_ => throw new NotSupportedException($"Savestate type {savestateType} is not supported.")
 			};
 
-			stream = convertedStream;
+			stream = convertedStream.GetOrThrowIfNull(nameof(convertedStream));
 
 			return true;
 		}
@@ -359,14 +362,14 @@ namespace SramComparer.Services
 		{
 			try
 			{
-				using var fileStream = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite);
+				using var fileStream = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write, FileShare.Read);
 				using var writer = new StreamWriter(fileStream);
 
 				Compare<TComparer>(options, writer);
 
 				writer.Close();
 				fileStream.Close();
-				ConsolePrinter.PrintParagraph();
+				ConsolePrinter.PrintLine();
 				ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow,
 					Resources.StatusCurrentComparisonExportedTemplate.InsertArgs(filePath));
 			}
@@ -406,7 +409,7 @@ namespace SramComparer.Services
 			var filePath = options.CurrentFilePath!;
 			Requires.FileExists(filePath, nameof(options.CurrentFilePath));
 
-			Stream currStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+			Stream currStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
 
 			ConvertStreamIfSavestate(ref currStream, filePath, options.SavestateType);
 
@@ -462,7 +465,7 @@ namespace SramComparer.Services
 			if (createNewFile)
 				saveFilePath += ".manipulated";
 
-			using var currStream = new FileStream(options.CurrentFilePath!, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+			using var currStream = new FileStream(options.CurrentFilePath!, FileMode.Open, FileAccess.Read, FileShare.None);
 			var currFile = ClassFactory.Create<TSramFile>(currStream, options.GameRegion);
 
 			currFile.SetOffsetBytes(slotIndex, offset, bytes);
@@ -486,11 +489,11 @@ namespace SramComparer.Services
 
 			var input = Console.ReadLine()!;
 
-			ConsolePrinter.PrintParagraph();
+			ConsolePrinter.PrintLine();
 			if (promptResultTemplate is not null)
 			{
 				ConsolePrinter.PrintColoredLine(ConsoleColor.DarkYellow, promptResultTemplate.InsertArgs(input));
-				ConsolePrinter.PrintParagraph();
+				ConsolePrinter.PrintLine();
 			}
 
 			ConsolePrinter.ResetColor();
@@ -506,10 +509,10 @@ namespace SramComparer.Services
 
 			uint.TryParse(input, out var offset);
 
-			ConsolePrinter.PrintParagraph();
+			ConsolePrinter.PrintLine();
 			ConsolePrinter.PrintColoredLine(ConsoleColor.DarkYellow, promtResultTemplate.InsertArgs(offset));
 
-			ConsolePrinter.PrintParagraph();
+			ConsolePrinter.PrintLine();
 			ConsolePrinter.ResetColor();
 			return offset;
 		}
@@ -558,12 +561,12 @@ namespace SramComparer.Services
 
 			int.TryParse(input, out var saveSlotId);
 
-			ConsolePrinter.PrintParagraph();
+			ConsolePrinter.PrintLine();
 			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, saveSlotId > 0
 				? string.Format(Resources.StatusSingleSaveSlotComparisonTemplate, saveSlotId)
 				: Resources.StatusAllSaveSlotsComparison);
 
-			ConsolePrinter.PrintParagraph();
+			ConsolePrinter.PrintLine();
 			ConsolePrinter.ResetColor();
 
 			return saveSlotId;
@@ -618,7 +621,7 @@ namespace SramComparer.Services
 			string? GetTargetFilePath()
 			{
 				ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.EnterIndexOfFileToOverwriteTemplate.InsertArgs(files.Length - 1));
-				ConsolePrinter.PrintParagraph();
+				ConsolePrinter.PrintLine();
 				ConsolePrinter.ResetColor();
 
 				var i = 0;
@@ -811,7 +814,7 @@ namespace SramComparer.Services
 			var configName = Console.ReadLine();
 			if (configName == string.Empty) return null;
 
-			ConsolePrinter.PrintParagraph();
+			ConsolePrinter.PrintLine();
 			ConsolePrinter.ResetColor();
 
 			return configName;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Common.Shared.Min.Extensions;
+using SramComparer.Helpers;
 using SramComparer.Properties;
 
 // ReSharper disable PossibleMultipleEnumeration
@@ -30,6 +31,9 @@ namespace SramComparer
 				Console.ReadKey();
 				return;
 			}
+
+			if (options.UILanguage is not null)
+				CultureHelper.TrySetCulture(options.UILanguage, consolePrinter);
 
 			var commands = options.BatchCommands?.Split('-') ?? Enumerable.Empty<string>();
 			var queuedCommands = new Queue<string>(commands);

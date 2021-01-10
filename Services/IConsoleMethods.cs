@@ -5,7 +5,7 @@ namespace SramComparer.Services
 	/// <summary>Basic console functionality</summary>
 	public interface IConsoleMethods
 	{
-		void PrintParagraph();
+		void PrintLine();
 		/// <summary>Resets the console's color to default</summary>
 		void ResetColor();
 		void PrintLine(string text);

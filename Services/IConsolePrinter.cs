@@ -50,6 +50,17 @@ namespace SramComparer.Services
 		/// <summary>Prints the current settings</summary>
 		void PrintConfig(IOptions options);
 
+		/// <summary>Prints a line with config style name and value.</summary>
+		/// <param name="name">The config's name to print.</param>
+		/// <param name="value">The config's value to print. Appears after the ':'.</param>
+		void PrintConfigLine(string name, string value);
+
+		/// <summary>Prints a line with config style name and value.</summary>
+		/// <param name="name">The config's name to print.</param>
+		/// <param name="args">The config's arguments to print. Appears before the ':'</param>
+		/// <param name="value">The config's value to print. Appears after the ':'.</param>
+		void PrintConfigLine(string name, string args, string value);
+
 		/// <summary>Clears the output window</summary>
 		void Clear();
 	}
