@@ -302,7 +302,7 @@ namespace SramComparer.Services
 
 			var convertedStream = savestateType switch
 			{
-				Snes9xId => Snes9x.GetSramFromSavestateStream(stream),
+				Snes9xId => Snes9x.GetSramFromSavestate(stream),
 				_ => throw new NotSupportedException($"Savestate type {savestateType} is not supported.")
 			};
 
@@ -403,79 +403,6 @@ namespace SramComparer.Services
 		}
 
 		#endregion Export comparison Result
-
-		#region Transfer Save File
-
-		public virtual void TransferSramToOtherGameFile(IOptions options)
-		{
-			ConsolePrinter.PrintSectionHeader();
-			var directoryPath = Path.GetDirectoryName(options.CurrentFilePath)!;
-			var extension = Path.GetExtension(options.CurrentFilePath);
-			var files = Directory.GetFiles(directoryPath, $"*{extension}").Where(f => f != options.CurrentFilePath).ToArray();
-			if (files.Length == 0)
-			{
-				ConsolePrinter.PrintLine(Resources.StatusNoAvailableOtherFiles);
-				return;
-			}
-
-			var targeFilepath = GetTargetFilePath();
-			if (targeFilepath is null)
-				return;
-
-			var targetBackupFilepath = targeFilepath + BackupFileExtension;
-			if (!File.Exists(targetBackupFilepath))
-			{
-				File.Copy(targeFilepath, targetBackupFilepath);
-				ConsolePrinter.PrintColored(ConsoleColor.DarkGreen ,Resources.StatusFileBackedUpTemplate.InsertArgs(Path.GetFileName(targetBackupFilepath)));
-			}
-
-			File.Copy(options.CurrentFilePath!, targeFilepath, true);
-			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusCurrFileSavedAsTemplate.InsertArgs(Path.GetFileName(targeFilepath)));
-
-			string? GetTargetFilePath()
-			{
-				ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.EnterIndexOfFileToOverwriteTemplate.InsertArgs(files.Length - 1));
-				ConsolePrinter.PrintParagraph();
-				ConsolePrinter.ResetColor();
-
-				var i = 0;
-				foreach (var fileName in files)
-				{
-					ConsolePrinter.PrintColored(ConsoleColor.Cyan, i++.ToString());
-					ConsolePrinter.PrintColored(ConsoleColor.White, $@": {Path.GetFileNameWithoutExtension(fileName)}");
-				}
-
-				ConsolePrinter.ResetColor();
-
-				var input = Console.ReadLine();
-
-				if (!int.TryParse(input, out var index) || index >= files.Length)
-				{
-					ConsolePrinter.PrintError(Resources.ErrorInvalidIndex);
-					return null;
-				}
-
-				return files[index];
-			}
-		}
-
-		#endregion Transfer Save File
-
-		#region InvertIncludeFlag
-
-		public Enum InvertIncludeFlag(in Enum flags, in Enum flag)
-		{
-			var enumType = flags.GetType();
-			var enumFlag = (Enum)Enum.ToObject(enumType, flag);
-
-			var flagsCopy = EnumHelper.InvertUIntFlag(flags, enumFlag);
-
-			ConsolePrinter.PrintInvertIncludeFlag(flagsCopy, enumFlag);
-
-			return flagsCopy;
-		}
-
-		#endregion InvertIncludeFlag
 
 		#region Get / Set Offset Value
 
@@ -610,6 +537,20 @@ namespace SramComparer.Services
 
 		#endregion Get / Set Offset Value
 
+		#region Overwrite Comparison file
+
+		public virtual void OverwriteComparisonFileWithCurrentFile(IOptions options)
+		{
+			ConsolePrinter.PrintSectionHeader();
+
+			File.Copy(options.CurrentFilePath!, FileNameHelper.GetComparisonFilePath(options), true);
+
+			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusCurrentFileSaved);
+			ConsolePrinter.ResetColor();
+		}
+
+		#endregion Overwrite Comparison file
+
 		#region GetSaveSlotId
 
 		public virtual int GetSaveSlotId(int maxSaveSlotId)
@@ -635,19 +576,78 @@ namespace SramComparer.Services
 
 		#endregion GetSaveSlotId
 
-		#region Overwrite Comparison file
+		#region InvertIncludeFlag
 
-		public virtual void OverwriteComparisonFileWithCurrentFile(IOptions options)
+		public Enum InvertIncludeFlag(in Enum flags, in Enum flag)
 		{
-			ConsolePrinter.PrintSectionHeader();
+			var enumType = flags.GetType();
+			var enumFlag = (Enum)Enum.ToObject(enumType, flag);
 
-			File.Copy(options.CurrentFilePath!, FileNameHelper.GetComparisonFilePath(options), true);
+			var flagsCopy = EnumHelper.InvertUIntFlag(flags, enumFlag);
 
-			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusCurrentFileSaved);
-			ConsolePrinter.ResetColor();
+			ConsolePrinter.PrintInvertIncludeFlag(flagsCopy, enumFlag);
+
+			return flagsCopy;
 		}
 
-		#endregion Overwrite Comparison file
+		#endregion InvertIncludeFlag
+
+		#region Transfer Save File
+
+		public virtual void TransferSramToOtherGameFile(IOptions options)
+		{
+			ConsolePrinter.PrintSectionHeader();
+			var directoryPath = Path.GetDirectoryName(options.CurrentFilePath)!;
+			var extension = Path.GetExtension(options.CurrentFilePath);
+			var files = Directory.GetFiles(directoryPath, $"*{extension}").Where(f => f != options.CurrentFilePath).ToArray();
+			if (files.Length == 0)
+			{
+				ConsolePrinter.PrintLine(Resources.StatusNoAvailableOtherFiles);
+				return;
+			}
+
+			var targeFilepath = GetTargetFilePath();
+			if (targeFilepath is null)
+				return;
+
+			var targetBackupFilepath = targeFilepath + BackupFileExtension;
+			if (!File.Exists(targetBackupFilepath))
+			{
+				File.Copy(targeFilepath, targetBackupFilepath);
+				ConsolePrinter.PrintColored(ConsoleColor.DarkGreen, Resources.StatusFileBackedUpTemplate.InsertArgs(Path.GetFileName(targetBackupFilepath)));
+			}
+
+			File.Copy(options.CurrentFilePath!, targeFilepath, true);
+			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusCurrFileSavedAsTemplate.InsertArgs(Path.GetFileName(targeFilepath)));
+
+			string? GetTargetFilePath()
+			{
+				ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.EnterIndexOfFileToOverwriteTemplate.InsertArgs(files.Length - 1));
+				ConsolePrinter.PrintParagraph();
+				ConsolePrinter.ResetColor();
+
+				var i = 0;
+				foreach (var fileName in files)
+				{
+					ConsolePrinter.PrintColored(ConsoleColor.Cyan, i++.ToString());
+					ConsolePrinter.PrintColored(ConsoleColor.White, $@": {Path.GetFileNameWithoutExtension(fileName)}");
+				}
+
+				ConsolePrinter.ResetColor();
+
+				var input = Console.ReadLine();
+
+				if (!int.TryParse(input, out var index) || index >= files.Length)
+				{
+					ConsolePrinter.PrintError(Resources.ErrorInvalidIndex);
+					return null;
+				}
+
+				return files[index];
+			}
+		}
+
+		#endregion Transfer Save File
 
 		#region Backup / Restore
 
@@ -851,14 +851,14 @@ namespace SramComparer.Services
 			OpenFile(KeyBindingsFileName);
 		}
 
-		protected virtual void CreateKeyBindingsFile<TEnum>() where TEnum: struct, Enum
+		protected virtual void CreateKeyBindingsFile<TEnum>() where TEnum : struct, Enum
 		{
 			var bindings = default(TEnum).ToDictionary();
 			var options = new JsonSerializerOptions
-				{
-					Converters = { new JsonStringEnumObjectConverter() }, 
-					WriteIndented = true
-				};
+			{
+				Converters = { new JsonStringEnumObjectConverter() },
+				WriteIndented = true
+			};
 
 			var keyBindingsPath = Path.Join(Environment.CurrentDirectory, KeyBindingsFileName);
 			JsonFileSerializer.Serialize(keyBindingsPath, bindings, options);
