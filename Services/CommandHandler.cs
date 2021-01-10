@@ -55,30 +55,20 @@ namespace SramComparer.Services
 		/// <param name="options">The options to use for the command</param>
 		/// <param name="outStream">The optionl stream the output should be written to if not to standard console</param>
 		/// <returns>False if the game command loop should exit, otherwise true</returns>
-		public virtual bool RunCommand(string command, IOptions options, TextWriter? outStream = null)
+		public virtual bool RunCommand(string command, IOptions options, TextWriter? output = null)
 		{
 			ConsoleHelper.SetInitialConsoleSize();
 
-			var defaultStream = Console.Out;
-
-			if (outStream is not null)
-				Console.SetOut(outStream);
-
-			if (options.CurrentFilePath.IsNullOrEmpty())
+			using (new TemporaryOutputSetter(output))
 			{
-				ConsolePrinter.PrintFatalError(Resources.ErrorMissingPathArguments);
-				Console.ReadKey();
-				return true;
-			}
+				if (options.CurrentFilePath.IsNullOrEmpty())
+				{
+					ConsolePrinter.PrintFatalError(Resources.ErrorMissingPathArguments);
+					Console.ReadKey();
+					return true;
+				}
 
-			try
-			{
 				return OnRunCommand(command, options);
-			}
-			finally
-			{
-				if (outStream is not null)
-					Console.SetOut(defaultStream);
 			}
 		}
 
@@ -259,7 +249,12 @@ namespace SramComparer.Services
 		{
 			private readonly TextWriter _oldOut = Console.Out;
 
-			public TemporaryOutputSetter(TextWriter output) => Console.SetOut(output);
+			public TemporaryOutputSetter(TextWriter? output)
+			{
+				if (output is null) return;
+
+				Console.SetOut(output);
+			}
 
 			public void Dispose() => Console.SetOut(_oldOut);
 		}
