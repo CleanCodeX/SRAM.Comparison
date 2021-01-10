@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <LangVersion>preview</LangVersion>
     <Version>1.1.0-a7</Version>
-    <Authors>CleanCodeX</Authors>
+    <Authors>CleanCoderX</Authors>
     <Company>KST</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseFile></PackageLicenseFile>
