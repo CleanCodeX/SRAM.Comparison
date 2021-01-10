@@ -221,8 +221,8 @@ namespace SramComparer.Services
 			var comparisonFilePath = FileNameHelper.GetComparisonFilePath(options);
 			Requires.FileExists(comparisonFilePath, nameof(options.ComparisonFilePath), Resources.ErrorComparisonFileDoesNotExist);
 			
-			using var currFileStream = (Stream)new FileStream(options.CurrentFilePath!, FileMode.Open, FileAccess.Read);
-			using var compFileStream = (Stream)new FileStream(comparisonFilePath, FileMode.Open, FileAccess.Read);
+			using var currFileStream = (Stream)new FileStream(options.CurrentFilePath!, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+			using var compFileStream = (Stream)new FileStream(comparisonFilePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
 			
 			Compare<TComparer>(currFileStream, compFileStream, options);
 		}
@@ -359,7 +359,7 @@ namespace SramComparer.Services
 		{
 			try
 			{
-				using var fileStream = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write);
+				using var fileStream = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write, FileShare.ReadWrite);
 				using var writer = new StreamWriter(fileStream);
 
 				Compare<TComparer>(options, writer);
@@ -406,7 +406,7 @@ namespace SramComparer.Services
 			var filePath = options.CurrentFilePath!;
 			Requires.FileExists(filePath, nameof(options.CurrentFilePath));
 
-			Stream currStream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+			Stream currStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
 
 			ConvertStreamIfSavestate(ref currStream, filePath, options.SavestateType);
 
@@ -462,7 +462,7 @@ namespace SramComparer.Services
 			if (createNewFile)
 				saveFilePath += ".manipulated";
 
-			using var currStream = new FileStream(options.CurrentFilePath!, FileMode.Open, FileAccess.Read);
+			using var currStream = new FileStream(options.CurrentFilePath!, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
 			var currFile = ClassFactory.Create<TSramFile>(currStream, options.GameRegion);
 
 			currFile.SetOffsetBytes(slotIndex, offset, bytes);
