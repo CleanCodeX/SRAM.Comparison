@@ -9,7 +9,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Common.Shared.Min.Extensions;
 using Common.Shared.Min.Helpers;
-using SavestateFormat.Snes9x.Extensions;
+using Snes9x = SavestateFormat.Snes9x.Extensions.StreamExtensions; 
 using SramCommons.Extensions;
 using SramCommons.Models;
 using SramComparer.Enums;
@@ -31,7 +31,7 @@ namespace SramComparer.Services
 		where TSaveSlot : struct
 	{
 		private const string BackupFileExtension = ".backup";
-		private const string Snes9x = "snes9x";
+		private const string Snes9xId = "snes9x";
 		private const string SrmFileExtension = ".srm";
 		private const string DefaultConfigName = "Config";
 
@@ -295,14 +295,14 @@ namespace SramComparer.Services
 		{
 			if (filePath is null) return false;
 
-			savestateType ??= Snes9x;
+			savestateType ??= Snes9xId;
 
 			var fileExtension = Path.GetExtension(filePath).ToLower();
 			if (fileExtension == SrmFileExtension) return false;
 
 			var convertedStream = savestateType switch
 			{
-				Snes9x => stream.ConvertSnes9xSavestateToSram(),
+				Snes9xId => Snes9x.GetSramFromSavestateStream(stream),
 				_ => throw new NotSupportedException($"Savestate type {savestateType} is not supported.")
 			};
 
