@@ -246,7 +246,7 @@ namespace SramComparer.Services
 			ResetColor();
 		}
 
-		public virtual void PrintComparison(string ident, int offset, string? offsetName, ushort currValue, ushort compValue)
+		public virtual void PrintComparison(string ident, int offset, string? offsetName, uint currValue, uint compValue)
 		{
 			var sign = GetNumberSign((short)(currValue - compValue));
 			var change = currValue - compValue;
@@ -265,6 +265,9 @@ namespace SramComparer.Services
 			PrintCurrValues(isNegativechange, currText);
 			PrintChangeValues(isNegativechange, absChange, sign, changeText);
 		}
+
+		public virtual void PrintComparison(string ident, int offset, string? offsetName, ushort currValue,
+			ushort compValue) => PrintComparison(ident, offset, offsetName, (uint)currValue, compValue);
 
 		public virtual void PrintComparison(string ident, int offset, string? offsetName, byte currValue, byte compValue)
 		{

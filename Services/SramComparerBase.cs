@@ -60,7 +60,32 @@ namespace SramComparer.Services
 		/// <param name="compValue">The comparison ushort to be compared</param>
 		/// <param name="writeToConsole">Sets if any output should be written to console. Default is true</param>
 		/// <returns>2 if the ushort changed, otherwise 0</returns>
-		protected virtual int CompareUShort(string bufferName, int bufferOffset, ushort currValue, ushort compValue, bool writeToConsole = true)
+		protected virtual int CompareUInt16(string bufferName, int bufferOffset, ushort currValue, ushort compValue, bool writeToConsole = true)
+		{
+			if (Equals(compValue, currValue)) return 0;
+
+			var byteCount = BitConverter.GetBytes(currValue).Length;
+
+			if (!writeToConsole) return byteCount;
+
+			ConsoleHelper.EnsureMinConsoleWidth(175);
+			OnPrintBufferInfo(bufferName, bufferOffset, 2);
+			OnPrintComparison(0, null, currValue, compValue);
+			OnStatusBytesChanged(byteCount);
+
+			return byteCount;
+		}
+
+		/// <summary>
+		/// Compares a single 2-byte value (UShort)
+		/// </summary>
+		/// <param name="bufferName">The name of the compared buffer</param>
+		/// <param name="bufferOffset">The buffer's offset at this ushort is located</param>
+		/// <param name="currValue">The current ushort to be compared</param>
+		/// <param name="compValue">The comparison ushort to be compared</param>
+		/// <param name="writeToConsole">Sets if any output should be written to console. Default is true</param>
+		/// <returns>2 if the ushort changed, otherwise 0</returns>
+		protected virtual int CompareUInt32(string bufferName, int bufferOffset, uint currValue, uint compValue, bool writeToConsole = true)
 		{
 			if (Equals(compValue, currValue)) return 0;
 
@@ -120,6 +145,8 @@ namespace SramComparer.Services
 
 			return byteCount;
 		}
+
+		protected virtual void OnPrintComparison(int offset, string? offsetName, uint currValue, uint compValue) => ConsolePrinter.PrintComparison(" ".Repeat(6), offset, offsetName, currValue, compValue);
 
 		protected virtual void OnPrintComparison(int offset, string? offsetName, ushort currValue, ushort compValue) => ConsolePrinter.PrintComparison(" ".Repeat(6), offset, offsetName, currValue, compValue);
 

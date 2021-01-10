@@ -29,6 +29,9 @@ namespace SramComparer.Services
 		void PrintComparison(string ident, int offset, string? offsetName, ushort currValue, ushort compValue);
 
 		/// <inheritdoc cref="PrintComparison(string, int, string, ushort, ushort)"/>
+		void PrintComparison(string ident, int offset, string? offsetName, uint currValue, uint compValue);
+
+		/// <inheritdoc cref="PrintComparison(string, int, string, ushort, ushort)"/>
 		void PrintComparison(string ident, int offset, string? offsetName, byte currValue, byte compValue);
 
 		/// <summary>
