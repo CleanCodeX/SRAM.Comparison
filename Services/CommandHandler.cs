@@ -9,7 +9,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Common.Shared.Min.Extensions;
 using Common.Shared.Min.Helpers;
-using Snes9x = SavestateFormat.Snes9x.Extensions.StreamExtensions; 
+using Snes9x = RosettaStone.Savestate.Snes9x.Extensions.StreamExtensions; 
 using SramCommons.Extensions;
 using SramCommons.Models;
 using SramComparer.Enums;

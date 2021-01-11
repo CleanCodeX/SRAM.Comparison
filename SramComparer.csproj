@@ -4,7 +4,7 @@
     <TargetFramework>net5.0</TargetFramework>
     <Nullable>enable</Nullable>
     <LangVersion>preview</LangVersion>
-    <Version>1.1.0-a7</Version>
+    <Version>1.2.0-a1</Version>
     <Authors>CleanCoderX</Authors>
     <Company>KST</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -18,7 +18,7 @@
     <Product>SramComparer</Product>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Platforms>AnyCPU</Platforms>
-    <PackageTags>SRAM, SNES</PackageTags>
+    <PackageTags>SRAM, SNES, S-RAM</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
@@ -26,13 +26,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CCX.SavestateFormat.Snes9x" Version="0.0.1-a4" />
+    <PackageReference Include="RosettaStone.Savestate.Snes9x" Version="0.0.1-a1" />
     <PackageReference Include="CCX.SramCommons" Version="1.0.3-a3" />
     <PackageReference Include="System.ComponentModel.TypeConverter" Version="4.3.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SavestateFormat.Snes9x\SavestateFormat.Snes9x.csproj" />
+    <ProjectReference Include="..\RosettaStone.Savestate.Snes9x\RosettaStone.Savestate.Snes9x.csproj" />
+    <ProjectReference Include="..\SavestateFormat.Snes9x\RosettaStone.Savestate.Snes9x.csproj" />
     <ProjectReference Include="..\SramCommons\SramCommons.csproj" />
   </ItemGroup>
 
