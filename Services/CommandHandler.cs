@@ -33,6 +33,7 @@ namespace SramComparer.Services
 		private const string BackupFileExtension = ".backup";
 		private const string Snes9xId = "snes9x";
 		private const string SrmFileExtension = ".srm";
+		private const string CompFileExtension = ".comp";
 		private const string DefaultConfigName = "Config";
 
 		private const string GuideSrmFileName = "guide-srm";
@@ -298,6 +299,12 @@ namespace SramComparer.Services
 			var fileExtension = Path.GetExtension(filePath).ToLower();
 			if (fileExtension == SrmFileExtension) return false;
 
+			if (fileExtension == CompFileExtension)
+			{
+				fileExtension = Path.GetExtension(filePath.Remove(CompFileExtension)!).ToLower()!;
+				if (fileExtension == SrmFileExtension) return false;
+			}
+			
 			var convertedStream = savestateType switch
 			{
 				Snes9xId => Snes9x.GetSramFromSavestate(stream),
