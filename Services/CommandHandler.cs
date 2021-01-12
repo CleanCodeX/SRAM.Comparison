@@ -274,8 +274,7 @@ namespace SramComparer.Services
 			var compFile = ClassFactory.Create<TSramFile>(compStream, options.GameRegion);
 			var comparer = ClassFactory.Create<TComparer>(ConsolePrinter);
 
-			if (options.ComparisonResultLanguage is not null)
-				TrySetCulture(options.ComparisonResultLanguage);
+			TrySetCulture(options.ComparisonResultLanguage);
 
 			try
 			{
@@ -283,8 +282,7 @@ namespace SramComparer.Services
 			}
 			finally
 			{
-				if (options.ComparisonResultLanguage is not null)
-					RestoreCulture(options.UILanguage);
+				RestoreCulture(options.UILanguage);
 
 				ConsolePrinter.ResetColor();
 			}
@@ -367,15 +365,15 @@ namespace SramComparer.Services
 		public virtual void ExportComparisonResult<TComparer>(IOptions options, string filePath)
 			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new()
 		{
+			var oldLanguage = options.ComparisonResultLanguage;
+			options.ComparisonResultLanguage = "en";
+
 			try
 			{
-				using var fileStream = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write, FileShare.Read);
-				using var writer = new StreamWriter(fileStream);
+				using (var fileStream = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write, FileShare.Read))
+				using (var writer = new StreamWriter(fileStream))
+					Compare<TComparer>(options, writer);
 
-				Compare<TComparer>(options, writer);
-
-				writer.Close();
-				fileStream.Close();
 				ConsolePrinter.PrintLine();
 				ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow,
 					Resources.StatusCurrentComparisonExportedTemplate.InsertArgs(filePath));
@@ -385,8 +383,11 @@ namespace SramComparer.Services
 				throw new Exception(Resources.ErrorCannotOpenOutputFileTemplate.InsertArgs(filePath) +
 				                    Environment.NewLine + ex.Message);
 			}
-
-			ConsolePrinter.ResetColor();
+			finally
+			{
+				options.ComparisonResultLanguage = oldLanguage;
+				ConsolePrinter.ResetColor();
+			}
 		}
 
 		private static void SelectFile(string filePath)
@@ -746,11 +747,11 @@ namespace SramComparer.Services
 			ConsolePrinter.PrintConfig(options);
 		}
 
-		private void TrySetCulture(string culture)
+		private void TrySetCulture(string? culture)
 		{
 			try
 			{
-				CultureInfo.CurrentUICulture = CultureInfo.GetCultureInfo(culture);
+				CultureInfo.CurrentUICulture = CultureInfo.GetCultureInfo(culture ?? "en");
 			}
 			catch (Exception ex)
 			{
