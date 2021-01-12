@@ -4,7 +4,7 @@
     <TargetFramework>net5.0</TargetFramework>
     <Nullable>enable</Nullable>
     <LangVersion>preview</LangVersion>
-    <Version>1.2.0-a3</Version>
+    <Version>1.2.0-a4</Version>
     <Authors>CleanCoderX</Authors>
     <Company>KST</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -21,13 +21,23 @@
     <PackageTags>SRAM, SNES, S-RAM, Super Nintendo, Comparer, Comparison, Super Famicon, Savestate</PackageTags>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>embedded</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Remove=".gitignore" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CCX.RosettaStone.Savestate.Snes9x" Version="0.0.1-a2" />
-    <PackageReference Include="CCX.SramCommons" Version="1.0.3-a4" />
+    <PackageReference Include="CCX.RosettaStone.Savestate.Snes9x" Version="0.0.1-a3" />
+    <PackageReference Include="CCX.SramCommons" Version="1.0.3-a5" />
     <PackageReference Include="System.ComponentModel.TypeConverter" Version="4.3.0" />
   </ItemGroup>
 
