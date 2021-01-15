@@ -543,4 +543,7 @@
   <data name="StatusCompFileOverwritten" xml:space="preserve">
     <value>The comparison file has been overwritten.</value>
   </data>
+  <data name="EnumAppendToAppLogFile" xml:space="preserve">
+    <value>Append export data to the applications log file</value>
+  </data>
 </root>

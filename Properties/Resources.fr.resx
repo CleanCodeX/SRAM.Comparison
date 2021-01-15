@@ -450,4 +450,7 @@
 	<data name="StatusCompFileOverwritten" xml:space="preserve">
 		<value>Le fichier de comparaison a été écrasé.</value>
 	</data>
+	<data name="EnumAppendToAppLogFile" xml:space="preserve">
+		<value>Ajouter les données d'exportation au fichier journal de l'application</value>
+	</data>
 </root>

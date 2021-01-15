@@ -438,4 +438,7 @@
 	<data name="StatusCompFileOverwritten" xml:space="preserve">
 		<value>Die Vergleichs-Datei wurde überschrieben.</value>
 	</data>
+	<data name="EnumAppendToAppLogFile" xml:space="preserve">
+		<value>Die Export-Daten an das Anwendungs-Log hinzufügen</value>
+	</data>
 </root>

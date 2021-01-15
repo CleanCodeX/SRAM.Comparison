@@ -691,6 +691,15 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Append export data to the applications log file ähnelt.
+        /// </summary>
+        public static string EnumAppendToAppLogFile {
+            get {
+                return ResourceManager.GetString("EnumAppendToAppLogFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Comparison file ähnelt.
         /// </summary>
         public static string EnumComparisonFile {

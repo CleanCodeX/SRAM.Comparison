@@ -4,7 +4,7 @@
     <TargetFramework>net5.0</TargetFramework>
     <Nullable>enable</Nullable>
     <LangVersion>preview</LangVersion>
-    <Version>1.2.1-a2</Version>
+    <Version>1.2.1-a3</Version>
     <Authors>CleanCoderX</Authors>
     <Company>KST</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -38,6 +38,10 @@
   <ItemGroup>
     <PackageReference Include="CCX.SramCommons" Version="1.1.0-a3" />
     <PackageReference Include="System.ComponentModel.TypeConverter" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SramCommons\SramCommons.csproj" />
   </ItemGroup>
 
   <ItemGroup>

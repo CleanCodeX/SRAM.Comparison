@@ -33,9 +33,10 @@ namespace SramComparer.Services
 		private const string SrmFileExtension = ".srm";
 		private const string CompFileExtension = ".comp";
 		private const string DefaultConfigName = "Config";
-
+		
 		private const string GuideSrmFileName = "guide-srm";
 		private const string GuideSavestateFileName = "guide-savestate";
+		private const string ExportLogFile = "Exports.log";
 
 		public static readonly string KeyBindingsFileName = "KeyBindings.json";
 		public static readonly string DefaultConfigFileName = $"{DefaultConfigName}.json";
@@ -330,7 +331,7 @@ namespace SramComparer.Services
 			{
 				string? fileName = null;
 
-				if (options.ExportFlags.HasFlag(ExportFlags.Prompt))
+				if (options.ExportFlags.HasFlag(ExportFlags.PromptName))
 				{
 					fileName = GetExportFileName(Path.IsPathRooted(options.ExportDirectory)
 						? null
@@ -361,6 +362,8 @@ namespace SramComparer.Services
 		public virtual void ExportComparisonResult<TComparer>(IOptions options, string filePath)
 			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new()
 		{
+			var exportFlags = options.ExportFlags;
+
 			var oldLanguage = options.ComparisonResultLanguage;
 			options.ComparisonResultLanguage = "en";
 
@@ -370,16 +373,29 @@ namespace SramComparer.Services
 				if(!Directory.Exists(directoryPath))
 					Directory.CreateDirectory(directoryPath);
 
-				using (var fileStream =
-					new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write, FileShare.Read))
-				using (var writer = new StreamWriter(fileStream))
-					Compare<TComparer>(options, writer);
+				using (var ms = new MemoryStream())
+				{
+					using (var writer = new StreamWriter(ms, leaveOpen: true))
+						Compare<TComparer>(options, writer);
+
+					using (var fileStream = new FileStream(filePath, FileMode.Append, FileAccess.Write, FileShare.Read))
+					{
+						ms.Position = 0;
+						ms.CopyTo(fileStream);
+					}
+
+					if (exportFlags.HasFlag(ExportFlags.AppendLog))
+						using (var logStream = new FileStream(ExportLogFile, FileMode.Append, FileAccess.Write, FileShare.Read))
+						{
+							ms.Position = 0;
+							ms.CopyTo(logStream);
+						}
+				}
 
 				ConsolePrinter.PrintLine();
 				ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow,
 					Resources.StatusCurrentComparisonExportedTemplate.InsertArgs(filePath));
 
-				var exportFlags = options.ExportFlags;
 				var comparisonFilePath = FileNameHelper.GetComparisonFilePath(options);
 
 				if (exportFlags.HasFlag(ExportFlags.DeleteComp))
@@ -393,9 +409,9 @@ namespace SramComparer.Services
 					ConsolePrinter.PrintColoredLine(ConsoleColor.DarkGreen, Resources.StatusCompFileOverwritten);
 				}
 
-				if (exportFlags.HasFlag(ExportFlags.Select))
+				if (exportFlags.HasFlag(ExportFlags.SelectFile))
 					SelectFile(filePath);
-				else if (exportFlags.HasFlag(ExportFlags.Open))
+				else if (exportFlags.HasFlag(ExportFlags.OpenFile))
 					OpenFile(filePath);
 			}
 			catch (Exception ex)
