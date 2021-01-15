@@ -11,6 +11,7 @@
 		public const string CurrentSaveSlot = "--slot";
 		public const string ComparisonSaveSlot = "--comp-slot";
 		public const string ExportDirectory = "--export-dir";
+		public const string ExportFlags = "--export-flags";
 		public const string ColorizeOutput = "--colorize";
 
 		/// <summary> Flag for game specific flags</summary>

@@ -102,6 +102,9 @@ namespace SramComparer.Services
 				case Commands.Compare:
 				case Commands.Export:
 					throw new NotImplementedException(Resources.ErrorCommandNotImplementedTemplate.InsertArgs(command));
+				case Commands.ExportFlags:
+					SetExportFlags(options);
+					break;
 				case Commands.Help:
 					ConsolePrinter.PrintCommands();
 					break;
@@ -314,44 +317,45 @@ namespace SramComparer.Services
 		public virtual string ExportComparisonResult<TComparer>(IOptions options)
 			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new()
 		{
-			var fileName = Path.GetFileNameWithoutExtension(options.CurrentFilePath)!;
-			var exportFileName = FileNameHelper.GenerateExportSaveFileName(fileName);
-			var filePath = Path.Join(options.ExportDirectory ?? Path.GetDirectoryName(options.CurrentFilePath), exportFileName);
+			string filePath;
+
+			if (Path.GetFileNameWithoutExtension(options.ExportDirectory) is not null)
+			{
+				var directoryPath = Path.GetDirectoryName(options.ExportDirectory) ?? Path.GetDirectoryName(options.CurrentFilePath);
+				var fileName = Path.GetFileNameWithoutExtension(options.ExportDirectory);
+
+				filePath = Path.Join(directoryPath, fileName);
+			}
+			else
+			{
+				string? fileName = null;
+
+				if (options.ExportFlags.HasFlag(ExportFlags.Prompt))
+				{
+					fileName = GetExportFileName(Path.IsPathRooted(options.ExportDirectory)
+						? null
+						: options.ExportDirectory!);
+					if (fileName != string.Empty && Path.GetExtension(fileName) == string.Empty)
+						fileName += ".txt";
+				}
+
+				if (fileName.IsNullOrWhiteSpace())
+				{
+					fileName = Path.GetFileNameWithoutExtension(options.CurrentFilePath)!;
+					fileName = FileNameHelper.GenerateExportSaveFileName(fileName);
+				}
+
+				var directoryPath = options.ExportDirectory ?? Path.GetDirectoryName(options.CurrentFilePath);
+
+				filePath = Path.Join(directoryPath, fileName);
+			}
 
 			ExportComparisonResult<TComparer>(options, filePath);
 
 			return filePath;
 		}
 
-		/// <summary>Compares SRAM based on <para>options</para>.<see cref="IOptions.ExportDirectory"/> and a generated filename based on current timestamp will be used</summary>
-		/// <typeparam name="TComparer">The type of compare which should be used</typeparam>
-		/// <param name="options">The options to be used for comparison</param>
-		/// <param name="showInExplorer">Sets if the file should be selected in windows explorer</param>
-		/// /// <returns>The generated filepath</returns>
-		public virtual string ExportComparisonResult<TComparer>(IOptions options, bool showInExplorer)
-			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new()
-		{
-			var filePath = ExportComparisonResult<TComparer>(options);
-
-			if (showInExplorer)
-				SelectFile(filePath);
-
-			return filePath;
-		}
-
-		/// <summary>Compares SRAM based on <para>options</para>.<see cref="IOptions.ExportDirectory"/> and a generated filename based on current timestamp will be used</summary>
-		/// <typeparam name="TComparer">The type of compare which should be used</typeparam>
-		/// <param name="options">The options to be used for comparison</param>
-		/// <param name="filePath"></param>
-		/// <param name="showInExplorer">Sets if the file should be selected in windows explorer</param>
-		public virtual void ExportComparisonResult<TComparer>(IOptions options, string filePath, bool showInExplorer)
-			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new()
-		{
-			ExportComparisonResult<TComparer>(options, filePath);
-
-			if (showInExplorer)
-				SelectFile(filePath);
-		}
+		private string GetExportFileName(string? filePath) => InternalGetStringValue(Resources.PromptEnterExportFileName, Resources.StatusExportFileNameSet.InsertArgs(filePath));
 
 		/// <inheritdoc cref="ICommandHandler{TSramFile,TSaveSlot}.ExportComparisonResult{TComparer}(IOptions,string)"/>
 		public virtual void ExportComparisonResult<TComparer>(IOptions options, string filePath)
@@ -362,13 +366,37 @@ namespace SramComparer.Services
 
 			try
 			{
-				using (var fileStream = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write, FileShare.Read))
+				var directoryPath = Path.GetDirectoryName(filePath)!;
+				if(!Directory.Exists(directoryPath))
+					Directory.CreateDirectory(directoryPath);
+
+				using (var fileStream =
+					new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write, FileShare.Read))
 				using (var writer = new StreamWriter(fileStream))
 					Compare<TComparer>(options, writer);
 
 				ConsolePrinter.PrintLine();
 				ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow,
 					Resources.StatusCurrentComparisonExportedTemplate.InsertArgs(filePath));
+
+				var exportFlags = options.ExportFlags;
+				var comparisonFilePath = FileNameHelper.GetComparisonFilePath(options);
+
+				if (exportFlags.HasFlag(ExportFlags.DeleteComp))
+				{
+					File.Delete(comparisonFilePath);
+					ConsolePrinter.PrintColoredLine(ConsoleColor.DarkRed, Resources.StatusCompFileDeleted);
+				}
+				else if (exportFlags.HasFlag(ExportFlags.OverwriteComp))
+				{
+					File.Copy(options.CurrentFilePath!, comparisonFilePath, true);
+					ConsolePrinter.PrintColoredLine(ConsoleColor.DarkGreen, Resources.StatusCompFileOverwritten);
+				}
+
+				if (exportFlags.HasFlag(ExportFlags.Select))
+					SelectFile(filePath);
+				else if (exportFlags.HasFlag(ExportFlags.Open))
+					OpenFile(filePath);
 			}
 			catch (Exception ex)
 			{
@@ -401,6 +429,31 @@ namespace SramComparer.Services
 		}
 
 		#endregion Export comparison Result
+
+		#region Export Flags
+
+		private void SetExportFlags(IOptions options)
+		{
+			ConsolePrinter.PrintSectionHeader();
+			ConsolePrinter.PrintFlags(options.ExportFlags);
+			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.PromptEnterFlags);
+			ConsolePrinter.PrintLine();
+			ConsolePrinter.SetForegroundColor(ConsoleColor.Cyan);
+
+			var input = Console.ReadLine();
+
+			if (!Enum.TryParse(options.ExportFlags.GetType(), input, true, out var result))
+				throw new  ArgumentException($"{Resources.ErrorInvalidFlags} {input}");
+
+			options.ExportFlags = (Enum)result!;
+
+			ConsolePrinter.PrintLine();
+			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusExportFlagsSetTemplate.InsertArgs(options.ExportFlags.GetSetFlags().Join()));
+			ConsolePrinter.PrintLine();
+			ConsolePrinter.ResetColor();
+		}
+
+		#endregion
 
 		#region Get / Set Offset Value
 
@@ -479,14 +532,14 @@ namespace SramComparer.Services
 			ConsolePrinter.ResetColor();
 		}
 
-		private int GetSaveSlotOffset(int slotIndex) => (int)InternalGetValue(Resources.PromptGetSaveSlotOffsetTemplate.InsertArgs(slotIndex + 1), Resources.StatusOffsetWillBeUsedTemplate);
-		private uint GetSaveSlotOffsetValue() => InternalGetValue(Resources.PromptGetSaveSlotOffsetValue, Resources.StatusOffsetValueWillBeUsedTemplate);
+		private int GetSaveSlotOffset(int slotIndex) => (int)InternalGetValue(Resources.PromptEnterSaveSlotOffsetTemplate.InsertArgs(slotIndex + 1), Resources.StatusOffsetWillBeUsedTemplate);
+		private uint GetSaveSlotOffsetValue() => InternalGetValue(Resources.PromptEnterSaveSlotOffsetValue, Resources.StatusOffsetValueWillBeUsedTemplate);
 
 		private string InternalGetStringValue(string prompt, string? promptResultTemplate = null)
 		{
 			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, prompt);
-			ConsolePrinter.ResetColor();
-
+			ConsolePrinter.PrintColoredLine(ConsoleColor.White, "");
+			
 			var input = Console.ReadLine()!;
 
 			ConsolePrinter.PrintLine();
@@ -497,6 +550,7 @@ namespace SramComparer.Services
 			}
 
 			ConsolePrinter.ResetColor();
+
 			return input;
 		}
 
@@ -550,7 +604,7 @@ namespace SramComparer.Services
 		#endregion Overwrite Comparison file
 
 		#region GetSaveSlotId
-
+		
 		public virtual int GetSaveSlotId(int maxSaveSlotId)
 		{
 			ConsolePrinter.PrintSectionHeader();

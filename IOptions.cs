@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using Common.Shared.Min.Attributes;
 using SramComparer.Helpers;
@@ -20,21 +21,37 @@ namespace SramComparer
 		/// <summary>The filepath to load the current SRAM file from</summary>
 		string? CurrentFilePath { get; set; }
 
-		/// <summary>The filepath to load the comparison SRAM file from. if <see cref="CurrentFilePath"/> is set, it will be automatically filled from that</summary>
+		/// <summary>
+		/// The filepath to load the comparison SRAM file from. if <see cref="CurrentFilePath"/> is set, it will be automatically filled from that
+		/// </summary>
 		string? ComparisonFilePath { get; set; }
-
-		/// <summary>If set, this directory will be used for exporting comparisons, otherwise the directory of <see cref="CurrentFilePath" /></summary>
-		string? ExportDirectory { get; set; }
-
-		/// <summary>Gets or sets if only a specific save slot of current-SRAM file should be compared. If zero (default), all save slots will be compared.</summary>
-		int CurrentFileSaveSlot { get; set; }
-
-		/// <summary>Gets or sets if only a specific save slot of comparison-SRAM file should be compared. If zero (default), same save slot(config) as current-SRAM file will be compared.</summary>
-		int ComparisonFileSaveSlot { get; set; }
 
 		/// <summary>Optional save slot specific flags for comparisons</summary>
 		[JsonConverter(typeof(JsonStringEnumObjectConverter))]
 		Enum ComparisonFlags { get; set; }
+
+		/// <summary>
+		/// If set, this directory will be used for exporting comparisons, otherwise the directory of <see cref="CurrentFilePath" />
+		/// </summary>
+		string? ExportDirectory { get; set; }
+
+		/// <summary>Options to control exporting the comparison result into a file</summary>
+		[JsonConverter(typeof(JsonStringEnumObjectConverter))]
+		[DisplayNameLocalized(nameof(Resources.EnumExportFlags), typeof(Resources))]
+		Enum ExportFlags { get; set; }
+
+		/// <summary>Optional custom cmd params</summary>
+		Dictionary<string, string> Custom { get; set; } 
+
+		/// <summary>
+		/// Gets or sets if only a specific save slot of current-SRAM file should be compared. If zero (default), all save slots will be compared.
+		/// </summary>
+		int CurrentFileSaveSlot { get; set; }
+
+		/// <summary>
+		/// Gets or sets if only a specific save slot of comparison-SRAM file should be compared. If zero (default), same save slot(config) as current-SRAM file will be compared.
+		/// </summary>
+		int ComparisonFileSaveSlot { get; set; }
 
 		/// <summary>Optional flag whether to colorize the output or not</summary>
 		bool ColorizeOutput { get; set; }

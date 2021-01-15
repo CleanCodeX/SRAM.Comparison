@@ -231,10 +231,10 @@
   <data name="StatusSetSingleSaveSlotMaxTemplate" xml:space="preserve">
     <value>Save slot {0} will be used.</value>
   </data>
-  <data name="PromptGetSaveSlotOffsetTemplate" xml:space="preserve">
+  <data name="PromptEnterSaveSlotOffsetTemplate" xml:space="preserve">
     <value>Enter save slot {0} offset address:</value><comment>The term Offset should only be translated if not understandable</comment>
   </data>
-  <data name="PromptGetSaveSlotOffsetValue" xml:space="preserve">
+  <data name="PromptEnterSaveSlotOffsetValue" xml:space="preserve">
     <value>Set save slot offset value:</value><comment>The term Offset should only be translated if not understandable</comment>
   </data>
   <data name="Config" xml:space="preserve">
@@ -497,5 +497,50 @@
   </data>
   <data name="StatusConfigFileWillBeOpenedTemplate" xml:space="preserve">
     <value>Config file [{0}] will be opened…</value>
+  </data>
+  <data name="EnumExportFlags" xml:space="preserve">
+    <value>Export-options</value>
+  </data>
+  <data name="PromptEnterExportFileName" xml:space="preserve">
+    <value>Enter an export file name: (or leave empty)</value>
+  </data>
+  <data name="StatusExportFileNameSet" xml:space="preserve">
+    <value>Export file [{0}] set.</value>
+  </data>
+  <data name="ConfigExportFlags" xml:space="preserve">
+    <value>Export flags</value>
+  </data>
+  <data name="CmdExportFlags" xml:space="preserve">
+    <value>Export flags</value>
+  </data>
+  <data name="EnumDeleteCompFile" xml:space="preserve">
+    <value>Delete comparison file</value>
+  </data>
+  <data name="EnumOverwriteCompFile" xml:space="preserve">
+    <value>Overwrite comparison file</value>
+  </data>
+  <data name="EnumOpenExportFile" xml:space="preserve">
+    <value>Open export file</value>
+  </data>
+  <data name="EnumSelectExportFile" xml:space="preserve">
+    <value>Select export file</value>
+  </data>
+  <data name="EnumPromptExportFile" xml:space="preserve">
+    <value>Exxport file prompt</value>
+  </data>
+  <data name="PromptEnterFlags" xml:space="preserve">
+    <value>Enter all flags to set:</value>
+  </data>
+  <data name="ErrorInvalidFlags" xml:space="preserve">
+    <value>Invalid flags:</value>
+  </data>
+  <data name="StatusExportFlagsSetTemplate" xml:space="preserve">
+    <value>Export flags set: {0}.</value>
+  </data>
+  <data name="StatusCompFileDeleted" xml:space="preserve">
+    <value>The comparison file has been deleted.</value>
+  </data>
+  <data name="StatusCompFileOverwritten" xml:space="preserve">
+    <value>The comparison file has been overwritten.</value>
   </data>
 </root>

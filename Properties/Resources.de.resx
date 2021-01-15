@@ -138,7 +138,7 @@
 		<value>Vergleich</value>
 	</data>
 	<data name="ConfigComparisonFlags" xml:space="preserve">
-		<value>Vergleichs-Flags</value>
+		<value>Vergleichs-Attribute</value>
 	</data>
 	<data name="CompComparisonShort" xml:space="preserve">
 		<value>Vergl.</value><comment>This is an abbreviation and should be kept as short as possible</comment>
@@ -192,10 +192,10 @@
 	<data name="CompSlot" xml:space="preserve">
 		<value>Speicherslot</value>
 	</data>
-	<data name="PromptGetSaveSlotOffsetTemplate" xml:space="preserve">
+	<data name="PromptEnterSaveSlotOffsetTemplate" xml:space="preserve">
 		<value>Speicherslot {0}-Offset-Adresse angeben:</value><comment>The term Offset should only be translated if not understandable</comment>
 	</data>
-	<data name="PromptGetSaveSlotOffsetValue" xml:space="preserve">
+	<data name="PromptEnterSaveSlotOffsetValue" xml:space="preserve">
 		<value>Speicherslot-Offset-Wert setzen:</value><comment>The term Offset should only be translated if not understandable</comment>
 	</data>
 	<data name="CompNew" xml:space="preserve">
@@ -392,5 +392,50 @@
 	</data>
 	<data name="StatusConfigFileWillBeOpenedTemplate" xml:space="preserve">
 		<value>Konfig-Datei [{0}] wird geöffnet…</value>
+	</data>
+	<data name="EnumExportFlags" xml:space="preserve">
+		<value>Export-Optionen</value>
+	</data>
+	<data name="PromptEnterExportFileName" xml:space="preserve">
+		<value>Gib Export-Dateinamen an: (oder leer lassen)</value>
+	</data>
+	<data name="StatusExportFileNameSet" xml:space="preserve">
+		<value>Export-Datein [{0}] festgelegt.</value>
+	</data>
+	<data name="ConfigExportFlags" xml:space="preserve">
+		<value>Export-Attribute</value>
+	</data>
+	<data name="CmdExportFlags" xml:space="preserve">
+		<value>Export-Attribute</value>
+	</data>
+	<data name="EnumSelectExportFile" xml:space="preserve">
+		<value>Export-Datei auswählen</value>
+	</data>
+	<data name="EnumOverwriteCompFile" xml:space="preserve">
+		<value>Vergleichs-Datei überschreiben</value>
+	</data>
+	<data name="EnumOpenExportFile" xml:space="preserve">
+		<value>Export-Datei öffnen</value>
+	</data>
+	<data name="EnumPromptExportFile" xml:space="preserve">
+		<value>Export-Datei Eingabeaufforderung</value>
+	</data>
+	<data name="EnumDeleteCompFile" xml:space="preserve">
+		<value>Vergleichs-Datei löschen</value>
+	</data>
+	<data name="PromptEnterFlags" xml:space="preserve">
+		<value>Gib alle zu setzenden Attribute an:</value>
+	</data>
+	<data name="ErrorInvalidFlags" xml:space="preserve">
+		<value>Ungültige Attribute:</value>
+	</data>
+	<data name="StatusExportFlagsSetTemplate" xml:space="preserve">
+		<value>Export-Attribute gesetzt: {0}.</value>
+	</data>
+	<data name="StatusCompFileDeleted" xml:space="preserve">
+		<value>Die Vergleichs-Datei wurde gelöscht.</value>
+	</data>
+	<data name="StatusCompFileOverwritten" xml:space="preserve">
+		<value>Die Vergleichs-Datei wurde überschrieben.</value>
 	</data>
 </root>

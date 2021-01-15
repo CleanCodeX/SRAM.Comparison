@@ -41,6 +41,13 @@ namespace SramComparer.Services
 		/// <param name="flag">The flag to be inverted</param>
 		void PrintInvertIncludeFlag(in Enum flags, in Enum flag);
 
+		/// <summary>
+		/// Prints the the set flags
+		/// </summary>
+		/// <param name="flags">The flags which are set</param>
+		/// <param name="name">The name of the flags</param>
+		void PrintFlags(in Enum flags, string? name = null);
+
 		/// <summary>Prints a manual for how to use the program</summary>
 		void PrintGuide(string guideName);
 
@@ -63,5 +70,13 @@ namespace SramComparer.Services
 
 		/// <summary>Clears the output window</summary>
 		void Clear();
+
+		/// <summary>Sets the foreground color</summary>
+		/// <param name="color">The color to set</param>
+		void SetForegroundColor(ConsoleColor color);
+
+		/// <summary>Sets the background color</summary>
+		/// <param name="color">The color to set</param>
+		void SetBackgroundColor(ConsoleColor color);
 	}
 }

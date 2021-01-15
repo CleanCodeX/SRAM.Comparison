@@ -16,11 +16,13 @@ namespace SramComparer.Services
 	/// </summary>
 	/// <typeparam name="TOptions">The options's type t be parsed into</typeparam>
 	/// <typeparam name="TRomRegion">The game file's region enum</typeparam>
+	/// <typeparam name="TExportOptions">The game's export options flags enum</typeparam>
 	/// <typeparam name="TComparisonFlags">The game's comparison flags enum</typeparam>
-	public class CmdLineParser<TOptions, TRomRegion, TComparisonFlags> : ICmdLineParser
-		where TOptions : Options<TRomRegion, TComparisonFlags>, new()
+	public class CmdLineParser<TOptions, TRomRegion, TComparisonFlags, TExportOptions> : ICmdLineParser
+		where TOptions : Options<TRomRegion, TComparisonFlags, TExportOptions>, new()
 		where TRomRegion : struct, Enum
 		where TComparisonFlags : struct, Enum
+		where TExportOptions : struct, Enum
 	{
 		private static readonly string[] AllowedFileExtensions = { ".srm", ".comp", ".state", ".000", ".001", ".002", ".003", ".004", ".005", ".006", ".007", ".008", ".009" };
 
@@ -54,8 +56,6 @@ namespace SramComparer.Services
 				}
 				else if (File.Exists(value) || File.Exists(Path.Join(directory, value)))
 				{
-					EnsureFullQualifiedPath(ref value);
-		
 					options.ComparisonFilePath = value;
 					++namelessParamCount;
 				}
@@ -77,28 +77,31 @@ namespace SramComparer.Services
 
 				switch (cmdName)
 				{
+					case "":
+						continue;
 					case CmdOptions.BatchCommands:
 						options.BatchCommands = value.IsNullOrEmpty() ? null : value;
 						break;
 					case CmdOptions.ComparisonFile:
-						EnsureFullQualifiedPath(ref value);
-
 						options.ComparisonFilePath = value;
+						break;
+					case CmdOptions.ComparisonFlags:
+						options.ComparisonFlags = value.ParseEnum<TComparisonFlags>();
+						break;
+					case CmdOptions.GameRegion:
+						options.GameRegion = value.ParseEnum<TRomRegion>();
 						break;
 					case CmdOptions.ExportDirectory:
 						options.ExportDirectory = value;
+						break;
+					case CmdOptions.ExportFlags:
+						options.ExportFlags = value.ParseEnum<TExportOptions>();
 						break;
 					case CmdOptions.CurrentSaveSlot:
 						options.CurrentFileSaveSlot = value.ParseSaveSlotId();
 						break;
 					case CmdOptions.ComparisonSaveSlot:
 						options.ComparisonFileSaveSlot = value.ParseSaveSlotId();
-						break;
-					case CmdOptions.GameRegion:
-						options.GameRegion = value.ParseEnum<TRomRegion>();
-						break;
-					case CmdOptions.ComparisonFlags:
-						options.ComparisonFlags = value.ParseEnum<TComparisonFlags>();
 						break;
 					case CmdOptions.ColorizeOutput:
 						options.ColorizeOutput = value.ParseToBool();
@@ -117,6 +120,10 @@ namespace SramComparer.Services
 
 						options.ConfigFilePath = value;
 						break;
+					case { } when cmdName.StartsWith("--"):
+						options.Custom[cmdName.Substring(2)] = value;
+
+						break;
 				}
 			}
 
@@ -126,12 +133,6 @@ namespace SramComparer.Services
 #endif
 
 			return options;
-
-			void EnsureFullQualifiedPath(ref string value)
-			{
-				if (Path.GetDirectoryName(value) == string.Empty)
-					value = Path.Join(directory, value);
-			}
 		}
 	}
 }

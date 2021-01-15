@@ -56,6 +56,9 @@ namespace SramComparer.Enums
 		[DisplayNameLocalized(nameof(Res.CmdExportComparisonResult), typeof(Res))]
 		Export, // Export the current comparison result as text file to export directory
 
+		[DisplayNameLocalized(nameof(Res.CmdExportFlags), typeof(Res))]
+		ExportFlags, // Export flags
+
 		[DisplayNameLocalized(nameof(Res.CmdSaveCurrentFileWithOtherFileName), typeof(Res))]
 		Transfer, // Transfer save file => Copies the current file to a different game name of a similar ROM type. E.g. copying between patched and unpatched ROM versions.
 
@@ -126,5 +129,6 @@ namespace SramComparer.Enums
 		LoadOn = Commands.AutoLoadOn,
 		LoadOff = Commands.AutoLoadOff,
 		E = Commands.Export,
+		EF = Commands.ExportFlags,
 	}
 }

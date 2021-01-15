@@ -317,10 +317,10 @@
 	<data name="CompSameAsCurrentFileSaveSlot" xml:space="preserve">
 		<value>Identique à l'emplacement de la partie en cours</value>
 	</data>
-	<data name="PromptGetSaveSlotOffsetTemplate" xml:space="preserve">
+	<data name="PromptEnterSaveSlotOffsetTemplate" xml:space="preserve">
 		<value>Saisissez l'adresse de décalage de l'emplacement d'enregistrement {0}:</value><comment>Modifier le décalage dans cette partie {0}:</comment>
 	</data>
-	<data name="PromptGetSaveSlotOffsetValue" xml:space="preserve">
+	<data name="PromptEnterSaveSlotOffsetValue" xml:space="preserve">
 		<value>Modifier la valeur du décalage dans cette partie :</value><comment>Modifier le décalage dans cette partie:</comment>
 	</data>
 	<data name="EnumNonSlotByteByByteComparison" xml:space="preserve">
@@ -404,5 +404,50 @@
 	</data>
 	<data name="StatusConfigFileWillBeOpenedTemplate" xml:space="preserve">
 		<value>Le fichier de configuration [{0}] sera ouvert…</value>
+	</data>
+	<data name="EnumExportFlags" xml:space="preserve">
+		<value>Options d'exportation</value>
+	</data>
+	<data name="PromptEnterExportFileName" xml:space="preserve">
+		<value>Entrez un nom de fichier d'exportation: (ou laissez vide)</value>
+	</data>
+	<data name="StatusExportFileNameSet" xml:space="preserve">
+		<value>Exporter l'ensemble du fichier [{0}].</value>
+	</data>
+	<data name="ConfigExportFlags" xml:space="preserve">
+		<value>Exporter les drapeaux</value>
+	</data>
+	<data name="CmdExportFlags" xml:space="preserve">
+		<value>Exporter les drapeaux</value>
+	</data>
+	<data name="EnumDeleteCompFile" xml:space="preserve">
+		<value>Supprimer le fichier de comparaison</value>
+	</data>
+	<data name="EnumPromptExportFile" xml:space="preserve">
+		<value>Invite de fichier d'exportation</value>
+	</data>
+	<data name="EnumOpenExportFile" xml:space="preserve">
+		<value>Ouvrir le fichier d'exportation</value>
+	</data>
+	<data name="EnumOverwriteCompFile" xml:space="preserve">
+		<value>Écraser le fichier de comparaison</value>
+	</data>
+	<data name="EnumSelectExportFile" xml:space="preserve">
+		<value>Sélectionnez le fichier d'exportation</value>
+	</data>
+	<data name="PromptEnterFlags" xml:space="preserve">
+		<value>Entrez tous les indicateurs à définir:</value>
+	</data>
+	<data name="ErrorInvalidFlags" xml:space="preserve">
+		<value>Indicateurs non valides:</value>
+	</data>
+	<data name="StatusExportFlagsSetTemplate" xml:space="preserve">
+		<value>Ensemble d'indicateurs d'exportation: {0}.</value>
+	</data>
+	<data name="StatusCompFileDeleted" xml:space="preserve">
+		<value>Le fichier de comparaison a été supprimé.</value>
+	</data>
+	<data name="StatusCompFileOverwritten" xml:space="preserve">
+		<value>Le fichier de comparaison a été écrasé.</value>
 	</data>
 </root>

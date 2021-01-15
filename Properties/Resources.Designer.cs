@@ -187,6 +187,15 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Export flags ähnelt.
+        /// </summary>
+        public static string CmdExportFlags {
+            get {
+                return ResourceManager.GetString("CmdExportFlags", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Backup ähnelt.
         /// </summary>
         public static string CmdGroupBackup {
@@ -637,6 +646,15 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Export flags ähnelt.
+        /// </summary>
+        public static string ConfigExportFlags {
+            get {
+                return ResourceManager.GetString("ConfigExportFlags", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Config file path ähnelt.
         /// </summary>
         public static string ConfigFilePath {
@@ -691,6 +709,24 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Delete comparison file ähnelt.
+        /// </summary>
+        public static string EnumDeleteCompFile {
+            get {
+                return ResourceManager.GetString("EnumDeleteCompFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Export-options ähnelt.
+        /// </summary>
+        public static string EnumExportFlags {
+            get {
+                return ResourceManager.GetString("EnumExportFlags", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Game region ähnelt.
         /// </summary>
         public static string EnumGameRegion {
@@ -714,6 +750,42 @@ namespace SramComparer.Properties {
         public static string EnumNonSlotByteByByteComparison {
             get {
                 return ResourceManager.GetString("EnumNonSlotByteByByteComparison", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Open export file ähnelt.
+        /// </summary>
+        public static string EnumOpenExportFile {
+            get {
+                return ResourceManager.GetString("EnumOpenExportFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Overwrite comparison file ähnelt.
+        /// </summary>
+        public static string EnumOverwriteCompFile {
+            get {
+                return ResourceManager.GetString("EnumOverwriteCompFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Exxport file prompt ähnelt.
+        /// </summary>
+        public static string EnumPromptExportFile {
+            get {
+                return ResourceManager.GetString("EnumPromptExportFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Select export file ähnelt.
+        /// </summary>
+        public static string EnumSelectExportFile {
+            get {
+                return ResourceManager.GetString("EnumSelectExportFile", resourceCulture);
             }
         }
         
@@ -777,6 +849,15 @@ namespace SramComparer.Properties {
         public static string ErrorInvalidFileExtensionTemplate {
             get {
                 return ResourceManager.GetString("ErrorInvalidFileExtensionTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Invalid flags: ähnelt.
+        /// </summary>
+        public static string ErrorInvalidFlags {
+            get {
+                return ResourceManager.GetString("ErrorInvalidFlags", resourceCulture);
             }
         }
         
@@ -871,20 +952,38 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Enter an export file name: (or leave empty) ähnelt.
+        /// </summary>
+        public static string PromptEnterExportFileName {
+            get {
+                return ResourceManager.GetString("PromptEnterExportFileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Enter all flags to set: ähnelt.
+        /// </summary>
+        public static string PromptEnterFlags {
+            get {
+                return ResourceManager.GetString("PromptEnterFlags", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Enter save slot {0} offset address: ähnelt.
         /// </summary>
-        public static string PromptGetSaveSlotOffsetTemplate {
+        public static string PromptEnterSaveSlotOffsetTemplate {
             get {
-                return ResourceManager.GetString("PromptGetSaveSlotOffsetTemplate", resourceCulture);
+                return ResourceManager.GetString("PromptEnterSaveSlotOffsetTemplate", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Set save slot offset value: ähnelt.
         /// </summary>
-        public static string PromptGetSaveSlotOffsetValue {
+        public static string PromptEnterSaveSlotOffsetValue {
             get {
-                return ResourceManager.GetString("PromptGetSaveSlotOffsetValue", resourceCulture);
+                return ResourceManager.GetString("PromptEnterSaveSlotOffsetValue", resourceCulture);
             }
         }
         
@@ -970,6 +1069,24 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die The comparison file has been deleted. ähnelt.
+        /// </summary>
+        public static string StatusCompFileDeleted {
+            get {
+                return ResourceManager.GetString("StatusCompFileDeleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die The comparison file has been overwritten. ähnelt.
+        /// </summary>
+        public static string StatusCompFileOverwritten {
+            get {
+                return ResourceManager.GetString("StatusCompFileOverwritten", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Config file [{0}] has been saved. ähnelt.
         /// </summary>
         public static string StatusConfigFileSavedTemplate {
@@ -1029,6 +1146,24 @@ namespace SramComparer.Properties {
         public static string StatusDifferentSaveSlotComparisonTemplate {
             get {
                 return ResourceManager.GetString("StatusDifferentSaveSlotComparisonTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Export file [{0}] set. ähnelt.
+        /// </summary>
+        public static string StatusExportFileNameSet {
+            get {
+                return ResourceManager.GetString("StatusExportFileNameSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Export flags set: {0}. ähnelt.
+        /// </summary>
+        public static string StatusExportFlagsSetTemplate {
+            get {
+                return ResourceManager.GetString("StatusExportFlagsSetTemplate", resourceCulture);
             }
         }
         

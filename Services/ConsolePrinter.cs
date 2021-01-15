@@ -23,7 +23,15 @@ namespace SramComparer.Services
 
 			PrintConfigLine(Res.EnumGameRegion, $"{"{1-2}|" + CmdOptions.GameRegion} [{string.Join("|", Enum.GetNames(options.GameRegion.GetType()))}]", options.GameRegion.ToString());
 
+			PrintConfigName(Res.ConfigComparisonFlags, $@"{CmdOptions.ComparisonFlags} [{string.Join(",", Enum.GetNames(options.ComparisonFlags.GetType()))}]");
+			PrintConfigName(Environment.NewLine, padRightDistance: 37);
+			PrintValue(options.ComparisonFlags.ToFlagsString());
+
 			PrintConfigLine(Res.ConfigExportDirectory, CmdOptions.ExportDirectory, options.ExportDirectory ?? Path.GetDirectoryName(options.CurrentFilePath)!);
+
+			PrintConfigName(Res.ConfigExportFlags, $@"{CmdOptions.ExportFlags} [{string.Join(",", Enum.GetNames(options.ExportFlags.GetType()))}]");
+			PrintConfigName(Environment.NewLine, padRightDistance: 37);
+			PrintValue(options.ExportFlags.ToFlagsString());
 
 			PrintConfigLine(Res.ConfigCurrentFileSaveSlot, $"{CmdOptions.CurrentSaveSlot} [1-4|0={Res.All}]", options.CurrentFileSaveSlot == 0 ? Res.All : options.CurrentFileSaveSlot.ToString());
 
@@ -33,10 +41,6 @@ namespace SramComparer.Services
 			PrintConfigLine(Res.ConfigUILanguage, CmdOptions.UILanguage, options.UILanguage!);
 			PrintConfigLine(Res.ConfigComparisonResultLanguage, CmdOptions.ComparisonResultLanguage, options.ComparisonResultLanguage!);
 			PrintConfigLine(Res.ConfigFilePath, CmdOptions.ConfigFilePath, options.ConfigFilePath!);
-
-			PrintConfigName(Res.ConfigComparisonFlags, $@"{CmdOptions.ComparisonFlags} [{string.Join(",", Enum.GetNames(options.ComparisonFlags.GetType()))}]");
-			PrintConfigName(Environment.NewLine, padRightDistance: 37);
-			PrintValue(options.ComparisonFlags.ToFlagsString());
 		}
 
 		public void PrintConfigLine(string name, string value) => PrintConfigLine(name, null!, value);
@@ -53,7 +57,7 @@ namespace SramComparer.Services
 		public virtual void PrintStartMessage()
 		{
 			PrintSectionHeader();
-			PrintLine("");
+			PrintLine();
 			PrintColoredLine(ConsoleColor.Yellow, GetAppDescriptionText());
 
 			var startMessage = @$"== {Res.StartMessage.InsertArgs(nameof(Commands.Help), nameof(Commands.Guide_Srm))} ==";
@@ -62,6 +66,7 @@ namespace SramComparer.Services
 			PrintLine("=".Repeat(startMessage.Length));
 			PrintLine(startMessage);
 			PrintLine("=".Repeat(startMessage.Length));
+			PrintLine();
 			ResetColor();
 		}
 
@@ -101,6 +106,9 @@ namespace SramComparer.Services
 
 			PrintCommandKey(Commands.Export);
 			PrintColoredLine(ConsoleColor.Yellow, Commands.Export.GetDisplayName()!);
+
+			PrintCommandKey(Commands.ExportFlags);
+			PrintColoredLine(ConsoleColor.Yellow, Commands.ExportFlags.GetDisplayName()!);
 
 			PrintCommandKey(Commands.Transfer);
 			PrintColoredLine(ConsoleColor.Yellow, Commands.Transfer.GetDisplayName()!);
@@ -213,6 +221,18 @@ namespace SramComparer.Services
 			ResetColor();
 		}
 
+		public virtual void PrintFlags(in Enum flags, string? name = null)
+		{
+			if(name is not null)
+				this.PrintSectionHeader(name);
+			
+			PrintColored(ConsoleColor.Yellow, $"{name ?? flags.GetType().GetDisplayName()}: ");
+			PrintColoredLine(ConsoleColor.Cyan, $"[{flags.GetFlags().Join()}]");
+			PrintColoredLine(ConsoleColor.Yellow, @" " + flags.GetSetFlags().Join());
+	
+			ResetColor();
+		}
+
 		protected virtual void PrintCustomBufferInfo() {}
 		public virtual void PrintBufferInfo(string bufferName, int bufferOffset, int bufferLength)
 		{
@@ -241,7 +261,7 @@ namespace SramComparer.Services
 		public virtual void PrintComparison(string ident, int offset, string? offsetName, uint currValue, uint compValue)
 		{
 			var sign = GetNumberSign((short)(currValue - compValue));
-			var change = currValue - compValue;
+			int change = (int)currValue - (int)compValue;
 			var absChange = (uint)Math.Abs(change);
 			var changeString = $"{absChange,5:###}";
 			var isNegativechange = change < 0;
@@ -427,15 +447,15 @@ namespace SramComparer.Services
 			SetBackgroundColor(backgroundColor);
 			PrintColoredLine(foregroundColor, text);
 		}
-		
-		protected virtual void SetForegroundColor(ConsoleColor color)
+
+		public virtual void SetForegroundColor(ConsoleColor color)
 		{
 			if (!ColorizeOutput) return;
 			
 			Console.ForegroundColor = color;
 		}
 
-		protected virtual void SetBackgroundColor(ConsoleColor color)
+		public virtual void SetBackgroundColor(ConsoleColor color)
 		{
 			if (!ColorizeOutput) return;
 			

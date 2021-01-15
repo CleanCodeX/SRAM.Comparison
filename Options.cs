@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using Common.Shared.Min.Attributes;
 using SramComparer.Properties;
@@ -7,14 +8,17 @@ namespace SramComparer
 {
 	/// <summary>Standard options implementation</summary>
 	/// <inheritdoc cref="IOptions"/>
-	public class Options<TGameRegion, TComparisonFlags> : IOptions
+	public class Options<TGameRegion, TComparisonFlags, TExportFlags> : IOptions
 		where TGameRegion : struct, Enum
 		where TComparisonFlags : struct, Enum
+		where TExportFlags : struct, Enum
 	{
 		public string? BatchCommands { get; set; }
 		public string? CurrentFilePath { get; set; }
 		public string? ComparisonFilePath { get; set; }
 		public string? ExportDirectory { get; set; }
+		public TExportFlags ExportFlags { get; set; }
+		public Dictionary<string, string> Custom { get; set; } = new();
 
 		[DisplayNameLocalized(nameof(Resources.EnumGameRegion), typeof(Resources))]
 		[JsonConverter(typeof(JsonStringEnumConverter))]
@@ -33,6 +37,11 @@ namespace SramComparer
 		{
 			get => ComparisonFlags;
 			set => ComparisonFlags = (TComparisonFlags)value;
+		}
+		Enum IOptions.ExportFlags
+		{
+			get => ExportFlags;
+			set => ExportFlags = (TExportFlags)value;
 		}
 
 		public bool ColorizeOutput { get; set; } = true;
