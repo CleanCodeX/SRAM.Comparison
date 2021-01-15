@@ -30,7 +30,6 @@ namespace SramComparer.Services
 		where TSaveSlot : struct
 	{
 		private const string BackupFileExtension = ".backup";
-		private const string Snes9xId = "snes9x";
 		private const string SrmFileExtension = ".srm";
 		private const string CompFileExtension = ".comp";
 		private const string DefaultConfigName = "Config";
@@ -291,8 +290,6 @@ namespace SramComparer.Services
 		{
 			if (filePath is null) return false;
 
-			savestateType ??= Snes9xId;
-
 			var fileExtension = Path.GetExtension(filePath).ToLower();
 			if (fileExtension == SrmFileExtension) return false;
 
@@ -307,7 +304,7 @@ namespace SramComparer.Services
 			return true;
 		}
 
-		protected abstract Stream GetSramFromSavestate(string savestateType, Stream stream);
+		protected abstract Stream GetSramFromSavestate(string? savestateType, Stream stream);
 
 		#endregion Compare SRAM
 
