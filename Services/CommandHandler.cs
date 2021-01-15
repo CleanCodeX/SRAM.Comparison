@@ -9,7 +9,6 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Common.Shared.Min.Extensions;
 using Common.Shared.Min.Helpers;
-using Snes9x = RosettaStone.Savestate.Snes9x.Extensions.StreamExtensions; 
 using SramCommons.Extensions;
 using SramCommons.Models;
 using SramComparer.Enums;
@@ -26,7 +25,7 @@ namespace SramComparer.Services
 	/// </summary>
 	/// <typeparam name="TSramFile">The SRAM file structure</typeparam>
 	/// <typeparam name="TSaveSlot">The SRAM game structure</typeparam>
-	public class CommandHandler<TSramFile, TSaveSlot> : ICommandHandler<TSramFile, TSaveSlot>
+	public abstract class CommandHandler<TSramFile, TSaveSlot> : ICommandHandler<TSramFile, TSaveSlot>
 		where TSramFile : SramFile, ISramFile<TSaveSlot>
 		where TSaveSlot : struct
 	{
@@ -302,17 +301,13 @@ namespace SramComparer.Services
 				fileExtension = Path.GetExtension(filePath.Remove(CompFileExtension)!).ToLower()!;
 				if (fileExtension == SrmFileExtension) return false;
 			}
-			
-			var convertedStream = savestateType switch
-			{
-				Snes9xId => Snes9x.GetSramFromSavestate(stream),
-				_ => throw new NotSupportedException($"Savestate type {savestateType} is not supported.")
-			};
 
-			stream = convertedStream.GetOrThrowIfNull(nameof(convertedStream));
+			stream = GetSramFromSavestate(savestateType, stream).GetOrThrowIfNull("ConvertedStream");
 
 			return true;
 		}
+
+		protected abstract Stream GetSramFromSavestate(string savestateType, Stream stream);
 
 		#endregion Compare SRAM
 
