@@ -26,7 +26,7 @@ namespace SramComparer.Services
 	/// <typeparam name="TSramFile">The SRAM file structure</typeparam>
 	/// <typeparam name="TSaveSlot">The SRAM game structure</typeparam>
 	public abstract class CommandHandler<TSramFile, TSaveSlot> : ICommandHandler<TSramFile, TSaveSlot>
-		where TSramFile : SramFile, IMultiSegmentFile<TSaveSlot>
+		where TSramFile : class, IMultiSegmentFile<TSaveSlot>, IRawSave
 		where TSaveSlot : struct
 	{
 		private const string BackupFileExtension = ".backup";
@@ -56,7 +56,7 @@ namespace SramComparer.Services
 		/// <summary>Runs a specific command</summary>
 		/// <param name="command">The command to be run</param>
 		/// <param name="options">The options to use for the command</param>
-		/// <param name="outStream">The optionl stream the output should be written to if not to standard console</param>
+		/// <param name="output">The optionl stream the output should be written to if not to standard console</param>
 		/// <returns>False if the game command loop should exit, otherwise true</returns>
 		public virtual bool RunCommand(string command, IOptions options, TextWriter? output = null)
 		{

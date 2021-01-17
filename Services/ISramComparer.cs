@@ -6,7 +6,7 @@ namespace SramComparer.Services
 	/// <typeparam name="TSramFile">The SRAM file structure</typeparam>
 	/// <typeparam name="TSaveSlot">The SRAM save slot structure</typeparam>
 	public interface ISramComparer<in TSramFile, in TSaveSlot>
-		where TSramFile : SramFile, IMultiSegmentFile<TSaveSlot>
+		where TSramFile : class, IMultiSegmentFile<TSaveSlot>
 		where TSaveSlot : struct
 	{
 		/// <summary>Compares all games of SRAM structure</summary>
