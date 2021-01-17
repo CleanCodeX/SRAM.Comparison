@@ -26,7 +26,7 @@ namespace SramComparer.Services
 	/// <typeparam name="TSramFile">The SRAM file structure</typeparam>
 	/// <typeparam name="TSaveSlot">The SRAM game structure</typeparam>
 	public abstract class CommandHandler<TSramFile, TSaveSlot> : ICommandHandler<TSramFile, TSaveSlot>
-		where TSramFile : SramFile, ISramFile<TSaveSlot>
+		where TSramFile : SramFile, IMultiSegmentFile<TSaveSlot>
 		where TSaveSlot : struct
 	{
 		private const string BackupFileExtension = ".backup";

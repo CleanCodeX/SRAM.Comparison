@@ -826,7 +826,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die The comparison file &quot;{0}&quot; has not been created yet. Please create one first. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die The comparison file &quot;{0}&quot; has not been created yet. Please create by pressing (OC). ähnelt.
         /// </summary>
         public static string ErrorComparisonFileDoesNotExist {
             get {
@@ -1051,7 +1051,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die New here? For command list use ({0}|?) or ({1}) for manual. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die New here? For a list of available commands press ({0}|?) or ({1}) for a guide. If there wasn&apos;t a comparison file yet, it has been created  now. ähnelt.
         /// </summary>
         public static string StartMessage {
             get {

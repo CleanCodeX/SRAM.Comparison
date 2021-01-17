@@ -141,7 +141,7 @@
 		<comment>Was: L'emplacement de la partie pour la comparaison ne peut être défini que si l'emplacement de jeu du fichier SRAM en cours est défini en premier.</comment>
 	</data>
 	<data name="ErrorComparisonFileDoesNotExist" xml:space="preserve">
-		<value>Le fichier de comparaison "{0}" n'a pas encore été créé. Veuillez d'abord en créer un.</value>
+		<value>Le fichier de comparaison "{0}" n'a pas encore été créé. Veuillez créer en appuyant sur (OC).</value>
 	</data>
 	<data name="ErrorInvalidFileExtensionTemplate" xml:space="preserve">
 		<value>Le fichier ({0}): [{1}] a une extension de fichier non prise en charge. Avez-vous juste oublié de citer le chemin? Les extensions de fichier prises en charge sont: {2}</value>
@@ -229,7 +229,7 @@
 		<value>SRAM</value>
 	</data>
 	<data name="StartMessage" xml:space="preserve">
-		<value>Pour afficher la liste des commandes écrivez ({0} |?) ou ({1}).</value>
+		<value>Nouveau ici? Pour obtenir la liste des commandes disponibles, appuyez sur ({0} |?) Ou ({1}) pour obtenir un guide. S'il n'y avait pas encore de fichier de comparaison, il a été créé maintenant.</value>
 	</data>
 	<data name="SramOffset" xml:space="preserve">
 		<value>Décalage SRAM</value>

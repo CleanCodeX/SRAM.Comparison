@@ -1,6 +1,8 @@
 ﻿using System;
+using System.IO;
 using System.Reflection;
 using Common.Shared.Min.Extensions;
+using SramComparer.Enums;
 using SramComparer.Helpers;
 using SramComparer.Properties;
 using SramComparer.Services;
@@ -17,6 +19,8 @@ namespace SramComparer
 
 		public virtual void Show(IOptions options)
 		{
+			ConsoleHelper.SetInitialConsoleSize();
+
 			var commandHandler = ServiceCollection.CommandHandler;
 			var consolePrinter = ServiceCollection.ConsolePrinter;
 
@@ -34,9 +38,11 @@ namespace SramComparer
 				return;
 			}
 
-			ConsoleHelper.SetInitialConsoleSize();
-
 			consolePrinter.PrintConfig(options);
+
+			if (!File.Exists(FileNameHelper.GetComparisonFilePath(options)))
+				commandHandler.RunCommand(nameof(Commands.OverwriteComp), options);
+
 			consolePrinter.PrintStartMessage();
 
 			while (true)

@@ -13,7 +13,7 @@ namespace SramComparer.Services
 	/// <typeparam name="TSramFile">The SRAM file structure</typeparam>
 	/// <typeparam name="TSaveSlot">The SRAM save slot structure</typeparam>
 	public abstract class SramComparerBase<TSramFile, TSaveSlot> : ISramComparer<TSramFile, TSaveSlot>
-		where TSramFile : SramFile, ISramFile<TSaveSlot>
+		where TSramFile : SramFile, IMultiSegmentFile<TSaveSlot>
 		where TSaveSlot : struct
 	{
 		protected IConsolePrinter ConsolePrinter { get; }

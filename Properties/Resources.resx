@@ -340,7 +340,7 @@
     <value>Enter command and press enter.</value>
   </data>
   <data name="StartMessage" xml:space="preserve">
-    <value>New here? For command list use ({0}|?) or ({1}) for manual.</value>
+    <value>New here? For a list of available commands press ({0}|?) or ({1}) for a guide. If there wasn't a comparison file yet, it has been created  now.</value>
   </data>
   <data name="CompSlot" xml:space="preserve">
     <value>Save slot</value>
@@ -352,7 +352,7 @@
     <value>SRAM</value>
   </data>
   <data name="ErrorComparisonFileDoesNotExist" xml:space="preserve">
-    <value>The comparison file "{0}" has not been created yet. Please create one first.</value>
+    <value>The comparison file "{0}" has not been created yet. Please create by pressing (OC).</value>
   </data>
   <data name="ErrorNoValidCommandCmdTemplate" xml:space="preserve">
     <value>"{0}" is an unknown command. To list all available commands enter ({1}).</value>

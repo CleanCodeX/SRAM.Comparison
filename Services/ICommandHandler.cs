@@ -15,7 +15,7 @@ namespace SramComparer.Services
 	/// <typeparam name="TSramFile">The SRAM file structure</typeparam>
 	/// <typeparam name="TSaveSlot">The SRAM game structure</typeparam>
 	public interface ICommandHandler<out TSramFile, out TSaveSlot> : ICommandHandler
-		where TSramFile : SramFile, ISramFile<TSaveSlot>
+		where TSramFile : SramFile, IMultiSegmentFile<TSaveSlot>
 		where TSaveSlot : struct
 	{
 		int GetSaveSlotId(int maxGameId);
