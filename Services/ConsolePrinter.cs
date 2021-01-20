@@ -210,8 +210,29 @@ namespace SramComparer.Services
 
 		public virtual void PrintComparison(string ident, int offset, string? offsetName, uint currValue, uint compValue)
 		{
-			var sign = GetNumberSign((short)(currValue - compValue));
+			var sign = GetNumberSign((int)(currValue - compValue));
 			int change = (int)currValue - (int)compValue;
+			var absChange = (uint)Math.Abs(change);
+			var changeString = $"{absChange,5:###}";
+			var isNegativechange = change < 0;
+
+			var offsetText = $"{offset,4:D4} [x{offset,3:X3}]";
+			var compText = $"{compValue,3:D9} [x{compValue,2:X8}] [{compValue.FormatBinary(32)}]";
+			var currText = $"{currValue,3:D9} [x{currValue,2:X8}] [{currValue.FormatBinary(32)}]";
+			var changeText = $"{changeString,5} [x{absChange,2:X8}] [{absChange.FormatBinary(32)}]";
+
+			PrintComparisonIdentification(ident);
+			PrintOffsetValues(offsetText, offsetName);
+			PrintCompValues(isNegativechange, compText);
+			PrintCurrValues(isNegativechange, currText);
+			PrintChangeValues(isNegativechange, absChange, sign, changeText);
+		}
+
+		public virtual void PrintComparison(string ident, int offset, string? offsetName, ushort currValue,
+			ushort compValue)
+		{
+			var sign = GetNumberSign(currValue - compValue);
+			int change = currValue - compValue;
 			var absChange = (uint)Math.Abs(change);
 			var changeString = $"{absChange,5:###}";
 			var isNegativechange = change < 0;
@@ -227,9 +248,6 @@ namespace SramComparer.Services
 			PrintCurrValues(isNegativechange, currText);
 			PrintChangeValues(isNegativechange, absChange, sign, changeText);
 		}
-
-		public virtual void PrintComparison(string ident, int offset, string? offsetName, ushort currValue,
-			ushort compValue) => PrintComparison(ident, offset, offsetName, (uint)currValue, compValue);
 
 		public virtual void PrintComparison(string ident, int offset, string? offsetName, byte currValue, byte compValue)
 		{
@@ -344,7 +362,7 @@ namespace SramComparer.Services
 			ResetColor();
 		}
 
-		protected virtual string GetNumberSign(short value) => Math.Sign(value) < 0 ? "(-)" : "(+)";
+		protected virtual string GetNumberSign(int value) => Math.Sign(value) < 0 ? "(-)" : "(+)";
 
 		protected virtual void PrintComparisonIdentification(string ident) => PrintColored(ConsoleColor.White, $@"{ident}=> ");
 
