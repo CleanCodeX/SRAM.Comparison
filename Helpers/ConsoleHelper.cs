@@ -21,7 +21,7 @@ namespace SramComparer.Helpers
 				if (Console.WindowWidth >= minWidth)
 					return;
 
-				Console.WindowWidth = minWidth;
+				Console.BufferWidth = Console.WindowWidth = minWidth;
 			}
 			catch
 			{
