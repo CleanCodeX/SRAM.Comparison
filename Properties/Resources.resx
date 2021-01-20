@@ -172,10 +172,7 @@
     <value>Cannot open output file "{0}" for writing</value>
   </data>
 	<data name="SramOffset" xml:space="preserve">
-    <value>SRAM offset</value><comment>The term Offset should only be translated if not understandable</comment>
-  </data>
-  <data name="AppDescription" xml:space="preserve">
-    <value>This tool compares areas of SRAM.</value>
+    <value>S-RAM offset</value><comment>The term Offset should only be translated if not understandable</comment>
   </data>
   <data name="ErrorCommandNotImplementedTemplate" xml:space="preserve">
     <value>Command (overwrite) needs to be implemented by caller.</value>
@@ -204,10 +201,10 @@
   <data name="CmdConfig" xml:space="preserve">
     <value>Display config</value>
   </data>
-  <data name="EnumSlotByteByByteComparison" xml:space="preserve">
+  <data name="EnumSlotByteComparison" xml:space="preserve">
     <value>Slot byte-by-byte comparison</value>
   </data>
-  <data name="EnumNonSlotByteByByteComparison" xml:space="preserve">
+  <data name="EnumNonSlotByteComparison" xml:space="preserve">
     <value>Non-slot byte-by-byte comparison</value>
   </data>
   <data name="CmdSlotByteByBytesComparison" xml:space="preserve">
@@ -349,7 +346,7 @@
     <value>All</value>
   </data>
   <data name="CompSram" xml:space="preserve">
-    <value>SRAM</value>
+    <value>S-RAM</value>
   </data>
   <data name="ErrorComparisonFileDoesNotExist" xml:space="preserve">
     <value>The comparison file "{0}" has not been created yet. Please create by pressing (OC).</value>
@@ -545,5 +542,8 @@
   </data>
   <data name="EnumAppendToAppLogFile" xml:space="preserve">
     <value>Append export data to the applications log file</value>
+  </data>
+  <data name="EnumHideSaveSlotValidation" xml:space="preserve">
+    <value>Hide save slot validation</value>
   </data>
 </root>

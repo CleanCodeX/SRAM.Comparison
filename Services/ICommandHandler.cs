@@ -12,8 +12,8 @@ namespace SramComparer.Services
 	}
 
 	/// <summary>Generic interface for <see cref="CommandHandler{TSramFile,TSaveSlot}"/> implementations</summary>
-	/// <typeparam name="TSramFile">The SRAM file structure</typeparam>
-	/// <typeparam name="TSaveSlot">The SRAM game structure</typeparam>
+	/// <typeparam name="TSramFile">The S-RAM file structure</typeparam>
+	/// <typeparam name="TSaveSlot">The S-RAM game structure</typeparam>
 	public interface ICommandHandler<out TSramFile, out TSaveSlot> : ICommandHandler
 		where TSramFile : class, IMultiSegmentFile<TSaveSlot>
 		where TSaveSlot : struct
@@ -34,13 +34,13 @@ namespace SramComparer.Services
 		/// <returns></returns>
 		Enum InvertIncludeFlag(in Enum flags, in Enum flag);
 
-		/// <summary>Compares SRAM based on <para>options</para>.<see cref="IOptions.CurrentFilePath"/> and <see cref="IOptions.ComparisonFilePath"/> will be used</summary>
+		/// <summary>Compares S-RAM based on <para>options</para>.<see cref="IOptions.CurrentFilePath"/> and <see cref="IOptions.ComparisonFilePath"/> will be used</summary>
 		/// <typeparam name="TComparer">The type of compare which should be used</typeparam>
 		/// <param name="options">The options to be used for comparison</param>
 		void Compare<TComparer>(IOptions options)
 			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new();
 
-		/// <summary>Compares SRAM based on <para>options</para>.<see cref="IOptions.CurrentFilePath"/> and <see cref="IOptions.ComparisonFilePath"/> will be used</summary>
+		/// <summary>Compares S-RAM based on <para>options</para>.<see cref="IOptions.CurrentFilePath"/> and <see cref="IOptions.ComparisonFilePath"/> will be used</summary>
 		/// <typeparam name="TComparer">The type of compare which should be used</typeparam>
 		/// <param name="options">The options to be used for comparison</param>
 		/// <param name="output">The stream the output should be written to</param>
@@ -48,7 +48,7 @@ namespace SramComparer.Services
 			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new();
 
 		/// <summary>
-		/// Compares SRAM based on <para>options</para> and <para>currStream</para> and <para>compStream</para> params
+		/// Compares S-RAM based on <para>options</para> and <para>currStream</para> and <para>compStream</para> params
 		/// </summary>
 		/// <typeparam name="TComparer">The type of compare which should be used</typeparam>
 		/// <param name="currStream"></param>
@@ -59,7 +59,7 @@ namespace SramComparer.Services
 			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new();
 
 		/// <summary>
-		/// Compares SRAM based on <para>options</para> and <para>currStream</para> and <para>compStream</para> params
+		/// Compares S-RAM based on <para>options</para> and <para>currStream</para> and <para>compStream</para> params
 		/// </summary>
 		/// <typeparam name="TComparer">The type of compare which should be used</typeparam>
 		/// <param name="currStream"></param>
@@ -68,14 +68,14 @@ namespace SramComparer.Services
 		void Compare<TComparer>(Stream currStream, Stream compStream, IOptions options)
 			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new();
 
-		/// <summary>Compares SRAM based on <para>options</para>.<see cref="IOptions.ExportDirectory"/> and a generated filename based on current timestamp will be used</summary>
+		/// <summary>Compares S-RAM based on <para>options</para>.<see cref="IOptions.ExportDirectory"/> and a generated filename based on current timestamp will be used</summary>
 		/// <typeparam name="TComparer">The type of compare which should be used</typeparam>
 		/// <param name="options">The options to be used for comparison</param>
 		/// <returns>The generated filepath</returns>
 		string ExportComparisonResult<TComparer>(IOptions options)
 			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new();
 
-		/// <summary>Compares SRAM based on <para>options</para>.<see cref="IOptions.ExportDirectory"/> and a generated filename based on current timestamp will be used</summary>
+		/// <summary>Compares S-RAM based on <para>options</para>.<see cref="IOptions.ExportDirectory"/> and a generated filename based on current timestamp will be used</summary>
 		/// <typeparam name="TComparer">The type of compare which should be used</typeparam>
 		/// <param name="options">The options to be used for comparison</param>
 		/// <param name="filePath"></param>

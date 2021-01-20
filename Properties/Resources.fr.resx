@@ -44,9 +44,6 @@
 	<data name="CmdCompareFiles" xml:space="preserve">
 		<value>Comparer le fichier en cours avec celui de comparaison</value>
 	</data>
-	<data name="AppDescription" xml:space="preserve">
-		<value>Cet outil compare les zones de SRAM.</value>
-	</data>
 	<data name="ConfigColorizeOutput" xml:space="preserve">
 		<value>Résultat avec couleurs</value>
 	</data>
@@ -97,7 +94,7 @@
 	</data>
 	<data name="CmdSaveCurrentFileWithOtherFileName" xml:space="preserve">
 		<value>Enregistrer le fichier en cours avec le nom d'un autre fichier </value>
-		<comment>was: Transférer les données SRAM vers un fichier de jeu similaire
+		<comment>was: Transférer les données S-RAM vers un fichier de jeu similaire
 		</comment>
 	</data>
 	<data name="CmdClearOutput" xml:space="preserve">
@@ -138,7 +135,7 @@
 	</data>
 	<data name="ErrorCompSaveSlotSetButNotForCurrFile" xml:space="preserve">
 		<value>L'emplacement de comparaison dans le fichier ne peut être défini que si l'emplacement d'enregistrement en cours dans le fichier a été défini en premier.</value>
-		<comment>Was: L'emplacement de la partie pour la comparaison ne peut être défini que si l'emplacement de jeu du fichier SRAM en cours est défini en premier.</comment>
+		<comment>Was: L'emplacement de la partie pour la comparaison ne peut être défini que si l'emplacement de jeu du fichier S-RAM en cours est défini en premier.</comment>
 	</data>
 	<data name="ErrorComparisonFileDoesNotExist" xml:space="preserve">
 		<value>Le fichier de comparaison "{0}" n'a pas encore été créé. Veuillez créer en appuyant sur (OC).</value>
@@ -226,13 +223,13 @@
 		<value>Taille</value>
 	</data>
 	<data name="CompSram" xml:space="preserve">
-		<value>SRAM</value>
+		<value>S-RAM</value>
 	</data>
 	<data name="StartMessage" xml:space="preserve">
 		<value>Nouveau ici? Pour obtenir la liste des commandes disponibles, appuyez sur ({0} |?) Ou ({1}) pour obtenir un guide. S'il n'y avait pas encore de fichier de comparaison, il a été créé maintenant.</value>
 	</data>
 	<data name="SramOffset" xml:space="preserve">
-		<value>Décalage SRAM</value>
+		<value>Décalage S-RAM</value>
 	</data>
 	<data name="StatusAllSaveSlotsComparison" xml:space="preserve">
 		<value>Toutes les parties seront comparées.</value>
@@ -308,7 +305,7 @@
 	<data name="StatusCurrentComparisonExportedTemplate" xml:space="preserve">
 		<value>Comparaison en cours enregistrée dans le fichier "{0}".</value>
 	</data>
-	<data name="EnumSlotByteByByteComparison" xml:space="preserve">
+	<data name="EnumSlotByteComparison" xml:space="preserve">
 		<value>Comparer les données de la partie en cours octet par octet</value><comment>Comparer toute les données de la partie en cours</comment>
 	</data>
 	<data name="CompSlot" xml:space="preserve">
@@ -323,7 +320,7 @@
 	<data name="PromptEnterSaveSlotOffsetValue" xml:space="preserve">
 		<value>Modifier la valeur du décalage dans cette partie :</value><comment>Modifier le décalage dans cette partie:</comment>
 	</data>
-	<data name="EnumNonSlotByteByByteComparison" xml:space="preserve">
+	<data name="EnumNonSlotByteComparison" xml:space="preserve">
 		<value>Comparer les zones en dehors de la partie en cours octet par octet :</value>
 		<comment>Comparer les zones en dehors de la partie en cours :</comment>
 	</data>
@@ -452,5 +449,8 @@
 	</data>
 	<data name="EnumAppendToAppLogFile" xml:space="preserve">
 		<value>Ajouter les données d'exportation au fichier journal de l'application</value>
+	</data>
+	<data name="EnumHideSaveSlotValidation" xml:space="preserve">
+		<value>Masquer la validation de l'emplacement de sauvegarde</value>
 	</data>
 </root>

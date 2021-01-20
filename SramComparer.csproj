@@ -18,7 +18,7 @@
     <Product>SramComparer</Product>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Platforms>AnyCPU</Platforms>
-    <PackageTags>SRAM, SNES, S-RAM, Super Nintendo, Comparer, Comparison, Super Famicon, Savestate</PackageTags>
+    <PackageTags>S-RAM, SNES, S-RAM, Super Nintendo, Comparer, Comparison, Super Famicon, Savestate</PackageTags>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

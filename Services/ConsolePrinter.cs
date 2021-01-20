@@ -57,15 +57,12 @@ namespace SramComparer.Services
 		public virtual void PrintStartMessage()
 		{
 			PrintSectionHeader();
-			PrintLine();
-			PrintColoredLine(ConsoleColor.Yellow, GetAppDescriptionText());
-
+			SetForegroundColor(ConsoleColor.DarkYellow);
 			var startMessage = @$"== {Res.StartMessage.InsertArgs(nameof(Commands.Help), nameof(Commands.Guide_Srm))} ==";
-
-			PrintColoredLine(ConsoleColor.DarkYellow, "");
-			PrintLine("=".Repeat(startMessage.Length));
+			var length = Math.Min(startMessage.Length, Console.WindowWidth - 1);
+			PrintLine("=".Repeat(length));
 			PrintLine(startMessage);
-			PrintLine("=".Repeat(startMessage.Length));
+			PrintLine("=".Repeat(length));
 			PrintLine();
 			ResetColor();
 		}
@@ -76,115 +73,70 @@ namespace SramComparer.Services
 
 			PrintGroupName(Res.CmdGroupComparison);
 
-			PrintCommandKey(Commands.Compare);
-			PrintColoredLine(ConsoleColor.Yellow, Commands.Compare.GetDisplayName()!);
-
+			PrintCommand(Commands.Compare);
 			PrintCommandKey(Commands.OverwriteComp);
-			PrintColoredLine(ConsoleColor.Yellow, Commands.OverwriteComp.GetDisplayName()!);
 
 			PrintGroupName(Res.CmdGroupSetsSaveSlot);
 
-			PrintCommandKey(Commands.SetSlot);
-			PrintColoredLine(ConsoleColor.Yellow, Commands.SetSlot.GetDisplayName()!);
-
-			PrintCommandKey(Commands.SetSlot_Comp);
-			PrintColoredLine(ConsoleColor.Yellow, Commands.SetSlot_Comp.GetDisplayName()!);
-
+			PrintCommand(Commands.SetSlot);
+			PrintCommand(Commands.SetSlot_Comp);
+	
 			PrintGroupName(Res.CmdGroupBackup);
 
-			PrintCommandKey(Commands.Backup);
-			PrintColoredLine(ConsoleColor.Yellow, Commands.Backup.GetDisplayName()!);
-
-			PrintCommandKey(Commands.Backup_Comp);
-			PrintColoredLine(ConsoleColor.Yellow, Commands.Backup_Comp.GetDisplayName()!);
-
-			PrintCommandKey(Commands.Restore);
-			PrintColoredLine(ConsoleColor.Yellow, Commands.Restore.GetDisplayName()!);
-
-			PrintCommandKey(Commands.Restore_Comp);
-			PrintColoredLine(ConsoleColor.Yellow, Commands.Restore_Comp.GetDisplayName()!);
-
-			PrintCommandKey(Commands.Export);
-			PrintColoredLine(ConsoleColor.Yellow, Commands.Export.GetDisplayName()!);
-
-			PrintCommandKey(Commands.ExportFlags);
-			PrintColoredLine(ConsoleColor.Yellow, Commands.ExportFlags.GetDisplayName()!);
-
-			PrintCommandKey(Commands.Transfer);
-			PrintColoredLine(ConsoleColor.Yellow, Commands.Transfer.GetDisplayName()!);
+			PrintCommand(Commands.Backup);
+			PrintCommand(Commands.Backup_Comp);
+			PrintCommand(Commands.Restore);
+			PrintCommand(Commands.Restore_Comp);
+			PrintCommand(Commands.Export);
+			PrintCommand(Commands.ExportFlags);
+			PrintCommand(Commands.Transfer);
 
 			PrintGroupName(Res.CmdGroupDisplay);
 
-			PrintCommandKey(Commands.Guide_Srm);
-			PrintColoredLine(ConsoleColor.Yellow, Commands.Guide_Srm.GetDisplayName()!);
-
-			PrintCommandKey(Commands.Guide_Savestate);
-			PrintColoredLine(ConsoleColor.Yellow, Commands.Guide_Savestate.GetDisplayName()!);
-
-			PrintCommandKey(Commands.Help);
-			PrintColoredLine(ConsoleColor.Yellow, Commands.Help.GetDisplayName()!);
-
-			PrintCommandKey(Commands.Config);
-			PrintColoredLine(ConsoleColor.Yellow, Commands.Config.GetDisplayName()!);
-
-			PrintCommandKey(Commands.Clear);
-			PrintColoredLine(ConsoleColor.Yellow, Commands.Clear.GetDisplayName()!);
+			PrintCommand(Commands.Guide_Srm);
+			PrintCommand(Commands.Guide_Savestate);
+			PrintCommand(Commands.Help);
+			PrintCommand(Commands.Config);
+			PrintCommand(Commands.Clear);
 
 			PrintGroupName(Res.CmdGroupMisc);
 
-			PrintCommandKey(Commands.Sbc);
-			PrintColoredLine(ConsoleColor.Yellow, Commands.Sbc.GetDisplayName()!);
-
-			PrintCommandKey(Commands.Nsbc);
-			PrintColoredLine(ConsoleColor.Yellow, Commands.Nsbc.GetDisplayName()!);
-
-			PrintCommandKey(Commands.Offset);
-			PrintColoredLine(ConsoleColor.Yellow, Commands.Offset.GetDisplayName()!);
-
-			PrintCommandKey(Commands.EditOffset);
-			PrintColoredLine(ConsoleColor.Yellow, Commands.EditOffset.GetDisplayName()!);
-
+			PrintCommand(Commands.HideValidationStatus);
+			PrintCommand(Commands.SlotByteComp);
+			PrintCommand(Commands.NonSlotByteComp);
+			PrintCommand(Commands.Offset);
+			PrintCommand(Commands.EditOffset);
+	
 			PrintGroupName(Res.CmdGroupLanguage);
 
-			PrintCommandKey(Commands.Lang);
-			PrintColoredLine(ConsoleColor.Yellow, Commands.Lang.GetDisplayName()!);
-
-			PrintCommandKey(Commands.Lang_Comp);
-			PrintColoredLine(ConsoleColor.Yellow, Commands.Lang_Comp.GetDisplayName()!);
+			PrintCommand(Commands.Lang);
+			PrintCommand(Commands.Lang_Comp);
 
 			PrintGroupName(Res.CmdGroupConfig);
 
-			PrintCommandKey(Commands.LoadConfig);
-			PrintColoredLine(ConsoleColor.Yellow, Commands.LoadConfig.GetDisplayName()!);
-
-			PrintCommandKey(Commands.SaveConfig);
-			PrintColoredLine(ConsoleColor.Yellow, Commands.SaveConfig.GetDisplayName()!);
-
-			PrintCommandKey(Commands.OpenConfig);
-			PrintColoredLine(ConsoleColor.Yellow, Commands.OpenConfig.GetDisplayName()!);
-
-			PrintCommandKey(Commands.AutoLoadOn);
-			PrintColoredLine(ConsoleColor.Yellow, Commands.AutoLoadOn.GetDisplayName()!);
-
-			PrintCommandKey(Commands.AutoLoadOff);
-			PrintColoredLine(ConsoleColor.Yellow, Commands.AutoLoadOff.GetDisplayName()!);
-
-			PrintCommandKey(Commands.CreateBindings);
-			PrintColoredLine(ConsoleColor.Yellow, Commands.CreateBindings.GetDisplayName()!);
-
-			PrintCommandKey(Commands.OpenBindings);
-			PrintColoredLine(ConsoleColor.Yellow, Commands.OpenBindings.GetDisplayName()!);
+			PrintCommand(Commands.LoadConfig);
+			PrintCommand(Commands.SaveConfig);
+			PrintCommand(Commands.OpenConfig);
+			PrintCommand(Commands.AutoLoadOn);
+			PrintCommand(Commands.AutoLoadOff);
+			PrintCommand(Commands.CreateBindings);
+			PrintCommand(Commands.OpenBindings);
 
 			PrintCustomCommands();
 
 			PrintLine();
 			PrintLine();
-			PrintCommandKey(Commands.Quit);
-			PrintColoredLine(ConsoleColor.Yellow, Commands.Quit.GetDisplayName()!);
+			PrintCommand(Commands.Quit);
 			PrintLine();
 
 			PrintColoredLine(ConsoleColor.Cyan, Res.EnterCommand);
 			ResetColor();
+
+			void PrintCommand(Commands command)
+			{
+				PrintCommandKey(command);
+				PrintColoredLine(ConsoleColor.Yellow, command.GetDisplayName()!);
+			}
 		}
 
 		protected virtual void PrintGroupName(string groupName) => PrintColoredLine(ConsoleColor.DarkGray, Environment.NewLine + groupName);
@@ -203,8 +155,6 @@ namespace SramComparer.Services
 		}
 
 		protected virtual string GetGuideText(string? guideName) => Res.StatusNoGuideAvailable;
-
-		protected virtual string GetAppDescriptionText() => Res.AppDescription;
 
 		public virtual void PrintGuide(string? guideName)
 		{

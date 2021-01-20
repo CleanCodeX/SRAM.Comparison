@@ -8,6 +8,9 @@ namespace SramComparer.Helpers
 	public class ConsoleHelper
 	{
 		private static readonly bool IsWindows = OperatingSystem.IsWindows();
+		private const int InitialConsoleWidth = 130;
+		private const int InitialConsoleHeight = 50;
+		private const int ConsoleBufferHeight = 1000;
 
 		public static void EnsureMinConsoleWidth(int minWidth)
 		{
@@ -32,8 +35,9 @@ namespace SramComparer.Helpers
 
 			try
 			{
-				Console.SetWindowSize(130, 50);
-				Console.BufferHeight = 1000;
+				Console.SetWindowSize(InitialConsoleWidth, InitialConsoleHeight);
+				Console.BufferHeight = ConsoleBufferHeight;
+				Console.BufferWidth = InitialConsoleWidth;
 			}
 			catch
 			{

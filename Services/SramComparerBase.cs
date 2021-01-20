@@ -8,10 +8,10 @@ using SramComparer.Properties;
 namespace SramComparer.Services
 {
 	/// <summary>
-	/// Base class for SRAM comparison. Needs an actual implementation for a specific game
+	/// Base class for S-RAM comparison. Needs an actual implementation for a specific game
 	/// </summary>
-	/// <typeparam name="TSramFile">The SRAM file structure</typeparam>
-	/// <typeparam name="TSaveSlot">The SRAM save slot structure</typeparam>
+	/// <typeparam name="TSramFile">The S-RAM file structure</typeparam>
+	/// <typeparam name="TSaveSlot">The S-RAM save slot structure</typeparam>
 	public abstract class SramComparerBase<TSramFile, TSaveSlot> : ISramComparer<TSramFile, TSaveSlot>
 		where TSramFile : class, IMultiSegmentFile<TSaveSlot>, IRawSave
 		where TSaveSlot : struct

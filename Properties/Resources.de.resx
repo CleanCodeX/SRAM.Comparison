@@ -53,9 +53,6 @@
 	<data name="All" xml:space="preserve">
 		<value>Alle</value>
 	</data>
-	<data name="AppDescription" xml:space="preserve">
-		<value>Diese Anwendung vergleicht Bereiche des SRAMs.</value>
-	</data>
 	<data name="Bytes" xml:space="preserve">
 		<value>Bytes</value>
 	</data>
@@ -98,10 +95,10 @@
 	<data name="CmdExportComparisonResult" xml:space="preserve">
 		<value>Aktuelles Vergleichsergebnis exportieren</value>
 	</data>
-	<data name="EnumNonSlotByteByByteComparison" xml:space="preserve">
+	<data name="EnumNonSlotByteComparison" xml:space="preserve">
 		<value>Nicht-Speicherslot Byte-Für-Byte-Vergleich</value>
 	</data>
-	<data name="EnumSlotByteByByteComparison" xml:space="preserve">
+	<data name="EnumSlotByteComparison" xml:space="preserve">
 		<value>Speicherslot Byte-Für-Byte-Vergleich</value>
 	</data>
 	<data name="CmdGuideSrm" xml:space="preserve">
@@ -247,13 +244,13 @@
 		<value>Größe</value>
 	</data>
 	<data name="CompSram" xml:space="preserve">
-		<value>SRAM</value>
+		<value>S-RAM</value>
 	</data>
 	<data name="StartMessage" xml:space="preserve">
 		<value>Neu hier? Für eine Liste aller verfügbaren Befehle gib ({0}|?) oder ({1}) für eine Bedienungsanleitung ein. Falls noch keine Vergleichs-Datei vorhanden war, wurde nun eine erstellt.</value>
 	</data>
 	<data name="SramOffset" xml:space="preserve">
-		<value>SRAM-Offset</value><comment>The term Offset should only be translated if not understandable</comment>
+		<value>S-RAM-Offset</value><comment>The term Offset should only be translated if not understandable</comment>
 	</data>
 	<data name="StatusBytesChangedTemplate" xml:space="preserve">
 		<value>{0} Bytes geändert.</value>
@@ -440,5 +437,8 @@
 	</data>
 	<data name="EnumAppendToAppLogFile" xml:space="preserve">
 		<value>Die Export-Daten an das Anwendungs-Log hinzufügen</value>
+	</data>
+	<data name="EnumHideSaveSlotValidation" xml:space="preserve">
+		<value>Speicherslot Validierung ausblenden</value>
 	</data>
 </root>
