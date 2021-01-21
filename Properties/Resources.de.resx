@@ -95,7 +95,7 @@
 	<data name="CmdExportComparisonResult" xml:space="preserve">
 		<value>Aktuelles Vergleichsergebnis exportieren</value>
 	</data>
-	<data name="EnumNonSlotByteComparison" xml:space="preserve">
+	<data name="EnumNonSlotComparison" xml:space="preserve">
 		<value>Nicht-Speicherslot Byte-Für-Byte-Vergleich</value>
 	</data>
 	<data name="EnumSlotByteComparison" xml:space="preserve">
@@ -438,7 +438,10 @@
 	<data name="EnumAppendToAppLogFile" xml:space="preserve">
 		<value>Die Export-Daten an das Anwendungs-Log hinzufügen</value>
 	</data>
-	<data name="EnumHideSaveSlotValidation" xml:space="preserve">
-		<value>Speicherslot Validierung ausblenden</value>
+	<data name="EnumChecksumStatus" xml:space="preserve">
+		<value>Speicherslot Prüfsummenstatus anzeigen</value>
+	</data>
+	<data name="CmdShowChecksumStatus" xml:space="preserve">
+		<value>Speicherslot Prüfsummenstatus anzeigen</value>
 	</data>
 </root>

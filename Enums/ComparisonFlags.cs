@@ -8,12 +8,12 @@ namespace SramComparer.Enums
 	public enum ComparisonFlags: uint
 	{
 		[DisplayNameLocalized(nameof(Res.EnumSlotByteComparison), typeof(Res))]
-		SlotByteByByteComparison = 0x1,
+		SlotByteComparison = 0x1,
 			
-		[DisplayNameLocalized(nameof(Res.EnumNonSlotByteComparison), typeof(Res))]
-		NonSlotByteByByteComparison = 0x2,
+		[DisplayNameLocalized(nameof(Res.EnumNonSlotComparison), typeof(Res))]
+		NonSlotComparison = 0x2,
 			
-		[DisplayNameLocalized(nameof(Res.EnumNonSlotByteComparison), typeof(Res))]
-		HideValidationStatus = 0x4
+		[DisplayNameLocalized(nameof(Res.EnumChecksumStatus), typeof(Res))]
+		ChecksumStatus = 0x4
 	}
 }

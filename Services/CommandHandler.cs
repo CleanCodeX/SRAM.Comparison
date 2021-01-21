@@ -118,14 +118,14 @@ namespace SramComparer.Services
 				case Commands.Guide_Savestate:
 					ConsolePrinter.PrintGuide(GuideSavestateFileName);
 					break;
-				case Commands.HideValidationStatus:
-					options.ComparisonFlags = InvertIncludeFlag(options.ComparisonFlags, ComparisonFlags.HideValidationStatus);
+				case Commands.ChecksumStatus:
+					options.ComparisonFlags = InvertIncludeFlag(options.ComparisonFlags, ComparisonFlags.ChecksumStatus);
 					break;
 				case Commands.SlotByteComp:
-					options.ComparisonFlags = InvertIncludeFlag(options.ComparisonFlags, ComparisonFlags.SlotByteByByteComparison);
+					options.ComparisonFlags = InvertIncludeFlag(options.ComparisonFlags, ComparisonFlags.SlotByteComparison);
 					break;
-				case Commands.NonSlotByteComp:
-					options.ComparisonFlags = InvertIncludeFlag(options.ComparisonFlags, ComparisonFlags.NonSlotByteByByteComparison);
+				case Commands.NonSlotComp:
+					options.ComparisonFlags = InvertIncludeFlag(options.ComparisonFlags, ComparisonFlags.NonSlotComparison);
 					break;
 				case Commands.SetSlot:
 					options.CurrentFileSaveSlot = GetSaveSlotId(maxSaveSlotId: 4);

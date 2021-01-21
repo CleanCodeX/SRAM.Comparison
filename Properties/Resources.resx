@@ -204,7 +204,7 @@
   <data name="EnumSlotByteComparison" xml:space="preserve">
     <value>Slot byte-by-byte comparison</value>
   </data>
-  <data name="EnumNonSlotByteComparison" xml:space="preserve">
+  <data name="EnumNonSlotComparison" xml:space="preserve">
     <value>Non-slot byte-by-byte comparison</value>
   </data>
   <data name="CmdSlotByteByBytesComparison" xml:space="preserve">
@@ -543,7 +543,10 @@
   <data name="EnumAppendToAppLogFile" xml:space="preserve">
     <value>Append export data to the applications log file</value>
   </data>
-  <data name="EnumHideSaveSlotValidation" xml:space="preserve">
-    <value>Hide save slot validation</value>
+  <data name="EnumChecksumStatus" xml:space="preserve">
+    <value>Show save slot checksum status</value>
+  </data>
+  <data name="CmdShowChecksumStatus" xml:space="preserve">
+    <value>Show save slot checksum status</value>
   </data>
 </root>

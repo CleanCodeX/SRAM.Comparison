@@ -403,6 +403,15 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Show save slot checksum status ähnelt.
+        /// </summary>
+        public static string CmdShowChecksumStatus {
+            get {
+                return ResourceManager.GetString("CmdShowChecksumStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Add slot byte-by-byte comparison ähnelt.
         /// </summary>
         public static string CmdSlotByteByBytesComparison {
@@ -691,6 +700,15 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Show save slot checksum status ähnelt.
+        /// </summary>
+        public static string EnumChecksumStatus {
+            get {
+                return ResourceManager.GetString("EnumChecksumStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Comparison file ähnelt.
         /// </summary>
         public static string EnumComparisonFile {
@@ -736,15 +754,6 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Hide save slot validation ähnelt.
-        /// </summary>
-        public static string EnumHideSaveSlotValidation {
-            get {
-                return ResourceManager.GetString("EnumHideSaveSlotValidation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die None ähnelt.
         /// </summary>
         public static string EnumNone {
@@ -756,9 +765,9 @@ namespace SramComparer.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Non-slot byte-by-byte comparison ähnelt.
         /// </summary>
-        public static string EnumNonSlotByteComparison {
+        public static string EnumNonSlotComparison {
             get {
-                return ResourceManager.GetString("EnumNonSlotByteComparison", resourceCulture);
+                return ResourceManager.GetString("EnumNonSlotComparison", resourceCulture);
             }
         }
         

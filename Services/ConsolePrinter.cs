@@ -101,9 +101,9 @@ namespace SramComparer.Services
 
 			PrintGroupName(Res.CmdGroupMisc);
 
-			PrintCommand(Commands.HideValidationStatus);
+			PrintCommand(Commands.ChecksumStatus);
 			PrintCommand(Commands.SlotByteComp);
-			PrintCommand(Commands.NonSlotByteComp);
+			PrintCommand(Commands.NonSlotComp);
 			PrintCommand(Commands.Offset);
 			PrintCommand(Commands.EditOffset);
 	

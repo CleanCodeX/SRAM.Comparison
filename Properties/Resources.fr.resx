@@ -320,7 +320,7 @@
 	<data name="PromptEnterSaveSlotOffsetValue" xml:space="preserve">
 		<value>Modifier la valeur du décalage dans cette partie :</value><comment>Modifier le décalage dans cette partie:</comment>
 	</data>
-	<data name="EnumNonSlotByteComparison" xml:space="preserve">
+	<data name="EnumNonSlotComparison" xml:space="preserve">
 		<value>Comparer les zones en dehors de la partie en cours octet par octet :</value>
 		<comment>Comparer les zones en dehors de la partie en cours :</comment>
 	</data>
@@ -450,7 +450,10 @@
 	<data name="EnumAppendToAppLogFile" xml:space="preserve">
 		<value>Ajouter les données d'exportation au fichier journal de l'application</value>
 	</data>
-	<data name="EnumHideSaveSlotValidation" xml:space="preserve">
-		<value>Masquer la validation de l'emplacement de sauvegarde</value>
+	<data name="EnumChecksumStatus" xml:space="preserve">
+		<value>Afficher l'état de la somme de contrôle de l'emplacement de sauvegarde</value>
+	</data>
+	<data name="CmdShowChecksumStatus" xml:space="preserve">
+		<value>Afficher l'état de la somme de contrôle de l'emplacement de sauvegarde</value>
 	</data>
 </root>
