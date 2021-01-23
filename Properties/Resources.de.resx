@@ -198,9 +198,6 @@
 	<data name="CompNew" xml:space="preserve">
 		<value>Neu</value>
 	</data>
-	<data name="EnumNone" xml:space="preserve">
-		<value>Keine</value>
-	</data>
 	<data name="CompOffset" xml:space="preserve">
 		<value>Offset</value><comment>This term should only be translated if not understandable</comment>
 	</data>

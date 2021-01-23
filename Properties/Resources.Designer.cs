@@ -754,15 +754,6 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die None ähnelt.
-        /// </summary>
-        public static string EnumNone {
-            get {
-                return ResourceManager.GetString("EnumNone", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Non-slot byte-by-byte comparison ähnelt.
         /// </summary>
         public static string EnumNonSlotComparison {

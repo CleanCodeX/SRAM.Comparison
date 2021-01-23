@@ -177,9 +177,6 @@
   <data name="ErrorCommandNotImplementedTemplate" xml:space="preserve">
     <value>Command (overwrite) needs to be implemented by caller.</value>
   </data>
-  <data name="EnumNone" xml:space="preserve">
-    <value>None</value>
-  </data>
   <data name="StatusCurrentFileSaved" xml:space="preserve">
     <value>Current file has been saved as comparison file.</value>
   </data>

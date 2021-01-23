@@ -162,9 +162,6 @@
 	<data name="CompNew" xml:space="preserve">
 		<value>Nouveau</value>
 	</data>
-	<data name="EnumNone" xml:space="preserve">
-		<value>Aucune</value>
-	</data>
 	<data name="CompOld" xml:space="preserve">
 		<value>Ancien</value>
 	</data>
