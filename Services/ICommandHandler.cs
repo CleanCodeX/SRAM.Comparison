@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
-using SramCommons.Models;
-using SramComparer.Enums;
+using IO.Models;
+using SRAM.Comparison.Enums;
 
-namespace SramComparer.Services
+namespace SRAM.Comparison.Services
 {
 	/// <summary>Non generic interface for <see cref="CommandHandler{TSramFile,TSaveSlot}"/> implementations</summary>
 	public interface ICommandHandler

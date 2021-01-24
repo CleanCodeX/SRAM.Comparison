@@ -1,6 +1,6 @@
-﻿using SramComparer.Services;
+﻿using SRAM.Comparison.Services;
 
-namespace SramComparer
+namespace SRAM.Comparison
 {
 	public static class ServiceCollection
 	{

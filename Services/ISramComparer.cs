@@ -1,6 +1,6 @@
-﻿using SramCommons.Models;
+﻿using IO.Models;
 
-namespace SramComparer.Services
+namespace SRAM.Comparison.Services
 {
 	/// <summary>Interface for implementations</summary>
 	/// <typeparam name="TSramFile">The S-RAM file structure</typeparam>

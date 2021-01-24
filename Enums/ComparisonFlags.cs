@@ -1,8 +1,8 @@
 ﻿using System;
 using Common.Shared.Min.Attributes;
-using Res = SramComparer.Properties.Resources;
+using Res = SRAM.Comparison.Properties.Resources;
 
-namespace SramComparer.Enums
+namespace SRAM.Comparison.Enums
 {
 	[Flags]
 	public enum ComparisonFlags: uint

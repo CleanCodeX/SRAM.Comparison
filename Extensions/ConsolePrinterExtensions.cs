@@ -1,7 +1,7 @@
 ﻿using System;
-using SramComparer.Services;
+using SRAM.Comparison.Services;
 
-namespace SramComparer.Extensions
+namespace SRAM.Comparison.Extensions
 {
 	public static class ConsolePrinterExtensions
 	{

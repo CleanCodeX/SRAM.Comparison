@@ -1,7 +1,7 @@
 ﻿using Common.Shared.Min.Attributes;
-using SramComparer.Properties;
+using SRAM.Comparison.Properties;
 
-namespace SramComparer.Enums
+namespace SRAM.Comparison.Enums
 {
 	public enum SaveFileKind
 	{

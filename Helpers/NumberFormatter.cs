@@ -1,7 +1,7 @@
 ﻿using System;
-using SramCommons.Extensions;
+using IO.Extensions;
 
-namespace SramComparer.Helpers
+namespace SRAM.Comparison.Helpers
 {
 	public class NumberFormatter
 	{

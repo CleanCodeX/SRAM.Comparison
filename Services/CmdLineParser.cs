@@ -5,11 +5,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Common.Shared.Min.Extensions;
-using SramComparer.Extensions;
-using SramComparer.Properties;
+using SRAM.Comparison.Extensions;
+using SRAM.Comparison.Properties;
 // ReSharper disable StaticMemberInGenericType
 
-namespace SramComparer.Services
+namespace SRAM.Comparison.Services
 {
 	/// <summary>
 	/// Standard implementation of <see cref="ICmdLineParser"/>

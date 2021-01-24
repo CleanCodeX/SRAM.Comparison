@@ -4,22 +4,33 @@
     <TargetFramework>net5.0</TargetFramework>
     <Nullable>enable</Nullable>
     <LangVersion>preview</LangVersion>
-    <Version>1.2.2-a2</Version>
-    <Authors>CleanCoderX</Authors>
+    <Version>1.3.0-a1</Version>
+    <Authors>S. Krauter { CleanCoderX, XETH }</Authors>
     <Company>KST</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseFile></PackageLicenseFile>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <RepositoryUrl>https://github.com/CleanCodeX/SramComparer</RepositoryUrl>
+    <RepositoryUrl>https://github.com/CleanCodeX/SRAM.Comparison</RepositoryUrl>
     <PackageProjectUrl></PackageProjectUrl>
     <Description>These library provides base functionalities to read and compare changes in srm files as well as snes9x savestates with .NET 5. An actual implementation for an individual game is necessary. See other repos.</Description>
     <PackageReleaseNotes></PackageReleaseNotes>
-    <PackageId>CCX.SramComparer</PackageId>
-    <Product>SramComparer</Product>
+    <PackageId>CCX.SRAM.Comparison</PackageId>
+    <Product>SRAM.Comparison</Product>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Platforms>AnyCPU</Platforms>
     <PackageTags>S-RAM, SNES, S-RAM, Super Nintendo, Comparer, Comparison, Super Famicon, Savestate</PackageTags>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CCX.SRAM" Version="1.0.0-a1" />
+    <PackageReference Include="CCX.IO" Version="1.0.0-a1" />
+    <PackageReference Include="System.ComponentModel.TypeConverter" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\IO\IO.csproj" />
+    <ProjectReference Include="..\SRAM\SRAM.csproj" />
+  </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebugType>full</DebugType>
@@ -33,11 +44,6 @@
 
   <ItemGroup>
     <None Remove=".gitignore" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="CCX.SramCommons" Version="1.2.0-a2" />
-    <PackageReference Include="System.ComponentModel.TypeConverter" Version="4.3.0" />
   </ItemGroup>
 
   <ItemGroup>

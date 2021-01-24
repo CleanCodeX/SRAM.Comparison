@@ -9,16 +9,15 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Common.Shared.Min.Extensions;
 using Common.Shared.Min.Helpers;
-using SramCommons.Extensions;
-using SramCommons.Models;
-using SramComparer.Enums;
-using SramComparer.Extensions;
-using SramComparer.Helpers;
-using SramComparer.Properties;
+using IO.Extensions;
+using IO.Models;
+using SRAM.Comparison.Enums;
+using SRAM.Comparison.Helpers;
+using SRAM.Comparison.Properties;
 // ReSharper disable RedundantArgumentDefaultValue
 // ReSharper disable StaticMemberInGenericType
 
-namespace SramComparer.Services
+namespace SRAM.Comparison.Services
 {
 	/// <summary>
 	/// This class handles all standard commands
@@ -272,8 +271,8 @@ namespace SramComparer.Services
 		public virtual void Compare<TComparer>(Stream currStream, Stream compStream, IOptions options)
 			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new()
 		{
-			ConvertStreamIfSavestate(ref currStream, options.CurrentFilePath!, options.SavestateType);
-			ConvertStreamIfSavestate(ref compStream, FileNameHelper.GetComparisonFilePath(options), options.SavestateType);
+			ConvertStreamIfSavestate(options, ref currStream, options.CurrentFilePath!, options.SavestateType);
+			ConvertStreamIfSavestate(options, ref compStream, FileNameHelper.GetComparisonFilePath(options), options.SavestateType);
 
 			var currFile = ClassFactory.Create<TSramFile>(currStream, options.GameRegion);
 			var compFile = ClassFactory.Create<TSramFile>(compStream, options.GameRegion);
@@ -293,7 +292,7 @@ namespace SramComparer.Services
 			}
 		}
 
-		protected virtual bool ConvertStreamIfSavestate(ref Stream stream, string? filePath, string? savestateType)
+		protected virtual bool ConvertStreamIfSavestate(IOptions options, ref Stream stream, string? filePath, string? savestateType)
 		{
 			if (filePath is null) return false;
 
@@ -306,12 +305,12 @@ namespace SramComparer.Services
 				if (fileExtension == SrmFileExtension) return false;
 			}
 
-			stream = GetSramFromSavestate(savestateType, stream).GetOrThrowIfNull("ConvertedStream");
+			stream = GetSramFromSavestate(options, stream).GetOrThrowIfNull("ConvertedStream");
 
 			return true;
 		}
 
-		protected abstract Stream GetSramFromSavestate(string? savestateType, Stream stream);
+		protected abstract Stream GetSramFromSavestate(IOptions options, Stream stream);
 
 		#endregion Compare S-RAM
 
@@ -483,7 +482,7 @@ namespace SramComparer.Services
 
 			Stream currStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
 
-			ConvertStreamIfSavestate(ref currStream, filePath, options.SavestateType);
+			ConvertStreamIfSavestate(options, ref currStream, filePath, options.SavestateType);
 
 			var currFile = ClassFactory.Create<TSramFile>(currStream, options.GameRegion);
 

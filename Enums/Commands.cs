@@ -1,10 +1,10 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 using Common.Shared.Min.Attributes;
-using SramComparer.Helpers;
-using Res = SramComparer.Properties.Resources;
+using SRAM.Comparison.Helpers;
+using Res = SRAM.Comparison.Properties.Resources;
 
-namespace SramComparer.Enums
+namespace SRAM.Comparison.Enums
 {
 	[SuppressMessage("ReSharper", "InconsistentNaming")]
 	[SuppressMessage("CodeQuality", "IDE0079:Remove unnecessary suppression", Justification = "<Ausstehend>")]

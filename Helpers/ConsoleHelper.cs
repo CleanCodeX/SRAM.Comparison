@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Runtime.Versioning;
 
-namespace SramComparer.Helpers
+namespace SRAM.Comparison.Helpers
 {
 	[SupportedOSPlatform("windows")]
 	public class ConsoleHelper

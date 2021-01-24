@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
 using Common.Shared.Min.Extensions;
-using SramCommons.Models;
-using SramComparer.Helpers;
-using SramComparer.Properties;
+using IO.Models;
+using SRAM.Comparison.Helpers;
+using SRAM.Comparison.Properties;
 
-namespace SramComparer.Services
+namespace SRAM.Comparison.Services
 {
 	/// <summary>
 	/// Base class for S-RAM comparison. Needs an actual implementation for a specific game

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Common.Shared.Min.Extensions;
-using SramComparer.Helpers;
-using SramComparer.Properties;
+using SRAM.Comparison.Helpers;
+using SRAM.Comparison.Properties;
 
 // ReSharper disable PossibleMultipleEnumeration
 
-namespace SramComparer
+namespace SRAM.Comparison
 {
 	/// <summary>Starts a UI-less cmd queue.</summary>
 	public class CommandQueue

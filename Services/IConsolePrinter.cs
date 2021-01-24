@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SramComparer.Services
+namespace SRAM.Comparison.Services
 {
 	/// <summary>Interface for <see cref="ConsolePrinter"/> implementations</summary>
 	public interface IConsolePrinter: IConsoleMethods

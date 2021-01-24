@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SramComparer.Services
+namespace SRAM.Comparison.Services
 {
 	/// <summary>Basic console functionality</summary>
 	public interface IConsoleMethods

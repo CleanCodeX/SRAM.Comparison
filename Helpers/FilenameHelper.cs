@@ -2,7 +2,7 @@
 using System.IO;
 using Common.Shared.Min.Extensions;
 
-namespace SramComparer.Helpers
+namespace SRAM.Comparison.Helpers
 {
 	public static class FileNameHelper
 	{

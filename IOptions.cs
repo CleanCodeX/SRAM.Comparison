@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using Common.Shared.Min.Attributes;
-using SramComparer.Helpers;
-using SramComparer.Properties;
+using SRAM.Comparison.Helpers;
+using SRAM.Comparison.Properties;
 
-namespace SramComparer
+namespace SRAM.Comparison
 {
 	/// <summary>Common interface for comparing S-RAM files</summary>
 	public interface IOptions

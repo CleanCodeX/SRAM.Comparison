@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using Common.Shared.Min.Attributes;
-using SramComparer.Properties;
+using SRAM.Comparison.Properties;
 
-namespace SramComparer
+namespace SRAM.Comparison
 {
 	/// <summary>Standard options implementation</summary>
 	/// <inheritdoc cref="IOptions"/>

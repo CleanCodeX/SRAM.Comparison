@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 // ReSharper disable MemberCanBePrivate.Local
 // ReSharper disable FieldCanBeMadeReadOnly.Local
 
-namespace SramComparer.Helpers
+namespace SRAM.Comparison.Helpers
 {
 	public static class PaletteHelper
 	{

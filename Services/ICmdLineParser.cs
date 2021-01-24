@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SramComparer.Services
+namespace SRAM.Comparison.Services
 {
 	/// <summary>
 	/// Interface for parsing command line options in either an existing instance or creating a new.

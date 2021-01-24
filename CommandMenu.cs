@@ -2,12 +2,12 @@
 using System.IO;
 using System.Reflection;
 using Common.Shared.Min.Extensions;
-using SramComparer.Enums;
-using SramComparer.Helpers;
-using SramComparer.Properties;
-using SramComparer.Services;
+using SRAM.Comparison.Enums;
+using SRAM.Comparison.Helpers;
+using SRAM.Comparison.Properties;
+using SRAM.Comparison.Services;
 
-namespace SramComparer
+namespace SRAM.Comparison
 {
 	/// <summary>Starts a cmd menu loop.</summary>
 	public class CommandMenu

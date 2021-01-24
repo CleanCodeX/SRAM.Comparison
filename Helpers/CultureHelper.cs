@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Globalization;
-using SramComparer.Services;
+using SRAM.Comparison.Services;
 
-namespace SramComparer.Helpers
+namespace SRAM.Comparison.Helpers
 {
 	public static class CultureHelper
 	{

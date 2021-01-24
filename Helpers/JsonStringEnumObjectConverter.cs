@@ -2,7 +2,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace SramComparer.Helpers
+namespace SRAM.Comparison.Helpers
 {
 	public class JsonStringEnumObjectConverter : JsonConverter<Enum>
 	{

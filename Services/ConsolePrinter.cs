@@ -1,14 +1,14 @@
 ﻿using Common.Shared.Min.Extensions;
-using SramCommons.Extensions;
-using SramComparer.Enums;
-using SramComparer.Extensions;
+using IO.Extensions;
+using SRAM.Comparison.Enums;
+using SRAM.Comparison.Extensions;
 using System;
 using System.IO;
 using System.Linq;
-using SramComparer.Helpers;
-using Res = SramComparer.Properties.Resources;
+using SRAM.Comparison.Helpers;
+using Res = SRAM.Comparison.Properties.Resources;
 
-namespace SramComparer.Services
+namespace SRAM.Comparison.Services
 {
 	/// <summary>Standard implementation for common print functionality</summary>
 	public class ConsolePrinter: IConsolePrinter

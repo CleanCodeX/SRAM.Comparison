@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SramComparer.Extensions
+namespace SRAM.Comparison.Extensions
 {
 	public static class StringExtensions
 	{

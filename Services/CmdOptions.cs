@@ -1,4 +1,4 @@
-﻿namespace SramComparer.Services
+﻿namespace SRAM.Comparison.Services
 {
 	/// <summary>
 	/// Set of possible command arguments
