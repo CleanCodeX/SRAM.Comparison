@@ -23,8 +23,8 @@ namespace SramComparer.Services
 	/// <summary>
 	/// This class handles all standard commands
 	/// </summary>
-	/// <typeparam name="TSramFile">The SRAM file structure</typeparam>
-	/// <typeparam name="TSaveSlot">The SRAM game structure</typeparam>
+	/// <typeparam name="TSramFile">The S-RAM file structure</typeparam>
+	/// <typeparam name="TSaveSlot">The S-RAM game structure</typeparam>
 	public abstract class CommandHandler<TSramFile, TSaveSlot> : ICommandHandler<TSramFile, TSaveSlot>
 		where TSramFile : class, IMultiSegmentFile<TSaveSlot>, IRawSave
 		where TSaveSlot : struct
@@ -118,11 +118,14 @@ namespace SramComparer.Services
 				case Commands.Guide_Savestate:
 					ConsolePrinter.PrintGuide(GuideSavestateFileName);
 					break;
-				case Commands.Sbc:
-					options.ComparisonFlags = InvertIncludeFlag(options.ComparisonFlags, ComparisonFlags.SlotByteByByteComparison);
+				case Commands.ChecksumStatus:
+					options.ComparisonFlags = InvertIncludeFlag(options.ComparisonFlags, ComparisonFlags.ChecksumStatus);
 					break;
-				case Commands.Nsbc:
-					options.ComparisonFlags = InvertIncludeFlag(options.ComparisonFlags, ComparisonFlags.NonSlotByteByByteComparison);
+				case Commands.SlotByteComp:
+					options.ComparisonFlags = InvertIncludeFlag(options.ComparisonFlags, ComparisonFlags.SlotByteComparison);
+					break;
+				case Commands.NonSlotComp:
+					options.ComparisonFlags = InvertIncludeFlag(options.ComparisonFlags, ComparisonFlags.NonSlotComparison);
 					break;
 				case Commands.SetSlot:
 					options.CurrentFileSaveSlot = GetSaveSlotId(maxSaveSlotId: 4);
@@ -218,7 +221,7 @@ namespace SramComparer.Services
 
 		#endregion Command Handling
 
-		#region Compare SRAM
+		#region Compare S-RAM
 
 		/// <inheritdoc cref="ICommandHandler{TSramFile,TSaveSlot}.Compare{TComparer}(IOptions)"/>
 		public virtual void Compare<TComparer>(IOptions options)
@@ -310,7 +313,7 @@ namespace SramComparer.Services
 
 		protected abstract Stream GetSramFromSavestate(string? savestateType, Stream stream);
 
-		#endregion Compare SRAM
+		#endregion Compare S-RAM
 
 		#region Export comparison Result
 

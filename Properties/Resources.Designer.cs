@@ -70,15 +70,6 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die This tool compares areas of SRAM. ähnelt.
-        /// </summary>
-        public static string AppDescription {
-            get {
-                return ResourceManager.GetString("AppDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die bytes ähnelt.
         /// </summary>
         public static string Bytes {
@@ -412,6 +403,15 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Show save slot checksum status ähnelt.
+        /// </summary>
+        public static string CmdShowChecksumStatus {
+            get {
+                return ResourceManager.GetString("CmdShowChecksumStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Add slot byte-by-byte comparison ähnelt.
         /// </summary>
         public static string CmdSlotByteByBytesComparison {
@@ -547,7 +547,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die SRAM ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die S-RAM ähnelt.
         /// </summary>
         public static string CompSram {
             get {
@@ -700,6 +700,15 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Show save slot checksum status ähnelt.
+        /// </summary>
+        public static string EnumChecksumStatus {
+            get {
+                return ResourceManager.GetString("EnumChecksumStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Comparison file ähnelt.
         /// </summary>
         public static string EnumComparisonFile {
@@ -745,20 +754,11 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die None ähnelt.
-        /// </summary>
-        public static string EnumNone {
-            get {
-                return ResourceManager.GetString("EnumNone", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Non-slot byte-by-byte comparison ähnelt.
         /// </summary>
-        public static string EnumNonSlotByteByByteComparison {
+        public static string EnumNonSlotComparison {
             get {
-                return ResourceManager.GetString("EnumNonSlotByteByByteComparison", resourceCulture);
+                return ResourceManager.GetString("EnumNonSlotComparison", resourceCulture);
             }
         }
         
@@ -801,9 +801,9 @@ namespace SramComparer.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Slot byte-by-byte comparison ähnelt.
         /// </summary>
-        public static string EnumSlotByteByByteComparison {
+        public static string EnumSlotByteComparison {
             get {
-                return ResourceManager.GetString("EnumSlotByteByByteComparison", resourceCulture);
+                return ResourceManager.GetString("EnumSlotByteComparison", resourceCulture);
             }
         }
         
@@ -1042,7 +1042,7 @@ namespace SramComparer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die SRAM offset ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die S-RAM offset ähnelt.
         /// </summary>
         public static string SramOffset {
             get {

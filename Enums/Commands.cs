@@ -23,17 +23,20 @@ namespace SramComparer.Enums
 		[DisplayNameLocalized(nameof(Res.CmdGuideSavestate), typeof(Res))]
 		Guide_Savestate, // Manual (savestate) 
 
-		[DisplayNameLocalized(nameof(Res.EnumSlotByteByByteComparison), typeof(Res))]
-		Sbc, // Enables or disables slot byte by byte comparison => compares the save slot area by by byte
+		[DisplayNameLocalized(nameof(Res.EnumSlotByteComparison), typeof(Res))]
+		SlotByteComp, // Enables or disables slot byte by byte comparison => compares the save slot area by by byte
 
-		[DisplayNameLocalized(nameof(Res.EnumNonSlotByteByByteComparison), typeof(Res))]
-		Nsbc, // Enables or disables non-slot byte by byte comparison => compares the non-save slot area byte by byte
+		[DisplayNameLocalized(nameof(Res.EnumNonSlotComparison), typeof(Res))]
+		NonSlotComp, // Enables or disables non-slot byte by byte comparison => compares the non-save slot area byte by byte
 
 		[DisplayNameLocalized(nameof(Res.CmdSetCurrentSrramFileSaveSlot), typeof(Res))]
 		SetSlot, // Sets the save slot for the current file
 
 		[DisplayNameLocalized(nameof(Res.CmdSetComparisonFileSaveSlot), typeof(Res))]
 		SetSlot_Comp, // Sets the save slot for the comparison file
+
+		[DisplayNameLocalized(nameof(Res.CmdShowChecksumStatus), typeof(Res))]
+		ChecksumStatus, // Shows save slot checksum status
 
 		[DisplayNameLocalized(nameof(Res.CmdCompareFiles), typeof(Res))]
 		Compare, // Starts the comparison
@@ -115,6 +118,9 @@ namespace SramComparer.Enums
 		BC = Commands.Backup_Comp,
 		R = Commands.Restore,
 		RC = Commands.Restore_Comp,
+		SBC = Commands.SlotByteComp,
+		NSC = Commands.NonSlotComp,
+		CS = Commands.ChecksumStatus,
 		T = Commands.Transfer,
 		Cls = Commands.Clear,
 		W = Commands.Clear,
