@@ -36,12 +36,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CCX.SramCommons" Version="1.2.0-a1" />
+    <PackageReference Include="CCX.SramCommons" Version="1.2.0-a2" />
     <PackageReference Include="System.ComponentModel.TypeConverter" Version="4.3.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\SramCommons\SramCommons.csproj" />
   </ItemGroup>
 
   <ItemGroup>
