@@ -432,13 +432,22 @@
 	<data name="StatusCompFileOverwritten" xml:space="preserve">
 		<value>Die Vergleichs-Datei wurde überschrieben.</value>
 	</data>
-	<data name="EnumAppendToAppLogFile" xml:space="preserve">
-		<value>Die Export-Daten an das Anwendungs-Log hinzufügen</value>
-	</data>
 	<data name="EnumChecksumStatus" xml:space="preserve">
 		<value>Speicherslot Prüfsummenstatus anzeigen</value>
 	</data>
 	<data name="CmdShowChecksumStatus" xml:space="preserve">
 		<value>Speicherslot Prüfsummenstatus anzeigen</value>
+	</data>
+	<data name="EnumLogFlags" xml:space="preserve">
+		<value>Log-Optionen</value>
+	</data>
+	<data name="EnumComparisonFlags" xml:space="preserve">
+		<value>Vergleichs-Optionen</value>
+	</data>
+	<data name="EnumLogExport" xml:space="preserve">
+		<value>Protokollierung bei Export</value>
+	</data>
+	<data name="EnumLogComparison" xml:space="preserve">
+		<value>Protokollierung bei Vergleich</value>
 	</data>
 </root>

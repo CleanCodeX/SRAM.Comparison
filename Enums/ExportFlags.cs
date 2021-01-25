@@ -21,8 +21,5 @@ namespace SRAM.Comparison.Enums
 
 		[DisplayNameLocalized(nameof(Res.EnumDeleteCompFile), typeof(Res))]
 		DeleteComp = 0x10,
-
-		[DisplayNameLocalized(nameof(Res.EnumAppendToAppLogFile), typeof(Res))]
-		AppendLog = 0x20
 	}
 }

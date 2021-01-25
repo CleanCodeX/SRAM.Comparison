@@ -691,15 +691,6 @@ namespace SRAM.Comparison.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Append export data to the applications log file ähnelt.
-        /// </summary>
-        public static string EnumAppendToAppLogFile {
-            get {
-                return ResourceManager.GetString("EnumAppendToAppLogFile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Show save slot checksum status ähnelt.
         /// </summary>
         public static string EnumChecksumStatus {
@@ -714,6 +705,15 @@ namespace SRAM.Comparison.Properties {
         public static string EnumComparisonFile {
             get {
                 return ResourceManager.GetString("EnumComparisonFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Comparison options ähnelt.
+        /// </summary>
+        public static string EnumComparisonFlags {
+            get {
+                return ResourceManager.GetString("EnumComparisonFlags", resourceCulture);
             }
         }
         
@@ -750,6 +750,33 @@ namespace SRAM.Comparison.Properties {
         public static string EnumGameRegion {
             get {
                 return ResourceManager.GetString("EnumGameRegion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Log when compared ähnelt.
+        /// </summary>
+        public static string EnumLogComparison {
+            get {
+                return ResourceManager.GetString("EnumLogComparison", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Log when exported ähnelt.
+        /// </summary>
+        public static string EnumLogExport {
+            get {
+                return ResourceManager.GetString("EnumLogExport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Log options ähnelt.
+        /// </summary>
+        public static string EnumLogFlags {
+            get {
+                return ResourceManager.GetString("EnumLogFlags", resourceCulture);
             }
         }
         

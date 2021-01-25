@@ -537,13 +537,22 @@
   <data name="StatusCompFileOverwritten" xml:space="preserve">
     <value>The comparison file has been overwritten.</value>
   </data>
-  <data name="EnumAppendToAppLogFile" xml:space="preserve">
-    <value>Append export data to the applications log file</value>
-  </data>
   <data name="EnumChecksumStatus" xml:space="preserve">
     <value>Show save slot checksum status</value>
   </data>
   <data name="CmdShowChecksumStatus" xml:space="preserve">
     <value>Show save slot checksum status</value>
+  </data>
+  <data name="EnumLogFlags" xml:space="preserve">
+    <value>Log options</value>
+  </data>
+  <data name="EnumComparisonFlags" xml:space="preserve">
+    <value>Comparison options</value>
+  </data>
+  <data name="EnumLogExport" xml:space="preserve">
+    <value>Log when exported</value>
+  </data>
+  <data name="EnumLogComparison" xml:space="preserve">
+    <value>Log when compared</value>
   </data>
 </root>

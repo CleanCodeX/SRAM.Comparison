@@ -1,4 +1,5 @@
-﻿using IO.Models;
+﻿using System.IO;
+using IO.Models;
 
 namespace SRAM.Comparison.Services
 {
@@ -14,13 +15,13 @@ namespace SRAM.Comparison.Services
 		/// <param name="compFile">The comparison S-RAM file structure</param>
 		/// <param name="options">The options to be used for all comparisons</param>
 		/// <returns>Number of compared bytes changed</returns>
-		int CompareSram(TSramFile currFile, TSramFile compFile, IOptions options);
+		int CompareSram(TSramFile currFile, TSramFile compFile, IOptions options, TextWriter? output = null);
 
-		/// <summary>Compares all games of S-RAM structure</summary>
-		/// <param name="currSlot">The current S-RAM save slot structure</param>
-		/// <param name="compSlot">The comparison S-RAM save slot structure</param>
-		/// <param name="options">The options to be used for all comparisons</param>
-		/// <returns>Number of compared bytes changed</returns>
-		int CompareSaveSlot(TSaveSlot currSlot, TSaveSlot compSlot, IOptions options);
+		///// <summary>Compares a single save slot</summary>
+		///// <param name="currSlot">The current save slot</param>
+		///// <param name="compSlot">The comparison save slot</param>
+		///// <param name="options">The options to be used for comparison</param>
+		///// <returns>Number of compared bytes changed</returns>
+		//int CompareSaveSlot(TSaveSlot currSlot, TSaveSlot compSlot, IOptions options);
 	}
 }

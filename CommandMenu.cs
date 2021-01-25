@@ -40,7 +40,7 @@ namespace SRAM.Comparison
 
 			consolePrinter.PrintConfig(options);
 
-			if (!File.Exists(FileNameHelper.GetComparisonFilePath(options)))
+			if (!File.Exists(FilePathHelper.GetComparisonFilePath(options)))
 				commandHandler.RunCommand(nameof(Commands.OverwriteComp), options);
 
 			consolePrinter.PrintStartMessage();

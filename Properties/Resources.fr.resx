@@ -444,13 +444,22 @@
 	<data name="StatusCompFileOverwritten" xml:space="preserve">
 		<value>Le fichier de comparaison a été écrasé.</value>
 	</data>
-	<data name="EnumAppendToAppLogFile" xml:space="preserve">
-		<value>Ajouter les données d'exportation au fichier journal de l'application</value>
-	</data>
 	<data name="EnumChecksumStatus" xml:space="preserve">
 		<value>Afficher l'état de la somme de contrôle de l'emplacement de sauvegarde</value>
 	</data>
 	<data name="CmdShowChecksumStatus" xml:space="preserve">
 		<value>Afficher l'état de la somme de contrôle de l'emplacement de sauvegarde</value>
+	</data>
+	<data name="EnumLogFlags" xml:space="preserve">
+		<value>Options de journal</value>
+	</data>
+	<data name="EnumComparisonFlags" xml:space="preserve">
+		<value>Options de comparaison</value>
+	</data>
+	<data name="EnumLogExport" xml:space="preserve">
+		<value>Journal lors de l'exportation</value>
+	</data>
+	<data name="EnumLogComparison" xml:space="preserve">
+		<value>Journal par rapport</value>
 	</data>
 </root>

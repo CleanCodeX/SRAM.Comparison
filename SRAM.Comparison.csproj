@@ -11,19 +11,20 @@
     <PackageLicenseFile></PackageLicenseFile>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <RepositoryUrl>https://github.com/CleanCodeX/SRAM.Comparison</RepositoryUrl>
-    <PackageProjectUrl></PackageProjectUrl>
+    <PackageProjectUrl>http://libs.softwaretechnik.IT</PackageProjectUrl>
     <Description>These library provides base functionalities to read and compare changes in srm files as well as snes9x savestates with .NET 5. An actual implementation for an individual game is necessary. See other repos.</Description>
     <PackageReleaseNotes></PackageReleaseNotes>
     <PackageId>CCX.SRAM.Comparison</PackageId>
-    <Product>SRAM.Comparison</Product>
+    <Product>S-RAM Comparison</Product>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Platforms>AnyCPU</Platforms>
     <PackageTags>S-RAM, SNES, S-RAM, Super Nintendo, Comparer, Comparison, Super Famicon, Savestate</PackageTags>
+    <RepositoryType>Comparison</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CCX.SRAM" Version="1.0.0-a1" />
-    <PackageReference Include="CCX.IO" Version="1.0.0-a1" />
+    <PackageReference Include="CCX.IO" Version="1.0.0-a4" />
+    <PackageReference Include="CCX.SRAM" Version="1.0.0-a2" />
     <PackageReference Include="System.ComponentModel.TypeConverter" Version="4.3.0" />
   </ItemGroup>
 
