@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Common.Shared.Min.Extensions;
+using SRAM.Comparison.Enums;
 using SRAM.Comparison.Extensions;
 using SRAM.Comparison.Properties;
 // ReSharper disable StaticMemberInGenericType
@@ -15,14 +16,37 @@ namespace SRAM.Comparison.Services
 	/// Standard implementation of <see cref="ICmdLineParser"/>
 	/// </summary>
 	/// <typeparam name="TOptions">The options's type t be parsed into</typeparam>
-	/// <typeparam name="TRomRegion">The game file's region enum</typeparam>
-	/// <typeparam name="TExportOptions">The game's export options flags enum</typeparam>
+	/// <typeparam name="TGameRegion">The game file's region enum</typeparam>
+	public class CmdLineParser<TOptions, TGameRegion> : CmdLineParser<TOptions, TGameRegion, ComparisonFlags>
+		where TOptions : Options<TGameRegion>, new()
+		where TGameRegion : struct, Enum
+	{ }
+
+	/// <inheritdoc cref="CmdLineParser{TOptions,TGameRegion}"/>
 	/// <typeparam name="TComparisonFlags">The game's comparison flags enum</typeparam>
-	public class CmdLineParser<TOptions, TRomRegion, TComparisonFlags, TExportOptions> : ICmdLineParser
-		where TOptions : Options<TRomRegion, TComparisonFlags, TExportOptions>, new()
-		where TRomRegion : struct, Enum
+	public class CmdLineParser<TOptions, TGameRegion, TComparisonFlags> : CmdLineParser<TOptions, TGameRegion, TComparisonFlags, ExportFlags>
+		where TOptions : Options<TGameRegion, TComparisonFlags>, new()
+		where TGameRegion : struct, Enum
 		where TComparisonFlags : struct, Enum
-		where TExportOptions : struct, Enum
+	{ }
+
+	/// <inheritdoc cref="CmdLineParser{TOptions,TGameRegion,TComparisonFlags}"/>
+	/// <typeparam name="TExportFlags">The game's export flags enum</typeparam>
+	public class CmdLineParser<TOptions, TGameRegion, TComparisonFlags, TExportFlags> : CmdLineParser<TOptions, TGameRegion, TComparisonFlags, TExportFlags, LogFlags>
+		where TOptions : Options<TGameRegion, TComparisonFlags, TExportFlags>, new()
+		where TGameRegion : struct, Enum
+		where TComparisonFlags : struct, Enum
+		where TExportFlags : struct, Enum
+	{}
+
+	/// <inheritdoc cref="CmdLineParser{TOptions,TGameRegion,TComparisonFlags,TExportFlags}"/>
+	/// <typeparam name="TLogFlags">The game's comparison flags enum</typeparam>
+	public class CmdLineParser<TOptions, TGameRegion, TComparisonFlags, TExportFlags, TLogFlags> : ICmdLineParser
+		where TOptions : Options<TGameRegion, TComparisonFlags, TExportFlags, TLogFlags>, new()
+		where TGameRegion : struct, Enum
+		where TComparisonFlags : struct, Enum
+		where TExportFlags : struct, Enum
+		where TLogFlags : struct, Enum
 	{
 		private static readonly string[] AllowedFileExtensions = { ".srm", ".comp", ".state", ".000", ".001", ".002", ".003", ".004", ".005", ".006", ".007", ".008", ".009" };
 
@@ -49,14 +73,14 @@ namespace SRAM.Comparison.Services
 				var value = args[i];
 				if (value.StartsWith("--")) break;
 
-				if (Enum.TryParse<TRomRegion>(value, true, out var romRegion))
+				if (Enum.TryParse<TGameRegion>(value, true, out var romRegion))
 				{
 					options.GameRegion = romRegion;
 					++namelessParamCount;
 				}
 				else if (File.Exists(value) || File.Exists(Path.Join(directory, value)))
 				{
-					options.ComparisonFilePath = value;
+					options.ComparisonPath = value;
 					++namelessParamCount;
 				}
 			}
@@ -82,20 +106,26 @@ namespace SRAM.Comparison.Services
 					case CmdOptions.BatchCommands:
 						options.BatchCommands = value.IsNullOrEmpty() ? null : value;
 						break;
-					case CmdOptions.ComparisonFile:
-						options.ComparisonFilePath = value;
+					case CmdOptions.ComparisonPath:
+						options.ComparisonPath = value;
 						break;
 					case CmdOptions.ComparisonFlags:
 						options.ComparisonFlags = value.ParseEnum<TComparisonFlags>();
 						break;
 					case CmdOptions.GameRegion:
-						options.GameRegion = value.ParseEnum<TRomRegion>();
+						options.GameRegion = value.ParseEnum<TGameRegion>();
 						break;
-					case CmdOptions.ExportDirectory:
-						options.ExportDirectory = value;
+					case CmdOptions.ExportPath:
+						options.ExportPath = value;
 						break;
 					case CmdOptions.ExportFlags:
-						options.ExportFlags = value.ParseEnum<TExportOptions>();
+						options.ExportFlags = value.ParseEnum<TExportFlags>();
+						break;
+					case CmdOptions.LogPath:
+						options.LogPath = value;
+						break;
+					case CmdOptions.LogFlags:
+						options.ExportFlags = value.ParseEnum<TLogFlags>();
 						break;
 					case CmdOptions.CurrentSaveSlot:
 						options.CurrentFileSaveSlot = value.ParseSaveSlotId();
@@ -112,24 +142,24 @@ namespace SRAM.Comparison.Services
 					case CmdOptions.ComparisonResultLanguage:
 						options.ComparisonResultLanguage = value;
 						break;
-					case CmdOptions.ConfigFilePath:
+					case CmdOptions.ConfigPath:
 						var configExtension = ".json";
 						var extension = Path.GetExtension(value);
 						if (extension.IsNotNullOrEmpty() && extension != configExtension)
 							throw new ArgumentException(Resources.ErrorInvalidFileExtensionTemplate.InsertArgs(Resources.Config, value, configExtension));
 
-						options.ConfigFilePath = value;
+						options.ConfigPath = value;
 						break;
 					case { } when cmdName.StartsWith("--"):
-						options.Custom[cmdName.Substring(2)] = value;
+						options.CustomOptions[cmdName.Substring(2)] = value;
 
 						break;
 				}
 			}
 
 #if Check_FileExtensions
-			if (options.ComparisonFilePath.IsNotNullOrEmpty() && !AllowedFileExtensions.Contains(Path.GetExtension(options.ComparisonFilePath!).ToLower()))
-				throw new ArgumentException(Resources.ErrorInvalidFileExtensionTemplate.InsertArgs(Resources.CompComparison,  options.ComparisonFilePath, AllowedFileExtensions.Join()));
+			if (options.ComparisonPath.IsNotNullOrEmpty() && !AllowedFileExtensions.Contains(Path.GetExtension(options.ComparisonPath!).ToLower()))
+				throw new ArgumentException(Resources.ErrorInvalidFileExtensionTemplate.InsertArgs(Resources.CompComparison,  options.ComparisonPath, AllowedFileExtensions.Join()));
 #endif
 
 			return options;

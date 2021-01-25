@@ -19,7 +19,7 @@ namespace SRAM.Comparison.Services
 			PrintColoredLine(ConsoleColor.Gray, Res.Config + @":");
 
 			PrintConfigLine(Res.ConfigCurrentFilePath, "{0}", Path.GetFileName(options.CurrentFilePath!));
-			PrintConfigLine(Res.ConfigComparisonFilePath, "{1-2}|" + CmdOptions.ComparisonFile, Path.GetFileName(FileNameHelper.GetComparisonFilePath(options)));
+			PrintConfigLine(Res.ConfigComparisonFilePath, "{1-2}|" + CmdOptions.ComparisonPath, Path.GetFileName(FilePathHelper.GetComparisonFilePath(options)));
 
 			PrintConfigLine(Res.EnumGameRegion, $"{"{1-2}|" + CmdOptions.GameRegion} [{string.Join("|", Enum.GetNames(options.GameRegion.GetType()))}]", options.GameRegion.ToString());
 
@@ -27,7 +27,7 @@ namespace SRAM.Comparison.Services
 			PrintConfigName(Environment.NewLine, padRightDistance: 37);
 			PrintValue(options.ComparisonFlags.ToFlagsString());
 
-			PrintConfigLine(Res.ConfigExportDirectory, CmdOptions.ExportDirectory, options.ExportDirectory ?? Path.GetDirectoryName(options.CurrentFilePath)!);
+			PrintConfigLine(Res.ConfigExportDirectory, CmdOptions.ExportPath, options.ExportPath ?? Path.GetDirectoryName(options.CurrentFilePath)!);
 
 			PrintConfigName(Res.ConfigExportFlags, $@"{CmdOptions.ExportFlags} [{string.Join(",", Enum.GetNames(options.ExportFlags.GetType()))}]");
 			PrintConfigName(Environment.NewLine, padRightDistance: 37);
@@ -40,7 +40,7 @@ namespace SRAM.Comparison.Services
 			PrintConfigLine(Res.ConfigColorizeOutput, $"{CmdOptions.ColorizeOutput} [true|1|false|0]", options.ColorizeOutput.ToString());
 			PrintConfigLine(Res.ConfigUILanguage, CmdOptions.UILanguage, options.UILanguage!);
 			PrintConfigLine(Res.ConfigComparisonResultLanguage, CmdOptions.ComparisonResultLanguage, options.ComparisonResultLanguage!);
-			PrintConfigLine(Res.ConfigFilePath, CmdOptions.ConfigFilePath, options.ConfigFilePath!);
+			PrintConfigLine(Res.ConfigFilePath, CmdOptions.ConfigPath, options.ConfigPath!);
 		}
 
 		public void PrintConfigLine(string name, string value) => PrintConfigLine(name, null!, value);

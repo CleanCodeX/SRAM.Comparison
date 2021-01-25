@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 using Common.Shared.Min.Extensions;
 using IO.Models;
 using SRAM.Comparison.Helpers;
@@ -21,11 +22,29 @@ namespace SRAM.Comparison.Services
 		protected SramComparerBase() : this(ServiceCollection.ConsolePrinter) { }
 		protected SramComparerBase(IConsolePrinter consolePrinter) => ConsolePrinter = consolePrinter;
 
-		/// <inheritdoc cref="ISramComparer{TSramFile,TSaveSlot}.CompareSram(TSramFile, TSramFile, IOptions)"/>
-		public abstract int CompareSram(TSramFile currFile, TSramFile compFile, IOptions options);
+		/// <inheritdoc cref="ISramComparer{TSramFile,TSaveSlot}.CompareSram(TSramFile, TSramFile, IOptions, TextWriter?)"/>
+		public virtual int CompareSram(TSramFile currFile, TSramFile compFile, IOptions options, TextWriter? output = null)
+		{
+			try
+			{
+				using (new TemporaryConsoleOutputSetter(output))
+					return OnCompareSram(currFile, compFile, options);
+			}
+			finally
+			{
+				if (!Console.IsOutputRedirected)
+					Console.Out.Write(output);
+			}
+		}
 
-		/// <inheritdoc cref="ISramComparer{TSramFile,TSaveSlot}.CompareSaveSlot"/>
-		public abstract int CompareSaveSlot(TSaveSlot currSlot, TSaveSlot compSlot, IOptions options);
+		protected abstract int OnCompareSram(TSramFile currFile, TSramFile compFile, IOptions options);
+
+		/// <summary>Compares a single save slot</summary>
+		/// <param name="currSlot">The current save slot</param>
+		/// <param name="compSlot">The comparison save slot</param>
+		/// <param name="options">The options to be used for comparison</param>
+		/// <returns>Number of compared bytes changed</returns>
+		protected abstract int OnCompareSaveSlot(TSaveSlot currSlot, TSaveSlot compSlot, IOptions options);
 
 		/// <summary>
 		/// Compares a single byte

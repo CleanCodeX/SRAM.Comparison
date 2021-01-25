@@ -24,24 +24,25 @@ namespace SRAM.Comparison
 		/// <summary>
 		/// The filepath to load the comparison S-RAM file from. if <see cref="CurrentFilePath"/> is set, it will be automatically filled from that
 		/// </summary>
-		string? ComparisonFilePath { get; set; }
+		string? ComparisonPath { get; set; }
 
-		/// <summary>Optional save slot specific flags for comparisons</summary>
+		/// <summary>Optional save slot specific options for comparisons</summary>
 		[JsonConverter(typeof(JsonStringEnumObjectConverter))]
+		[DisplayNameLocalized(nameof(Resources.EnumComparisonFlags), typeof(Resources))]
 		Enum ComparisonFlags { get; set; }
 
 		/// <summary>
-		/// If set, this directory will be used for exporting comparisons, otherwise the directory of <see cref="CurrentFilePath" />
+		/// If set, this file or directory will be used for exporting comparisons, otherwise the directory of <see cref="CurrentFilePath" />
 		/// </summary>
-		string? ExportDirectory { get; set; }
+		string? ExportPath { get; set; }
 
 		/// <summary>Options to control exporting the comparison result into a file</summary>
 		[JsonConverter(typeof(JsonStringEnumObjectConverter))]
 		[DisplayNameLocalized(nameof(Resources.EnumExportFlags), typeof(Resources))]
 		Enum ExportFlags { get; set; }
 
-		/// <summary>Optional custom cmd params</summary>
-		Dictionary<string, string> Custom { get; set; } 
+		/// <summary>Custom options</summary>
+		Dictionary<string, string> CustomOptions { get; set; } 
 
 		/// <summary>
 		/// Gets or sets if only a specific save slot of current-S-RAM file should be compared. If zero (default), all save slots will be compared.
@@ -65,7 +66,15 @@ namespace SRAM.Comparison
 		/// <summary>The language in which the comparison result should be displayed</summary>
 		string? ComparisonResultLanguage { get; set; }
 
-		/// <summary>If set, this config file will be used, otherwise the default file in the directory of <see cref="CurrentFilePath" /></summary>
-		string? ConfigFilePath { get; set; }
+		/// <summary>If set, this config file or directory will be used, otherwise the default file in the directory of <see cref="CurrentFilePath" /></summary>
+		string? ConfigPath { get; set; }
+
+		/// <summary>If set, this log file or directory will be used, otherwise the default file in the directory of <see cref="CurrentFilePath" /></summary>
+		string? LogPath { get; set; }
+
+		/// <summary>Options to control logging</summary>
+		[JsonConverter(typeof(JsonStringEnumObjectConverter))]
+		[DisplayNameLocalized(nameof(Resources.EnumLogFlags), typeof(Resources))]
+		Enum LogFlags { get; set; }
 	}
 }

@@ -35,7 +35,7 @@ namespace SRAM.Comparison.Services
 		
 		private const string GuideSrmFileName = "guide-srm";
 		private const string GuideSavestateFileName = "guide-savestate";
-		private const string ExportLogFile = "Exports.log";
+		private const string LogFile = "Log.txt";
 
 		public static readonly string KeyBindingsFileName = "KeyBindings.json";
 		public static readonly string DefaultConfigFileName = $"{DefaultConfigName}.json";
@@ -61,7 +61,7 @@ namespace SRAM.Comparison.Services
 		{
 			ConsoleHelper.SetInitialConsoleSize();
 
-			using (new TemporaryOutputSetter(output))
+			using (new TemporaryConsoleOutputSetter(output))
 			{
 				if (options.CurrentFilePath.IsNullOrEmpty())
 				{
@@ -186,12 +186,12 @@ namespace SRAM.Comparison.Services
 
 					break;
 				case Commands.AutoLoadOn:
-					options.ConfigFilePath = $"{GetConfigName() ?? DefaultConfigName}.json";
+					options.ConfigPath = $"{GetConfigName() ?? DefaultConfigName}.json";
 					SaveConfig(options, DefaultConfigFileName);
 
 					break;
 				case Commands.AutoLoadOff:
-					options.ConfigFilePath = null;
+					options.ConfigPath = null;
 					SaveConfig(options, DefaultConfigFileName);
 
 					break;
@@ -226,8 +226,8 @@ namespace SRAM.Comparison.Services
 		public virtual void Compare<TComparer>(IOptions options)
 			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new()
 		{
-			var comparisonFilePath = FileNameHelper.GetComparisonFilePath(options);
-			Requires.FileExists(comparisonFilePath, nameof(options.ComparisonFilePath), Resources.ErrorComparisonFileDoesNotExist);
+			var comparisonFilePath = FilePathHelper.GetComparisonFilePath(options);
+			Requires.FileExists(comparisonFilePath, nameof(options.ComparisonPath), Resources.ErrorComparisonFileDoesNotExist);
 
 			using var currFileStream = (Stream)new FileStream(options.CurrentFilePath!, FileMode.Open, FileAccess.Read, FileShare.Read);
 			using var compFileStream = (Stream)new FileStream(comparisonFilePath, FileMode.Open, FileAccess.Read, FileShare.Read);
@@ -239,7 +239,7 @@ namespace SRAM.Comparison.Services
 		public void Compare<TComparer>(IOptions options, TextWriter output) 
 			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new()
 		{
-			using (new TemporaryOutputSetter(output))
+			using (new TemporaryConsoleOutputSetter(output))
 				Compare<TComparer>(options);
 
 			ConsolePrinter.ResetColor();
@@ -249,30 +249,16 @@ namespace SRAM.Comparison.Services
 		public virtual void Compare<TComparer>(Stream currStream, Stream compStream, IOptions options, TextWriter output)
 			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new()
 		{
-			using (new TemporaryOutputSetter(output))
+			using (new TemporaryConsoleOutputSetter(output))
 				Compare<TComparer>(currStream, compStream, options);
-		}
-
-		private class TemporaryOutputSetter : IDisposable
-		{
-			private readonly TextWriter _oldOut = Console.Out;
-
-			public TemporaryOutputSetter(TextWriter? output)
-			{
-				if (output is null) return;
-
-				Console.SetOut(output);
-			}
-
-			public void Dispose() => Console.SetOut(_oldOut);
 		}
 
 		/// <inheritdoc cref="ICommandHandler{TSramFile,TSaveSlot}.Compare{TComparer}(Stream, Stream, IOptions)"/>
 		public virtual void Compare<TComparer>(Stream currStream, Stream compStream, IOptions options)
 			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new()
 		{
-			ConvertStreamIfSavestate(options, ref currStream, options.CurrentFilePath!, options.SavestateType);
-			ConvertStreamIfSavestate(options, ref compStream, FileNameHelper.GetComparisonFilePath(options), options.SavestateType);
+			ConvertStreamIfSavestate(options, ref currStream, options.CurrentFilePath!);
+			ConvertStreamIfSavestate(options, ref compStream, FilePathHelper.GetComparisonFilePath(options));
 
 			var currFile = ClassFactory.Create<TSramFile>(currStream, options.GameRegion);
 			var compFile = ClassFactory.Create<TSramFile>(compStream, options.GameRegion);
@@ -282,7 +268,22 @@ namespace SRAM.Comparison.Services
 
 			try
 			{
-				comparer.CompareSram(currFile, compFile, options);
+				if (!options.LogFlags.HasFlag(LogFlags.Comparison))
+				{
+					comparer.CompareSram(currFile, compFile, options);
+					return;
+				}
+
+				using var ms = new MemoryStream();
+				{
+					using (var writer = new StreamWriter(ms, leaveOpen: true))
+						comparer.CompareSram(currFile, compFile, options, writer);
+
+					using var logStream = new FileStream(FilePathHelper.GetLogFilePath(options, LogFile),
+						FileMode.Append, FileAccess.Write, FileShare.Read);
+					ms.Position = 0;
+					ms.CopyTo(logStream);
+				}
 			}
 			finally
 			{
@@ -292,7 +293,7 @@ namespace SRAM.Comparison.Services
 			}
 		}
 
-		protected virtual bool ConvertStreamIfSavestate(IOptions options, ref Stream stream, string? filePath, string? savestateType)
+		protected virtual bool ConvertStreamIfSavestate(IOptions options, ref Stream stream, string? filePath)
 		{
 			if (filePath is null) return false;
 
@@ -322,10 +323,10 @@ namespace SRAM.Comparison.Services
 		{
 			string filePath;
 
-			if (Path.GetFileNameWithoutExtension(options.ExportDirectory) is not null)
+			if (Path.GetFileNameWithoutExtension(options.ExportPath) is not null)
 			{
-				var directoryPath = Path.GetDirectoryName(options.ExportDirectory) ?? Path.GetDirectoryName(options.CurrentFilePath);
-				var fileName = Path.GetFileNameWithoutExtension(options.ExportDirectory);
+				var directoryPath = Path.GetDirectoryName(options.ExportPath) ?? Path.GetDirectoryName(options.CurrentFilePath);
+				var fileName = Path.GetFileNameWithoutExtension(options.ExportPath);
 
 				filePath = Path.Join(directoryPath, fileName);
 			}
@@ -335,9 +336,9 @@ namespace SRAM.Comparison.Services
 
 				if (options.ExportFlags.HasFlag(ExportFlags.PromptName))
 				{
-					fileName = GetExportFileName(Path.IsPathRooted(options.ExportDirectory)
+					fileName = GetExportFileName(Path.IsPathRooted(options.ExportPath)
 						? null
-						: options.ExportDirectory!);
+						: options.ExportPath!);
 					if (fileName != string.Empty && Path.GetExtension(fileName) == string.Empty)
 						fileName += ".txt";
 				}
@@ -345,10 +346,10 @@ namespace SRAM.Comparison.Services
 				if (fileName.IsNullOrWhiteSpace())
 				{
 					fileName = Path.GetFileNameWithoutExtension(options.CurrentFilePath)!;
-					fileName = FileNameHelper.GenerateExportSaveFileName(fileName);
+					fileName = FilePathHelper.GenerateExportSaveFileName(fileName);
 				}
 
-				var directoryPath = options.ExportDirectory ?? Path.GetDirectoryName(options.CurrentFilePath);
+				var directoryPath = options.ExportPath ?? Path.GetDirectoryName(options.CurrentFilePath);
 
 				filePath = Path.Join(directoryPath, fileName);
 			}
@@ -365,6 +366,7 @@ namespace SRAM.Comparison.Services
 			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new()
 		{
 			var exportFlags = options.ExportFlags;
+			var logFlags = options.LogFlags;
 
 			var oldLanguage = options.ComparisonResultLanguage;
 			options.ComparisonResultLanguage = "en";
@@ -372,8 +374,7 @@ namespace SRAM.Comparison.Services
 			try
 			{
 				var directoryPath = Path.GetDirectoryName(filePath)!;
-				if(!Directory.Exists(directoryPath))
-					Directory.CreateDirectory(directoryPath);
+				FilePathHelper.EnsureDirectoryExists(directoryPath);
 
 				using (var ms = new MemoryStream())
 				{
@@ -386,8 +387,8 @@ namespace SRAM.Comparison.Services
 						ms.CopyTo(fileStream);
 					}
 
-					if (exportFlags.HasFlag(ExportFlags.AppendLog))
-						using (var logStream = new FileStream(ExportLogFile, FileMode.Append, FileAccess.Write, FileShare.Read))
+					if (logFlags.HasFlag(LogFlags.Export))
+						using (var logStream = new FileStream(FilePathHelper.GetLogFilePath(options, LogFile), FileMode.Append, FileAccess.Write, FileShare.Read))
 						{
 							ms.Position = 0;
 							ms.CopyTo(logStream);
@@ -398,7 +399,7 @@ namespace SRAM.Comparison.Services
 				ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow,
 					Resources.StatusCurrentComparisonExportedTemplate.InsertArgs(filePath));
 
-				var comparisonFilePath = FileNameHelper.GetComparisonFilePath(options);
+				var comparisonFilePath = FilePathHelper.GetComparisonFilePath(options);
 
 				if (exportFlags.HasFlag(ExportFlags.DeleteComp))
 				{
@@ -482,7 +483,7 @@ namespace SRAM.Comparison.Services
 
 			Stream currStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
 
-			ConvertStreamIfSavestate(options, ref currStream, filePath, options.SavestateType);
+			ConvertStreamIfSavestate(options, ref currStream, filePath);
 
 			var currFile = ClassFactory.Create<TSramFile>(currStream, options.GameRegion);
 
@@ -613,7 +614,7 @@ namespace SRAM.Comparison.Services
 		{
 			ConsolePrinter.PrintSectionHeader();
 
-			File.Copy(options.CurrentFilePath!, FileNameHelper.GetComparisonFilePath(options), true);
+			File.Copy(options.CurrentFilePath!, FilePathHelper.GetComparisonFilePath(options), true);
 
 			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusCurrentFileSaved);
 			ConsolePrinter.ResetColor();
@@ -723,7 +724,7 @@ namespace SRAM.Comparison.Services
 
 		public virtual void BackupSaveFile(IOptions options, SaveFileKind fileKind, bool restore = false)
 		{
-			var filePath = fileKind == SaveFileKind.CurrentFile ? options.CurrentFilePath! : FileNameHelper.GetComparisonFilePath(options);
+			var filePath = fileKind == SaveFileKind.CurrentFile ? options.CurrentFilePath! : FilePathHelper.GetComparisonFilePath(options);
 			var fileTypeName = fileKind.GetDisplayName();
 			var backupFilepath = filePath + BackupFileExtension;
 
@@ -846,7 +847,7 @@ namespace SRAM.Comparison.Services
 			ConsolePrinter.PrintSectionHeader();
 			var jsonOptions = new JsonSerializerOptions { Converters = { new JsonStringEnumConverter() }, WriteIndented = true };
 
-			var filePath = GetConfigFilePath(options.ConfigFilePath, configName);
+			var filePath = GetConfigFilePath(options.ConfigPath, configName);
 			JsonFileSerializer.Serialize(filePath, options, jsonOptions);
 
 			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusConfigFileSavedTemplate.InsertArgs(filePath));
@@ -857,7 +858,7 @@ namespace SRAM.Comparison.Services
 
 		protected virtual void OpenConfig(IOptions options, string? configName = null)
 		{
-			var filePath = GetConfigFilePath(options.ConfigFilePath, configName);
+			var filePath = GetConfigFilePath(options.ConfigPath, configName);
 			Requires.FileExists(filePath, string.Empty, Resources.ErrorConfigFileDoesNotExist.InsertArgs(filePath));
 
 			OpenFile(filePath);
