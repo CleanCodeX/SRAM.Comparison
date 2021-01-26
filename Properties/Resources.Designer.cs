@@ -1123,6 +1123,15 @@ namespace SRAM.Comparison.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Config file [{0}] has been loaded. ähnelt.
+        /// </summary>
+        public static string StatusConfigFileLoadedTemplate {
+            get {
+                return ResourceManager.GetString("StatusConfigFileLoadedTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Config file [{0}] has been saved. ähnelt.
         /// </summary>
         public static string StatusConfigFileSavedTemplate {

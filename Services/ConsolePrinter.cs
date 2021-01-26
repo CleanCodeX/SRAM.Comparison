@@ -1,10 +1,10 @@
-﻿using Common.Shared.Min.Extensions;
+﻿using System;
+using System.IO;
+using System.Linq;
+using Common.Shared.Min.Extensions;
 using IO.Extensions;
 using SRAM.Comparison.Enums;
 using SRAM.Comparison.Extensions;
-using System;
-using System.IO;
-using System.Linq;
 using SRAM.Comparison.Helpers;
 using Res = SRAM.Comparison.Properties.Resources;
 
@@ -13,6 +13,9 @@ namespace SRAM.Comparison.Services
 	/// <summary>Standard implementation for common print functionality</summary>
 	public class ConsolePrinter: IConsolePrinter
 	{
+		private const string Prefix = " ";
+		private static readonly string NewLineDefault = Environment.NewLine;
+
 		public virtual void PrintConfig(IOptions options)
 		{
 			PrintSectionHeader();
@@ -58,11 +61,14 @@ namespace SRAM.Comparison.Services
 		{
 			PrintSectionHeader();
 			SetForegroundColor(ConsoleColor.DarkYellow);
+
 			var startMessage = @$"== {Res.StartMessage.InsertArgs(nameof(Commands.Help), nameof(Commands.Guide_Srm))} ==";
 			var length = Math.Min(startMessage.Length, Console.WindowWidth - 1);
+
 			PrintLine("=".Repeat(length));
 			PrintLine(startMessage);
 			PrintLine("=".Repeat(length));
+
 			PrintLine();
 			ResetColor();
 		}
@@ -224,7 +230,9 @@ namespace SRAM.Comparison.Services
 			PrintComparisonIdentification(ident);
 			PrintOffsetValues(offsetText, offsetName);
 			PrintCompValues(isNegativechange, compText);
+			PrintLine(ident);
 			PrintCurrValues(isNegativechange, currText);
+			PrintLine(ident);
 			PrintChangeValues(isNegativechange, absChange, sign, changeText);
 		}
 
@@ -343,21 +351,32 @@ namespace SRAM.Comparison.Services
 		protected virtual void PrintChangeValues(bool isNegativeChange, uint changeValue, string sign, string changeText)
 		{
 			PrintColored(ConsoleColor.Cyan, @" = ");
+
+			var signColor = isNegativeChange ? ConsoleColor.DarkRed : ConsoleColor.Green;
+			var changeColor = isNegativeChange ? ConsoleColor.Red : ConsoleColor.DarkGreen;
+			
+			var changedBits = changeValue.CountChangedBits();
+			var oneBitColor = ConsoleColor.Yellow;
+
 			PrintColored(ConsoleColor.DarkGray, $@"{Res.CompChangeShort} ");
 
-			PrintColored(isNegativeChange ? ConsoleColor.DarkRed : ConsoleColor.Green, sign);
-			PrintColored(isNegativeChange ? ConsoleColor.Red : ConsoleColor.DarkGreen, changeText);
+			if (changedBits == 1)
+				signColor = changeColor = isNegativeChange ? ConsoleColor.Magenta : ConsoleColor.Green;
 
-			var changedBits = changeValue.CountChangedBits();
+			PrintColored(signColor, sign);
+			PrintColored(changeColor, changeText);
+			PrintColored(ConsoleColor.DarkGray, ConsoleColor.Black, ":");
 
-			PrintColored(ConsoleColor.DarkGray, ":");
-
-			PrintColoredLine(changedBits switch
+			PrintColored(changedBits switch
 			{
 				1 => ConsoleColor.Magenta,
-				8 => ConsoleColor.Yellow,
-				_ => ConsoleColor.Gray
+				_ => ConsoleColor.DarkGray
 			}, changedBits.ToString());
+
+			if (changedBits == 1)
+				PrintColored(oneBitColor, "!");
+
+			PrintLine();
 
 			ResetColor();
 		}
@@ -368,7 +387,7 @@ namespace SRAM.Comparison.Services
 
 		protected virtual void PrintColored(ConsoleColor foregroundColor, ConsoleColor backgroundColor, string text)
 		{
-			SetForegroundColor(backgroundColor);
+			SetBackgroundColor(backgroundColor);
 			PrintColored(foregroundColor, text);
 		}
 
@@ -392,12 +411,12 @@ namespace SRAM.Comparison.Services
 		}
 
 		public bool ColorizeOutput { get; set; } = true;
-		public virtual string NewLine => Environment.NewLine;
-		
-		public virtual void PrintLine() => Console.WriteLine();
-		public virtual void Print(string text) => Console.Write(text);
-		public virtual void PrintLine(string text) => Console.WriteLine(text);
+		public virtual string NewLine => NewLineDefault;
 
+		public virtual void PrintLine() => PrintLine(string.Empty);
+		public virtual void PrintLine(string text) => Print(text + NewLine + Prefix);
+		public virtual void Print(string text) => Console.Write(text);
+		
 		protected virtual void PrintBackgroundColored(ConsoleColor color, string text)
 		{
 			SetBackgroundColor(color);

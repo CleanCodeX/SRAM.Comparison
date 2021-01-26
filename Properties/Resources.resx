@@ -555,4 +555,7 @@
   <data name="EnumLogComparison" xml:space="preserve">
     <value>Log when compared</value>
   </data>
+  <data name="StatusConfigFileLoadedTemplate" xml:space="preserve">
+    <value>Config file [{0}] has been loaded.</value>
+  </data>
 </root>

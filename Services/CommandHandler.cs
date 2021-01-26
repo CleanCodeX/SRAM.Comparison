@@ -19,26 +19,30 @@ using SRAM.Comparison.Properties;
 
 namespace SRAM.Comparison.Services
 {
+	public abstract class CommandHandler
+	{
+		protected const string DefaultConfigName = "Config";
+
+		public static readonly string KeyBindingsFileName = "KeyBindings.json";
+		public static readonly string DefaultConfigFileName = $"{DefaultConfigName}.json";
+	}
+
 	/// <summary>
 	/// This class handles all standard commands
 	/// </summary>
 	/// <typeparam name="TSramFile">The S-RAM file structure</typeparam>
 	/// <typeparam name="TSaveSlot">The S-RAM game structure</typeparam>
-	public abstract class CommandHandler<TSramFile, TSaveSlot> : ICommandHandler<TSramFile, TSaveSlot>
+	public abstract class CommandHandler<TSramFile, TSaveSlot> : CommandHandler, ICommandHandler<TSramFile, TSaveSlot>
 		where TSramFile : class, IMultiSegmentFile<TSaveSlot>, IRawSave
 		where TSaveSlot : struct
 	{
 		private const string BackupFileExtension = ".backup";
 		private const string SrmFileExtension = ".srm";
 		private const string CompFileExtension = ".comp";
-		private const string DefaultConfigName = "Config";
 		
 		private const string GuideSrmFileName = "guide-srm";
 		private const string GuideSavestateFileName = "guide-savestate";
 		private const string LogFile = "Log.txt";
-
-		public static readonly string KeyBindingsFileName = "KeyBindings.json";
-		public static readonly string DefaultConfigFileName = $"{DefaultConfigName}.json";
 
 		protected IConsolePrinter ConsolePrinter { get; }
 
@@ -59,7 +63,7 @@ namespace SRAM.Comparison.Services
 		/// <returns>False if the game command loop should exit, otherwise true</returns>
 		public virtual bool RunCommand(string command, IOptions options, TextWriter? output = null)
 		{
-			ConsoleHelper.SetInitialConsoleSize();
+			ConsoleHelper.Initialize(options);
 
 			using (new TemporaryConsoleOutputSetter(output))
 			{
@@ -845,10 +849,9 @@ namespace SRAM.Comparison.Services
 		protected virtual void SaveConfig(IOptions options, string? configName = null)
 		{
 			ConsolePrinter.PrintSectionHeader();
-			var jsonOptions = new JsonSerializerOptions { Converters = { new JsonStringEnumConverter() }, WriteIndented = true };
 
 			var filePath = GetConfigFilePath(options.ConfigPath, configName);
-			JsonFileSerializer.Serialize(filePath, options, jsonOptions);
+			JsonFileSerializer.Serialize(filePath, options);
 
 			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusConfigFileSavedTemplate.InsertArgs(filePath));
 			ConsolePrinter.ResetColor();
@@ -925,14 +928,8 @@ namespace SRAM.Comparison.Services
 		protected virtual void CreateKeyBindingsFile<TEnum>() where TEnum : struct, Enum
 		{
 			var bindings = default(TEnum).ToDictionary();
-			var options = new JsonSerializerOptions
-			{
-				Converters = { new JsonStringEnumObjectConverter() },
-				WriteIndented = true
-			};
-
 			var keyBindingsPath = Path.Join(Environment.CurrentDirectory, KeyBindingsFileName);
-			JsonFileSerializer.Serialize(keyBindingsPath, bindings, options);
+			JsonFileSerializer.Serialize(keyBindingsPath, bindings);
 
 			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusKeyBindingsFileSavedTemplate.InsertArgs(keyBindingsPath));
 			ConsolePrinter.ResetColor();

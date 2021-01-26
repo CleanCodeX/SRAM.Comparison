@@ -1,24 +1,27 @@
 ﻿using System;
 using System.Drawing;
 using System.Runtime.Versioning;
+using SRAM.Comparison.Services;
 
 namespace SRAM.Comparison.Helpers
 {
 	[SupportedOSPlatform("windows")]
 	public class ConsoleHelper
 	{
-		private static readonly bool IsWindows = OperatingSystem.IsWindows();
 		private const int InitialConsoleWidth = 130;
 		private const int InitialConsoleHeight = 50;
 		private const int ConsoleBufferHeight = 1000;
 
+		private static readonly IConsolePrinter ConsolePrinter = ServiceCollection.ConsolePrinter;
+		private static readonly bool IsWindows = OperatingSystem.IsWindows();
+		
 		public static void EnsureMinConsoleWidth(int minWidth)
 		{
 			if (!IsWindows) return;
 
 			try
 			{
-				if (Console.WindowWidth >= minWidth)
+				if (Console.WindowWidth >= minWidth && Console.BufferWidth >= minWidth)
 					return;
 
 				Console.BufferWidth = Console.WindowWidth = minWidth;
@@ -29,15 +32,26 @@ namespace SRAM.Comparison.Helpers
 			}
 		}
 
+		public static void Initialize(IOptions options)
+		{
+			if (options.UILanguage is not null)
+				CultureHelper.TrySetCulture(options.UILanguage, ConsolePrinter);
+
+			ConsolePrinter.ColorizeOutput = options.ColorizeOutput;
+
+			SetInitialConsoleSize();
+		}
+
 		public static void SetInitialConsoleSize()
 		{
 			if (!IsWindows) return;
 
 			try
 			{
+				if (Console.WindowWidth > InitialConsoleWidth) return;
+
 				Console.SetWindowSize(InitialConsoleWidth, InitialConsoleHeight);
-				Console.BufferHeight = ConsoleBufferHeight;
-				Console.BufferWidth = InitialConsoleWidth;
+				Console.SetBufferSize(InitialConsoleWidth, ConsoleBufferHeight);
 			}
 			catch
 			{

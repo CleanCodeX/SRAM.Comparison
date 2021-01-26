@@ -19,7 +19,7 @@ namespace SRAM.Comparison
 
 		public virtual void Show(IOptions options)
 		{
-			ConsoleHelper.SetInitialConsoleSize();
+			ConsoleHelper.Initialize(options);
 
 			var commandHandler = ServiceCollection.CommandHandler;
 			var consolePrinter = ServiceCollection.ConsolePrinter;
@@ -27,9 +27,6 @@ namespace SRAM.Comparison
 			commandHandler.ThrowIfNull(nameof(commandHandler));
 			consolePrinter.ThrowIfNull(nameof(consolePrinter));
 			options.BatchCommands.ThrowIfNotDefault(nameof(options.BatchCommands));
-
-			if(options.UILanguage is not null)
-				CultureHelper.TrySetCulture(options.UILanguage, consolePrinter);
 
 			if (options.CurrentFilePath.IsNullOrEmpty())
 			{

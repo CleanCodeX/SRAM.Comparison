@@ -450,4 +450,7 @@
 	<data name="EnumLogComparison" xml:space="preserve">
 		<value>Protokollierung bei Vergleich</value>
 	</data>
+	<data name="StatusConfigFileLoadedTemplate" xml:space="preserve">
+		<value>Konfig-Datei [{0}] wurde geladen.</value>
+	</data>
 </root>

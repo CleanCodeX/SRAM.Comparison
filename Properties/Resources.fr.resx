@@ -462,4 +462,7 @@
 	<data name="EnumLogComparison" xml:space="preserve">
 		<value>Journal par rapport</value>
 	</data>
+	<data name="StatusConfigFileLoadedTemplate" xml:space="preserve">
+		<value>Le fichier de configuration [{0}] a été chargé.</value>
+	</data>
 </root>
