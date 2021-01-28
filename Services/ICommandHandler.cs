@@ -18,7 +18,7 @@ namespace SRAM.Comparison.Services
 		where TSramFile : class, IMultiSegmentFile<TSaveSlot>
 		where TSaveSlot : struct
 	{
-		int GetSaveSlotId(in int maxGameId);
+		int GetSaveSlotIdOrAll(in int maxGameId);
 
 		void OverwriteComparisonFileWithCurrentFile(in IOptions options);
 

@@ -1132,20 +1132,29 @@ namespace SRAM.Comparison.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Enter save slot (1-{0} or any other key for all save slots) for comparison: ähnelt.
+        /// </summary>
+        public static string PromptEnterSaveSlotOrAllTemplate {
+            get {
+                return ResourceManager.GetString("PromptEnterSaveSlotOrAllTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Enter save slot (1-{0} to load: ähnelt.
+        /// </summary>
+        public static string PromptEnterSaveSlotTemplate {
+            get {
+                return ResourceManager.GetString("PromptEnterSaveSlotTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Set the comparison result language (e.g. &apos;en&apos; for English - without quotes). An empty input resets the setting. ähnelt.
         /// </summary>
         public static string PromptSetComparionResultLanguage {
             get {
                 return ResourceManager.GetString("PromptSetComparionResultLanguage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Set save slot (1-{0} or any other key for all save slots) to compare: ähnelt.
-        /// </summary>
-        public static string PromptSetSaveSlotTemplate {
-            get {
-                return ResourceManager.GetString("PromptSetSaveSlotTemplate", resourceCulture);
             }
         }
         
@@ -1551,6 +1560,15 @@ namespace SRAM.Comparison.Properties {
         public static string StatusUnknownsChangedBytesTemplate {
             get {
                 return ResourceManager.GetString("StatusUnknownsChangedBytesTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Saveslot {0} will be used. ähnelt.
+        /// </summary>
+        public static string StatusUsedSaveSlotIdTemplate {
+            get {
+                return ResourceManager.GetString("StatusUsedSaveSlotIdTemplate", resourceCulture);
             }
         }
         

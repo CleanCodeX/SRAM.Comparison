@@ -182,8 +182,8 @@
 	<data name="CompSectionNonSaveSlotUnknowns" xml:space="preserve">
 		<value>Valeurs inconnues des autres parties</value>
 	</data>
-	<data name="PromptSetSaveSlotTemplate" xml:space="preserve">
-		<value>Définir la partie à comparer (1- {0} ou appuyez sur n'importe quelle autre touche pour sélectionner toutes les parties) :</value>
+	<data name="PromptEnterSaveSlotOrAllTemplate" xml:space="preserve">
+		<value>Saisissez l'emplacement de sauvegarde (1- {0} ou toute autre clé pour tous les emplacements d'enregistrement) à des fins de comparaison:</value>
 	</data>
 	<data name="PromptSetSingleSaveSlotTemplate" xml:space="preserve">
 		<value>Entrez l'espace de sauvegarde (1- {0}):</value>
@@ -527,5 +527,11 @@
 	</data>
 	<data name="EnumSlotSummary" xml:space="preserve">
 		<value>Enregistrer le résumé de l'emplacement</value>
+	</data>
+	<data name="PromptEnterSaveSlotTemplate" xml:space="preserve">
+		<value>Entrez l'ID de l'emplacement de sauvegarde à charger</value>
+	</data>
+	<data name="StatusUsedSaveSlotIdTemplate" xml:space="preserve">
+		<value>L'espace de sauvegarde {0} sera utilisé.</value>
 	</data>
 </root>

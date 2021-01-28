@@ -48,6 +48,7 @@ namespace SRAM.Comparison.Services
 		/// <param name="currValue">The current byte to be compared</param>
 		/// <param name="compValue">The comparison byte to be compared</param>
 		/// <param name="writeToConsole">Sets if any output should be written to console. Default is true</param>
+		/// <param name="isUnknown">Indicates that this offset is considered to 'Unknown'</param>
 		/// <returns>1 if the byte has changed, otherwise 0</returns>
 		protected virtual int CompareByte(string bufferName, int bufferOffset, byte currValue, byte compValue, bool writeToConsole = true, bool isUnknown = true)
 		{
@@ -74,6 +75,7 @@ namespace SRAM.Comparison.Services
 		/// <param name="currValue">The current ushort to be compared</param>
 		/// <param name="compValue">The comparison ushort to be compared</param>
 		/// <param name="writeToConsole">Sets if any output should be written to console. Default is true</param>
+		/// <param name="isUnknown">Indicates that this offset is considered to 'Unknown'</param>
 		/// <returns>2 if the ushort changed, otherwise 0</returns>
 		protected virtual int CompareUInt16(string bufferName, int bufferOffset, ushort currValue, ushort compValue, bool writeToConsole = true, bool isUnknown = true)
 		{
@@ -100,6 +102,7 @@ namespace SRAM.Comparison.Services
 		/// <param name="currValue">The current ushort to be compared</param>
 		/// <param name="compValue">The comparison ushort to be compared</param>
 		/// <param name="writeToConsole">Sets if any output should be written to console. Default is true</param>
+		/// <param name="isUnknown">Indicates that this offset is considered to 'Unknown'</param>
 		/// <returns>2 if the ushort changed, otherwise 0</returns>
 		protected virtual int CompareUInt32(string bufferName, int bufferOffset, uint currValue, uint compValue, bool writeToConsole = true, bool isUnknown = true)
 		{
@@ -126,6 +129,7 @@ namespace SRAM.Comparison.Services
 		/// <param name="compValues">The comparison buffer's bytes to be compared</param>
 		/// <param name="writeToConsole">Sets if any output should be written to console. Default is true</param>
 		/// <param name="offsetNameCallback">An optional callback function from which the name of a specific offset can be returned</param>
+		/// <param name="isUnknown">Indicates that this offset is considered to 'Unknown'</param>
 		/// <returns>The amound of bytes changed</returns>
 		protected virtual int CompareByteArray(string bufferName, int bufferOffset, ReadOnlySpan<byte> currValues, ReadOnlySpan<byte> compValues, bool writeToConsole = true, Func<int, string?>? offsetNameCallback = null, bool isUnknown = true)
 		{

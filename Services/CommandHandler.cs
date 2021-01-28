@@ -653,12 +653,14 @@ namespace SRAM.Comparison.Services
 
 		#region GetSaveSlotId
 
+		protected abstract int GetMaxSaveSlotId();
+
 		private void ShowSlotSummary(IOptions options)
 		{
 			ConsolePrinter.PrintSectionHeader();
 			ConsolePrinter.ResetColor();
 
-			var slotId = GetSaveSlotId();
+			var slotId = GetSaveSlotId(GetMaxSaveSlotId());
 			if (slotId == 0) return;
 
 			Stream currStream = new FileStream(options.CurrentFilePath!, FileMode.Open, FileAccess.Read, FileShare.Read);
@@ -673,12 +675,12 @@ namespace SRAM.Comparison.Services
 			ConsolePrinter.ResetColor();
 		}
 
-		private int GetSaveSlotId() => (int)InternalGetValue("Please set saveslot Id to load (1-4)", "Saveslot {0} will be used");
+		private int GetSaveSlotId(in int maxSaveSlotId) => (int) InternalGetValue(Resources.PromptEnterSaveSlotTemplate.InsertArgs(maxSaveSlotId), Resources.StatusUsedSaveSlotIdTemplate);
 
-		public virtual int GetSaveSlotId(in int maxSaveSlotId)
+		public virtual int GetSaveSlotIdOrAll(in int maxSaveSlotId)
 		{
 			ConsolePrinter.PrintSectionHeader();
-			ConsolePrinter.PrintLine(Resources.PromptSetSaveSlotTemplate.InsertArgs(maxSaveSlotId));
+			ConsolePrinter.PrintLine(Resources.PromptEnterSaveSlotOrAllTemplate.InsertArgs(maxSaveSlotId));
 			ConsolePrinter.ResetColor();
 
 			var input = Console.ReadLine()!;
