@@ -18,15 +18,15 @@ namespace SRAM.Comparison.Services
 		where TSramFile : class, IMultiSegmentFile<TSaveSlot>
 		where TSaveSlot : struct
 	{
-		int GetSaveSlotId(int maxGameId);
+		int GetSaveSlotId(in int maxGameId);
 
-		void OverwriteComparisonFileWithCurrentFile(IOptions options);
+		void OverwriteComparisonFileWithCurrentFile(in IOptions options);
 
 		/// <summary>Backups or restores current or comparison sram file</summary>
 		/// <param name="options">Options for getting file paths</param>
 		/// <param name="fileKind">Whether to use current or comparison file as source</param>
 		/// <param name="restore">Whether to backup or restore a file</param>
-		void BackupSaveFile(IOptions options, SaveFileKind fileKind, bool restore = false);
+		void BackupSaveFile(in IOptions options, in SaveFileKind fileKind, in bool restore = false);
 
 		/// <summary>Inverts a flag. If it is set, it will be removed and vice versa.</summary>
 		/// <param name="flags">The flags value which flag value will be added to or removed from</param>
@@ -37,14 +37,14 @@ namespace SRAM.Comparison.Services
 		/// <summary>Compares S-RAM based on <para>options</para>.<see cref="IOptions.CurrentFilePath"/> and <see cref="IOptions.ComparisonPath"/> will be used</summary>
 		/// <typeparam name="TComparer">The type of compare which should be used</typeparam>
 		/// <param name="options">The options to be used for comparison</param>
-		void Compare<TComparer>(IOptions options)
+		int Compare<TComparer>(in IOptions options)
 			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new();
 
 		/// <summary>Compares S-RAM based on <para>options</para>.<see cref="IOptions.CurrentFilePath"/> and <see cref="IOptions.ComparisonPath"/> will be used</summary>
 		/// <typeparam name="TComparer">The type of compare which should be used</typeparam>
 		/// <param name="options">The options to be used for comparison</param>
 		/// <param name="output">The stream the output should be written to</param>
-		void Compare<TComparer>(IOptions options, TextWriter output)
+		int Compare<TComparer>(in IOptions options, in TextWriter output)
 			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new();
 
 		/// <summary>
@@ -55,7 +55,7 @@ namespace SRAM.Comparison.Services
 		/// <param name="compStream"></param>
 		/// <param name="options">The options to be used for comparison</param>
 		/// <param name="output">The stream the output should be written to</param>
-		void Compare<TComparer>(Stream currStream, Stream compStream, IOptions options, TextWriter output)
+		int Compare<TComparer>(Stream currStream, Stream compStream, in IOptions options, in TextWriter output)
 			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new();
 
 		/// <summary>
@@ -65,21 +65,22 @@ namespace SRAM.Comparison.Services
 		/// <param name="currStream"></param>
 		/// <param name="compStream"></param>
 		/// <param name="options">The options to be used for comparison</param>
-		void Compare<TComparer>(Stream currStream, Stream compStream, IOptions options)
+		int Compare<TComparer>(Stream currStream, Stream compStream, in IOptions options)
 			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new();
 
 		/// <summary>Compares S-RAM based on <para>options</para>.<see cref="IOptions.ExportPath"/> and a generated filename based on current timestamp will be used</summary>
 		/// <typeparam name="TComparer">The type of compare which should be used</typeparam>
 		/// <param name="options">The options to be used for comparison</param>
-		/// <returns>The generated filepath</returns>
-		string ExportComparisonResult<TComparer>(IOptions options)
+		/// <returns>The file path to export file or null if no export was performed (e.g. when no bytes changed)</returns>
+		string? ExportCompResult<TComparer>(in IOptions options)
 			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new();
 
 		/// <summary>Compares S-RAM based on <para>options</para>.<see cref="IOptions.ExportPath"/> and a generated filename based on current timestamp will be used</summary>
 		/// <typeparam name="TComparer">The type of compare which should be used</typeparam>
 		/// <param name="options">The options to be used for comparison</param>
-		/// <param name="filePath"></param>
-		void ExportComparisonResult<TComparer>(IOptions options, string filePath)
+		/// <param name="filePath">The file path to save the comparison result</param>
+		/// <returns>The file path to export file or null if no export was performed (e.g. when no bytes changed)</returns>
+		string? ExportCompResult<TComparer>(in IOptions options, in string filePath)
 			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new();
 	}
 }

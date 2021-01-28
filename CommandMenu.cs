@@ -41,6 +41,9 @@ namespace SRAM.Comparison
 				commandHandler.RunCommand(nameof(Commands.OverwriteComp), options);
 
 			consolePrinter.PrintStartMessage();
+			
+			if(options.AutoWatch)
+				commandHandler.RunCommand(nameof(Commands.WatchFile), options);
 
 			while (true)
 			{

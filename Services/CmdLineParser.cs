@@ -127,6 +127,9 @@ namespace SRAM.Comparison.Services
 					case CmdOptions.LogFlags:
 						options.ExportFlags = value.ParseEnum<TLogFlags>();
 						break;
+					case CmdOptions.WatchFlags:
+						options.FileWatchFlags = value.ParseEnum<FileWatchFlags>();
+						break;
 					case CmdOptions.CurrentSaveSlot:
 						options.CurrentFileSaveSlot = value.ParseSaveSlotId();
 						break;
@@ -138,6 +141,12 @@ namespace SRAM.Comparison.Services
 						break;
 					case CmdOptions.UILanguage:
 						options.UILanguage = value;
+						break;
+					case CmdOptions.AutoSave:
+						options.AutoSave = value.ParseToBool();
+						break;
+					case CmdOptions.AutoWatch:
+						options.AutoWatch = value.ParseToBool();
 						break;
 					case CmdOptions.ComparisonResultLanguage:
 						options.ComparisonResultLanguage = value;
@@ -151,7 +160,7 @@ namespace SRAM.Comparison.Services
 						options.ConfigPath = value;
 						break;
 					case { } when cmdName.StartsWith("--"):
-						options.CustomOptions[cmdName.Substring(2)] = value;
+						options.CustomOptions[cmdName[2..]] = value;
 
 						break;
 				}

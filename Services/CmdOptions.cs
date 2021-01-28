@@ -24,6 +24,10 @@
 		public const string LogFlags = "--log-flags";
 		public const string LogPath = "--log-path";
 
+		public const string AutoSave = "--auto-save";
+		public const string AutoWatch = "--watch";
+		public const string WatchFlags = "--watch-flags";
+
 		public const string UILanguage = "--lang";
 		public const string ConfigPath = "--config-path";
 	}

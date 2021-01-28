@@ -134,9 +134,6 @@
 	<data name="CompComparison" xml:space="preserve">
 		<value>Vergleich</value>
 	</data>
-	<data name="ConfigComparisonFlags" xml:space="preserve">
-		<value>Vergleichs-Attribute</value>
-	</data>
 	<data name="CompComparisonShort" xml:space="preserve">
 		<value>Vergl.</value><comment>This is an abbreviation and should be kept as short as possible</comment>
 	</data>
@@ -159,13 +156,10 @@
 	<data name="EnterIndexOfFileToOverwriteTemplate" xml:space="preserve">
 		<value>Index (0 bis {0}) der zu überschreibenden Datei eingeben (jede andere Taste um abzubrechen):</value>
 	</data>
-	<data name="ErrorCannotOpenOutputFileTemplate" xml:space="preserve">
-		<value>Kann die Datei "{0}" nicht zum Schreiben öffnen</value>
-	</data>
 	<data name="ErrorCommandNotImplementedTemplate" xml:space="preserve">
 		<value>Der Befehl (overwrite) muss vom Aufrufer implementiert werden.</value>
 	</data>
-	<data name="ErrorComparisonFileDoesNotExist" xml:space="preserve">
+	<data name="ErrorComparisonFileDoesNotExistTemplate" xml:space="preserve">
 		<value>Die Vergleichs-Datei "{0}" wurde noch nicht erstellt. Bitte erstellen mit (OC).</value>
 	</data>
 	<data name="ErrorInvalidFileExtensionTemplate" xml:space="preserve">
@@ -216,19 +210,19 @@
 	<data name="CompSectionSaveSlotChangedTemplate" xml:space="preserve">
 		<value>Alles (Bekannte und Unbekannte)</value>
 	</data>
-	<data name="ConfigExportDirectory" xml:space="preserve">
-		<value>Export-Verzeichnis</value>
+	<data name="ExportPath" xml:space="preserve">
+		<value>Export-Pfad</value>
 	</data>
-	<data name="ConfigCurrentFilePath" xml:space="preserve">
+	<data name="CurrentFilePath" xml:space="preserve">
 		<value>Pfad für aktuelle Datei</value>
 	</data>
-	<data name="ConfigComparisonFilePath" xml:space="preserve">
+	<data name="ComparisonPath" xml:space="preserve">
 		<value>Pfad für Vergleichsdatei</value>
 	</data>
-	<data name="ConfigCurrentFileSaveSlot" xml:space="preserve">
+	<data name="CurrentFileSaveSlot" xml:space="preserve">
 		<value>Speicherslot (aktuelle Datei)</value>
 	</data>
-	<data name="ConfigComparisonFileSaveSlot" xml:space="preserve">
+	<data name="ComparisonFileSaveSlot" xml:space="preserve">
 		<value>Speicherslot (Vergleichsdatei)</value>
 	</data>
 	<data name="EnumGameRegion" xml:space="preserve">
@@ -243,7 +237,7 @@
 	<data name="CompSram" xml:space="preserve">
 		<value>S-RAM</value>
 	</data>
-	<data name="StartMessage" xml:space="preserve">
+	<data name="StartMessageTemplate" xml:space="preserve">
 		<value>Neu hier? Für eine Liste aller verfügbaren Befehle gib ({0}|?) oder ({1}) für eine Bedienungsanleitung ein. Falls noch keine Vergleichs-Datei vorhanden war, wurde nun eine erstellt.</value>
 	</data>
 	<data name="SramOffset" xml:space="preserve">
@@ -291,7 +285,7 @@
 	<data name="StatusSingleSaveSlotComparisonTemplate" xml:space="preserve">
 		<value>Nur der Speicherslot {0} wird verglichen.</value>
 	</data>
-	<data name="ConfigColorizeOutput" xml:space="preserve">
+	<data name="ColorizeOutput" xml:space="preserve">
 		<value>Ausgabe einfärben</value>
 	</data>
 	<data name="StatusAllSaveSlotsComparison" xml:space="preserve">
@@ -312,10 +306,10 @@
 	<data name="StatusDifferentSaveSlotComparisonTemplate" xml:space="preserve">
 		<value>Der aktuelle Speicherslot {0} wird mit dem Vergleichs-Speicherslot {1} verglichen.</value>
 	</data>
-	<data name="ConfigComparisonResultLanguage" xml:space="preserve">
+	<data name="ComparisonResultLanguage" xml:space="preserve">
 		<value>Vergleichsergebnis-Sprache</value>
 	</data>
-	<data name="ConfigUILanguage" xml:space="preserve">
+	<data name="UILanguage" xml:space="preserve">
 		<value>UI-Sprache</value>
 	</data>
 	<data name="CmdLanguage" xml:space="preserve">
@@ -345,7 +339,7 @@
 	<data name="CmdSaveConfig" xml:space="preserve">
 		<value>Konfig speichern</value>
 	</data>
-	<data name="ConfigFilePath" xml:space="preserve">
+	<data name="ConfigPath" xml:space="preserve">
 		<value>Konfig-Dateipfad</value>
 	</data>
 	<data name="CmdGroupConfig" xml:space="preserve">
@@ -360,7 +354,7 @@
 	<data name="CmdOpenConfig" xml:space="preserve">
 		<value>Konfig-Datei öffnen</value>
 	</data>
-	<data name="ErrorConfigFileDoesNotExist" xml:space="preserve">
+	<data name="ErrorConfigFileDoesNotExistTemplate" xml:space="preserve">
 		<value>Die Konfig-Datei [{0}] existiert (noch) nicht.</value>
 	</data>
 	<data name="CmdCreateKeyBindingFile" xml:space="preserve">
@@ -372,7 +366,7 @@
 	<data name="StatusKeyBindingsFileSavedTemplate" xml:space="preserve">
 		<value>Tastenzuordnungs-Datei [{0}] wurde gespeichert.</value>
 	</data>
-	<data name="ErrorKeyBindingsFileDoesNotExist" xml:space="preserve">
+	<data name="ErrorKeyBindingsFileDoesNotExistTemplate" xml:space="preserve">
 		<value>Die Tastenzuordnungs-Datei [{0}] existiert (noch) nicht.</value>
 	</data>
 	<data name="ErrorSavestateOffsetEditNotSupported" xml:space="preserve">
@@ -396,12 +390,6 @@
 	<data name="StatusExportFileNameSet" xml:space="preserve">
 		<value>Export-Datein [{0}] festgelegt.</value>
 	</data>
-	<data name="ConfigExportFlags" xml:space="preserve">
-		<value>Export-Attribute</value>
-	</data>
-	<data name="CmdExportFlags" xml:space="preserve">
-		<value>Export-Attribute</value>
-	</data>
 	<data name="EnumSelectExportFile" xml:space="preserve">
 		<value>Export-Datei auswählen</value>
 	</data>
@@ -418,13 +406,13 @@
 		<value>Vergleichs-Datei löschen</value>
 	</data>
 	<data name="PromptEnterFlags" xml:space="preserve">
-		<value>Gib alle zu setzenden Attribute an:</value>
+		<value>Gib alle zu setzenden Optionen an: (verwende 0 um keine Optionen zu setzen, Leerstring um die Eingabe abzubrechen)</value>
 	</data>
 	<data name="ErrorInvalidFlags" xml:space="preserve">
-		<value>Ungültige Attribute:</value>
+		<value>Ungültige Optionen:</value>
 	</data>
-	<data name="StatusExportFlagsSetTemplate" xml:space="preserve">
-		<value>Export-Attribute gesetzt: {0}.</value>
+	<data name="StatusExportFlagsSet" xml:space="preserve">
+		<value>Export-Optionen gesetzt:</value>
 	</data>
 	<data name="StatusCompFileDeleted" xml:space="preserve">
 		<value>Die Vergleichs-Datei wurde gelöscht.</value>
@@ -452,5 +440,80 @@
 	</data>
 	<data name="StatusConfigFileLoadedTemplate" xml:space="preserve">
 		<value>Konfig-Datei [{0}] wurde geladen.</value>
+	</data>
+	<data name="CandidateForFinding" xml:space="preserve">
+		<value>Einzelne Bit-Änderung! Potenzieller Fundkandidat, erwäge den Export und Melde dieses Ergebnisses</value>
+	</data>
+	<data name="Bit" xml:space="preserve">
+		<value>Bit</value>
+	</data>
+	<data name="Bits" xml:space="preserve">
+		<value>Bits</value>
+	</data>
+	<data name="CmdOpenLog" xml:space="preserve">
+		<value>Log-Datei öffnen</value>
+	</data>
+	<data name="StatusLogFileWillBeOpenedTemplate" xml:space="preserve">
+		<value>Log-Datei [{0}] wird geöffnet…</value>
+	</data>
+	<data name="CmdConfigAutoSaveOff" xml:space="preserve">
+		<value>Auto-Speichern für Konfig aktivieren</value>
+	</data>
+	<data name="CmdConfigAutoSaveOn" xml:space="preserve">
+		<value>Auto-Speichern für Konfig deaktivieren</value>
+	</data>
+	<data name="CmdWatchCurrentFile" xml:space="preserve">
+		<value>Starte Speicherdatei-Überwachung</value>
+	</data>
+	<data name="CmdUnwatchCurrentFile" xml:space="preserve">
+		<value>Stoppe Speicherdatei-Überwachung</value>
+	</data>
+	<data name="EnumAutoExport" xml:space="preserve">
+		<value>Auto-Export nach Vergleich</value>
+	</data>
+	<data name="EnumFileWatchFlags" xml:space="preserve">
+		<value>Datei-Überwachungs-Optionen</value>
+	</data>
+	<data name="StatusFileWatchingStoppedTemplate" xml:space="preserve">
+		<value>Datei-Überwachung für [{0}] gestoppt.</value>
+	</data>
+	<data name="StatusFileWatchingStartedTemplate" xml:space="preserve">
+		<value>Datei-Überwachung für [{0}] gestartet.</value>
+	</data>
+	<data name="StatusWatchedFileChanged" xml:space="preserve">
+		<value>Überwachte Datei hat sich geändert, starte Vergleich…</value>
+	</data>
+	<data name="LogPath" xml:space="preserve">
+		<value>Log-Pfad</value>
+	</data>
+	<data name="AutoSave" xml:space="preserve">
+		<value>Auto-Speicherung</value>
+	</data>
+	<data name="BatchCommands" xml:space="preserve">
+		<value>Sammelbefehle zum nacheinander Ausführen</value>
+	</data>
+	<data name="AutoWatch" xml:space="preserve">
+		<value>Speicherdatei-Überwachung</value>
+	</data>
+	<data name="CustomOptions" xml:space="preserve">
+		<value>Benutzerdefinierte Optionen</value>
+	</data>
+	<data name="SavestateType" xml:space="preserve">
+		<value>Savestate-Typ</value>
+	</data>
+	<data name="StatusFileWatchFlagsSet" xml:space="preserve">
+		<value>Dateiüberwachung-Optionen gesetzt:</value>
+	</data>
+	<data name="StatusLogFlagsSet" xml:space="preserve">
+		<value>Log-Optionen gesetzt:</value>
+	</data>
+	<data name="FlagsSet" xml:space="preserve">
+		<value>Gesetzte Optionen:</value>
+	</data>
+	<data name="StatusComparisonFlagsSet" xml:space="preserve">
+		<value>Vergleichs-Optionen gesetzt:</value>
+	</data>
+	<data name="EnumSlotSummary" xml:space="preserve">
+		<value>Speicherslot-Zusammenfassung</value>
 	</data>
 </root>

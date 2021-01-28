@@ -23,8 +23,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CCX.IO" Version="1.0.0-a4" />
-    <PackageReference Include="CCX.SRAM" Version="1.0.0-a2" />
+    <PackageReference Include="CCX.SRAM" Version="1.0.0-a3" />
     <PackageReference Include="System.ComponentModel.TypeConverter" Version="4.3.0" />
   </ItemGroup>
 

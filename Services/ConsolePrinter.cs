@@ -13,44 +13,96 @@ namespace SRAM.Comparison.Services
 	/// <summary>Standard implementation for common print functionality</summary>
 	public class ConsolePrinter: IConsolePrinter
 	{
-		private const string Prefix = " ";
 		private static readonly string NewLineDefault = Environment.NewLine;
 
+		protected string LinePrefix = " ";
+		protected string BufferInfoValueDelimiter = "|"; // ¦
+		protected string CandidateMarker = "[!]";
+		protected string ComparisonMarker = "¬"; // ¬
+		protected string CompValueMarker = ":";
+		protected string BufferNameMarker = "~";
+		protected string CurrValueMarker = "»";
+		protected string ChangeMarker = "»";
+		protected string PositiveChangeMarker = "(+)";
+		protected string NegativeChangeMarker = "(-)";
+		
 		public virtual void PrintConfig(IOptions options)
 		{
 			PrintSectionHeader();
 			PrintColoredLine(ConsoleColor.Gray, Res.Config + @":");
 
-			PrintConfigLine(Res.ConfigCurrentFilePath, "{0}", Path.GetFileName(options.CurrentFilePath!));
-			PrintConfigLine(Res.ConfigComparisonFilePath, "{1-2}|" + CmdOptions.ComparisonPath, Path.GetFileName(FilePathHelper.GetComparisonFilePath(options)));
+			PrintConfigLine(Res.CurrentFilePath, "{0}", Path.GetFileName(options.CurrentFilePath!));
+			PrintConfigLine(Res.ComparisonPath, "{1-2}|" + CmdOptions.ComparisonPath, Path.GetFileName(FilePathHelper.GetComparisonFilePath(options)));
 
-			PrintConfigLine(Res.EnumGameRegion, $"{"{1-2}|" + CmdOptions.GameRegion} [{string.Join("|", Enum.GetNames(options.GameRegion.GetType()))}]", options.GameRegion.ToString());
+			PrintConfigLine(Res.EnumGameRegion, "{1-2}|" + CmdOptions.GameRegion, GetEnumNames(options.GameRegion.GetType()), options.GameRegion.ToString());
 
-			PrintConfigName(Res.ConfigComparisonFlags, $@"{CmdOptions.ComparisonFlags} [{string.Join(",", Enum.GetNames(options.ComparisonFlags.GetType()))}]");
-			PrintConfigName(Environment.NewLine, padRightDistance: 37);
-			PrintValue(options.ComparisonFlags.ToFlagsString());
+			var newLinePadRightLength = 38;
+			PrintConfigName(Res.EnumComparisonFlags, CmdOptions.ComparisonFlags, GetEnumNames(options.ComparisonFlags.GetType()));
+			PrintConfigName(Environment.NewLine, padRightDistance: newLinePadRightLength);
+			PrintValueLineBreak(options.ComparisonFlags.ToFlagsString());
 
-			PrintConfigLine(Res.ConfigExportDirectory, CmdOptions.ExportPath, options.ExportPath ?? Path.GetDirectoryName(options.CurrentFilePath)!);
+			#region Export
 
-			PrintConfigName(Res.ConfigExportFlags, $@"{CmdOptions.ExportFlags} [{string.Join(",", Enum.GetNames(options.ExportFlags.GetType()))}]");
-			PrintConfigName(Environment.NewLine, padRightDistance: 37);
-			PrintValue(options.ExportFlags.ToFlagsString());
+			PrintConfigLine(Res.ExportPath, CmdOptions.ExportPath, options.ExportPath ?? Path.GetDirectoryName(options.CurrentFilePath)!);
 
-			PrintConfigLine(Res.ConfigCurrentFileSaveSlot, $"{CmdOptions.CurrentSaveSlot} [1-4|0={Res.All}]", options.CurrentFileSaveSlot == 0 ? Res.All : options.CurrentFileSaveSlot.ToString());
+			PrintConfigName(Res.EnumExportFlags, CmdOptions.ExportFlags, GetEnumNames(options.ExportFlags.GetType()));
+			PrintConfigName(Environment.NewLine, padRightDistance: newLinePadRightLength);
+			PrintValueLineBreak(options.ExportFlags.ToFlagsString());
 
-			PrintConfigLine(Res.ConfigComparisonFileSaveSlot, $"{CmdOptions.ComparisonSaveSlot} [1-4|0={Res.All}]", options.ComparisonFileSaveSlot == 0 ? Res.CompSameAsCurrentFileSaveSlot : options.ComparisonFileSaveSlot.ToString());
+			#endregion
 
-			PrintConfigLine(Res.ConfigColorizeOutput, $"{CmdOptions.ColorizeOutput} [true|1|false|0]", options.ColorizeOutput.ToString());
-			PrintConfigLine(Res.ConfigUILanguage, CmdOptions.UILanguage, options.UILanguage!);
-			PrintConfigLine(Res.ConfigComparisonResultLanguage, CmdOptions.ComparisonResultLanguage, options.ComparisonResultLanguage!);
-			PrintConfigLine(Res.ConfigFilePath, CmdOptions.ConfigPath, options.ConfigPath!);
+			#region Save slot
+
+			PrintConfigLine(Res.CurrentFileSaveSlot, CmdOptions.CurrentSaveSlot, $"1-4|0={Res.All}", options.CurrentFileSaveSlot == 0 ? Res.All : options.CurrentFileSaveSlot.ToString());
+			PrintConfigLine(Res.ComparisonFileSaveSlot, CmdOptions.ComparisonSaveSlot, $"1-4|0={Res.All}", options.ComparisonFileSaveSlot == 0 ? Res.CompSameAsCurrentFileSaveSlot : options.ComparisonFileSaveSlot.ToString());
+
+			#endregion
+
+			#region Language
+
+			PrintConfigLine(Res.UILanguage, CmdOptions.UILanguage, options.UILanguage!);
+			PrintConfigLine(Res.ComparisonResultLanguage, CmdOptions.ComparisonResultLanguage, options.ComparisonResultLanguage!);
+
+			#endregion
+
+			PrintConfigLine(Res.ColorizeOutput, CmdOptions.ColorizeOutput, "true|1|false|0", options.ColorizeOutput.ToString());
+			PrintConfigLine(Res.ConfigPath, CmdOptions.ConfigPath, options.ConfigPath!);
+			PrintConfigLine(Res.CmdWatchCurrentFile, CmdOptions.AutoWatch, "true|1|false|0", options.AutoWatch.ToString());
+			PrintConfigLine(Res.AutoSave, CmdOptions.AutoSave, "true|1|false|0", options.AutoSave.ToString());
+
+			#region Logging
+
+			PrintConfigName(Res.EnumLogFlags, CmdOptions.ComparisonFlags, GetEnumNames(options.LogFlags.GetType()));
+			PrintConfigName(Environment.NewLine, padRightDistance: newLinePadRightLength);
+			PrintValueLineBreak(options.LogFlags.ToFlagsString());
+
+			PrintConfigLine(Res.LogPath, CmdOptions.LogPath, options.LogPath!);
+
+			#endregion
+
+			#region FileWatchFlags
+
+			PrintConfigName(Res.EnumFileWatchFlags, CmdOptions.WatchFlags, GetEnumNames(options.FileWatchFlags.GetType()));
+			PrintConfigName(Environment.NewLine, padRightDistance: newLinePadRightLength);
+			PrintValueLineBreak(options.FileWatchFlags.ToFlagsString());
+
+			#endregion
 		}
+
+		private static string GetEnumNames(Type enumType) => string.Join("|", Enum.GetNames(enumType));
 
 		public void PrintConfigLine(string name, string value) => PrintConfigLine(name, null!, value);
 		public void PrintConfigLine(string name, string args, string value)
 		{
 			PrintConfigName(name, args);
-			PrintValue(value);
+			PrintValueLineBreak(value);
+		}
+
+		public void PrintConfigLine(string name, string argName, string examples, string value)
+		{
+			PrintConfigName(name, argName);
+			PrintColored(ConsoleColor.DarkCyan, $" [{examples}]");
+			PrintValueLineBreak(value);
 		}
 
 		public void Clear() => Console.Clear();
@@ -62,7 +114,7 @@ namespace SRAM.Comparison.Services
 			PrintSectionHeader();
 			SetForegroundColor(ConsoleColor.DarkYellow);
 
-			var startMessage = @$"== {Res.StartMessage.InsertArgs(nameof(Commands.Help), nameof(Commands.Guide_Srm))} ==";
+			var startMessage = @$"== {Res.StartMessageTemplate.InsertArgs(nameof(Commands.Help), nameof(Commands.SrmGuide))} ==";
 			var length = Math.Min(startMessage.Length, Console.WindowWidth - 1);
 
 			PrintLine("=".Repeat(length));
@@ -85,49 +137,58 @@ namespace SRAM.Comparison.Services
 			PrintGroupName(Res.CmdGroupSetsSaveSlot);
 
 			PrintCommand(Commands.SetSlot);
-			PrintCommand(Commands.SetSlot_Comp);
-	
+			PrintCommand(Commands.SetCompSlot);
+			PrintCommand(Commands.SlotSummary);
+
 			PrintGroupName(Res.CmdGroupBackup);
 
 			PrintCommand(Commands.Backup);
-			PrintCommand(Commands.Backup_Comp);
+			PrintCommand(Commands.BackupComp);
 			PrintCommand(Commands.Restore);
-			PrintCommand(Commands.Restore_Comp);
+			PrintCommand(Commands.RestoreComp);
 			PrintCommand(Commands.Export);
-			PrintCommand(Commands.ExportFlags);
 			PrintCommand(Commands.Transfer);
 
 			PrintGroupName(Res.CmdGroupDisplay);
 
-			PrintCommand(Commands.Guide_Srm);
-			PrintCommand(Commands.Guide_Savestate);
+			PrintCommand(Commands.SrmGuide);
+			PrintCommand(Commands.SavestateGuide);
 			PrintCommand(Commands.Help);
 			PrintCommand(Commands.Config);
 			PrintCommand(Commands.Clear);
 
 			PrintGroupName(Res.CmdGroupMisc);
 
-			PrintCommand(Commands.ChecksumStatus);
-			PrintCommand(Commands.SlotByteComp);
-			PrintCommand(Commands.NonSlotComp);
 			PrintCommand(Commands.Offset);
 			PrintCommand(Commands.EditOffset);
-	
+			PrintCommand(Commands.ChecksumStatus);
+
 			PrintGroupName(Res.CmdGroupLanguage);
 
 			PrintCommand(Commands.Lang);
-			PrintCommand(Commands.Lang_Comp);
+			PrintCommand(Commands.CompLang);
 
 			PrintGroupName(Res.CmdGroupConfig);
 
+			PrintCommand(Commands.WatchFile);
+			PrintCommand(Commands.UnwatchFile);
+			PrintCommand(Commands.SlotByteComp);
+			PrintCommand(Commands.NonSlotComp);
+			PrintCommand(Commands.ExportFlags);
+			PrintCommand(Commands.FileWatchFlags);
+			PrintCommand(Commands.LogFlags);
+			PrintCommand(Commands.ComparisonFlags);
 			PrintCommand(Commands.LoadConfig);
 			PrintCommand(Commands.SaveConfig);
 			PrintCommand(Commands.OpenConfig);
+			PrintCommand(Commands.OpenLog);
 			PrintCommand(Commands.AutoLoadOn);
 			PrintCommand(Commands.AutoLoadOff);
+			PrintCommand(Commands.AutoSaveOn);
+			PrintCommand(Commands.AutoSaveOff);
 			PrintCommand(Commands.CreateBindings);
 			PrintCommand(Commands.OpenBindings);
-
+			
 			PrintCustomCommands();
 
 			PrintLine();
@@ -173,7 +234,7 @@ namespace SRAM.Comparison.Services
 		{
 			PrintSectionHeader();
 			Print(flag + @":");
-			PrintColoredLine(ConsoleColor.Yellow, @" " + flags.HasFlag(flag));
+			PrintColoredLine(ConsoleColor.Yellow, @" " + flags.HasUInt32Flag(flag));
 			ResetColor();
 		}
 
@@ -183,9 +244,9 @@ namespace SRAM.Comparison.Services
 				this.PrintSectionHeader(name);
 			
 			PrintColored(ConsoleColor.Yellow, $"{name ?? flags.GetType().GetDisplayName()}: ");
-			PrintColoredLine(ConsoleColor.Cyan, $"[{flags.GetFlags().Join()}]");
-			PrintColoredLine(ConsoleColor.Yellow, @" " + flags.GetSetFlags().Join());
-	
+			PrintColoredLine(ConsoleColor.DarkCyan, $"[{flags.GetFlags().Join()}] ");
+			PrintColored(ConsoleColor.Yellow, $"{Res.FlagsSet} ");
+			PrintColoredLine(ConsoleColor.Cyan, flags.ToFlagsString());
 			ResetColor();
 		}
 
@@ -197,13 +258,13 @@ namespace SRAM.Comparison.Services
 			PrintColored(ConsoleColor.Gray, " ".Repeat(4) + @$"[ {Res.CompSection} ");
 
 			PrintColored(ConsoleColor.DarkYellow, bufferName);
-			PrintColored(ConsoleColor.White, @" | ");
-			PrintColored(ConsoleColor.Gray, $@"{Res.CompOffset} ");
+			PrintColored(ConsoleColor.White, $@" {BufferInfoValueDelimiter} ");
+			PrintColored(ConsoleColor.White, $@"{Res.CompOffset} ");
 			PrintColored(ConsoleColor.DarkYellow, bufferOffset + $@" [x{bufferOffset:X}]");
 
-			PrintColored(ConsoleColor.White, @" | ");
+			PrintColored(ConsoleColor.White, $@" {BufferInfoValueDelimiter} ");
 
-			PrintColored(ConsoleColor.Gray, $@"{Res.CompSize} ");
+			PrintColored(ConsoleColor.White, $@"{Res.CompSize} ");
 			PrintColored(ConsoleColor.DarkYellow, bufferLength.ToString());
 
 			PrintColored(ConsoleColor.White, @" ]");
@@ -214,7 +275,7 @@ namespace SRAM.Comparison.Services
 			ResetColor();
 		}
 
-		public virtual void PrintComparison(string ident, int offset, string? offsetName, uint currValue, uint compValue)
+		public virtual void PrintComparison(string ident, int offset, string? offsetName, uint currValue, uint compValue, bool isUnknown)
 		{
 			var sign = GetNumberSign((int)(currValue - compValue));
 			int change = (int)currValue - (int)compValue;
@@ -229,15 +290,20 @@ namespace SRAM.Comparison.Services
 
 			PrintComparisonIdentification(ident);
 			PrintOffsetValues(offsetText, offsetName);
+			
+			var newLineIdent = ident + " ".Repeat(2);
+			PrintLine();
+			Print(newLineIdent);
 			PrintCompValues(isNegativechange, compText);
-			PrintLine(ident);
+			PrintLine();
+			Print(newLineIdent);
 			PrintCurrValues(isNegativechange, currText);
-			PrintLine(ident);
-			PrintChangeValues(isNegativechange, absChange, sign, changeText);
+			PrintLine();
+			Print(newLineIdent);
+			PrintChangeValues(isNegativechange, absChange, sign, changeText, isUnknown);
 		}
 
-		public virtual void PrintComparison(string ident, int offset, string? offsetName, ushort currValue,
-			ushort compValue)
+		public virtual void PrintComparison(string ident, int offset, string? offsetName, ushort currValue, ushort compValue, bool isUnknown)
 		{
 			var sign = GetNumberSign(currValue - compValue);
 			int change = currValue - compValue;
@@ -254,10 +320,13 @@ namespace SRAM.Comparison.Services
 			PrintOffsetValues(offsetText, offsetName);
 			PrintCompValues(isNegativechange, compText);
 			PrintCurrValues(isNegativechange, currText);
-			PrintChangeValues(isNegativechange, absChange, sign, changeText);
+			var newLineIdent = ident + " ".Repeat(2);
+			PrintLine();
+			Print(newLineIdent);
+			PrintChangeValues(isNegativechange, absChange, sign, changeText, isUnknown);
 		}
 
-		public virtual void PrintComparison(string ident, int offset, string? offsetName, byte currValue, byte compValue)
+		public virtual void PrintComparison(string ident, int offset, string? offsetName, byte currValue, byte compValue, bool isUnknown)
 		{
 			var sign = GetNumberSign((short)(currValue - compValue));
 			var change = currValue - compValue;
@@ -273,14 +342,15 @@ namespace SRAM.Comparison.Services
 			PrintOffsetValues(offsetText, offsetName);
 			PrintCompValues(isNegativechange, compText);
 			PrintCurrValues(isNegativechange, currText);
-			PrintChangeValues(isNegativechange, absChange, sign, changeText);
+			var newLineIdent = ident + " ".Repeat(2);
+			PrintLine();
+			Print(newLineIdent);
+			PrintChangeValues(isNegativechange, absChange, sign, changeText, isUnknown);
 		}
 
-		protected virtual string GetByteValueRepresentations(byte value) =>
-			NumberFormatter.GetByteValueRepresentations(value);
+		protected virtual string GetByteValueRepresentations(byte value) => NumberFormatter.GetByteValueRepresentations(value);
 
-		protected virtual string GetByteValueChangeRepresentations(byte currValue, byte compValue) =>
-			NumberFormatter.GetByteValueChangeRepresentations(currValue, compValue);
+		protected virtual string GetByteValueChangeRepresentations(byte currValue, byte compValue) => NumberFormatter.GetByteValueChangeRepresentations(currValue, compValue);
 
 		public virtual void PrintSectionHeader()
 		{
@@ -312,6 +382,13 @@ namespace SRAM.Comparison.Services
 			ResetColor();
 		}
 
+		protected virtual void PrintConfigName(string settingName, string cmdArgName, string examples, int padRightDistance = 35)
+		{
+			PrintColored(ConsoleColor.White, settingName.PadRight(padRightDistance) + @":");
+			PrintColored(ConsoleColor.Cyan, cmdArgName);
+			PrintColored(ConsoleColor.DarkCyan, $" [{examples}]");
+		}
+
 		protected virtual void PrintConfigName(string settingName, string? cmdArg = null, int padRightDistance = 35)
 		{
 			PrintColored(ConsoleColor.White, settingName.PadRight(padRightDistance) + @":");
@@ -321,7 +398,8 @@ namespace SRAM.Comparison.Services
 			PrintColored(ConsoleColor.Cyan, cmdArg);
 		}
 
-		protected virtual void PrintValue(object value) => PrintColoredLine(ConsoleColor.Yellow, @" " + value);
+		protected virtual void PrintValue(object value) => PrintColored(ConsoleColor.Yellow, @" " + value);
+		protected virtual void PrintValueLineBreak(object value) => PrintColoredLine(ConsoleColor.Yellow, @" " + value);
 
 		protected virtual void PrintOffsetValues(string offsetText, string? offsetName)
 		{
@@ -330,60 +408,73 @@ namespace SRAM.Comparison.Services
 
 			if (offsetName is null) return;
 
-			PrintColored(ConsoleColor.Cyan, @" => ");
-			PrintColored(ConsoleColor.DarkYellow, offsetName);
+			PrintColored(ConsoleColor.Cyan, $@" {BufferNameMarker} ");
+			PrintColored(ConsoleColor.Yellow, offsetName);
 		}
 
 		protected virtual void PrintCompValues(bool isNegativeChange, string compText)
 		{
-			PrintColored(ConsoleColor.White, @" | ");
+			PrintColored(ConsoleColor.Cyan, $@" {CompValueMarker} ");
 			PrintColored(ConsoleColor.DarkGray, $@"{Res.CompOld} ");
 			PrintColored(isNegativeChange ? ConsoleColor.DarkGreen : ConsoleColor.Red, compText);
 		}
 
 		protected virtual void PrintCurrValues(bool isNegativeChange, string currText)
 		{
-			PrintColored(ConsoleColor.Cyan, @" => ");
+			PrintColored(ConsoleColor.Cyan, $@" {CurrValueMarker} ");
 			PrintColored(ConsoleColor.DarkGray, $@"{Res.CompNew} ");
 			PrintColored(isNegativeChange ? ConsoleColor.Red : ConsoleColor.DarkGreen, currText);
 		}
 
-		protected virtual void PrintChangeValues(bool isNegativeChange, uint changeValue, string sign, string changeText)
+		protected virtual void PrintChangeValues(bool isNegativeChange, uint changeValue, string sign, string changeText, bool isUnknown)
 		{
-			PrintColored(ConsoleColor.Cyan, @" = ");
-
 			var signColor = isNegativeChange ? ConsoleColor.DarkRed : ConsoleColor.Green;
 			var changeColor = isNegativeChange ? ConsoleColor.Red : ConsoleColor.DarkGreen;
 			
 			var changedBits = changeValue.CountChangedBits();
 			var oneBitColor = ConsoleColor.Yellow;
+			var highlightBgColor = ConsoleColor.DarkBlue;
+			var bitsColor = ConsoleColor.DarkGray;
 
-			PrintColored(ConsoleColor.DarkGray, $@"{Res.CompChangeShort} ");
-
-			if (changedBits == 1)
-				signColor = changeColor = isNegativeChange ? ConsoleColor.Magenta : ConsoleColor.Green;
-
-			PrintColored(signColor, sign);
-			PrintColored(changeColor, changeText);
-			PrintColored(ConsoleColor.DarkGray, ConsoleColor.Black, ":");
-
-			PrintColored(changedBits switch
+			if (isUnknown && changedBits == 1)
 			{
-				1 => ConsoleColor.Magenta,
-				_ => ConsoleColor.DarkGray
-			}, changedBits.ToString());
+				highlightBgColor = ConsoleColor.Blue;
+				bitsColor = ConsoleColor.White;
+				signColor = changeColor = isNegativeChange ? ConsoleColor.Magenta : ConsoleColor.Green;
+			}
+
+			PrintColored(bitsColor, highlightBgColor, Res.CompChangeShort);
+			SetBackgroundColor(ConsoleColor.Black);
+			
+			PrintColored(signColor, " " + sign);
+			PrintColored(changeColor, changeText);
+			PrintColored(ConsoleColor.Cyan, ConsoleColor.Black, $" {ChangeMarker} ");
+
+			PrintColored(bitsColor, highlightBgColor, changedBits.ToString());
 
 			if (changedBits == 1)
-				PrintColored(oneBitColor, "!");
+			{
+				PrintColored(bitsColor, $" {Res.Bit}");
+				if (isUnknown)
+				{
+					PrintColoredLine(oneBitColor, ConsoleColor.Black, $" {CandidateMarker} ");
+					PrintColored(bitsColor, highlightBgColor, $"» ");
+					PrintColored(bitsColor, Res.CandidateForFinding);
+					PrintColored(bitsColor, $" «");
+				}
+			}
+			else
+				PrintColored(bitsColor, $" {Res.Bits}");
 
+			SetBackgroundColor(ConsoleColor.Black);
 			PrintLine();
-
+			
 			ResetColor();
 		}
 
-		protected virtual string GetNumberSign(int value) => Math.Sign(value) < 0 ? "(-)" : "(+)";
-
-		protected virtual void PrintComparisonIdentification(string ident) => PrintColored(ConsoleColor.White, $@"{ident}=> ");
+		protected virtual string GetNumberSign(int value) => Math.Sign(value) < 0 ? NegativeChangeMarker : PositiveChangeMarker;
+		
+		protected virtual void PrintComparisonIdentification(string ident) => PrintColored(ConsoleColor.Cyan, $@"{ident}{ComparisonMarker} ");
 
 		protected virtual void PrintColored(ConsoleColor foregroundColor, ConsoleColor backgroundColor, string text)
 		{
@@ -414,7 +505,7 @@ namespace SRAM.Comparison.Services
 		public virtual string NewLine => NewLineDefault;
 
 		public virtual void PrintLine() => PrintLine(string.Empty);
-		public virtual void PrintLine(string text) => Print(text + NewLine + Prefix);
+		public virtual void PrintLine(string text) => Print(text + NewLine + LinePrefix);
 		public virtual void Print(string text) => Console.Write(text);
 		
 		protected virtual void PrintBackgroundColored(ConsoleColor color, string text)
@@ -432,7 +523,9 @@ namespace SRAM.Comparison.Services
 		protected virtual void PrintColoredLine(ConsoleColor foregroundColor, ConsoleColor backgroundColor, string text)
 		{
 			SetBackgroundColor(backgroundColor);
-			PrintColoredLine(foregroundColor, text);
+			PrintColored(foregroundColor, text);
+			SetBackgroundColor(ConsoleColor.Black);
+			Print(NewLine);
 		}
 
 		public virtual void SetForegroundColor(ConsoleColor color)

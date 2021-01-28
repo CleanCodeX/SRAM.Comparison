@@ -9,11 +9,12 @@ namespace SRAM.Comparison.Enums
 	[DisplayNameLocalized(nameof(Resources.EnumFileWatchFlags), typeof(Resources))]
 	[JsonConverter(typeof(JsonStringEnumObjectConverter))]
 	[Flags]
-	public enum LogFlags : uint
+	public enum FileWatchFlags : uint
 	{
-		[DisplayNameLocalized(nameof(Resources.EnumLogExport), typeof(Resources))]
-		Export = 0x1,
-		[DisplayNameLocalized(nameof(Resources.EnumLogComparison), typeof(Resources))]
-		Comparison = 0x2
+		[DisplayNameLocalized(nameof(Resources.EnumOverwriteCompFile), typeof(Resources))]
+		OverwriteComp = 0x1,
+
+		[DisplayNameLocalized(nameof(Resources.EnumAutoExport), typeof(Resources))]
+		AutoExport = 0x2,
 	}
 }

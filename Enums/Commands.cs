@@ -18,10 +18,10 @@ namespace SRAM.Comparison.Enums
 		Config, // shows current config and command line parameters
 
 		[DisplayNameLocalized(nameof(Res.CmdGuideSrm), typeof(Res))]
-		Guide_Srm, // Guide (srm) 
+		SrmGuide, // Guide (srm) 
 
 		[DisplayNameLocalized(nameof(Res.CmdGuideSavestate), typeof(Res))]
-		Guide_Savestate, // Manual (savestate) 
+		SavestateGuide, // Manual (savestate) 
 
 		[DisplayNameLocalized(nameof(Res.EnumSlotByteComparison), typeof(Res))]
 		SlotByteComp, // Enables or disables slot byte by byte comparison => compares the save slot area by by byte
@@ -33,7 +33,7 @@ namespace SRAM.Comparison.Enums
 		SetSlot, // Sets the save slot for the current file
 
 		[DisplayNameLocalized(nameof(Res.CmdSetComparisonFileSaveSlot), typeof(Res))]
-		SetSlot_Comp, // Sets the save slot for the comparison file
+		SetCompSlot, // Sets the save slot for the comparison file
 
 		[DisplayNameLocalized(nameof(Res.CmdShowChecksumStatus), typeof(Res))]
 		ChecksumStatus, // Shows save slot checksum status
@@ -41,25 +41,25 @@ namespace SRAM.Comparison.Enums
 		[DisplayNameLocalized(nameof(Res.CmdCompareFiles), typeof(Res))]
 		Compare, // Starts the comparison
 
-		[DisplayNameLocalized(nameof(Res.CmdOverwriteComparisonFile), typeof(Res))]
+		[DisplayNameLocalized(nameof(Res.EnumOverwriteCompFile), typeof(Res))]
 		OverwriteComp, // Overwrite the comparison file with current file
 
 		[DisplayNameLocalized(nameof(Res.CmdBackupCurrentFile), typeof(Res))]
 		Backup, // Backups the current file
 
 		[DisplayNameLocalized(nameof(Res.CmdBackupComparisonFile), typeof(Res))]
-		Backup_Comp, // Backups the comparison file
+		BackupComp, // Backups the comparison file
 
 		[DisplayNameLocalized(nameof(Res.CmdRestoreCurrentFile), typeof(Res))]
 		Restore, // Restores the current file from previously created backup
 
 		[DisplayNameLocalized(nameof(Res.CmdRestoreComparisonFile), typeof(Res))]
-		Restore_Comp, // Restores the comparison file from previously created backup
+		RestoreComp, // Restores the comparison file from previously created backup
 
 		[DisplayNameLocalized(nameof(Res.CmdExportComparisonResult), typeof(Res))]
 		Export, // Export the current comparison result as text file to export directory
 
-		[DisplayNameLocalized(nameof(Res.CmdExportFlags), typeof(Res))]
+		[DisplayNameLocalized(nameof(Res.EnumExportFlags), typeof(Res))]
 		ExportFlags, // Export flags
 
 		[DisplayNameLocalized(nameof(Res.CmdSaveCurrentFileWithOtherFileName), typeof(Res))]
@@ -81,7 +81,7 @@ namespace SRAM.Comparison.Enums
 		Lang, // Sets the UI language
 
 		[DisplayNameLocalized(nameof(Res.CmdComparisonResultLanguage), typeof(Res))]
-		Lang_Comp, // Sets the language for comparison results
+		CompLang, // Sets the language for comparison results
 
 		[DisplayNameLocalized(nameof(Res.CmdLoadConfig), typeof(Res))]
 		LoadConfig, // Loads the current config from file
@@ -95,6 +95,12 @@ namespace SRAM.Comparison.Enums
 		[DisplayNameLocalized(nameof(Res.CmdConfigAutoLoadOff), typeof(Res))]
 		AutoLoadOff, // Disables config auto loading
 
+		[DisplayNameLocalized(nameof(Res.CmdConfigAutoSaveOn), typeof(Res))]
+		AutoSaveOn, // Enables config auto saving
+
+		[DisplayNameLocalized(nameof(Res.CmdConfigAutoSaveOff), typeof(Res))]
+		AutoSaveOff, // Disables config auto saving
+
 		[DisplayNameLocalized(nameof(Res.CmdOpenConfig), typeof(Res))]
 		OpenConfig, // opens the config file
 
@@ -103,38 +109,73 @@ namespace SRAM.Comparison.Enums
 
 		[DisplayNameLocalized(nameof(Res.CmdOpenKeyBindingFile), typeof(Res))]
 		OpenBindings, // opens the custom key binding file
+
+		[DisplayNameLocalized(nameof(Res.CmdOpenLog), typeof(Res))]
+		OpenLog, // opens the log file
+
+		[DisplayNameLocalized(nameof(Res.CmdWatchCurrentFile), typeof(Res))]
+		WatchFile, // starts watching for file changes
+
+		[DisplayNameLocalized(nameof(Res.CmdUnwatchCurrentFile), typeof(Res))]
+		UnwatchFile, // stops watching for file changes
+
+		[DisplayNameLocalized(nameof(Res.EnumFileWatchFlags), typeof(Res))]
+		FileWatchFlags, // File watch flags
+
+		[DisplayNameLocalized(nameof(Res.EnumComparisonFlags), typeof(Res))]
+		ComparisonFlags, // Comparison flags
+
+		[DisplayNameLocalized(nameof(Res.EnumLogFlags), typeof(Res))]
+		LogFlags, // Log flags
+
+		[DisplayNameLocalized(nameof(Res.EnumSlotSummary), typeof(Res))]
+		SlotSummary, // Slot summary
 	}
 	
 	public enum AlternateCommands
 	{
-		Guide = Commands.Guide_Srm,
-		Manual = Commands.Guide_Srm,
-		Oc = Commands.OverwriteComp,
+		Guide = Commands.SrmGuide,
+		Manual = Commands.SrmGuide,
+		Srm = Commands.SrmGuide,
+		Savestate = Commands.SavestateGuide,
+		OC = Commands.OverwriteComp,
 		Cmds = Commands.Help,
 		CmdLine = Commands.Config,
 		Cfg = Commands.Config,
 		Q = Commands.Quit,
 		B = Commands.Backup,
-		BC = Commands.Backup_Comp,
+		BC = Commands.BackupComp,
 		R = Commands.Restore,
-		RC = Commands.Restore_Comp,
+		RC = Commands.RestoreComp,
 		SBC = Commands.SlotByteComp,
 		NSC = Commands.NonSlotComp,
 		CS = Commands.ChecksumStatus,
 		T = Commands.Transfer,
 		Cls = Commands.Clear,
-		W = Commands.Clear,
 		L = Commands.Lang,
-		LC = Commands.Lang_Comp,
+		CL = Commands.CompLang,
 		C = Commands.Compare,
 		O = Commands.Offset,
 		EO = Commands.EditOffset,
 		Load = Commands.LoadConfig,
 		Save = Commands.SaveConfig,
 		Open = Commands.OpenConfig,
+		Log = Commands.OpenLog,
 		LoadOn = Commands.AutoLoadOn,
 		LoadOff = Commands.AutoLoadOff,
+		SaveOn = Commands.AutoSaveOn,
+		SaveOff = Commands.AutoSaveOff,
+		Watch = Commands.WatchFile,
+		Unwatch = Commands.UnwatchFile,
 		E = Commands.Export,
 		EF = Commands.ExportFlags,
+		WF = Commands.FileWatchFlags,
+		CF = Commands.ComparisonFlags,
+		LF = Commands.LogFlags,
+		W = Commands.WatchFile,
+		UW = Commands.UnwatchFile,
+		SS = Commands.SetSlot,
+		SCS = Commands.SetCompSlot,
+		Slot = Commands.SlotSummary,
 	}
 }

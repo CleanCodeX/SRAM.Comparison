@@ -5,16 +5,16 @@ using SRAM.Comparison.Services;
 
 namespace SRAM.Comparison.Helpers
 {
-	[SupportedOSPlatform("windows")]
 	public class ConsoleHelper
 	{
 		private const int InitialConsoleWidth = 130;
-		private const int InitialConsoleHeight = 50;
+		private const int InitialConsoleHeight = 400;
 		private const int ConsoleBufferHeight = 1000;
 
 		private static readonly IConsolePrinter ConsolePrinter = ServiceCollection.ConsolePrinter;
 		private static readonly bool IsWindows = OperatingSystem.IsWindows();
-		
+
+		[SupportedOSPlatform("windows")]
 		public static void EnsureMinConsoleWidth(int minWidth)
 		{
 			if (!IsWindows) return;
@@ -42,13 +42,14 @@ namespace SRAM.Comparison.Helpers
 			SetInitialConsoleSize();
 		}
 
+		[SupportedOSPlatform("windows")]
 		public static void SetInitialConsoleSize()
 		{
 			if (!IsWindows) return;
 
 			try
 			{
-				if (Console.WindowWidth > InitialConsoleWidth) return;
+				if (Console.WindowWidth >= InitialConsoleWidth && Console.WindowHeight >= InitialConsoleHeight) return;
 
 				Console.SetWindowSize(InitialConsoleWidth, InitialConsoleHeight);
 				Console.SetBufferSize(InitialConsoleWidth, ConsoleBufferHeight);
@@ -59,6 +60,7 @@ namespace SRAM.Comparison.Helpers
 			}
 		}
 
+		[SupportedOSPlatform("windows")]
 		public static void RedefineConsoleColors(Color color = default, Color bgColor = default)
 		{
 			if (!IsWindows) return;

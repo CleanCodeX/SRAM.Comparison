@@ -42,6 +42,7 @@ namespace SRAM.Comparison
 		public string? ExportPath { get; set; }
 		public TExportFlags ExportFlags { get; set; }
 		public string? LogPath { get; set; }
+		public bool AutoSave { get; set; }
 		public TLogFlags LogFlags { get; set; }
 		public Dictionary<string, string> CustomOptions { get; set; } = new();
 
@@ -74,11 +75,18 @@ namespace SRAM.Comparison
 			get => LogFlags;
 			set => LogFlags = (TLogFlags)value;
 		}
+		Enum IOptions.FileWatchFlags
+		{
+			get => FileWatchFlags;
+			set => FileWatchFlags = (FileWatchFlags)value;
+		}
 
 		public bool ColorizeOutput { get; set; } = true;
 		public string? SavestateType { get; set; }
 		public string? UILanguage { get; set; }
 		public string? ComparisonResultLanguage { get; set; }
 		public string? ConfigPath { get; set; }
+		public bool AutoWatch { get; set; }
+		public FileWatchFlags FileWatchFlags { get; set; }
 	}
 }

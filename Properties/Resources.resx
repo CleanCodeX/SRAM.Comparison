@@ -126,31 +126,28 @@
   <data name="StatusBytesChangedTemplate" xml:space="preserve">
     <value>{0} bytes changed.</value>
   </data>
-  <data name="ConfigCurrentFileSaveSlot" xml:space="preserve">
+  <data name="CurrentFileSaveSlot" xml:space="preserve">
     <value>Save slot (current file)</value>
   </data>
-  <data name="ConfigComparisonFileSaveSlot" xml:space="preserve">
+  <data name="ComparisonFileSaveSlot" xml:space="preserve">
     <value>Save slot (Comparison file)</value>
   </data>
   <data name="EnumGameRegion" xml:space="preserve">
     <value>Game region</value>
   </data>
-  <data name="ConfigColorizeOutput" xml:space="preserve">
+  <data name="ColorizeOutput" xml:space="preserve">
     <value>Colorize output</value>
-  </data>
-  <data name="ConfigComparisonFlags" xml:space="preserve">
-    <value>Comparison flags</value>
   </data>
   <data name="PromptCompareNonSaveSlotArea" xml:space="preserve">
     <value>Compare non-save slot area</value>
   </data>
-  <data name="ConfigComparisonFilePath" xml:space="preserve">
+  <data name="ComparisonPath" xml:space="preserve">
     <value>Comparison filepath</value>
   </data>
-  <data name="ConfigExportDirectory" xml:space="preserve">
-    <value>Export directory</value>
+  <data name="ExportPath" xml:space="preserve">
+    <value>Export path</value>
   </data>
-  <data name="ConfigCurrentFilePath" xml:space="preserve">
+  <data name="CurrentFilePath" xml:space="preserve">
     <value>Current filepath</value>
   </data>
   <data name="StatusDifferentSaveSlotComparisonTemplate" xml:space="preserve">
@@ -168,10 +165,7 @@
   <data name="StatusAllSaveSlotsComparison" xml:space="preserve">
     <value>All save slots will be compared.</value>
   </data>
-  <data name="ErrorCannotOpenOutputFileTemplate" xml:space="preserve">
-    <value>Cannot open output file "{0}" for writing</value>
-  </data>
-	<data name="SramOffset" xml:space="preserve">
+  <data name="SramOffset" xml:space="preserve">
     <value>S-RAM offset</value><comment>The term Offset should only be translated if not understandable</comment>
   </data>
   <data name="ErrorCommandNotImplementedTemplate" xml:space="preserve">
@@ -333,7 +327,7 @@
   <data name="EnterCommand" xml:space="preserve">
     <value>Enter command and press enter.</value>
   </data>
-  <data name="StartMessage" xml:space="preserve">
+  <data name="StartMessageTemplate" xml:space="preserve">
     <value>New here? For a list of available commands press ({0}|?) or ({1}) for a guide. If there wasn't a comparison file yet, it has been created  now.</value>
   </data>
   <data name="CompSlot" xml:space="preserve">
@@ -345,7 +339,7 @@
   <data name="CompSram" xml:space="preserve">
     <value>S-RAM</value>
   </data>
-  <data name="ErrorComparisonFileDoesNotExist" xml:space="preserve">
+  <data name="ErrorComparisonFileDoesNotExistTemplate" xml:space="preserve">
     <value>The comparison file "{0}" has not been created yet. Please create by pressing (OC).</value>
   </data>
   <data name="ErrorNoValidCommandCmdTemplate" xml:space="preserve">
@@ -414,10 +408,10 @@
   <data name="ErrorParamNameValueMissmatchTemplate" xml:space="preserve">
     <value>Parameter name value mismatch for: {0}</value>
   </data>
-  <data name="ConfigComparisonResultLanguage" xml:space="preserve">
+  <data name="ComparisonResultLanguage" xml:space="preserve">
     <value>Comparison result language</value>
   </data>
-  <data name="ConfigUILanguage" xml:space="preserve">
+  <data name="UILanguage" xml:space="preserve">
     <value>UI language</value>
   </data>
   <data name="CmdLanguage" xml:space="preserve">
@@ -450,7 +444,7 @@
   <data name="CmdSaveConfig" xml:space="preserve">
     <value>Save config</value>
   </data>
-  <data name="ConfigFilePath" xml:space="preserve">
+  <data name="ConfigPath" xml:space="preserve">
     <value>Config file path</value>
   </data>
   <data name="CmdGroupConfig" xml:space="preserve">
@@ -465,7 +459,7 @@
   <data name="CmdOpenConfig" xml:space="preserve">
     <value>Open config file</value>
   </data>
-  <data name="ErrorConfigFileDoesNotExist" xml:space="preserve">
+  <data name="ErrorConfigFileDoesNotExistTemplate" xml:space="preserve">
     <value>The config file [{0}] does not exist (yet).</value>
   </data>
   <data name="CmdCreateKeyBindingFile" xml:space="preserve">
@@ -477,7 +471,7 @@
   <data name="StatusKeyBindingsFileSavedTemplate" xml:space="preserve">
     <value>Key bindings file [{0}] has been saved.</value>
   </data>
-  <data name="ErrorKeyBindingsFileDoesNotExist" xml:space="preserve">
+  <data name="ErrorKeyBindingsFileDoesNotExistTemplate" xml:space="preserve">
     <value>The key bindings file [{0}] does not exist (yet).</value>
   </data>
   <data name="ErrorSavestateOffsetEditNotSupported" xml:space="preserve">
@@ -501,12 +495,6 @@
   <data name="StatusExportFileNameSet" xml:space="preserve">
     <value>Export file [{0}] set.</value>
   </data>
-  <data name="ConfigExportFlags" xml:space="preserve">
-    <value>Export flags</value>
-  </data>
-  <data name="CmdExportFlags" xml:space="preserve">
-    <value>Export flags</value>
-  </data>
   <data name="EnumDeleteCompFile" xml:space="preserve">
     <value>Delete comparison file</value>
   </data>
@@ -523,13 +511,13 @@
     <value>Exxport file prompt</value>
   </data>
   <data name="PromptEnterFlags" xml:space="preserve">
-    <value>Enter all flags to set:</value>
+    <value>Enter all flags to set: (use 0 for no flags, empty string to cancel the input)</value>
   </data>
   <data name="ErrorInvalidFlags" xml:space="preserve">
     <value>Invalid flags:</value>
   </data>
-  <data name="StatusExportFlagsSetTemplate" xml:space="preserve">
-    <value>Export flags set: {0}.</value>
+  <data name="StatusExportFlagsSet" xml:space="preserve">
+    <value>Export flags set:</value>
   </data>
   <data name="StatusCompFileDeleted" xml:space="preserve">
     <value>The comparison file has been deleted.</value>
@@ -557,5 +545,80 @@
   </data>
   <data name="StatusConfigFileLoadedTemplate" xml:space="preserve">
     <value>Config file [{0}] has been loaded.</value>
+  </data>
+  <data name="CandidateForFinding" xml:space="preserve">
+    <value>Single bit change! Potential finding candidate, consider exporting and reporting this result</value>
+  </data>
+  <data name="Bit" xml:space="preserve">
+    <value>bit</value>
+  </data>
+  <data name="Bits" xml:space="preserve">
+    <value>bits</value>
+  </data>
+  <data name="CmdOpenLog" xml:space="preserve">
+    <value>Open log file</value>
+  </data>
+  <data name="StatusLogFileWillBeOpenedTemplate" xml:space="preserve">
+    <value>Log file [{0}] will be opened…</value>
+  </data>
+  <data name="CmdConfigAutoSaveOn" xml:space="preserve">
+    <value>Disable config auto-saving</value>
+  </data>
+  <data name="CmdConfigAutoSaveOff" xml:space="preserve">
+    <value>Enable config auto-saving</value>
+  </data>
+  <data name="CmdWatchCurrentFile" xml:space="preserve">
+    <value>Start save file watching</value>
+  </data>
+  <data name="CmdUnwatchCurrentFile" xml:space="preserve">
+    <value>Stop save file watching</value>
+  </data>
+  <data name="EnumAutoExport" xml:space="preserve">
+    <value>Auto export after comparison</value>
+  </data>
+  <data name="EnumFileWatchFlags" xml:space="preserve">
+    <value>File watch options</value>
+  </data>
+  <data name="StatusFileWatchingStoppedTemplate" xml:space="preserve">
+    <value>Stopped watching [{0}] for changes.</value>
+  </data>
+  <data name="StatusFileWatchingStartedTemplate" xml:space="preserve">
+    <value>Started watching [{0}] for changes.</value>
+  </data>
+  <data name="StatusWatchedFileChanged" xml:space="preserve">
+    <value>Watched file changed, starting comparison...</value>
+  </data>
+  <data name="LogPath" xml:space="preserve">
+    <value>Log path</value>
+  </data>
+  <data name="AutoSave" xml:space="preserve">
+    <value>Auto save</value>
+  </data>
+  <data name="BatchCommands" xml:space="preserve">
+    <value>Batch commands to execute in a row</value>
+  </data>
+  <data name="CustomOptions" xml:space="preserve">
+    <value>Custom options</value>
+  </data>
+  <data name="SavestateType" xml:space="preserve">
+    <value>Savestate type</value>
+  </data>
+  <data name="AutoWatch" xml:space="preserve">
+    <value>Auto watch save file</value>
+  </data>
+  <data name="StatusLogFlagsSet" xml:space="preserve">
+    <value>Log flags set:</value>
+  </data>
+  <data name="StatusFileWatchFlagsSet" xml:space="preserve">
+    <value>File watch flags set:</value>
+  </data>
+  <data name="FlagsSet" xml:space="preserve">
+    <value>Flags set:</value>
+  </data>
+  <data name="StatusComparisonFlagsSet" xml:space="preserve">
+    <value>Comparison flags set:</value>
+  </data>
+  <data name="EnumSlotSummary" xml:space="preserve">
+    <value>Save slot summary</value>
   </data>
 </root>

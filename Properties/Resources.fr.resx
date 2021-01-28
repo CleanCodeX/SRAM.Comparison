@@ -44,7 +44,7 @@
 	<data name="CmdCompareFiles" xml:space="preserve">
 		<value>Comparer le fichier en cours avec celui de comparaison</value>
 	</data>
-	<data name="ConfigColorizeOutput" xml:space="preserve">
+	<data name="ColorizeOutput" xml:space="preserve">
 		<value>Résultat avec couleurs</value>
 	</data>
 	<data name="CmdExportComparisonResult" xml:space="preserve">
@@ -103,9 +103,6 @@
 	<data name="CompComparison" xml:space="preserve">
 		<value>Comparaison</value>
 	</data>
-	<data name="ConfigComparisonFlags" xml:space="preserve">
-		<value>Options de comparaison</value>
-	</data>
 	<data name="CompComparisonShort" xml:space="preserve">
 		<value>Comp</value>
 	</data>
@@ -127,9 +124,6 @@
 	<data name="EnterIndexOfFileToOverwriteTemplate" xml:space="preserve">
 		<value>Entrez le numéro (0 à {0}) du fichier à écraser ou appuyez sur n'importe quelle autre touche pour annuler :</value>
 	</data>
-	<data name="ErrorCannotOpenOutputFileTemplate" xml:space="preserve">
-		<value>Impossible d'enregistrer le fichier de sortie "{0}"</value>
-	</data>
 	<data name="ErrorCommandNotImplementedTemplate" xml:space="preserve">
 		<value>La commande (overwrite) n'est pas implémentée.</value>
 	</data>
@@ -137,7 +131,7 @@
 		<value>L'emplacement de comparaison dans le fichier ne peut être défini que si l'emplacement d'enregistrement en cours dans le fichier a été défini en premier.</value>
 		<comment>Was: L'emplacement de la partie pour la comparaison ne peut être défini que si l'emplacement de jeu du fichier S-RAM en cours est défini en premier.</comment>
 	</data>
-	<data name="ErrorComparisonFileDoesNotExist" xml:space="preserve">
+	<data name="ErrorComparisonFileDoesNotExistTemplate" xml:space="preserve">
 		<value>Le fichier de comparaison "{0}" n'a pas encore été créé. Veuillez créer en appuyant sur (OC).</value>
 	</data>
 	<data name="ErrorInvalidFileExtensionTemplate" xml:space="preserve">
@@ -174,7 +168,7 @@
 	<data name="QueuedCommands" xml:space="preserve">
 		<value>Commandes en file d'attente</value>
 	</data>
-	<data name="ConfigCurrentFileSaveSlot" xml:space="preserve">
+	<data name="CurrentFileSaveSlot" xml:space="preserve">
 		<value>Enregistrer la partie en cours</value>
 		<comment>Partie du fichier en cours
 		</comment>
@@ -197,17 +191,17 @@
 	<data name="PromptCompareNonSaveSlotArea" xml:space="preserve">
 		<value>Comparer les zones en dehors de la partie en cours</value>
 	</data>
-	<data name="ConfigComparisonFilePath" xml:space="preserve">
+	<data name="ComparisonPath" xml:space="preserve">
 		<value>Comparaison du chemin du fichier</value>
 	</data>
-	<data name="ConfigComparisonFileSaveSlot" xml:space="preserve">
+	<data name="ComparisonFileSaveSlot" xml:space="preserve">
 		<value>Partie du fichier de comparaison</value>
 	</data>
-	<data name="ConfigCurrentFilePath" xml:space="preserve">
+	<data name="CurrentFilePath" xml:space="preserve">
 		<value>Chemin du fichier en cours</value>
 	</data>
-	<data name="ConfigExportDirectory" xml:space="preserve">
-		<value>Exporter le répertoire</value>
+	<data name="ExportPath" xml:space="preserve">
+		<value>Chemin d'exportation</value>
 	</data>
 	<data name="EnumGameRegion" xml:space="preserve">
 		<value>Région du jeu</value>
@@ -222,7 +216,7 @@
 	<data name="CompSram" xml:space="preserve">
 		<value>S-RAM</value>
 	</data>
-	<data name="StartMessage" xml:space="preserve">
+	<data name="StartMessageTemplate" xml:space="preserve">
 		<value>Nouveau ici? Pour obtenir la liste des commandes disponibles, appuyez sur ({0} |?) Ou ({1}) pour obtenir un guide. S'il n'y avait pas encore de fichier de comparaison, il a été créé maintenant.</value>
 	</data>
 	<data name="SramOffset" xml:space="preserve">
@@ -324,10 +318,10 @@
 	<data name="StatusDifferentSaveSlotComparisonTemplate" xml:space="preserve">
 		<value>L'emplacement de sauvegarde en cours {0} sera comparé à l'emplacement de sauvegarde de comparaison {1}.</value>
 	</data>
-	<data name="ConfigComparisonResultLanguage" xml:space="preserve">
+	<data name="ComparisonResultLanguage" xml:space="preserve">
 		<value>Langue des résultats de comparaison</value>
 	</data>
-	<data name="ConfigUILanguage" xml:space="preserve">
+	<data name="UILanguage" xml:space="preserve">
 		<value>Langue de l'interface utilisateur</value>
 	</data>
 	<data name="CmdLanguage" xml:space="preserve">
@@ -357,7 +351,7 @@
 	<data name="CmdSaveConfig" xml:space="preserve">
 		<value>Enregistrer la configuration</value>
 	</data>
-	<data name="ConfigFilePath" xml:space="preserve">
+	<data name="ConfigPath" xml:space="preserve">
 		<value>Chemin du fichier de configuration</value>
 	</data>
 	<data name="CmdGroupConfig" xml:space="preserve">
@@ -372,7 +366,7 @@
 	<data name="CmdOpenConfig" xml:space="preserve">
 		<value>Ouvrir le fichier de configuration</value>
 	</data>
-	<data name="ErrorConfigFileDoesNotExist" xml:space="preserve">
+	<data name="ErrorConfigFileDoesNotExistTemplate" xml:space="preserve">
 		<value>Le fichier de configuration [{0}] n'existe pas (encore).</value>
 	</data>
 	<data name="CmdCreateKeyBindingFile" xml:space="preserve">
@@ -384,7 +378,7 @@
 	<data name="StatusKeyBindingsFileSavedTemplate" xml:space="preserve">
 		<value>Le fichier de raccourcis clavier [{0}] a été enregistré.</value>
 	</data>
-	<data name="ErrorKeyBindingsFileDoesNotExist" xml:space="preserve">
+	<data name="ErrorKeyBindingsFileDoesNotExistTemplate" xml:space="preserve">
 		<value>Le fichier de raccourcis clavier [{0}] n'existe pas (encore).</value>
 	</data>
 	<data name="ErrorSavestateOffsetEditNotSupported" xml:space="preserve">
@@ -408,12 +402,6 @@
 	<data name="StatusExportFileNameSet" xml:space="preserve">
 		<value>Exporter l'ensemble du fichier [{0}].</value>
 	</data>
-	<data name="ConfigExportFlags" xml:space="preserve">
-		<value>Exporter les drapeaux</value>
-	</data>
-	<data name="CmdExportFlags" xml:space="preserve">
-		<value>Exporter les drapeaux</value>
-	</data>
 	<data name="EnumDeleteCompFile" xml:space="preserve">
 		<value>Supprimer le fichier de comparaison</value>
 	</data>
@@ -430,13 +418,13 @@
 		<value>Sélectionnez le fichier d'exportation</value>
 	</data>
 	<data name="PromptEnterFlags" xml:space="preserve">
-		<value>Entrez tous les indicateurs à définir:</value>
+		<value>Entrez tous les indicateurs à définir: (utilisez 0 pour aucun indicateur, chaîne vide pour annuler l'entrée)</value>
 	</data>
 	<data name="ErrorInvalidFlags" xml:space="preserve">
 		<value>Indicateurs non valides:</value>
 	</data>
-	<data name="StatusExportFlagsSetTemplate" xml:space="preserve">
-		<value>Ensemble d'indicateurs d'exportation: {0}.</value>
+	<data name="StatusExportFlagsSet" xml:space="preserve">
+		<value>Ensemble d'indicateurs d'exportation:</value>
 	</data>
 	<data name="StatusCompFileDeleted" xml:space="preserve">
 		<value>Le fichier de comparaison a été supprimé.</value>
@@ -464,5 +452,80 @@
 	</data>
 	<data name="StatusConfigFileLoadedTemplate" xml:space="preserve">
 		<value>Le fichier de configuration [{0}] a été chargé.</value>
+	</data>
+	<data name="CandidateForFinding" xml:space="preserve">
+		<value>Changement simple! Potentiel de recherche de candidat, envisagez d'exporter et de signaler ce résultat</value>
+	</data>
+	<data name="Bit" xml:space="preserve">
+		<value>bit</value>
+	</data>
+	<data name="Bits" xml:space="preserve">
+		<value>bits</value>
+	</data>
+	<data name="CmdOpenLog" xml:space="preserve">
+		<value>Ouvrir le fichier journal</value>
+	</data>
+	<data name="StatusLogFileWillBeOpenedTemplate" xml:space="preserve">
+		<value>Le fichier journal [{0}] sera ouvert…</value>
+	</data>
+	<data name="CmdConfigAutoSaveOff" xml:space="preserve">
+		<value>Activer l'enregistrement automatique de la configuration</value>
+	</data>
+	<data name="CmdConfigAutoSaveOn" xml:space="preserve">
+		<value>Désactiver l'enregistrement automatique de la configuration</value>
+	</data>
+	<data name="CmdWatchCurrentFile" xml:space="preserve">
+		<value>Commencer à enregistrer le fichier à regarder</value>
+	</data>
+	<data name="CmdUnwatchCurrentFile" xml:space="preserve">
+		<value>Arrêter de regarder les fichiers enregistrés</value>
+	</data>
+	<data name="EnumAutoExport" xml:space="preserve">
+		<value>Exportation automatique après comparaison</value>
+	</data>
+	<data name="EnumFileWatchFlags" xml:space="preserve">
+		<value>Options de surveillance des fichiers</value>
+	</data>
+	<data name="StatusFileWatchingStoppedTemplate" xml:space="preserve">
+		<value>J'ai arrêté de regarder [{0}] pour les modifications.</value>
+	</data>
+	<data name="StatusFileWatchingStartedTemplate" xml:space="preserve">
+		<value>J'ai commencé à regarder [{0}] pour les changements.</value>
+	</data>
+	<data name="StatusWatchedFileChanged" xml:space="preserve">
+		<value>Fichier surveillé modifié, démarrage de la comparaison ...</value>
+	</data>
+	<data name="LogPath" xml:space="preserve">
+		<value>Chemin du journal</value>
+	</data>
+	<data name="AutoSave" xml:space="preserve">
+		<value>Sauvegarde automatique</value>
+	</data>
+	<data name="AutoWatch" xml:space="preserve">
+		<value>Fichier de sauvegarde de la surveillance automatique</value>
+	</data>
+	<data name="BatchCommands" xml:space="preserve">
+		<value>Commandes par lots à exécuter dans une ligne</value>
+	</data>
+	<data name="CustomOptions" xml:space="preserve">
+		<value>Options personnalisées</value>
+	</data>
+	<data name="SavestateType" xml:space="preserve">
+		<value>Type de sauvegarde</value>
+	</data>
+	<data name="StatusFileWatchFlagsSet" xml:space="preserve">
+		<value>Indicateurs de surveillance des fichiers définis:</value>
+	</data>
+	<data name="StatusLogFlagsSet" xml:space="preserve">
+		<value>Indicateurs de journal définis:</value>
+	</data>
+	<data name="FlagsSet" xml:space="preserve">
+		<value>Jeu de drapeaux:</value>
+	</data>
+	<data name="StatusComparisonFlagsSet" xml:space="preserve">
+		<value>Indicateurs de comparaison définis:</value>
+	</data>
+	<data name="EnumSlotSummary" xml:space="preserve">
+		<value>Enregistrer le résumé de l'emplacement</value>
 	</data>
 </root>

@@ -70,11 +70,65 @@ namespace SRAM.Comparison.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Auto save ähnelt.
+        /// </summary>
+        public static string AutoSave {
+            get {
+                return ResourceManager.GetString("AutoSave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Auto watch save file ähnelt.
+        /// </summary>
+        public static string AutoWatch {
+            get {
+                return ResourceManager.GetString("AutoWatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Batch commands to execute in a row ähnelt.
+        /// </summary>
+        public static string BatchCommands {
+            get {
+                return ResourceManager.GetString("BatchCommands", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die bit ähnelt.
+        /// </summary>
+        public static string Bit {
+            get {
+                return ResourceManager.GetString("Bit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die bits ähnelt.
+        /// </summary>
+        public static string Bits {
+            get {
+                return ResourceManager.GetString("Bits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die bytes ähnelt.
         /// </summary>
         public static string Bytes {
             get {
                 return ResourceManager.GetString("Bytes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Single bit change! Potential finding candidate, consider exporting and reporting this result ähnelt.
+        /// </summary>
+        public static string CandidateForFinding {
+            get {
+                return ResourceManager.GetString("CandidateForFinding", resourceCulture);
             }
         }
         
@@ -151,6 +205,24 @@ namespace SRAM.Comparison.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Enable config auto-saving ähnelt.
+        /// </summary>
+        public static string CmdConfigAutoSaveOff {
+            get {
+                return ResourceManager.GetString("CmdConfigAutoSaveOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Disable config auto-saving ähnelt.
+        /// </summary>
+        public static string CmdConfigAutoSaveOn {
+            get {
+                return ResourceManager.GetString("CmdConfigAutoSaveOn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Create key binding file ähnelt.
         /// </summary>
         public static string CmdCreateKeyBindingFile {
@@ -174,15 +246,6 @@ namespace SRAM.Comparison.Properties {
         public static string CmdExportComparisonResult {
             get {
                 return ResourceManager.GetString("CmdExportComparisonResult", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Export flags ähnelt.
-        /// </summary>
-        public static string CmdExportFlags {
-            get {
-                return ResourceManager.GetString("CmdExportFlags", resourceCulture);
             }
         }
         
@@ -331,6 +394,15 @@ namespace SRAM.Comparison.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Open log file ähnelt.
+        /// </summary>
+        public static string CmdOpenLog {
+            get {
+                return ResourceManager.GetString("CmdOpenLog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Overwrite (or create) comparison file with current-file ähnelt.
         /// </summary>
         public static string CmdOverwriteComparisonFile {
@@ -417,6 +489,60 @@ namespace SRAM.Comparison.Properties {
         public static string CmdSlotByteByBytesComparison {
             get {
                 return ResourceManager.GetString("CmdSlotByteByBytesComparison", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Stop save file watching ähnelt.
+        /// </summary>
+        public static string CmdUnwatchCurrentFile {
+            get {
+                return ResourceManager.GetString("CmdUnwatchCurrentFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Start save file watching ähnelt.
+        /// </summary>
+        public static string CmdWatchCurrentFile {
+            get {
+                return ResourceManager.GetString("CmdWatchCurrentFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Colorize output ähnelt.
+        /// </summary>
+        public static string ColorizeOutput {
+            get {
+                return ResourceManager.GetString("ColorizeOutput", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Save slot (Comparison file) ähnelt.
+        /// </summary>
+        public static string ComparisonFileSaveSlot {
+            get {
+                return ResourceManager.GetString("ComparisonFileSaveSlot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Comparison filepath ähnelt.
+        /// </summary>
+        public static string ComparisonPath {
+            get {
+                return ResourceManager.GetString("ComparisonPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Comparison result language ähnelt.
+        /// </summary>
+        public static string ComparisonResultLanguage {
+            get {
+                return ResourceManager.GetString("ComparisonResultLanguage", resourceCulture);
             }
         }
         
@@ -574,101 +700,38 @@ namespace SRAM.Comparison.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Colorize output ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Config file path ähnelt.
         /// </summary>
-        public static string ConfigColorizeOutput {
+        public static string ConfigPath {
             get {
-                return ResourceManager.GetString("ConfigColorizeOutput", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Comparison filepath ähnelt.
-        /// </summary>
-        public static string ConfigComparisonFilePath {
-            get {
-                return ResourceManager.GetString("ConfigComparisonFilePath", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Save slot (Comparison file) ähnelt.
-        /// </summary>
-        public static string ConfigComparisonFileSaveSlot {
-            get {
-                return ResourceManager.GetString("ConfigComparisonFileSaveSlot", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Comparison flags ähnelt.
-        /// </summary>
-        public static string ConfigComparisonFlags {
-            get {
-                return ResourceManager.GetString("ConfigComparisonFlags", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Comparison result language ähnelt.
-        /// </summary>
-        public static string ConfigComparisonResultLanguage {
-            get {
-                return ResourceManager.GetString("ConfigComparisonResultLanguage", resourceCulture);
+                return ResourceManager.GetString("ConfigPath", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Current filepath ähnelt.
         /// </summary>
-        public static string ConfigCurrentFilePath {
+        public static string CurrentFilePath {
             get {
-                return ResourceManager.GetString("ConfigCurrentFilePath", resourceCulture);
+                return ResourceManager.GetString("CurrentFilePath", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Save slot (current file) ähnelt.
         /// </summary>
-        public static string ConfigCurrentFileSaveSlot {
+        public static string CurrentFileSaveSlot {
             get {
-                return ResourceManager.GetString("ConfigCurrentFileSaveSlot", resourceCulture);
+                return ResourceManager.GetString("CurrentFileSaveSlot", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Export directory ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Custom options ähnelt.
         /// </summary>
-        public static string ConfigExportDirectory {
+        public static string CustomOptions {
             get {
-                return ResourceManager.GetString("ConfigExportDirectory", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Export flags ähnelt.
-        /// </summary>
-        public static string ConfigExportFlags {
-            get {
-                return ResourceManager.GetString("ConfigExportFlags", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Config file path ähnelt.
-        /// </summary>
-        public static string ConfigFilePath {
-            get {
-                return ResourceManager.GetString("ConfigFilePath", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die UI language ähnelt.
-        /// </summary>
-        public static string ConfigUILanguage {
-            get {
-                return ResourceManager.GetString("ConfigUILanguage", resourceCulture);
+                return ResourceManager.GetString("CustomOptions", resourceCulture);
             }
         }
         
@@ -687,6 +750,15 @@ namespace SRAM.Comparison.Properties {
         public static string EnterIndexOfFileToOverwriteTemplate {
             get {
                 return ResourceManager.GetString("EnterIndexOfFileToOverwriteTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Auto export after comparison ähnelt.
+        /// </summary>
+        public static string EnumAutoExport {
+            get {
+                return ResourceManager.GetString("EnumAutoExport", resourceCulture);
             }
         }
         
@@ -741,6 +813,15 @@ namespace SRAM.Comparison.Properties {
         public static string EnumExportFlags {
             get {
                 return ResourceManager.GetString("EnumExportFlags", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die File watch options ähnelt.
+        /// </summary>
+        public static string EnumFileWatchFlags {
+            get {
+                return ResourceManager.GetString("EnumFileWatchFlags", resourceCulture);
             }
         }
         
@@ -835,11 +916,11 @@ namespace SRAM.Comparison.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Cannot open output file &quot;{0}&quot; for writing ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Save slot summary ähnelt.
         /// </summary>
-        public static string ErrorCannotOpenOutputFileTemplate {
+        public static string EnumSlotSummary {
             get {
-                return ResourceManager.GetString("ErrorCannotOpenOutputFileTemplate", resourceCulture);
+                return ResourceManager.GetString("EnumSlotSummary", resourceCulture);
             }
         }
         
@@ -855,9 +936,9 @@ namespace SRAM.Comparison.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die The comparison file &quot;{0}&quot; has not been created yet. Please create by pressing (OC). ähnelt.
         /// </summary>
-        public static string ErrorComparisonFileDoesNotExist {
+        public static string ErrorComparisonFileDoesNotExistTemplate {
             get {
-                return ResourceManager.GetString("ErrorComparisonFileDoesNotExist", resourceCulture);
+                return ResourceManager.GetString("ErrorComparisonFileDoesNotExistTemplate", resourceCulture);
             }
         }
         
@@ -873,9 +954,9 @@ namespace SRAM.Comparison.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die The config file [{0}] does not exist (yet). ähnelt.
         /// </summary>
-        public static string ErrorConfigFileDoesNotExist {
+        public static string ErrorConfigFileDoesNotExistTemplate {
             get {
-                return ResourceManager.GetString("ErrorConfigFileDoesNotExist", resourceCulture);
+                return ResourceManager.GetString("ErrorConfigFileDoesNotExistTemplate", resourceCulture);
             }
         }
         
@@ -909,9 +990,9 @@ namespace SRAM.Comparison.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die The key bindings file [{0}] does not exist (yet). ähnelt.
         /// </summary>
-        public static string ErrorKeyBindingsFileDoesNotExist {
+        public static string ErrorKeyBindingsFileDoesNotExistTemplate {
             get {
-                return ResourceManager.GetString("ErrorKeyBindingsFileDoesNotExist", resourceCulture);
+                return ResourceManager.GetString("ErrorKeyBindingsFileDoesNotExistTemplate", resourceCulture);
             }
         }
         
@@ -961,6 +1042,33 @@ namespace SRAM.Comparison.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Export path ähnelt.
+        /// </summary>
+        public static string ExportPath {
+            get {
+                return ResourceManager.GetString("ExportPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Flags set: ähnelt.
+        /// </summary>
+        public static string FlagsSet {
+            get {
+                return ResourceManager.GetString("FlagsSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Log path ähnelt.
+        /// </summary>
+        public static string LogPath {
+            get {
+                return ResourceManager.GetString("LogPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Compare non-save slot area ähnelt.
         /// </summary>
         public static string PromptCompareNonSaveSlotArea {
@@ -997,7 +1105,7 @@ namespace SRAM.Comparison.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Enter all flags to set: ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Enter all flags to set: (use 0 for no flags, empty string to cancel the input) ähnelt.
         /// </summary>
         public static string PromptEnterFlags {
             get {
@@ -1069,6 +1177,15 @@ namespace SRAM.Comparison.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Savestate type ähnelt.
+        /// </summary>
+        public static string SavestateType {
+            get {
+                return ResourceManager.GetString("SavestateType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die S-RAM offset ähnelt.
         /// </summary>
         public static string SramOffset {
@@ -1080,9 +1197,9 @@ namespace SRAM.Comparison.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die New here? For a list of available commands press ({0}|?) or ({1}) for a guide. If there wasn&apos;t a comparison file yet, it has been created  now. ähnelt.
         /// </summary>
-        public static string StartMessage {
+        public static string StartMessageTemplate {
             get {
-                return ResourceManager.GetString("StartMessage", resourceCulture);
+                return ResourceManager.GetString("StartMessageTemplate", resourceCulture);
             }
         }
         
@@ -1101,6 +1218,15 @@ namespace SRAM.Comparison.Properties {
         public static string StatusBytesChangedTemplate {
             get {
                 return ResourceManager.GetString("StatusBytesChangedTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Comparison flags set: ähnelt.
+        /// </summary>
+        public static string StatusComparisonFlagsSet {
+            get {
+                return ResourceManager.GetString("StatusComparisonFlagsSet", resourceCulture);
             }
         }
         
@@ -1204,11 +1330,11 @@ namespace SRAM.Comparison.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Export flags set: {0}. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Export flags set: ähnelt.
         /// </summary>
-        public static string StatusExportFlagsSetTemplate {
+        public static string StatusExportFlagsSet {
             get {
-                return ResourceManager.GetString("StatusExportFlagsSetTemplate", resourceCulture);
+                return ResourceManager.GetString("StatusExportFlagsSet", resourceCulture);
             }
         }
         
@@ -1231,6 +1357,33 @@ namespace SRAM.Comparison.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die File watch flags set: ähnelt.
+        /// </summary>
+        public static string StatusFileWatchFlagsSet {
+            get {
+                return ResourceManager.GetString("StatusFileWatchFlagsSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Started watching [{0}] for changes. ähnelt.
+        /// </summary>
+        public static string StatusFileWatchingStartedTemplate {
+            get {
+                return ResourceManager.GetString("StatusFileWatchingStartedTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Stopped watching [{0}] for changes. ähnelt.
+        /// </summary>
+        public static string StatusFileWatchingStoppedTemplate {
+            get {
+                return ResourceManager.GetString("StatusFileWatchingStoppedTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Value at offset {0} is currently {1}. ähnelt.
         /// </summary>
         public static string StatusGetOffsetValueTemplate {
@@ -1245,6 +1398,24 @@ namespace SRAM.Comparison.Properties {
         public static string StatusKeyBindingsFileSavedTemplate {
             get {
                 return ResourceManager.GetString("StatusKeyBindingsFileSavedTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Log file [{0}] will be opened… ähnelt.
+        /// </summary>
+        public static string StatusLogFileWillBeOpenedTemplate {
+            get {
+                return ResourceManager.GetString("StatusLogFileWillBeOpenedTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Log flags set: ähnelt.
+        /// </summary>
+        public static string StatusLogFlagsSet {
+            get {
+                return ResourceManager.GetString("StatusLogFlagsSet", resourceCulture);
             }
         }
         
@@ -1380,6 +1551,24 @@ namespace SRAM.Comparison.Properties {
         public static string StatusUnknownsChangedBytesTemplate {
             get {
                 return ResourceManager.GetString("StatusUnknownsChangedBytesTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Watched file changed, starting comparison... ähnelt.
+        /// </summary>
+        public static string StatusWatchedFileChanged {
+            get {
+                return ResourceManager.GetString("StatusWatchedFileChanged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die UI language ähnelt.
+        /// </summary>
+        public static string UILanguage {
+            get {
+                return ResourceManager.GetString("UILanguage", resourceCulture);
             }
         }
     }
