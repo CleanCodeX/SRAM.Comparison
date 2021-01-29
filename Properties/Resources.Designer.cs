@@ -1537,7 +1537,7 @@ namespace SRAM.Comparison.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die {0} bytes changed. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die {0} bytes changed ähnelt.
         /// </summary>
         public static string StatusSramChangedBytesTemplate {
             get {
@@ -1555,7 +1555,7 @@ namespace SRAM.Comparison.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Unknowns only: {0} bytes changed. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Unknowns only: {0} bytes changed ähnelt.
         /// </summary>
         public static string StatusUnknownsChangedBytesTemplate {
             get {
@@ -1564,7 +1564,7 @@ namespace SRAM.Comparison.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Saveslot {0} will be used. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Saveslot {0} has been compared. ähnelt.
         /// </summary>
         public static string StatusUsedSaveSlotIdTemplate {
             get {

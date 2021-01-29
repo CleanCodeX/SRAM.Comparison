@@ -38,9 +38,7 @@ namespace SRAM.Comparison.Services
 		where TSaveSlot : struct
 	{
 		private const string BackupFileExtension = ".backup";
-		private const string SrmFileExtension = ".srm";
-		private const string CompFileExtension = ".comp";
-		
+
 		private const string GuideSrmFileName = "guide-srm";
 		private const string GuideSavestateFileName = "guide-savestate";
 
@@ -382,15 +380,7 @@ namespace SRAM.Comparison.Services
 		protected virtual bool ConvertStreamIfSavestate(IOptions options, ref Stream stream, string? filePath)
 		{
 			if (filePath is null) return false;
-
-			var fileExtension = Path.GetExtension(filePath).ToLower();
-			if (fileExtension == SrmFileExtension) return false;
-
-			if (fileExtension == CompFileExtension)
-			{
-				fileExtension = Path.GetExtension(filePath.Remove(CompFileExtension)!).ToLower()!;
-				if (fileExtension == SrmFileExtension) return false;
-			}
+			if (!FilePathHelper.IsSavestateFile(filePath)) return false;
 
 			stream = GetSramFromSavestate(options, stream).GetOrThrowIfNull("ConvertedStream");
 
@@ -422,9 +412,9 @@ namespace SRAM.Comparison.Services
 		{
 			options.ComparisonFlags = (ComparisonFlags) options.ComparisonFlags | ComparisonFlags.AutoExport;
 
-			if (Compare<TComparer>(options) == 0) return null;
-
-			return options.ExportPath;
+			return Compare<TComparer>(options) > 0
+				? options.ExportPath
+				: null;
 		}
 
 		private void Export(Stream ms, IOptions options)
@@ -535,8 +525,7 @@ namespace SRAM.Comparison.Services
 		{
 			Requires.FileExists(options.CurrentFilePath, nameof(options.CurrentFilePath));
 
-			var extension = Path.GetExtension(options.CurrentFilePath);
-			if (extension != ".srm" && extension != ".comp")
+			if(!FilePathHelper.IsSrmFile(options.CurrentFilePath!))
 				throw new NotSupportedException(Resources.ErrorSavestateOffsetEditNotSupported);
 
 			var offset = GetOffset(out var slotIndex);

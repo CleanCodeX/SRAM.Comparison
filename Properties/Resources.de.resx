@@ -24,7 +24,7 @@
 		<value>{0} wurde aus Sicherung wiederhergestellt.</value>
 	</data>
 	<data name="StatusSramChangedBytesTemplate" xml:space="preserve">
-		<value>{0} Bytes geändert.</value>
+		<value>{0} Bytes geändert</value>
 	</data>
 	<data name="StatusSetSingleSaveSlotMaxTemplate" xml:space="preserve">
 		<value>Speicherslot {0} wird verwendet.</value>
@@ -280,7 +280,7 @@
 		<value>Alles (Bekannte + Unbekannte): {0} Bytes geändert.</value>
 	</data>
 	<data name="StatusUnknownsChangedBytesTemplate" xml:space="preserve">
-		<value>Nur Unbekannte: {0} Bytes geändert.</value>
+		<value>Nur Unbekannte: {0} Bytes geändert</value>
 	</data>
 	<data name="StatusSingleSaveSlotComparisonTemplate" xml:space="preserve">
 		<value>Nur der Speicherslot {0} wird verglichen.</value>
@@ -520,6 +520,6 @@
 		<value>Gib den zu ladenden Speicherslot (1-{0}) an:</value>
 	</data>
 	<data name="StatusUsedSaveSlotIdTemplate" xml:space="preserve">
-		<value>Speicherslot {0} wird verwendet.</value>
+		<value>Speicherslot {0} wurde verglichen.</value>
 	</data>
 </root>

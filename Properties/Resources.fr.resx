@@ -244,7 +244,7 @@
 		<value>Tout (valeurs connues et inconnues) : {0} octets modifiés.</value>
 	</data>
 	<data name="StatusUnknownsChangedBytesTemplate" xml:space="preserve">
-		<value>Valeurs inconnues uniquement : {0} octets modifiés.</value>
+		<value>Valeurs inconnues uniquement : {0} octets modifiés</value>
 	</data>
 	<data name="StatusSingleSaveSlotComparisonTemplate" xml:space="preserve">
 		<value>Seule la partie en cours {0} sera comparée.</value>
@@ -279,7 +279,7 @@
 		<value>Le partie {0} sera utilisée.</value>
 	</data>
 	<data name="StatusSramChangedBytesTemplate" xml:space="preserve">
-		<value>{0} octets modifiés.</value><comment>{0} octets modifiés</comment>
+		<value>{0} octets modifiés</value><comment>{0} octets modifiés</comment>
 	</data>
 	<data name="StatusFileRestoredFromBackupTemplate" xml:space="preserve">
 		<value>{0} a été restauré à partir de la sauvegarde.</value>
@@ -532,6 +532,6 @@
 		<value>Entrez l'ID de l'emplacement de sauvegarde à charger</value>
 	</data>
 	<data name="StatusUsedSaveSlotIdTemplate" xml:space="preserve">
-		<value>L'espace de sauvegarde {0} sera utilisé.</value>
+		<value>L'espace de sauvegarde {0} a été comparé.</value>
 	</data>
 </root>

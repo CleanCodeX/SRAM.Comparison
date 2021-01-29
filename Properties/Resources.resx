@@ -259,7 +259,7 @@
     <value>Unknowns only</value>
   </data>
   <data name="StatusUnknownsChangedBytesTemplate" xml:space="preserve">
-    <value>Unknowns only: {0} bytes changed.</value>
+    <value>Unknowns only: {0} bytes changed</value>
   </data>
   <data name="CompSection" xml:space="preserve">
     <value>Section</value>
@@ -277,7 +277,7 @@
     <value>Unknown non-save slot area: {0} bytes changed.</value>
   </data>
   <data name="StatusSramChangedBytesTemplate" xml:space="preserve">
-    <value>{0} bytes changed.</value>
+    <value>{0} bytes changed</value>
   </data>
   <data name="StatusCurrentComparisonExportedTemplate" xml:space="preserve">
     <value>Current comparison exported to "{0}".</value>
@@ -625,6 +625,6 @@
     <value>Enter save slot (1-{0} to load:</value>
   </data>
   <data name="StatusUsedSaveSlotIdTemplate" xml:space="preserve">
-    <value>Saveslot {0} will be used.</value>
+    <value>Saveslot {0} has been compared.</value>
   </data>
 </root>
