@@ -1,14 +1,645 @@
-﻿<root>
-	<resheader name="resmimetype">
-		<value>text/microsoft-resx</value>
-	</resheader>
-	<resheader name="version">
-		<value>1.3</value>
-	</resheader>
-	<resheader name="reader">
-		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<resheader name="writer">
-		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="All" xml:space="preserve">
+    <value>Todos</value>
+  </data>
+  <data name="AutoSave" xml:space="preserve">
+    <value>Auto guardar</value>
+  </data>
+  <data name="AutoWatch" xml:space="preserve">
+    <value>Supervisión de archivos de almacenamiento</value>
+  </data>
+  <data name="BatchCommands" xml:space="preserve">
+    <value>Comandos de grupo que se ejecutarán uno tras otro</value>
+  </data>
+  <data name="Bit" xml:space="preserve">
+    <value>Bit</value>
+  </data>
+  <data name="Bits" xml:space="preserve">
+    <value>Bits</value>
+  </data>
+  <data name="Bytes" xml:space="preserve">
+    <value>Bytes</value>
+  </data>
+  <data name="CandidateForFinding" xml:space="preserve">
+    <value>¡Cambio de un solo bit! Posible búsqueda de candidatos, considere exportar e informar este resultado</value>
+  </data>
+  <data name="CmdBackupComparisonFile" xml:space="preserve">
+    <value>Cree una copia del archivo de comparación</value>
+  </data>
+  <data name="CmdBackupCurrentFile" xml:space="preserve">
+    <value>Crea una copia del archivo actual</value>
+  </data>
+  <data name="CmdClearOutput" xml:space="preserve">
+    <value>Eliminar la salida de la consola anterior</value>
+  </data>
+  <data name="CmdCompareFiles" xml:space="preserve">
+    <value>Compare el archivo actual con el archivo de comparación</value>
+  </data>
+  <data name="CmdComparisonResultLanguage" xml:space="preserve">
+    <value>Especifique el idioma para el resultado de la comparación</value>
+  </data>
+  <data name="CmdConfig" xml:space="preserve">
+    <value>Konfig anzeigen</value>
+  </data>
+  <data name="CmdConfigAutoLoadOff" xml:space="preserve">
+    <value>Activar la carga automática para la configuración</value>
+  </data>
+  <data name="CmdConfigAutoLoadOn" xml:space="preserve">
+    <value>Desactivar la carga automática para la configuración</value>
+  </data>
+  <data name="CmdConfigAutoSaveOff" xml:space="preserve">
+    <value>Activar el guardado automático para la configuración</value>
+  </data>
+  <data name="CmdConfigAutoSaveOn" xml:space="preserve">
+    <value>Desactivar el guardado automático para la configuración</value>
+  </data>
+  <data name="CmdCreateKeyBindingFile" xml:space="preserve">
+    <value>Crear archivo de asignación de claves</value>
+  </data>
+  <data name="CmdEditOffset" xml:space="preserve">
+    <value>Cambiar y guardar el valor de compensación</value>
+  </data>
+  <data name="CmdExportComparisonResult" xml:space="preserve">
+    <value>Exportar el resultado de la comparación actual</value>
+  </data>
+  <data name="CmdGroupBackup" xml:space="preserve">
+    <value>Fusible</value>
+  </data>
+  <data name="CmdGroupComparison" xml:space="preserve">
+    <value>Copia de respaldo</value>
+  </data>
+  <data name="CmdGroupConfig" xml:space="preserve">
+    <value>Config</value>
+  </data>
+  <data name="CmdGroupDisplay" xml:space="preserve">
+    <value>monitor</value>
+  </data>
+  <data name="CmdGroupLanguage" xml:space="preserve">
+    <value>idioma</value>
+  </data>
+  <data name="CmdGroupMisc" xml:space="preserve">
+    <value>varios</value>
+  </data>
+  <data name="CmdGroupSetsSaveSlot" xml:space="preserve">
+    <value>Establecer ranura de memoria</value>
+  </data>
+  <data name="CmdGuideSavestate" xml:space="preserve">
+    <value>Instrucciones (savestate)</value>
+  </data>
+  <data name="CmdGuideSrm" xml:space="preserve">
+    <value>Instrucciones (srm)</value>
+  </data>
+  <data name="CmdLanguage" xml:space="preserve">
+    <value>Establecer el idioma de la interfaz de usuario</value>
+  </data>
+  <data name="CmdListCommands" xml:space="preserve">
+    <value>Lista de comandos</value>
+  </data>
+  <data name="CmdLoadConfig" xml:space="preserve">
+    <value>Cargar configuración</value>
+  </data>
+  <data name="CmdNonSlotByteByByteComparison" xml:space="preserve">
+    <value>Agregar comparación byte por byte sin ranura</value>
+  </data>
+  <data name="CmdOffset" xml:space="preserve">
+    <value>Mostrar valor de compensación</value>
+  </data>
+  <data name="CmdOpenConfig" xml:space="preserve">
+    <value>Abrir archivo de configuración</value>
+  </data>
+  <data name="CmdOpenKeyBindingFile" xml:space="preserve">
+    <value>Abrir archivo de enlace de claves</value>
+  </data>
+  <data name="CmdOpenLog" xml:space="preserve">
+    <value>Abrir archivo de registro</value>
+  </data>
+  <data name="CmdOverwriteComparisonFile" xml:space="preserve">
+    <value>Sobrescribir (o crear) el archivo de comparación con el archivo actual</value>
+  </data>
+  <data name="CmdQuit" xml:space="preserve">
+    <value>Dejar</value>
+  </data>
+  <data name="CmdRestoreComparisonFile" xml:space="preserve">
+    <value>Restaurar el archivo de comparación desde la copia de seguridad</value>
+  </data>
+  <data name="CmdRestoreCurrentFile" xml:space="preserve">
+    <value>Restaurar el archivo actual desde la copia de seguridad</value>
+  </data>
+  <data name="CmdSaveConfig" xml:space="preserve">
+    <value>Guardar configuración</value>
+  </data>
+  <data name="CmdSaveCurrentFileWithOtherFileName" xml:space="preserve">
+    <value>Guardar el archivo actual con el nombre de otro archivo del juego</value>
+  </data>
+  <data name="CmdSetComparisonFileSaveSlot" xml:space="preserve">
+    <value>Establecer la ranura para guardar del archivo de comparación</value>
+  </data>
+  <data name="CmdSetCurrentSrramFileSaveSlot" xml:space="preserve">
+    <value>Establecer la ranura para guardar el archivo actual</value>
+  </data>
+  <data name="CmdShowChecksumStatus" xml:space="preserve">
+    <value>Mostrar el estado de la suma de comprobación de la ranura guardada</value>
+  </data>
+  <data name="CmdSlotByteByBytesComparison" xml:space="preserve">
+    <value>Agregar ranura de comparación byte a byte</value>
+  </data>
+  <data name="CmdUnwatchCurrentFile" xml:space="preserve">
+    <value>Dejar de ver archivos guardados</value>
+  </data>
+  <data name="CmdWatchCurrentFile" xml:space="preserve">
+    <value>Empezar a guardar archivos viendo</value>
+  </data>
+  <data name="ColorizeOutput" xml:space="preserve">
+    <value>Colorear la salida</value>
+  </data>
+  <data name="ComparisonFileSaveSlot" xml:space="preserve">
+    <value>Guardar espacio (archivo de comparación)</value>
+  </data>
+  <data name="ComparisonPath" xml:space="preserve">
+    <value>Ruta de archivo de comparación</value>
+  </data>
+  <data name="ComparisonResultLanguage" xml:space="preserve">
+    <value>Lenguaje de resultados de comparación</value>
+  </data>
+  <data name="CompChangeShort" xml:space="preserve">
+    <value>Cambio</value>
+  </data>
+  <data name="CompComparison" xml:space="preserve">
+    <value>Comparación</value>
+  </data>
+  <data name="CompComparisonShort" xml:space="preserve">
+    <value>Comp</value>
+  </data>
+  <data name="CompCurrent" xml:space="preserve">
+    <value>Actual</value>
+  </data>
+  <data name="CompCurrentShort" xml:space="preserve">
+    <value>Curr</value>
+  </data>
+  <data name="CompNewValue" xml:space="preserve">
+    <value>Nueva</value>
+  </data>
+  <data name="CompOldValue" xml:space="preserve">
+    <value>Antigua</value>
+  </data>
+  <data name="CompOffset" xml:space="preserve">
+    <value>Offset</value>
+  </data>
+  <data name="CompSameAsCurrentFileSaveSlot" xml:space="preserve">
+    <value>Igual que la ranura para guardar el archivo actual</value>
+  </data>
+  <data name="CompSection" xml:space="preserve">
+    <value>Sección</value>
+  </data>
+  <data name="CompSectionNonSaveSlotUnknowns" xml:space="preserve">
+    <value>Desconocidas de tragamonedas no guardadas</value>
+  </data>
+  <data name="CompSectionSaveSlotChangedTemplate" xml:space="preserve">
+    <value>Todos (conocidos + desconocidos)</value>
+  </data>
+  <data name="CompSize" xml:space="preserve">
+    <value>Talla</value>
+  </data>
+  <data name="CompSlot" xml:space="preserve">
+    <value>Guardar espacio</value>
+  </data>
+  <data name="CompSram" xml:space="preserve">
+    <value>S-RAM</value>
+  </data>
+  <data name="CompUnknownAreasOnly" xml:space="preserve">
+    <value>Solo incógnitas</value>
+  </data>
+  <data name="Config" xml:space="preserve">
+    <value>Config</value>
+  </data>
+  <data name="ConfigPath" xml:space="preserve">
+    <value>Ruta del archivo de configuración</value>
+  </data>
+  <data name="CurrentFilePath" xml:space="preserve">
+    <value>Ruta de archivo actual</value>
+  </data>
+  <data name="CurrentFileSaveSlot" xml:space="preserve">
+    <value>Guardar espacio (archivo actual)</value>
+  </data>
+  <data name="CustomOptions" xml:space="preserve">
+    <value>Opciones personalizadas</value>
+  </data>
+  <data name="EnterCommand" xml:space="preserve">
+    <value>Ingrese el comando y presione enter.</value>
+  </data>
+  <data name="EnterIndexOfFileToOverwriteTemplate" xml:space="preserve">
+    <value>Ingrese el índice (0 a {0}) del archivo a sobrescribir (cualquier otra tecla para cancelar):</value>
+  </data>
+  <data name="EnumAutoExport" xml:space="preserve">
+    <value>Exportación automática después de la comparación</value>
+  </data>
+  <data name="EnumChecksumStatus" xml:space="preserve">
+    <value>Mostrar el estado de la suma de comprobación de la ranura guardada</value>
+  </data>
+  <data name="EnumComparisonFile" xml:space="preserve">
+    <value>Archivo de comparación</value>
+  </data>
+  <data name="EnumComparisonFlags" xml:space="preserve">
+    <value>Opciones de comparación</value>
+  </data>
+  <data name="EnumCurrentFile" xml:space="preserve">
+    <value>Archivo actual</value>
+  </data>
+  <data name="EnumDeleteCompFile" xml:space="preserve">
+    <value>Eliminar archivo de comparación</value>
+  </data>
+  <data name="EnumExportFlags" xml:space="preserve">
+    <value>Opciones de exportación</value>
+  </data>
+  <data name="EnumFileWatchFlags" xml:space="preserve">
+    <value>Opciones de visualización de archivos</value>
+  </data>
+  <data name="EnumGameRegion" xml:space="preserve">
+    <value>Región de juego</value>
+  </data>
+  <data name="EnumLogComparison" xml:space="preserve">
+    <value>Registro en comparación</value>
+  </data>
+  <data name="EnumLogExport" xml:space="preserve">
+    <value>Registro cuando se exporta</value>
+  </data>
+  <data name="EnumLogFlags" xml:space="preserve">
+    <value>Opciones de registro</value>
+  </data>
+  <data name="EnumNonSaveSlotComparison" xml:space="preserve">
+    <value>Comparación de bytes sin ranura</value>
+  </data>
+  <data name="EnumOpenExportFile" xml:space="preserve">
+    <value>Abrir archivo de exportación</value>
+  </data>
+  <data name="EnumOverwriteCompFile" xml:space="preserve">
+    <value>Sobrescribir archivo de comparación</value>
+  </data>
+  <data name="EnumPromptExportFile" xml:space="preserve">
+    <value>Exportar mensaje de archivo</value>
+  </data>
+  <data name="EnumSelectExportFile" xml:space="preserve">
+    <value>Seleccionar archivo de exportación</value>
+  </data>
+  <data name="EnumSaveSlotByteComparison" xml:space="preserve">
+    <value>Comparación de todos los bytes de la ranura</value>
+  </data>
+  <data name="EnumShowSaveSlotSummary" xml:space="preserve">
+    <value>Mostrar resumen de espacio guardado</value>
+  </data>
+  <data name="ErrorCommandNotImplementedTemplate" xml:space="preserve">
+    <value>El llamador debe implementar el comando (sobrescribir).</value>
+  </data>
+  <data name="ErrorComparisonFileDoesNotExistTemplate" xml:space="preserve">
+    <value>El archivo de comparación "{0}" aún no se ha creado. Por favor cree presionando (OC).</value>
+  </data>
+  <data name="ErrorCompSaveSlotSetButNotForCurrFile" xml:space="preserve">
+    <value>La ranura para guardar para el archivo de comparación solo se puede configurar si la ranura para guardar el archivo actual se configura primero.</value>
+  </data>
+  <data name="ErrorConfigFileDoesNotExistTemplate" xml:space="preserve">
+    <value>El archivo de configuración [{0}] no existe (todavía).</value>
+  </data>
+  <data name="ErrorInvalidFileExtensionTemplate" xml:space="preserve">
+    <value>El archivo ({0}): [{1}] tiene una extensión de archivo no admitida. ¿Olvidaste citar el camino? Las extensiones de archivo admitidas son: {2}</value>
+  </data>
+  <data name="ErrorInvalidFlags" xml:space="preserve">
+    <value>Banderas no válidas:</value>
+  </data>
+  <data name="ErrorInvalidIndex" xml:space="preserve">
+    <value>Índice no válido. Abortado.</value>
+  </data>
+  <data name="ErrorKeyBindingsFileDoesNotExistTemplate" xml:space="preserve">
+    <value>El archivo de combinaciones de teclas [{0}] no existe (todavía).</value>
+  </data>
+  <data name="ErrorMissingPathArguments" xml:space="preserve">
+    <value>ERROR: El programa debe iniciarse con al menos la ruta al archivo guardado actual como parámetro. Se puede usar arrastrar y soltar.</value>
+  </data>
+  <data name="ErrorNoValidCommandCmdTemplate" xml:space="preserve">
+    <value>"{0}" es un comando desconocido. Para enumerar todos los comandos disponibles, ingrese ({1}).</value>
+  </data>
+  <data name="ErrorOperationAborted" xml:space="preserve">
+    <value>Operación abortada</value>
+  </data>
+  <data name="ErrorParamNameValueMissmatchTemplate" xml:space="preserve">
+    <value>No coincide el valor del nombre del parámetro para: {0}</value>
+  </data>
+  <data name="ErrorSavestateOffsetEditNotSupported" xml:space="preserve">
+    <value>Actualmente, no se admite la edición de compensación de estado.</value>
+  </data>
+  <data name="ExportPath" xml:space="preserve">
+    <value>Ruta de exportación</value>
+  </data>
+  <data name="FlagsSet" xml:space="preserve">
+    <value>Conjunto de banderas:</value>
+  </data>
+  <data name="LogPath" xml:space="preserve">
+    <value>Ruta de registro</value>
+  </data>
+  <data name="PromptCompareNonSaveSlotArea" xml:space="preserve">
+    <value>Comparar el área de la ranura no guardada</value>
+  </data>
+  <data name="PromptCreateNewFileInsteadOfOverwriting" xml:space="preserve">
+    <value>¿Le gustaría crear un nuevo archivo en lugar de sobrescribir el archivo actual? Escriba 1 para crear un archivo nuevo (recomendado) o escriba 2 para sobrescribir el archivo existente. En el último caso, asegúrese de tener una copia de seguridad creada antes. 1 = nuevo, 2 = sobrescribir, 0 = cancelar</value>
+  </data>
+  <data name="PromptEnterConfigName" xml:space="preserve">
+    <value>Ingrese el nombre de configuración específico o vacío para la configuración predeterminada.</value>
+  </data>
+  <data name="PromptEnterExportFileName" xml:space="preserve">
+    <value>Ingrese el nombre de configuración específico o vacío para la configuración predeterminada.</value>
+  </data>
+  <data name="PromptEnterFlags" xml:space="preserve">
+    <value>Ingrese todas las banderas para establecer: (use 0 para no banderas, cadena vacía para cancelar la entrada)</value>
+  </data>
+  <data name="PromptEnterSaveSlotOffsetTemplate" xml:space="preserve">
+    <value>Ingrese la dirección de compensación del espacio de almacenamiento {0}:</value>
+  </data>
+  <data name="PromptEnterSaveSlotOffsetValue" xml:space="preserve">
+    <value>Establecer el valor de compensación de la ranura de almacenamiento:</value>
+  </data>
+  <data name="PromptEnterSaveSlotOrAllTemplate" xml:space="preserve">
+    <value>Ingrese el espacio para guardar (1- {0} o cualquier otra clave para todos los espacios para guardar) para comparar:</value>
+  </data>
+  <data name="PromptEnterSaveSlotTemplate" xml:space="preserve">
+    <value>Ingrese el espacio para guardar (1- {0} para cargar:</value>
+  </data>
+  <data name="PromptSetComparionResultLanguage" xml:space="preserve">
+    <value>Establezca el idioma del resultado de la comparación (por ejemplo, 'en' para inglés, sin comillas). Una entrada vacía restablece la configuración.</value>
+  </data>
+  <data name="PromptSetSingleSaveSlotTemplate" xml:space="preserve">
+    <value>Ingrese espacio para guardar (1- {0}):</value>
+  </data>
+  <data name="PromptSetUILanguage" xml:space="preserve">
+    <value>Configure el idioma de la interfaz de usuario (por ejemplo, 'en' para inglés, sin comillas). Una entrada vacía restablece la configuración.</value>
+  </data>
+  <data name="QueuedCommands" xml:space="preserve">
+    <value>Comandos en cola</value>
+  </data>
+  <data name="SavestateType" xml:space="preserve">
+    <value>Tipo de estado</value>
+  </data>
+  <data name="SramOffset" xml:space="preserve">
+    <value>S-RAM offset</value>
+  </data>
+  <data name="StartMessageTemplate" xml:space="preserve">
+    <value>¿Nuevo aquí? Para obtener una lista de los comandos disponibles, presione ({0} |?) O ({1}) para obtener una guía. Si todavía no había un archivo de comparación, se ha creado ahora.</value>
+  </data>
+  <data name="StatusAllSaveSlotsComparison" xml:space="preserve">
+    <value>Se compararán todos los espacios guardados.</value>
+  </data>
+  <data name="StatusBytesChangedTemplate" xml:space="preserve">
+    <value>{0} bytes cambiados</value>
+  </data>
+  <data name="StatusComparisonFlagsSet" xml:space="preserve">
+    <value>Conjunto de banderas de comparación:</value>
+  </data>
+  <data name="StatusCompFileDeleted" xml:space="preserve">
+    <value>El archivo de comparación se ha eliminado.</value>
+  </data>
+  <data name="StatusCompFileOverwritten" xml:space="preserve">
+    <value>El archivo de comparación se ha sobrescrito.</value>
+  </data>
+  <data name="StatusConfigFileLoadedTemplate" xml:space="preserve">
+    <value>Se cargó el archivo de configuración [{0}].</value>
+  </data>
+  <data name="StatusConfigFileSavedTemplate" xml:space="preserve">
+    <value>Se ha guardado el archivo ConConfig [{0}].</value>
+  </data>
+  <data name="StatusConfigFileWillBeOpenedTemplate" xml:space="preserve">
+    <value>Se abrirá el archivo de configuración [{0}]…</value>
+  </data>
+  <data name="StatusCurrentComparisonExportedTemplate" xml:space="preserve">
+    <value>Comparación actual exportada a [{0}].</value>
+  </data>
+  <data name="StatusCurrentFileSaved" xml:space="preserve">
+    <value>El archivo actual se ha guardado como archivo de comparación.</value>
+  </data>
+  <data name="StatusCurrFileBackedUpTemplate" xml:space="preserve">
+    <value>{0} ha sido respaldada.</value>
+  </data>
+  <data name="StatusCurrFileSavedAsTemplate" xml:space="preserve">
+    <value>El archivo actual se ha copiado como {0}.</value>
+  </data>
+  <data name="StatusDifferentSaveSlotComparisonTemplate" xml:space="preserve">
+    <value>El espacio de guardado actual {0} se comparará con el espacio de guardado de comparación {1}.</value>
+  </data>
+  <data name="StatusExportFileNameSet" xml:space="preserve">
+    <value>Exportar conjunto de archivos [{0}].</value>
+  </data>
+  <data name="StatusExportFlagsSet" xml:space="preserve">
+    <value>Conjunto de banderas de exportación:</value>
+  </data>
+  <data name="StatusFileBackedUpTemplate" xml:space="preserve">
+    <value>Se ha realizado una copia de seguridad del archivo de destino como {0}.</value>
+  </data>
+  <data name="StatusFileRestoredFromBackupTemplate" xml:space="preserve">
+    <value>{0} se ha restaurado desde la copia de seguridad.</value>
+  </data>
+  <data name="StatusFileWatchFlagsSet" xml:space="preserve">
+    <value>Conjunto de banderas de vigilancia de archivos:</value>
+  </data>
+  <data name="StatusFileWatchingStartedTemplate" xml:space="preserve">
+    <value>Empecé a mirar [{0}] para ver los cambios.</value>
+  </data>
+  <data name="StatusFileWatchingStoppedTemplate" xml:space="preserve">
+    <value>Dejé de mirar [{0}] para ver los cambios.</value>
+  </data>
+  <data name="StatusGetOffsetValueTemplate" xml:space="preserve">
+    <value>El valor en el desplazamiento {0} es actualmente {1}.</value>
+  </data>
+  <data name="StatusKeyBindingsFileSavedTemplate" xml:space="preserve">
+    <value>El archivo de enlaces de teclas [{0}] se ha guardado.</value>
+  </data>
+  <data name="StatusLogFileWillBeOpenedTemplate" xml:space="preserve">
+    <value>Se abrirá el archivo de registro [{0}]…</value>
+  </data>
+  <data name="StatusLogFlagsSet" xml:space="preserve">
+    <value>Conjunto de banderas de registro:</value>
+  </data>
+  <data name="StatusModifiedFileOverwrittenTemplate" xml:space="preserve">
+    <value>El archivo actual editado se ha sobrescrito. Archivo: {0}.</value>
+  </data>
+  <data name="StatusModifiedFileSavedAsTemplate" xml:space="preserve">
+    <value>El archivo actual editado se ha guardado como {0}.</value>
+  </data>
+  <data name="StatusNoAvailableOtherFiles" xml:space="preserve">
+    <value>Actualmente no hay otros archivos disponibles con la misma extensión de archivo.</value>
+  </data>
+  <data name="StatusNoGuideAvailable" xml:space="preserve">
+    <value>No hay guía disponible</value>
+  </data>
+  <data name="StatusNonSaveSlotUnknownsBytesTemplate" xml:space="preserve">
+    <value>Área de espacio no guardada desconocida: {0} bytes modificados.</value>
+  </data>
+  <data name="StatusNoSramBytesChanged" xml:space="preserve">
+    <value>Ningún byte cambiado</value>
+  </data>
+  <data name="StatusOffsetValueWillBeUsedTemplate" xml:space="preserve">
+    <value>Se establecerá el valor de compensación {0}.</value>
+  </data>
+  <data name="StatusOffsetWillBeUsedTemplate" xml:space="preserve">
+    <value>Se utilizará la compensación {0}.</value>
+  </data>
+  <data name="StatusSaveSlotChangedBytesTemplate" xml:space="preserve">
+    <value>Todas (conocidas + desconocidas): {0} bytes cambiados.</value>
+  </data>
+  <data name="StatusSetOffsetValueTemplate" xml:space="preserve">
+    <value>El valor en el desplazamiento {0} ahora es {1}.</value>
+  </data>
+  <data name="StatusSetSingleSaveSlotMaxTemplate" xml:space="preserve">
+    <value>Se utilizará el espacio para guardar {0}.</value>
+  </data>
+  <data name="StatusSingleSaveSlotComparisonTemplate" xml:space="preserve">
+    <value>Solo se comparará el espacio guardado {0}.</value>
+  </data>
+  <data name="StatusSramChangedBytesTemplate" xml:space="preserve">
+    <value>{0} bytes cambiados</value>
+  </data>
+  <data name="StatusTotalDiffBytesTemplate" xml:space="preserve">
+    <value>Total: {0} bytes cambiados (fuera del área de espacio de guardado).</value>
+  </data>
+  <data name="StatusUnknownsChangedBytesTemplate" xml:space="preserve">
+    <value>Solo incógnitas: {0} bytes cambiados</value>
+  </data>
+  <data name="StatusSaveSlotToCompareTemplate" xml:space="preserve">
+    <value>Se comparará el espacio guardado {0} ...</value>
+  </data>
+  <data name="StatusWatchedFileChanged" xml:space="preserve">
+    <value>El archivo observado cambió, comenzando la comparación ...</value>
+  </data>
+  <data name="UILanguage" xml:space="preserve">
+    <value>Idioma de la interfaz de usuario</value>
+  </data>
+  <data name="StatusSaveSlotToShowTemplate" xml:space="preserve">
+    <value>Se mostrará un resumen del espacio guardado {0} ...</value>
+  </data>
+  <data name="CmdExportSaveSlotSummary" xml:space="preserve">
+    <value>Exportar resumen de espacio para guardar</value>
+  </data>
+  <data name="StatusSaveSlotToExportTemplate" xml:space="preserve">
+    <value>Se exportará el resumen del {0} espacio guardado ...</value>
+  </data>
+  <data name="StatusSaveSlotSummaryExportedTemplate" xml:space="preserve">
+    <value>Se exportó el resumen del lote guardado {0} a [{1}].</value>
+  </data>
+  <data name="DefaultFilename" xml:space="preserve">
+    <value>Nombre de archivo predeterminado</value>
+  </data>
 </root>

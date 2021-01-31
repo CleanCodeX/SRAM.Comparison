@@ -153,10 +153,10 @@
 	<data name="ErrorParamNameValueMissmatchTemplate" xml:space="preserve">
 		<value>Incompatibilité de nom de paramètre pour {0}</value>
 	</data>
-	<data name="CompNew" xml:space="preserve">
+	<data name="CompNewValue" xml:space="preserve">
 		<value>Nouveau</value>
 	</data>
-	<data name="CompOld" xml:space="preserve">
+	<data name="CompOldValue" xml:space="preserve">
 		<value>Ancien</value>
 	</data>
 	<data name="CompOffset" xml:space="preserve">
@@ -294,9 +294,9 @@
 		<value>Seulement les valeurs inconnues</value>
 	</data>
 	<data name="StatusCurrentComparisonExportedTemplate" xml:space="preserve">
-		<value>Comparaison en cours enregistrée dans le fichier "{0}".</value>
+		<value>Comparaison en cours enregistrée dans le fichier [{0}].</value>
 	</data>
-	<data name="EnumSlotByteComparison" xml:space="preserve">
+	<data name="EnumSaveSlotByteComparison" xml:space="preserve">
 		<value>Comparer les données de la partie en cours octet par octet</value><comment>Comparer toute les données de la partie en cours</comment>
 	</data>
 	<data name="CompSlot" xml:space="preserve">
@@ -311,7 +311,7 @@
 	<data name="PromptEnterSaveSlotOffsetValue" xml:space="preserve">
 		<value>Modifier la valeur du décalage dans cette partie :</value><comment>Modifier le décalage dans cette partie:</comment>
 	</data>
-	<data name="EnumNonSlotComparison" xml:space="preserve">
+	<data name="EnumNonSaveSlotComparison" xml:space="preserve">
 		<value>Comparer les zones en dehors de la partie en cours octet par octet :</value>
 		<comment>Comparer les zones en dehors de la partie en cours :</comment>
 	</data>
@@ -525,13 +525,28 @@
 	<data name="StatusComparisonFlagsSet" xml:space="preserve">
 		<value>Indicateurs de comparaison définis:</value>
 	</data>
-	<data name="EnumSlotSummary" xml:space="preserve">
-		<value>Enregistrer le résumé de l'emplacement</value>
+	<data name="EnumShowSaveSlotSummary" xml:space="preserve">
+		<value>Afficher le résumé de l'emplacement de sauvegarde</value>
 	</data>
 	<data name="PromptEnterSaveSlotTemplate" xml:space="preserve">
 		<value>Entrez l'ID de l'emplacement de sauvegarde à charger</value>
 	</data>
-	<data name="StatusUsedSaveSlotIdTemplate" xml:space="preserve">
-		<value>L'espace de sauvegarde {0} a été comparé.</value>
+	<data name="StatusSaveSlotToCompareTemplate" xml:space="preserve">
+		<value>L'espace de sauvegarde {0} sera comparé ...</value>
+	</data>
+	<data name="StatusSaveSlotToShowTemplate" xml:space="preserve">
+		<value>Le récapitulatif {0} de la zone de sauvegarde sera affiché ...</value>
+	</data>
+	<data name="CmdExportSaveSlotSummary" xml:space="preserve">
+		<value>Exporter le résumé de l'emplacement de sauvegarde</value>
+	</data>
+	<data name="StatusSaveSlotToExportTemplate" xml:space="preserve">
+		<value>Le récapitulatif {0} de la sauvegarde sera exporté ...</value>
+	</data>
+	<data name="StatusSaveSlotSummaryExportedTemplate" xml:space="preserve">
+		<value>Récapitulatif de la sauvegarde {0} exporté vers [{1}].</value>
+	</data>
+	<data name="DefaultFilename" xml:space="preserve">
+		<value>Nom de fichier par défaut</value>
 	</data>
 </root>

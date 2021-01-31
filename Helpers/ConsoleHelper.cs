@@ -49,10 +49,11 @@ namespace SRAM.Comparison.Helpers
 
 			try
 			{
+				Console.SetBufferSize(InitialConsoleWidth, ConsoleBufferHeight);
+
 				if (Console.WindowWidth >= InitialConsoleWidth && Console.WindowHeight >= InitialConsoleHeight) return;
 
 				Console.SetWindowSize(InitialConsoleWidth, InitialConsoleHeight);
-				Console.SetBufferSize(InitialConsoleWidth, ConsoleBufferHeight);
 			}
 			catch
 			{

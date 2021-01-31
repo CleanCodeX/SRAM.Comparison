@@ -102,7 +102,7 @@ namespace SRAM.Comparison.Services
 			switch (cmd)
 			{
 				case Commands.Compare:
-				case Commands.Export:
+				case Commands.ExportComparison:
 					throw new NotImplementedException(Resources.ErrorCommandNotImplementedTemplate.InsertArgs(command));
 				case Commands.ComparisonFlags:
 					SetComparisonFlags(options);
@@ -144,11 +144,14 @@ namespace SRAM.Comparison.Services
 					options.ComparisonFlags = InvertIncludeFlag(options.ComparisonFlags, ComparisonFlags.NonSlotComparison);
 					CheckAutoSave(options);
 					break;
-				case Commands.SlotSummary:
-					ShowSlotSummary(options);
+				case Commands.ShowSlotSummary:
+					ShowSaveSlotSummary(options);
+					break;
+				case Commands.ExportSlotSummary:
+					ExportSaveSlotSummary(options);
 					break;
 				case Commands.SetSlot:
-					options.CurrentFileSaveSlot = GetSaveSlotId(maxSaveSlotId: 4);
+					options.CurrentFileSaveSlot = GetSaveSlotIdWithStatus(maxSaveSlotId: 4);
 					if (options.CurrentFileSaveSlot == default)
 						options.ComparisonFileSaveSlot = default;
 
@@ -158,7 +161,7 @@ namespace SRAM.Comparison.Services
 				case Commands.SetCompSlot:
 					if (options.CurrentFileSaveSlot != default)
 					{
-						options.ComparisonFileSaveSlot = GetSaveSlotId(maxSaveSlotId: 4);
+						options.ComparisonFileSaveSlot = GetSaveSlotIdWithStatus(maxSaveSlotId: 4);
 						CheckAutoSave(options);
 					}
 					else
@@ -426,11 +429,11 @@ namespace SRAM.Comparison.Services
 				fileName = GetExportFileName(Path.IsPathRooted(options.ExportPath)
 					? null
 					: options.ExportPath!);
-				if (fileName != string.Empty && Path.GetExtension(fileName) == string.Empty)
+				if (fileName.IsNotNullOrEmpty() && Path.GetExtension(fileName) == string.Empty)
 					fileName += ".txt";
 
 				// ReSharper disable once VariableHidesOuterVariable
-				string GetExportFileName(string? filePath) => InternalGetStringValue(Resources.PromptEnterExportFileName, Resources.StatusExportFileNameSet.InsertArgs(filePath));
+				string? GetExportFileName(string? filePath) => InternalGetStringValue(Resources.PromptEnterExportFileName, Resources.StatusExportFileNameSet.InsertArgs(filePath));
 			}
 
 			var filePath = FilePathHelper.GetExportFilePath(options, fileName);
@@ -538,8 +541,8 @@ namespace SRAM.Comparison.Services
 			var value = GetSaveSlotOffsetValue();
 			var bytes = value switch
 			{
-				< 256 => new[] { (byte)value },
-				< 256 * 256 => BitConverter.GetBytes((ushort)value),
+				< byte.MaxValue => new[] { (byte)value },
+				< ushort.MaxValue => BitConverter.GetBytes((ushort)value),
 				_ => BitConverter.GetBytes(value),
 			};
 
@@ -572,12 +575,16 @@ namespace SRAM.Comparison.Services
 		private int GetSaveSlotOffset(int slotIndex) => (int)InternalGetValue(Resources.PromptEnterSaveSlotOffsetTemplate.InsertArgs(slotIndex + 1), Resources.StatusOffsetWillBeUsedTemplate);
 		private uint GetSaveSlotOffsetValue() => InternalGetValue(Resources.PromptEnterSaveSlotOffsetValue, Resources.StatusOffsetValueWillBeUsedTemplate);
 
-		private string InternalGetStringValue(string prompt, string? promptResultTemplate = null)
+		private string? InternalGetStringValue(string prompt, string? defaultValue = null, string? promptResultTemplate = null)
 		{
 			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, prompt);
+
+			if (defaultValue is not null)
+				ConsolePrinter.PrintColoredLine(ConsoleColor.Cyan, $"{Resources.DefaultFilename}: {defaultValue}");
+			
 			ConsolePrinter.PrintColoredLine(ConsoleColor.White, "");
 			
-			var input = Console.ReadLine()!;
+			var input = Console.ReadLine().ToNullIfEmpty();
 
 			ConsolePrinter.PrintLine();
 			if (promptResultTemplate is not null)
@@ -588,10 +595,10 @@ namespace SRAM.Comparison.Services
 
 			ConsolePrinter.ResetColor();
 
-			return input;
+			return input ?? defaultValue;
 		}
 
-		private uint InternalGetValue(string prompt, string promtResultTemplate)
+		private uint InternalGetValue(string prompt, string? promtResultTemplate = null)
 		{
 			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, prompt);
 			ConsolePrinter.ResetColor();
@@ -600,10 +607,12 @@ namespace SRAM.Comparison.Services
 
 			uint.TryParse(input, out var offset);
 
-			ConsolePrinter.PrintLine();
-			ConsolePrinter.PrintColoredLine(ConsoleColor.DarkYellow, promtResultTemplate.InsertArgs(offset));
+			if (promtResultTemplate is not null) 
+			{
+				ConsolePrinter.PrintLine();
+				ConsolePrinter.PrintColoredLine(ConsoleColor.DarkYellow, promtResultTemplate.InsertArgs(offset));
+			}
 
-			ConsolePrinter.PrintLine();
 			ConsolePrinter.ResetColor();
 			return offset;
 		}
@@ -644,13 +653,57 @@ namespace SRAM.Comparison.Services
 
 		protected abstract int GetMaxSaveSlotId();
 
-		private void ShowSlotSummary(IOptions options)
+		private void ExportSaveSlotSummary(IOptions options)
 		{
 			ConsolePrinter.PrintSectionHeader();
 			ConsolePrinter.ResetColor();
 
-			var slotId = GetSaveSlotId(GetMaxSaveSlotId());
-			if (slotId == 0) return;
+			var slotId = GetSaveSlotIdNoStatus(GetMaxSaveSlotId());
+			if (slotId == 0)
+				throw new ArgumentException(Resources.ErrorOperationAborted);
+
+			ConsolePrinter.PrintLine(Resources.StatusSaveSlotToExportTemplate.InsertArgs(slotId));
+
+			var defaultFileName = $"SaveSlot_{slotId}.txt";
+			var fileName = GetExportFileName(Path.IsPathRooted(options.ExportPath)
+				? defaultFileName
+				: Path.Join(options.ExportPath!, defaultFileName));
+			if (fileName.IsNotNullOrEmpty() && Path.GetExtension(fileName) == string.Empty)
+				fileName += ".txt";
+
+			// ReSharper disable once VariableHidesOuterVariable
+			string? GetExportFileName(string? filePath) => InternalGetStringValue(Resources.PromptEnterExportFileName, filePath, Resources.StatusExportFileNameSet.InsertArgs(filePath));
+
+			var filePath = FilePathHelper.GetExportFilePath(options, fileName);
+
+			Stream currStream = new FileStream(options.CurrentFilePath!, FileMode.Open, FileAccess.Read, FileShare.Read);
+			ConvertStreamIfSavestate(options, ref currStream, options.CurrentFilePath!);
+
+			var currFile = ClassFactory.Create<TSramFile>(currStream, options.GameRegion);
+			var summary = currFile.GetSegment(slotId - 1).ToString()!;
+
+			File.WriteAllText(filePath, summary);
+
+			ConsolePrinter.PrintLine();
+			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusSaveSlotSummaryExportedTemplate.InsertArgs(slotId, filePath));
+
+			var exportFlags = options.ExportFlags;
+			if (exportFlags.HasUInt32Flag(ExportFlags.SelectFile))
+				SelectFile(filePath);
+			else if (exportFlags.HasUInt32Flag(ExportFlags.OpenFile))
+				OpenFile(filePath);
+		}
+
+		private void ShowSaveSlotSummary(IOptions options)
+		{
+			ConsolePrinter.PrintSectionHeader();
+			ConsolePrinter.ResetColor();
+
+			var slotId = GetSaveSlotIdNoStatus(GetMaxSaveSlotId());
+			if (slotId == 0)
+				throw new ArgumentException(Resources.ErrorOperationAborted);
+
+			ConsolePrinter.PrintLine(Resources.StatusSaveSlotToShowTemplate.InsertArgs(slotId));
 
 			Stream currStream = new FileStream(options.CurrentFilePath!, FileMode.Open, FileAccess.Read, FileShare.Read);
 			ConvertStreamIfSavestate(options, ref currStream, options.CurrentFilePath!);
@@ -664,7 +717,8 @@ namespace SRAM.Comparison.Services
 			ConsolePrinter.ResetColor();
 		}
 
-		private int GetSaveSlotId(in int maxSaveSlotId) => (int) InternalGetValue(Resources.PromptEnterSaveSlotTemplate.InsertArgs(maxSaveSlotId), Resources.StatusUsedSaveSlotIdTemplate);
+		private int GetSaveSlotIdWithStatus(in int maxSaveSlotId) => (int)InternalGetValue(Resources.PromptEnterSaveSlotTemplate.InsertArgs(maxSaveSlotId), Resources.StatusSaveSlotToCompareTemplate);
+		private int GetSaveSlotIdNoStatus(in int maxSaveSlotId) => (int) InternalGetValue(Resources.PromptEnterSaveSlotTemplate.InsertArgs(maxSaveSlotId));
 
 		public virtual int GetSaveSlotIdOrAll(in int maxSaveSlotId)
 		{

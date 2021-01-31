@@ -126,7 +126,6 @@ namespace SRAM.Comparison.Services
 			PrintLine(startMessage);
 			PrintLine("=".Repeat(length));
 
-			PrintLine();
 			ResetColor();
 		}
 
@@ -143,17 +142,18 @@ namespace SRAM.Comparison.Services
 
 			PrintCommand(Commands.SetSlot);
 			PrintCommand(Commands.SetCompSlot);
-			PrintCommand(Commands.SlotSummary);
-
+			PrintCommand(Commands.ShowSlotSummary);
+			
 			PrintGroupName(Res.CmdGroupBackup);
 
 			PrintCommand(Commands.Backup);
 			PrintCommand(Commands.BackupComp);
 			PrintCommand(Commands.Restore);
 			PrintCommand(Commands.RestoreComp);
-			PrintCommand(Commands.Export);
+			PrintCommand(Commands.ExportComparison);
+			PrintCommand(Commands.ExportSlotSummary);
 			PrintCommand(Commands.Transfer);
-
+			
 			PrintGroupName(Res.CmdGroupDisplay);
 
 			PrintCommand(Commands.SrmGuide);
@@ -420,14 +420,14 @@ namespace SRAM.Comparison.Services
 		protected virtual void PrintCompValues(bool isNegativeChange, string compText)
 		{
 			PrintColored(ConsoleColor.Cyan, $@" {CompValueMarker} ");
-			PrintColored(ConsoleColor.DarkGray, $@"{Res.CompOld} ");
+			PrintColored(ConsoleColor.DarkGray, $@"{Res.CompOldValue} ");
 			PrintColored(isNegativeChange ? ConsoleColor.DarkGreen : ConsoleColor.Red, compText);
 		}
 
 		protected virtual void PrintCurrValues(bool isNegativeChange, string currText)
 		{
 			PrintColored(ConsoleColor.Cyan, $@" {CurrValueMarker} ");
-			PrintColored(ConsoleColor.DarkGray, $@"{Res.CompNew} ");
+			PrintColored(ConsoleColor.DarkGray, $@"{Res.CompNewValue} ");
 			PrintColored(isNegativeChange ? ConsoleColor.Red : ConsoleColor.DarkGreen, currText);
 		}
 

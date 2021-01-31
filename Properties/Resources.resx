@@ -124,7 +124,7 @@
     <value>ERROR: The program needs to be started with at least the path to current save file as a parameter. Drag 'n' drop can be used.</value>
   </data>
   <data name="StatusBytesChangedTemplate" xml:space="preserve">
-    <value>{0} bytes changed.</value>
+    <value>{0} bytes changed</value>
   </data>
   <data name="CurrentFileSaveSlot" xml:space="preserve">
     <value>Save slot (current file)</value>
@@ -148,7 +148,7 @@
     <value>Export path</value>
   </data>
   <data name="CurrentFilePath" xml:space="preserve">
-    <value>Current filepath</value>
+    <value>Current file path</value>
   </data>
   <data name="StatusDifferentSaveSlotComparisonTemplate" xml:space="preserve">
     <value>Current save slot {0} will be compared with comparison save slot {1}.</value>
@@ -192,11 +192,11 @@
   <data name="CmdConfig" xml:space="preserve">
     <value>Display config</value>
   </data>
-  <data name="EnumSlotByteComparison" xml:space="preserve">
-    <value>Slot byte-by-byte comparison</value>
+  <data name="EnumSaveSlotByteComparison" xml:space="preserve">
+    <value>All slot bytes comparison</value>
   </data>
-  <data name="EnumNonSlotComparison" xml:space="preserve">
-    <value>Non-slot byte-by-byte comparison</value>
+  <data name="EnumNonSaveSlotComparison" xml:space="preserve">
+    <value>Non-slot byte comparison</value>
   </data>
   <data name="CmdSlotByteByBytesComparison" xml:space="preserve">
     <value>Add slot byte-by-byte comparison</value>
@@ -240,10 +240,10 @@
   <data name="CompChangeShort" xml:space="preserve">
     <value>Change</value>
   </data>
-  <data name="CompOld" xml:space="preserve">
+  <data name="CompOldValue" xml:space="preserve">
     <value>Old</value>
   </data>
-  <data name="CompNew" xml:space="preserve">
+  <data name="CompNewValue" xml:space="preserve">
     <value>New</value>
   </data>
   <data name="CompCurrentShort" xml:space="preserve">
@@ -280,7 +280,7 @@
     <value>{0} bytes changed</value>
   </data>
   <data name="StatusCurrentComparisonExportedTemplate" xml:space="preserve">
-    <value>Current comparison exported to "{0}".</value>
+    <value>Current comparison exported to [{0}].</value>
   </data>
   <data name="StatusNoSramBytesChanged" xml:space="preserve">
     <value>No bytes changed</value>
@@ -618,13 +618,28 @@
   <data name="StatusComparisonFlagsSet" xml:space="preserve">
     <value>Comparison flags set:</value>
   </data>
-  <data name="EnumSlotSummary" xml:space="preserve">
-    <value>Save slot summary</value>
+  <data name="EnumShowSaveSlotSummary" xml:space="preserve">
+    <value>Show save slot summary</value>
   </data>
   <data name="PromptEnterSaveSlotTemplate" xml:space="preserve">
     <value>Enter save slot (1-{0} to load:</value>
   </data>
-  <data name="StatusUsedSaveSlotIdTemplate" xml:space="preserve">
-    <value>Saveslot {0} has been compared.</value>
+  <data name="StatusSaveSlotToCompareTemplate" xml:space="preserve">
+    <value>Saveslot {0} will be compared...</value>
+  </data>
+  <data name="StatusSaveSlotToShowTemplate" xml:space="preserve">
+    <value>Saveslot {0} summary will be shown...</value>
+  </data>
+  <data name="CmdExportSaveSlotSummary" xml:space="preserve">
+    <value>Export save slot summary</value>
+  </data>
+  <data name="StatusSaveSlotToExportTemplate" xml:space="preserve">
+    <value>Saveslot {0} summary will be exported...</value>
+  </data>
+  <data name="StatusSaveSlotSummaryExportedTemplate" xml:space="preserve">
+    <value>Saveslot summary {0} exported to [{1}].</value>
+  </data>
+  <data name="DefaultFilename" xml:space="preserve">
+    <value>Default filename</value>
   </data>
 </root>

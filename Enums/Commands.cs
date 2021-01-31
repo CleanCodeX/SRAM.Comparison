@@ -23,10 +23,10 @@ namespace SRAM.Comparison.Enums
 		[DisplayNameLocalized(nameof(Res.CmdGuideSavestate), typeof(Res))]
 		SavestateGuide, // Manual (savestate) 
 
-		[DisplayNameLocalized(nameof(Res.EnumSlotByteComparison), typeof(Res))]
+		[DisplayNameLocalized(nameof(Res.EnumSaveSlotByteComparison), typeof(Res))]
 		SlotByteComp, // Enables or disables slot byte by byte comparison => compares the save slot area by by byte
 
-		[DisplayNameLocalized(nameof(Res.EnumNonSlotComparison), typeof(Res))]
+		[DisplayNameLocalized(nameof(Res.EnumNonSaveSlotComparison), typeof(Res))]
 		NonSlotComp, // Enables or disables non-slot byte by byte comparison => compares the non-save slot area byte by byte
 
 		[DisplayNameLocalized(nameof(Res.CmdSetCurrentSrramFileSaveSlot), typeof(Res))]
@@ -57,7 +57,7 @@ namespace SRAM.Comparison.Enums
 		RestoreComp, // Restores the comparison file from previously created backup
 
 		[DisplayNameLocalized(nameof(Res.CmdExportComparisonResult), typeof(Res))]
-		Export, // Export the current comparison result as text file to export directory
+		ExportComparison, // Export the current comparison result as text file to export directory
 
 		[DisplayNameLocalized(nameof(Res.EnumExportFlags), typeof(Res))]
 		ExportFlags, // Export flags
@@ -128,8 +128,11 @@ namespace SRAM.Comparison.Enums
 		[DisplayNameLocalized(nameof(Res.EnumLogFlags), typeof(Res))]
 		LogFlags, // Log flags
 
-		[DisplayNameLocalized(nameof(Res.EnumSlotSummary), typeof(Res))]
-		SlotSummary, // Slot summary
+		[DisplayNameLocalized(nameof(Res.EnumShowSaveSlotSummary), typeof(Res))]
+		ShowSlotSummary, // Slot summary
+
+		[DisplayNameLocalized(nameof(Res.CmdExportSaveSlotSummary), typeof(Res))]
+		ExportSlotSummary, // Export the slot's summary as text file
 	}
 	
 	public enum AlternateCommands
@@ -167,7 +170,7 @@ namespace SRAM.Comparison.Enums
 		SaveOff = Commands.AutoSaveOff,
 		Watch = Commands.WatchFile,
 		Unwatch = Commands.UnwatchFile,
-		E = Commands.Export,
+		EC = Commands.ExportComparison,
 		EF = Commands.ExportFlags,
 		WF = Commands.FileWatchFlags,
 		CF = Commands.ComparisonFlags,
@@ -176,6 +179,8 @@ namespace SRAM.Comparison.Enums
 		UW = Commands.UnwatchFile,
 		SS = Commands.SetSlot,
 		SCS = Commands.SetCompSlot,
-		Slot = Commands.SlotSummary,
+		Slot = Commands.ShowSlotSummary,
+		ExportSlot = Commands.ExportSlotSummary,
+		ES = Commands.ExportSlotSummary,
 	}
 }

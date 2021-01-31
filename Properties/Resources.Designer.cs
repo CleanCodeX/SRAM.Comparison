@@ -250,6 +250,15 @@ namespace SRAM.Comparison.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Export save slot summary ähnelt.
+        /// </summary>
+        public static string CmdExportSaveSlotSummary {
+            get {
+                return ResourceManager.GetString("CmdExportSaveSlotSummary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Backup ähnelt.
         /// </summary>
         public static string CmdGroupBackup {
@@ -594,9 +603,9 @@ namespace SRAM.Comparison.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die New ähnelt.
         /// </summary>
-        public static string CompNew {
+        public static string CompNewValue {
             get {
-                return ResourceManager.GetString("CompNew", resourceCulture);
+                return ResourceManager.GetString("CompNewValue", resourceCulture);
             }
         }
         
@@ -612,9 +621,9 @@ namespace SRAM.Comparison.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Old ähnelt.
         /// </summary>
-        public static string CompOld {
+        public static string CompOldValue {
             get {
-                return ResourceManager.GetString("CompOld", resourceCulture);
+                return ResourceManager.GetString("CompOldValue", resourceCulture);
             }
         }
         
@@ -709,7 +718,7 @@ namespace SRAM.Comparison.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Current filepath ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Current file path ähnelt.
         /// </summary>
         public static string CurrentFilePath {
             get {
@@ -732,6 +741,15 @@ namespace SRAM.Comparison.Properties {
         public static string CustomOptions {
             get {
                 return ResourceManager.GetString("CustomOptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Default filename ähnelt.
+        /// </summary>
+        public static string DefaultFilename {
+            get {
+                return ResourceManager.GetString("DefaultFilename", resourceCulture);
             }
         }
         
@@ -862,11 +880,11 @@ namespace SRAM.Comparison.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Non-slot byte-by-byte comparison ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Non-slot byte comparison ähnelt.
         /// </summary>
-        public static string EnumNonSlotComparison {
+        public static string EnumNonSaveSlotComparison {
             get {
-                return ResourceManager.GetString("EnumNonSlotComparison", resourceCulture);
+                return ResourceManager.GetString("EnumNonSaveSlotComparison", resourceCulture);
             }
         }
         
@@ -898,6 +916,15 @@ namespace SRAM.Comparison.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die All slot bytes comparison ähnelt.
+        /// </summary>
+        public static string EnumSaveSlotByteComparison {
+            get {
+                return ResourceManager.GetString("EnumSaveSlotByteComparison", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Select export file ähnelt.
         /// </summary>
         public static string EnumSelectExportFile {
@@ -907,20 +934,11 @@ namespace SRAM.Comparison.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Slot byte-by-byte comparison ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Show save slot summary ähnelt.
         /// </summary>
-        public static string EnumSlotByteComparison {
+        public static string EnumShowSaveSlotSummary {
             get {
-                return ResourceManager.GetString("EnumSlotByteComparison", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Save slot summary ähnelt.
-        /// </summary>
-        public static string EnumSlotSummary {
-            get {
-                return ResourceManager.GetString("EnumSlotSummary", resourceCulture);
+                return ResourceManager.GetString("EnumShowSaveSlotSummary", resourceCulture);
             }
         }
         
@@ -1222,7 +1240,7 @@ namespace SRAM.Comparison.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die {0} bytes changed. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die {0} bytes changed ähnelt.
         /// </summary>
         public static string StatusBytesChangedTemplate {
             get {
@@ -1285,7 +1303,7 @@ namespace SRAM.Comparison.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Current comparison exported to &quot;{0}&quot;. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Current comparison exported to [{0}]. ähnelt.
         /// </summary>
         public static string StatusCurrentComparisonExportedTemplate {
             get {
@@ -1510,6 +1528,42 @@ namespace SRAM.Comparison.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Saveslot summary {0} exported to [{1}]. ähnelt.
+        /// </summary>
+        public static string StatusSaveSlotSummaryExportedTemplate {
+            get {
+                return ResourceManager.GetString("StatusSaveSlotSummaryExportedTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Saveslot {0} will be compared... ähnelt.
+        /// </summary>
+        public static string StatusSaveSlotToCompareTemplate {
+            get {
+                return ResourceManager.GetString("StatusSaveSlotToCompareTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Saveslot {0} summary will be exported... ähnelt.
+        /// </summary>
+        public static string StatusSaveSlotToExportTemplate {
+            get {
+                return ResourceManager.GetString("StatusSaveSlotToExportTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Saveslot {0} summary will be shown... ähnelt.
+        /// </summary>
+        public static string StatusSaveSlotToShowTemplate {
+            get {
+                return ResourceManager.GetString("StatusSaveSlotToShowTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Value at offset {0} is now {1}. ähnelt.
         /// </summary>
         public static string StatusSetOffsetValueTemplate {
@@ -1560,15 +1614,6 @@ namespace SRAM.Comparison.Properties {
         public static string StatusUnknownsChangedBytesTemplate {
             get {
                 return ResourceManager.GetString("StatusUnknownsChangedBytesTemplate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Saveslot {0} has been compared. ähnelt.
-        /// </summary>
-        public static string StatusUsedSaveSlotIdTemplate {
-            get {
-                return ResourceManager.GetString("StatusUsedSaveSlotIdTemplate", resourceCulture);
             }
         }
         

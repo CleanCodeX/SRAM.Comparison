@@ -60,7 +60,7 @@
 		<value>Änderung</value>
 	</data>
 	<data name="CmdGroupBackup" xml:space="preserve">
-		<value>Sicherung</value>
+		<value>Sicherungskopie</value>
 	</data>
 	<data name="CmdGroupComparison" xml:space="preserve">
 		<value>Vergleich</value>
@@ -75,10 +75,10 @@
 		<value>Verschiedenes</value>
 	</data>
 	<data name="CmdBackupComparisonFile" xml:space="preserve">
-		<value>Vergleichs-Datei sichern</value>
+		<value>Vergleichs-Datei Kopie erstellen</value>
 	</data>
 	<data name="CmdBackupCurrentFile" xml:space="preserve">
-		<value>Aktuelle Datei sichern</value>
+		<value>Aktuelle Datei Kopie erstellen</value>
 	</data>
 	<data name="CmdCompareFiles" xml:space="preserve">
 		<value>Vergleiche aktuelle Datei mit Vergleichs-Datei</value>
@@ -95,10 +95,10 @@
 	<data name="CmdExportComparisonResult" xml:space="preserve">
 		<value>Aktuelles Vergleichsergebnis exportieren</value>
 	</data>
-	<data name="EnumNonSlotComparison" xml:space="preserve">
+	<data name="EnumNonSaveSlotComparison" xml:space="preserve">
 		<value>Nicht-Speicherslot Byte-Für-Byte-Vergleich</value>
 	</data>
-	<data name="EnumSlotByteComparison" xml:space="preserve">
+	<data name="EnumSaveSlotByteComparison" xml:space="preserve">
 		<value>Speicherslot Byte-Für-Byte-Vergleich</value>
 	</data>
 	<data name="CmdGuideSrm" xml:space="preserve">
@@ -189,13 +189,13 @@
 	<data name="PromptEnterSaveSlotOffsetValue" xml:space="preserve">
 		<value>Speicherslot-Offset-Wert setzen:</value><comment>The term Offset should only be translated if not understandable</comment>
 	</data>
-	<data name="CompNew" xml:space="preserve">
+	<data name="CompNewValue" xml:space="preserve">
 		<value>Neu</value>
 	</data>
 	<data name="CompOffset" xml:space="preserve">
 		<value>Offset</value><comment>This term should only be translated if not understandable</comment>
 	</data>
-	<data name="CompOld" xml:space="preserve">
+	<data name="CompOldValue" xml:space="preserve">
 		<value>Alt</value>
 	</data>
 	<data name="CompSection" xml:space="preserve">
@@ -268,7 +268,7 @@
 		<value>{0} wurde gesichert.</value>
 	</data>
 	<data name="StatusCurrentComparisonExportedTemplate" xml:space="preserve">
-		<value>Aktueller Vergleich exportiert nach "{0}".</value>
+		<value>Aktueller Vergleich exportiert nach [{0}].</value>
 	</data>
 	<data name="StatusCurrentFileSaved" xml:space="preserve">
 		<value>Die aktuelle Datei wurde als Vergleichs-Datei gespeichert.</value>
@@ -513,13 +513,28 @@
 	<data name="StatusComparisonFlagsSet" xml:space="preserve">
 		<value>Vergleichs-Optionen gesetzt:</value>
 	</data>
-	<data name="EnumSlotSummary" xml:space="preserve">
+	<data name="EnumShowSaveSlotSummary" xml:space="preserve">
 		<value>Speicherslot-Zusammenfassung</value>
 	</data>
 	<data name="PromptEnterSaveSlotTemplate" xml:space="preserve">
 		<value>Gib den zu ladenden Speicherslot (1-{0}) an:</value>
 	</data>
-	<data name="StatusUsedSaveSlotIdTemplate" xml:space="preserve">
-		<value>Speicherslot {0} wurde verglichen.</value>
+	<data name="StatusSaveSlotToCompareTemplate" xml:space="preserve">
+		<value>Speicherslot {0} wird verglichen...</value>
+	</data>
+	<data name="StatusSaveSlotToShowTemplate" xml:space="preserve">
+		<value>Speicherslot {0}-Zusammenfassung wird angezeigt...</value>
+	</data>
+	<data name="CmdExportSaveSlotSummary" xml:space="preserve">
+		<value>Speicherslot-Zusammenfassung exportieren</value>
+	</data>
+	<data name="StatusSaveSlotToExportTemplate" xml:space="preserve">
+		<value>Speicherslot {0}-Zusammenfassung wird exportiert...</value>
+	</data>
+	<data name="StatusSaveSlotSummaryExportedTemplate" xml:space="preserve">
+		<value>Speicherslot {0}-Zusammenfassung exportiert nach [{1}].</value>
+	</data>
+	<data name="DefaultFilename" xml:space="preserve">
+		<value>Standard-Dateiname</value>
 	</data>
 </root>
