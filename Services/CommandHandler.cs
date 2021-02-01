@@ -471,6 +471,8 @@ namespace SRAM.Comparison.Services
 
 		#endregion Export comparison Result
 
+		public string GetSummary(Stream stream, IOptions options) => GetSaveSlotSummary(stream, options, options.CurrentFileSaveSlot);
+
 		#region Export Flags
 
 		private void SetExportFlags(IOptions options)
@@ -706,15 +708,20 @@ namespace SRAM.Comparison.Services
 			ConsolePrinter.PrintLine(Resources.StatusSaveSlotToShowTemplate.InsertArgs(slotId));
 
 			Stream currStream = new FileStream(options.CurrentFilePath!, FileMode.Open, FileAccess.Read, FileShare.Read);
-			ConvertStreamIfSavestate(options, ref currStream, options.CurrentFilePath!);
-
-			var currFile = ClassFactory.Create<TSramFile>(currStream, options.GameRegion);
-			var summary = currFile.GetSegment(slotId - 1).ToString()!;
+			var summary = GetSaveSlotSummary(currStream, options, slotId);
 
 			ConsolePrinter.PrintLine();
 			ConsolePrinter.PrintColoredLine(ConsoleColor.White, summary);
 			ConsolePrinter.PrintLine();
 			ConsolePrinter.ResetColor();
+		}
+
+		private string GetSaveSlotSummary(Stream stream, IOptions options, int saveSlotId)
+		{
+			ConvertStreamIfSavestate(options, ref stream, options.CurrentFilePath!);
+
+			var currFile = ClassFactory.Create<TSramFile>(stream, options.GameRegion);
+			return currFile.GetSegment(saveSlotId - 1).ToString()!;
 		}
 
 		private int GetSaveSlotIdWithStatus(in int maxSaveSlotId) => (int)InternalGetValue(Resources.PromptEnterSaveSlotTemplate.InsertArgs(maxSaveSlotId), Resources.StatusSaveSlotToCompareTemplate);

@@ -82,5 +82,14 @@ namespace SRAM.Comparison.Services
 		/// <returns>The file path to export file or null if no export was performed (e.g. when no bytes changed)</returns>
 		string? ExportCompResult<TComparer>(in IOptions options, in string filePath)
 			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new();
+
+
+		/// <summary>
+		/// Returns a saveslot summary
+		/// </summary>
+		/// <param name="stream"></param>
+		/// <param name="options">The options to be used for creating the summary
+		/// <returns>The save slot summary</returns>
+		string GetSummary(Stream stream, IOptions options);
 	}
 }
