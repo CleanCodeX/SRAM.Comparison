@@ -9,7 +9,7 @@ namespace SRAM.Comparison.Extensions
 		/// <summary>
 		/// Returns a byte array of the underlying type data.
 		/// </summary>
-		public static byte[] ToArray([NotNull] this Enum source) =>
+		public static byte[] ToBytes([NotNull] this Enum source) =>
 			BitConverter.GetBytes(Type.GetTypeCode(Enum.GetUnderlyingType(source.GetType())) switch
 			{
 				TypeCode.SByte => source.ToSbyte(),
