@@ -21,7 +21,7 @@ namespace SRAM.Comparison.Services
 		protected string UnknownIdentifier = "unknown";
 		protected IConsolePrinter ConsolePrinter { get; }
 
-		protected SramComparerBase() : this(ServiceCollection.ConsolePrinter) { }
+		protected SramComparerBase() : this(ComparisonServices.ConsolePrinter) { }
 		protected SramComparerBase(IConsolePrinter consolePrinter) => ConsolePrinter = consolePrinter;
 
 		/// <inheritdoc cref="ISramComparer{TSramFile,TSaveSlot}.CompareSram(TSramFile, TSramFile, IOptions, TextWriter?)"/>

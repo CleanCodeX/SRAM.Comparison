@@ -11,8 +11,8 @@ namespace SRAM.Comparison.Helpers
 	internal static class FileWatcherHelper
 	{
 		private const int ProcessWaitMiliseconds = 50;
-		private static ICommandHandler CommandHandler => ServiceCollection.CommandHandler!;
-		private static IConsolePrinter ConsolePrinter => ServiceCollection.ConsolePrinter;
+		private static ICommandHandler CommandHandler => ComparisonServices.CommandHandler!;
+		private static IConsolePrinter ConsolePrinter => ComparisonServices.ConsolePrinter;
 		private static DateTime lastReadTime ;
 		private static FileSystemWatcher? _fileSystemWatcher;
 

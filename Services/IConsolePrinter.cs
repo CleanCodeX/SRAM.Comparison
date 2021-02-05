@@ -26,12 +26,13 @@ namespace SRAM.Comparison.Services
 		/// /// <param name="offsetName">The values's name</param>
 		/// <param name="currValue">The current value for comparison</param>
 		/// <param name="compValue">The comparison value for comparison</param>
+		/// <param name="isUnknown">Indicates that this offset is considered to be unknown</param>
 		void PrintComparison(string ident, int offset, string? offsetName, ushort currValue, ushort compValue, bool isUnknown);
 
-		/// <inheritdoc cref="PrintComparison(string, int, string, ushort, ushort)"/>
+		/// <inheritdoc cref="PrintComparison(string, int, string, ushort, ushort, bool)"/>
 		void PrintComparison(string ident, int offset, string? offsetName, uint currValue, uint compValue, bool isUnknown);
 
-		/// <inheritdoc cref="PrintComparison(string, int, string, ushort, ushort)"/>
+		/// <inheritdoc cref="PrintComparison(string, int, string, ushort, ushort, bool)"/>
 		void PrintComparison(string ident, int offset, string? offsetName, byte currValue, byte compValue, bool isUnknown);
 
 		/// <summary>

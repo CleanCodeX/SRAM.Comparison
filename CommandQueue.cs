@@ -18,8 +18,8 @@ namespace SRAM.Comparison
 
 		public void Start(IOptions options)
 		{
-			var commandHandler = ServiceCollection.CommandHandler;
-			var consolePrinter = ServiceCollection.ConsolePrinter;
+			var commandHandler = ComparisonServices.CommandHandler;
+			var consolePrinter = ComparisonServices.ConsolePrinter;
 
 			commandHandler.ThrowIfNull(nameof(commandHandler));
 			consolePrinter.ThrowIfNull(nameof(consolePrinter));

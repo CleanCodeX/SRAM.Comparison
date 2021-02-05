@@ -21,8 +21,8 @@ namespace SRAM.Comparison
 		{
 			ConsoleHelper.Initialize(options);
 
-			var commandHandler = ServiceCollection.CommandHandler;
-			var consolePrinter = ServiceCollection.ConsolePrinter;
+			var commandHandler = ComparisonServices.CommandHandler;
+			var consolePrinter = ComparisonServices.ConsolePrinter;
 
 			commandHandler.ThrowIfNull(nameof(commandHandler));
 			consolePrinter.ThrowIfNull(nameof(consolePrinter));

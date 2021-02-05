@@ -46,7 +46,7 @@ namespace SRAM.Comparison.Services
 
 		#region Ctors
 
-		public CommandHandler() : this(ServiceCollection.ConsolePrinter) {}
+		public CommandHandler() : this(ComparisonServices.ConsolePrinter) {}
 		/// <param name="consolePrinter">A specific console printer instance</param>
 		public CommandHandler(IConsolePrinter consolePrinter) => ConsolePrinter = consolePrinter;
 

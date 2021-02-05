@@ -2,7 +2,7 @@
 
 namespace SRAM.Comparison
 {
-	public static class ServiceCollection
+	public static class ComparisonServices
 	{
 		public static ICmdLineParser? CmdLineParser { get; set; }
 		public static ICommandHandler? CommandHandler { get; set; }

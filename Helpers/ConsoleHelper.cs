@@ -11,7 +11,7 @@ namespace SRAM.Comparison.Helpers
 		private const int InitialConsoleHeight = 400;
 		private const int ConsoleBufferHeight = 1000;
 
-		private static readonly IConsolePrinter ConsolePrinter = ServiceCollection.ConsolePrinter;
+		private static readonly IConsolePrinter ConsolePrinter = ComparisonServices.ConsolePrinter;
 		private static readonly bool IsWindows = OperatingSystem.IsWindows();
 
 		[SupportedOSPlatform("windows")]

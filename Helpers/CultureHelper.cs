@@ -6,7 +6,7 @@ namespace SRAM.Comparison.Helpers
 {
 	public static class CultureHelper
 	{
-		public static void TrySetCulture(string culture) => TrySetCulture(culture, ServiceCollection.ConsolePrinter);
+		public static void TrySetCulture(string culture) => TrySetCulture(culture, ComparisonServices.ConsolePrinter);
 		public static void TrySetCulture(string culture, IConsolePrinter consolePrinter)
 		{
 			try
