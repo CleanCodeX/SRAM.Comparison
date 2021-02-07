@@ -183,10 +183,10 @@
 		<value>Valeurs inconnues des autres parties</value>
 	</data>
 	<data name="PromptEnterSaveSlotOrAllTemplate" xml:space="preserve">
-		<value>Saisissez l'emplacement de sauvegarde (1- {0} ou toute autre clé pour tous les emplacements d'enregistrement) à des fins de comparaison:</value>
+		<value>Saisissez l'emplacement de sauvegarde (1-{0}) ou toute autre clé pour tous les emplacements d'enregistrement) à des fins de comparaison:</value>
 	</data>
 	<data name="PromptSetSingleSaveSlotTemplate" xml:space="preserve">
-		<value>Entrez l'espace de sauvegarde (1- {0}):</value>
+		<value>Entrez l'espace de sauvegarde (1-{0}):</value>
 	</data>
 	<data name="PromptCompareNonSaveSlotArea" xml:space="preserve">
 		<value>Comparer les zones en dehors de la partie en cours</value>

@@ -26,10 +26,11 @@ namespace SRAM.Comparison.Services
 		protected string PositiveChangeMarker = "(+)";
 		protected string NegativeChangeMarker = "(-)";
 		protected string HeaderTextTemplate = @"===[{0}]====================================================";
-		protected string CmdLineParamExampleValuesTemplate = " [{0}]";
+		protected string CmdLineParamExampleValuesTemplate = "[{0}]";
 		protected string CmdAltKeysTemplate = "[{0}]";
 		protected string EnumValuesTemplate = "[{0}]";
 		protected string EnumValuesSeparator = "|";
+		protected int CommandNameColumnLength = 30;
 
 		public virtual void PrintConfig(IOptions options)
 		{
@@ -213,7 +214,12 @@ namespace SRAM.Comparison.Services
 
 		protected virtual void PrintGroupName(string groupName) => PrintColoredLine(ConsoleColor.DarkGray, Environment.NewLine + groupName);
 
-		protected virtual void PrintCommandKey(Enum key) => PrintColored(ConsoleColor.White, @$"{key + GetAlternateCommands(key),25}: ");
+		protected virtual void PrintCommandKey(Enum key)
+		{
+			PrintColored(ConsoleColor.White, key.ToString());
+			PrintColored(ConsoleColor.DarkCyan, $"{GetAlternateCommands(key).PadRight(CommandNameColumnLength - key.ToString().Length)}");
+			PrintColored(ConsoleColor.White, ": ");
+		}
 
 		private string GetAlternateCommands(Enum cmd)
 		{
@@ -260,7 +266,7 @@ namespace SRAM.Comparison.Services
 		{
 			PrintLine();
 
-			PrintColored(ConsoleColor.Gray, " ".Repeat(4) + @$"[ {Res.CompSection} ");
+			PrintColored(ConsoleColor.White, " ".Repeat(4) + @$"[ {Res.CompSection} ");
 
 			PrintColored(ConsoleColor.DarkYellow, bufferName);
 			PrintColored(ConsoleColor.White, $@" {BufferInfoValueSeparator} ");
@@ -421,20 +427,20 @@ namespace SRAM.Comparison.Services
 		{
 			PrintColored(ConsoleColor.Cyan, $@" {CompValueMarker} ");
 			PrintColored(ConsoleColor.DarkGray, $@"{Res.CompOldValue} ");
-			PrintColored(isNegativeChange ? ConsoleColor.DarkGreen : ConsoleColor.Red, compText);
+			PrintColored(isNegativeChange ? ConsoleColor.Green : ConsoleColor.Red, compText);
 		}
 
 		protected virtual void PrintCurrValues(bool isNegativeChange, string currText)
 		{
 			PrintColored(ConsoleColor.Cyan, $@" {CurrValueMarker} ");
 			PrintColored(ConsoleColor.DarkGray, $@"{Res.CompNewValue} ");
-			PrintColored(isNegativeChange ? ConsoleColor.Red : ConsoleColor.DarkGreen, currText);
+			PrintColored(isNegativeChange ? ConsoleColor.Red : ConsoleColor.Green, currText);
 		}
 
 		protected virtual void PrintChangeValues(bool isNegativeChange, uint changeValue, string sign, string changeText, bool isUnknown)
 		{
-			var signColor = isNegativeChange ? ConsoleColor.DarkRed : ConsoleColor.Green;
-			var changeColor = isNegativeChange ? ConsoleColor.Red : ConsoleColor.DarkGreen;
+			var signColor = isNegativeChange ? ConsoleColor.DarkRed : ConsoleColor.DarkGreen;
+			var changeColor = isNegativeChange ? ConsoleColor.Red : ConsoleColor.Green;
 			
 			var changedBits = changeValue.CountChangedBits();
 			var oneBitColor = ConsoleColor.Yellow;

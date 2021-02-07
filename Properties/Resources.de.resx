@@ -256,7 +256,7 @@
 		<value>Möchtest du eine neue Datei erstellen anstatt die aktuelle Datei zu überschreiben? Gib 1 ein um eine neue Datei zu erstellen (empfohlen) oder gib 2 ein um die existierende Datei zu überschreiben. In letzterem Fall stelle sicher, zuvor eine Sicherung gemacht zu haben. 1 = neu, 2 = überschreiben, 0 = abbrechen</value>
 	</data>
 	<data name="PromptEnterSaveSlotOrAllTemplate" xml:space="preserve">
-		<value>Gib den zu vergleichenden Speicherslot (1-{0} ID oder jede andere Taste für alle Speicherslots) an:</value>
+		<value>Gib den zu vergleichenden Speicherslot (1-{0}) ID oder jede andere Taste für alle Speicherslots) an:</value>
 	</data>
 	<data name="PromptSetSingleSaveSlotTemplate" xml:space="preserve">
 		<value>Speicherslot (1-{0}) angeben:</value>

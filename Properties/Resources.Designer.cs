@@ -1150,7 +1150,7 @@ namespace SRAM.Comparison.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Enter save slot (1-{0} or any other key for all save slots) for comparison: ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Enter save slot (1-{0}) or any other key for all save slots) for comparison: ähnelt.
         /// </summary>
         public static string PromptEnterSaveSlotOrAllTemplate {
             get {
@@ -1159,7 +1159,7 @@ namespace SRAM.Comparison.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Enter save slot (1-{0} to load: ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Enter save slot (1-{0}) to load: ähnelt.
         /// </summary>
         public static string PromptEnterSaveSlotTemplate {
             get {

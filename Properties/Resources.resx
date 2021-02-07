@@ -211,7 +211,7 @@
     <value>Modify (and save) offset value</value><comment>The term Offset should only be translated if not understandable</comment>
   </data>
   <data name="PromptEnterSaveSlotOrAllTemplate" xml:space="preserve">
-    <value>Enter save slot (1-{0} or any other key for all save slots) for comparison:</value>
+    <value>Enter save slot (1-{0}) or any other key for all save slots) for comparison:</value>
   </data>
   <data name="PromptSetSingleSaveSlotTemplate" xml:space="preserve">
     <value>Enter save slot (1-{0}):</value>
@@ -622,7 +622,7 @@
     <value>Show save slot summary</value>
   </data>
   <data name="PromptEnterSaveSlotTemplate" xml:space="preserve">
-    <value>Enter save slot (1-{0} to load:</value>
+    <value>Enter save slot (1-{0}) to load:</value>
   </data>
   <data name="StatusSaveSlotToCompareTemplate" xml:space="preserve">
     <value>Saveslot {0} will be compared...</value>

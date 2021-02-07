@@ -475,16 +475,16 @@
     <value>Establecer el valor de compensación de la ranura de almacenamiento:</value>
   </data>
   <data name="PromptEnterSaveSlotOrAllTemplate" xml:space="preserve">
-    <value>Ingrese el espacio para guardar (1- {0} o cualquier otra clave para todos los espacios para guardar) para comparar:</value>
+    <value>Ingrese el espacio para guardar (1-{0}) o cualquier otra clave para todos los espacios para guardar) para comparar:</value>
   </data>
   <data name="PromptEnterSaveSlotTemplate" xml:space="preserve">
-    <value>Ingrese el espacio para guardar (1- {0} para cargar:</value>
+    <value>Ingrese el espacio para guardar (1-{0}) para cargar:</value>
   </data>
   <data name="PromptSetComparionResultLanguage" xml:space="preserve">
     <value>Establezca el idioma del resultado de la comparación (por ejemplo, 'en' para inglés, sin comillas). Una entrada vacía restablece la configuración.</value>
   </data>
   <data name="PromptSetSingleSaveSlotTemplate" xml:space="preserve">
-    <value>Ingrese espacio para guardar (1- {0}):</value>
+    <value>Ingrese espacio para guardar (1-{0}):</value>
   </data>
   <data name="PromptSetUILanguage" xml:space="preserve">
     <value>Configure el idioma de la interfaz de usuario (por ejemplo, 'en' para inglés, sin comillas). Una entrada vacía restablece la configuración.</value>

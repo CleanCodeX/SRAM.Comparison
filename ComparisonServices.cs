@@ -1,4 +1,7 @@
-﻿using SRAM.Comparison.Services;
+﻿using System.Runtime.CompilerServices;
+using IO;
+using IO.Modules.Services;
+using SRAM.Comparison.Services;
 
 namespace SRAM.Comparison
 {
@@ -12,6 +15,13 @@ namespace SRAM.Comparison
 		{
 			get { return _consolePrinter ??= new ConsolePrinter(); }
 			set => _consolePrinter = value;
+		}
+
+		[ModuleInitializer]
+		public static void InitializeServices()
+		{
+			IOServices.ArrayFormatter = new ConsoleArrayFormatter();
+			IOServices.StructFormatter = new ConsoleStructFormatter();
 		}
 	}
 }
