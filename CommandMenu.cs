@@ -17,7 +17,7 @@ namespace SRAM.Comparison
 
 		protected virtual bool? OnRunCommand(ICommandHandler commandHandler, string command, IOptions options) => commandHandler.RunCommand(command!, options);
 
-		public virtual void Show(IOptions options)
+		public void Show(IOptions options)
 		{
 			ConsoleHelper.Initialize(options);
 

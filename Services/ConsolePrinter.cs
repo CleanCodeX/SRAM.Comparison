@@ -14,8 +14,9 @@ namespace SRAM.Comparison.Services
 	public class ConsolePrinter: IConsolePrinter
 	{
 		private static readonly string NewLineDefault = Environment.NewLine;
+		private const string Nbsp = "\u00A0";
 
-		protected string LinePrefix = " ";
+		protected string LinePrefix = Nbsp;
 		protected string BufferInfoValueSeparator = "|"; // ¦
 		protected string CandidateMarker = "[!]";
 		protected string ComparisonMarker = "¬"; // ¬
@@ -107,7 +108,7 @@ namespace SRAM.Comparison.Services
 		public void PrintConfigLine(string name, string argName, string examples, string value)
 		{
 			PrintConfigName(name, argName);
-			PrintColored(ConsoleColor.DarkCyan, " " + CmdLineParamExampleValuesTemplate.InsertArgs(examples));
+			PrintColored(ConsoleColor.DarkCyan, Nbsp + CmdLineParamExampleValuesTemplate.InsertArgs(examples));
 			PrintValueLineBreak(value);
 		}
 
@@ -229,7 +230,7 @@ namespace SRAM.Comparison.Services
 				.Where(e => e.Value.ToInt() == compValue)
 				.Select(e => e.Key).ToArray();
 
-			return altKeys.Length > 0 ? " " + CmdAltKeysTemplate.InsertArgs(altKeys.Join()) : string.Empty;
+			return altKeys.Length > 0 ? Nbsp + CmdAltKeysTemplate.InsertArgs(altKeys.Join()) : string.Empty;
 		}
 
 		protected virtual string GetGuideText(string? guideName) => Res.StatusNoGuideAvailable;
@@ -245,7 +246,7 @@ namespace SRAM.Comparison.Services
 		{
 			PrintSectionHeader();
 			Print(flag + @":");
-			PrintColoredLine(ConsoleColor.Yellow, @" " + flags.HasUInt32Flag(flag));
+			PrintColoredLine(ConsoleColor.Yellow, Nbsp + flags.HasUInt32Flag(flag));
 			ResetColor();
 		}
 
@@ -255,7 +256,7 @@ namespace SRAM.Comparison.Services
 				this.PrintSectionHeader(name);
 			
 			PrintColored(ConsoleColor.Yellow, $"{name ?? flags.GetType().GetDisplayName()}: ");
-			PrintColoredLine(ConsoleColor.DarkCyan, EnumValuesTemplate.InsertArgs(flags.GetFlags().Join()) + " ");
+			PrintColoredLine(ConsoleColor.DarkCyan, EnumValuesTemplate.InsertArgs(flags.GetFlags().Join()) + Nbsp);
 			PrintColored(ConsoleColor.Yellow, $"{Res.FlagsSet} ");
 			PrintColoredLine(ConsoleColor.Cyan, flags.ToFlagsString());
 			ResetColor();
@@ -266,7 +267,7 @@ namespace SRAM.Comparison.Services
 		{
 			PrintLine();
 
-			PrintColored(ConsoleColor.White, " ".Repeat(4) + @$"[ {Res.CompSection} ");
+			PrintColored(ConsoleColor.White, Nbsp.Repeat(4) + @$"[ {Res.CompSection} ");
 
 			PrintColored(ConsoleColor.DarkYellow, bufferName);
 			PrintColored(ConsoleColor.White, $@" {BufferInfoValueSeparator} ");
@@ -302,7 +303,7 @@ namespace SRAM.Comparison.Services
 			PrintComparisonIdentification(ident);
 			PrintOffsetValues(offsetText, offsetName);
 			
-			var newLineIdent = ident + " ".Repeat(2);
+			var newLineIdent = ident + Nbsp.Repeat(2);
 			PrintLine();
 			Print(newLineIdent);
 			PrintCompValues(isNegativechange, compText);
@@ -331,7 +332,7 @@ namespace SRAM.Comparison.Services
 			PrintOffsetValues(offsetText, offsetName);
 			PrintCompValues(isNegativechange, compText);
 			PrintCurrValues(isNegativechange, currText);
-			var newLineIdent = ident + " ".Repeat(2);
+			var newLineIdent = ident + Nbsp.Repeat(2);
 			PrintLine();
 			Print(newLineIdent);
 			PrintChangeValues(isNegativechange, absChange, sign, changeText, isUnknown);
@@ -353,7 +354,7 @@ namespace SRAM.Comparison.Services
 			PrintOffsetValues(offsetText, offsetName);
 			PrintCompValues(isNegativechange, compText);
 			PrintCurrValues(isNegativechange, currText);
-			var newLineIdent = ident + " ".Repeat(2);
+			var newLineIdent = ident + Nbsp.Repeat(2);
 			PrintLine();
 			Print(newLineIdent);
 			PrintChangeValues(isNegativechange, absChange, sign, changeText, isUnknown);
@@ -397,7 +398,7 @@ namespace SRAM.Comparison.Services
 		{
 			PrintColored(ConsoleColor.White, settingName.PadRight(padRightDistance) + @":");
 			PrintColored(ConsoleColor.Cyan, cmdArgName);
-			PrintColored(ConsoleColor.DarkCyan, " " + CmdLineParamExampleValuesTemplate.InsertArgs(examples));
+			PrintColored(ConsoleColor.DarkCyan, Nbsp + CmdLineParamExampleValuesTemplate.InsertArgs(examples));
 		}
 
 		protected virtual void PrintConfigName(string settingName, string? cmdArg = null, int padRightDistance = 35)
@@ -409,8 +410,8 @@ namespace SRAM.Comparison.Services
 			PrintColored(ConsoleColor.Cyan, cmdArg);
 		}
 
-		protected virtual void PrintValue(object value) => PrintColored(ConsoleColor.Yellow, @" " + value);
-		protected virtual void PrintValueLineBreak(object value) => PrintColoredLine(ConsoleColor.Yellow, @" " + value);
+		protected virtual void PrintValue(object value) => PrintColored(ConsoleColor.Yellow, Nbsp + value);
+		protected virtual void PrintValueLineBreak(object value) => PrintColoredLine(ConsoleColor.Yellow, Nbsp + value);
 
 		protected virtual void PrintOffsetValues(string offsetText, string? offsetName)
 		{
@@ -457,25 +458,25 @@ namespace SRAM.Comparison.Services
 			PrintColored(bitsColor, highlightBgColor, Res.CompChangeShort);
 			SetBackgroundColor(ConsoleColor.Black);
 			
-			PrintColored(signColor, " " + sign);
+			PrintColored(signColor, Nbsp + sign);
 			PrintColored(changeColor, changeText);
-			PrintColored(ConsoleColor.Cyan, ConsoleColor.Black, $" {ChangeMarker} ");
+			PrintColored(ConsoleColor.Cyan, ConsoleColor.Black, Nbsp + ChangeMarker + Nbsp);
 
 			PrintColored(bitsColor, highlightBgColor, changedBits.ToString());
 
 			if (changedBits == 1)
 			{
-				PrintColored(bitsColor, $" {Res.Bit}");
+				PrintColored(bitsColor, Nbsp + Res.Bit);
 				if (isUnknown)
 				{
-					PrintColoredLine(oneBitColor, ConsoleColor.Black, $" {CandidateMarker} ");
-					PrintColored(bitsColor, highlightBgColor, "» ");
+					PrintColoredLine(oneBitColor, ConsoleColor.Black, Nbsp + CandidateMarker + Nbsp);
+					PrintColored(bitsColor, highlightBgColor, "»" + Nbsp);
 					PrintColored(bitsColor, Res.CandidateForFinding);
-					PrintColored(bitsColor, " «");
+					PrintColored(bitsColor, Nbsp + "«");
 				}
 			}
 			else
-				PrintColored(bitsColor, $" {Res.Bits}");
+				PrintColored(bitsColor, Nbsp + Res.Bits);
 
 			SetBackgroundColor(ConsoleColor.Black);
 			PrintLine();
