@@ -21,10 +21,12 @@ namespace SRAM.Comparison.Helpers
 
 			try
 			{
-				if (Console.WindowWidth >= minWidth && Console.BufferWidth >= minWidth)
+				var width = Math.Min(minWidth, Console.LargestWindowWidth);
+
+				if (Console.WindowWidth >= width && Console.BufferWidth >= width)
 					return;
 
-				Console.BufferWidth = Console.WindowWidth = minWidth;
+				Console.BufferWidth = Console.WindowWidth = width;
 			}
 			catch
 			{
@@ -49,11 +51,15 @@ namespace SRAM.Comparison.Helpers
 
 			try
 			{
-				Console.SetBufferSize(InitialConsoleWidth, ConsoleBufferHeight);
+				if (Console.BufferWidth < InitialConsoleWidth || Console.BufferHeight < ConsoleBufferHeight)
+					Console.SetBufferSize(InitialConsoleWidth, ConsoleBufferHeight);
 
-				if (Console.WindowWidth >= InitialConsoleWidth && Console.WindowHeight >= InitialConsoleHeight) return;
+				var width = Math.Min(InitialConsoleWidth, Console.LargestWindowWidth);
+				var height = Math.Min(InitialConsoleHeight, Console.LargestWindowHeight);
 
-				Console.SetWindowSize(InitialConsoleWidth, InitialConsoleHeight);
+				if (Console.WindowWidth >= width && Console.WindowHeight >= height) return;
+
+				Console.SetWindowSize(width, height);
 			}
 			catch
 			{
