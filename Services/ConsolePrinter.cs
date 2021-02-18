@@ -223,7 +223,7 @@ namespace SRAM.Comparison.Services
 			PrintColored(ConsoleColor.White, ": ");
 		}
 
-		protected virtual string GetAlternateCommands(in Enum cmd, in Type alternateCommands)
+		protected virtual string GetAlternateCommands(in Enum cmd, Type alternateCommands)
 		{
 			var compValue = cmd.ToInt();
 			var dict = Enum.GetNames(alternateCommands).ToDictionary(k => k, v => v.ParseEnum(alternateCommands)!);
