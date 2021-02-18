@@ -276,7 +276,7 @@ namespace SRAM.Comparison.Services
 			PrintColored(ConsoleColor.DarkYellow, offset + $@" [x{offset:X}]");
 
 			if(wramOffset is not null)
-				PrintColored(ConsoleColor.DarkYellow, $@" [{WramOffsetTemplate.InsertArgs(wramOffset)}]");
+				PrintColored(ConsoleColor.DarkYellow, $@" [{WramOffsetTemplate.InsertArgs($"{wramOffset:X4}")}]");
 
 			PrintColored(ConsoleColor.White, $@" {BufferInfoValueSeparator} ");
 
