@@ -124,9 +124,9 @@ namespace SRAM.Comparison.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Single bit change! Potential finding candidate, consider exporting and reporting this result ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Single bit change! Consider exporting and reporting the result. ähnelt.
         /// </summary>
-        public static string CandidateForFinding {
+        public static string SingleBitChangeText {
             get {
                 return ResourceManager.GetString("CandidateForFinding", resourceCulture);
             }

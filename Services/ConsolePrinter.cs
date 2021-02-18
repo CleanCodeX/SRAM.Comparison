@@ -32,6 +32,7 @@ namespace SRAM.Comparison.Services
 		protected string EnumValuesTemplate = "[{0}]";
 		protected string EnumValuesSeparator = "|";
 		protected int CommandNameColumnLength = 30;
+		protected string WramOffsetTemplate = "$7E:{0}";
 
 		public virtual void PrintConfig(IOptions options)
 		{
@@ -263,21 +264,24 @@ namespace SRAM.Comparison.Services
 		}
 
 		protected virtual void PrintCustomBufferInfo() {}
-		public virtual void PrintBufferInfo(string bufferName, int bufferOffset, int bufferLength)
+		public virtual void PrintBufferInfo(string name, int offset, int size, int? wramOffset = null)
 		{
 			PrintLine();
 
 			PrintColored(ConsoleColor.White, Nbsp.Repeat(4) + @$"[ {Res.CompSection} ");
 
-			PrintColored(ConsoleColor.DarkYellow, bufferName);
+			PrintColored(ConsoleColor.DarkYellow, name);
 			PrintColored(ConsoleColor.White, $@" {BufferInfoValueSeparator} ");
 			PrintColored(ConsoleColor.White, $@"{Res.CompOffset} ");
-			PrintColored(ConsoleColor.DarkYellow, bufferOffset + $@" [x{bufferOffset:X}]");
+			PrintColored(ConsoleColor.DarkYellow, offset + $@" [x{offset:X}]");
+
+			if(wramOffset is not null)
+				PrintColored(ConsoleColor.DarkYellow, $@" [{WramOffsetTemplate.InsertArgs(wramOffset)}]");
 
 			PrintColored(ConsoleColor.White, $@" {BufferInfoValueSeparator} ");
 
 			PrintColored(ConsoleColor.White, $@"{Res.CompSize} ");
-			PrintColored(ConsoleColor.DarkYellow, bufferLength.ToString());
+			PrintColored(ConsoleColor.DarkYellow, size.ToString());
 
 			PrintColored(ConsoleColor.White, @" ]");
 
@@ -292,13 +296,12 @@ namespace SRAM.Comparison.Services
 			var sign = GetNumberSign((int)(currValue - compValue));
 			int change = (int)currValue - (int)compValue;
 			var absChange = (uint)Math.Abs(change);
-			var changeString = $"{absChange,5:###}";
 			var isNegativechange = change < 0;
 
 			var offsetText = $"{offset,4:D4} [x{offset,3:X3}]";
 			var compText = $"{compValue,3:D9} [x{compValue,2:X8}] [{compValue.FormatBinary(32)}]";
 			var currText = $"{currValue,3:D9} [x{currValue,2:X8}] [{currValue.FormatBinary(32)}]";
-			var changeText = $"{changeString,5} [x{absChange,2:X8}] [{absChange.FormatBinary(32)}]";
+			var changeText = $"{absChange} [x{absChange:X8}] [{absChange.FormatBinary(32)}]";
 
 			PrintComparisonIdentification(ident);
 			PrintOffsetValues(offsetText, offsetName);
@@ -320,13 +323,12 @@ namespace SRAM.Comparison.Services
 			var sign = GetNumberSign(currValue - compValue);
 			int change = currValue - compValue;
 			var absChange = (uint)Math.Abs(change);
-			var changeString = $"{absChange,5:###}";
 			var isNegativechange = change < 0;
 
 			var offsetText = $"{offset,4:D4} [x{offset,3:X3}]";
 			var compText = $"{compValue,3:D5} [x{compValue,2:X4}] [{compValue.FormatBinary(16)}]";
 			var currText = $"{currValue,3:D5} [x{currValue,2:X4}] [{currValue.FormatBinary(16)}]";
-			var changeText = $"{changeString,5} [x{absChange,2:X4}] [{absChange.FormatBinary(16)}]";
+			var changeText = $"{absChange} [x{absChange:X4}] [{absChange.FormatBinary(16)}]";
 
 			PrintComparisonIdentification(ident);
 			PrintOffsetValues(offsetText, offsetName);
@@ -459,7 +461,7 @@ namespace SRAM.Comparison.Services
 			SetBackgroundColor(ConsoleColor.Black);
 			
 			PrintColored(signColor, Nbsp + sign);
-			PrintColored(changeColor, changeText);
+			PrintColored(changeColor, Nbsp + changeText);
 			PrintColored(ConsoleColor.Cyan, ConsoleColor.Black, Nbsp + ChangeMarker + Nbsp);
 
 			PrintColored(bitsColor, highlightBgColor, changedBits.ToString());
@@ -469,9 +471,9 @@ namespace SRAM.Comparison.Services
 				PrintColored(bitsColor, Nbsp + Res.Bit);
 				if (isUnknown)
 				{
-					PrintColoredLine(oneBitColor, ConsoleColor.Black, Nbsp + CandidateMarker + Nbsp);
-					PrintColored(bitsColor, highlightBgColor, "»" + Nbsp);
-					PrintColored(bitsColor, Res.CandidateForFinding);
+					PrintColored(oneBitColor, ConsoleColor.Black, Nbsp + CandidateMarker + Nbsp);
+					PrintColored(bitsColor, ConsoleColor.DarkBlue, "»" + Nbsp);
+					PrintColored(bitsColor, Res.SingleBitChangeText);
 					PrintColored(bitsColor, Nbsp + "«");
 				}
 			}

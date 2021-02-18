@@ -15,10 +15,11 @@ namespace SRAM.Comparison.Services
 		void PrintStartMessage();
 
 		/// <summary>Prints info about the compared buffer</summary>
-		/// <param name="bufferName">The buffer's name</param>
-		/// <param name="bufferOffset">The buffer's offset</param>
-		/// <param name="bufferLength">The buffer's length</param>
-		void PrintBufferInfo(string bufferName, int bufferOffset, int bufferLength);
+		/// <param name="name">The buffer's name</param>
+		/// <param name="offset">The buffer's offset</param>
+		/// <param name="size">The buffer's length</param>
+		/// <param name="wramOffset">Optional, the buffer's W-RAM offset</param>
+		void PrintBufferInfo(string name, int offset, int size, int? wramOffset = null);
 
 		/// <summary>Prints the comparison result</summary>
 		/// <param name="ident">An indentification string to use</param>

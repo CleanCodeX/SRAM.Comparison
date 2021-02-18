@@ -43,14 +43,14 @@ namespace SRAM.Comparison.Services
 		/// <summary>
 		/// Compares a single byte
 		/// </summary>
-		/// <param name="bufferName">The name of the compared buffer</param>
-		/// <param name="bufferOffset">The buffer's offset at this byte is located</param>
+		/// <param name="name">The name of the compared buffer</param>
+		/// <param name="offset">The buffer's offset at this byte is located</param>
 		/// <param name="currValue">The current byte to be compared</param>
 		/// <param name="compValue">The comparison byte to be compared</param>
 		/// <param name="writeToConsole">Sets if any output should be written to console. Default is true</param>
 		/// <param name="isUnknown">Indicates that this offset is considered to 'Unknown'</param>
 		/// <returns>1 if the byte has changed, otherwise 0</returns>
-		protected virtual int CompareValue(string bufferName, int bufferOffset, byte currValue, byte compValue, bool writeToConsole = true, bool isUnknown = true)
+		protected virtual int CompareValue(string name, int offset, byte currValue, byte compValue, bool writeToConsole = true, bool isUnknown = true)
 		{
 			if (Equals(compValue, currValue)) return 0;
 
@@ -60,7 +60,7 @@ namespace SRAM.Comparison.Services
 
 			ConsoleHelper.EnsureMinConsoleWidth(ComparisonConsoleWidth);
 
-			OnPrintBufferInfo(bufferName, bufferOffset, 2);
+			OnPrintBufferInfo(name, offset, 2, GetWramOffset(offset));
 			OnPrintComparison(0, null, currValue, compValue, isUnknown);
 			OnStatusBytesChanged(byteCount);
 
@@ -70,14 +70,14 @@ namespace SRAM.Comparison.Services
 		/// <summary>
 		/// Compares a single 2-byte value (UShort)
 		/// </summary>
-		/// <param name="bufferName">The name of the compared buffer</param>
-		/// <param name="bufferOffset">The buffer's offset at this ushort is located</param>
+		/// <param name="name">The name of the compared buffer</param>
+		/// <param name="offset">The buffer's offset at this ushort is located</param>
 		/// <param name="currValue">The current ushort to be compared</param>
 		/// <param name="compValue">The comparison ushort to be compared</param>
 		/// <param name="writeToConsole">Sets if any output should be written to console. Default is true</param>
 		/// <param name="isUnknown">Indicates that this offset is considered to 'Unknown'</param>
 		/// <returns>2 if the ushort changed, otherwise 0</returns>
-		protected virtual int CompareValue(string bufferName, int bufferOffset, ushort currValue, ushort compValue, bool writeToConsole = true, bool isUnknown = true)
+		protected virtual int CompareValue(string name, int offset, ushort currValue, ushort compValue, bool writeToConsole = true, bool isUnknown = true)
 		{
 			if (Equals(compValue, currValue)) return 0;
 
@@ -87,24 +87,24 @@ namespace SRAM.Comparison.Services
 
 			ConsoleHelper.EnsureMinConsoleWidth(ComparisonConsoleWidth);
 
-			OnPrintBufferInfo(bufferName, bufferOffset, 2);
+			OnPrintBufferInfo(name, offset, 2, GetWramOffset(offset));
 			OnPrintComparison(0, null, currValue, compValue, isUnknown);
 			OnStatusBytesChanged(byteCount);
 
 			return byteCount;
 		}
-
+		
 		/// <summary>
 		/// Compares a single 2-byte value (UShort)
 		/// </summary>
-		/// <param name="bufferName">The name of the compared buffer</param>
-		/// <param name="bufferOffset">The buffer's offset at this ushort is located</param>
+		/// <param name="name">The name of the compared buffer</param>
+		/// <param name="offset">The buffer's offset at this ushort is located</param>
 		/// <param name="currValue">The current ushort to be compared</param>
 		/// <param name="compValue">The comparison ushort to be compared</param>
 		/// <param name="writeToConsole">Sets if any output should be written to console. Default is true</param>
 		/// <param name="isUnknown">Indicates that this offset is considered to 'Unknown'</param>
 		/// <returns>2 if the ushort changed, otherwise 0</returns>
-		protected virtual int CompareValue(string bufferName, int bufferOffset, uint currValue, uint compValue, bool writeToConsole = true, bool isUnknown = true)
+		protected virtual int CompareValue(string name, int offset, uint currValue, uint compValue, bool writeToConsole = true, bool isUnknown = true)
 		{
 			if (Equals(compValue, currValue)) return 0;
 
@@ -113,7 +113,8 @@ namespace SRAM.Comparison.Services
 			if (!writeToConsole) return byteCount;
 
 			ConsoleHelper.EnsureMinConsoleWidth(ComparisonConsoleWidth);
-			OnPrintBufferInfo(bufferName, bufferOffset, 2);
+
+			OnPrintBufferInfo(name, offset, 2, GetWramOffset(offset));
 			OnPrintComparison(0, null, currValue, compValue, isUnknown);
 			OnStatusBytesChanged(byteCount);
 
@@ -123,43 +124,43 @@ namespace SRAM.Comparison.Services
 		/// <summary>
 		/// Compares a single 2-byte value (UShort)
 		/// </summary>
-		/// <param name="bufferName">The name of the compared buffer</param>
-		/// <param name="bufferOffset">The buffer's offset at where this ushort is located</param>
+		/// <param name="name">The name of the compared buffer</param>
+		/// <param name="offset">The buffer's offset at where this ushort is located</param>
 		/// <param name="currValues">The current buffer's bytes to be compared</param>
 		/// <param name="compValues">The comparison buffer's bytes to be compared</param>
 		/// <param name="writeToConsole">Sets if any output should be written to console. Default is true</param>
 		/// <param name="offsetNameCallback">An optional callback function from which the name of a specific offset can be returned</param>
 		/// <param name="isUnknown">Indicates that this offset is considered to 'Unknown'</param>
 		/// <returns>The amound of bytes changed</returns>
-		protected virtual int CompareValue(string bufferName, int bufferOffset, ReadOnlySpan<byte> currValues, ReadOnlySpan<byte> compValues, bool writeToConsole = true, Func<int, string?>? offsetNameCallback = null, bool isUnknown = true)
+		protected virtual int CompareValue(string name, int offset, ReadOnlySpan<byte> currValues, ReadOnlySpan<byte> compValues, bool writeToConsole = true, Func<int, string?>? offsetNameCallback = null, bool isUnknown = true)
 		{
 			var byteCount = 0;
 
 			Debug.Assert(currValues.Length == compValues.Length);
 
-			for (var offset = 0; offset < currValues.Length; offset++)
+			for (var byteOffset = 0; byteOffset < currValues.Length; byteOffset++)
 			{
-				var currValue = currValues[offset];
-				var compValue = compValues[offset];
+				var currValue = currValues[byteOffset];
+				var compValue = compValues[byteOffset];
 
 				if (currValue == compValue) continue;
 
 				if (byteCount == 0 && writeToConsole)
-					OnPrintBufferInfo(bufferName, bufferOffset, compValues.Length);
+					OnPrintBufferInfo(name, byteOffset, compValues.Length, GetWramOffset(byteOffset));
 
 				++byteCount;
 
 				if (!writeToConsole) continue;
 
 				string? offsetName = null;
-				var tempOffsetName = offsetNameCallback?.Invoke(offset);
+				var tempOffsetName = offsetNameCallback?.Invoke(byteOffset);
 				if (tempOffsetName is not null)
 					offsetName += $"{tempOffsetName}".PadRight(28, '.');
 
 				if(!isUnknown && offsetName is not null)
 					isUnknown = offsetName.ContainsInsensitive(UnknownIdentifier);
 
-				OnPrintComparison(offset, offsetName, currValue, compValue, isUnknown);
+				OnPrintComparison(byteOffset, offsetName, currValue, compValue, isUnknown);
 			}
 
 			if (byteCount == 0 || !writeToConsole) return byteCount;
@@ -171,13 +172,15 @@ namespace SRAM.Comparison.Services
 			return byteCount;
 		}
 
+		protected virtual int? GetWramOffset(int offset) => null;
+
 		protected virtual void OnPrintComparison(int offset, string? offsetName, uint currValue, uint compValue, bool isUnknown) => ConsolePrinter.PrintComparison(" ".Repeat(6), offset, offsetName, currValue, compValue, isUnknown);
 
 		protected virtual void OnPrintComparison(int offset, string? offsetName, ushort currValue, ushort compValue, bool isUnknown) => ConsolePrinter.PrintComparison(" ".Repeat(6), offset, offsetName, currValue, compValue, isUnknown);
 
 		protected virtual void OnPrintComparison(int offset, string? offsetName, byte currValue, byte compValue, bool isUnknown) => ConsolePrinter.PrintComparison(" ".Repeat(6), offset, offsetName, currValue, compValue, isUnknown);
 
-		protected virtual void OnPrintBufferInfo(string bufferName, int bufferOffset, int byteCount) => ConsolePrinter.PrintBufferInfo(bufferName, bufferOffset, byteCount);
+		protected virtual void OnPrintBufferInfo(string name, int offset, int size, int? wramOffset = null) => ConsolePrinter.PrintBufferInfo(name, offset, size, wramOffset);
 
 		protected virtual void OnStatusBytesChanged(int byteCount)
 		{

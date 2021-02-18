@@ -7,9 +7,9 @@ namespace SRAM.Comparison.Helpers
 {
 	public class ConsoleHelper
 	{
-		private const int InitialConsoleWidth = 130;
-		private const int InitialConsoleHeight = 400;
-		private const int ConsoleBufferHeight = 1000;
+		public static int InitialConsoleWidth = 130;
+		public static int InitialConsoleHeight = 40;
+		public static int ConsoleBufferHeight = 600;
 
 		private static readonly IConsolePrinter ConsolePrinter = ComparisonServices.ConsolePrinter;
 		private static readonly bool IsWindows = OperatingSystem.IsWindows();

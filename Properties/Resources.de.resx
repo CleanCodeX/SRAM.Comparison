@@ -442,7 +442,7 @@
 		<value>Konfig-Datei [{0}] wurde geladen.</value>
 	</data>
 	<data name="CandidateForFinding" xml:space="preserve">
-		<value>Einzelne Bit-Änderung! Potenzieller Fundkandidat, erwäge den Export und Melde dieses Ergebnisses</value>
+		<value>Einzel-Bit-Änderung! Erwäge Export und Meldung dieses Ergebnisses.</value>
 	</data>
 	<data name="Bit" xml:space="preserve">
 		<value>Bit</value>

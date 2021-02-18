@@ -10,8 +10,7 @@ namespace SRAM.Comparison.Helpers
 		{
 			var change = currValue - compValue;
 			var absChange = (uint)Math.Abs(change);
-			var changeString = $"{absChange,3:###}";
-			return $"{changeString,3} [x{absChange,2:X2}] [{absChange.FormatBinary(8)}]";
+			return $"{absChange} [x{absChange:X2}] [{absChange.FormatBinary(8)}]";
 		}
 	}
 }

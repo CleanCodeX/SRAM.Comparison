@@ -547,7 +547,7 @@
     <value>Config file [{0}] has been loaded.</value>
   </data>
   <data name="CandidateForFinding" xml:space="preserve">
-    <value>Single bit change! Potential finding candidate, consider exporting and reporting this result</value>
+    <value>Single bit change! Consider exporting and reporting the result.</value>
   </data>
   <data name="Bit" xml:space="preserve">
     <value>bit</value>

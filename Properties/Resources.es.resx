@@ -139,7 +139,7 @@
     <value>Bytes</value>
   </data>
   <data name="CandidateForFinding" xml:space="preserve">
-    <value>¡Cambio de un solo bit! Posible búsqueda de candidatos, considere exportar e informar este resultado</value>
+    <value>¡Cambio de un solo bit! Considere exportar y reportar el resultado.</value>
   </data>
   <data name="CmdBackupComparisonFile" xml:space="preserve">
     <value>Cree una copia del archivo de comparación</value>

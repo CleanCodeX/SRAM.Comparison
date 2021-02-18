@@ -454,7 +454,7 @@
 		<value>Le fichier de configuration [{0}] a été chargé.</value>
 	</data>
 	<data name="CandidateForFinding" xml:space="preserve">
-		<value>Changement simple! Potentiel de recherche de candidat, envisagez d'exporter et de signaler ce résultat</value>
+		<value>Changement simple! Pensez à exporter et à déclarer le résultat.</value>
 	</data>
 	<data name="Bit" xml:space="preserve">
 		<value>bit</value>
