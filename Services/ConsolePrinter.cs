@@ -219,14 +219,15 @@ namespace SRAM.Comparison.Services
 		protected virtual void PrintCommandKey(Enum key)
 		{
 			PrintColored(ConsoleColor.White, key.ToString());
-			PrintColored(ConsoleColor.DarkCyan, $"{GetAlternateCommands(key).PadRight(CommandNameColumnLength - key.ToString().Length)}");
+			PrintColored(ConsoleColor.DarkCyan, $"{GetAlternateCommands(key, typeof(AlternateCommands)).PadRight(CommandNameColumnLength - key.ToString().Length)}");
 			PrintColored(ConsoleColor.White, ": ");
 		}
 
-		protected virtual string GetAlternateCommands(Enum cmd)
+		protected virtual string GetAlternateCommands(in Enum cmd, in Type alternateCommands)
 		{
 			var compValue = cmd.ToInt();
-			var dict = default(AlternateCommands).ToDictionary();
+			var dict = Enum.GetNames(alternateCommands).ToDictionary(k => k, v => v.ParseEnum(alternateCommands)!);
+
 			var altKeys = dict
 				.Where(e => e.Value.ToInt() == compValue)
 				.Select(e => e.Key).ToArray();
