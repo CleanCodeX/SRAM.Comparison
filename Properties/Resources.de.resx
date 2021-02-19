@@ -12,7 +12,7 @@
 		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, UILanguage=neutral, PublicKeyToken=b77a5c561934e089</value>
 	</resheader>
 	<data name="StatusFileBackedUpTemplate" xml:space="preserve">
-		<value>Ziel-Datei wurde gesichert als {0}.</value>
+		<value>Zieldatei wurde gesichert als {0}.</value>
 	</data>
 	<data name="StatusTotalDiffBytesTemplate" xml:space="preserve">
 		<value>Gesamt: {0} Bytes geändert (außerhalb des Speicherslots-Bereichs).</value>
@@ -75,13 +75,13 @@
 		<value>Verschiedenes</value>
 	</data>
 	<data name="CmdBackupComparisonFile" xml:space="preserve">
-		<value>Vergleichs-Datei Kopie erstellen</value>
+		<value>Vergleichsdatei Kopie erstellen</value>
 	</data>
 	<data name="CmdBackupCurrentFile" xml:space="preserve">
 		<value>Aktuelle Datei Kopie erstellen</value>
 	</data>
 	<data name="CmdCompareFiles" xml:space="preserve">
-		<value>Vergleiche aktuelle Datei mit Vergleichs-Datei</value>
+		<value>Vergleiche aktuelle Datei mit Vergleichsdatei</value>
 	</data>
 	<data name="CmdListCommands" xml:space="preserve">
 		<value>Befehle auflisten</value>
@@ -92,7 +92,7 @@
 	<data name="CmdConfig" xml:space="preserve">
 		<value>Konfig anzeigen</value>
 	</data>
-	<data name="CmdExportComparisonResult" xml:space="preserve">
+	<data name="CmdExportCompResultResult" xml:space="preserve">
 		<value>Aktuelles Vergleichsergebnis exportieren</value>
 	</data>
 	<data name="EnumNonSaveSlotComparison" xml:space="preserve">
@@ -105,13 +105,13 @@
 		<value>Anleitung (srm)</value>
 	</data>
 	<data name="CmdOverwriteComparisonFile" xml:space="preserve">
-		<value>Überschreibe Vergleichs-Datei mt aktueller Datei</value>
+		<value>Überschreibe Vergleichsdatei mt aktueller Datei</value>
 	</data>
 	<data name="CmdQuit" xml:space="preserve">
 		<value>Beenden</value>
 	</data>
 	<data name="CmdRestoreComparisonFile" xml:space="preserve">
-		<value>Vergleichs-Datei aus Sicherung wiederherstellen</value>
+		<value>Vergleichsdatei aus Sicherung wiederherstellen</value>
 	</data>
 	<data name="CmdRestoreCurrentFile" xml:space="preserve">
 		<value>Aktuelle Datei aus Sicherung wiederherstellen</value>
@@ -120,7 +120,7 @@
 		<value>Offset-Wert ändern und speichern</value><comment>The term Offset should only be translated if not understandable</comment>
 	</data>
 	<data name="CmdSetComparisonFileSaveSlot" xml:space="preserve">
-		<value>Speicherslot für Vergleichs-Datei festlegen</value>
+		<value>Speicherslot für Vergleichsdatei festlegen</value>
 	</data>
 	<data name="CmdSetCurrentSrramFileSaveSlot" xml:space="preserve">
 		<value>Speicherslot für aktuelle Datei festlegen</value>
@@ -148,7 +148,7 @@
 		<value>Aktuell</value>
 	</data>
 	<data name="EnumComparisonFile" xml:space="preserve">
-		<value>Vergleichs-Datei</value>
+		<value>Vergleichsdatei</value>
 	</data>
 	<data name="EnterCommand" xml:space="preserve">
 		<value>Befehl eingeben und Eingabe drücken</value>
@@ -160,7 +160,7 @@
 		<value>Der Befehl (overwrite) muss vom Aufrufer implementiert werden.</value>
 	</data>
 	<data name="ErrorComparisonFileDoesNotExistTemplate" xml:space="preserve">
-		<value>Die Vergleichs-Datei "{0}" wurde noch nicht erstellt. Bitte erstellen mit (OC).</value>
+		<value>Die Vergleichsdatei "{0}" wurde noch nicht erstellt. Bitte erstellen mit (OC).</value>
 	</data>
 	<data name="ErrorInvalidFileExtensionTemplate" xml:space="preserve">
 		<value>Die ({0}) Datei: [{1}] hat eine nicht-unterstützte Dateiendung. Hast du vielleicht nur vergessen den Pfad in Anführungszeichen zu setzen? Unterstützte Dateiendungen sind: {2}</value>
@@ -169,7 +169,7 @@
 		<value>Invalider Index. Abgebrochen.</value>
 	</data>
 	<data name="ErrorMissingPathArguments" xml:space="preserve">
-		<value>FEHLER: Die Anwendung muss mit mindestens dem Pfad zur aktuellen Speicher-Datei als Partameter gestartet werden. Drag 'n' Drop kann verwendet werden.</value>
+		<value>FEHLER: Die Anwendung muss mit mindestens dem Pfad zur aktuellen Speicherdatei als Partameter gestartet werden. Drag 'n' Drop kann verwendet werden.</value>
 	</data>
 	<data name="ErrorNoValidCommandCmdTemplate" xml:space="preserve">
 		<value>"{0}" ist ein unbekannter Befehl. Um alle verfügbaren Befehle anzuzeigen gib ({1}) ein.</value>
@@ -238,7 +238,7 @@
 		<value>S-RAM</value>
 	</data>
 	<data name="StartMessageTemplate" xml:space="preserve">
-		<value>Neu hier? Für eine Liste aller verfügbaren Befehle gib ({0}|?) oder ({1}) für eine Bedienungsanleitung ein. Falls noch keine Vergleichs-Datei vorhanden war, wurde nun eine erstellt.</value>
+		<value>Neu hier? Für eine Liste aller verfügbaren Befehle gib ({0}|?) oder ({1}) für eine Bedienungsanleitung ein. Falls noch keine Vergleichsdatei vorhanden war, wurde nun eine erstellt.</value>
 	</data>
 	<data name="SramOffset" xml:space="preserve">
 		<value>S-RAM-Offset</value><comment>The term Offset should only be translated if not understandable</comment>
@@ -271,7 +271,7 @@
 		<value>Aktueller Vergleich exportiert nach [{0}].</value>
 	</data>
 	<data name="StatusCurrentFileSaved" xml:space="preserve">
-		<value>Die aktuelle Datei wurde als Vergleichs-Datei gespeichert.</value>
+		<value>Die aktuelle Datei wurde als Vergleichsdatei gespeichert.</value>
 	</data>
 	<data name="StatusCurrFileSavedAsTemplate" xml:space="preserve">
 		<value>Die aktuelle Datei wurde kopiert als {0}.</value>
@@ -295,7 +295,7 @@
 		<value>Unbekannter nicht-Speicherslot-Bereich</value>
 	</data>
 	<data name="ErrorCompSaveSlotSetButNotForCurrFile" xml:space="preserve">
-		<value>Der Vergleichs-Datei Speicherslot kann erst gesetzt werden, nachdem der Speicherslot der aktuellen Datei festgelegt wurde.</value>
+		<value>Der Vergleichsdatei Speicherslot kann erst gesetzt werden, nachdem der Speicherslot der aktuellen Datei festgelegt wurde.</value>
 	</data>
 	<data name="CmdSlotByteByBytesComparison" xml:space="preserve">
 		<value>Speicherslot Byte-für-Byte vergleichen</value>
@@ -346,28 +346,28 @@
 		<value>Konfig</value>
 	</data>
 	<data name="StatusConfigFileSavedTemplate" xml:space="preserve">
-		<value>Konfig-Datei [{0}] wurde gespeichert.</value>
+		<value>Konfigdatei [{0}] wurde gespeichert.</value>
 	</data>
 	<data name="PromptEnterConfigName" xml:space="preserve">
 		<value>Gib einen spezifischen Konfig-Namen ein oder leer für Standard-Config.</value>
 	</data>
 	<data name="CmdOpenConfig" xml:space="preserve">
-		<value>Konfig-Datei öffnen</value>
+		<value>Konfigdatei öffnen</value>
 	</data>
 	<data name="ErrorConfigFileDoesNotExistTemplate" xml:space="preserve">
-		<value>Die Konfig-Datei [{0}] existiert (noch) nicht.</value>
+		<value>Die Konfigdatei [{0}] existiert (noch) nicht.</value>
 	</data>
 	<data name="CmdCreateKeyBindingFile" xml:space="preserve">
-		<value>Tastenzuweisungs-Datei erstellen</value>
+		<value>Tastenzuweisungsdatei erstellen</value>
 	</data>
 	<data name="CmdOpenKeyBindingFile" xml:space="preserve">
-		<value>Tastenzuweisungs-Datei öffnen</value>
+		<value>Tastenzuweisungsdatei öffnen</value>
 	</data>
 	<data name="StatusKeyBindingsFileSavedTemplate" xml:space="preserve">
-		<value>Tastenzuordnungs-Datei [{0}] wurde gespeichert.</value>
+		<value>Tastenzuweisungsdatei [{0}] wurde gespeichert.</value>
 	</data>
 	<data name="ErrorKeyBindingsFileDoesNotExistTemplate" xml:space="preserve">
-		<value>Die Tastenzuordnungs-Datei [{0}] existiert (noch) nicht.</value>
+		<value>Die Tastenzuweisungsdatei [{0}] existiert (noch) nicht.</value>
 	</data>
 	<data name="ErrorSavestateOffsetEditNotSupported" xml:space="preserve">
 		<value>Die Savestate Offset-Änderung wird momentan nicht unterstützt.</value>
@@ -379,7 +379,7 @@
 		<value>Auto-Laden für Konfig deaktivieren</value>
 	</data>
 	<data name="StatusConfigFileWillBeOpenedTemplate" xml:space="preserve">
-		<value>Konfig-Datei [{0}] wird geöffnet…</value>
+		<value>Konfigdatei [{0}] wird geöffnet…</value>
 	</data>
 	<data name="EnumExportFlags" xml:space="preserve">
 		<value>Export-Optionen</value>
@@ -388,22 +388,22 @@
 		<value>Gib Export-Dateinamen an: (oder leer lassen)</value>
 	</data>
 	<data name="StatusExportFileNameSet" xml:space="preserve">
-		<value>Export-Datein [{0}] festgelegt.</value>
+		<value>Export-Dateiname [{0}] festgelegt.</value>
 	</data>
 	<data name="EnumSelectExportFile" xml:space="preserve">
-		<value>Export-Datei auswählen</value>
+		<value>Exportdatei auswählen</value>
 	</data>
 	<data name="EnumOverwriteCompFile" xml:space="preserve">
-		<value>Vergleichs-Datei überschreiben</value>
+		<value>Vergleichsdatei überschreiben</value>
 	</data>
 	<data name="EnumOpenExportFile" xml:space="preserve">
-		<value>Export-Datei öffnen</value>
+		<value>Exportdatei öffnen</value>
 	</data>
 	<data name="EnumPromptExportFile" xml:space="preserve">
-		<value>Export-Datei Eingabeaufforderung</value>
+		<value>Exportdatei Eingabeaufforderung</value>
 	</data>
 	<data name="EnumDeleteCompFile" xml:space="preserve">
-		<value>Vergleichs-Datei löschen</value>
+		<value>Vergleichsdatei löschen</value>
 	</data>
 	<data name="PromptEnterFlags" xml:space="preserve">
 		<value>Gib alle zu setzenden Optionen an: (verwende 0 um keine Optionen zu setzen, Leerstring um die Eingabe abzubrechen)</value>
@@ -415,10 +415,10 @@
 		<value>Export-Optionen gesetzt:</value>
 	</data>
 	<data name="StatusCompFileDeleted" xml:space="preserve">
-		<value>Die Vergleichs-Datei wurde gelöscht.</value>
+		<value>Die Vergleichsdatei wurde gelöscht.</value>
 	</data>
 	<data name="StatusCompFileOverwritten" xml:space="preserve">
-		<value>Die Vergleichs-Datei wurde überschrieben.</value>
+		<value>Die Vergleichsdatei wurde überschrieben.</value>
 	</data>
 	<data name="EnumChecksumStatus" xml:space="preserve">
 		<value>Speicherslot Prüfsummenstatus anzeigen</value>
@@ -439,9 +439,9 @@
 		<value>Protokollierung bei Vergleich</value>
 	</data>
 	<data name="StatusConfigFileLoadedTemplate" xml:space="preserve">
-		<value>Konfig-Datei [{0}] wurde geladen.</value>
+		<value>Konfigdatei [{0}] wurde geladen.</value>
 	</data>
-	<data name="CandidateForFinding" xml:space="preserve">
+	<data name="SingleBitChangeText" xml:space="preserve">
 		<value>Einzel-Bit-Änderung! Erwäge Export und Meldung dieses Ergebnisses.</value>
 	</data>
 	<data name="Bit" xml:space="preserve">
@@ -536,5 +536,11 @@
 	</data>
 	<data name="DefaultFilename" xml:space="preserve">
 		<value>Standard-Dateiname</value>
+	</data>
+	<data name="CmdExportCompResultResultOpen" xml:space="preserve">
+		<value>Aktuelles Vergleichsergebnis exportieren und Datei öffnen</value>
+	</data>
+	<data name="CmdExportCompResultResultSelect" xml:space="preserve">
+		<value>Aktuelles Vergleichsergebnis exportieren und Datei auswählen</value>
 	</data>
 </root>

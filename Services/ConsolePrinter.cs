@@ -139,7 +139,7 @@ namespace SRAM.Comparison.Services
 			PrintGroupName(Res.CmdGroupComparison);
 
 			PrintCommand(Commands.Compare);
-			PrintCommandKey(Commands.OverwriteComp);
+			PrintCommand(Commands.OverwriteComp);
 
 			PrintGroupName(Res.CmdGroupSetsSaveSlot);
 
@@ -153,7 +153,9 @@ namespace SRAM.Comparison.Services
 			PrintCommand(Commands.BackupComp);
 			PrintCommand(Commands.Restore);
 			PrintCommand(Commands.RestoreComp);
-			PrintCommand(Commands.ExportComparison);
+			PrintCommand(Commands.ExportCompResult);
+			PrintCommand(Commands.ExportCompResultOpen);
+			PrintCommand(Commands.ExportCompResultSelect);
 			PrintCommand(Commands.ExportSlotSummary);
 			PrintCommand(Commands.Transfer);
 			

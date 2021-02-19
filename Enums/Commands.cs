@@ -56,8 +56,14 @@ namespace SRAM.Comparison.Enums
 		[DisplayNameLocalized(nameof(Res.CmdRestoreComparisonFile), typeof(Res))]
 		RestoreComp, // Restores the comparison file from previously created backup
 
-		[DisplayNameLocalized(nameof(Res.CmdExportComparisonResult), typeof(Res))]
-		ExportComparison, // Export the current comparison result as text file to export directory
+		[DisplayNameLocalized(nameof(Res.CmdExportCompResultResult), typeof(Res))]
+		ExportCompResult, // Export the current comparison result as text file to export directory
+
+		[DisplayNameLocalized(nameof(Res.CmdExportCompResultResultOpen), typeof(Res))]
+		ExportCompResultOpen, // Export the current comparison result as text file to export directory and opens the file
+
+		[DisplayNameLocalized(nameof(Res.CmdExportCompResultResultSelect), typeof(Res))]
+		ExportCompResultSelect, // Export the current comparison result as text file to export directory and selects the file in explorer
 
 		[DisplayNameLocalized(nameof(Res.EnumExportFlags), typeof(Res))]
 		ExportFlags, // Export flags
@@ -170,7 +176,9 @@ namespace SRAM.Comparison.Enums
 		SaveOff = Commands.AutoSaveOff,
 		Watch = Commands.WatchFile,
 		Unwatch = Commands.UnwatchFile,
-		EC = Commands.ExportComparison,
+		EC = Commands.ExportCompResult,
+		ECO = Commands.ExportCompResultOpen,
+		ECS = Commands.ExportCompResultSelect,
 		EF = Commands.ExportFlags,
 		WF = Commands.FileWatchFlags,
 		CF = Commands.ComparisonFlags,

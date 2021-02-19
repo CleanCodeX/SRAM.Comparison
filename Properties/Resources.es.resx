@@ -138,7 +138,7 @@
   <data name="Bytes" xml:space="preserve">
     <value>Bytes</value>
   </data>
-  <data name="CandidateForFinding" xml:space="preserve">
+  <data name="SingleBitChangeText" xml:space="preserve">
     <value>¡Cambio de un solo bit! Considere exportar y reportar el resultado.</value>
   </data>
   <data name="CmdBackupComparisonFile" xml:space="preserve">
@@ -177,7 +177,7 @@
   <data name="CmdEditOffset" xml:space="preserve">
     <value>Cambiar y guardar el valor de compensación</value>
   </data>
-  <data name="CmdExportComparisonResult" xml:space="preserve">
+  <data name="CmdExportCompResultResult" xml:space="preserve">
     <value>Exportar el resultado de la comparación actual</value>
   </data>
   <data name="CmdGroupBackup" xml:space="preserve">
@@ -641,5 +641,11 @@
   </data>
   <data name="DefaultFilename" xml:space="preserve">
     <value>Nombre de archivo predeterminado</value>
+  </data>
+  <data name="CmdExportCompResultResultOpen" xml:space="preserve">
+    <value>Exportar el resultado de la comparación actual y abrir el archivo</value>
+  </data>
+  <data name="CmdExportCompResultResultSelect" xml:space="preserve">
+    <value>Exportar el resultado de la comparación actual y seleccionar el archivo</value>
   </data>
 </root>

@@ -102,7 +102,9 @@ namespace SRAM.Comparison.Services
 			switch (cmd)
 			{
 				case Commands.Compare:
-				case Commands.ExportComparison:
+				case Commands.ExportCompResult:
+				case Commands.ExportCompResultOpen:
+				case Commands.ExportCompResultSelect:
 					throw new NotImplementedException(Resources.ErrorCommandNotImplementedTemplate.InsertArgs(command));
 				case Commands.ComparisonFlags:
 					SetComparisonFlags(options);

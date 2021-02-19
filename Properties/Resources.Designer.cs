@@ -124,15 +124,6 @@ namespace SRAM.Comparison.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Single bit change! Consider exporting and reporting the result. ähnelt.
-        /// </summary>
-        public static string SingleBitChangeText {
-            get {
-                return ResourceManager.GetString("CandidateForFinding", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Back-up comparison-file ähnelt.
         /// </summary>
         public static string CmdBackupComparisonFile {
@@ -243,9 +234,27 @@ namespace SRAM.Comparison.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Export current comparison result ähnelt.
         /// </summary>
-        public static string CmdExportComparisonResult {
+        public static string CmdExportCompResultResult {
             get {
-                return ResourceManager.GetString("CmdExportComparisonResult", resourceCulture);
+                return ResourceManager.GetString("CmdExportCompResultResult", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Export current comparison result and open file ähnelt.
+        /// </summary>
+        public static string CmdExportCompResultResultOpen {
+            get {
+                return ResourceManager.GetString("CmdExportCompResultResultOpen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Export current comparison result and select file ähnelt.
+        /// </summary>
+        public static string CmdExportCompResultResultSelect {
+            get {
+                return ResourceManager.GetString("CmdExportCompResultResultSelect", resourceCulture);
             }
         }
         
@@ -1209,6 +1218,15 @@ namespace SRAM.Comparison.Properties {
         public static string SavestateType {
             get {
                 return ResourceManager.GetString("SavestateType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Single bit change! Consider exporting and reporting the result. ähnelt.
+        /// </summary>
+        public static string SingleBitChangeText {
+            get {
+                return ResourceManager.GetString("SingleBitChangeText", resourceCulture);
             }
         }
         

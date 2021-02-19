@@ -312,7 +312,7 @@
   <data name="CmdClearOutput" xml:space="preserve">
     <value>Wipe previous console output</value>
   </data>
-  <data name="CmdExportComparisonResult" xml:space="preserve">
+  <data name="CmdExportCompResultResult" xml:space="preserve">
     <value>Export current comparison result</value>
   </data>
   <data name="CmdSaveCurrentFileWithOtherFileName" xml:space="preserve">
@@ -546,7 +546,7 @@
   <data name="StatusConfigFileLoadedTemplate" xml:space="preserve">
     <value>Config file [{0}] has been loaded.</value>
   </data>
-  <data name="CandidateForFinding" xml:space="preserve">
+  <data name="SingleBitChangeText" xml:space="preserve">
     <value>Single bit change! Consider exporting and reporting the result.</value>
   </data>
   <data name="Bit" xml:space="preserve">
@@ -641,5 +641,11 @@
   </data>
   <data name="DefaultFilename" xml:space="preserve">
     <value>Default filename</value>
+  </data>
+  <data name="CmdExportCompResultResultOpen" xml:space="preserve">
+    <value>Export current comparison result and open file</value>
+  </data>
+  <data name="CmdExportCompResultResultSelect" xml:space="preserve">
+    <value>Export current comparison result and select file</value>
   </data>
 </root>

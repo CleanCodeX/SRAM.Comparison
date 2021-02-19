@@ -47,7 +47,7 @@
 	<data name="ColorizeOutput" xml:space="preserve">
 		<value>Résultat avec couleurs</value>
 	</data>
-	<data name="CmdExportComparisonResult" xml:space="preserve">
+	<data name="CmdExportCompResultResult" xml:space="preserve">
 		<value>Exporter le résultat de la comparaison en cours</value>
 	</data>
 	<data name="CmdNonSlotByteByByteComparison" xml:space="preserve">
@@ -453,7 +453,7 @@
 	<data name="StatusConfigFileLoadedTemplate" xml:space="preserve">
 		<value>Le fichier de configuration [{0}] a été chargé.</value>
 	</data>
-	<data name="CandidateForFinding" xml:space="preserve">
+	<data name="SingleBitChangeText" xml:space="preserve">
 		<value>Changement simple! Pensez à exporter et à déclarer le résultat.</value>
 	</data>
 	<data name="Bit" xml:space="preserve">
@@ -548,5 +548,11 @@
 	</data>
 	<data name="DefaultFilename" xml:space="preserve">
 		<value>Nom de fichier par défaut</value>
+	</data>
+	<data name="CmdExportCompResultResultOpen" xml:space="preserve">
+		<value>Exporter le résultat de la comparaison actuelle et ouvrir le fichier</value>
+	</data>
+	<data name="CmdExportCompResultResultSelect" xml:space="preserve">
+		<value>Exporter le résultat de la comparaison actuelle et sélectionner le fichier</value>
 	</data>
 </root>
