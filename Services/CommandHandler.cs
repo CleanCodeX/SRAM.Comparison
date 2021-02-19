@@ -5,11 +5,11 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Text;
 using Common.Shared.Min.Extensions;
 using Common.Shared.Min.Helpers;
 using IO.Extensions;
 using IO.Models;
-using ObjectExtensions.Copy;
 using SRAM.Comparison.Enums;
 using SRAM.Comparison.Helpers;
 using SRAM.Comparison.Properties;
@@ -281,25 +281,21 @@ namespace SRAM.Comparison.Services
 
 		/// <inheritdoc cref="ICommandHandler{TSramFile,TSaveSlot}.Compare{TComparer}(IOptions)"/>
 		public virtual int Compare<TComparer>(in IOptions options)
-			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new()
-		{
-			var comparisonFilePath = FilePathHelper.GetComparisonFilePath(options);
-			Requires.FileExists(comparisonFilePath, nameof(options.ComparisonPath), Resources.ErrorComparisonFileDoesNotExistTemplate);
-
-			using var currFileStream = (Stream)new FileStream(options.CurrentFilePath!, FileMode.Open, FileAccess.Read, FileShare.Read);
-			using var compFileStream = (Stream)new FileStream(comparisonFilePath, FileMode.Open, FileAccess.Read, FileShare.Read);
-
-			return Compare<TComparer>(currFileStream, compFileStream, options);
-		}
+			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new() => Compare<TComparer>(options, null);
 
 		/// <inheritdoc cref="ICommandHandler{TSramFile,TSaveSlot}.Compare{TComparer}(IOptions, TextWriter)"/>
-		public int Compare<TComparer>(in IOptions options, in TextWriter output) 
+		public int Compare<TComparer>(in IOptions options, in TextWriter? output) 
 			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new()
 		{
 			try
 			{
-				using (new TemporaryConsoleOutputSetter(output))
-					return Compare<TComparer>(options);
+				var comparisonFilePath = FilePathHelper.GetComparisonFilePath(options);
+				Requires.FileExists(comparisonFilePath, nameof(options.ComparisonPath), Resources.ErrorComparisonFileDoesNotExistTemplate);
+
+				using var currFileStream = (Stream)new FileStream(options.CurrentFilePath!, FileMode.Open, FileAccess.Read, FileShare.Read);
+				using var compFileStream = (Stream)new FileStream(comparisonFilePath, FileMode.Open, FileAccess.Read, FileShare.Read);
+
+				return Compare<TComparer>(currFileStream, compFileStream, options, output);
 			}
 			finally
 			{
@@ -307,16 +303,13 @@ namespace SRAM.Comparison.Services
 			}
 		}
 
-		/// <inheritdoc cref="ICommandHandler{TSramFile,TSaveSlot}.Compare{TComparer}(Stream, Stream, IOptions, TextWriter)"/>
-		public virtual int Compare<TComparer>(Stream currStream, Stream compStream, in IOptions options, in TextWriter output)
-			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new()
-		{
-			using (new TemporaryConsoleOutputSetter(output))
-				return Compare<TComparer>(currStream, compStream, options);
-		}
-
 		/// <inheritdoc cref="ICommandHandler{TSramFile,TSaveSlot}.Compare{TComparer}(Stream, Stream, IOptions)"/>
 		public virtual int Compare<TComparer>(Stream currStream, Stream compStream, in IOptions options)
+			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new() =>
+			Compare<TComparer>(currStream, compStream, options, null);
+
+		/// <inheritdoc cref="ICommandHandler{TSramFile,TSaveSlot}.Compare{TComparer}(Stream, Stream, IOptions, TextWriter)"/>
+		public virtual int Compare<TComparer>(Stream currStream, Stream compStream, in IOptions options, in TextWriter? output)
 			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new()
 		{
 			ConvertStreamIfSavestate(options, ref currStream, options.CurrentFilePath!);
@@ -330,7 +323,7 @@ namespace SRAM.Comparison.Services
 			{
 				TrySetCulture(options.ComparisonResultLanguage);
 
-				var changedBytes = comparer.CompareSram(currFile, compFile, options);
+				var changedBytes = comparer.CompareSram(currFile, compFile, options, output);
 				if (changedBytes == 0) return 0;
 
 				var export = options.AutoWatch && options.FileWatchFlags.HasUInt32Flag(FileWatchFlags.AutoExport) ||
@@ -341,34 +334,34 @@ namespace SRAM.Comparison.Services
 				// Enforce English for exports
 				TrySetCulture("en");
 
-				using var ms = new MemoryStream();
+				StringBuilder sb = new();
+
+				comparer.CompareSram(currFile, compFile, options, new StringWriter(sb));
+
+				var compResult = sb.ToString();
+
+				if (export && options.LogFlags.HasUInt32Flag(LogFlags.Export) || options.LogFlags.HasUInt32Flag(LogFlags.Comparison))
+					AppendToFile(compResult, options);
+
+				if (export)
 				{
-					using (var writer = new StreamWriter(ms, leaveOpen: true))
-						comparer.CompareSram(currFile, compFile, options, writer);
-					
-					if (export && options.LogFlags.HasUInt32Flag(LogFlags.Export) || options.LogFlags.HasUInt32Flag(LogFlags.Comparison))
-						LogExport(ms, options);
+					SaveToPromptFile(compResult, options);
 
-					if (export)
+					var exportFlags = options.ExportFlags;
+					var comparisonFilePath = FilePathHelper.GetComparisonFilePath(options);
+
+					if (exportFlags.HasUInt32Flag(ExportFlags.DeleteComp))
 					{
-						Export(ms, options);
-
-						var exportFlags = options.ExportFlags;
-						var comparisonFilePath = FilePathHelper.GetComparisonFilePath(options);
-
-						if (exportFlags.HasUInt32Flag(ExportFlags.DeleteComp))
-						{
-							File.Delete(comparisonFilePath);
-							ConsolePrinter.PrintColoredLine(ConsoleColor.DarkRed, Resources.StatusCompFileDeleted);
-						}
+						File.Delete(comparisonFilePath);
+						ConsolePrinter.PrintColoredLine(ConsoleColor.DarkRed, Resources.StatusCompFileDeleted);
 					}
-
-					var overwriteCompFile = options.AutoWatch && options.FileWatchFlags.HasUInt32Flag(FileWatchFlags.OverwriteComp) ||
-					                        export && options.ExportFlags.HasUInt32Flag(ExportFlags.OverwriteComp) || 
-											options.ComparisonFlags.HasUInt32Flag(ComparisonFlags.OverwriteComp);
-					if (overwriteCompFile)
-						OverwriteComparisonFileWithCurrentFile(options);
 				}
+
+				var overwriteCompFile = options.AutoWatch && options.FileWatchFlags.HasUInt32Flag(FileWatchFlags.OverwriteComp) ||
+				                        export && options.ExportFlags.HasUInt32Flag(ExportFlags.OverwriteComp) || 
+										options.ComparisonFlags.HasUInt32Flag(ComparisonFlags.OverwriteComp);
+				if (overwriteCompFile)
+					OverwriteComparisonFileWithCurrentFile(options);
 
 				return changedBytes;
 			}
@@ -397,30 +390,30 @@ namespace SRAM.Comparison.Services
 		#region Export comparison Result
 
 		/// <inheritdoc cref="ICommandHandler{TSramFile,TSaveSlot}.ExportCompResult{TComparer}(IOptions)"/>
-		public virtual string? ExportCompResult<TComparer>(in IOptions options)
-			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new() => InternalExportCompResult<TComparer>(options.Copy());
+		public virtual string? SaveCompResult<TComparer>(in IOptions options)
+			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new() => InternalSaveCompResult<TComparer>(options.Copy());
 
 		/// <inheritdoc cref="ICommandHandler{TSramFile,TSaveSlot}.ExportCompResult{TComparer}(IOptions,string)"/>
-		public virtual string? ExportCompResult<TComparer>(in IOptions options, in string filePath)
+		public virtual string? SaveCompResult<TComparer>(in IOptions options, in string filePath)
 			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new()
 		{
 			var optionsCopy = options.Copy();
 			optionsCopy.ExportPath = filePath;
-			return InternalExportCompResult<TComparer>(optionsCopy);
+			return InternalSaveCompResult<TComparer>(optionsCopy);
 		}
 
 		/// <inheritdoc cref="ICommandHandler{TSramFile,TSaveSlot}.ExportCompResult{TComparer}(IOptions,string)"/>
-		private string? InternalExportCompResult<TComparer>(in IOptions options)
+		private string? InternalSaveCompResult<TComparer>(in IOptions options)
 			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new()
 		{
 			options.ComparisonFlags = (ComparisonFlags) options.ComparisonFlags | ComparisonFlags.AutoExport;
 
-			return Compare<TComparer>(options) > 0
+			return Compare<TComparer>(options, new StringWriter()) > 0
 				? options.ExportPath
 				: null;
 		}
 
-		private void Export(Stream ms, IOptions options)
+		private void SaveToPromptFile(string contents, IOptions options)
 		{
 			string? fileName = null;
 
@@ -433,11 +426,11 @@ namespace SRAM.Comparison.Services
 					fileName += ".txt";
 
 				// ReSharper disable once VariableHidesOuterVariable
-				string? GetExportFileName(string? filePath) => InternalGetStringValue(Resources.PromptEnterExportFileName, Resources.StatusExportFileNameSet.InsertArgs(filePath));
+				string? GetExportFileName(string? filePath) => InternalGetStringValue(Resources.PromptEnterExportFileName, filePath, Resources.StatusExportFileNameSet);
 			}
 
 			var filePath = FilePathHelper.GetExportFilePath(options, fileName);
-			ms.SaveTo(filePath);
+			File.WriteAllText(filePath, contents);
 
 			ConsolePrinter.PrintLine();
 			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusCurrentComparisonExportedTemplate.InsertArgs(filePath));
@@ -449,13 +442,13 @@ namespace SRAM.Comparison.Services
 				OpenFile(filePath);
 		}
 
-		private static void LogExport(Stream ms, IOptions options) => ms.AppendTo(FilePathHelper.GetLogFilePath(options, DefaultLogFileName));
+		private static void AppendToFile(string contents, IOptions options) => File.AppendAllText(FilePathHelper.GetLogFilePath(options, DefaultLogFileName), contents);
 
 		private static void SelectFile(string filePath)
 		{
 			if (!File.Exists(filePath)) return;
 
-			//Clean up file path so it can be navigated OK
+			//Clean up file path so it can be navigated
 			filePath = Path.GetFullPath(filePath);
 			Process.Start("explorer.exe", $"/select,\"{filePath}\"");
 		}
@@ -464,7 +457,7 @@ namespace SRAM.Comparison.Services
 		{
 			if (!File.Exists(filePath)) return;
 
-			//Clean up file path so it can be navigated OK
+			//Clean up file path so it can be navigated
 			filePath = Path.GetFullPath(filePath);
 			Process.Start("explorer.exe", $"\"{filePath}\"");
 		}
@@ -587,17 +580,17 @@ namespace SRAM.Comparison.Services
 			ConsolePrinter.PrintColoredLine(ConsoleColor.White, "");
 			
 			var input = Console.ReadLine().ToNullIfEmpty();
+			var result = input ?? defaultValue;
 
-			ConsolePrinter.PrintLine();
-			if (promptResultTemplate is not null)
+			if (promptResultTemplate is not null && result is not null)
 			{
-				ConsolePrinter.PrintColoredLine(ConsoleColor.DarkYellow, promptResultTemplate.InsertArgs(input));
+				ConsolePrinter.PrintColoredLine(ConsoleColor.DarkYellow, promptResultTemplate.InsertArgs(result));
 				ConsolePrinter.PrintLine();
 			}
 
 			ConsolePrinter.ResetColor();
 
-			return input ?? defaultValue;
+			return result;
 		}
 
 		private uint InternalGetValue(string prompt, string? promtResultTemplate = null)

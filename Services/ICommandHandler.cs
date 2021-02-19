@@ -72,7 +72,7 @@ namespace SRAM.Comparison.Services
 		/// <typeparam name="TComparer">The type of compare which should be used</typeparam>
 		/// <param name="options">The options to be used for comparison</param>
 		/// <returns>The file path to export file or null if no export was performed (e.g. when no bytes changed)</returns>
-		string? ExportCompResult<TComparer>(in IOptions options)
+		string? SaveCompResult<TComparer>(in IOptions options)
 			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new();
 
 		/// <summary>Compares S-RAM based on <para>options</para>.<see cref="IOptions.ExportPath"/> and a generated filename based on current timestamp will be used</summary>
@@ -80,7 +80,7 @@ namespace SRAM.Comparison.Services
 		/// <param name="options">The options to be used for comparison</param>
 		/// <param name="filePath">The file path to save the comparison result</param>
 		/// <returns>The file path to export file or null if no export was performed (e.g. when no bytes changed)</returns>
-		string? ExportCompResult<TComparer>(in IOptions options, in string filePath)
+		string? SaveCompResult<TComparer>(in IOptions options, in string filePath)
 			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new();
 
 
