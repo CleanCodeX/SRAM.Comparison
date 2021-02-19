@@ -12,12 +12,13 @@ namespace SRAM.Comparison.Helpers
 		public static int ConsoleBufferHeight = 600;
 
 		private static readonly IConsolePrinter ConsolePrinter = ComparisonServices.ConsolePrinter;
-		private static readonly bool IsWindows = OperatingSystem.IsWindows();
+		private static readonly bool UseConsole = Environment.UserInteractive && Console.LargestWindowWidth > 0;
 
+		[UnsupportedOSPlatform("Browser")]
 		[SupportedOSPlatform("windows")]
 		public static void EnsureMinConsoleWidth(int minWidth)
 		{
-			if (!IsWindows) return;
+			if (!UseConsole) return;
 
 			try
 			{
@@ -44,10 +45,11 @@ namespace SRAM.Comparison.Helpers
 			SetInitialConsoleSize();
 		}
 
+		[UnsupportedOSPlatform("Browser")]
 		[SupportedOSPlatform("windows")]
 		public static void SetInitialConsoleSize()
 		{
-			if (!IsWindows) return;
+			if (!UseConsole) return;
 
 			try
 			{
@@ -67,10 +69,11 @@ namespace SRAM.Comparison.Helpers
 			}
 		}
 
+		[UnsupportedOSPlatform("Browser")]
 		[SupportedOSPlatform("windows")]
 		public static void RedefineConsoleColors(Color color = default, Color bgColor = default)
 		{
-			if (!IsWindows) return;
+			if (!UseConsole) return;
 
 			try
 			{
