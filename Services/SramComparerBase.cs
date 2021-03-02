@@ -50,7 +50,7 @@ namespace SRAM.Comparison.Services
 		/// <param name="writeToConsole">Sets if any output should be written to console. Default is true</param>
 		/// <param name="isUnknown">Indicates that this offset is considered to 'Unknown'</param>
 		/// <returns>1 if the byte has changed, otherwise 0</returns>
-		protected virtual int CompareValue(string name, int offset, byte currValue, byte compValue, bool writeToConsole = true, bool isUnknown = true)
+		protected virtual int CompareValue(string name, int offset, byte currValue, byte compValue, bool writeToConsole = true, bool isUnknown = false)
 		{
 			if (Equals(compValue, currValue)) return 0;
 
@@ -77,7 +77,7 @@ namespace SRAM.Comparison.Services
 		/// <param name="writeToConsole">Sets if any output should be written to console. Default is true</param>
 		/// <param name="isUnknown">Indicates that this offset is considered to 'Unknown'</param>
 		/// <returns>2 if the ushort changed, otherwise 0</returns>
-		protected virtual int CompareValue(string name, int offset, ushort currValue, ushort compValue, bool writeToConsole = true, bool isUnknown = true)
+		protected virtual int CompareValue(string name, int offset, ushort currValue, ushort compValue, bool writeToConsole = true, bool isUnknown = false)
 		{
 			if (Equals(compValue, currValue)) return 0;
 
@@ -104,7 +104,7 @@ namespace SRAM.Comparison.Services
 		/// <param name="writeToConsole">Sets if any output should be written to console. Default is true</param>
 		/// <param name="isUnknown">Indicates that this offset is considered to 'Unknown'</param>
 		/// <returns>2 if the ushort changed, otherwise 0</returns>
-		protected virtual int CompareValue(string name, int offset, uint currValue, uint compValue, bool writeToConsole = true, bool isUnknown = true)
+		protected virtual int CompareValue(string name, int offset, uint currValue, uint compValue, bool writeToConsole = true, bool isUnknown = false)
 		{
 			if (Equals(compValue, currValue)) return 0;
 
@@ -132,7 +132,7 @@ namespace SRAM.Comparison.Services
 		/// <param name="offsetNameCallback">An optional callback function from which the name of a specific offset can be returned</param>
 		/// <param name="isUnknown">Indicates that this offset is considered to 'Unknown'</param>
 		/// <returns>The amound of bytes changed</returns>
-		protected virtual int CompareValue(string name, int offset, ReadOnlySpan<byte> currValues, ReadOnlySpan<byte> compValues, bool writeToConsole = true, Func<int, string?>? offsetNameCallback = null, bool isUnknown = true)
+		protected virtual int CompareValue(string name, int offset, ReadOnlySpan<byte> currValues, ReadOnlySpan<byte> compValues, bool writeToConsole = true, Func<int, string?>? offsetNameCallback = null, bool isUnknown = false)
 		{
 			var byteCount = 0;
 
@@ -146,7 +146,7 @@ namespace SRAM.Comparison.Services
 				if (currValue == compValue) continue;
 
 				if (byteCount == 0 && writeToConsole)
-					OnPrintBufferInfo(name, byteOffset, compValues.Length, GetWramOffset(byteOffset));
+					OnPrintBufferInfo(name, offset, compValues.Length, GetWramOffset(byteOffset));
 
 				++byteCount;
 

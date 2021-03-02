@@ -139,7 +139,7 @@
     <value>Bytes</value>
   </data>
   <data name="SingleBitChangeText" xml:space="preserve">
-    <value>¡Cambio de un solo bit! Considere exportar y reportar el resultado.</value>
+    <value>Compruebe docu.xeth.de si este bit tiene un significado todavía. Si no, considere exportar y reportar el hallazgo.</value>
   </data>
   <data name="CmdBackupComparisonFile" xml:space="preserve">
     <value>Cree una copia del archivo de comparación</value>
@@ -313,7 +313,7 @@
     <value>Desconocidas de tragamonedas no guardadas</value>
   </data>
   <data name="CompSectionSaveSlotChangedTemplate" xml:space="preserve">
-    <value>Todos (conocidos + desconocidos)</value>
+    <value>Todos (comparación de bytes)</value>
   </data>
   <data name="CompSize" xml:space="preserve">
     <value>Talla</value>
@@ -597,8 +597,8 @@
   <data name="StatusOffsetWillBeUsedTemplate" xml:space="preserve">
     <value>Se utilizará la compensación {0}.</value>
   </data>
-  <data name="StatusSaveSlotChangedBytesTemplate" xml:space="preserve">
-    <value>Todas (conocidas + desconocidas): {0} bytes cambiados.</value>
+  <data name="StatusSaveSlotChangedResultTemplate" xml:space="preserve">
+    <value>Todas (comparación de bytes): {0} bytes cambiados.</value>
   </data>
   <data name="StatusSetOffsetValueTemplate" xml:space="preserve">
     <value>El valor en el desplazamiento {0} ahora es {1}.</value>

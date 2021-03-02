@@ -54,7 +54,7 @@ namespace SRAM.Comparison.Helpers
 			try
 			{
 				if (Console.BufferWidth < InitialConsoleWidth || Console.BufferHeight < ConsoleBufferHeight)
-					Console.SetBufferSize(InitialConsoleWidth, ConsoleBufferHeight);
+					Console.SetBufferSize(Math.Max(InitialConsoleWidth, Console.WindowWidth), ConsoleBufferHeight);
 
 				var width = Math.Min(InitialConsoleWidth, Console.LargestWindowWidth);
 				var height = Math.Min(InitialConsoleHeight, Console.LargestWindowHeight);

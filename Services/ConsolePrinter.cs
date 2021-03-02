@@ -276,7 +276,7 @@ namespace SRAM.Comparison.Services
 			PrintColored(ConsoleColor.DarkYellow, name);
 			PrintColored(ConsoleColor.White, $@" {BufferInfoValueSeparator} ");
 			PrintColored(ConsoleColor.White, $@"{Res.CompOffset} ");
-			PrintColored(ConsoleColor.DarkYellow, offset + $@" [x{offset:X}]");
+			PrintColored(ConsoleColor.DarkYellow, FormatOffset(offset));
 
 			if(wramOffset is not null)
 				PrintColored(ConsoleColor.DarkYellow, $@" [{WramOffsetTemplate.InsertArgs($"{wramOffset:X4}")}]");
@@ -284,7 +284,7 @@ namespace SRAM.Comparison.Services
 			PrintColored(ConsoleColor.White, $@" {BufferInfoValueSeparator} ");
 
 			PrintColored(ConsoleColor.White, $@"{Res.CompSize} ");
-			PrintColored(ConsoleColor.DarkYellow, size.ToString());
+			PrintColored(ConsoleColor.DarkYellow, FormatSize(size));
 
 			PrintColored(ConsoleColor.White, @" ]");
 
@@ -301,10 +301,10 @@ namespace SRAM.Comparison.Services
 			var absChange = (uint)Math.Abs(change);
 			var isNegativechange = change < 0;
 
-			var offsetText = $"{offset,4:D4} [x{offset,3:X3}]";
-			var compText = $"{compValue,3:D9} [x{compValue,2:X8}] [{compValue.FormatBinary(32)}]";
-			var currText = $"{currValue,3:D9} [x{currValue,2:X8}] [{currValue.FormatBinary(32)}]";
-			var changeText = $"{absChange} [x{absChange:X8}] [{absChange.FormatBinary(32)}]";
+			var offsetText = FormatOffset(offset);
+			var compText = FormatValue(compValue);
+			var currText = FormatValue(currValue);
+			var changeText = FormatChange(currValue, compValue);
 
 			PrintComparisonIdentification(ident);
 			PrintOffsetValues(offsetText, offsetName);
@@ -328,10 +328,10 @@ namespace SRAM.Comparison.Services
 			var absChange = (uint)Math.Abs(change);
 			var isNegativechange = change < 0;
 
-			var offsetText = $"{offset,4:D4} [x{offset,3:X3}]";
-			var compText = $"{compValue,3:D5} [x{compValue,2:X4}] [{compValue.FormatBinary(16)}]";
-			var currText = $"{currValue,3:D5} [x{currValue,2:X4}] [{currValue.FormatBinary(16)}]";
-			var changeText = $"{absChange} [x{absChange:X4}] [{absChange.FormatBinary(16)}]";
+			var offsetText = FormatOffset(offset);
+			var compText = FormatValue(compValue);
+			var currText = FormatValue(currValue);
+			var changeText = FormatChange(currValue, compValue);
 
 			PrintComparisonIdentification(ident);
 			PrintOffsetValues(offsetText, offsetName);
@@ -350,10 +350,10 @@ namespace SRAM.Comparison.Services
 			var absChange = (uint)Math.Abs(change);
 			var isNegativechange = change < 0;
 
-			var offsetText = $"{offset,4:D4} [x{offset,3:X3}]";
-			var compText = GetByteValueRepresentations(compValue);
-			var currText = GetByteValueRepresentations(currValue);
-			var changeText = GetByteValueChangeRepresentations(currValue, compValue);
+			var offsetText = FormatOffset(offset);
+			var compText = FormatValue(compValue);
+			var currText = FormatValue(currValue);
+			var changeText = FormatChange(currValue, compValue);
 
 			PrintComparisonIdentification(ident);
 			PrintOffsetValues(offsetText, offsetName);
@@ -365,9 +365,18 @@ namespace SRAM.Comparison.Services
 			PrintChangeValues(isNegativechange, absChange, sign, changeText, isUnknown);
 		}
 
-		protected virtual string GetByteValueRepresentations(byte value) => NumberFormatter.GetByteValueRepresentations(value);
+		protected virtual string FormatOffset(int offset) => $"{offset} [x{offset:X}]";
+		protected virtual string FormatSize(int size) => $"{size} [x{size:X}]";
 
-		protected virtual string GetByteValueChangeRepresentations(byte currValue, byte compValue) => NumberFormatter.GetByteValueChangeRepresentations(currValue, compValue);
+		protected virtual string FormatValue(uint value) => NumberFormatter.FormatDecHexBin(value);
+		protected virtual string FormatValue(ushort value) => NumberFormatter.FormatDecHexBin(value);
+		protected virtual string FormatChange(byte value) => NumberFormatter.FormatDecHex(value);
+		protected virtual string FormatChange(ushort value) => NumberFormatter.FormatDecHex(value);
+		protected virtual string FormatChange(uint value) => NumberFormatter.FormatDecHex(value);
+
+		private string FormatChange(byte currValue, byte compValue) => FormatChange((byte)Math.Abs(currValue - compValue));
+		private string FormatChange(ushort currValue, ushort compValue) => FormatChange((ushort)Math.Abs(currValue - compValue));
+		private string FormatChange(uint currValue, uint compValue) => FormatChange((uint)Math.Abs(currValue - compValue));
 
 		public virtual void PrintSectionHeader()
 		{
@@ -445,47 +454,38 @@ namespace SRAM.Comparison.Services
 
 		protected virtual void PrintChangeValues(bool isNegativeChange, uint changeValue, string sign, string changeText, bool isUnknown)
 		{
-			var signColor = isNegativeChange ? ConsoleColor.DarkRed : ConsoleColor.DarkGreen;
 			var changeColor = isNegativeChange ? ConsoleColor.Red : ConsoleColor.Green;
-			
 			var changedBits = changeValue.CountChangedBits();
 			var oneBitColor = ConsoleColor.Yellow;
-			var highlightBgColor = ConsoleColor.DarkBlue;
-			var bitsColor = ConsoleColor.DarkGray;
+			var bgColor = ConsoleColor.DarkBlue;
+			var highlightColor = ConsoleColor.DarkGray;
 
 			if (isUnknown && changedBits == 1)
-			{
-				highlightBgColor = ConsoleColor.Blue;
-				bitsColor = ConsoleColor.White;
-				signColor = changeColor = isNegativeChange ? ConsoleColor.Magenta : ConsoleColor.Green;
-			}
+				bgColor = ConsoleColor.Blue;
 
-			PrintColored(bitsColor, highlightBgColor, Res.CompChangeShort);
+			PrintColored(ConsoleColor.DarkGray, ConsoleColor.DarkBlue, Res.CompChangeShort);
 			SetBackgroundColor(ConsoleColor.Black);
-			
-			PrintColored(signColor, Nbsp + sign);
-			PrintColored(changeColor, Nbsp + changeText);
+
+			PrintColored(changeColor, Nbsp + sign + Nbsp + changeText);
 			PrintColored(ConsoleColor.Cyan, ConsoleColor.Black, Nbsp + ChangeMarker + Nbsp);
 
-			PrintColored(bitsColor, highlightBgColor, changedBits.ToString());
+			PrintColored(highlightColor, bgColor, changedBits.ToString());
 
 			if (changedBits == 1)
 			{
-				PrintColored(bitsColor, Nbsp + Res.Bit);
+				PrintColored(ConsoleColor.White, Nbsp + Res.Bit);
 				if (isUnknown)
 				{
 					PrintColored(oneBitColor, ConsoleColor.Black, Nbsp + CandidateMarker + Nbsp);
-					PrintColored(bitsColor, ConsoleColor.DarkBlue, "»" + Nbsp);
-					PrintColored(bitsColor, Res.SingleBitChangeText);
-					PrintColored(bitsColor, Nbsp + "«");
+					PrintColored(ConsoleColor.Gray, "»" + Nbsp + Res.SingleBitChangeText + Nbsp + "«");
 				}
 			}
 			else
-				PrintColored(bitsColor, Nbsp + Res.Bits);
+				PrintColored(highlightColor, Nbsp + Res.Bits);
 
-			SetBackgroundColor(ConsoleColor.Black);
+			PrintColored(ConsoleColor.Gray, ConsoleColor.Black, Nbsp);
 			PrintLine();
-			
+
 			ResetColor();
 		}
 

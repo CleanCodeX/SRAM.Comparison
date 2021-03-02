@@ -177,7 +177,7 @@
 		<value>Section</value>
 	</data>
 	<data name="CompSectionSaveSlotChangedTemplate" xml:space="preserve">
-		<value>Tout (valeurs connues et inconnues)</value>
+		<value>Tout (comparaison d'octets)</value>
 	</data>
 	<data name="CompSectionNonSaveSlotUnknowns" xml:space="preserve">
 		<value>Valeurs inconnues des autres parties</value>
@@ -240,8 +240,8 @@
 	<data name="StatusCurrFileSavedAsTemplate" xml:space="preserve">
 		<value>Le fichier en cours a été copié (fichier {0}).</value>
 	</data>
-	<data name="StatusSaveSlotChangedBytesTemplate" xml:space="preserve">
-		<value>Tout (valeurs connues et inconnues) : {0} octets modifiés.</value>
+	<data name="StatusSaveSlotChangedResultTemplate" xml:space="preserve">
+		<value>Tout (comparaison d'octets) : {0} octets modifiés.</value>
 	</data>
 	<data name="StatusUnknownsChangedBytesTemplate" xml:space="preserve">
 		<value>Valeurs inconnues uniquement : {0} octets modifiés</value>
@@ -454,7 +454,7 @@
 		<value>Le fichier de configuration [{0}] a été chargé.</value>
 	</data>
 	<data name="SingleBitChangeText" xml:space="preserve">
-		<value>Changement simple! Pensez à exporter et à déclarer le résultat.</value>
+		<value>Vérifiez docu.xeth.de si ce bit a encore un sens. Sinon, envisagez d'exporter et de signaler la découverte.</value>
 	</data>
 	<data name="Bit" xml:space="preserve">
 		<value>bit</value>

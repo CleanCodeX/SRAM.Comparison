@@ -515,7 +515,7 @@ namespace SRAM.Comparison.Services
 
 			var byteValue = currFile.GetOffsetByte(slotIndex, offset);
 
-			var valueDisplayText = NumberFormatter.GetByteValueRepresentations(byteValue);
+			var valueDisplayText = NumberFormatter.FormatDecHexBin(byteValue);
 
 			ConsolePrinter.PrintColoredLine(ConsoleColor.Green, Resources.StatusGetOffsetValueTemplate.InsertArgs(offset, valueDisplayText));
 			ConsolePrinter.ResetColor();

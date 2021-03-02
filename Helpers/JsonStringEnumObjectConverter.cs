@@ -6,7 +6,7 @@ namespace SRAM.Comparison.Helpers
 {
 	public class JsonStringEnumObjectConverter : JsonConverter<Enum>
 	{
-		public override bool CanConvert(Type typeToConvert) => typeToConvert.IsEnum;
+		public override bool CanConvert(Type typeToConvert) => typeToConvert.IsEnum || typeToConvert == typeof(Enum);
 
 		public override Enum Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
 		{

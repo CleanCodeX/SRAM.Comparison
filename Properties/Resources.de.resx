@@ -208,7 +208,7 @@
 		<value>Gleicher Slot wie aktuelle Datei</value>
 	</data>
 	<data name="CompSectionSaveSlotChangedTemplate" xml:space="preserve">
-		<value>Alles (Bekannte und Unbekannte)</value>
+		<value>Alles (Byte-Vergleich)</value>
 	</data>
 	<data name="ExportPath" xml:space="preserve">
 		<value>Export-Pfad</value>
@@ -276,8 +276,8 @@
 	<data name="StatusCurrFileSavedAsTemplate" xml:space="preserve">
 		<value>Die aktuelle Datei wurde kopiert als {0}.</value>
 	</data>
-	<data name="StatusSaveSlotChangedBytesTemplate" xml:space="preserve">
-		<value>Alles (Bekannte + Unbekannte): {0} Bytes geändert.</value>
+	<data name="StatusSaveSlotChangedResultTemplate" xml:space="preserve">
+		<value>Alles (Byte-Vergleich): {0} Bytes geändert.</value>
 	</data>
 	<data name="StatusUnknownsChangedBytesTemplate" xml:space="preserve">
 		<value>Nur Unbekannte: {0} Bytes geändert</value>
@@ -442,7 +442,7 @@
 		<value>Konfigdatei [{0}] wurde geladen.</value>
 	</data>
 	<data name="SingleBitChangeText" xml:space="preserve">
-		<value>Einzel-Bit-Änderung! Erwäge Export und Meldung dieses Ergebnisses.</value>
+		<value>Prüfe docu.xeth.de ob dieses Bit bereits eine Bedeutung hat. Falls nicht, erwäge Export und Meldung des Fundes.</value>
 	</data>
 	<data name="Bit" xml:space="preserve">
 		<value>Bit</value>

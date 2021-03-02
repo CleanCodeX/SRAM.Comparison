@@ -664,7 +664,7 @@ namespace SRAM.Comparison.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die All (knowns + unknowns) ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die All (byte comparison) ähnelt.
         /// </summary>
         public static string CompSectionSaveSlotChangedTemplate {
             get {
@@ -1222,7 +1222,7 @@ namespace SRAM.Comparison.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Single bit change! Consider exporting and reporting the result. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Check docu.xeth.de if this bit has a meaning yet. If not consider exporting and reporting the find. ähnelt.
         /// </summary>
         public static string SingleBitChangeText {
             get {
@@ -1537,11 +1537,11 @@ namespace SRAM.Comparison.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die All (knowns + unknowns): {0} bytes changed. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die All (byte comparison): {0} bytes changed. ähnelt.
         /// </summary>
-        public static string StatusSaveSlotChangedBytesTemplate {
+        public static string StatusSaveSlotChangedResultTemplate {
             get {
-                return ResourceManager.GetString("StatusSaveSlotChangedBytesTemplate", resourceCulture);
+                return ResourceManager.GetString("StatusSaveSlotChangedResultTemplate", resourceCulture);
             }
         }
         

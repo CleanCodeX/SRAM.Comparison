@@ -265,10 +265,10 @@
     <value>Section</value>
   </data>
   <data name="CompSectionSaveSlotChangedTemplate" xml:space="preserve">
-    <value>All (knowns + unknowns)</value>
+    <value>All (byte comparison)</value>
   </data>
-  <data name="StatusSaveSlotChangedBytesTemplate" xml:space="preserve">
-    <value>All (knowns + unknowns): {0} bytes changed.</value>
+  <data name="StatusSaveSlotChangedResultTemplate" xml:space="preserve">
+    <value>All (byte comparison): {0} bytes changed.</value>
   </data>
   <data name="CompSectionNonSaveSlotUnknowns" xml:space="preserve">
     <value>Non-save slot unknowns</value>
@@ -547,7 +547,7 @@
     <value>Config file [{0}] has been loaded.</value>
   </data>
   <data name="SingleBitChangeText" xml:space="preserve">
-    <value>Single bit change! Consider exporting and reporting the result.</value>
+    <value>Check docu.xeth.de if this bit has a meaning yet. If not consider exporting and reporting the find.</value>
   </data>
   <data name="Bit" xml:space="preserve">
     <value>bit</value>
