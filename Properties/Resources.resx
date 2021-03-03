@@ -450,6 +450,9 @@
   <data name="CmdGroupConfig" xml:space="preserve">
     <value>Config</value>
   </data>
+  <data name="CmdGroupOnline" xml:space="preserve">
+    <value>Online</value>
+  </data>
   <data name="StatusConfigFileSavedTemplate" xml:space="preserve">
     <value>Config file [{0}] has been saved.</value>
   </data>
@@ -647,5 +650,62 @@
   </data>
   <data name="CmdExportCompResultResultSelect" xml:space="preserve">
     <value>Export current comparison result and select file</value>
+  </data>
+  <data name="CmdCheckForUpdates" xml:space="preserve">
+    <value>Check updates</value>
+  </data>
+  <data name="CmdApplyLatestUpdate" xml:space="preserve">
+    <value>Apply latest update (without prompts)</value>
+  </data>
+  <data name="ErrorUrlNotDefinedTemplate" xml:space="preserve">
+    <value>There is no URL "{0}" defined.</value>
+  </data>
+  <data name="CmdOpenDownloadWebsite" xml:space="preserve">
+    <value>Open download website</value>
+  </data>
+  <data name="CmdOpenDocuWebsite" xml:space="preserve">
+    <value>Open docu website</value>
+  </data>
+  <data name="CmdOpenDiscordInvitation" xml:space="preserve">
+    <value>Open Discord invitation</value>
+  </data>
+  <data name="CmdOpenForumWebsite" xml:space="preserve">
+    <value>Open forum website</value>
+  </data>
+  <data name="CmdOpenProjectWebsite" xml:space="preserve">
+    <value>Open project website</value>
+  </data>
+  <data name="CmdGroupUpdating" xml:space="preserve">
+    <value>Updating</value>
+  </data>
+  <data name="StatusNoUpdateAvailable" xml:space="preserve">
+    <value>No update is available.</value>
+  </data>
+  <data name="StatusUpdateIsAvailableTemplate" xml:space="preserve">
+    <value>Current version {0} can be updated to {1} [{2}].</value>
+  </data>
+  <data name="PromptDownloadUpdateNow" xml:space="preserve">
+    <value>Download update now? Yes (y), No (n)</value>
+  </data>
+  <data name="StatusDownloadFinished" xml:space="preserve">
+    <value>Download finished.</value>
+  </data>
+  <data name="PromptApplyUpdateNow" xml:space="preserve">
+    <value>Apply update now? Yes (y), No (n)</value>
+  </data>
+  <data name="CmdEnableDailyUpdateCheck" xml:space="preserve">
+    <value>Enable daily auto update check</value>
+  </data>
+  <data name="CmdDisableDailyUpdateCheck" xml:space="preserve">
+    <value>Disable daily auto update check</value>
+  </data>
+  <data name="StatusEnableDailyUpdateCheckTemplate" xml:space="preserve">
+    <value>Enable daily update check: {0}</value>
+  </data>
+  <data name="StatusCheckingForUpdates" xml:space="preserve">
+    <value>Checking for updates...</value>
+  </data>
+  <data name="StatusClosingAndReplacingAppTemplate" xml:space="preserve">
+    <value>Clsoing and replacing the app in: {0} seconds...</value>
   </data>
 </root>

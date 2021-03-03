@@ -139,6 +139,33 @@ namespace SRAM.Comparison.Enums
 
 		[DisplayNameLocalized(nameof(Res.CmdExportSaveSlotSummary), typeof(Res))]
 		ExportSlotSummary, // Export the slot's summary as text file
+
+		[DisplayNameLocalized(nameof(Res.CmdCheckForUpdates), typeof(Res))]
+		CheckForUpdate, // checks for updates
+
+		[DisplayNameLocalized(nameof(Res.CmdApplyLatestUpdate), typeof(Res))]
+		Update, // automatically downloads and applies a new update if available
+
+		[DisplayNameLocalized(nameof(Res.CmdEnableDailyUpdateCheck), typeof(Res))]
+		EnableDailyUpdateCheck, // enables daily update check
+
+		[DisplayNameLocalized(nameof(Res.CmdDisableDailyUpdateCheck), typeof(Res))]
+		DisableDailyUpdateCheck, // disables daily update check
+
+		[DisplayNameLocalized(nameof(Res.CmdOpenDownloadWebsite), typeof(Res))]
+		OpenDownloads, // Opens the download page
+
+		[DisplayNameLocalized(nameof(Res.CmdOpenDocuWebsite), typeof(Res))]
+		OpenDocu, // Opens the docu page
+
+		[DisplayNameLocalized(nameof(Res.CmdOpenDiscordInvitation), typeof(Res))]
+		OpenDiscordInvite, // Opens the Dicord invitation
+
+		[DisplayNameLocalized(nameof(Res.CmdOpenForumWebsite), typeof(Res))]
+		OpenForum, // Opens the Dicord invitation
+
+		[DisplayNameLocalized(nameof(Res.CmdOpenProjectWebsite), typeof(Res))]
+		OpenProject, // Opens the project website
 	}
 	
 	public enum AlternateCommands
@@ -190,5 +217,14 @@ namespace SRAM.Comparison.Enums
 		Slot = Commands.ShowSlotSummary,
 		ExportSlot = Commands.ExportSlotSummary,
 		ES = Commands.ExportSlotSummary,
+		Discord = Commands.OpenDiscordInvite,
+		Forum = Commands.OpenForum,
+		Project = Commands.OpenProject,
+		Docu = Commands.OpenDocu,
+		Downloads = Commands.OpenDownloads,
+		Update = Commands.CheckForUpdate,
+		UpdateNP = Commands.Update,
+		UpdateOn = Commands.EnableDailyUpdateCheck,
+		UpdateOff = Commands.DisableDailyUpdateCheck,
 	}
 }

@@ -14,6 +14,8 @@ namespace SRAM.Comparison
 	{
 		private static CommandMenu? _instance;
 		public static CommandMenu Instance => _instance ??= new();
+		private static ICommandHandler CommandHandler = ComparisonServices.CommandHandler!;
+		private static IConsolePrinter ConsolePrinter = ComparisonServices.ConsolePrinter;
 
 		protected virtual bool? OnRunCommand(ICommandHandler commandHandler, string command, IOptions options) => commandHandler.RunCommand(command!, options);
 
@@ -21,29 +23,32 @@ namespace SRAM.Comparison
 		{
 			ConsoleHelper.Initialize(options);
 
-			var commandHandler = ComparisonServices.CommandHandler;
-			var consolePrinter = ComparisonServices.ConsolePrinter;
-
-			commandHandler.ThrowIfNull(nameof(commandHandler));
-			consolePrinter.ThrowIfNull(nameof(consolePrinter));
+			CommandHandler.ThrowIfNull(nameof(CommandHandler));
+			ConsolePrinter.ThrowIfNull(nameof(ConsolePrinter));
 			options.BatchCommands.ThrowIfNotDefault(nameof(options.BatchCommands));
+
+			ConsolePrinter.PrintSectionHeader();
+			var version = ((CommandHandler)CommandHandler).AppVersion!;
+			ConsolePrinter.PrintConfigLine("Version", "v" + version);
 
 			if (options.CurrentFilePath.IsNullOrEmpty())
 			{
-				consolePrinter.PrintFatalError(Resources.ErrorMissingPathArguments);
+				ConsolePrinter.PrintFatalError(Resources.ErrorMissingPathArguments);
 				Console.ReadKey();
 				return;
 			}
 
-			consolePrinter.PrintConfig(options);
+			CheckforUpdates();
+
+			ConsolePrinter.PrintConfig(options);
 
 			if (!File.Exists(FilePathHelper.GetComparisonFilePath(options)))
-				commandHandler.RunCommand(nameof(Commands.OverwriteComp), options);
+				CommandHandler.RunCommand(nameof(Commands.OverwriteComp), options);
 
-			consolePrinter.PrintStartMessage();
+			ConsolePrinter.PrintStartMessage();
 			
-			if(options.AutoWatch)
-				commandHandler.RunCommand(nameof(Commands.WatchFile), options);
+			if (options.AutoWatch)
+				CommandHandler.RunCommand(nameof(Commands.WatchFile), options);
 
 			while (true)
 			{
@@ -51,20 +56,28 @@ namespace SRAM.Comparison
 				{
 					var command = Console.ReadLine();
 
-					if (!commandHandler.RunCommand(command!, options))
+					if (!CommandHandler.RunCommand(command!, options))
 						break;
 				}
 				catch (TargetInvocationException ex)
 				{
-					consolePrinter.PrintError(ex.InnerException!.Message);
-					consolePrinter.PrintSectionHeader();
+					ConsolePrinter.PrintError(ex.InnerException!.Message);
+					ConsolePrinter.PrintSectionHeader();
 				}
 				catch (Exception ex)
 				{
-					consolePrinter.PrintError(ex.Message);
-					consolePrinter.PrintSectionHeader();
+					ConsolePrinter.PrintError(ex.Message);
+					ConsolePrinter.PrintSectionHeader();
 				}
 			}
+		}
+
+		private void CheckforUpdates()
+		{
+			if (!File.Exists(Services.CommandHandler.DefaultUpdateFileName))
+				return;
+
+			((IAutoUpdater)CommandHandler).CheckForUpdates();
 		}
 	}
 }

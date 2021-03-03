@@ -124,6 +124,15 @@ namespace SRAM.Comparison.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Apply latest update (without prompts) ähnelt.
+        /// </summary>
+        public static string CmdApplyLatestUpdate {
+            get {
+                return ResourceManager.GetString("CmdApplyLatestUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Back-up comparison-file ähnelt.
         /// </summary>
         public static string CmdBackupComparisonFile {
@@ -138,6 +147,15 @@ namespace SRAM.Comparison.Properties {
         public static string CmdBackupCurrentFile {
             get {
                 return ResourceManager.GetString("CmdBackupCurrentFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Check updates ähnelt.
+        /// </summary>
+        public static string CmdCheckForUpdates {
+            get {
+                return ResourceManager.GetString("CmdCheckForUpdates", resourceCulture);
             }
         }
         
@@ -223,11 +241,29 @@ namespace SRAM.Comparison.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Disable daily auto update check ähnelt.
+        /// </summary>
+        public static string CmdDisableDailyUpdateCheck {
+            get {
+                return ResourceManager.GetString("CmdDisableDailyUpdateCheck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Modify (and save) offset value ähnelt.
         /// </summary>
         public static string CmdEditOffset {
             get {
                 return ResourceManager.GetString("CmdEditOffset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Enable daily auto update check ähnelt.
+        /// </summary>
+        public static string CmdEnableDailyUpdateCheck {
+            get {
+                return ResourceManager.GetString("CmdEnableDailyUpdateCheck", resourceCulture);
             }
         }
         
@@ -322,11 +358,29 @@ namespace SRAM.Comparison.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Online ähnelt.
+        /// </summary>
+        public static string CmdGroupOnline {
+            get {
+                return ResourceManager.GetString("CmdGroupOnline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Set save slot ähnelt.
         /// </summary>
         public static string CmdGroupSetsSaveSlot {
             get {
                 return ResourceManager.GetString("CmdGroupSetsSaveSlot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Updating ähnelt.
+        /// </summary>
+        public static string CmdGroupUpdating {
+            get {
+                return ResourceManager.GetString("CmdGroupUpdating", resourceCulture);
             }
         }
         
@@ -403,6 +457,42 @@ namespace SRAM.Comparison.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Open Discord invitation ähnelt.
+        /// </summary>
+        public static string CmdOpenDiscordInvitation {
+            get {
+                return ResourceManager.GetString("CmdOpenDiscordInvitation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Open docu website ähnelt.
+        /// </summary>
+        public static string CmdOpenDocuWebsite {
+            get {
+                return ResourceManager.GetString("CmdOpenDocuWebsite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Open download website ähnelt.
+        /// </summary>
+        public static string CmdOpenDownloadWebsite {
+            get {
+                return ResourceManager.GetString("CmdOpenDownloadWebsite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Open forum website ähnelt.
+        /// </summary>
+        public static string CmdOpenForumWebsite {
+            get {
+                return ResourceManager.GetString("CmdOpenForumWebsite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Open key binding file ähnelt.
         /// </summary>
         public static string CmdOpenKeyBindingFile {
@@ -417,6 +507,15 @@ namespace SRAM.Comparison.Properties {
         public static string CmdOpenLog {
             get {
                 return ResourceManager.GetString("CmdOpenLog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Open project website ähnelt.
+        /// </summary>
+        public static string CmdOpenProjectWebsite {
+            get {
+                return ResourceManager.GetString("CmdOpenProjectWebsite", resourceCulture);
             }
         }
         
@@ -1069,6 +1168,15 @@ namespace SRAM.Comparison.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die There is no URL &quot;{0}&quot; defined. ähnelt.
+        /// </summary>
+        public static string ErrorUrlNotDefinedTemplate {
+            get {
+                return ResourceManager.GetString("ErrorUrlNotDefinedTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Export path ähnelt.
         /// </summary>
         public static string ExportPath {
@@ -1096,6 +1204,15 @@ namespace SRAM.Comparison.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Apply update now? Yes (y), No (n) ähnelt.
+        /// </summary>
+        public static string PromptApplyUpdateNow {
+            get {
+                return ResourceManager.GetString("PromptApplyUpdateNow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Compare non-save slot area ähnelt.
         /// </summary>
         public static string PromptCompareNonSaveSlotArea {
@@ -1110,6 +1227,15 @@ namespace SRAM.Comparison.Properties {
         public static string PromptCreateNewFileInsteadOfOverwriting {
             get {
                 return ResourceManager.GetString("PromptCreateNewFileInsteadOfOverwriting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Download update now? Yes (y), No (n) ähnelt.
+        /// </summary>
+        public static string PromptDownloadUpdateNow {
+            get {
+                return ResourceManager.GetString("PromptDownloadUpdateNow", resourceCulture);
             }
         }
         
@@ -1267,6 +1393,24 @@ namespace SRAM.Comparison.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Checking for updates... ähnelt.
+        /// </summary>
+        public static string StatusCheckingForUpdates {
+            get {
+                return ResourceManager.GetString("StatusCheckingForUpdates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Clsoing and replacing the app in: {0} seconds... ähnelt.
+        /// </summary>
+        public static string StatusClosingAndReplacingAppTemplate {
+            get {
+                return ResourceManager.GetString("StatusClosingAndReplacingAppTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Comparison flags set: ähnelt.
         /// </summary>
         public static string StatusComparisonFlagsSet {
@@ -1362,6 +1506,24 @@ namespace SRAM.Comparison.Properties {
         public static string StatusDifferentSaveSlotComparisonTemplate {
             get {
                 return ResourceManager.GetString("StatusDifferentSaveSlotComparisonTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Download finished. ähnelt.
+        /// </summary>
+        public static string StatusDownloadFinished {
+            get {
+                return ResourceManager.GetString("StatusDownloadFinished", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Enable daily update check: {0} ähnelt.
+        /// </summary>
+        public static string StatusEnableDailyUpdateCheckTemplate {
+            get {
+                return ResourceManager.GetString("StatusEnableDailyUpdateCheckTemplate", resourceCulture);
             }
         }
         
@@ -1519,6 +1681,15 @@ namespace SRAM.Comparison.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die No update is available. ähnelt.
+        /// </summary>
+        public static string StatusNoUpdateAvailable {
+            get {
+                return ResourceManager.GetString("StatusNoUpdateAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Offset value {0} will bFe set. ähnelt.
         /// </summary>
         public static string StatusOffsetValueWillBeUsedTemplate {
@@ -1632,6 +1803,15 @@ namespace SRAM.Comparison.Properties {
         public static string StatusUnknownsChangedBytesTemplate {
             get {
                 return ResourceManager.GetString("StatusUnknownsChangedBytesTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Current version {0} can be updated to {1} [{2}]. ähnelt.
+        /// </summary>
+        public static string StatusUpdateIsAvailableTemplate {
+            get {
+                return ResourceManager.GetString("StatusUpdateIsAvailableTemplate", resourceCulture);
             }
         }
         

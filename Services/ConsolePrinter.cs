@@ -198,7 +198,22 @@ namespace SRAM.Comparison.Services
 			PrintCommand(Commands.AutoSaveOff);
 			PrintCommand(Commands.CreateBindings);
 			PrintCommand(Commands.OpenBindings);
-			
+
+			PrintGroupName(Res.CmdGroupOnline);
+
+			PrintCommand(Commands.OpenProject);
+			PrintCommand(Commands.OpenDocu);
+			PrintCommand(Commands.OpenDownloads);
+			PrintCommand(Commands.OpenForum);
+			PrintCommand(Commands.OpenDiscordInvite);
+
+			PrintGroupName(Res.CmdGroupUpdating);
+
+			PrintCommand(Commands.CheckForUpdate);
+			PrintCommand(Commands.Update);
+			PrintCommand(Commands.EnableDailyUpdateCheck);
+			PrintCommand(Commands.DisableDailyUpdateCheck);
+
 			PrintCustomCommands();
 
 			PrintLine();

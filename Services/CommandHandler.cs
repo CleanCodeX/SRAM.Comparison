@@ -4,11 +4,17 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
+using System.Net;
+using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.Json;
+using System.Threading;
 using Common.Shared.Min.Extensions;
 using Common.Shared.Min.Helpers;
 using IO.Extensions;
+using IO.Helpers;
 using IO.Models;
 using SRAM.Comparison.Enums;
 using SRAM.Comparison.Helpers;
@@ -23,9 +29,15 @@ namespace SRAM.Comparison.Services
 	{
 		protected const string DefaultConfigName = "Config";
 		protected const string DefaultLogFileName = "Log.txt";
+		protected const string DefaultUrisFileName = "Uris.json";
+		public const string DefaultUpdateFileName = "Update.json";
+		protected const string DefaultDownloadDirectory = "Download";
+		protected const string DefaultUpdateDirectory = DefaultDownloadDirectory + "/Update";
 
 		public static readonly string KeyBindingsFileName = "KeyBindings.json";
 		public static readonly string DefaultConfigFileName = $"{DefaultConfigName}.json";
+
+		public virtual string? AppVersion { get; set; }
 	}
 
 	/// <summary>
@@ -33,7 +45,7 @@ namespace SRAM.Comparison.Services
 	/// </summary>
 	/// <typeparam name="TSramFile">The S-RAM file structure</typeparam>
 	/// <typeparam name="TSaveSlot">The S-RAM game structure</typeparam>
-	public abstract class CommandHandler<TSramFile, TSaveSlot> : CommandHandler, ICommandHandler<TSramFile, TSaveSlot>
+	public abstract class CommandHandler<TSramFile, TSaveSlot> : CommandHandler, ICommandHandler<TSramFile, TSaveSlot>, IAutoUpdater
 		where TSramFile : class, IMultiSegmentFile<TSaveSlot>, IRawSave
 		where TSaveSlot : struct
 	{
@@ -43,7 +55,7 @@ namespace SRAM.Comparison.Services
 		private const string GuideSavestateFileName = "guide-savestate";
 
 		protected IConsolePrinter ConsolePrinter { get; }
-
+		
 		#region Ctors
 
 		public CommandHandler() : this(ComparisonServices.ConsolePrinter) {}
@@ -51,6 +63,30 @@ namespace SRAM.Comparison.Services
 		public CommandHandler(IConsolePrinter consolePrinter) => ConsolePrinter = consolePrinter;
 
 		#endregion Ctors
+
+		protected class Uris
+		{
+			public string? Downloads { get; set; }
+			public string? Docu { get; set; }
+			public string? LatestUpdate { get; set; }
+			public string? Project { get; set; }
+			public string? Forum { get; set; }
+			public string? DiscordInvite { get; set; }
+		}
+
+		protected class Update
+		{
+			public DateTime? LastCheckDate { get; set; }
+			public bool Download { get; set; }
+			public bool Replace { get; set; }
+		}
+
+		protected class LatestUpdateInfo
+		{
+			public DateTimeOffset VersionDate { get; set; }
+			public string? Version { get; set; }
+			public string? DownloadUri { get; set; }
+		}
 
 		#region Command Handling
 
@@ -265,6 +301,23 @@ namespace SRAM.Comparison.Services
 				case Commands.Clear:
 					ConsolePrinter.Clear();
 					break;
+				case Commands.OpenProject:
+				case Commands.OpenDocu:
+				case Commands.OpenDownloads:
+				case Commands.OpenForum:
+				case Commands.OpenDiscordInvite:
+					OpenLink(cmd.ToString().Remove("Open")!);
+					break;
+				case Commands.CheckForUpdate:
+					CheckUpdates(false);
+					break;
+				case Commands.Update:
+					CheckUpdates(true);
+					break;
+				case Commands.EnableDailyUpdateCheck:
+				case Commands.DisableDailyUpdateCheck:
+					EnableDailyUpdateCheck(cmd == Commands.EnableDailyUpdateCheck);
+					break;
 				case Commands.Quit:
 					return false;
 				default:
@@ -387,7 +440,7 @@ namespace SRAM.Comparison.Services
 
 		protected abstract Stream GetSramFromSavestate(IOptions options, Stream stream);
 
-		#endregion Compare S-RAM
+#endregion Compare S-RAM
 
 		#region Export comparison Result
 
@@ -464,7 +517,7 @@ namespace SRAM.Comparison.Services
 			Process.Start("explorer.exe", $"\"{filePath}\"");
 		}
 
-		#endregion Export comparison Result
+#endregion Export comparison Result
 
 		public string GetSummary(Stream stream, IOptions options) => GetSaveSlotSummary(stream, options, options.CurrentFileSaveSlot);
 
@@ -491,7 +544,7 @@ namespace SRAM.Comparison.Services
 			ConsolePrinter.ResetColor();
 		}
 
-		#endregion
+#endregion
 
 		#region Get / Set Offset Value
 
@@ -630,7 +683,7 @@ namespace SRAM.Comparison.Services
 			return GetSaveSlotOffset(slotIndex);
 		}
 
-		#endregion Get / Set Offset Value
+#endregion Get / Set Offset Value
 
 		#region Overwrite Comparison file
 
@@ -743,7 +796,7 @@ namespace SRAM.Comparison.Services
 			return saveSlotId;
 		}
 
-		#endregion GetSaveSlotId
+#endregion GetSaveSlotId
 
 		#region Enum
 
@@ -777,7 +830,7 @@ namespace SRAM.Comparison.Services
 			ConsolePrinter.ResetColor();
 		}
 
-		#endregion Enum
+#endregion Enum
 
 		#region Transfer Save File
 
@@ -834,7 +887,7 @@ namespace SRAM.Comparison.Services
 			}
 		}
 
-		#endregion Transfer Save File
+#endregion Transfer Save File
 
 		#region Backup / Restore
 
@@ -860,7 +913,7 @@ namespace SRAM.Comparison.Services
 			ConsolePrinter.ResetColor();
 		}
 
-		#endregion Backup / Restore
+#endregion Backup / Restore
 
 		#region Language
 
@@ -954,7 +1007,7 @@ namespace SRAM.Comparison.Services
 			}
 		}
 
-		#endregion Language
+#endregion Language
 
 		#region Config
 
@@ -1028,7 +1081,7 @@ namespace SRAM.Comparison.Services
 			return configName;
 		}
 
-		#endregion Config
+#endregion Config
 
 		#region Key Bindings
 
@@ -1067,7 +1120,7 @@ namespace SRAM.Comparison.Services
 			ConsolePrinter.ResetColor();
 		}
 
-		#endregion Key Bindings
+#endregion Key Bindings
 
 		#region Logging Flags
 
@@ -1091,7 +1144,7 @@ namespace SRAM.Comparison.Services
 			ConsolePrinter.ResetColor();
 		}
 
-		#endregion
+#endregion
 
 		#region File Watch Flags
 
@@ -1114,6 +1167,211 @@ namespace SRAM.Comparison.Services
 			ConsolePrinter.PrintColoredLine(ConsoleColor.Cyan, options.FileWatchFlags.ToFlagsString());
 			ConsolePrinter.PrintLine();
 			ConsolePrinter.ResetColor();
+		}
+
+		#endregion
+
+		#region Open websites
+
+		protected virtual void OpenLink(string propertyName)
+		{
+			const string uriFile = DefaultUrisFileName;
+			Uris? uris = null;
+			if (File.Exists(uriFile) && JsonFileSerializer.Deserialize<Uris>(uriFile) is { } loadedUris)
+				uris = loadedUris;
+			else if (GetUris() is { } loadedUris2)
+				uris = loadedUris2;
+
+			if (uris is null)
+				throw new InvalidOperationException(Resources.ErrorUrlNotDefinedTemplate.InsertArgs("Uris"));
+
+			var uri = (string?)uris.GetType().GetProperty(propertyName)!.GetValue(uris);
+			if (uri is null)
+				throw new InvalidOperationException(Resources.ErrorUrlNotDefinedTemplate.InsertArgs(propertyName));
+
+			try
+			{
+				OpenUrl(uri);
+			}
+			catch (Exception ex)
+			{
+				ConsolePrinter.PrintError(ex.Message + Environment.NewLine + $"URL: {uri}");
+			}
+		}
+
+		protected virtual Uris? GetUris() => null;
+
+		private static void OpenUrl(string url)
+		{
+			// hack because of this: https://github.com/dotnet/corefx/issues/10361
+			if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+			{
+				url = url.Replace("&", "^&");
+				Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
+			}
+			else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+			{
+				Process.Start("xdg-open", url);
+			}
+			else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+			{
+				Process.Start("open", url);
+			}
+		}
+
+		#endregion
+
+		#region Update
+
+		private void EnableDailyUpdateCheck(bool enable)
+		{
+			if(enable)
+				SetUpdateConfig(true, true);
+			else if(File.Exists(DefaultUpdateFileName))
+				File.Delete(DefaultUpdateFileName);
+
+			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusEnableDailyUpdateCheckTemplate.InsertArgs(Convert.ToByte(enable)));
+		}
+
+		private static void SetUpdateConfig(bool download, bool replace, DateTime? lastUpdateCheck = null) => JsonFileSerializer.Serialize(DefaultUpdateFileName, new Update {Download = download, Replace = replace, LastCheckDate = lastUpdateCheck });
+
+		public virtual void CheckForUpdates()
+		{
+			var options = JsonFileSerializer.Deserialize<Update>(DefaultUpdateFileName);
+			if (options.LastCheckDate >= DateTime.Today)
+				return;
+
+			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusCheckingForUpdates);
+			CheckUpdates(options.Download, options.Replace);
+		}
+
+		protected virtual void CheckUpdates(bool noPrompts) => CheckUpdates(noPrompts, noPrompts);
+		protected virtual void CheckUpdates(bool download, bool replace)
+		{
+			const string uriFile = DefaultUrisFileName;
+			string? uri = null;
+			if (File.Exists(uriFile) && JsonFileSerializer.Deserialize<Uris>(uriFile) is { LatestUpdate: not null and not "" } uris)
+				uri = uris.LatestUpdate!;
+			else if (GetUris()?.LatestUpdate is { } latestUpdate and not "")
+				uri = latestUpdate;
+
+			if (uri is null)
+				throw new InvalidOperationException(Resources.ErrorUrlNotDefinedTemplate.InsertArgs("LatestUpdate"));
+
+			try
+			{
+				using WebClient client = new();
+				var latestUpdateJson = client.DownloadString(uri).GetOrThrowIfNull("LatestUpdateURL");
+				var latestUpdate = JsonSerializer.Deserialize<LatestUpdateInfo>(latestUpdateJson)!;
+
+				latestUpdate.Version.ThrowIfNull("Version");
+				latestUpdate.DownloadUri.ThrowIfNull("DownloadUri");
+
+				if (latestUpdate.Version.EqualsInsensitive(AppVersion!))
+				{
+					ConsolePrinter.PrintColoredLine(ConsoleColor.Green, Resources.StatusNoUpdateAvailable);
+					return;
+				}
+
+				var versionDate = latestUpdate.VersionDate.ToLocalTime().DateTime.ToShortDateString();
+				ConsolePrinter.PrintColoredLine(ConsoleColor.Cyan, Resources.StatusUpdateIsAvailableTemplate.InsertArgs("v" + AppVersion, "v" + latestUpdate.Version, versionDate));
+
+				if (!download)
+				{
+					ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.PromptDownloadUpdateNow);
+					if (Console.ReadLine()!.ToLowerInvariant() != "y")
+						throw new OperationCanceledException(Resources.ErrorOperationAborted);
+				}
+
+				var downloadDir = DefaultDownloadDirectory;
+				DirectoryHelper.EnsureDirectoryExists(downloadDir);
+
+				var downloadUri = latestUpdate.DownloadUri;
+				if (!Environment.Is64BitProcess)
+					downloadUri = downloadUri.Replace("x64", "x86");
+
+				var fileName = Path.GetFileName(downloadUri);
+				var saveFilePath = Path.Join(downloadDir, fileName);
+
+				if (File.Exists(saveFilePath))
+					File.Delete(saveFilePath);
+				client.DownloadFile(latestUpdate.DownloadUri, saveFilePath);
+
+				var updateDir = DefaultUpdateDirectory;
+				if (Directory.Exists(updateDir))
+					Directory.Delete(updateDir, true);
+
+				ZipFile.ExtractToDirectory(saveFilePath, updateDir, true);
+				File.Delete(saveFilePath);
+
+				if (!replace)
+				{
+					ConsolePrinter.PrintColoredLine(ConsoleColor.Green, Resources.StatusDownloadFinished);
+					ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.PromptApplyUpdateNow);
+					if (Console.ReadLine()!.ToLowerInvariant() != "y")
+						return;
+				}
+
+				var folderName = Path.GetFileNameWithoutExtension(fileName)!;
+				var firstDirectory = Directory.GetDirectories(updateDir).FirstOrDefault();
+				firstDirectory ??= updateDir;
+
+				var appFilePath = "SramComparer.exe";
+				MoveDirectoryContents(new(firstDirectory), new(Environment.CurrentDirectory), appFilePath);
+
+				string oldFileName = appFilePath + ".Old";
+
+				File.Move(appFilePath, oldFileName, true);
+				File.Move(Path.Join(firstDirectory, appFilePath), appFilePath);
+				Directory.Delete(updateDir, true);
+
+				var batFile = "Replace.bat";
+				var cmdText = $"del {oldFileName} /f /q\n{appFilePath}";
+
+				File.WriteAllText(batFile, cmdText);
+
+				SetUpdateConfig(download, replace, DateTime.Today);
+
+				for (var i = 3; i >= 0; --i)
+				{
+					Console.CursorLeft = 0;
+					ConsolePrinter.PrintColored(ConsoleColor.Yellow, Resources.StatusClosingAndReplacingAppTemplate.InsertArgs(i));
+					Thread.Sleep(995);
+				}
+
+				var cmdParams = $@"/start /b cmd /c ""{batFile}""";
+				Process.Start(new ProcessStartInfo("cmd", cmdParams) { CreateNoWindow = false });
+				
+				Environment.Exit(0);
+			}
+			catch (OperationCanceledException)
+			{
+				throw;
+			}
+			catch (Exception ex)
+			{
+				ConsolePrinter.PrintError(ex.Message + Environment.NewLine + $"URL: {uri}");
+			}
+		}
+
+		private static void MoveDirectoryContents(DirectoryInfo source, DirectoryInfo destination, string? exceptFile = null)
+		{
+			if (!destination.Exists)
+				destination.Create();
+
+			// Copy all files.
+			var files = source.GetFiles();
+			foreach (var file in files)
+				if (file.Name != exceptFile)
+					file.MoveTo(Path.Join(destination.FullName, file.Name), true);
+
+			// Process subdirectories.
+			var dirs = source.GetDirectories();
+			foreach (var dir in dirs)
+			{
+				MoveDirectoryContents(dir, new(Path.Join(destination.FullName, dir.Name)), exceptFile);
+				Directory.Delete(dir.FullName);
+			}
 		}
 
 		#endregion

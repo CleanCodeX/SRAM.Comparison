@@ -543,4 +543,64 @@
 	<data name="CmdExportCompResultResultSelect" xml:space="preserve">
 		<value>Aktuelles Vergleichsergebnis exportieren und Datei auswählen</value>
 	</data>
+	<data name="ErrorUrlNotDefinedTemplate" xml:space="preserve">
+		<value>Es ist keine "{0}"-URL definiert.</value>
+	</data>
+	<data name="CmdCheckForUpdates" xml:space="preserve">
+		<value>Updates prüfen</value>
+	</data>
+	<data name="CmdOpenDocuWebsite" xml:space="preserve">
+		<value>Doku-Webseite öffnen</value>
+	</data>
+	<data name="CmdOpenDownloadWebsite" xml:space="preserve">
+		<value>Download-Webseite öffnen</value>
+	</data>
+	<data name="CmdGroupOnline" xml:space="preserve">
+		<value>Online</value>
+	</data>
+	<data name="CmdApplyLatestUpdate" xml:space="preserve">
+		<value>Das neuste Update einspielen (ohne Rückfragen)</value>
+	</data>
+	<data name="CmdOpenDiscordInvitation" xml:space="preserve">
+		<value>Discord-Einladung öffnen</value>
+	</data>
+	<data name="CmdOpenForumWebsite" xml:space="preserve">
+		<value>Forum-Webseite öffnen</value>
+	</data>
+	<data name="CmdOpenProjectWebsite" xml:space="preserve">
+		<value>Projekt-Webseite öffnen</value>
+	</data>
+	<data name="CmdGroupUpdating" xml:space="preserve">
+		<value>Aktualisieren</value>
+	</data>
+	<data name="CmdDisableDailyUpdateCheck" xml:space="preserve">
+		<value>Tägliche Update-Prüfung aktivieren</value>
+	</data>
+	<data name="CmdEnableDailyUpdateCheck" xml:space="preserve">
+		<value>Tägliche Update-Prüfung deaktivieren</value>
+	</data>
+	<data name="StatusClosingAndReplacingAppTemplate" xml:space="preserve">
+		<value>Schließen und ersetzen der App in: {0} Sekunden...</value>
+	</data>
+	<data name="StatusCheckingForUpdates" xml:space="preserve">
+		<value>Prüfe Updates...</value>
+	</data>
+	<data name="PromptDownloadUpdateNow" xml:space="preserve">
+		<value>Update jetzt herunterladen? Ja (y), Nein (n)</value>
+	</data>
+	<data name="PromptApplyUpdateNow" xml:space="preserve">
+		<value>Update jetzt anwenden? Ja (y), Nein (n)</value>
+	</data>
+	<data name="StatusDownloadFinished" xml:space="preserve">
+		<value>Download abgeschlossen.</value>
+	</data>
+	<data name="StatusEnableDailyUpdateCheckTemplate" xml:space="preserve">
+		<value>Tägliche Update-Prüfung aktivieren: {0}</value>
+	</data>
+	<data name="StatusNoUpdateAvailable" xml:space="preserve">
+		<value>Es ist kein Update verfügbar.</value>
+	</data>
+	<data name="StatusUpdateIsAvailableTemplate" xml:space="preserve">
+		<value>Die aktuelle Version {0} kann auf {1} [{2}] aktualisiert werden.</value>
+	</data>
 </root>

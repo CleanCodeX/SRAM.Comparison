@@ -648,4 +648,64 @@
   <data name="CmdExportCompResultResultSelect" xml:space="preserve">
     <value>Exportar el resultado de la comparación actual y seleccionar el archivo</value>
   </data>
+  <data name="ErrorUrlNotDefinedTemplate" xml:space="preserve">
+    <value>No hay ninguna URL "{0}" definida.</value>
+  </data>
+  <data name="CmdCheckForUpdates" xml:space="preserve">
+    <value>Revisa actualizaciones</value>
+  </data>
+  <data name="CmdOpenDocuWebsite" xml:space="preserve">
+    <value>Ouvrir le site Web du docu</value>
+  </data>
+  <data name="CmdOpenDownloadWebsite" xml:space="preserve">
+    <value>Ouvrir le site Web de téléchargement</value>
+  </data>
+  <data name="CmdGroupOnline" xml:space="preserve">
+    <value>En línea</value>
+  </data>
+  <data name="CmdApplyLatestUpdate" xml:space="preserve">
+    <value>Aplicar la última actualización (sin indicaciones)</value>
+  </data>
+  <data name="CmdGroupUpdating" xml:space="preserve">
+    <value>Actualizando</value>
+  </data>
+  <data name="StatusClosingAndReplacingAppTemplate" xml:space="preserve">
+    <value>Cerrar y reemplazar la aplicación en: {0} segundos...</value>
+  </data>
+  <data name="StatusCheckingForUpdates" xml:space="preserve">
+    <value>Comprobando actualizaciones...</value>
+  </data>
+  <data name="PromptDownloadUpdateNow" xml:space="preserve">
+    <value>¿Descargar la actualización ahora? Sí (y), No (n)</value>
+  </data>
+  <data name="PromptApplyUpdateNow" xml:space="preserve">
+    <value>¿Aplicar actualización ahora? Sí (y), No (n)</value>
+  </data>
+  <data name="CmdOpenDiscordInvitation" xml:space="preserve">
+    <value>Invitación Open Discord</value>
+  </data>
+  <data name="CmdOpenForumWebsite" xml:space="preserve">
+    <value>Sitio web del foro abierto</value>
+  </data>
+  <data name="CmdOpenProjectWebsite" xml:space="preserve">
+    <value>Abrir sitio web del proyecto</value>
+  </data>
+  <data name="CmdDisableDailyUpdateCheck" xml:space="preserve">
+    <value>Deshabilitar la verificación de actualización automática diaria</value>
+  </data>
+  <data name="CmdEnableDailyUpdateCheck" xml:space="preserve">
+    <value>Habilitar la verificación diaria de actualizaciones automáticas</value>
+  </data>
+  <data name="StatusDownloadFinished" xml:space="preserve">
+    <value>Descarga finalizada.</value>
+  </data>
+  <data name="StatusEnableDailyUpdateCheckTemplate" xml:space="preserve">
+    <value>Habilitar la comprobación de actualizaciones diaria: {0}</value>
+  </data>
+  <data name="StatusNoUpdateAvailable" xml:space="preserve">
+    <value>No hay ninguna actualización disponible.</value>
+  </data>
+  <data name="StatusUpdateIsAvailableTemplate" xml:space="preserve">
+    <value>La versión actual {0} se puede actualizar a {1} [{2}].</value>
+  </data>
 </root>
