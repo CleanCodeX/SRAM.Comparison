@@ -583,7 +583,7 @@
 		<value>Schließen und ersetzen der App in: {0} Sekunden...</value>
 	</data>
 	<data name="StatusCheckingForUpdates" xml:space="preserve">
-		<value>Prüfe Updates...</value>
+		<value>Prüfe auf Updates...</value>
 	</data>
 	<data name="PromptDownloadUpdateNow" xml:space="preserve">
 		<value>Update jetzt herunterladen? Ja (y), Nein (n)</value>

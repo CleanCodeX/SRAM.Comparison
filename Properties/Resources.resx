@@ -706,6 +706,6 @@
     <value>Checking for updates...</value>
   </data>
   <data name="StatusClosingAndReplacingAppTemplate" xml:space="preserve">
-    <value>Clsoing and replacing the app in: {0} seconds...</value>
+    <value>Closing and replacing the app in: {0} seconds...</value>
   </data>
 </root>

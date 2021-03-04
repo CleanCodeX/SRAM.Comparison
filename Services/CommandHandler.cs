@@ -27,10 +27,10 @@ namespace SRAM.Comparison.Services
 {
 	public abstract class CommandHandler
 	{
-		protected const string DefaultConfigName = "Config";
-		protected const string DefaultLogFileName = "Log.txt";
+		protected static string DefaultConfigName = "Config";
+		protected static string DefaultLogFileName = "Log.txt";
 		protected const string DefaultUrisFileName = "Uris.json";
-		public const string DefaultUpdateFileName = "Update.json";
+		protected internal const string DefaultUpdateFileName = "Update.json";
 		protected const string DefaultDownloadDirectory = "Download";
 		protected const string DefaultUpdateDirectory = DefaultDownloadDirectory + "/Update";
 
@@ -1226,14 +1226,14 @@ namespace SRAM.Comparison.Services
 		private void EnableDailyUpdateCheck(bool enable)
 		{
 			if(enable)
-				SetUpdateConfig(true, true);
+				SaveUpdateConfig(true, true);
 			else if(File.Exists(DefaultUpdateFileName))
 				File.Delete(DefaultUpdateFileName);
 
 			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.StatusEnableDailyUpdateCheckTemplate.InsertArgs(Convert.ToByte(enable)));
 		}
 
-		private static void SetUpdateConfig(bool download, bool replace, DateTime? lastUpdateCheck = null) => JsonFileSerializer.Serialize(DefaultUpdateFileName, new Update {Download = download, Replace = replace, LastCheckDate = lastUpdateCheck });
+		private static void SaveUpdateConfig(bool download, bool replace, DateTime? lastUpdateCheck = null) => JsonFileSerializer.Serialize(DefaultUpdateFileName, new Update {Download = download, Replace = replace, LastCheckDate = lastUpdateCheck });
 
 		public virtual void CheckForUpdates()
 		{
@@ -1248,7 +1248,7 @@ namespace SRAM.Comparison.Services
 		protected virtual void CheckUpdates(bool noPrompts) => CheckUpdates(noPrompts, noPrompts);
 		protected virtual void CheckUpdates(bool download, bool replace)
 		{
-			const string uriFile = DefaultUrisFileName;
+			var uriFile = DefaultUrisFileName;
 			string? uri = null;
 			if (File.Exists(uriFile) && JsonFileSerializer.Deserialize<Uris>(uriFile) is { LatestUpdate: not null and not "" } uris)
 				uri = uris.LatestUpdate!;
@@ -1256,20 +1256,21 @@ namespace SRAM.Comparison.Services
 				uri = latestUpdate;
 
 			if (uri is null)
-				throw new InvalidOperationException(Resources.ErrorUrlNotDefinedTemplate.InsertArgs("LatestUpdate"));
+				throw new InvalidOperationException(Resources.ErrorUrlNotDefinedTemplate.InsertArgs(nameof(Uris.LatestUpdate)));
 
 			try
 			{
 				using WebClient client = new();
-				var latestUpdateJson = client.DownloadString(uri).GetOrThrowIfNull("LatestUpdateURL");
+				var latestUpdateJson = client.DownloadString(uri).GetOrThrowIfNull(nameof(Uris.LatestUpdate) + "URL");
 				var latestUpdate = JsonSerializer.Deserialize<LatestUpdateInfo>(latestUpdateJson)!;
 
-				latestUpdate.Version.ThrowIfNull("Version");
-				latestUpdate.DownloadUri.ThrowIfNull("DownloadUri");
+				latestUpdate.Version.ThrowIfNull(nameof(LatestUpdateInfo.Version));
+				latestUpdate.DownloadUri.ThrowIfNull(nameof(LatestUpdateInfo.DownloadUri));
 
 				if (latestUpdate.Version.EqualsInsensitive(AppVersion!))
 				{
 					ConsolePrinter.PrintColoredLine(ConsoleColor.Green, Resources.StatusNoUpdateAvailable);
+					SaveUpdateConfig(download, replace, DateTime.Today);
 					return;
 				}
 
@@ -1330,7 +1331,7 @@ namespace SRAM.Comparison.Services
 
 				File.WriteAllText(batFile, cmdText);
 
-				SetUpdateConfig(download, replace, DateTime.Today);
+				SaveUpdateConfig(download, replace, DateTime.Today);
 
 				for (var i = 3; i >= 0; --i)
 				{

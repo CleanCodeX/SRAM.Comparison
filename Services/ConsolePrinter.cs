@@ -16,23 +16,23 @@ namespace SRAM.Comparison.Services
 		private static readonly string NewLineDefault = Environment.NewLine;
 		private const string Nbsp = "\u00A0";
 
-		protected string LinePrefix = Nbsp;
-		protected string BufferInfoValueSeparator = "|"; // ¦
-		protected string CandidateMarker = "[!]";
-		protected string ComparisonMarker = "¬"; // ¬
-		protected string CompValueMarker = ":";
-		protected string BufferNameMarker = "~";
-		protected string CurrValueMarker = "»";
-		protected string ChangeMarker = "»";
-		protected string PositiveChangeMarker = "(+)";
-		protected string NegativeChangeMarker = "(-)";
-		protected string HeaderTextTemplate = @"===[{0}]====================================================";
-		protected string CmdLineParamExampleValuesTemplate = "[{0}]";
-		protected string CmdAltKeysTemplate = "[{0}]";
-		protected string EnumValuesTemplate = "[{0}]";
-		protected string EnumValuesSeparator = "|";
-		protected int CommandNameColumnLength = 30;
-		protected string WramOffsetTemplate = "$7E:{0}";
+		public string LinePrefix = Nbsp;
+		public string BufferInfoValueSeparator = "|"; // ¦
+		public string CandidateMarker = "[!]";
+		public string ComparisonMarker = "¬"; // ¬
+		public string CompValueMarker = ":";
+		public string BufferNameMarker = "~";
+		public string CurrValueMarker = "»";
+		public string ChangeMarker = "»";
+		public string PositiveChangeMarker = "(+)";
+		public string NegativeChangeMarker = "(-)";
+		public string HeaderTextTemplate = @"===[{0}]====================================================";
+		public string CmdLineParamExampleValuesTemplate = "[{0}]";
+		public string CmdAltKeysTemplate = "[{0}]";
+		public string EnumValuesTemplate = "[{0}]";
+		public string EnumValuesSeparator = "|";
+		public int CommandNameColumnLength = 30;
+		public string WramOffsetTemplate = "$7E:{0}";
 
 		public virtual void PrintConfig(IOptions options)
 		{
@@ -475,8 +475,13 @@ namespace SRAM.Comparison.Services
 			var bgColor = ConsoleColor.DarkBlue;
 			var highlightColor = ConsoleColor.DarkGray;
 
-			if (isUnknown && changedBits == 1)
-				bgColor = ConsoleColor.Blue;
+			if (changedBits == 1)
+			{
+				if (isUnknown)
+					bgColor = ConsoleColor.Blue;
+
+				highlightColor = ConsoleColor.White;
+			}
 
 			PrintColored(ConsoleColor.DarkGray, ConsoleColor.DarkBlue, Res.CompChangeShort);
 			SetBackgroundColor(ConsoleColor.Black);
@@ -488,7 +493,7 @@ namespace SRAM.Comparison.Services
 
 			if (changedBits == 1)
 			{
-				PrintColored(ConsoleColor.White, Nbsp + Res.Bit);
+				PrintColored(highlightColor, Nbsp + Res.Bit);
 				if (isUnknown)
 				{
 					PrintColored(oneBitColor, ConsoleColor.Black, Nbsp + CandidateMarker + Nbsp);
@@ -496,7 +501,7 @@ namespace SRAM.Comparison.Services
 				}
 			}
 			else
-				PrintColored(highlightColor, Nbsp + Res.Bits);
+				PrintColored(ConsoleColor.DarkGray, Nbsp + Res.Bits);
 
 			PrintColored(ConsoleColor.Gray, ConsoleColor.Black, Nbsp);
 			PrintLine();

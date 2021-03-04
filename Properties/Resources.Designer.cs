@@ -1402,7 +1402,7 @@ namespace SRAM.Comparison.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Clsoing and replacing the app in: {0} seconds... ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Closing and replacing the app in: {0} seconds... ähnelt.
         /// </summary>
         public static string StatusClosingAndReplacingAppTemplate {
             get {

@@ -17,7 +17,7 @@ namespace SRAM.Comparison.Services
 		where TSramFile : class, IMultiSegmentFile<TSaveSlot>, IRawSave
 		where TSaveSlot : struct
 	{
-		protected int ComparisonConsoleWidth = 157;
+		protected int ComparisonMinConsoleWidth = 157;
 		protected string UnknownIdentifier = "unknown";
 		protected IConsolePrinter ConsolePrinter { get; }
 
@@ -58,7 +58,7 @@ namespace SRAM.Comparison.Services
 
 			if (!writeToConsole) return byteCount;
 
-			ConsoleHelper.EnsureMinConsoleWidth(ComparisonConsoleWidth);
+			ConsoleHelper.EnsureMinConsoleWidth(ComparisonMinConsoleWidth);
 
 			OnPrintBufferInfo(name, offset, 2, GetWramOffset(offset));
 			OnPrintComparison(0, null, currValue, compValue, isUnknown);
@@ -85,7 +85,7 @@ namespace SRAM.Comparison.Services
 
 			if (!writeToConsole) return byteCount;
 
-			ConsoleHelper.EnsureMinConsoleWidth(ComparisonConsoleWidth);
+			ConsoleHelper.EnsureMinConsoleWidth(ComparisonMinConsoleWidth);
 
 			OnPrintBufferInfo(name, offset, 2, GetWramOffset(offset));
 			OnPrintComparison(0, null, currValue, compValue, isUnknown);
@@ -112,7 +112,7 @@ namespace SRAM.Comparison.Services
 
 			if (!writeToConsole) return byteCount;
 
-			ConsoleHelper.EnsureMinConsoleWidth(ComparisonConsoleWidth);
+			ConsoleHelper.EnsureMinConsoleWidth(ComparisonMinConsoleWidth);
 
 			OnPrintBufferInfo(name, offset, 2, GetWramOffset(offset));
 			OnPrintComparison(0, null, currValue, compValue, isUnknown);
@@ -165,7 +165,7 @@ namespace SRAM.Comparison.Services
 
 			if (byteCount == 0 || !writeToConsole) return byteCount;
 
-			ConsoleHelper.EnsureMinConsoleWidth(ComparisonConsoleWidth);
+			ConsoleHelper.EnsureMinConsoleWidth(ComparisonMinConsoleWidth);
 
 			OnStatusBytesChanged(byteCount);
 
