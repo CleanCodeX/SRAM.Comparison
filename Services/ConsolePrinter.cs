@@ -123,7 +123,9 @@ namespace SRAM.Comparison.Services
 			SetForegroundColor(ConsoleColor.DarkYellow);
 
 			var startMessage = @$"== {Res.StartMessageTemplate.InsertArgs(nameof(Commands.Help), nameof(Commands.SrmGuide))} ==";
-			var length = Math.Min(startMessage.Length, Console.WindowWidth - 1);
+			var length = startMessage.Length;
+
+			ConsoleHelper.EnsureMinConsoleWidth(length + LinePrefix.Length + 3);
 
 			PrintLine("=".Repeat(length));
 			PrintLine(startMessage);
@@ -231,11 +233,11 @@ namespace SRAM.Comparison.Services
 			}
 		}
 
-		protected virtual void PrintGroupName(string groupName) => PrintColoredLine(ConsoleColor.DarkGray, Environment.NewLine + groupName);
+		protected virtual void PrintGroupName(string groupName) => PrintColoredLine(ConsoleColor.DarkGray, NewLine + LinePrefix + groupName);
 
 		protected virtual void PrintCommandKey(Enum key)
 		{
-			PrintColored(ConsoleColor.White, key.ToString());
+			PrintColored(ConsoleColor.White, LinePrefix + key.ToString());
 			PrintColored(ConsoleColor.DarkCyan, $"{GetAlternateCommands(key, typeof(AlternateCommands)).PadRight(CommandNameColumnLength - key.ToString().Length)}");
 			PrintColored(ConsoleColor.White, ": ");
 		}
@@ -425,14 +427,14 @@ namespace SRAM.Comparison.Services
 
 		protected virtual void PrintConfigName(string settingName, string cmdArgName, string examples, int padRightDistance = 35)
 		{
-			PrintColored(ConsoleColor.White, settingName.PadRight(padRightDistance) + @":");
+			PrintColored(ConsoleColor.White, LinePrefix + settingName.PadRight(padRightDistance) + @":");
 			PrintColored(ConsoleColor.Cyan, cmdArgName);
 			PrintColored(ConsoleColor.DarkCyan, Nbsp + CmdLineParamExampleValuesTemplate.InsertArgs(examples));
 		}
 
 		protected virtual void PrintConfigName(string settingName, string? cmdArg = null, int padRightDistance = 35)
 		{
-			PrintColored(ConsoleColor.White, settingName.PadRight(padRightDistance) + @":");
+			PrintColored(ConsoleColor.White, LinePrefix + settingName.PadRight(padRightDistance) + @":");
 
 			if (cmdArg is null) return;
 
@@ -542,7 +544,7 @@ namespace SRAM.Comparison.Services
 		public virtual string NewLine => NewLineDefault;
 
 		public virtual void PrintLine() => PrintLine(string.Empty);
-		public virtual void PrintLine(string text) => Print(text + NewLine + LinePrefix);
+		public virtual void PrintLine(string text) => Print(LinePrefix + text + NewLine + LinePrefix);
 		public virtual void Print(string text) => Console.Write(text);
 		
 		protected virtual void PrintBackgroundColored(ConsoleColor color, string text)
