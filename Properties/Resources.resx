@@ -550,7 +550,7 @@
     <value>Config file [{0}] has been loaded.</value>
   </data>
   <data name="SingleBitChangeText" xml:space="preserve">
-    <value>Check docu.xeth.de if this bit has a meaning yet. If not consider exporting and reporting the find.</value>
+    <value>Check by command 'Docu' if this bit has a meaning yet. If not consider exporting and reporting the find.</value>
   </data>
   <data name="Bit" xml:space="preserve">
     <value>bit</value>

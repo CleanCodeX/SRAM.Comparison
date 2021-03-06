@@ -139,7 +139,7 @@
     <value>Bytes</value>
   </data>
   <data name="SingleBitChangeText" xml:space="preserve">
-    <value>Compruebe docu.xeth.de si este bit tiene un significado todavía. Si no, considere exportar y reportar el hallazgo.</value>
+    <value>Verifique con el comando 'Docu' si este bit tiene un significado todavía. Si no, considere exportar y reportar el hallazgo.</value>
   </data>
   <data name="CmdBackupComparisonFile" xml:space="preserve">
     <value>Cree una copia del archivo de comparación</value>

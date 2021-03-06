@@ -442,7 +442,7 @@
 		<value>Konfigdatei [{0}] wurde geladen.</value>
 	</data>
 	<data name="SingleBitChangeText" xml:space="preserve">
-		<value>Prüfe docu.xeth.de ob dieses Bit bereits eine Bedeutung hat. Falls nicht, erwäge Export und Meldung des Fundes.</value>
+		<value>Prüfe mit Befehl 'docu' ob dieses Bit bereits eine Bedeutung hat. Falls nicht, erwäge Export und Meldung des Fundes.</value>
 	</data>
 	<data name="Bit" xml:space="preserve">
 		<value>Bit</value>
