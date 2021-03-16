@@ -52,7 +52,7 @@ namespace SRAM.Comparison.Services
 		/// <returns>1 if the byte has changed, otherwise 0</returns>
 		protected virtual int CompareValue(string name, int offset, byte currValue, byte compValue, bool writeToConsole = true, bool isUnknown = false)
 		{
-			if (Equals(compValue, currValue)) return 0;
+			if (compValue == currValue) return 0;
 
 			var byteCount = BitConverter.GetBytes(currValue).Length;
 
@@ -79,7 +79,7 @@ namespace SRAM.Comparison.Services
 		/// <returns>2 if the ushort changed, otherwise 0</returns>
 		protected virtual int CompareValue(string name, int offset, ushort currValue, ushort compValue, bool writeToConsole = true, bool isUnknown = false)
 		{
-			if (Equals(compValue, currValue)) return 0;
+			if (compValue == currValue) return 0;
 
 			var byteCount = BitConverter.GetBytes(currValue).Length;
 
@@ -106,7 +106,7 @@ namespace SRAM.Comparison.Services
 		/// <returns>2 if the ushort changed, otherwise 0</returns>
 		protected virtual int CompareValue(string name, int offset, uint currValue, uint compValue, bool writeToConsole = true, bool isUnknown = false)
 		{
-			if (Equals(compValue, currValue)) return 0;
+			if (compValue == currValue) return 0;
 
 			var byteCount = BitConverter.GetBytes(currValue).Length;
 
