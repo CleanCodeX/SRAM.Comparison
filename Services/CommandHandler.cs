@@ -1295,7 +1295,7 @@ namespace SRAM.Comparison.Services
 				latestUpdate.Version.ThrowIfNull(nameof(LatestUpdateInfo.Version));
 				latestUpdate.DownloadUri.ThrowIfNull(nameof(LatestUpdateInfo.DownloadUri));
 
-				if (latestUpdate.Version.EqualsInsensitive(AppVersion!))
+				if (latestUpdate.Version.CompareTo(AppVersion!) <= 0)
 				{
 					ConsolePrinter.PrintColoredLine(ConsoleColor.Green, Resources.StatusNoUpdateAvailable);
 					SaveUpdateConfig(download, replace, DateTime.Today);
@@ -1327,8 +1327,7 @@ namespace SRAM.Comparison.Services
 				client.DownloadFile(latestUpdate.DownloadUri, saveFilePath);
 
 				var updateDir = DefaultUpdateDirectory;
-				if (Directory.Exists(updateDir))
-					Directory.Delete(updateDir, true);
+				DirectoryHelper.EnsureDirectoryNotExists(updateDir);
 
 				ZipFile.ExtractToDirectory(saveFilePath, updateDir, true);
 				File.Delete(saveFilePath);
