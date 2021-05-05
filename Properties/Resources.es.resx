@@ -639,8 +639,8 @@
   <data name="StatusSaveSlotSummaryExportedTemplate" xml:space="preserve">
     <value>Se exportó el resumen del lote guardado {0} a [{1}].</value>
   </data>
-  <data name="DefaultFilename" xml:space="preserve">
-    <value>Nombre de archivo predeterminado</value>
+  <data name="DefaultValue" xml:space="preserve">
+    <value>Valor por defecto</value>
   </data>
   <data name="CmdExportCompResultResultOpen" xml:space="preserve">
     <value>Exportar el resultado de la comparación actual y abrir el archivo</value>

@@ -546,8 +546,8 @@
 	<data name="StatusSaveSlotSummaryExportedTemplate" xml:space="preserve">
 		<value>Récapitulatif de la sauvegarde {0} exporté vers [{1}].</value>
 	</data>
-	<data name="DefaultFilename" xml:space="preserve">
-		<value>Nom de fichier par défaut</value>
+	<data name="DefaultValue" xml:space="preserve">
+		<value>Valeur par défaut</value>
 	</data>
 	<data name="CmdExportCompResultResultOpen" xml:space="preserve">
 		<value>Exporter le résultat de la comparaison actuelle et ouvrir le fichier</value>

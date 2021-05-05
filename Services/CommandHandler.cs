@@ -45,8 +45,8 @@ namespace SRAM.Comparison.Services
 	/// </summary>
 	/// <typeparam name="TSramFile">The S-RAM file structure</typeparam>
 	/// <typeparam name="TSaveSlot">The S-RAM game structure</typeparam>
-	public abstract class CommandHandler<TSramFile, TSaveSlot> : CommandHandler, ICommandHandler<TSramFile, TSaveSlot>, IAutoUpdater
-		where TSramFile : class, IMultiSegmentFile<TSaveSlot>, IRawSave
+	public abstract class CommandHandler<TSramFile, TSaveSlot> : CommandHandler, ICommandHandler<TSramFile, TSaveSlot>, IAutoUpdater, ISavestateConverter
+		where TSramFile : class, IMultiSegmentFile<TSaveSlot>, IRawSave, IStructFile
 		where TSaveSlot : struct
 	{
 		private const string BackupFileExtension = ".backup";
@@ -367,8 +367,11 @@ namespace SRAM.Comparison.Services
 		public virtual int Compare<TComparer>(Stream currStream, Stream compStream, in IOptions options, in TextWriter? output)
 			where TComparer : ISramComparer<TSramFile, TSaveSlot>, new()
 		{
-			ConvertStreamIfSavestate(options, ref currStream, options.CurrentFilePath!);
-			ConvertStreamIfSavestate(options, ref compStream, FilePathHelper.GetComparisonFilePath(options));
+			if(ConvertStreamIfSavestate(options, currStream, options.CurrentFilePath!) is {} convertedCurrData)
+				currStream = convertedCurrData.ToStream();
+			
+			if(ConvertStreamIfSavestate(options, compStream, FilePathHelper.GetComparisonFilePath(options)) is {} convertedCompData)
+				compStream = convertedCompData.ToStream();
 
 			var currFile = ClassFactory.Create<TSramFile>(currStream, options.GameRegion);
 			var compFile = ClassFactory.Create<TSramFile>(compStream, options.GameRegion);
@@ -428,19 +431,31 @@ namespace SRAM.Comparison.Services
 			}
 		}
 
-		protected virtual bool ConvertStreamIfSavestate(IOptions options, ref Stream stream, string? filePath)
+		public virtual byte[]? ConvertStreamIfSavestate(IOptions options, in Stream stream, string? filePath)
 		{
-			if (filePath is null) return false;
-			if (!FilePathHelper.IsSavestateFile(filePath)) return false;
+			stream.ThrowIfNull(nameof(stream));
 
-			stream = GetSramFromSavestate(options, stream).GetOrThrowIfNull("ConvertedStream");
+			if (filePath is null) return null;
+			if (!FilePathHelper.IsSavestateFile(filePath)) return null;
 
-			return true;
+			return LoadSramFromSavestate(options, stream).GetOrThrowIfNull("ConvertedStream");
 		}
 
-		protected abstract Stream GetSramFromSavestate(IOptions options, Stream stream);
+		public virtual byte[]? ConvertStreamToByteArrayIfSavestate(IOptions options, in Stream stream, string? filePath)
+		{
+			stream.ThrowIfNull(nameof(stream));
 
-#endregion Compare S-RAM
+			if (filePath is null) return null;
+			if (!FilePathHelper.IsSavestateFile(filePath)) return null;
+			
+			FileStream savestateStream = new(filePath, FileMode.Open, FileAccess.Read);
+			return SaveSramToSavestate(options, savestateStream, stream);
+		}
+
+		protected abstract byte[] LoadSramFromSavestate(IOptions options, in Stream stream);
+		protected abstract byte[] SaveSramToSavestate(IOptions options, in Stream savestateStream, in Stream srmStream);
+
+		#endregion Compare S-RAM
 
 		#region Export comparison Result
 
@@ -553,11 +568,12 @@ namespace SRAM.Comparison.Services
 			var filePath = options.CurrentFilePath!;
 			Requires.FileExists(filePath, nameof(options.CurrentFilePath));
 
-			Stream currStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
+			Stream stream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
 
-			ConvertStreamIfSavestate(options, ref currStream, filePath);
+			if (ConvertStreamIfSavestate(options, stream, options.CurrentFilePath!) is { } convertedData)
+				stream = convertedData.ToStream();
 
-			var currFile = ClassFactory.Create<TSramFile>(currStream, options.GameRegion);
+			var currFile = ClassFactory.Create<TSramFile>(stream, options.GameRegion);
 
 			var offset = GetOffset(out var slotIndex);
 			if (offset == 0)
@@ -577,9 +593,6 @@ namespace SRAM.Comparison.Services
 		public virtual void SaveOffsetValue(IOptions options)
 		{
 			Requires.FileExists(options.CurrentFilePath, nameof(options.CurrentFilePath));
-
-			if(!FilePathHelper.IsSrmFile(options.CurrentFilePath!))
-				throw new NotSupportedException(Resources.ErrorSavestateOffsetEditNotSupported);
 
 			var offset = GetOffset(out var slotIndex);
 			if (offset == 0)
@@ -608,11 +621,23 @@ namespace SRAM.Comparison.Services
 			if (createNewFile)
 				saveFilePath += ".manipulated";
 
-			using var currStream = new FileStream(options.CurrentFilePath!, FileMode.Open, FileAccess.Read, FileShare.None);
-			var currFile = ClassFactory.Create<TSramFile>(currStream, options.GameRegion);
+			var filePath = options.CurrentFilePath!;
+			Stream stream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.None);
 
-			currFile.SetOffsetBytes(slotIndex, offset, bytes);
-			currFile.RawSave(saveFilePath);
+			if (ConvertStreamIfSavestate(options, stream, filePath) is { } convertedData)
+				stream = convertedData.ToStream();
+
+			var sramFile = ClassFactory.Create<TSramFile>(stream, options.GameRegion);
+
+			sramFile.SetOffsetBytes(slotIndex, offset, bytes);
+
+			using MemoryStream outputStream = new();
+			sramFile.Save(outputStream);
+
+			if (ConvertStreamToByteArrayIfSavestate(options, outputStream, filePath) is { } savestateData)
+				File.WriteAllBytes(saveFilePath, savestateData);
+			else
+				File.WriteAllBytes(saveFilePath, outputStream.GetBuffer());
 
 			ConsolePrinter.PrintColoredLine(ConsoleColor.Green, Resources.StatusSetOffsetValueTemplate.InsertArgs(value, offset));
 			var fileName = Path.GetFileName(saveFilePath);
@@ -630,7 +655,7 @@ namespace SRAM.Comparison.Services
 			ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, prompt);
 
 			if (defaultValue is not null)
-				ConsolePrinter.PrintColoredLine(ConsoleColor.Cyan, $"{Resources.DefaultFilename}: {defaultValue}");
+				ConsolePrinter.PrintColoredLine(ConsoleColor.Cyan, $"{Resources.DefaultValue}: {defaultValue}");
 			
 			ConsolePrinter.PrintColoredLine(ConsoleColor.White, "");
 			
@@ -670,7 +695,7 @@ namespace SRAM.Comparison.Services
 		private int GetOffset(out int slotIndex)
 		{
 			var promptResult = InternalGetStringValue(Resources.PromptSetSingleSaveSlotTemplate.InsertArgs(4),
-				Resources.StatusSetSingleSaveSlotMaxTemplate);
+				"1", promptResultTemplate: Resources.StatusSetSingleSaveSlotMaxTemplate);
 			if (!int.TryParse(promptResult, out var saveSlotId) || saveSlotId > 4)
 			{
 				ConsolePrinter.PrintError(Resources.ErrorInvalidIndex);
@@ -727,7 +752,9 @@ namespace SRAM.Comparison.Services
 			var filePath = FilePathHelper.GetExportFilePath(options, fileName);
 
 			Stream currStream = new FileStream(options.CurrentFilePath!, FileMode.Open, FileAccess.Read, FileShare.Read);
-			ConvertStreamIfSavestate(options, ref currStream, options.CurrentFilePath!);
+
+			if (ConvertStreamIfSavestate(options, currStream, options.CurrentFilePath!) is { } convertedData)
+				currStream = convertedData.ToStream();
 
 			var currFile = ClassFactory.Create<TSramFile>(currStream, options.GameRegion);
 			var summary = currFile.GetSegment(slotId - 1).ToString()!;
@@ -766,7 +793,8 @@ namespace SRAM.Comparison.Services
 
 		private string GetSaveSlotSummary(Stream stream, IOptions options, int saveSlotId)
 		{
-			ConvertStreamIfSavestate(options, ref stream, options.CurrentFilePath!);
+			if (ConvertStreamIfSavestate(options, stream, options.CurrentFilePath!) is { } convertedData)
+				stream = convertedData.ToStream();
 
 			var currFile = ClassFactory.Create<TSramFile>(stream, options.GameRegion);
 			return currFile.GetSegment(saveSlotId - 1).ToString()!;
@@ -1313,7 +1341,6 @@ namespace SRAM.Comparison.Services
 						return;
 				}
 
-				var folderName = Path.GetFileNameWithoutExtension(fileName)!;
 				var firstDirectory = Directory.GetDirectories(updateDir).FirstOrDefault();
 				firstDirectory ??= updateDir;
 

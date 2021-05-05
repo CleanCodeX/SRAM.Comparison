@@ -853,11 +853,11 @@ namespace SRAM.Comparison.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Default filename ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Default value ähnelt.
         /// </summary>
-        public static string DefaultFilename {
+        public static string DefaultValue {
             get {
-                return ResourceManager.GetString("DefaultFilename", resourceCulture);
+                return ResourceManager.GetString("DefaultValue", resourceCulture);
             }
         }
         
@@ -1348,7 +1348,7 @@ namespace SRAM.Comparison.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Check docu.xeth.de if this bit has a meaning yet. If not consider exporting and reporting the find. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Check by command &apos;Docu&apos; if this bit has a meaning yet. If not consider exporting and reporting the find. ähnelt.
         /// </summary>
         public static string SingleBitChangeText {
             get {

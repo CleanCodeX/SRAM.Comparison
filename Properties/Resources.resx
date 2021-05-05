@@ -642,8 +642,8 @@
   <data name="StatusSaveSlotSummaryExportedTemplate" xml:space="preserve">
     <value>Saveslot summary {0} exported to [{1}].</value>
   </data>
-  <data name="DefaultFilename" xml:space="preserve">
-    <value>Default filename</value>
+  <data name="DefaultValue" xml:space="preserve">
+    <value>Default value</value>
   </data>
   <data name="CmdExportCompResultResultOpen" xml:space="preserve">
     <value>Export current comparison result and open file</value>

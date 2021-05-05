@@ -534,8 +534,8 @@
 	<data name="StatusSaveSlotSummaryExportedTemplate" xml:space="preserve">
 		<value>Speicherslot {0}-Zusammenfassung exportiert nach [{1}].</value>
 	</data>
-	<data name="DefaultFilename" xml:space="preserve">
-		<value>Standard-Dateiname</value>
+	<data name="DefaultValue" xml:space="preserve">
+		<value>Standard-Wert</value>
 	</data>
 	<data name="CmdExportCompResultResultOpen" xml:space="preserve">
 		<value>Aktuelles Vergleichsergebnis exportieren und Datei öffnen</value>
