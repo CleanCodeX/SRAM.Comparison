@@ -615,4 +615,7 @@
 	<data name="StatusUpdateIsAvailableTemplate" xml:space="preserve">
 		<value>La version actuelle {0} peut être mise à jour vers {1}. [{2}]</value>
 	</data>
+	<data name="StatusDownloading" xml:space="preserve">
+		<value>Téléchargement...</value>
+	</data>
 </root>

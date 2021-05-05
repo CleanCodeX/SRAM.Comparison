@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using Common.Shared.Min.Extensions;
@@ -16,7 +17,7 @@ namespace SRAM.Comparison
 		public static CommandMenu Instance => _instance ??= new();
 		private static ICommandHandler CommandHandler = ComparisonServices.CommandHandler!;
 		private static IConsolePrinter ConsolePrinter = ComparisonServices.ConsolePrinter;
-
+		
 		protected virtual bool? OnRunCommand(ICommandHandler commandHandler, string command, IOptions options) => commandHandler.RunCommand(command!, options);
 
 		public void Show(IOptions options)
@@ -29,6 +30,9 @@ namespace SRAM.Comparison
 
 			ConsolePrinter.PrintSectionHeader();
 			var version = ((CommandHandler)CommandHandler).AppVersion!;
+#if DEBUG
+			ConsolePrinter.PrintConfigLine("CurrentDir", Environment.CurrentDirectory);
+#endif
 			ConsolePrinter.PrintConfigLine("Version", "v" + version);
 
 			if (options.CurrentFilePath.IsNullOrEmpty())
@@ -72,7 +76,7 @@ namespace SRAM.Comparison
 			}
 		}
 
-		private void CheckforUpdates()
+		private static void CheckforUpdates()
 		{
 			if (!File.Exists(Services.CommandHandler.DefaultUpdateFileName))
 				return;

@@ -1519,6 +1519,15 @@ namespace SRAM.Comparison.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Downloading... ähnelt.
+        /// </summary>
+        public static string StatusDownloading {
+            get {
+                return ResourceManager.GetString("StatusDownloading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Enable daily update check: {0} ähnelt.
         /// </summary>
         public static string StatusEnableDailyUpdateCheckTemplate {

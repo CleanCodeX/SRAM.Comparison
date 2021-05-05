@@ -690,6 +690,9 @@
   <data name="StatusDownloadFinished" xml:space="preserve">
     <value>Download finished.</value>
   </data>
+  <data name="StatusDownloading" xml:space="preserve">
+    <value>Downloading...</value>
+  </data>
   <data name="PromptApplyUpdateNow" xml:space="preserve">
     <value>Apply update now? Yes (y), No (n)</value>
   </data>

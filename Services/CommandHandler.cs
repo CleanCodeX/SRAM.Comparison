@@ -58,9 +58,9 @@ namespace SRAM.Comparison.Services
 		
 		#region Ctors
 
-		public CommandHandler() : this(ComparisonServices.ConsolePrinter) {}
+		protected CommandHandler() : this(ComparisonServices.ConsolePrinter) {}
 		/// <param name="consolePrinter">A specific console printer instance</param>
-		public CommandHandler(IConsolePrinter consolePrinter) => ConsolePrinter = consolePrinter;
+		protected CommandHandler(IConsolePrinter consolePrinter) => ConsolePrinter = consolePrinter;
 
 		#endregion Ctors
 
@@ -1276,6 +1276,11 @@ namespace SRAM.Comparison.Services
 		protected virtual void CheckUpdates(bool noPrompts) => CheckUpdates(noPrompts, noPrompts);
 		protected virtual void CheckUpdates(bool download, bool replace)
 		{
+			var appExeFilePath = Process.GetCurrentProcess().MainModule!.FileName!;
+			var appDirectory = Path.GetDirectoryName(appExeFilePath);
+
+			#region Deserialize Update Uri
+
 			var uriFile = DefaultUrisFileName;
 			string? uri = null;
 			if (File.Exists(uriFile) && JsonFileSerializer.Deserialize<Uris>(uriFile) is { LatestUpdate: not null and not "" } uris)
@@ -1286,8 +1291,12 @@ namespace SRAM.Comparison.Services
 			if (uri is null)
 				throw new InvalidOperationException(Resources.ErrorUrlNotDefinedTemplate.InsertArgs(nameof(Uris.LatestUpdate)));
 
+			#endregion
+
 			try
 			{
+				#region Download and evaluate server update info
+
 				using WebClient client = new();
 				var latestUpdateJson = client.DownloadString(uri).GetOrThrowIfNull(nameof(Uris.LatestUpdate) + "URL");
 				var latestUpdate = JsonSerializer.Deserialize<LatestUpdateInfo>(latestUpdateJson)!;
@@ -1295,12 +1304,17 @@ namespace SRAM.Comparison.Services
 				latestUpdate.Version.ThrowIfNull(nameof(LatestUpdateInfo.Version));
 				latestUpdate.DownloadUri.ThrowIfNull(nameof(LatestUpdateInfo.DownloadUri));
 
+				// ReSharper disable once StringCompareToIsCultureSpecific
 				if (latestUpdate.Version.CompareTo(AppVersion!) <= 0)
 				{
 					ConsolePrinter.PrintColoredLine(ConsoleColor.Green, Resources.StatusNoUpdateAvailable);
 					SaveUpdateConfig(download, replace, DateTime.Today);
 					return;
 				}
+
+				#endregion
+
+				#region Prompt for download
 
 				var versionDate = latestUpdate.VersionDate.ToLocalTime().DateTime.ToShortDateString();
 				ConsolePrinter.PrintColoredLine(ConsoleColor.Cyan, Resources.StatusUpdateIsAvailableTemplate.InsertArgs("v" + AppVersion, "v" + latestUpdate.Version, versionDate));
@@ -1312,7 +1326,11 @@ namespace SRAM.Comparison.Services
 						throw new OperationCanceledException(Resources.ErrorOperationAborted);
 				}
 
-				var downloadDir = DefaultDownloadDirectory;
+				#endregion
+
+				#region Extract downloaded update
+
+				var downloadDir = Path.Join(appDirectory, DefaultDownloadDirectory);
 				DirectoryHelper.EnsureDirectoryExists(downloadDir);
 
 				var downloadUri = latestUpdate.DownloadUri;
@@ -1322,53 +1340,87 @@ namespace SRAM.Comparison.Services
 				var fileName = Path.GetFileName(downloadUri);
 				var saveFilePath = Path.Join(downloadDir, fileName);
 
-				if (File.Exists(saveFilePath))
-					File.Delete(saveFilePath);
+				FileHelper.EnsureFileNotExists(saveFilePath);
+
+				ConsolePrinter.PrintColoredLine(ConsoleColor.Green, Resources.StatusDownloading);
+
 				client.DownloadFile(latestUpdate.DownloadUri, saveFilePath);
 
-				var updateDir = DefaultUpdateDirectory;
-				DirectoryHelper.EnsureDirectoryNotExists(updateDir);
+				ConsolePrinter.PrintColoredLine(ConsoleColor.Green, Resources.StatusDownloadFinished);
+
+				var updateDir = Path.Join(appDirectory, DefaultUpdateDirectory);
+				DirectoryHelper.EnsureEmptyDirectoryExists(updateDir);
 
 				ZipFile.ExtractToDirectory(saveFilePath, updateDir, true);
 				File.Delete(saveFilePath);
 
+				#endregion
+
+				#region Prompt for installing the update (if not configured otherwise)
+
 				if (!replace)
 				{
-					ConsolePrinter.PrintColoredLine(ConsoleColor.Green, Resources.StatusDownloadFinished);
 					ConsolePrinter.PrintColoredLine(ConsoleColor.Yellow, Resources.PromptApplyUpdateNow);
 					if (Console.ReadLine()!.ToLowerInvariant() != "y")
 						return;
 				}
 
+				#endregion
+
+				#region Replace update files except running exe file
+
 				var firstDirectory = Directory.GetDirectories(updateDir).FirstOrDefault();
 				firstDirectory ??= updateDir;
 
-				var appFilePath = "SramComparer.exe";
-				MoveDirectoryContents(new(firstDirectory), new(Environment.CurrentDirectory), appFilePath);
+				const string exeFileName = "SramComparer.exe";
 
-				string oldFileName = appFilePath + ".Old";
+				if (!exeFileName.EqualsInsensitive(Path.GetFileName(appExeFilePath)))
+					throw new InvalidOperationException($"App needs to be named as {exeFileName}, otherwise it doesn't automatically update.");
 
-				File.Move(appFilePath, oldFileName, true);
-				File.Move(Path.Join(firstDirectory, appFilePath), appFilePath);
+				MoveDirectoryContents(new(firstDirectory), new(Environment.CurrentDirectory), exeFileName);
+
+				#endregion
+
+				#region Rename running exe file for later replacement
+
+				string oldExeFilePath = appExeFilePath + ".Old";
+
+				File.Move(appExeFilePath, oldExeFilePath, true);
+				File.Move(Path.Join(firstDirectory, exeFileName), appExeFilePath);
 				Directory.Delete(updateDir, true);
 
-				var batFile = "Replace.bat";
-				var cmdText = $"del {oldFileName} /f /q\n{appFilePath}";
+				#endregion
 
-				File.WriteAllText(batFile, cmdText);
+				#region Creating Replace.bat
+
+				var batFilePath = Path.Join(appDirectory, "Replace.bat");
+				var cmLineArgs = Environment.GetCommandLineArgs()[1..].Join(" ");
+				var cmdText = @$"del {oldExeFilePath} /f /q{Environment.NewLine}""{appExeFilePath}"" ""{cmLineArgs}""";
+
+				File.WriteAllText(batFilePath, cmdText);
+
+				#endregion
 
 				SaveUpdateConfig(download, replace, DateTime.Today);
+
+				#region Display close countdown
 
 				for (var i = 3; i >= 0; --i)
 				{
 					Console.CursorLeft = 0;
-					ConsolePrinter.PrintColored(ConsoleColor.Yellow, Resources.StatusClosingAndReplacingAppTemplate.InsertArgs(i));
+					ConsolePrinter.PrintColored(ConsoleColor.Cyan, Resources.StatusClosingAndReplacingAppTemplate.InsertArgs(i));
 					Thread.Sleep(995);
 				}
 
-				var cmdParams = $@"/start /b cmd /c ""{batFile}""";
+				#endregion
+
+				#region Run replace.bat
+
+				var cmdParams = $@"/start /b cmd /c ""{batFilePath}""";
 				Process.Start(new ProcessStartInfo("cmd", cmdParams) { CreateNoWindow = false });
-				
+
+				#endregion
+
 				Environment.Exit(0);
 			}
 			catch (OperationCanceledException)
@@ -1377,7 +1429,7 @@ namespace SRAM.Comparison.Services
 			}
 			catch (Exception ex)
 			{
-				ConsolePrinter.PrintError(ex.Message + Environment.NewLine + $"URL: {uri}");
+				ConsolePrinter.PrintError(ex);
 			}
 		}
 
